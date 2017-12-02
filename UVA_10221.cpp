@@ -70,21 +70,23 @@ int main()
     cin.tie(nullptr);
     //freopen("ina.txt", "r", stdin);
     //freopen("outa.txt", "w", stdout);
-    int s, a;
+    double s, a;
     string ang;
     cout << fixed << setprecision(6);
-    while(cin >> s >> a >> ang)
-    {
+    while(cin >> s >> a >> ang) {
         double pi = 2 * acos(0);
         s += 6440;
         double rad;
-        if(ang == "deg") {
+        if (ang == "deg") {
             rad = a * pi / 180;
-        } else
-        {
+        } else {
             rad = (a / 60) * pi / 180;
         }
         double interRad = rad;
+        if (abs(interRad - 2 * pi) < EPS)
+        {
+            interRad = 0;
+        }
         if(interRad > pi)
             interRad = abs(2 * pi - rad);
         //double check =
