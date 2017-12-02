@@ -16,7 +16,7 @@ struct point { double x, y;
         return (fabs(x - other.x) < EPS && (fabs(y - other.y) < EPS)); } };
 double dist(point p1, point p2) { // Euclidean distance
 // hypot(dx, dy) returns sqrt(dx * dx + dy * dy)
-    return hypot(p1.x - p2.x, p1.y - p2.y); } // return double
+    return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2)); } // return double
 //------------------Line------------------------
 
 struct line {
@@ -72,10 +72,11 @@ double distToLine(point p, point a, point b, point &c) {
 
 double distToLineSegment(point p, point a, point b, point &c) {
     vec ap = toVec(a, p), ab = toVec(a, b);
-    double u = dot(ap, ab) / norm_sq(ab);
-    if (u < 0.0) { c = point(a.x, a.y); // closer to a
+    double u = dot(ap, ab);
+    double temp = norm_sq(ab);
+    if (u < EPS) { c = point(a.x, a.y); // closer to a
         return dist(p, a); } // Euclidean distance between p and a
-    if (u > 1.0) { c = point(b.x, b.y); // closer to b
+    if (u + EPS > temp) { c = point(b.x, b.y); // closer to b
         return dist(p, b); } // Euclidean distance between p and b
     return distToLine(p, a, b, c); } // run distToLine as above
 //-------------------END--------------------
@@ -97,7 +98,10 @@ int main()
         data.push_back(p2);
         sort(data.begin(), data.end());
         point temp;
-        double dist_ = distToLineSegment(point(0, 0), data[0], data[1], temp);
+        point center;
+        center.x = 0.0;
+        center.y = 0.0;
+        double dist_ = distToLineSegment(center, data[0], data[1], temp);
         double ans = 0;
         if(dist_ > r - EPS)
         {
