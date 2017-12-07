@@ -43,7 +43,7 @@ void pointsToLine(point p1, point p2, line &l) {
 
 vector<figure> data;
 
-double poswrtline(point a, line l) { //returns true if the point is above the line and false o/w.
+double poswrtline(point a, line l) { 
     double ans = l.a * a.x + l.b * a.y + l.c;
     return ans;
 }
