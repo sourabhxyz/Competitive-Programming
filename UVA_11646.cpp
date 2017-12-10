@@ -1,3 +1,5 @@
+/*Was very easy to derive the formula... */
+
 #include<bits/stdc++.h>
 
 using namespace std;
