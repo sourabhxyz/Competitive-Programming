@@ -1,29 +1,3 @@
-/*// To Print:
-
-double dvac(int low, int high) {
-    if(low < high) {
-        if(low == high - 1) {
-            return dist(data[low], data[high]);
-        }
-        int mid = (low + high) / 2;
-        double d1 = dvac(low, mid);
-        double d2 = dvac(mid + 1, high);
-        double dp = min(d1, d2);
-        double d3 = 10000;
-        for(int i = mid; i >= low; i--) {
-            double temp = dist(point(data[i].x, 0), point(data[mid].x, 0));
-            if(temp > dp - EPS) break;
-            for(int j = mid + 1; j <= high; j++) {
-                double temp2 = dist(point(data[i].x, 0), point(data[j].x, 0));
-                if(temp2 > dp - EPS) break;
-                d3 = min(d3, dist(data[i], data[j]));
-            }
-        }
-        return min(dp, d3);
-    }
-    return 10000;
-}
-*/
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -59,9 +33,6 @@ double dvac(int low, int high) {
             return max(data[high].x - data[low].x, abs(data[high].y - data[low].y));
         }
         int mid = (low + high) / 2;
-        //d = min(d, dvac(low, mid, d));
-        //d = min(d, dvac(low, mid, d));
-        //d = min()
         double d1 = dvac(low, mid);
         double d2 = dvac(mid + 1, high);
         double dp = min(d1, d2);
