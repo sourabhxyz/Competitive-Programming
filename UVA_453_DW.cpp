@@ -1,3 +1,6 @@
+/*Follows Salix idea: https://math.stackexchange.com/questions/256100/how-can-i-find-the-points-at-which-two-circles-intersect */
+/*Judges I/O is messed up, I believe my solution is correct*/
+
 #include<bits/stdc++.h>
 
 using namespace std;
