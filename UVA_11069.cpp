@@ -1,3 +1,4 @@
+/*Add n (the last element) to all the subsets of (n - 2) + Add n to all the subsets of (n - 3)*/
 #include<bits/stdc++.h>
 
 using namespace std;
