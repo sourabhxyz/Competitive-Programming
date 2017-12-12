@@ -33,7 +33,7 @@ int main() {
             continue;
         }
         string ans;
-        int digits = floor(1 + (log(val) / log(base2)));
+        int digits = floor(1 + (log(val) / log(base2)) + eps);
         for(int i = digits - 1; i >= 0; i--) {
             ll den = pow(base2, i);
             if(val < den) {
