@@ -3,7 +3,7 @@
 using namespace std;
 
 typedef long long int ll;
-const double eps = 1e-7;
+const double eps = 1e-12;
 typedef vector<int> vi;
 typedef pair<int, int> ii;
 #define inf 10000
