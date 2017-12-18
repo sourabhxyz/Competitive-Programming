@@ -8,12 +8,6 @@ typedef vector<int> vi;
 typedef pair<int, int> ii;
 
 vector<int> coinValue;
-/*ll ways(int type, int value, int limit) {
-    if (value == 0)              return 1;
-    if (value < 0 || type == limit)  return 0;
-    if (memo[type][value] != -1) return memo[type][value];
-    return memo[type][value] = ways(type + 1, value, limit) + ways(type, value - coinValue[type], limit);
-}*/
 
 long double dp[300][305] = {};
 
