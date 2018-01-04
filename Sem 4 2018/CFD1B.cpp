@@ -15,10 +15,10 @@ vector<int> prefix_function (string s) {
     return pi;
 }
 int main() {
-    freopen("ind.txt", "r", stdin);
-    freopen("outd.txt", "w", stdout);
-//    ios::sync_with_stdio(false);
-//    cin.tie(nullptr);
+//    freopen("ind.txt", "r", stdin);
+//    freopen("outd.txt", "w", stdout);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
     string given;
     cin >> given;
     vector<int> p = prefix_function(given);
