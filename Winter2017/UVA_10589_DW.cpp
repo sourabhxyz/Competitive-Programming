@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-#define EPS 1e-7
+#define EPS 1e-15
 
 int n, a;
 struct point {
