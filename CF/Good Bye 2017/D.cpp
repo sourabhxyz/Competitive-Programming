@@ -43,12 +43,8 @@ int k, pa, pb;
 vector<vector<int> > dp;
 
 int calc(int n, int m) {
-    if (m >= k) {
-        return m;
-    }
-    if (n == k) {
-        int mean = mul(sub(1, pb), inv(pb));
-        return add(m, add(k, mean));
+    if (n + m >= k) {
+        return add(n, add(m, mul(pa, inv(pb))));
     }
     if (dp[n][m] != -1) {
         return dp[n][m];
@@ -65,13 +61,12 @@ void solve() {
     cout << calc(1, 0) << "\n";
 }
 
-
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-//    cout << fixed << setprecision(8);
-//    freopen("ina.txt", "r", stdin);
-//    freopen("outa.txt", "w", stdout);
+    // cout << fixed << setprecision(8);
+    // freopen("ina.txt", "r", stdin);
+    // freopen("outa.txt", "w", stdout);
     solve();
     return 0;
 }
