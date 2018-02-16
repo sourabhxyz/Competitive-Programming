@@ -61,6 +61,7 @@ int query(node *p, int rl, int rr, int al, int ar) {
     int mid = (al + ar) / 2;
     return (query(p->l, rl, rr, al, mid) + query(p->r, rl, rr, mid + 1, ar));
 }
+
 int getid(string &given) {
     if (sid.count(given)) {
         return sid[given];
