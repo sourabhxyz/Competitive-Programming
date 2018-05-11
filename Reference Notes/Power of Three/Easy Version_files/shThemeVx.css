@@ -1,0 +1,180 @@
+.editorial-tip {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background: #EEE;
+    color: #111;
+    border: 1px solid;
+    padding: 5px;
+}
+
+h3 {
+    border-bottom: 1px solid rgb(180, 180, 180);
+}
+
+h1 {
+    margin-top: 1em;
+}
+
+.wiki-content h1 {
+    margin-bottom: 1em  !important;
+}
+
+#tabLinks {
+    margin-bottom: 2em !important;
+}
+#tabLinks ul {
+  display: inline;
+  list-style: none;
+  padding-left: 0px;
+  margin-top: 0px;
+}
+
+#tabLinks ul li {
+  display: inline;
+}
+#tabLinks ul li:first-child:before {
+  content: ""
+}
+#tabLinks ul li:before {
+  content: " | "
+}
+
+/**
+ * SyntaxHighlighter
+ * http://alexgorbatchev.com/SyntaxHighlighter
+ *
+ * SyntaxHighlighter is donationware. If you are using it, please donate.
+ * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
+ *
+ * @version
+ * 3.0.83 (July 02 2010)
+ * 
+ * @copyright
+ * Copyright (C) 2004-2010 Alex Gorbatchev.
+ *
+ * @license
+ * Dual licensed under the MIT and GPL licenses.
+ */
+.syntaxhighlighter {
+  background-color: white !important;
+}
+.syntaxhighlighter .line.alt1 {
+  background-color: white !important;
+}
+.syntaxhighlighter .line.alt2 {
+  background-color: white !important;
+}
+.syntaxhighlighter .line.highlighted.alt1, .syntaxhighlighter .line.highlighted.alt2 {
+  background-color: #e0e0e0 !important;
+}
+.syntaxhighlighter .line.highlighted.number {
+  color: black !important;
+}
+.syntaxhighlighter table caption {
+  color: black !important;
+}
+.syntaxhighlighter .gutter {
+  color: #808080 !important;
+}
+.syntaxhighlighter .gutter .line {
+  border-right: 1px solid gray !important;
+}
+.syntaxhighlighter .gutter .line.highlighted {
+  background-color: #6ce26c !important;
+  color: white !important;
+}
+.syntaxhighlighter.printing .line .content {
+  border: none !important;
+}
+.syntaxhighlighter.collapsed {
+  overflow: visible !important;
+}
+.syntaxhighlighter.collapsed .toolbar {
+  color: blue !important;
+  background: white !important;
+  border: 1px solid #6ce26c !important;
+}
+.syntaxhighlighter.collapsed .toolbar a {
+  color: blue !important;
+}
+.syntaxhighlighter.collapsed .toolbar a:hover {
+  color: red !important;
+}
+.syntaxhighlighter .toolbar {
+  color: white !important;
+  background: #6ce26c !important;
+  border: none !important;
+}
+.syntaxhighlighter .toolbar a {
+  color: white !important;
+}
+.syntaxhighlighter .toolbar a:hover {
+  color: black !important;
+}
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a {
+  color: black !important;
+}
+.syntaxhighlighter .comments {
+  color: #008200 !important;
+  font-style: italic !important;
+  font-weight: normal !important;
+}
+.syntaxhighlighter .comments a {
+  color: #008200 !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+}
+
+.syntaxhighlighter .string {
+  color: #AE01A3 !important;
+  font-style: italic !important;
+  font-weight: normal !important;
+}
+.syntaxhighlighter .string a {
+  color: #AE01A3 !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+}
+
+
+.syntaxhighlighter .keyword {
+  font-weight: bold !important;
+  color: #1C0978 !important;
+}
+.syntaxhighlighter .preprocessor {
+  color: gray !important;
+}
+.syntaxhighlighter .variable {
+  background: #000000 !important;
+  color: #aa7700 !important;
+}
+.syntaxhighlighter .value {
+  color: #000066 !important;
+}
+.syntaxhighlighter .functions {
+  color: black !important;
+  font-weight: bold !important;
+}
+.syntaxhighlighter .constants {
+  color: #0066cc !important;
+}
+.syntaxhighlighter .script {
+  font-weight: bold !important;
+  color: #006699 !important;
+  background-color: none !important;
+}
+.syntaxhighlighter .color1, .syntaxhighlighter .color1 a {
+  color: #4e4eff !important;
+}
+.syntaxhighlighter .color2, .syntaxhighlighter .color2 a {
+  color: #ff1493 !important;
+}
+.syntaxhighlighter .color3, .syntaxhighlighter .color3 a {
+  color: red !important;
+}
+
+.syntaxhighlighter .keyword {
+  font-weight: bold !important;
+}

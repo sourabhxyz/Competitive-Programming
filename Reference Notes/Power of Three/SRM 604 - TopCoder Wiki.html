@@ -1,0 +1,1518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0049)https://apps.topcoder.com/wiki/display/tc/SRM+604 -->
+<html class="js svg gr__apps_topcoder_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SRM 604 - TopCoder Wiki</title>
+                
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <script language="javascript">
+        var contextPath = '/wiki';
+        var i18n = [];
+    </script>
+
+                            <link rel="stylesheet" href="./SRM 604 - TopCoder Wiki_files/main-action.css" type="text/css">
+            
+    
+
+        
+            <script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/effects.js.download"></script>
+    
+
+            <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./SRM 604 - TopCoder Wiki_files/ga.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-6340959-1");
+pageTracker._trackPageview();
+</script>
+    <link type="image/x-icon" rel="shortcut icon" href="https://apps.topcoder.com/i/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="./SRM 604 - TopCoder Wiki_files/tcStyles.css">
+    <link type="text/css" rel="stylesheet" href="./SRM 604 - TopCoder Wiki_files/coders.css">
+    <link type="text/css" rel="stylesheet" href="./SRM 604 - TopCoder Wiki_files/wiki.css">
+</head>
+
+                    <body onload="" data-gr-c-s-loaded="true" class="vsc-initialized">
+    
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/popup.js.download"></script>
+
+<div id="shortcutBar">
+    <div class="icon"><a href="http://community.topcoder.com/tc"><img src="./SRM 604 - TopCoder Wiki_files/scHome.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Home&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="javascript:arena();"><img src="./SRM 604 - TopCoder Wiki_files/scAlgo.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Algorithm Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="http://community.topcoder.com/tc?module=ActiveContests&amp;pt=23"><img src="./SRM 604 - TopCoder Wiki_files/scConceptualization.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Software Conceptualization Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="http://community.topcoder.com/tc?module=ActiveContests&amp;pt=6"><img src="./SRM 604 - TopCoder Wiki_files/scSpecification.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Software Specification Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="http://community.topcoder.com/tc?module=ActiveContests&amp;pt=7"><img src="./SRM 604 - TopCoder Wiki_files/scArchitecture.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Software Architecture Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="http://community.topcoder.com/tc?module=ViewActiveContests&amp;ph=112"><img src="./SRM 604 - TopCoder Wiki_files/scDesign.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Component Design Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="http://community.topcoder.com/tc?module=ViewActiveContests&amp;ph=113"><img src="./SRM 604 - TopCoder Wiki_files/scDevelopment.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Component Development Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+
+    <div class="icon"><a href="http://community.topcoder.com/tc?module=ActiveContests&amp;pt=14"><img src="./SRM 604 - TopCoder Wiki_files/scAssembly.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Software Assembly Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="http://community.topcoder.com/tc?module=ActiveContests&amp;pt=13"><img src="./SRM 604 - TopCoder Wiki_files/scTesting.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Testing Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=9"><img src="./SRM 604 - TopCoder Wiki_files/scBugHunt.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Bug Hunt Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="http://community.topcoder.com/tc?module=ActiveContests&amp;pt=35"><img src="./SRM 604 - TopCoder Wiki_files/scContentCreation.gif" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Content Creation Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="http://community.topcoder.com/tc?module=ActiveContests&amp;pt=36"><img src="./SRM 604 - TopCoder Wiki_files/scReporting.gif" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Reporting Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="javascript:arena();"><img src="./SRM 604 - TopCoder Wiki_files/scTCHS.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;High School Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="http://community.topcoder.com/longcontest/?module=ViewActiveContests"><img src="./SRM 604 - TopCoder Wiki_files/scMarathon.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;Marathon Matches&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+    <div class="icon"><a href="http://studio.topcoder.com/?module=ViewActiveContests"><img src="./SRM 604 - TopCoder Wiki_files/scStudio.png" alt="" onmouseover="postPopUpText(&#39;globalPopupText&#39;,&#39;TopCoder Studio Competitions&#39;); popUp(this,&#39;globalPopup&#39;);" onmouseout="popHide()"></a></div>
+</div>
+
+<div id="globalPopup" class="popUp"><div id="globalPopupText"></div></div>
+
+
+<div style="position: absolute; right:0px; top:31px;"><a href="http://community.topcoder.com/tc?module=MyHome"><img src="./SRM 604 - TopCoder Wiki_files/myTopCoder.png" alt="My TopCoder" style="display:block;"></a></div>
+
+
+<div align="center" style="margin: 0px 290px 0px 280px;">
+   <div id="outerLogo">
+      <div id="innerLogo">
+      <a href="http://www.topcoder.com/"><img src="./SRM 604 - TopCoder Wiki_files/topcoder.gif" alt="TopCoder" style="display: block;"></a>
+      </div>
+   </div>
+</div>
+
+<div class="memberCountBox">
+Member Count: 1,294,561 - 
+
+
+May 9, 2018
+
+&nbsp;<a class="gMetal" href="Javascript:tcTime()">[Get Time]</a>
+</div>
+
+<div class="topBar">
+    <div style="float: right; margin: 5px 0px 0px 0px;">
+        
+            Hello,&nbsp;<a href="http://www.topcoder.com/tc?module=MemberProfile&amp;cr=40599391" class="coderTextWhite">sourabh23</a>
+            
+                | <a class="gMetal" href="http://community.topcoder.com/tc?module=Logout">Logout</a>
+            
+        
+    </div>
+</div>
+
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+    <tr valign="top">
+        <td width="180">
+            
+
+
+
+
+
+
+
+
+
+
+<script language="JavaScript" type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/arena.js.download"></script>
+
+
+<script language="JavaScript" type="text/javascript">
+<!--
+function toggleMenu(menuTitle,menuID){
+   var menu = document.getElementById(menuID);
+   if(menu.style.display == 'block') menu.className = 'CLOSED';
+   else if(menu.className == 'OPEN' && menu.style.display != 'none') menu.className = 'CLOSED';
+   else {
+      menu.className = 'OPEN';
+   }
+   if(menuTitle.blur)menuTitle.blur();
+   if(menuTitle.className == 'exp') menuTitle.className = 'exp_ed';
+   else menuTitle.className = 'exp';
+   return;
+}
+function flipMenu(myMenuName){
+   var menuName = document.getElementById(myMenuName);
+   menuName.className = 'exp_ed';
+}
+
+// -->
+</script>
+
+<div style="padding: 0px;"><img src="./SRM 604 - TopCoder Wiki_files/leftnav_top.gif" alt=""></div>
+<div id="navbar">
+    
+<ul>
+<li class="exp_ed"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_competitions&#39;)">Challenges</a>
+<ul id="m_competitions" class="OPEN">
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_competitions_overview&#39;)">Overview</a>
+<ul id="m_competitions_overview">
+<li><a href="http://apps.topcoder.com/wiki/x/MQD9Ag">Reliability</a></li>
+<li><a href="http://apps.topcoder.com/wiki/x/lYE_/">Ratings</a></li>
+<li><a href="http://apps.topcoder.com/wiki/x/EoK1B/">Badges</a></li>
+<li><a href="http://apps.topcoder.com/wiki/x/aoE_/">How to Get Paid</a></li>
+<li><a href="http://apps.topcoder.com/wiki/x/2gRmAw">Administrative Overview </a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_copilot_opportunities&#39;)">Copilot Opportunities</a>
+<ul id="m_copilot_opportunities">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Copilot+Overview">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_copilot_support&#39;)">Track Information</a>
+<ul id="m_copilot_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Copilot+Opportunities">How to Compete</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Copilot+Opportunities">Documentation</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Copilot+Opportunities">Tutorial</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=29">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;ph=140">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewCopilotPool&amp;size=20&amp;view=0&amp;sort=12">Copilot Pool</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;competition_design&#39;)">Design</a>
+<ul id="competition_design">
+<li><a href="http://studio.topcoder.com/">Studio</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_conceptualization_competitions&#39;)">Conceptualization</a>
+<ul id="m_conceptualization_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/TopCoder+Conceptualization+Contests">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_conceptualization_support&#39;)">Track Information</a>
+<ul id="m_conceptualization_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Conceptualization+Competition+Tutorial">Tutorial</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Conceptualization+Documentation">Documentation</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=23">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=23">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;ph=134">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=23">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=23">Meet the Review Board</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_specification_competitions&#39;)">Specification</a>
+<ul id="m_specification_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/TopCoder+Specification+Contests">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_specification_support&#39;)">Track Information</a>
+<ul id="m_specification_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Specification+Competitions">How to Compete</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=6">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=6">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;ph=117">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=6">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=6">Meet the Review Board</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_architecture_competitions&#39;)">Architecture</a>
+<ul id="m_architecture_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Architecture+Overview">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_architecture_support&#39;)">Track Information</a>
+<ul id="m_architecture_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Module+Architecture+Tutorial">Module Architecture Tutorial</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=7">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=7">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;ph=118">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=7">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=7">Meet the Review Board</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_des_competitions&#39;)">Component Design</a>
+<ul id="m_des_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Component+Design+Overview">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_des_support&#39;)">Track Information</a>
+<ul id="m_des_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Component+Design+Competitions">How to Compete</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Component+Design+Documentation">Documentation</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ColorChange&amp;ph=112">Recent Color Changes</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Component+Design+Data+Feeds">Data Feeds</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewActiveContests&amp;ph=112">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=1">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;ph=112">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=1">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=1">Meet the Review Board</a></li>
+</ul></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;competition_dev&#39;)">Development</a>
+<ul id="competition_dev">
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_dev_competitions&#39;)">Component Development</a>
+<ul id="m_dev_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Component+Development+Competitions">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_dev_support&#39;)">Track Information</a>
+<ul id="m_dev_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Component+Development+Competitions">How to Compete</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Component+Development+Documentation">Documentation</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ColorChange&amp;ph=113">Recent Color Changes</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Component+Development+Data+Feeds">Data Feeds</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewActiveContests&amp;ph=113">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=2">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;ph=113">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=2">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=2">Meet the Review Board</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_assembly_competitions&#39;)">Assembly</a>
+<ul id="m_assembly_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Assembly">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_assembly_support&#39;)">Track Information</a>
+<ul id="m_assembly_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Assembly+Competition+Tutorials">Tutorials</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Assembly+Competition+Documentation">Documentation</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=14">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=14">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;ph=125">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=14">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=14">Meet the Review Board</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_first2finish_competitions&#39;)">First2Finish</a>
+<ul id="m_first2finish_competitions">
+<li><a href="http://www.cloudspokes.com/how-it-works-members">Overview</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=38">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=38">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;pt=38">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=38">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=38">Meet the Review Board</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_code_competitions&#39;)">Code</a>
+<ul id="m_code_competitions">
+<li><a href="http://www.cloudspokes.com/how-it-works-members">Overview</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=39">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=39">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;pt=39">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=39">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=39">Meet the Review Board</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_test_suites_competitions&#39;)">Test Suites</a>
+<ul id="m_test_suites_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Test+Scenarios+and+Scripts">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_test_suites_support&#39;)">Track Information</a>
+<ul id="m_test_suites_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Testing+Competitions">How to Compete</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Testing+Competition+Tutorial">Tutorial</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Testing+Competition+Documentation">Documentation</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=13">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=13">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;pt=13">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=13">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=13">Meet the Review Board</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_reporting_competitions&#39;)">Reporting</a>
+<ul id="m_reporting_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Reporting">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_reporting_support&#39;)">Track Information</a>
+<ul id="m_reporting_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Reporting+Competitions">How to Compete</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Reporting+Competition+Tutorial">Tutorial</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Reporting+Competition+Documentation">Documentation</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=36">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=36">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;pt=36">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=36">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=36">Meet the Review Board</a></li>
+</ul></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;competition_ui_dev&#39;)">UI Development</a>
+<ul id="competition_ui_dev">
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_ui_prototype_competitions&#39;)">UI Prototype</a>
+<ul id="m_ui_prototype_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/UI+Prototype+Competitions">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_ui_prototype_support&#39;)">Track Information</a>
+<ul id="m_ui_prototype_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/UI+Prototype+Competitions">UI Prototype Tutorial</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=19">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=19">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;pt=19">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=19">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=19">Meet the Review Board</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_ria_build_competitions&#39;)">RIA Build</a>
+<ul id="m_ria_build_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/RIA+Build+Competitions">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_ria_build_support&#39;)">Track Information</a>
+<ul id="m_ria_build_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/RIA+Build+Competitions">RIA Build Tutorial</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=24">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=24">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;pt=24">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=24">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=24">Meet the Review Board</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_content_creation_competitions&#39;)">Content Creation</a>
+<ul id="m_content_creation_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Content+Contests+Overview">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_content_creation_support&#39;)">Track Information</a>
+<ul id="m_content_creation_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Content+Creation+Competitions">How to Compete</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=35">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=35">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;pt=35">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=35">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=35">Meet the Review Board</a></li>
+</ul></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;competition_qa&#39;)">QA and Maintenance</a>
+<ul id="competition_qa">
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_test_scenarios_competitions&#39;)">Test Scenarios</a>
+<ul id="m_test_scenarios_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Test+Scenarios+and+Scripts">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_test_scenarios_support&#39;)">Track Information</a>
+<ul id="m_test_scenarios_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Testing+Competitions">How to Compete</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Testing+Competition+Tutorial">Tutorial</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Testing+Competition+Documentation">Documentation</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=26">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=26">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;pt=26">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=26">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=26">Meet the Review Board</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_bugraces_competitions&#39;)">Race</a>
+<ul id="m_bugraces_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Race+Competition+Overview">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_bugraces_support&#39;)">Track Information</a>
+<ul id="m_bugraces_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Bug+Race+Competitions">How to Compete</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewActiveBugRaces">Active Challenges</a></li>
+<li><a href="http://apps.topcoder.com/wiki/x/FQG2AQ">Review Opportunities</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_bughunt_competitions&#39;)">Bug Hunt</a>
+<ul id="m_bughunt_competitions">
+<li><a href="http://apps.topcoder.com/wiki/x/W5ogAg">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_bughunt_support&#39;)">Track Information</a>
+<ul id="m_bughunt_support">
+<li><a href="http://apps.topcoder.com/wiki/x/cpogAg">How to Compete</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=ActiveContests&amp;pt=9">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ContestStatus&amp;pt=9">Challenge Status</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CompList&amp;pt=9">Past Challenges</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ViewReviewAuctions&amp;pt=9">Review Opportunities</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ReviewBoard&amp;pt=9">Meet the Review Board</a></li>
+</ul></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;competition_algo&#39;)">Algorithm</a>
+<ul id="competition_algo">
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_algo_competitions&#39;)">Single Round Matches (SRM)</a>
+<ul id="m_algo_competitions">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Algorithm+Overview">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_algo_support&#39;)">Track Information</a>
+<ul id="m_algo_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+SRM+Algorithm+Competitions">How to Compete</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/SRM+Algorithm+Competition+FAQs">FAQs</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Algorithm+Competition+Rating+System">Rating System</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Write+Problems+for+TopCoder">Write Problems</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_algo_stats&#39;)">Statistics</a>
+<ul id="m_algo_stats">
+<li><a href="http://www.topcoder.com/tc?module=MatchList">Match Archive</a></li>
+<li><a href="http://www.topcoder.com/stat?c=round_overview">Match Overviews</a></li>
+<li><a href="http://www.topcoder.com/tc?module=SrmDivisionWins">Match Winners</a></li>
+<li><a href="http://www.topcoder.com/stat?c=last_match">Match Results</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Algorithm+Problem+Set+Analysis">Match Editorials</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ProblemArchive">Problem Archive</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ColorChange&amp;ratid=1">Recent Color Changes</a></li>
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Algorithm+Data+Feeds">Data Feeds</a></li>
+</ul></li>
+<li><a href="javascript:arena();">Launch Arena</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_long_contests&#39;)">Marathon Match</a>
+<ul id="m_long_contests">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/Marathon+Match+Overview">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_long_support&#39;)">Track Information</a>
+<ul id="m_long_support">
+<li><a href="http://apps.topcoder.com/wiki/display/tc/How+to+Compete+in+Marathon+Match+Events">How to Compete</a></li>
+<li><a href="http://www.topcoder.com/longcontest/?module=Static&amp;d1=support&amp;d2=ratings">Rating System</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_long_stats&#39;)">Statistics</a>
+<ul id="m_long_stats">
+<li><a href="http://www.topcoder.com/longcontest/stats/?module=MatchList">Match Archive</a></li>
+<li><a href="http://www.topcoder.com/longcontest/stats/?module=ViewOverview">Match Overview</a></li>
+<li><a href="http://www.topcoder.com/longcontest/stats/?module=MatchWinners">Match Winners</a></li>
+<li><a href="http://www.topcoder.com/longcontest/?module=Static&amp;d1=match_editorials&amp;d2=archive">Match Editorials</a></li>
+<li><a href="http://www.topcoder.com/longcontest/?module=Static&amp;d1=support&amp;d2=dataFeed">Data Feeds</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/longcontest/?module=ViewActiveContests">Active Challenges</a></li>
+<li><a href="http://www.topcoder.com/longcontest/?module=ViewPractice">Practice</a></li>
+<li><a href="http://www.topcoder.com/longcontest/?module=ViewQueue">Queue Status</a></li>
+</ul></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_hs_competitions&#39;)">High School</a>
+<ul id="m_hs_competitions">
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=hs&amp;d2=home">Overview</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_hs_stats&#39;)">Statistics</a>
+<ul id="m_hs_stats">
+<li><a href="http://www.topcoder.com/tc?module=HSRoundOverview">Match Overview</a></li>
+<li><a href="http://www.topcoder.com/tc?module=HSRoundStatsTeam">Match Results (Team)</a></li>
+<li><a href="http://www.topcoder.com/tc?module=HSRoundStatsInd">Match Results (Indiv.)</a></li>
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=hs&amp;d2=match_editorials&amp;d3=archive">Match Editorials</a></li>
+<li><a href="http://www.topcoder.com/tc?module=ColorChange&amp;ratid=2">Recent Color Changes</a></li>
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=hs&amp;d2=support&amp;d3=dataFeed">Data Feeds</a></li>
+</ul></li>
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=hs&amp;d2=spotlightSessions">Spotlight Sessions</a></li>
+<li><a href="javascript:arena();">Launch Arena</a></li>
+</ul></li>
+<li><a href="http://software.topcoder.com/review">Submit &amp; Review</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_topcoder_networks&#39;)">TopCoder Networks</a>
+<ul id="m_topcoder_networks">
+<li><a href="http://community.topcoder.com/alcatel/">Alcatel Lucent</a></li>
+<li><a href="http://community.topcoder.com/amdapp/">AMD OpenCL</a></li>
+<li><a href="http://community.topcoder.com/darpacs/">DARPA CS-STEM</a></li>
+<li><a href="http://community.topcoder.com/lifetech-network/">Life Technologies</a></li>
+<li><a href="http://community.topcoder.com/ntl/">NASA Tournament Lab</a></li>
+<li><a href="http://community.topcoder.com/x/">PayPalX</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_events&#39;)">Events</a>
+<ul id="m_events">
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=calendar&amp;d2=thisMonth">Event Calendar</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_tournaments&#39;)">Tournaments</a>
+<ul id="m_tournaments">
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=tournaments&amp;d2=home">TopCoder</a></li>
+<li><a href="http://www.topcoder.com/pl/">Powered by TopCoder</a></li>
+<li><a href="http://www.topcoder.com/tc?module=CRPFStatic&amp;d1=crpf&amp;d2=crpf_overview">Charity</a></li>
+</ul></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_stats&#39;)">Statistics</a>
+<ul id="m_stats">
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_competitor_stats&#39;)">The Tops</a>
+<ul id="m_competitor_stats">
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_top_rated_competitors&#39;)">Top Ranked</a>
+<ul id="m_top_rated_competitors">
+<li><a href="http://www.topcoder.com/tc?module=AlgoRank">Algorithm</a></li>
+<li><a href="http://www.topcoder.com/tc?module=HSRank">High School</a></li>
+<li><a href="http://www.topcoder.com/longcontest/stats/?module=CoderRank">Marathon Match</a></li>
+<li><a href="http://www.topcoder.com/stat?c=top_conceptors">Conceptualization</a></li>
+<li><a href="http://www.topcoder.com/stat?c=top_specificators">Specification</a></li>
+<li><a href="http://www.topcoder.com/stat?c=top_architects">Architecture</a></li>
+<li><a href="http://www.topcoder.com/stat?c=top_designers">Design</a></li>
+<li><a href="http://www.topcoder.com/stat?c=top_developers">Development</a></li>
+<li><a href="http://www.topcoder.com/stat?c=top_assemblers">Assembly</a></li>
+<li><a href="http://www.topcoder.com/stat?c=top_testers">Test Suites</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_recordbook&#39;)">Record Book</a>
+<ul id="m_recordbook">
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=statistics&amp;d2=recordbook_home">Algorithm</a></li>
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=compstats&amp;d2=comp_recordbook_home">Component</a></li>
+<li><a href="http://www.topcoder.com/longcontest/?module=Static&amp;d1=stats&amp;d2=recordbook_home">Marathon Match</a></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_com&#39;)">Coder of the Month</a>
+<ul id="m_com">
+<li><a href="http://www.topcoder.com/tc?module=COMHistory&amp;achtid=5">Algorithm</a></li>
+<li><a href="http://www.topcoder.com/tc?module=COMHistory&amp;achtid=6">Design</a></li>
+<li><a href="http://www.topcoder.com/tc?module=COMHistory&amp;achtid=7">Development</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_edu_content&#39;)">Tutorials</a>
+<ul id="m_edu_content">
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=education&amp;d2=overview">Overview</a></li>
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=tutorials&amp;d2=alg_index">Algorithm Tutorials</a></li>
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=tutorials&amp;d2=software_index">Software Tutorials</a></li>
+<li><a href="http://www.topcoder.com/tc?module=Static&amp;d1=tutorials&amp;d2=mm_index">Marathon Tutorials</a></li>
+<li><a href="http://apps.topcoder.com/wiki/dashboard.action">Wiki</a></li>
+</ul></li>
+<li><a href="http://forums.topcoder.com/">Forums</a></li>
+<li><a href="http://www.topcoder.com/tc?&amp;module=SurveyList">Surveys</a></li>
+<li><a href="http://www.topcoder.com/tc?module=MyHome">My TopCoder</a></li>
+<li><a href="http://www.topcoder.com/help">Help Center</a></li>
+<li class="exp"><a href="javascript:void(0)" onclick="Javascript:toggleMenu(this.parentNode,&#39;m_about_tc&#39;)">About TopCoder</a>
+<ul id="m_about_tc">
+<li><a href="http://www.topcoder.com/aboutus/">Overview</a></li>
+<li><a href="http://www.topcoder.com/aboutus/">Why Join TopCoder?</a></li>
+<li><a href="http://www.topcoder.com/aboutus/careers/">Working at TopCoder</a></li>
+<li><a href="http://www.topcoder.com/aboutus/management/">Leadership</a></li>
+<li><a href="http://www.topcoder.com/aboutus/news/">Press Room</a></li>
+</ul></li></ul>
+
+    <div style="float: left; padding: 10px 0px 0px 17px;">
+        
+        <a href="http://www.topcoder.com/tc?module=LinkTracking&amp;link=http://apps.topcoder.com/wiki/x/L4TD&amp;refer=leftnav"><img src="./SRM 604 - TopCoder Wiki_files/umlTool.png" alt="UML Tool"></a>
+
+        
+        
+        
+        
+    </div>
+    
+
+<div id="navbarSearch">
+<b>Member Search:</b>
+<form action="http://www.topcoder.com/tc" method="get" name="simpleSearchForm" class="noSpace" id="simpleSearchForm">
+   <input class="noSpace" type="hidden" name="module" value="SimpleSearch">
+   <input class="noSpace" type="text" name="ha" value="Handle:" size="12" maxlength="15" onfocus="javascript: if (document.simpleSearchForm.ha.value==&#39;Handle:&#39;) document.simpleSearchForm.ha.value = &#39;&#39;;" onblur="javascript:if (document.simpleSearchForm.ha.value == &#39;&#39;)document.simpleSearchForm.ha.value = &#39;Handle:&#39;;">
+   <a class="gMetal" href="javascript:void document.simpleSearchForm.submit();">Go</a><br>
+   <a class="gMetal" href="http://www.topcoder.com/tc?module=ViewAdvanced">Advanced Search</a>
+</form>
+</div>
+</div>
+<div style="float: left; clear:left; padding: 0px 0px 23px 0px;"><img src="./SRM 604 - TopCoder Wiki_files/leftnav_bottom.gif" alt=""></div>
+
+
+    <div align="center" style="float: left; clear:left; width: 170px; margin: 0px;">
+        <img src="./SRM 604 - TopCoder Wiki_files/brackets.png" alt="" style="margin-bottom: 23px;">
+    </div>
+
+
+        </td>
+        <td width="100%" align="left" class="bodyColumn">
+
+
+    <script type="text/javascript">
+        function hideMessage(messageId)
+        {
+            var message = document.getElementById(messageId)
+            message.style.display = "none";
+            setCookie(messageId, true);
+        }
+    </script>
+
+        
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tbody><tr class="topBar">
+            <td align="left">
+                <span class="topBarDiv">             
+    <script language="JavaScript">
+        function showBreadcrumbsEllipsis()
+        {
+            document.getElementById('breadcrumbsEllipsis').style.display = 'none';
+            document.getElementById('breadcrumbsExpansion').style.display = 'inline';
+        }
+    </script>
+                                                    <a href="https://apps.topcoder.com/wiki/dashboard.action">Dashboard</a>
+                                     &gt;                         <a href="https://apps.topcoder.com/wiki/display/tc">TopCoder Competitions</a>
+                                                    <span id="breadcrumbs">
+                    &gt;
+                    <span id="breadcrumbsEllipsis">
+                        <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" onclick="showBreadcrumbsEllipsis();return false;" title="
+                    Home             &gt;         Other Competitions             &gt;         Algorithm Overview    ">...</a>
+                    </span>
+                    <span id="breadcrumbsExpansion" style="display:none;">
+                                <a href="https://apps.topcoder.com/wiki/display/tc/Home">Home</a>
+                 &gt;                     <a href="https://apps.topcoder.com/wiki/display/tc/Other+Competitions">Other Competitions</a>
+                 &gt;                     <a href="https://apps.topcoder.com/wiki/display/tc/Algorithm+Overview">Algorithm Overview</a>
+        </span>
+                </span>
+                                                                                                                             &gt;                         <a href="https://apps.topcoder.com/wiki/display/tc/Algorithm+Problem+Set+Analysis">Algorithm Problem Set Analysis</a>
+                                     &gt;                         <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604">SRM 604</a>
+                
+     </span>
+            </td>
+
+            <td align="right" valign="middle" style="white-space:nowrap">
+                    <form id="quickSearch" method="POST" action="https://apps.topcoder.com/wiki/dosearchsite.action" name="searchForm">
+        <input type="hidden" name="quickSearch" value="true">
+        
+        <input type="hidden" name="searchQuery.spaceKey" value="conf_global">
+        <input type="text" accesskey="s" name="searchQuery.queryString" size="25">
+        <input type="submit" value="Search">
+    </form>
+            </td>
+        </tr>
+        
+                <tr>
+            <td style="padding: 5px 0px;" colspan="2">
+            <table style="padding: 0px; margin: 0px; width: 100%;" cellspacing="0" cellpadding="0" border="0">
+                <tbody><tr>
+                                                                                                                                                <td valign="bottom" align="left" width="1%" nowrap="">
+                        <span class="logoSpaceLink">            <a href="https://apps.topcoder.com/wiki/display/tc">TopCoder Competitions</a>    </span>
+                    </td>
+                    <td align="right" valign="top" width="98%">
+                                                    
+    <span class="smalltext" id="userNavBar">
+        
+            
+
+            </span>
+                            
+                                <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604?decorator=printable" rel="nofollow"><img src="./SRM 604 - TopCoder Wiki_files/print_16.gif" width="16" height="16" hspace="1" vspace="1" align="absmiddle" border="0" alt="View a printable version of the current page." title="View a printable version of the current page."></a>
+
+                                                        
+                                                                                &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td height="22" align="left" colspan="2">
+                        <span class="pagetitle" style="line-height: 1; margin: 0px; text-decoration: none">
+                                        SRM 604
+                            </span>
+                    </td>
+                </tr>
+            </tbody></table>
+            </td>
+        </tr>
+            </tbody></table>
+
+        <!--
+    Root decorator: all decisions about how a page is to be decorated via the
+                    inline decoration begins here.
+-->
+
+
+
+<!--
+    Switch based upon the context. However, for now, just delegate to a decorator
+    identified directly by the context.
+-->
+
+
+    
+    
+
+
+    
+    
+        
+    
+    
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+    <tbody><tr>
+        <td>
+            <div class="greynavbar">
+                <span style="float:right; padding: 6px 10px 4px 0px">
+						
+        
+        
+        
+                    <a href="https://apps.topcoder.com/wiki/spaces/browsespace.action?key=tc"><img src="./SRM 604 - TopCoder Wiki_files/browse_space.gif" height="16" width="16" border="0" align="absmiddle" title="Browse Space">&nbsp;<span>Browse Space</span></a>
+		    				</span>
+
+				<ul id="foldertab" style="margin-bottom: 0px; padding-top: 10px;">
+											<li><a id="viewPageLink" href="https://apps.topcoder.com/wiki/display/tc/SRM+604" class="current" accesskey="v"><u>V</u>iew</a></li>
+											<li><a id="viewAttachmentsLink" href="https://apps.topcoder.com/wiki/pages/viewpageattachments.action?pageId=136184562" accesskey="a"><u>A</u>ttachments (8)</a></li>
+											<li><a id="viewPageInfoLink" href="https://apps.topcoder.com/wiki/pages/viewinfo.action?pageId=136184562" accesskey="i"><u>I</u>nfo</a></li>
+									</ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" class="pagebody">
+
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="clear: both">
+                <tbody><tr>
+                    <td width="100%" class="pagecontent" valign="top">
+
+                    
+                    
+                    
+                                                    
+                            <table width="100%" style="margin-bottom: 5px" cellspacing="0">
+                                <tbody><tr>
+                                    <td align="left" valign="top">
+                                        <span class="smalltext">
+                                                        Added by             [[rng_58]]
+, last edited by             vexorian
+ on Jan 28, 2014
+                      &nbsp;(<a href="https://apps.topcoder.com/wiki/pages/diffpages.action?pageId=136184562&amp;originalId=137658878">view change</a>)
+              
+                                            
+ 
+<style type="text/css">
+div.auto_complete {
+    width: 350px;
+    background: #fff;
+}
+
+div.auto_complete ul {
+    border: 1px solid #888;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style-type: none;
+}
+
+div.auto_complete ul li {
+    margin: 0;
+    padding: 3px;
+}
+
+div.auto_complete ul li.selected {
+    background-color: #ffb;
+}
+
+div.auto_complete ul strong.highlight {
+    color: #800;
+    margin: 0;
+    padding: 0;
+}
+</style>
+
+
+<!-- Delay the loading of the external javascript file needed for labels (as it takes too long to load and visibly holds loading of the page body) -->
+<!-- To do this without javascript errors over undefined functions, we need to declare stubs here (that are overrided later by the proper implementations) -->
+<script language="JavaScript" type="text/javascript">
+    function doAddLabel(hideTextfieldAfterAddParam)
+    {
+        // stub
+    }
+
+    function onAddLabel()
+    {
+        // stub
+    }
+
+    function showLabelsInput()
+    {
+        // stub
+    }
+</script>
+
+<!-- This is a hack to work around an apparent SiteMesh bug - http://jira.opensymphony.com/browse/SIM-198 -->
+
+
+<span class="error"><span class="errorMessage" id="errorSpan"></span></span>
+<form name="addLabelForm" method="" action="https://apps.topcoder.com/wiki/display/tc/SRM+604" onsubmit="doAddLabel(false); return false;" style="margin: 0px; padding: 0px">
+    <div style="float: left">Labels:&nbsp;</div>
+    <div id="labelsInfo" style="float: left; width: 90%">
+        <span id="labelsList">
+                    (None)
+                </span>
+                    <span id="editLabelsLink" class="inline-control-link fontSizeTiny" style="display: inline;">
+            <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604" onclick="onAddLabel(); showLabelsInput(); return false;">EDIT</a>
+        </span>
+            </div>
+    <br clear="all"><!-- Do not remove this line-break. You will make Safari cry. -->
+    <div id="labelInputSpan" style="display: none; clear: both;">
+        <div style="border: 1px solid #cccccc; padding: 8px; align: center; background-color: #f0f0f0">
+
+        <div id="labelOperationErrorContainer" style="display: none"><span class="error"><span class="errorMessage" id="labelOperationErrorMessage"></span></span></div>
+
+        <table width="100%">
+            <tbody><tr>
+                <td>
+                    <div class="formtitle" style="padding-bottom: 3px; font-size: 13px;">Add Labels</div>
+                </td>
+                <td align="right"><div id="waitImageAndStatus" style="display: none; height: 16px;"><img alt="Wait Image" border="0" align="absmiddle" src="./SRM 604 - TopCoder Wiki_files/wait.gif">&nbsp;<span id="labelOperationStatus" class="smalltext" style="vertical-align: middle"></span></div></td>
+            </tr>
+            <tr><td width="50%">
+                    Enter labels to add to this page:<br>
+        <input autocomplete="off" type="text" id="labelName" name="labelsString" value="" class="monospaceInput" size="40">
+        <input type="submit" onclick="doAddLabel(false); return false;" value="Add"><input type="button" onclick="doAddLabel(true); return false;" value="Done">
+        <div class="auto_complete" id="labelsAutocompleteList" style="display: none;"></div>
+        <div class="smalltext">
+            <em>Tip:</em> Looking for a label? Just start typing.
+        </div>
+        </td>
+            <td width="50%" valign="top">
+                <div id="suggestedLabelsSpan"></div>
+            </td>
+        </tr></tbody></table>
+        </div>
+    </div>
+</form>
+    <script type="text/javascript">
+        // if there is javascript support, enable the [Edit] link that enables AJAX label adding/removing functionality
+        if (document.getElementById('editLabelsLink'))
+        {
+            document.getElementById('editLabelsLink').style.display = 'inline';
+        }
+    </script>
+                                        </span>
+                                    </td>
+                                    <td align="right" valign="top">
+                                                                                    <div style="padding: 5px; border: 1px solid #cccccc; margin: 0px; float:right;">
+                                                <center>
+                                                                                                    <a id="pageFavourite" href="https://apps.topcoder.com/wiki/labels/addfavourite.action?entityId=136184562"><img src="https://apps.topcoder.com/wiki/images/icons/star_grey.gif" height="16" width="16" border="0" align="absmiddle" title="Add this page to your favourites list" alt="Add this page to your favourites list"></a>
+					                                                                                <a id="pageWatch" href="https://apps.topcoder.com/wiki/pages/addpagenotification.action?pageId=136184562"><img src="./SRM 604 - TopCoder Wiki_files/watch_16.gif" height="16" width="16" border="0" align="absmiddle" title="Watch this page" alt="Watch this page"></a>
+					                                                                            </center>
+                                            </div>
+                                                                            </td>
+                                </tr>
+                            </tbody></table>
+
+                                                        
+                            <div class="wiki-content" style="max-width: 776px;">
+                               <!-- wiki content -->
+             
+<link type="text/css" rel="stylesheet" href="./SRM 604 - TopCoder Wiki_files/style.css"> 
+<link type="text/css" rel="stylesheet" href="./SRM 604 - TopCoder Wiki_files/coders.css"> 
+<link type="text/css" rel="stylesheet" href="./SRM 604 - TopCoder Wiki_files/stats.css"> 
+<link type="text/css" rel="stylesheet" href="./SRM 604 - TopCoder Wiki_files/tcStyles20080219.css"> 
+ 
+<div class="linkBox"> 
+<a href="https://apps.topcoder.com/wiki/display/tc/Algorithm+Problem+Set+Analysis">Archive</a><br> 
+<a href="https://community.topcoder.com/stat?c=round_overview&amp;er=5&amp;rd=15837">Match Overview</a><br> 
+<a href="https://apps.topcoder.com/forums/?module=ThreadList&amp;forumID=575858">Discuss this match</a> 
+</div> 
+<span class="bodySubtitle">Single Round Match 604</span><br> 
+Wednesday, January 11th, 2014 
+<br><br> 
+<h2>Match summary</h2> 
+
+<p> 
+It is the 604-th edition of TopCoder's Single Round Matches. This time the problem set was authored by <a href="https://community.topcoder.com/tc?module=MemberProfile&amp;cr=22769059" class="coderTextRed">cgy4ever</a>. This match was full of challenging problems. Division 1 easy needed some nice ad hoc maths, it is always impressive to watch coders like <a href="https://community.topcoder.com/tc?module=MemberProfile&amp;cr=8355516" class="coderTextRed">Eryx</a> solve these messy problems in less than 2 minutes. The medium problem was a dynamic programming one that required good observations and analysis if you don't want it to get overcomplicated. <a href="https://community.topcoder.com/tc?module=MemberProfile&amp;cr=10574855" class="coderTextRed">Petr</a> was significantly faster than everyone else in this problem precisely because he found the exact observation that simplifies everything quite quickly.  The 1000 points problem was a beast of its own, requiring unusual Computational Geometry/Collision detection theory. This problem was <a href="https://community.topcoder.com/tc?module=MemberProfile&amp;cr=14970299" class="coderTextRed">Egor</a>'s success, winning just a bit more points in this problem than <a href="https://community.topcoder.com/tc?module=MemberProfile&amp;cr=10574855" class="coderTextRed">Petr</a>. Also notable, we could catch <a href="https://community.topcoder.com/tc?module=MemberProfile&amp;cr=15982182" class="coderTextRed">Gassa</a> submitting the first successful python solution for a division 1 hard problem. The consistently good performance in all three problems scored <a href="https://community.topcoder.com/tc?module=MemberProfile&amp;cr=10574855" class="coderTextRed">Petr</a> yet another division win. Second place went to <a href="https://community.topcoder.com/tc?module=MemberProfile&amp;cr=22744255" class="coderTextRed">Zlobober</a>, also with nice consistency. Third place, still with over 1000 points was <a href="https://community.topcoder.com/tc?module=MemberProfile&amp;cr=14970299" class="coderTextRed">Egor</a>'s to get. Division 2 was won by <i>former</i> gray coder <a href="https://community.topcoder.com/tc?module=MemberProfile&amp;cr=23264406" class="coderTextBlue">HwhiteTooth</a>, congratulations and welcome to division 1.  
+</p> 
+ 
+<div id="tabLinks">
+<h1> 
+The Problems 
+</h1>
+<br><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#FoxAndWord">FoxAndWord</a>
+| <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#PowerOfThreeEasy">PowerOfThreeEasy</a>
+| <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#FoxConnection2">FoxConnection2</a>
+| <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#PowerOfThree">PowerOfThree</a>
+| <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#FoxConnection">FoxConnection</a>
+| <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#FamilyCrest">FamilyCrest</a>
+<br><br>
+</div>
+
+<div id="richtextwarning" style="border: 1px solid; margin: 5px auto; padding: 5px; width: auto; display: none; visibility: hidden; position: absolute;">
+<b>Please read this before altering an editorial in the wiki</b>
+Please read the guidelines at: <a href="https://apps.topcoder.com/wiki/display/tc/Guidelines+for+editorial+writers">//apps.topcoder.com/wiki/display/tc/Guidelines+for+editorial+writers</a>. It is very important to always use Wiki Markup to edit editorials. If your default is currently set as Rich Text, read the guidelines before making any change. The Rich Text editor causes many issues with editorial formatting.
+</div>
+
+<div id="FoxAndWord" style="display: none; visibility: hidden; position: absolute;">
+<font size="+2"> 
+<b><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=12953&amp;rd=15837" name="12953">FoxAndWord</a></b> 
+</font> 
+<a href="https://community.topcoder.com/tc?module=ProblemRatingQuestions&amp;pid=12953"><img src="./SRM 604 - TopCoder Wiki_files/rate_it.gif" hspace="10" border="0" alt="rate it"></a> 
+<a href="https://apps.topcoder.com/forums/?module=ThreadList&amp;forumID=575858" class="statText"><img src="./SRM 604 - TopCoder Wiki_files/btn_discuss_it.gif" alt="discuss it" border="0"></a>
+<br> 
+Used as: Division Two - Level One: <blockquote><table cellspacing="2"> 
+  <tbody><tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Value</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      250 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Submission Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      1208 / 1435 (84.18%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Success Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      975 / 1208 (80.71%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>High Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>ye7ia</b> for 248.16 points (2 mins 27 secs) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Average Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      185.91 (for 975 correct submissions) 
+    </td> 
+  </tr> 
+</tbody></table></blockquote> 
+<p>
+There are at most 50 words, which means at most 50*49/2 <i>unordered</i> pairs. (We should use <i>unordered</i> pairs because `(a,b)` is said to be the same as `(b,a)` by the problem statement. So we can actually just try all pairs of strings. If the pair is interesting, count it. The important challenge of the problem is to find if two strings make a interesting pair.
+</p>
+<h2>Is it a interesting pair?</h2>
+<p>The condition for two strings `(S,T)` to make a interesting pair is that there are two strings `B` and `A` such that `S=A+B` and `T=B+A`.</p>
+
+<p>Since `S = A + B` . `A` must be a prefix of `S` we can try just all prefixes of `S` as potential `A` prefixes. There are `O(n)` possible prefixes. Once you fix `A` to a particularly prefix of `S`, you can find `B` as the remaining parts of `S`. Concatenate `B+A` and if the result is equal to `T`, for any of the possible `A` candidates, the result is interesting:</p>
+<div><div id="highlighter_389246" class="syntaxhighlighter nogutter  cpp"><div class="toolbar"><span><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp color1 bold">bool</code> <code class="cpp plain">interesting(</code><code class="cpp color1 bold">string</code> <code class="cpp plain">s, </code><code class="cpp color1 bold">string</code> <code class="cpp plain">t)</code></div><div class="line number2 index1 alt1"><code class="cpp plain">{</code></div><div class="line number3 index2 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">i = 0; i &lt; s.size(); i++) {</code></div><div class="line number4 index3 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">string</code> <code class="cpp plain">a = s.substr(0,i); </code><code class="cpp comments">//first i characters of s</code></div><div class="line number5 index4 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">string</code> <code class="cpp plain">b = s.substr(i);&nbsp;&nbsp; </code><code class="cpp comments">//characters of s after the first i ones</code></div><div class="line number6 index5 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(b+a == t) {</code></div><div class="line number7 index6 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp keyword bold">true</code><code class="cpp plain">;</code></div><div class="line number8 index7 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number9 index8 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number10 index9 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp keyword bold">false</code><code class="cpp plain">;</code></div><div class="line number11 index10 alt2"><code class="cpp plain">}</code></div><div class="line number12 index11 alt1">&nbsp;</div><div class="line number13 index12 alt2"><code class="cpp color1 bold">int</code> <code class="cpp plain">howManyPairs(</code><code class="cpp color1 bold">vector</code><code class="cpp plain">&lt;</code><code class="cpp color1 bold">string</code><code class="cpp plain">&gt; words)</code></div><div class="line number14 index13 alt1"><code class="cpp plain">{</code></div><div class="line number15 index14 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">c = 0;</code></div><div class="line number16 index15 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">string</code> <code class="cpp plain">a: words) {</code></div><div class="line number17 index16 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">string</code> <code class="cpp plain">b: words) {</code></div><div class="line number18 index17 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(a &lt; b) {</code></div><div class="line number19 index18 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(interesting(a,b)) {</code></div><div class="line number20 index19 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">c++;</code></div><div class="line number21 index20 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number22 index21 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number23 index22 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number24 index23 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number25 index24 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp plain">c;</code></div><div class="line number26 index25 alt1"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Or in python:</p>
+<div><div id="highlighter_740946" class="syntaxhighlighter nogutter  python"><div class="toolbar"><span><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python keyword">class</code> <code class="python plain">FoxAndWord:</code></div><div class="line number2 index1 alt1"><code class="python spaces">&nbsp;</code><code class="python keyword">def</code> <code class="python plain">howManyPairs(</code><code class="python color1">self</code><code class="python plain">, words):</code></div><div class="line number3 index2 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number4 index3 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments"># Does&nbsp; any index i make a valid prefix and suffix ?</code></div><div class="line number5 index4 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">def</code> <code class="python plain">interesting(s,t):</code></div><div class="line number6 index5 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">return</code> <code class="python functions">any</code><code class="python plain">( s[i:]</code><code class="python keyword">+</code><code class="python plain">s[</code><code class="python value">0</code><code class="python plain">:i] </code><code class="python keyword">=</code><code class="python keyword">=</code> <code class="python plain">t </code><code class="python keyword">for</code> <code class="python plain">i </code><code class="python keyword">in</code> <code class="python functions">range</code><code class="python plain">(</code><code class="python functions">len</code><code class="python plain">(s)) )</code></div><div class="line number7 index6 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number8 index7 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments"># iterate through pairs of words&nbsp;&nbsp;&nbsp; </code></div><div class="line number9 index8 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">def</code> <code class="python plain">unorderedPairs(words):</code></div><div class="line number10 index9 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">for</code> <code class="python plain">s </code><code class="python keyword">in</code> <code class="python plain">words:</code></div><div class="line number11 index10 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">for</code> <code class="python plain">t </code><code class="python keyword">in</code> <code class="python plain">words:</code></div><div class="line number12 index11 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">if</code> <code class="python plain">s &lt; t:</code></div><div class="line number13 index12 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">yield</code> <code class="python plain">(s,t) </code><code class="python comments"># we could do it in one line but this might be easier to read</code></div><div class="line number14 index13 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python comments"># main:</code></div><div class="line number15 index14 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">return</code> <code class="python functions">sum</code><code class="python plain">( interesting(s,t) </code><code class="python keyword">for</code> <code class="python plain">(s,t) </code><code class="python keyword">in</code> <code class="python plain">unorderedPairs( words) )</code></div></div></td></tr></tbody></table></div></div>
+
+
+<p><u>Alternative solutions and additional comments.</u></p>
+<p>&lt;Place your comments here&gt;</p><p>Next problem: <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#PowerOfThreeEasy">PowerOfThreeEasy</a></p>
+</div><div id="PowerOfThreeEasy" style="display: none; visibility: hidden; position: absolute;"><font size="+2"> 
+<b><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=12952&amp;rd=15837" name="12952">PowerOfThreeEasy</a></b> 
+</font> 
+<a href="https://community.topcoder.com/tc?module=ProblemRatingQuestions&amp;pid=12952"><img src="./SRM 604 - TopCoder Wiki_files/rate_it.gif" hspace="10" border="0" alt="rate it"></a> 
+<a href="https://apps.topcoder.com/forums/?module=ThreadList&amp;forumID=575858" class="statText"><img src="./SRM 604 - TopCoder Wiki_files/btn_discuss_it.gif" alt="discuss it" border="0"></a>
+<br> 
+Used as: Division Two - Level Two: <blockquote><table cellspacing="2"> 
+  <tbody><tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Value</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      500 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Submission Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      975 / 1435 (67.94%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Success Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      560 / 975 (57.44%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>High Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>agamagarwal</b> for 498.99 points (1 mins 17 secs) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Average Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      337.77 (for 560 correct submissions) 
+    </td> 
+  </tr> 
+</tbody></table></blockquote>
+<p>There were various solutions to this problem, let's mention some of them.</p>
+<p>A simplification that helps all of them is to stop thinking about two points and consider only one point. Usually, we are located in a point `(x_c,y_c)` and want to move to the input point `(x,y)`. Each move changes the current point's coordinates. However, we can simplify this so that we can represent the state as just one vector: `(x,y)` featuring the relative difference between the objective and the current point. So if you move 1 unit up, the difference becomes `(x,y-1)`  (The `y` difference decreases by 1). If you move to the right by `d_x` units, the `x` coordinate changes to `x-d_x`. The objective is reached when `(x,y)` becomes `(0,0)` in other words:</p>
+<ul>
+<li>If it is possible to make `(x,y) = (0,0)`, return "Possible".</li>
+<li>If in step `k`, you move up, the position becomes `(x,y) = (x, y - 3^k)`.</li>
+<li>If you move right, the position becomes `(x,y) = (x - 3^k, y)`.</li>
+</ul>
+<h2>Brute force</h2>
+<p>The constraints for `x` and `y` tell us that they are at most `10^9`. A nice question is what is the maximum number of moves we can ever need?
+</p>
+<p>Consider `x = 3^0 + 3^1 + 3^2 + ... + 3^(t-1)`. This is the maximum value of `x` after `t` moves. If `t` is so large that `x` exceeds `10^9`, then we can claim that it is impossible to do `t` moves. If you simulate this you can find that if `t = 20`, `x` will exceed `10^9`, so the maximum number of moves we could need is 19.</p>
+<p>The 19 moves limit is useful because each move is a choice and the number of options for each choice is 2. For each move, you choose up or right. This means that there are at most `2^19 = 524288` ways to select a move sequence. We can then just try all possible ways to select the move sequence. We can for example, use <a href="http://www.cse.ohio-state.edu/~gurari/course/cis680/cis680Ch19.html">recursive backtracking</a>. Start with `(x,y)` and the number of move `k = 0`. In each move, you choose up or right, modify `x` or `y` by subtracting `3^k` and proceed to the next step. If `x` or `y` ever becomes negative, we can stop, no later move can increase `x` or `y`, so it would be impossible to reach 0. If both `x` and `y` are 0, then we found a valid sequence of moves.</p>
+
+<div><div id="highlighter_385412" class="syntaxhighlighter nogutter  cpp"><div class="toolbar"><span><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp comments">// Initially 3^k = 1, if we increment k, it is the same as multiplying by 3</code></div><div class="line number2 index1 alt1"><code class="cpp comments">// helps us doing the backtracking easily.</code></div><div class="line number3 index2 alt2"><code class="cpp color1 bold">string</code> <code class="cpp plain">ableToGet(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">x, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">y, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">p = 1)</code></div><div class="line number4 index3 alt1"><code class="cpp plain">{</code></div><div class="line number5 index4 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// if x or y was negative, it is impossible.</code></div><div class="line number6 index5 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// Else if x==0 , y==0 it is already possible.</code></div><div class="line number7 index6 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// else we backtrack, first subtracting p from x or y and remember to</code></div><div class="line number8 index7 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// multiply p by 3.</code></div><div class="line number9 index8 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(</code></div><div class="line number10 index9 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(x &gt;= 0) &amp;&amp; (y &gt;= 0) &amp;&amp; </code></div><div class="line number11 index10 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(</code></div><div class="line number12 index11 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(x == 0 &amp;&amp; y == 0)</code></div><div class="line number13 index12 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">||</code></div><div class="line number14 index13 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(ableToGet(x - p, y, p*3) == </code><code class="cpp string">"Possible"</code><code class="cpp plain">)</code></div><div class="line number15 index14 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">||</code></div><div class="line number16 index15 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(ableToGet(x, y - p, p*3) == </code><code class="cpp string">"Possible"</code><code class="cpp plain">)</code></div><div class="line number17 index16 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">)</code></div><div class="line number18 index17 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">) {</code></div><div class="line number19 index18 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp string">"Possible"</code><code class="cpp plain">;</code></div><div class="line number20 index19 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">} </code><code class="cpp keyword bold">else</code> <code class="cpp plain">{</code></div><div class="line number21 index20 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp string">"Impossible"</code><code class="cpp plain">;</code></div><div class="line number22 index21 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number23 index22 alt2"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<h2>A quick loop</h2>
+<p>A more clever algorithm starts as brute-force. If `(x,y) != (0,0)`  then we need at least one step. The first step will be to decrease `x` or `y` by 1. After decreasing this unit, the values of `x` and `y` should both be equal to sums like: `3^(e_0) + 3^(e_1) + ... 3^(e_r)`, where each `e_i` is at least 1. Assume `e_0` is the smallest exponent: </p>
+<div>
+`x = 3^(e_0) + 3^(e_1) + ... 3^(e_r)`<br>
+`x = 3^(e_0)(3^0 + 3^(e_1-e^0) + ... 3^(e_r-e^0))`<br>
+</div>
+<p>Since `e_0` is at least 1, then `3^(e_0)` is some power of 3 different to 1. Which means that `x` is a multiple of 3. Similarly `y` is a multiple of 3`. This might appear inconsequential, but there are two important facts that follow from it.</p>
+<p>First remember the original `(x,y)` , we needed to decrease one of them. This means that `(x-1,y)` or `(x,y-1)` must be valid (both coordinates must be a multiple of 3). Notice that if `x-1` is a multiple of 3, `x` cannot be a multiple of 3. The same happens with `y`: `y` and `y-1` cannot both be a multiple of 3. Thus there is at most one valid choice for the first step given a `(x,y)`, we need to pick the one that makes both `x` and `y` a multiple of 3.</p>
+<p>The second is that once we decrease one of them, and both `x` and `y` become multiples of 3, we can divide both by 3. Something interesting happens with them. Assume they are valid values, it means that `x` and `y` are sums of powers of 3, and the two numbers don't share any exponents. Each exponent from 1 to `t` appears in the two sums. If we divide the two numbers by 3, it is the same as decreasing the exponent in each of the powers in the two sums, for example: </p>
+<div>
+`x = 3^1  + 3^2 + 3^4 + 3^8`<br>
+`y = 3^3 + 3^5 + 3^6 + 3^7`<br>
+--------------------------------------<br>
+`x/3 = 3^0  + 3^1 + 3^3 + 3^7`<br>
+`y/3 = 3^2 + 3^4 + 3^5 + 3^6`<br>
+</div>
+<p>Now consider that `(x',y') = (x/3, y/3)` is the same as the original problem. Once again the allowed moves are powers of 3 and the initial step is `3^0`. So we can repeat it all. Once again we might need to decrease `x` or `y` by 1, then maybe divide by 3 and so and so. We should stop whenever we reach a `(x,y)` that cannot be converted into multiples of 3 after decrementing exactly one of them.</p>
+
+<div><div id="highlighter_413782" class="syntaxhighlighter nogutter  cpp"><div class="toolbar"><span><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp color1 bold">string</code> <code class="cpp plain">ableToGet(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">x, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">y)</code></div><div class="line number2 index1 alt1"><code class="cpp plain">{</code></div><div class="line number3 index2 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// If (x==0, y==0, then it is possible).</code></div><div class="line number4 index3 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">while</code> <code class="cpp plain">(x != 0 || y != 0) {</code></div><div class="line number5 index4 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// decreasing one of x or y must yield a multiple of 3.</code></div><div class="line number6 index5 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// so either x%3 == 1 and y%3 == 0 or</code></div><div class="line number7 index6 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x%3 == 0 and y%3 == 1.</code></div><div class="line number8 index7 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// It can be reduced to the following condition:</code></div><div class="line number9 index8 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">( x % 3 + y % 3 != 1 ) {</code></div><div class="line number10 index9 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp string">"Impossible"</code><code class="cpp plain">;</code></div><div class="line number11 index10 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number12 index11 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// Decrease one of them, divide them by 3. </code></div><div class="line number13 index12 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// * If x % 3 == 1, then x/3 = (x-1)/3</code></div><div class="line number14 index13 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// * Same with y.</code></div><div class="line number15 index14 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">x /= 3;</code></div><div class="line number16 index15 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">y /= 3;</code></div><div class="line number17 index16 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number18 index17 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp string">"Possible"</code><code class="cpp plain">;</code></div><div class="line number19 index18 alt2"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Or in python, without comments to showcase how small the code is:</p>
+<div><div id="highlighter_202636" class="syntaxhighlighter nogutter  python"><div class="toolbar"><span><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python keyword">class</code> <code class="python plain">PowerOfThreeEasy:</code></div><div class="line number2 index1 alt1"><code class="python spaces">&nbsp;</code><code class="python keyword">def</code> <code class="python plain">ableToGet(</code><code class="python color1">self</code><code class="python plain">, x, y):</code></div><div class="line number3 index2 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">while</code> <code class="python plain">(x,y) !</code><code class="python keyword">=</code> <code class="python plain">(</code><code class="python value">0</code><code class="python plain">,</code><code class="python value">0</code><code class="python plain">):</code></div><div class="line number4 index3 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">if</code> <code class="python plain">x </code><code class="python keyword">%</code> <code class="python value">3</code> <code class="python keyword">+</code> <code class="python plain">y </code><code class="python keyword">%</code> <code class="python value">3</code> <code class="python plain">!</code><code class="python keyword">=</code> <code class="python value">1</code><code class="python plain">:</code></div><div class="line number5 index4 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">return</code> <code class="python string">"Impossible"</code></div><div class="line number6 index5 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">(x,y) </code><code class="python keyword">=</code> <code class="python plain">(x</code><code class="python keyword">/</code><code class="python value">3</code><code class="python plain">, y</code><code class="python keyword">/</code><code class="python value">3</code><code class="python plain">)</code></div><div class="line number7 index6 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">return</code> <code class="python string">"Possible"</code></div></div></td></tr></tbody></table></div></div>
+<h2>Base 3 numbers</h2>
+<p>Another method is to consider `x` and `y` as polynomials:</p>
+<div>
+`x = x_0 (3^0) + x_1 (3^1) + ... + x_t (3^t)`<br>
+`y = y_0 (3^0) + y_1 (3^1) + ... + y_t (3^t)`<br>
+<br>
+Where: each `x_i` and `y_i` is either 0 or 1. And `x_i != y_i` for each `i`.    
+</div>
+<p>So we consider both numbers as being sums of all powers of 3, but multiplied by some factors. `x_i = 0` means that `3^i` is not actually in the sum of `x`.</p>
+<p>The cool thing about this is that polynomials like these are really base 3 numbers. So we can write `x` as base 3:</p>
+<div> `x = (x_t)...(x_1)(x_0)`</div>
+<p>Where `x_i` behave as digits.</p>
+<p>It is easy to get the base-3 representations of  `x` and `y`, then you just need to compare each digits, making sure that at least one of them is 1.</p>
+<p>Something nice about this is that the code will actually be equivalent to the quick loop approach above. Consider doing `x%3` the same as extracting the digit in base 3. `x%3 + y%3==1` is true only when exactly one of the digits is 3. Dividing `x` and `y` by 3 is the same as removing the last digit.</p>
+
+
+
+
+
+
+
+
+<p><u>Alternative solutions and additional comments.</u></p>
+<p>&lt;Place your comments here&gt;</p><p>Next problem: <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#FoxConnection2">FoxConnection2</a></p>
+</div><div id="FoxConnection2" style="display: none; visibility: hidden; position: absolute;"><font size="+2"> 
+<b><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=12951&amp;rd=15837" name="12951">FoxConnection2</a></b> 
+</font> 
+<a href="https://community.topcoder.com/tc?module=ProblemRatingQuestions&amp;pid=12951"><img src="./SRM 604 - TopCoder Wiki_files/rate_it.gif" hspace="10" border="0" alt="rate it"></a> 
+<a href="https://apps.topcoder.com/forums/?module=ThreadList&amp;forumID=575858" class="statText"><img src="./SRM 604 - TopCoder Wiki_files/btn_discuss_it.gif" alt="discuss it" border="0"></a>
+<br> 
+Used as: Division Two - Level Three: <blockquote><table cellspacing="2"> 
+  <tbody><tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Value</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      1000 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Submission Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      28 / 1435 (1.95%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Success Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      7 / 28 (25.00%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>High Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Hwhitetooth</b> for 729.61 points (18 mins 49 secs) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Average Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      572.37 (for 7 correct submissions) 
+    </td> 
+  </tr> 
+</tbody></table></blockquote>
+<style type="text/css">
+    .trees700 {
+        width: 700px;
+        min-width: 50%;
+        max-width: 95%;
+    }
+</style>
+<p>
+Count the number of ways to pick `k` cities such that they are connected. The cities make a tree. It follows that you need to count the number of sub-trees of `k` nodes from a larger tree. This problem is a classical one that possibly already has explanations out there, but let's solve it with a dynamic programming that will also help explain the division 1 version.
+</p>
+
+<div class="editorial-tip">
+If you are new to dynamic programming, try <a href="https://community.topcoder.com/tc?module=MemberProfile&amp;cr=7305703" class="coderTextYellow">dumitru</a>'s tutorial: <a href="http://www.topcoder.com/tc?d1=tutorials&amp;d2=dynProg&amp;module=Static">Dynamic programming: from novice to advanced</a> from the educational section.</div>
+
+<h2>Given a root</h2>
+<p>We would like to find a sub-optimal structure in this problem. That is, a way to divide the problem into smaller subproblems. In problems where the graph is a tree, it is usually a good idea to start by <a href="http://mathworld.wolfram.com/RootedTree.html">rooting</a> them, any arbitrary root is going to be fine, let's go with node 0 as a root.</p>
+<p>The sub-tree of `k` nodes that we pick should have a root of its own. How about we use that as a starting point? There are `O(n)` options for the root of the sub-tree. For each of them, count the number of ways to make a sub-tree that is rooted there.</p>
+<h2>Sub-problems</h2>
+<p>We want to count the number of sub-trees of `k` nodes rooted at node `x`. Let's call the function that solves this `f(x,k)`. </p>
+<img src="./SRM 604 - TopCoder Wiki_files/trees1.svg" class="trees700">
+<p>It is a good thing trees are a recursive data structure. The node `x` will have some children and each of those children can be seen as a subtree. Of the `k` nodes that should be part of the sub-tree, one will be `x`, the remaining `k-1` nodes have to be distributed between these children.</p>
+<p>Consider a node `x` with 3 children: `a`, `b` and `c`. Assume we picked `k_a`, `k_b` and `k_c` as the number of nodes from `a`, `b` and `c` that will be used in the picked sub.tree. `k_a + k_b + k_c + 1 = k`.  Any subtree rooted at `a` that has `k_a` elements will be a valid part of the result, same with `b` and `k_b` and `c` and `k_c`. We can find the number of ways to pick the nodes in each subtree as `f(a, k_a)`, `f(b, k_b)` and `f(c, k_c)`, respectively. These choices are independent (the nodes we pick from subtree `a` won't alter the available options in `b`) so we can find the total number of ways to pick subtrees given  
+`k_a`, `k_b` and `k_c` as: `f(a, k_a) * f(b, k_b) * f(c, k_c)`.</p>
+<img src="./SRM 604 - TopCoder Wiki_files/trees2.svg" class="trees700">
+<p>While this shows that we can divide the problem in smaller sub-problems, we have a new issue: How to iterate through all the ways to choose the number of elements that will go to each child subtree? We could nest a dynamic programming there, but an arguably simpler approach is to divide the sub-problems in a different way.</p>
+
+<h2>The left-most child</h2>
+<p>The trick here is not to distribute `k-1` between all the children, but only between the left-most child and the rest. Like this:</p>
+
+<img src="./SRM 604 - TopCoder Wiki_files/trees3.svg" class="trees700">
+
+<p>This time we solve a function `f(x, e, k)` that returns the number of ways to have a subtree of `k` nodes using `x` as root <i>and without using the first `e` children of x</i>.</p>
+<ul><li>If `e` is equal to the number of children of `x`, it means that we can only use the root, `x` . If `k` is equal to 1, there is exactly one way to make a subtree that has only one element (take `x` as the sole element of the subtree).</li>
+<li>Else we have at least one child. The left-most child will have index `e` in the list of children of `x`. Now we know that one of the `k` nodes will be the root, `x`. We can distribute some of the nodes in the sub-tree rooted at child `e`. We can try all the possibilities for the number of nodes that will belong to the subtree `i`. Let's say `y` is child #e of `x`: There are `f(y, 0, i)` ways to distribute `i` nodes with this subtree (Because we can use all its children, so `e=0`). There are `f(x, e+1, k - i)` ways to distribute the remaining nodes with the rest of the subtree rooted at `x`. For each `i` we can find the result as: `f(y,0,i)*f(x, e+1, k - i)`</li>
+<li>There are some details to consider. `k - i` shouldn't be 0, because we need the root `x` to be one of the picked nodes. Also, we are able to choose not to put any node in the child `y`. This means that the provided `k` to `f(x,e,k)` can be 0. In this case, there is exactly one way to pick zero nodes, so the result is 1.</li> 
+</ul>
+
+<p>A complexity analysis: There are `O(n)` `(x,e)` pairs, because there are at most `2n-1` such pairs in total. Consider that each `(x,e)` represents either a child node or the root when `e` is equal to the degree, so most nodes will appear in two `(x,e)` pairs, except for the tree's root, which will appear only once.  So there are `O(nk)` `(x,e,k)` tuples. Each call to `f(x,e,k)` might need an `O(k)` loop to pick `i`. We are using dynamic programming so that each `(x,e,k)` tuple is evaluated at most once. So the algorithmic complexity is `O(nk^2)`. This is even when we consider the `O(n)` loop to pick the root of the subtree, regardless of how it calls `f()`, `f()` will be evaluated at most `O(nk)` times.</p>  
+
+
+<h2>Code</h2>
+<div class="editorial-tip">Problems that ask you to return the result modulo 1,000,000,007 (or a similar number) usually do so to allow us to solve problems that have large results without actually using those large numbers in calculations. We can handle these numbers with modular arithmetic. Read <a href="https://apps.topcoder.com/forums/?module=Thread&amp;threadID=642253&amp;start=0&amp;mc=10#1110284">this recipe</a> for more info.</div> 
+<div><div id="highlighter_120715" class="syntaxhighlighter nogutter  cpp"><div class="toolbar"><span><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp keyword bold">static</code> <code class="cpp keyword bold">const</code> <code class="cpp color1 bold">int</code> <code class="cpp plain">MOD = 1000000007;</code></div><div class="line number2 index1 alt1"><code class="cpp keyword bold">static</code> <code class="cpp keyword bold">const</code> <code class="cpp color1 bold">int</code> <code class="cpp plain">MAX = 50;</code></div><div class="line number3 index2 alt2"><code class="cpp color1 bold">int</code> <code class="cpp plain">n;</code></div><div class="line number4 index3 alt1"><code class="cpp color1 bold">int</code> <code class="cpp plain">degree[MAX];</code></div><div class="line number5 index4 alt2"><code class="cpp color1 bold">int</code> <code class="cpp plain">g[MAX][MAX];</code></div><div class="line number6 index5 alt1"><code class="cpp color1 bold">string</code> <code class="cpp plain">haveFox;</code></div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="cpp keyword bold">void</code> <code class="cpp plain">dfsMakeTree(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">x, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">parent, </code><code class="cpp color1 bold">vector</code><code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt;&amp;A, </code><code class="cpp color1 bold">vector</code><code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt;&amp;B)</code></div><div class="line number9 index8 alt2"><code class="cpp plain">{</code></div><div class="line number10 index9 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">degree[x] = 0;</code></div><div class="line number11 index10 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">i = 0; i &lt; n - 1; i++) {</code></div><div class="line number12 index11 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">( (A[i]-1 == x) &amp;&amp; (parent != B[i]-1) ) {</code></div><div class="line number13 index12 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">g[x][degree[x]++] = B[i]-1;</code></div><div class="line number14 index13 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">dfsMakeTree( B[i]-1, x, A,B);</code></div><div class="line number15 index14 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number16 index15 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">( (B[i]-1 == x) &amp;&amp; (parent != A[i]-1) ) {</code></div><div class="line number17 index16 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">g[x][degree[x]++] = A[i]-1;</code></div><div class="line number18 index17 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">dfsMakeTree( A[i]-1, x, A,B);</code></div><div class="line number19 index18 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number20 index19 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number21 index20 alt2"><code class="cpp plain">}</code></div><div class="line number22 index21 alt1">&nbsp;</div><div class="line number23 index22 alt2"><code class="cpp color1 bold">int</code> <code class="cpp plain">mem[MAX][MAX+1][MAX];</code></div><div class="line number24 index23 alt1">&nbsp;</div><div class="line number25 index24 alt2"><code class="cpp color1 bold">long</code> <code class="cpp plain">rootedWays(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">x, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">k, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">e)</code></div><div class="line number26 index25 alt1"><code class="cpp plain">{</code></div><div class="line number27 index26 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// number of ways to have a tree of k nodes that is rooted at node x.</code></div><div class="line number28 index27 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// if we already processed e of its edges.</code></div><div class="line number29 index28 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">long</code> <code class="cpp plain">res = mem[x][k][e];</code></div><div class="line number30 index29 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(res == -1) {</code></div><div class="line number31 index30 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">res = 0;</code></div><div class="line number32 index31 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(k == 0) {</code></div><div class="line number33 index32 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">res = 1;</code></div><div class="line number34 index33 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">} </code><code class="cpp keyword bold">else</code> <code class="cpp keyword bold">if</code> <code class="cpp plain">(e == degree[x]) {</code></div><div class="line number35 index34 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">//processed all edges.</code></div><div class="line number36 index35 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">res = ( (k == 1)? 1 : 0);</code></div><div class="line number37 index36 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">} </code><code class="cpp keyword bold">else</code> <code class="cpp plain">{</code></div><div class="line number38 index37 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">//how many must go to child #e?</code></div><div class="line number39 index38 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">i = 0; i &lt; k; i++) {</code></div><div class="line number40 index39 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">long</code> <code class="cpp plain">p = rootedWays( g[x][e], i, 0 );</code></div><div class="line number41 index40 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">long</code> <code class="cpp plain">q = rootedWays( x, k - i, e + 1); </code></div><div class="line number42 index41 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">res += (p*q) % MOD;</code></div><div class="line number43 index42 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number44 index43 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number45 index44 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">res %= MOD;</code></div><div class="line number46 index45 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">mem[x][k][e] = (</code><code class="cpp color1 bold">int</code><code class="cpp plain">)res;</code></div><div class="line number47 index46 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number48 index47 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp plain">res;</code></div><div class="line number49 index48 alt2"><code class="cpp plain">}</code></div><div class="line number50 index49 alt1">&nbsp;</div><div class="line number51 index50 alt2"><code class="cpp color1 bold">int</code> <code class="cpp plain">ways(</code><code class="cpp color1 bold">vector</code><code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt; A, </code><code class="cpp color1 bold">vector</code><code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt; B, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">k)</code></div><div class="line number52 index51 alt1"><code class="cpp plain">{</code></div><div class="line number53 index52 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">this</code><code class="cpp plain">-&gt;n = A.size() + 1;</code></div><div class="line number54 index53 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">fill(degree, degree+n, 0);</code></div><div class="line number55 index54 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">dfsMakeTree(0, -1, A, B);</code></div><div class="line number56 index55 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number57 index56 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp functions bold">memset</code><code class="cpp plain">(mem, -1, </code><code class="cpp keyword bold">sizeof</code><code class="cpp plain">(mem));</code></div><div class="line number58 index57 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">long</code> <code class="cpp plain">sum = 0;</code></div><div class="line number59 index58 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">i = 0; i &lt; n; i++) {</code></div><div class="line number60 index59 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">sum += rootedWays(i, k, 0);</code></div><div class="line number61 index60 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">//cout &lt;&lt; sum &lt;&lt; " " &lt;&lt; i &lt;&lt;&nbsp; endl;</code></div><div class="line number62 index61 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number63 index62 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number64 index63 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code><code class="cpp plain">)(sum % MOD);</code></div><div class="line number65 index64 alt2"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+
+<p><u>Alternative solutions and additional comments.</u></p>
+<p>&lt;Place your comments here&gt;</p><p>Next problem: <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#PowerOfThree">PowerOfThree</a></p>
+</div><div id="PowerOfThree" style="display: block; visibility: visible; position: static;"><font size="+2"> 
+<b><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=12917&amp;rd=15837" name="12917">PowerOfThree</a></b> 
+</font> 
+<a href="https://community.topcoder.com/tc?module=ProblemRatingQuestions&amp;pid=12917"><img src="./SRM 604 - TopCoder Wiki_files/rate_it.gif" hspace="10" border="0" alt="rate it"></a> 
+<a href="https://apps.topcoder.com/forums/?module=ThreadList&amp;forumID=575858" class="statText"><img src="./SRM 604 - TopCoder Wiki_files/btn_discuss_it.gif" alt="discuss it" border="0"></a>
+<br> 
+Used as: Division One - Level One: <blockquote><table cellspacing="2"> 
+  <tbody><tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Value</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      250 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Submission Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      649 / 845 (76.80%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Success Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      494 / 649 (76.12%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>High Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Eryx</b> for 248.69 points (2 mins 3 secs) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Average Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      166.66 (for 494 correct submissions) 
+    </td> 
+  </tr> 
+</tbody></table></blockquote> 
+<p>A good approach is to use the same logic we used for the "quick loop" approach in the <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#PowerOfThreeEasy">division 2 version: PowerOfThreeEasy</a>.
+</p>
+<ul><li>In the first step, we have 4 options: Increment `x`, decrease `x`, increment `y` and decrease `y`.</li>
+<li>After that operation `x` and `y` must both be multiples of 3.</li>
+</ul>
+<p>Notice that exactly one of `x-1`, `x` and `x+1` can be a multiple of 3. E.g: If `x` is a multiple of 3, then `x -= 0 mod 3` which means `x-1 -= 2 mod 3` and `x+1 -= 1 mod 3`. So we take `x mod 3`, if the result is 0, we cannot increment nor decrement `x`. If the result is 1, we should decrement `x` and if the result is 2, we should increment `x`. Same with `y`</p>
+<p>When no valid move is possible, we can return "Impossible".</p>
+<p>If a valid move is possible, both `x` and `y` become multiples of 3 and we can divide both by 3 and return to the initial problem, just like in the division 2 version.</p>
+<div><div id="highlighter_532815" class="syntaxhighlighter nogutter  cpp"><div class="toolbar"><span><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp color1 bold">string</code> <code class="cpp plain">ableToGet(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">x, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">y)</code></div><div class="line number2 index1 alt1"><code class="cpp plain">{</code></div><div class="line number3 index2 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// to save us the issue of dealing with the % operation being flawed with</code></div><div class="line number4 index3 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// negative numbers, we can just use some symmetry, </code></div><div class="line number5 index4 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// (x,y) is reachable if and only if (-x,y), (-x,-y) and (x,-y) are.</code></div><div class="line number6 index5 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">x = </code><code class="cpp functions bold">abs</code><code class="cpp plain">(x);</code></div><div class="line number7 index6 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">y = </code><code class="cpp functions bold">abs</code><code class="cpp plain">(y);</code></div><div class="line number8 index7 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">while</code> <code class="cpp plain">(x != 0 || y != 0) {</code></div><div class="line number9 index8 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// one of x,y must be a multiple of 3, the other shouldn't.</code></div><div class="line number10 index9 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">( (x % 3 == 0) &amp;&amp; (y % 3 != 0) ) {</code></div><div class="line number11 index10 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// If y % 3 == 2, the result is y/3 + 1 or (y+1) / 3.</code></div><div class="line number12 index11 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(y % 3 == 2) {</code></div><div class="line number13 index12 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">y = (y + 1) / 3;</code></div><div class="line number14 index13 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">} </code><code class="cpp keyword bold">else</code> <code class="cpp plain">{</code></div><div class="line number15 index14 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">y = (y - 1) / 3;</code></div><div class="line number16 index15 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number17 index16 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">x /= 3;</code></div><div class="line number18 index17 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">} </code><code class="cpp keyword bold">else</code> <code class="cpp keyword bold">if</code> <code class="cpp plain">( (y % 3 == 0) &amp;&amp; (x % 3 != 0) ) {</code></div><div class="line number19 index18 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(x % 3 == 2) {</code></div><div class="line number20 index19 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">x = (x + 1) / 3;</code></div><div class="line number21 index20 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">} </code><code class="cpp keyword bold">else</code> <code class="cpp plain">{</code></div><div class="line number22 index21 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">x = (x - 1) / 3;</code></div><div class="line number23 index22 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number24 index23 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">y /= 3;</code></div><div class="line number25 index24 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">} </code><code class="cpp keyword bold">else</code> <code class="cpp plain">{</code></div><div class="line number26 index25 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp string">"Impossible"</code><code class="cpp plain">;</code></div><div class="line number27 index26 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number28 index27 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number29 index28 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp string">"Possible"</code><code class="cpp plain">;</code></div><div class="line number30 index29 alt1"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>As an interesting exercise, find why the following code is equivalent:</p>
+<div><div id="highlighter_735125" class="syntaxhighlighter nogutter  cpp"><div class="toolbar"><span><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp color1 bold">string</code> <code class="cpp plain">ableToGet(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">x, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">y)</code></div><div class="line number2 index1 alt1"><code class="cpp plain">{</code></div><div class="line number3 index2 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">x = </code><code class="cpp functions bold">abs</code><code class="cpp plain">(x);</code></div><div class="line number4 index3 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">y = </code><code class="cpp functions bold">abs</code><code class="cpp plain">(y);</code></div><div class="line number5 index4 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">while</code> <code class="cpp plain">(x != 0 || y != 0) {</code></div><div class="line number6 index5 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">( (x % 3 == 0) != (y % 3 == 0) ) {</code></div><div class="line number7 index6 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">y = (y + (y % 3 == 2)) / 3;</code></div><div class="line number8 index7 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">x = (x + (x % 3 == 2)) / 3;</code></div><div class="line number9 index8 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">} </code><code class="cpp keyword bold">else</code> <code class="cpp plain">{</code></div><div class="line number10 index9 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp string">"Impossible"</code><code class="cpp plain">;</code></div><div class="line number11 index10 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number12 index11 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number13 index12 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp string">"Possible"</code><code class="cpp plain">;</code></div><div class="line number14 index13 alt1"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+<p>Or in python:</p>
+<div><div id="highlighter_163418" class="syntaxhighlighter nogutter  python"><div class="toolbar"><span><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python keyword">class</code> <code class="python plain">PowerOfThree:</code></div><div class="line number2 index1 alt1"><code class="python spaces">&nbsp;</code><code class="python keyword">def</code> <code class="python plain">ableToGet(</code><code class="python color1">self</code><code class="python plain">, x, y):</code></div><div class="line number3 index2 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">while</code> <code class="python plain">x !</code><code class="python keyword">=</code> <code class="python value">0</code> <code class="python keyword">or</code> <code class="python plain">y !</code><code class="python keyword">=</code> <code class="python value">0</code> <code class="python plain">:</code></div><div class="line number4 index3 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">if</code> <code class="python plain">(x </code><code class="python keyword">%</code> <code class="python value">3</code> <code class="python keyword">=</code><code class="python keyword">=</code> <code class="python value">0</code><code class="python plain">) !</code><code class="python keyword">=</code> <code class="python plain">(y </code><code class="python keyword">%</code> <code class="python value">3</code> <code class="python keyword">=</code><code class="python keyword">=</code> <code class="python value">0</code><code class="python plain">):</code></div><div class="line number5 index4 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">y </code><code class="python keyword">=</code> <code class="python plain">(y </code><code class="python keyword">+</code> <code class="python plain">(y </code><code class="python keyword">%</code> <code class="python value">3</code> <code class="python keyword">=</code><code class="python keyword">=</code> <code class="python value">2</code><code class="python plain">)) </code><code class="python keyword">/</code> <code class="python value">3</code></div><div class="line number6 index5 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python plain">x </code><code class="python keyword">=</code> <code class="python plain">(x </code><code class="python keyword">+</code> <code class="python plain">(x </code><code class="python keyword">%</code> <code class="python value">3</code> <code class="python keyword">=</code><code class="python keyword">=</code> <code class="python value">2</code><code class="python plain">)) </code><code class="python keyword">/</code> <code class="python value">3</code></div><div class="line number7 index6 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">else</code><code class="python plain">:</code></div><div class="line number8 index7 alt1"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">return</code> <code class="python string">"Impossible"</code></div><div class="line number9 index8 alt2"><code class="python spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="python keyword">return</code> <code class="python string">"Possible"</code></div></div></td></tr></tbody></table></div></div>
+
+
+<p><u>Alternative solutions and additional comments.</u></p>
+<p>There are more simplifications explained in the <a href="http://apps.topcoder.com/forums/?module=Thread&amp;threadID=808486&amp;start=0">shortest code thread</a>. A thread in which coders try to minimize the size of the solution.</p>
+<p>&lt;Place your comments here&gt;</p><p>Next problem: <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#FoxConnection">FoxConnection</a></p>
+</div><div id="FoxConnection" style="display: none; visibility: hidden; position: absolute;"><font size="+2"> 
+<b><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=12919&amp;rd=15837" name="12919">FoxConnection</a></b> 
+</font> 
+<a href="https://community.topcoder.com/tc?module=ProblemRatingQuestions&amp;pid=12919"><img src="./SRM 604 - TopCoder Wiki_files/rate_it.gif" hspace="10" border="0" alt="rate it"></a> 
+<a href="https://apps.topcoder.com/forums/?module=ThreadList&amp;forumID=575858" class="statText"><img src="./SRM 604 - TopCoder Wiki_files/btn_discuss_it.gif" alt="discuss it" border="0"></a>
+<br> 
+Used as: Division One - Level Two: <blockquote><table cellspacing="2"> 
+  <tbody><tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Value</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      550 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Submission Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      180 / 845 (21.30%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Success Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      20 / 180 (11.11%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>High Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Petr</b> for 453.20 points (13 mins 45 secs) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Average Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      258.04 (for 20 correct submissions) 
+    </td> 
+  </tr> 
+</tbody></table></blockquote> 
+<p>
+The main idea is that, since the cities make a tree, we can try a dynamic programming idea similar to the one used in the <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#FoxConnection2">division 2 version</a>. I think that some knowledge about how to solve those problems is useful here, so make sure to read that explanation before reading this one.
+</p>
+<p>You will find that trying to come up with a dynamic programming that runs in time will be problematic and it will be complicated to implement, <i>unless</i> we make a very good observation.</p>
+<p>The main issue is to keep track of how the foxes are moving around the graph. If we take an arbitrary root as the root of the final subtree of foxes. That means that all the foxes in other subtrees <i>above it</i> must move to the tree. This contains a cost. However, there is also how foxes in bottom subtree have to move up at times. This is all complicated until we notice an invaluable property:</p>
+<p>There are `t` foxes in total. Imagine we decided that we want `k` foxes to go to the subtree rooted at node `x`. Notice that it is easy to know the total number of foxes that are initially in this sub-tree (We just need a small <a href="http://www.cs.toronto.edu/~heap/270F02/node36.html">DFS</a> to count this for each node as a root). Let `m` be the number of foxes in the subtree: Then we have three cases:</p>
+<ul><li>`k - m = 0`. This means that we should use the exact same foxes that are already in the sub-tree.</li>
+<li>`k - m &gt; 0`. This means there are `(k - m)` foxes that must come from outside this subtree.</li>
+<li>`k - m &lt; 0`. This means there are `(m - k)` foxes that must move from the subtree to outside it.</li>
+</ul>
+<p>Since `m` is constant, each value of `k` will determines the value of `(k-m)`. This means that we only need tuple `(x, e, k)` to represent the state. (Where `(x,e)` represent a root `x` and the number of edges already-processed like in the division 2 version). The rest is to figure the logic out. Let's think of a function `f(x, e, k)` that returns the minimum cost to make a sub-tree of `k` nodes rooted at `x` when we are not allowed to use the first `e` children of `x`.</p><p>
+
+</p><h2>The precondition</h2>
+<p>We must assume that whenever `f(x,0, k)` is called, with a given `k`. If there are `m` foxes in the sub-tree rooted at `x`, then we need to make assumptions:</p>
+<ul>
+<li>If `(k - m &gt; 0)` there are some foxes outside the subtree that should move towards it. We can assume that the `(k - m)` necessary foxes will eventually reach `x`. So later when we move them down we can assume that they will exist. If `f(x,0,k)` is called we need to be sure that those foxes move there. First of all, when picking the root of the total subtree, make sure to calculate the cost to move all of the outside foxes. The other situation is when calling `f(y,0,k=i)` for a child of `x`, we should make sure to also calculate the cost to move the necessary foxes from `x` to `y`. If there are `m_y` foxes in the subtlee of `y`, this cost is equal to `i - m_y`</li>
+
+<li>If `(m - k &gt; 0)`, then there are foxes that will not be used in the subtree. These foxes must move out of the tree. We should assume that when calling `f(x,0,k)` , it will mean that `m - k` foxes will move up to `x`. When we call `f(y,0, i)` as part of the solution for `f(x, 0, k=i)` and there are `(m_y - i &gt; 0)` foxes that must leave the sub-tree rooted at `y`, it means that  we should move these `(m_y - i)` foxes from `y` to `x`. The cost is equal to `m_y - i`.</li>
+</ul>
+<p>Now notice that in both cases, we need to consider a cost of `|i - m_y|`, the absolute value. We either move foxes from `y` to `x` or from `x` to `y`. </p>
+
+<p>The recurrence relation `f(x,e,k)` has taken shape:</p>
+<ul><li>If `e` is equal to the number of children of `x`, it means that we only need to find the minimum cost to distribute `k` foxes in the node `x`. `k` must be at most 1 for this to be valid. The minimum cost is 0 in that case. We assume that if there was no fox in `x`, we already moved it there in some previous step.</li>
+<li>Else we say that `y` is child number #e of `x`. We should distribute up to `k-1` foxes to `y`. Let `i` be the number of foxes that will be assigned to subtree `y`. Then we will eventually need `|m_y - i|` cost to move foxes from `x` to `y` or vice versa. The additional cost is: `f(y,0,i) +  f(x, e+1, k-i)`  </li>
+</ul>
+
+<h2>Cost to leave a subtree</h2>
+<p>In order to calculate this, we should first know the minimum cost to move all the foxes in a subtree  to its root `x`. This cost is actually equal to `f(x,0, k=0)`. The cost to pick zero nodes in this subtree.</p>
+
+<p>This reminds us that `k` can be 0 in the recurrence. If `k=0`, then the number of foxes to distribute to children will always be 0 as well. We just need to count the cost to move any fox in the depths of this subtree towards node `x`.</p>
+
+
+<h2>Picking the subtree root</h2>
+<p>Finally, we need to pick the subtree root and calculate its cost. We can use another recursive logic. Solution `g(x)` finds the minimum cost to pick a root inside subtree rooted at `x`.</p>
+
+<p>We can pick `x` as the root. Then the cost is simply `f(x,0, t)`.</p>
+<p>Else the root would belong to one of the children. Calculate the cost to pick branch `y`. There are `t` total foxes. So if `m_x` is the number of foxes in the subtree rooted at `x`, it means that `t - m_x` foxes moved to `x`. These foxes and also the fox located at `x` (if it exists) are added to the cost. We also should move any fox from the other children to `x` and then to `y`. For each child `z != y`: `f(z,0,k=0)` is the cost to move all its foxes to `z`, then you need `2m_z` moves to move the foxes from `z` to `x` and then to `y` . All these costs are added to `g(y)`.</p>
+
+<h2>Code</h2>
+<div><div id="highlighter_779070" class="syntaxhighlighter nogutter  cpp"><div class="toolbar"><span><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp keyword bold">static</code> <code class="cpp keyword bold">const</code> <code class="cpp color1 bold">int</code> <code class="cpp plain">MAX = 50;</code></div><div class="line number2 index1 alt1"><code class="cpp color1 bold">int</code> <code class="cpp plain">n;</code></div><div class="line number3 index2 alt2"><code class="cpp color1 bold">vector</code><code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt; g[MAX];</code></div><div class="line number4 index3 alt1"><code class="cpp color1 bold">string</code> <code class="cpp plain">haveFox;</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="cpp keyword bold">void</code> <code class="cpp plain">dfsMakeTree(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">x, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">parent, </code><code class="cpp color1 bold">vector</code><code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt;&amp;A, </code><code class="cpp color1 bold">vector</code><code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt;&amp;B)</code></div><div class="line number7 index6 alt2"><code class="cpp plain">{</code></div><div class="line number8 index7 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// make the contents of g[i] for all is.</code></div><div class="line number9 index8 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">i = 0; i &lt; n - 1; i++) {</code></div><div class="line number10 index9 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">( (A[i]-1 == x) &amp;&amp; (parent != B[i]-1) ) {</code></div><div class="line number11 index10 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">g[x].push_back( B[i]-1 );</code></div><div class="line number12 index11 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">dfsMakeTree( B[i]-1, x, A,B);</code></div><div class="line number13 index12 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number14 index13 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">( (B[i]-1 == x) &amp;&amp; (parent != A[i]-1) ) {</code></div><div class="line number15 index14 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">g[x].push_back( A[i]-1 );</code></div><div class="line number16 index15 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">dfsMakeTree( A[i]-1, x, A,B);</code></div><div class="line number17 index16 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number18 index17 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number19 index18 alt2"><code class="cpp plain">}</code></div><div class="line number20 index19 alt1">&nbsp;</div><div class="line number21 index20 alt2"><code class="cpp color1 bold">int</code> <code class="cpp plain">subtreeFoxes[MAX]; </code><code class="cpp comments">//[i]: total number of foxes in subtree rooted at i</code></div><div class="line number22 index21 alt1">&nbsp;</div><div class="line number23 index22 alt2"><code class="cpp comments">// finds the number of foxes in each subtree.&nbsp;&nbsp;&nbsp; </code></div><div class="line number24 index23 alt1"><code class="cpp keyword bold">void</code> <code class="cpp plain">dfsCountFoxes(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">x)</code></div><div class="line number25 index24 alt2"><code class="cpp plain">{</code></div><div class="line number26 index25 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">subtreeFoxes[x] = (haveFox[x] == </code><code class="cpp string">'Y'</code><code class="cpp plain">);</code></div><div class="line number27 index26 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">y : g[x]) {</code></div><div class="line number28 index27 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">dfsCountFoxes(y);</code></div><div class="line number29 index28 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">subtreeFoxes[x] += subtreeFoxes[y];</code></div><div class="line number30 index29 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number31 index30 alt2"><code class="cpp plain">}</code></div><div class="line number32 index31 alt1">&nbsp;</div><div class="line number33 index32 alt2">&nbsp;</div><div class="line number34 index33 alt1"><code class="cpp keyword bold">const</code> <code class="cpp color1 bold">int</code> <code class="cpp plain">INF = 50000;&nbsp; </code></div><div class="line number35 index34 alt2"><code class="cpp color1 bold">int</code> <code class="cpp plain">totalFoxes;</code></div><div class="line number36 index35 alt1">&nbsp;</div><div class="line number37 index36 alt2"><code class="cpp color1 bold">int</code> <code class="cpp plain">cost[MAX][MAX][MAX+1];</code></div><div class="line number38 index37 alt1"><code class="cpp color1 bold">int</code> <code class="cpp plain">theCost(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">x, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">e, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">k) </code><code class="cpp comments">/* O(n*k)&nbsp; states */</code></div><div class="line number39 index38 alt2"><code class="cpp plain">{</code></div><div class="line number40 index39 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">&amp; res&nbsp; = cost[x][e][k];</code></div><div class="line number41 index40 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(res == -1) {</code></div><div class="line number42 index41 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(e == g[x].size() ) {</code></div><div class="line number43 index42 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// base case, e is equal to the number of children</code></div><div class="line number44 index43 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">res = ( (k &lt;= 1) ? 0 : INF );</code></div><div class="line number45 index44 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">} </code><code class="cpp keyword bold">else</code> <code class="cpp plain">{</code></div><div class="line number46 index45 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// We can search for the best i for the number of foxes in y.</code></div><div class="line number47 index46 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">res = INF;</code></div><div class="line number48 index47 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">y = g[x][e];</code></div><div class="line number49 index48 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">maxi = ( (k==0) ? 0 : (k - 1) );</code></div><div class="line number50 index49 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">i = 0; i &lt;= maxi; i++) {</code></div><div class="line number51 index50 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// cost of the decision:</code></div><div class="line number52 index51 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">p = </code><code class="cpp functions bold">abs</code><code class="cpp plain">(i - subtreeFoxes[y]) + theCost(y,0, i);</code></div><div class="line number53 index52 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// absolute value because we might need to move foxes from</code></div><div class="line number54 index53 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// x to y or vice versa depending on the case.</code></div><div class="line number55 index54 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">q = theCost(x,e+1, k - i);</code></div><div class="line number56 index55 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">res = std::min( res, p + q );</code></div><div class="line number57 index56 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number58 index57 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number59 index58 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number60 index59 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp plain">res;</code></div><div class="line number61 index60 alt2"><code class="cpp plain">}</code></div><div class="line number62 index61 alt1">&nbsp;</div><div class="line number63 index62 alt2"><code class="cpp color1 bold">int</code> <code class="cpp plain">best[MAX];</code></div><div class="line number64 index63 alt1"><code class="cpp keyword bold">void</code> <code class="cpp plain">dfsBestSubtree(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">x)</code></div><div class="line number65 index64 alt2"><code class="cpp plain">{</code></div><div class="line number66 index65 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// try picking x as the root of the subtree:</code></div><div class="line number67 index66 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">best[x] = theCost(x,0, totalFoxes);</code></div><div class="line number68 index67 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// total foxes currently in x:</code></div><div class="line number69 index68 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">inNode = totalFoxes - subtreeFoxes[x] + (haveFox[x] == </code><code class="cpp string">'Y'</code><code class="cpp plain">);</code></div><div class="line number70 index69 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">y: g[x]) {</code></div><div class="line number71 index70 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// Solve the costs for y and its children</code></div><div class="line number72 index71 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">dfsBestSubtree(y);</code></div><div class="line number73 index72 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number74 index73 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// Additional cost:</code></div><div class="line number75 index74 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">sumCost = inNode;</code></div><div class="line number76 index75 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">z: g[x]) {</code></div><div class="line number77 index76 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(z != y) {</code></div><div class="line number78 index77 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// move from z to x and then to y</code></div><div class="line number79 index78 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">sumCost += theCost(z,0, 0) + 2*subtreeFoxes[z];</code></div><div class="line number80 index79 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number81 index80 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number82 index81 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">best[x] = std::min(best[x], sumCost + best[y] );</code></div><div class="line number83 index82 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number84 index83 alt1"><code class="cpp plain">}</code></div><div class="line number85 index84 alt2">&nbsp;</div><div class="line number86 index85 alt1"><code class="cpp color1 bold">int</code> <code class="cpp plain">minimalDistance(</code><code class="cpp color1 bold">vector</code><code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt; A, </code><code class="cpp color1 bold">vector</code><code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt; B, </code><code class="cpp color1 bold">string</code> <code class="cpp plain">haveFox)</code></div><div class="line number87 index86 alt2"><code class="cpp plain">{</code></div><div class="line number88 index87 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">totalFoxes = count(haveFox.begin(), haveFox.end(), </code><code class="cpp string">'Y'</code><code class="cpp plain">);</code></div><div class="line number89 index88 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(totalFoxes == 0) {</code></div><div class="line number90 index89 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp plain">0;</code></div><div class="line number91 index90 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number92 index91 alt1">&nbsp;</div><div class="line number93 index92 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">this</code><code class="cpp plain">-&gt;haveFox = haveFox;</code></div><div class="line number94 index93 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">n = haveFox.size();</code></div><div class="line number95 index94 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// root the tree at 0: </code></div><div class="line number96 index95 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">dfsMakeTree(0, -1, A,B);</code></div><div class="line number97 index96 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">dfsCountFoxes(0);</code></div><div class="line number98 index97 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number99 index98 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp functions bold">memset</code><code class="cpp plain">(cost, -1, </code><code class="cpp keyword bold">sizeof</code><code class="cpp plain">(cost));</code></div><div class="line number100 index99 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">dfsBestSubtree(0);</code></div><div class="line number101 index100 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number102 index101 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp plain">best[0];</code></div><div class="line number103 index102 alt2"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+
+
+
+<p><u>Alternative solutions and additional comments.</u></p>
+<p>&lt;Place your comments here&gt;</p><p>Next problem: <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#FamilyCrest">FamilyCrest</a></p>
+</div><div id="FamilyCrest" style="display: none; visibility: hidden; position: absolute;"><font size="+2"> 
+<b><a href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=12921&amp;rd=15837" name="12921">FamilyCrest</a></b> 
+</font> 
+<a href="https://community.topcoder.com/tc?module=ProblemRatingQuestions&amp;pid=12921"><img src="./SRM 604 - TopCoder Wiki_files/rate_it.gif" hspace="10" border="0" alt="rate it"></a> 
+<a href="https://apps.topcoder.com/forums/?module=ThreadList&amp;forumID=575858" class="statText"><img src="./SRM 604 - TopCoder Wiki_files/btn_discuss_it.gif" alt="discuss it" border="0"></a>
+<br> 
+Used as: Division One - Level Three: <blockquote><table cellspacing="2"> 
+  <tbody><tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Value</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      1000 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Submission Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      41 / 845 (4.85%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Success Rate</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      9 / 41 (21.95%) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>High Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Egor</b> for 769.66 points (16 mins 37 secs) 
+    </td> 
+  </tr> 
+  <tr> 
+    <td class="bodyText" style="background: #eee;"> 
+      <b>Average Score</b> 
+    </td> 
+    <td class="bodyText" style="background: #eee;"> 
+      561.04 (for 9 correct submissions) 
+    </td> 
+  </tr> 
+
+</tbody></table></blockquote>
+
+<h2>Good offset</h2>
+<p>
+After placing a number of crests in the plane, we don't care much about their absolute positions but about the relative positions between them. Let's formalize a rule to describe if two crests intersect when the relative offset is `(dx,dy)`. In other words, we add `dx` to the `x` coordinate and `dy` to the `y` coordinate of each segment end-point of the original crest to create a copy crest. What determines if `(dx,dy)` causes an overlap?
+</p>
+<p>If `(dx,dy)` causes an overlap, it means that there exists a point `P` in the original crest that intersects with a point in the copy. This point in the copy is is generated by adding `(dx,dy)` to a point in the <i>original</i> crest. In short, there are at least two points `P` and `Q` in the crest  such that `(Q_x + dx, Q_y + dy) = (P_x, P_y)`</p>
+<h2>Set of invalid offsets</h2>
+<p>We can now define how the set `S` of invalid offsets `(dx,dy)` looks like. From each of the possible pairs `(P, Q)` of points that belong to the crest, their difference `(dx,dy) = (P - Q)` makes an invalid offset. `P` and `Q` come from distinct segments of the crest. What we can do is this: For each pair of segments `bar(AB)` and `bar(CD)` in the crest, we pick all pairs `(P,Q)` of points `P in bar(AB)` and `Q in bar(CD)`. The union of all those `P - Q` is the result.</p>
+
+<p>Each pair of  segments `( bar(AB), bar(CD) )` will determine an area of points. `S` is actually the union of all the sets of points determined by each pair of segments.</p>
+<p>Finally, we should imagine what happens when we draw `S` in a plane.  Each valid `(dx,dy)` representing a point. It turns out that the `(dx,dy)` generated by a pair of segments   `( bar(AB), bar(CD) )` will form a parallelogram. First of all, consider that points `A` and `B` are candidates for `P` and `C` and `D` are candidates for `Q`. So the points `{A-C, A-D, B-C, B-D}` are part of the set. We should show that those points are the corners of the parallelogram. Consider parameters `(0 &lt;= s, t &lt;= 1)` such that we can represent the points in `bar(AB)` as any point `P = sA + (1-s)B` and the points in `bar(CD)` as `Q = tC + (1-t)C`. Then for each `(s,t)`, the point `(P - Q = sA + (1-s)B - tC + (1-t)C)` will exist in `S`. From this it will follow that all the points `(s,t)` in a square with coordinates between 0 and 1, inclusive are projected into a parallelogram.</p>
+
+<h2>Infinite or finite?</h2>
+<p>We have learned that the set `S` of invalid `(dx,dy)` pairs we can use for the offset can be calculated as the union of `O(n^2)` parallelograms. How can we use this knowledge to answer the initial question of the problem?</p>
+<ul><li>Imagine the `(0,0)` was inside `S`. This means that there is circle of non-zero radius `r` that contain points `(dx,dy)` that are invalid. This determines a minimum distance between crests. If the distance between   two crests was less or equal to than `r`, an overlap forcibly happen as all points with distance smaller than `r  would overlap with the original crest. Since there is a minimum distance between crests, it is not possible to fill the very large, but finite allocated escape using infinitely many crests.</li>
+
+<li>If `(0,0)` was not inside `S`. Then we should be able to find a line segment starting at `(0,0)` and ending somewhere such that this line segment, does not visit any invalid point. Each of the points in this line segment is valid, and there are infinitely points inside a line segment. Which would mean it is quite possible to make an infinite number of crests.</li>
+<li>A corner case: What if `(0,0)` is inside but not strictly inside? IF `(0,0)` lies exactly on the boundary of the set; We would still be able to draw the above-mentioned line segment that contains an infinite of replies.  
+</li></ul>
+<p>In short, the problem is infinite if and only if `(0,0)` is strictly inside `S`.</p>  
+
+
+<h2>Is the origin strictly inside S?</h2>
+<p>We are given a list of parallelograms and we't like to know if the union of those parallelogram strictly contains the origin.</p>
+<ul><li>If a single parallelogram from the input strictly contains `(0,0)`; We can just return that Yes, the union will strictly contain the origin.</li>
+<li>Similarly, if `(0,0)` is already outside the parallelogram, we should just ignore `(0,0)`.<p></p>
+</li><li><p>A final complication is what happens when `(0,0)` lies exactly on the boundary of a parallelogram; It is key to notice that this doesn't necessarily mean that  `(0,0)` exists only on the boundary of the <i>total</i> union. It is quite possible that, multiple boundaries cover `(0,0)` and cause it to stop being a boundary, for example:</p>
+
+
+<style type="text/css">
+    .overlap595 {
+        width: 595px;
+        min-width: 50%;
+        max-width: 95%;
+    }
+</style>
+<img src="./SRM 604 - TopCoder Wiki_files/overlap.svg" class="overlap595">
+
+<p>The union of the parallelograms that have `(0,0)` in the boundary may still end up containing it strictly inside it. The solution in this case is to consider the angle between the boundary of each of those parallelograms and `(0,0)`. If the boundary angles fill a full circle, `(0,0)` is strictly inside, else it will lie on a boundary.</p>
+</li>
+</ul>
+<h2>Code</h2>
+
+<div><div id="highlighter_271674" class="syntaxhighlighter nogutter  cpp"><div class="toolbar"><span><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="cpp keyword bold">struct</code> <code class="cpp plain">point { </code><code class="cpp color1 bold">int</code> <code class="cpp plain">x,y; };</code></div><div class="line number2 index1 alt1"><code class="cpp keyword bold">const</code> <code class="cpp color1 bold">double</code> <code class="cpp plain">PI = </code><code class="cpp functions bold">acos</code><code class="cpp plain">(-1.0);</code></div><div class="line number3 index2 alt2"><code class="cpp keyword bold">const</code> <code class="cpp color1 bold">double</code> <code class="cpp plain">EPS = 1e-9;</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="cpp comments">// a list of angles</code></div><div class="line number7 index6 alt2"><code class="cpp color1 bold">vector</code> <code class="cpp plain">&lt;</code><code class="cpp color1 bold">pair</code> <code class="cpp plain">&lt;</code><code class="cpp color1 bold">double</code><code class="cpp plain">, </code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt; &gt; v;</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="cpp keyword bold">void</code> <code class="cpp plain">add(</code><code class="cpp color1 bold">double</code> <code class="cpp plain">theta, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">d){</code></div><div class="line number10 index9 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">v.push_back(make_pair(theta, d));</code></div><div class="line number11 index10 alt2"><code class="cpp plain">}</code></div><div class="line number12 index11 alt1">&nbsp;</div><div class="line number13 index12 alt2"><code class="cpp keyword bold">void</code> <code class="cpp plain">add_bad_angle(</code><code class="cpp color1 bold">double</code> <code class="cpp plain">L, </code><code class="cpp color1 bold">double</code> <code class="cpp plain">R){</code></div><div class="line number14 index13 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code><code class="cpp plain">(L &lt; R){</code></div><div class="line number15 index14 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">add(L, 1);</code></div><div class="line number16 index15 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">add(R, -1);</code></div><div class="line number17 index16 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">} </code><code class="cpp keyword bold">else</code> <code class="cpp plain">{</code></div><div class="line number18 index17 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">add(0, 1);</code></div><div class="line number19 index18 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">add(R, -1);</code></div><div class="line number20 index19 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">add(L, 1);</code></div><div class="line number21 index20 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">add(PI, -1);</code></div><div class="line number22 index21 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number23 index22 alt2"><code class="cpp plain">}</code></div><div class="line number24 index23 alt1">&nbsp;</div><div class="line number25 index24 alt2"><code class="cpp comments">// Check angles:</code></div><div class="line number26 index25 alt1"><code class="cpp color1 bold">bool</code> <code class="cpp plain">check(</code><code class="cpp keyword bold">void</code><code class="cpp plain">){</code></div><div class="line number27 index26 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">i,d=0;</code></div><div class="line number28 index27 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">sort(v.begin(),v.end());</code></div><div class="line number29 index28 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">i = 0; i &lt; v.size()-1; i++) {</code></div><div class="line number30 index29 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">d += v[i].second;</code></div><div class="line number31 index30 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(d == 0 &amp;&amp; v[i+1].first &gt; v[i].first + EPS) {</code></div><div class="line number32 index31 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp keyword bold">true</code><code class="cpp plain">;</code></div><div class="line number33 index32 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number34 index33 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number35 index34 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp keyword bold">false</code><code class="cpp plain">;</code></div><div class="line number36 index35 alt1"><code class="cpp plain">}</code></div><div class="line number37 index36 alt2">&nbsp;</div><div class="line number38 index37 alt1"><code class="cpp comments">// Gets the angle between two points.</code></div><div class="line number39 index38 alt2"><code class="cpp color1 bold">double</code> <code class="cpp plain">angle(point P, point Q) {</code></div><div class="line number40 index39 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">double</code> <code class="cpp plain">theta = </code><code class="cpp functions bold">atan2</code><code class="cpp plain">(Q.y - P.y, Q.x - P.x);</code></div><div class="line number41 index40 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(theta &lt; 0.0) {</code></div><div class="line number42 index41 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">theta += PI;</code></div><div class="line number43 index42 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number44 index43 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp plain">theta;</code></div><div class="line number45 index44 alt2"><code class="cpp plain">}</code></div><div class="line number46 index45 alt1">&nbsp;</div><div class="line number47 index46 alt2"><code class="cpp comments">// Returns the sign of the triangle area. It determines if points are in clockwise</code></div><div class="line number48 index47 alt1"><code class="cpp comments">// order, colinear or anti-clockwise order.</code></div><div class="line number49 index48 alt2"><code class="cpp color1 bold">int</code> <code class="cpp plain">area(point P, point Q, point R){</code></div><div class="line number50 index49 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">s = (Q.x - P.x) * (R.y - P.y) - (Q.y - P.y) * (R.x - P.x);</code></div><div class="line number51 index50 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code><code class="cpp plain">(s &gt; 0) </code><code class="cpp keyword bold">return</code> <code class="cpp plain">1;</code></div><div class="line number52 index51 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code><code class="cpp plain">(s &lt; 0) </code><code class="cpp keyword bold">return</code> <code class="cpp plain">-1;</code></div><div class="line number53 index52 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp plain">0;</code></div><div class="line number54 index53 alt1"><code class="cpp plain">}</code></div><div class="line number55 index54 alt2">&nbsp;</div><div class="line number56 index55 alt1"><code class="cpp color1 bold">string</code> <code class="cpp plain">canBeInfinite(</code><code class="cpp color1 bold">vector</code> <code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt; A, </code><code class="cpp color1 bold">vector</code> <code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt; B, </code><code class="cpp color1 bold">vector</code> <code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt; C, </code><code class="cpp color1 bold">vector</code> <code class="cpp plain">&lt;</code><code class="cpp color1 bold">int</code><code class="cpp plain">&gt; D){</code></div><div class="line number57 index56 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">i,j;</code></div><div class="line number58 index57 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number59 index58 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code><code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">i=0; i &lt;A.size(); i++) { </code></div><div class="line number60 index59 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">for</code> <code class="cpp plain">(</code><code class="cpp color1 bold">int</code> <code class="cpp plain">j = 0; j &lt; i; j ++) {</code></div><div class="line number61 index60 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code> <code class="cpp plain">((C[i] - A[i]) * (D[j] - B[j]) == (D[i] - B[i]) * (C[j] - A[j])) {</code></div><div class="line number62 index61 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// strictly outside, ignore this quad.</code></div><div class="line number63 index62 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">continue</code><code class="cpp plain">;</code></div><div class="line number64 index63 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number65 index64 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// Make the quad.</code></div><div class="line number66 index65 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">point V = {A[i], B[i]}, U = {C[i], D[i]}, R = {A[j], B[j]}, S = {C[j], D[j]};</code></div><div class="line number67 index66 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number68 index67 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">s1 = area(V, U, R) * area(V, U, S);</code></div><div class="line number69 index68 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">int</code> <code class="cpp plain">s2 = area(R, S, V) * area(R, S, U);</code></div><div class="line number70 index69 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code><code class="cpp plain">(s1 == 1 || s2 == 1) </code><code class="cpp keyword bold">continue</code><code class="cpp plain">;</code></div><div class="line number71 index70 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code><code class="cpp plain">(s1 != 0 || s2 != 0) {</code></div><div class="line number72 index71 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp comments">// strictly inside.</code></div><div class="line number73 index72 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp string">"Finite"</code><code class="cpp plain">;</code></div><div class="line number74 index73 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number75 index74 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code><code class="cpp plain">(area(V, U, R) == 0) swap(V, S);</code></div><div class="line number76 index75 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code><code class="cpp plain">(area(R, S, U) == 0) swap(V, U);</code></div><div class="line number77 index76 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">if</code><code class="cpp plain">(area(V, U, R) == -1) swap(U, R);</code></div><div class="line number78 index77 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">add_bad_angle(angle(V, R), angle(V, U));</code></div><div class="line number79 index78 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number80 index79 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">}</code></div><div class="line number81 index80 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</div><div class="line number82 index81 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">add(0, 0);</code></div><div class="line number83 index82 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">add(PI, 0);</code></div><div class="line number84 index83 alt1"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp color1 bold">bool</code> <code class="cpp plain">ans = check();</code></div><div class="line number85 index84 alt2"><code class="cpp spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp keyword bold">return</code> <code class="cpp plain">(ans ? </code><code class="cpp string">"Infinite"</code> <code class="cpp plain">: </code><code class="cpp string">"Finite"</code><code class="cpp plain">);</code></div><div class="line number86 index85 alt1"><code class="cpp plain">}</code></div></div></td></tr></tbody></table></div></div>
+
+<p><u>Alternative solutions and additional comments.</u></p>
+<p>&lt;Place your comments here&gt;</p></div>
+<p> 
+<img alt="Author" src="./SRM 604 - TopCoder Wiki_files/vexorian.png" style="width:55px;heigth:61px;border:1px solid #CCCCCC;"> 
+<br><br> 
+By <a class="coderTextYellow" href="https://www.topcoder.com/tc?module=MemberProfile&amp;cr=22652965">vexorian</a><br><br> 
+<i>TopCoder Member</i> 
+</p> 
+
+<table class="grid">
+	    	<tbody><tr>
+        	<th style="padding-right:10px;">Editorial feedback</th>
+			<th>Choose</th>
+    	</tr>
+
+    	        	<tr>
+            	<td style="padding-right:10px;">I liked it.</td>
+            	<td align="center"><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604?&amp;vote.choice=I+liked+it.&amp;ballot.title=Editorial+feedback"><img src="./SRM 604 - TopCoder Wiki_files/check.png" border="0" align="absmiddle" height="16" width="16"></a></td>
+         	</tr>
+    	        	<tr>
+            	<td style="padding-right:10px;">I didn't like it.</td>
+            	<td align="center"><a href="https://apps.topcoder.com/wiki/display/tc/SRM+604?&amp;vote.choice=I+didn%27t+like+it.&amp;ballot.title=Editorial+feedback"><img src="./SRM 604 - TopCoder Wiki_files/check.png" border="0" align="absmiddle" height="16" width="16"></a></td>
+         	</tr>
+    	    </tbody></table>
+ 
+
+
+<!-- Javascript, please leave the following lines unchanged unless you want to modify the whole editorial layout -->
+<script type="text/javascript">var editorialTabs = new Array('FoxAndWord','PowerOfThreeEasy','FoxConnection2','PowerOfThree','FoxConnection','FamilyCrest');</script>
+<link type="text/css" rel="stylesheet" href="./SRM 604 - TopCoder Wiki_files/shCore.css">
+<link type="text/css" rel="stylesheet" href="./SRM 604 - TopCoder Wiki_files/shThemeVx.css">
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/modernizr.js.download"></script>
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/editorialscriptPre.js.download"></script>
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/shCore.js.download"></script>
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/shBrushCpp.js.download"></script>
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/shBrushJava.js.download"></script>
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/shBrushCSharp.js.download"></script>
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/shBrushPython.js.download"></script>
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/shBrushVb.js.download"></script>
+<script type="text/javascript">
+SyntaxHighlighter.defaults['gutter'] = false;
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/MathJax.js.download"></script>
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/MathJax.js(1).download"></script>
+<script type="text/javascript" src="./SRM 604 - TopCoder Wiki_files/editorialscriptPost.js.download"></script>
+                            </div>
+
+                            <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+<rdf:Description
+    rdf:about="http://apps.topcoder.com/wiki/display/tc/SRM+604"
+    dc:identifier="http://apps.topcoder.com/wiki/display/tc/SRM+604"
+    dc:title="SRM 604"
+    trackback:ping="http://apps.topcoder.com/wiki/rpc/trackback/136184562"/>
+</rdf:RDF>
+-->
+
+                                
+                                <!--
+    Root decorator: all decisions about how a page is to be decorated via the
+                    inline decoration begins here.
+-->
+
+
+
+<!--
+    Switch based upon the context. However, for now, just delegate to a decorator
+    identified directly by the context.
+-->
+
+
+    
+    
+
+<div class="wiki-content" style="margin-right:10px;">
+    <p>
+    </p><div class="greybox">
+        <img src="./SRM 604 - TopCoder Wiki_files/comment_16.gif" height="16" width="16" border="0" align="absmiddle">
+                    <a href="https://apps.topcoder.com/wiki/display/tc/SRM+604?showComments=true#comments">11
+                                    Comments
+                            </a>
+                        </div>
+</div>
+
+
+
+                                                            </td>
+
+
+                                                    </tr>
+        </tbody></table>
+
+        
+        </td>
+    </tr>
+</tbody></table>
+
+    
+
+        </td>
+    </tr>
+</tbody>
+</table>
+
+
+<!-- delay the loading of large javascript files to the end so that they don't interfere with the loading of page content -->
+<span style="display: none">
+    <script type="text/javascript" language="JavaScript">var domainName = 'http://apps.topcoder.com/wiki'; var entityId = '136184562'; var spaceKey = 'tc'</script>
+    <script type="text/javascript" language="JavaScript" src="./SRM 604 - TopCoder Wiki_files/labels-javascript"></script>
+    <script>new Ajax.Autocompleter('labelName', 'labelsAutocompleteList', '136184562', { tokens: new Array(',', ' '), dwrFunction: GenerateAutocompleteLabelsListForEntity.autocompleteLabels});</script>
+</span>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody>
+    <tr>
+        <td width="100%" class="footer">
+            <a href="http://www.topcoder.com/" class="footerLinks">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="http://www.topcoder.com/tc?module=Static&amp;d1=about&amp;d2=index" class="footerLinks">About TopCoder</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="http://www.topcoder.com/tc?module=Static&amp;d1=pressroom&amp;d2=index" class="footerLinks">Press Room</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="http://www.topcoder.com/tc?module=Static&amp;d1=about&amp;d2=contactus" class="footerLinks">Contact Us</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="http://www.topcoder.com/tc?module=Static&amp;d1=about&amp;d2=privacy" class="footerLinks">Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="http://www.topcoder.com/tc?module=Static&amp;d1=about&amp;d2=terms" class="footerLinks">Terms</a>
+            <br>
+            <a href="http://www.topcoder.com/tc" class="footerLinks">Developer Center</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="http://www.topcoder.com/corp/?module=Static&amp;d1=corp&amp;d2=index" class="footerLinks">Corporate Services</a>
+        </td>
+    </tr>
+    <tr><td width="100%" class="copyright">Copyright TopCoder, Inc. 2001-<script type="text/javascript">d=new Date();document.write(d.getFullYear());</script>2018</td></tr>
+</tbody>
+</table>
+
+
+
+</body></html>
