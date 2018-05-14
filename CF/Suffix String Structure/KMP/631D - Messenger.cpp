@@ -25,6 +25,7 @@ void kmp() {
         if (t[i] == p[j]) j++;
         if (j == p.size()) {
             cnt++;
+            j = pref[j - 1];
         }
     }
 } */

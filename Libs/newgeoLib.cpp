@@ -36,7 +36,12 @@ double abs(vec a) {
 double dist(vec a, vec b) {
     return hypot(a.x - b.x, a.y - b.y);
 }
-
+double sqVec(vec a) {
+    return (a.x * a.x + a.y * a.y);
+}
+vec unit(vec a) {
+    return (a / abs(a));
+}
 struct line{
     double a, b, c;
 };
@@ -126,4 +131,52 @@ vec rotatewrto(vec p, vec o, double theta) {
 
 bool collinear(vec p, vec q, vec r) {
     return (abs(cross(q - p, r - q)) < eps);
+}
+double side(line &l, vec p) {
+    return (l.a * p.x + l.b * p.y + l.c);
+}
+double sqdistToLine(vec p, line l) {
+    return (side(l, p) * side(l, p) / (sqVec(vec(l.a, l.b))));
+}
+vec lineVec(line l) { // returns the vector parallel to line l
+    return vec(l.b, -l.a);
+}
+vec proj(vec p, line l) { // projection of vec p on line l
+    return (p - (perp(lineVec(l)) * side(l, p) / sqVec(lineVec(l))));
+}
+vec refl(vec p, line &l) { // returns reflection of the point p about line l
+    return (p - (perp(lineVec(l)) * 2 * side(l, p) / sqVec(lineVec(l))));
+}
+double distToLine(vec p, line l, vec &c) {
+    double d = abs(side(l, p)) / (sqrt(l.a * l.a + l.b * l.b));
+    c = proj(p, l);
+    return d;
+}
+
+double distToLine(vec p, vec a, vec b, vec &c) {
+// formula: c = a + u * ab
+    vec ap = p - a, ab = b - a;
+    double u = dot(ap, ab) / norm_sq(ab);
+    c = a + (ab) * u;
+    return dist(p, c);
+} // Euclidean distance between p and c
+// returns the distance from p to the line segment ab defined by
+// two points a and b (still OK if a == b)
+// the closest point is stored in the 4th parameter (byref)
+double distToLineSegment(vec p, vec a, vec b, vec &c) {
+    vec ap = p - a, ab = b - a;
+    double u = dot(ap, ab) / norm_sq(ab);
+    if (u < 0.0) { c = vec(a.x, a.y); // closer to a
+        return dist(p, a); } // Euclidean distance between p and a
+    if (u > 1.0) { c = vec(b.x, b.y); // closer to b
+        return dist(p, b); } // Euclidean distance between p and b
+    return distToLine(p, a, b, c); } // run distToLine as above
+
+int circleLine(vec c, double r, line l, pair<vec, vec> &out) {
+    double h2 = (r * r) - sqdistToLine(c, l);
+    if (h2 < eps) return 0;
+    vec p = proj(c, l);
+    vec h = unit(lineVec(l)) * sqrt(h2);
+    out = {p - h, p + h};
+    return 1 + (h2 > eps);
 }
