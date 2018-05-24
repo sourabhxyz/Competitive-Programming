@@ -1,3 +1,10 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+#define itn int
+#define data dta
+typedef long long int ll;
+typedef pair<int, int> ii;
 const double eps = 1e-8;
 const double pi = 2 * acos(0);
 struct vec {
@@ -18,11 +25,11 @@ struct vec {
     vec operator * (const double &mul) const {
         return vec(x * mul, y * mul);
     }
-    bool operator < (const vec &other) const {
+    bool operator < (const vec &other) const{
         if(abs(x - other.x) > eps) return x < other.x;
         return y < other.y;
     }
-    bool operator == (const vec &other) const {
+    bool operator == (const vec &other) const{
         return (abs(x - other.x) < eps && abs(y - other.y) < eps);
     }
 };
@@ -80,14 +87,10 @@ struct linesegment{
         a = aa; b = bb;
     }
 };
-bool lieson(linesegment l, vec p) { // point 'p' needs to satisfy line equation seperately
+bool lieson(linesegment l, vec p) {
     return (p.x > min(l.a.x, l.b.x) - eps and p.x < max(l.a.x, l.b.x) + eps and p.y > min(l.a.y, l.b.y) - eps and p.y < max(l.a.y, l.b.y) + eps);
 }
-bool liesonWithEq(linesegment &l, vec &p) {
-    return (abs(l.l.a * p.x + l.l.b * p.y + l.l.c) < eps and lieson(l, p));
-}
-bool intersectLineSegWithLine(linesegment l1, line l2) { // Again linesegment could lie completely on line, handle it if required.
-    vec p;
+bool intersectLineSegWithLine(linesegment l1, line l2, vec &p) {
     return (areIntersect(l1.l, l2, p) and lieson(l1, p));
 }
 line abcToLine(double a, double b, double c) {
@@ -118,13 +121,9 @@ double angle(vec a, vec o, vec b)
 double cross(vec a, vec b) { return a.x * b.y - a.y * b.x; }
 // note: to accept collinear points, we have to change the ‘> 0’
 // returns true if point r is on the left side of line pq
-bool ccw(vec p, vec q, vec r) { 
+bool ccw(vec p, vec q, vec r) {
     return cross(q - p, r - q) > 0; }
-/* bool ccw(vec p, vec q, vec r) { // I think this is better
-    double crs = cross(q - p, r - q);
-    if (crs < eps) return 0;
-    return 1;
-} */
+
 vec rotate(vec p, double theta) {
     double rad = theta * pi / 180;
     return vec(p.x * cos(rad) - p.y * sin(rad),
@@ -160,7 +159,7 @@ double distToLine(vec p, line l, vec &c) {
     return d;
 }
 
-double distToLine(vec p, vec a, vec b, vec &c) { // have to take care if a == b
+double distToLine(vec p, vec a, vec b, vec &c) {
 // formula: c = a + u * ab
     vec ap = p - a, ab = b - a;
     double u = dot(ap, ab) / norm_sq(ab);
@@ -170,7 +169,7 @@ double distToLine(vec p, vec a, vec b, vec &c) { // have to take care if a == b
 // returns the distance from p to the line segment ab defined by
 // two points a and b (still OK if a == b)
 // the closest point is stored in the 4th parameter (byref)
-double distToLineSegment(vec p, vec a, vec b, vec &c) { // have to take care if a == b
+double distToLineSegment(vec p, vec a, vec b, vec &c) {
     vec ap = p - a, ab = b - a;
     double u = dot(ap, ab) / norm_sq(ab);
     if (u < 0.0) { c = vec(a.x, a.y); // closer to a
@@ -197,7 +196,7 @@ double perimeter(const vector<vec> &P) {
         result += dist(P[i], P[i+1]);
     return result; }
 
-double areap(const vector<vec> &P) { // Either concave or convex
+double areap(const vector<vec> &P) {
     double result = 0.0, x1, y1, x2, y2;
     for (int i = 0; i < (int)P.size()-1; i++) {
         x1 = P[i].x; x2 = P[i+1].x;
@@ -214,8 +213,7 @@ bool isConvex(const vector<vec> &P) { // returns true if all three
             return false; // different sign -> this polygon is concave
     return true; } // this polygon is convex
 // line segment p-q intersect with line A-B.
-vec lineIntersectSeg(vec p, vec q, vec A, vec B) { // same as intersection of a segment with line, p, q denotes endpoints of the segments and a, b deontes
-    // point for line. Works only if we are sure that they intersect.
+vec lineIntersectSeg(vec p, vec q, vec A, vec B) {
     double a = B.y - A.y;
     double b = A.x - B.x;
     double c = B.x * A.y - A.x * B.y;
@@ -224,18 +222,23 @@ vec lineIntersectSeg(vec p, vec q, vec A, vec B) { // same as intersection of a 
     return vec((p.x * v + q.x * u) / (u+v), (p.y * v + q.y * u) / (u+v)); }
 // cuts polygon Q along the line formed by point a -> point b
 // (note: the last point must be the same as the first point)
-vector<vec> cutPolygon(vec a, vec b, const vector<vec> &Q) { // Works only for convex polygon
+vector<vec> cutPolygon(vec a, vec b, const vector<vec> &Q) {
     vector<vec> P;
+    line l;
+    vecsToLine(a, b, l);
     for (int i = 0; i < (int)Q.size(); i++) {
         double left1 = cross(b - a, Q[i] - a), left2 = 0;
         if (i != (int)Q.size()-1) left2 = cross(b - a, Q[i + 1] - a);
-        if (left1 > -eps) P.push_back(Q[i]); // Q[i] is on the left of ab
-        if (left1 * left2 < -eps) // edge (Q[i], Q[i+1]) crosses line ab
-            P.push_back(lineIntersectSeg(Q[i], Q[i+1], a, b));
+        if (left1 * left2 < -eps) {// edge (Q[i], Q[i+1]) crosses line ab
+            vec p;
+            line l2;
+            vecsToLine(Q[i], Q[i + 1], l2);
+            areIntersect(l, l2, p);
+            P.push_back(p);
+        }
     }
-    if (!P.empty() && !(P.back() == P.front()))
-        P.push_back(P.front()); // make P’s first point = P’s last point
-    return P; }
+    return P;
+}
 bool circle2PtsRad(vec p1, vec p2, double r, vec &c) {
     double d2 = (p1.x - p2.x) * (p1.x - p2.x) +
                 (p1.y - p2.y) * (p1.y - p2.y);
@@ -245,7 +248,7 @@ bool circle2PtsRad(vec p1, vec p2, double r, vec &c) {
     c.x = (p1.x + p2.x) * 0.5 + (p1.y - p2.y) * h;
     c.y = (p1.y + p2.y) * 0.5 + (p2.x - p1.x) * h;
     return true; } // to get the other center, reverse p1 and p2
-bool insideoronpolygon(vector<vec> poly, vec tochk) { // Works only for convex polygon
+bool insideoronpolygon(vector<vec> poly, vec tochk) {
     double polya = areap(poly);
     double areacmp = 0;
     for(int i = 0; i < poly.size() - 1; i++) {
@@ -254,24 +257,87 @@ bool insideoronpolygon(vector<vec> poly, vec tochk) { // Works only for convex p
     }
     return abs(polya - areacmp) < eps;
 }
-bool inPolygon(vec pt, const vector<vec> &P) { // Works for both convex and concave. It implements
-// winding number algorithm
-    if ((int)P.size() == 0) return false;
-    double sum = 0; // assume the first vertex is equal to the last vertex
-    for (int i = 0; i < (int)P.size()-1; i++) {
-        if (ccw(pt, P[i], P[i+1]))
-            sum += angle(P[i], pt, P[i+1]); // left turn/ccw
-        else sum -= angle(P[i], pt, P[i+1]); } // right turn/cw
-    return fabs(fabs(sum) - 2*pi) < eps; }
-bool inPolygonOrOn(vec pt, const vector<vec> &P) { // Works for both convex and concave
-// polygon. Also accepts if the point lies on boundary 
-    if (inPolygon(pt, P)) return true;
-    if ((int)P.size() == 0) return false;
-    if (P.size() <= 3) return false;
-    for (int i = 0; i < P.size() - 1; i++) {
-        vec a = P[i], b = P[i + 1];
-        linesegment l(a, b);
-        if (liesonWithEq(l, pt)) return true;
+vec pivot(0, 0);
+bool angleCmp(vec a, vec b) { // angle-sorting function
+    if (collinear(pivot, a, b)) // special case
+        return dist(pivot, a) < dist(pivot, b); // check which one is closer
+    double d1x = a.x - pivot.x, d1y = a.y - pivot.y;
+    double d2x = b.x - pivot.x, d2y = b.y - pivot.y;
+    return (atan2(d1y, d1x) - atan2(d2y, d2x)) < 0; } // compare two angles
+vector<vec> CH1(vector<vec> P) { // the content of P may be reshuffled
+    int i, j, n = (int)P.size();
+    if (n <= 3) {
+        if (!(P[0] == P[n-1])) P.push_back(P[0]); // safeguard from corner case
+        return P; } // special case, the CH is P itself
+// first, find P0 = point with lowest Y and if tie: rightmost X
+    int P0 = 0;
+    for (i = 1; i < n; i++)
+        if (P[i].y < P[P0].y || (P[i].y == P[P0].y && P[i].x > P[P0].x))
+            P0 = i;
+    vec temp = P[0]; P[0] = P[P0]; P[P0] = temp; // swap P[P0] with P[0]
+// second, sort points by angle w.r.t. pivot P0
+    pivot = P[0]; // use this global variable as reference
+    sort(++P.begin(), P.end(), angleCmp); // we do not sort P[0]
+// third, the ccw tests
+    vector<vec> S;
+    S.push_back(P[n-1]); S.push_back(P[0]); S.push_back(P[1]); // initial S
+    i = 2; // then, we check the rest
+    while (i < n) { // note: N must be >= 3 for this method to work
+        j = (int)S.size()-1;
+        if (ccw(S[j-1], S[j], P[i])) S.push_back(P[i++]); // left turn, accept
+        else S.pop_back(); } // or pop the top of S until we have a left turn
+    return S; } // return the result
+
+int n, m;
+vector<vec> polygon;
+int main() {
+//    ios::sync_with_stdio(false);
+//    cin.tie(nullptr);
+    freopen("ina.txt", "r", stdin);
+    freopen("outa.txt", "w", stdout);
+    cout << fixed << setprecision(8);
+    cin >> n >> m;
+    polygon.resize(n);
+    for (int i = 0; i < n; i++) {
+        cin >> polygon[i].x >> polygon[i].y;
     }
-    return false;
+    vector<vec> apol = CH1(polygon);
+    for (int i = 0; i < m; i++) {
+        vec a, b;
+        cin >> a.x >> a.y >> b.x >> b.y;
+        line l;
+        vecsToLine(a, b, l);
+        double ans = 0;
+        bool found = false;
+        for (int j = 0; j < apol.size() - 1 and !found; j++) {
+            vec pa, pb;
+            pa = apol[j], pb = apol[j + 1];
+            line pl;
+            vecsToLine(pa, pb, pl);
+            if (areSame(l, pl)) {
+                found = true;
+                ans = dist(pa, pb);
+            }
+        }
+        if (found) {
+            cout << ans << "\n";
+            continue;
+        }
+        vector<vec> cut;
+        for (int j = 0; j < apol.size() - 1; j++) {
+            linesegment l2(apol[j], apol[j + 1]);
+            vec p;
+            if (intersectLineSegWithLine(l2, l, p)) {
+                cut.push_back(p);
+            }
+        }
+        sort(cut.begin(), cut.end());
+        auto it = unique(cut.begin(), cut.end());
+        cut.resize(distance(cut.begin(), it));
+        if (cut.size() == 2) {
+            ans = dist(cut[0], cut[1]);
+        }
+        cout << ans << "\n";
+    }
 }
+

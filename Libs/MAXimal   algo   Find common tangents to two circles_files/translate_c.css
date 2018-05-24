@@ -1,0 +1,39 @@
+/* AUTHOR */
+
+
+
+.cpp {border: 1px dotted #a0a0a0; font-family: "Courier New",Courier,monospace; background-color: #f0f0f0; color: #0000bb}
+.cpp .de1, .cpp .de2 {font-weight: normal; background: transparent; color: #000000; padding-left: 5px}
+.cpp .kw1 {color: #a1a100}
+.cpp .kw2 {color: #000000; font-weight: bold}
+.cpp .kw3 {color: #000066}
+.cpp .kw4 {color: #f63333}
+.cpp .co1, .cpp .co2, .cpp .coMULTI {color: #808080}
+.cpp .es0 {color: #000033; font-weight: bold}
+.cpp .br0 {color: #66cc66}
+.cpp .st0 {color: #ff0000}
+.cpp .nu0 {color: #ff33ff}
+.cpp .me0 {color: #006600}
+.java .de1, .java .de2 {color: #000060; font-weight: normal}
+.java {border: 1px dotted #a0a0a0; font-family: "Courier New",Courier,monospace; font-size: 110%; background-color: #f0f0f0; margin: 0; line-height: 110%; padding: 0; color: #0000bb}
+.java .head {font-family: Verdana,Arial,sans-serif; color: #808080; font-size: 70%; font-weight: bold; background-color: #f0f0ff; border-bottom: 1px solid #d0d0d0; padding: 2px}
+.java .foot {font-family: Verdana,Arial,sans-serif; color: #808080; font-size: 70%; font-weight: bold; background-color: #f0f0ff; border-top: 1px solid #d0d0d0; padding: 2px}
+.java .imp {font-weight: bold; color: #ff0000}
+.java li, .java .li1 {font-family: "Courier New",Courier,monospace; color: #000060; background-color: #e0e0e0; padding-bottom: 2px}
+.java .ln {width: 1px; text-align: right; margin: 0; padding: 0 2px; vertical-align: top}
+.java .li2 {font-weight: bold; color: #000090; line-height: 90%}
+.java .kw1 {color: #a1a100}
+.java .kw2 {color: #000000; font-weight: bold}
+.java .kw3 {color: #000066}
+.java .kw4 {color: #f63333}
+.java .co1, .java .co2, .java .co3, .java .coMULTI {color: #808080}
+.java .es0 {color: #000033; font-weight: bold}
+.java .br0 {color: #66cc66}
+.java .sy0 {color: #339933}
+.java .st0 {color: #ff0000}
+.java .nu0 {color: #ff33ff}
+.java .me0 {color: #006600}
+.java .me1 {color: #006633}
+.java .me2 {color: #006633}
+.java .me {}
+.java span.xtra {display: block}

@@ -84,7 +84,7 @@ int main() {
 	c.resize (n*3);
 	for (size_t i=0; i+1<xs.size(); ++i) {
 		double x1 = xs[i],  x2 = xs[i+1]; // Getting our vertical region
-		size_t csz = 0;
+		size_t csz = 0; // initialised each time to zero
 		for (size_t j=0; j<a.size(); ++j)
 			if (a[j].x1 != a[j].x2) // Verticle lines (segments) are ignored
 				if (a[j].x1 <= x1+EPS && a[j].x2 >= x2-EPS) { // i.e. segment intersect the region
