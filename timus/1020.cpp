@@ -1,4 +1,9 @@
-const double eps = 1e-8;
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef long long int ll;
+const double eps = 1e-11;
 const double pi = 2 * acos(0);
 struct vec {
     double x, y;
@@ -118,7 +123,7 @@ double angle(vec a, vec o, vec b)
 double cross(vec a, vec b) { return a.x * b.y - a.y * b.x; }
 // note: to accept collinear points, we have to change the ‘> 0’
 // returns true if point r is on the left side of line pq
-bool ccw(vec p, vec q, vec r) { 
+bool ccw(vec p, vec q, vec r) {
     return cross(q - p, r - q) > 0; }
 /* bool ccw(vec p, vec q, vec r) { // I think this is better
     double crs = cross(q - p, r - q);
@@ -264,7 +269,7 @@ bool inPolygon(vec pt, const vector<vec> &P) { // Works for both convex and conc
         else sum -= angle(P[i], pt, P[i+1]); } // right turn/cw
     return fabs(fabs(sum) - 2*pi) < eps; }
 bool inPolygonOrOn(vec pt, const vector<vec> &P) { // Works for both convex and concave
-// polygon. Also accepts if the point lies on boundary 
+// polygon. Also accepts if the point lies on boundary
     if (inPolygon(pt, P)) return true;
     if ((int)P.size() == 0) return false;
     if (P.size() <= 3) return false;
@@ -275,28 +280,35 @@ bool inPolygonOrOn(vec pt, const vector<vec> &P) { // Works for both convex and 
     }
     return false;
 }
-/* Polar sort function, useful to handle questions like: The are N points on the plane (N is even). 
-No three points belong to the same strait line. Your task is to select two points in such a way, 
-that strait line they belong to divides the set of points into two equal-sized parts.
-Answer to this is simply, run polar sort, output data[0].second and data[n / 2].second */
-/* Assumptions: No three points lie on a straight line */
-/*typedef pair<vec, int> pvi;
-vec pivot(0, 0);
-bool angleCmp(pvi a, pvi b) { // angle-sorting function
-    double d1x = a.first.x - pivot.x, d1y = a.first.y - pivot.y;
-    double d2x = b.first.x - pivot.x, d2y = b.first.y - pivot.y;
-    return (atan2(d1y, d1x) - atan2(d2y, d2x)) < 0; } // compare two angles
-void polarSort(vector<pvi> &P) { // the content of P may be reshuffled
-    int i, n = (int)P.size();
-    if (n <= 2) { return; }
-// first, find P0 = point with lowest Y and if tie: rightmost X
-    int P0 = 0;
-    for (i = 1; i < n; i++)
-        if (P[i].first.y < P[P0].first.y || (P[i].first.y == P[P0].first.y && P[i].first.x > P[P0].first.x))
-            P0 = i;
-    swap(P[P0], P[0]);
-// second, sort points by angle w.r.t. pivot P0
-    pivot = P[0].first; // use this global variable as reference
-    sort(++P.begin(), P.end(), angleCmp); // we do not sort P[0]
-    return;
-}*/
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    // freopen("inc.txt", "r", stdin);
+    // freopen("outc.txt", "w", stdout);
+    cout << fixed << setprecision(2);
+    int n;
+    cin >> n;
+    vector<vec> pol(n);
+    double r;
+    cin >> r;
+    for (int i = 0; i < n; i++) {
+        cin >> pol[i].x >> pol[i].y;
+    }
+    if (n == 1) {
+        cout << 2 * pi * r;
+        return 0;
+    } else if (n == 2) {
+        cout << (2 * dist(pol[0], pol[1])) + (2 * pi * r);
+        return 0;
+    }
+    double ans = 0;
+    for (int i = 0; i < n; i++) {
+        vec oa = (pol[(i - 1 + n) % n] - pol[i]);
+        vec ob = (pol[(i + 1) % n] - pol[i]);
+        double ang = acos((dot(oa, ob) / (abs(oa) * abs(ob))));
+        ang = pi - ang;
+        ans += r * ang;
+        ans += dist(pol[i], pol[(i + 1) % n]);
+    }
+    cout << ans << "\n";
+}

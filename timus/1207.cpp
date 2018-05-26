@@ -1,5 +1,10 @@
-const double eps = 1e-8;
-const double pi = 2 * acos(0);
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef long long int ll;
+const double eps = 1e-9;
+const double pi = acos(-1);
 struct vec {
     double x, y;
     vec () {}
@@ -118,7 +123,7 @@ double angle(vec a, vec o, vec b)
 double cross(vec a, vec b) { return a.x * b.y - a.y * b.x; }
 // note: to accept collinear points, we have to change the ‘> 0’
 // returns true if point r is on the left side of line pq
-bool ccw(vec p, vec q, vec r) { 
+bool ccw(vec p, vec q, vec r) {
     return cross(q - p, r - q) > 0; }
 /* bool ccw(vec p, vec q, vec r) { // I think this is better
     double crs = cross(q - p, r - q);
@@ -264,7 +269,7 @@ bool inPolygon(vec pt, const vector<vec> &P) { // Works for both convex and conc
         else sum -= angle(P[i], pt, P[i+1]); } // right turn/cw
     return fabs(fabs(sum) - 2*pi) < eps; }
 bool inPolygonOrOn(vec pt, const vector<vec> &P) { // Works for both convex and concave
-// polygon. Also accepts if the point lies on boundary 
+// polygon. Also accepts if the point lies on boundary
     if (inPolygon(pt, P)) return true;
     if ((int)P.size() == 0) return false;
     if (P.size() <= 3) return false;
@@ -275,12 +280,8 @@ bool inPolygonOrOn(vec pt, const vector<vec> &P) { // Works for both convex and 
     }
     return false;
 }
-/* Polar sort function, useful to handle questions like: The are N points on the plane (N is even). 
-No three points belong to the same strait line. Your task is to select two points in such a way, 
-that strait line they belong to divides the set of points into two equal-sized parts.
-Answer to this is simply, run polar sort, output data[0].second and data[n / 2].second */
 /* Assumptions: No three points lie on a straight line */
-/*typedef pair<vec, int> pvi;
+typedef pair<vec, int> pvi;
 vec pivot(0, 0);
 bool angleCmp(pvi a, pvi b) { // angle-sorting function
     double d1x = a.first.x - pivot.x, d1y = a.first.y - pivot.y;
@@ -299,4 +300,20 @@ void polarSort(vector<pvi> &P) { // the content of P may be reshuffled
     pivot = P[0].first; // use this global variable as reference
     sort(++P.begin(), P.end(), angleCmp); // we do not sort P[0]
     return;
-}*/
+}
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+     //freopen("inc.txt", "r", stdin);
+     //freopen("outc.txt", "w", stdout);
+    cout << fixed << setprecision(3);
+    int n;
+    cin >> n;
+    vector<pair<vec, int> > data(n);
+    for (int i = 0; i < n; i++) {
+        cin >> data[i].first.x >> data[i].first.y;
+        data[i].second = i + 1;
+    }
+    polarSort(data);
+    cout << data[0].second << " " << data[n / 2].second << "\n";
+}
