@@ -18,6 +18,9 @@ void solve() {
             tot = t + max(tot, ferr[i]);
         }
         cout << tot - t / 2 << " " << (m + n - 1) / n << "\n";
+        /* Not starting first with i = min(n, m) - 1 and then in the end process the i % n will not give
+         * the correct answer. To see this, see test case 2 of sample input.
+         */
     }
 }
 

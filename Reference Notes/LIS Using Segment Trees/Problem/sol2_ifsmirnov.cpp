@@ -69,12 +69,12 @@ void solve() {
 //     forn(i, n) cout << c[i] << " "; cout << endl;
 
     forn(i, n) if (b[i] + c[i] == mx + 1) {
-        ++f[b[i]];
+        ++f[c[i]]; // could also be instead b
         buf[i] = '2';
     } else {
         buf[i] = '1';
     }
-    forn(i, n) if (b[i] + c[i] == mx + 1 && f[b[i]] == 1) {
+    forn(i, n) if (b[i] + c[i] == mx + 1 && f[c[i]] == 1) { // could also be instead b
         buf[i] = '3';
     }
     printf("%s\n", buf);
