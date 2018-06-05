@@ -66,6 +66,8 @@ int main() {
 
 	vector<point> b;
 	b.reserve (n*n*3);
+	// Number of distinct intersection points can be atmost (3 * n * n), as an example, take just 
+	// 2 inverted triangles
 	for (size_t i=0; i<a.size(); ++i)
 		for (size_t j=i+1; j<a.size(); ++j)
 			intersect (a[i], a[j], b); // Getting all the segment intersection points
@@ -77,7 +79,8 @@ int main() {
 	// vertical strip where which we will get a trapezoid since there would be by definition no 
 	// intersections in this region.
 	xs.erase (unique (xs.begin(), xs.end(), &eq), xs.end()); // Having only unique points
-
+	// as different intersection points can have the same x coordinate
+	// Maybe it would have been better to define the equality operator in the struct point
 	double res = 0;
 	vector<char> used (n);
 	vector<int> cc (n*3);
@@ -92,7 +95,7 @@ int main() {
 					cc[csz] = (int)csz;
 					c[csz++] = it;
 				}
-		sort (cc.begin(), cc.begin()+csz, &cmp_y1_y2);
+		sort (cc.begin(), cc.begin()+csz, &cmp_y1_y2); // y1 will always be the left y intersection.
 		double add_res = 0;
 		for (size_t j=0; j<csz; ) {
 			item lower = c[cc[j++]];
@@ -100,6 +103,9 @@ int main() {
 			int cnt = 1;
 			while (cnt && j<csz) {
 				char &cur = used[c[cc[j++]].triangle_id]; // Notice that it is &cur
+				// clearly for any closed figure, if there is one segment crossing some x region, 
+				// there will exist other one crossing the same x region, so our aim is to 
+				// get the topmost and the bottom most of such segments
 				cur = !cur;
 				if (cur)  ++cnt;  else  --cnt;
 			}

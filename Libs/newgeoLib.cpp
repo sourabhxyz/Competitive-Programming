@@ -55,7 +55,34 @@ void vecsToLine(vec p1, vec p2, line &l) {
         l.c = -(double)(l.a * p1.x) - p1.y;
     }
 }
-
+line abcToLine(double a, double b, double c) {
+    if (abs(b) < eps) {
+        double temp = a;
+        a = 1;
+        c /= temp;
+    } else {
+        double temp = b;
+        b = 1;
+        a /= temp;
+        c /= temp;
+    }
+    line l;
+    l.a = a; l.b = b; l.c = c;
+    return l;
+}
+void reduce(line &l) {
+    if (abs(l.b) < eps) {
+        double temp = l.a;
+        l.a = 1;
+        l.c /= temp;
+    } else {
+        double temp = l.b;
+        l.b = 1;
+        l.a /= temp;
+        l.c /= temp;
+    }
+    return;
+}
 bool areParallel(line l1, line l2) { // check coefficients a & b
     return (fabs(l1.a-l2.a) < eps) && (fabs(l1.b-l2.b) < eps); }
 bool areSame(line l1, line l2) { // also check coefficient c
@@ -90,21 +117,7 @@ bool intersectLineSegWithLine(linesegment l1, line l2) { // Again linesegment co
     vec p;
     return (areIntersect(l1.l, l2, p) and lieson(l1, p));
 }
-line abcToLine(double a, double b, double c) {
-    if (abs(b) < eps) {
-        double temp = a;
-        a = 1;
-        c /= temp;
-    } else {
-        double temp = b;
-        b = 1;
-        a /= temp;
-        c /= temp;
-    }
-    line l;
-    l.a = a; l.b = b; l.c = c;
-    return l;
-}
+
 
 double dot(vec a, vec b)
 { return (a.x * b.x + a.y * b.y); }
@@ -197,7 +210,7 @@ double perimeter(const vector<vec> &P) {
         result += dist(P[i], P[i+1]);
     return result; }
 
-double areap(const vector<vec> &P) { // Either concave or convex
+double areap(const vector<vec> &P) { // Either concave or convex, P[0] = P[n - 1]
     double result = 0.0, x1, y1, x2, y2;
     for (int i = 0; i < (int)P.size()-1; i++) {
         x1 = P[i].x; x2 = P[i+1].x;

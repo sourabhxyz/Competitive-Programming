@@ -18,16 +18,16 @@ int main() {
   auto good = [&](long long mask) {
     vector<vector<int>> dp(n + 1, vector<int>(k + 1, 0));
     dp[0][0] = 1;
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < k; j++) {
-        if (!dp[i][j]) {
+    for (int i = 1; i <= n; i++) {
+      for (int j = 1; j <= k; j++) {
+        if (!dp[i - 1][j - 1]) {
           continue;
         }
         long long cur = 0;
-        for (int t = i; t < n; t++) {
+        for (int t = i - 1; t < n; t++) {
           cur += a[t];
           if ((cur & mask) == mask) {
-            dp[t + 1][j + 1] = 1;
+            dp[t + 1][j] = 1;
           }
         }
       }

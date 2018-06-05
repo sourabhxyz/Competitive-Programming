@@ -43,6 +43,9 @@ int main() {
     p.erase (p.begin());
     --n;
     vector<frac> a (n);
+    /* The way we have chosen zero_id, slope -inf is not possible. And since points are in CCW direction, 
+    slope will form and increasing sequence in vector a
+    */
     for (int i=0; i<n; ++i) {
         a[i].y = p[i].y - zero.y;
         a[i].x = p[i].x - zero.x;
@@ -65,7 +68,8 @@ int main() {
                 if (it != a.end() && it != a.begin()) {
                     int p1 = int (it - a.begin());
                     if (sq (p[p1], p[p1-1], q) <= 0) // just check here whether the point lies on 
-                        // triangle (zero, p[p1 - 1], p[p1]) or not
+                        // triangle (zero, p[p1 - 1], p[p1]) or not, so replace this with your 
+                        // function. 
                         in = true;
                 }
             }
