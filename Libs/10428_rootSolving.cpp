@@ -91,7 +91,7 @@ struct Polynomial {
     bool operator != (const Polynomial &other) {
         if (deg != other.deg) return true;
         for (int i = deg; i >= 0; i--) {
-            if (coef[i] != other.coef[i]) return true;
+            if (abs(coef[i] - other.coef[i]) > eps) return true; 
         }
         return false;
     }
