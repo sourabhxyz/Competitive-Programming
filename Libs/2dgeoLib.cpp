@@ -29,7 +29,7 @@ struct vec {
         return (abs(x - other.x) < eps && abs(y - other.y) < eps);
     }
 };
-ostream& operator<<(ostream& os, vec p) { 
+ostream& operator<<(ostream& os, vec p) {
 	if (abs(p.x) < eps) p.x = 0.000;
 	if (abs(p.y) < eps) p.y = 0.000;
     return os << "("<< p.x << "," << p.y << ")";
@@ -461,7 +461,7 @@ vector<vec> cutPolygon(vec a, vec b, const vector<vec> &Q) { // Works only for c
     }
     if (!P.empty() && !(P.back() == P.front()))
         P.push_back(P.front()); // make P’s first point = P’s last point
-    return P; 
+    return P;
 }
 
 bool insideoronpolygon(vector<vec> poly, vec tochk) { // Works only for convex polygon
@@ -522,3 +522,13 @@ void polarSort(vector<pvi> &P) { // the content of P may be reshuffled
 /* ------------------------------------------------------------------
  * ------------polygon library ends ---------------------------------
  */
+// continuation from the earlier part
+// third, the ccw tests
+vector<point> S;
+S.push_back(P[n-1]); S.push_back(P[0]); S.push_back(P[1]); // initial S
+i = 2; // then, we check the rest
+while (i < n) { // note: N must be >= 3 for this method to work
+j = (int)S.size()-1;
+if (ccw(S[j-1], S[j], P[i])) S.push_back(P[i++]); // left turn, accept
+else S.pop_back(); } // or pop the top of S until we have a left turn
+return S; } // return the resul
