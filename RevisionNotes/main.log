@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.8)  10 DEC 2018 14:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.8)  10 DEC 2018 17:58
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -816,12 +816,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
  []
 
-<sumgraph.png, id=98, 893.13675pt x 320.397pt>
+<sumgraph.png, id=138, 893.13675pt x 320.397pt>
 File: sumgraph.png Graphic file (type png)
 <use sumgraph.png>
 Package pdftex.def Info: sumgraph.png  used on input line 131.
 (pdftex.def)             Requested size: 275.9837pt x 99.00426pt.
-<sgth.png, id=100, 885.90974pt x 72.27pt>
+<sgth.png, id=140, 885.90974pt x 72.27pt>
 File: sgth.png Graphic file (type png)
 <use sgth.png>
 Package pdftex.def Info: sgth.png  used on input line 132.
@@ -857,7 +857,19 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
  (./_minted-main/CEE7DAFF9BB6FDAF46770203D1C551D2504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
- (./_minted-main/053865CEAF6A1057D968E5E4837DD313504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+ (./_minted-main/C4B0F0980E9978BE24FCF2D08E199969504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+\openout3 = `main.pyg'.
+
+ (./_minted-main/5C977A84B73E8DC982E0745E0FF443B9504A7AF0CD3BAA7542030FC560DFCC45.pygtex [2])
+\openout3 = `main.pyg'.
+
+ (./_minted-main/4DB5049FA1EBB4C0008D6452EE9FEAE2504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+\openout3 = `main.pyg'.
+
+ (./_minted-main/053865CEAF6A1057D968E5E4837DD313504A7AF0CD3BAA7542030FC560DFCC45.pygtex
+Underfull \vbox (badness 1590) has occurred while \output is active []
+
+)
 \openout3 = `main.pyg'.
 
  (./_minted-main/37C9E8249C4B537E53CFB2447577F90F504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
@@ -867,12 +879,12 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
 \openout3 = `main.pyg'.
 
  (./_minted-main/B5B046D9215E9B2B521CDB12AD216D0F504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-Underfull \hbox (badness 1424) in paragraph at lines 192--193
+Underfull \hbox (badness 1424) in paragraph at lines 342--343
 \OT1/cmr/m/n/8 all of them are palin-dromes in $\OML/cmm/m/it/8 O\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 n[]\OT1/cmr/m/n/8 )$ or in $\OML/cmm/m/it/8 O\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 n[]\OT1/cmr/m/n/8 )$ by us-ing dp
  []
 
 
-Underfull \hbox (badness 1009) in paragraph at lines 192--193
+Underfull \hbox (badness 1009) in paragraph at lines 342--343
 \OT1/cmr/m/n/8 ($\OML/cmm/m/it/8 dp\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 startpos\OT1/cmr/m/n/8 ][\OML/cmm/m/it/8 endpos\OT1/cmr/m/n/8 ] = (\OML/cmm/m/it/8 s\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 startpos\OT1/cmr/m/n/8 ] == \OML/cmm/m/it/8 s\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 endpos\OT1/cmr/m/n/8 ]&&\OML/cmm/m/it/8 dp\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 startpos \OT1/cmr/m/n/8 +
  []
 
@@ -884,69 +896,87 @@ Underfull \hbox (badness 1009) in paragraph at lines 192--193
  (./_minted-main/BDCEE672E0111AFD013CB828AA4D8418504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
- (./_minted-main/9C82A3CEB051934C1662C33AA35BDC1E504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+ (./_minted-main/9C82A3CEB051934C1662C33AA35BDC1E504A7AF0CD3BAA7542030FC560DFCC45.pygtex [3])
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 270.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 420.
 
 \openout3 = `main.pyg'.
 
 (./_minted-main/DC235FE0152B9EEE63AA7528D3ACB193504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-LaTeX Font Info:    Try loading font information for LUC+uhcmj on input line 292.
+LaTeX Font Info:    Try loading font information for LUC+uhcmj on input line 442.
  (d:/texlive/2018/texmf-dist/tex/latex/kotex-utf/lucuhcmj.fd
 File: lucuhcmj.fd 2013/09/26 UHC Myeongjo font definitions
 )
 \openout3 = `main.pyg'.
 
- (./_minted-main/3525FFBC42238146410284D55056FE21504A7AF0CD3BAA7542030FC560DFCC45.pygtex [2])
+ (./_minted-main/3525FFBC42238146410284D55056FE21504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
  (./_minted-main/B166F42D22D9D4883E6A3F8A46910826504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<palsub.png, id=149, 759.43726pt x 386.04225pt>
+\openout3 = `main.pyg'.
+
+ (./_minted-main/91342119C672C39E1A407939592D84F0504A7AF0CD3BAA7542030FC560DFCC45.pygtex [4]
+LaTeX Font Info:    Try loading font information for LUC+nanumgt on input line 53.
+ (d:/texlive/2018/texmf-dist/tex/latex/nanumtype1/lucnanumgt.fd
+File: lucnanumgt.fd 2013/02/12 v0.1 Nanum Gothic font definitions
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6])
+<palsub.png, id=217, 759.43726pt x 386.04225pt>
 File: palsub.png Graphic file (type png)
 <use palsub.png>
-Package pdftex.def Info: palsub.png  used on input line 352.
+Package pdftex.def Info: palsub.png  used on input line 825.
 (pdftex.def)             Requested size: 275.99292pt x 140.29457pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--353
+Underfull \hbox (badness 10000) in paragraph at lines 825--826
 [][]\OT1/cmr/m/n/8 Queries for the num-ber of palin-dromic sub-strings within
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 352--353
+Underfull \hbox (badness 2809) in paragraph at lines 825--826
 \OT1/cmr/m/n/8 given range[], []\OT1/cmr/bx/n/8 See this soln to see power of hash-ing.[]\OT1/cmr/m/n/8 :
  []
 
 
-Overfull \hbox (22.00151pt too wide) in paragraph at lines 352--353
+Overfull \hbox (22.00151pt too wide) in paragraph at lines 825--826
 [] 
  []
 
 
 AED: lastpage setting LastPage
-[3 <./palsub.PNG>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 356.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 356.
+[7
+
+ <./palsub.PNG>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 829.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 829.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 356.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 356.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 829.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 829.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 3D654D3119265EDC14B92FBCAC15A78A;1204.
+(rerunfilecheck)             Checksum: 880BB982D80F3B6A6EF50A6289FC5C76;1808.
 runsystem(del main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 21417 strings out of 492639
- 399869 string characters out of 6133088
- 545018 words of memory out of 5000000
- 24776 multiletter control sequences out of 15000+600000
- 14175 words of font info for 52 fonts, out of 8000000 for 9000
+ 21474 strings out of 492639
+ 401889 string characters out of 6133088
+ 548584 words of memory out of 5000000
+ 24805 multiletter control sequences out of 15000+600000
+ 14469 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,54p,958b,595s stack positions out of 5000i,500n,10000p,200000b,80000s
-<d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/uhc/umj/umj01.pfb>
-Output written on main.pdf (3 pages, 311426 bytes).
+ 55i,11n,54p,1061b,736s stack positions out of 5000i,500n,10000p,200000b,80000s
+<d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/nanumtype1/nanumgtm22.pfb><d:/texlive/2018/texmf-dist/fonts/type1/uhc/umj/umj01.pfb>
+Output written on main.pdf (7 pages, 388453 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 181 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 172 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 301 PDF objects out of 1000 (max. 8388607)
+ 265 compressed objects within 3 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 236 words of extra memory for PDF output out of 10000 (max. 10000000)
 
