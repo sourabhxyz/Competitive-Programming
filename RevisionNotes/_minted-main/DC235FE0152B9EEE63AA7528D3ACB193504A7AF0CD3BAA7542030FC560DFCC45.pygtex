@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{prefix\PYGZus{}function}\PYG{p}{(}\PYG{n}{string} \PYG{o}{\PYGZam{}}\PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// O(n)}
+    \PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{s}\PYG{p}{.}\PYG{n}{length}\PYG{p}{();}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{pi}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{n}{pi}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{];}
+        \PYG{k}{while} \PYG{p}{(}\PYG{n}{j} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{s}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])}
+            \PYG{n}{j} \PYG{o}{=} \PYG{n}{pi}\PYG{p}{[}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{];}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{s}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])}
+            \PYG{n}{j}\PYG{o}{++}\PYG{p}{;}
+        \PYG{n}{pi}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{j}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{pi}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

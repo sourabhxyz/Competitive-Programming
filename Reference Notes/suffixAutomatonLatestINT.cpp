@@ -47,11 +47,11 @@ void sa_extend (char c) {
     int p;
     for (p=last; p!=-1 && !st[p].next.count(c); p=st[p].link)
         st[p].next[c] = cur;
-    if (p == -1)
+    if (p == -1) // In case we came to the root, every non-empty suffix of string sc is accepted by state cur hence we can make link(cur) = t0 and finish our work on this step.
         st[cur].link = 0;
-    else {
+    else {  // Otherwise we found such state q`, which already has transition by character c. It means that all suffixes of length ≤ len(q`) + 1 are already accepted by some state in automaton hence we don’t need to add transitions to state new anymore. But we also have to calculate suffix link for state new.
         int q = st[p].next[c];
-        if (st[p].len + 1 == st[q].len)
+        if (st[p].len + 1 == st[q].len)  // The largest string accepted by this state will be suffix of sc of length len(q`) + 1. It is accepted by state t at the moment, in which there is transition by character c from state q`. But state t can also accept strings of bigger length. So, if len(t) = len(q`) + 1, then t is the suffix link we are looking for. We make link(cur) = t and finish algorithm.
             st[cur].link = q;
         else {
             int clone = sz++;
@@ -108,12 +108,10 @@ void constructSA(string ss) {
     processnumsubs(0);
 }
 
-bool exist(string tosearch) {
+bool exist(string &tosearch) {
     int at = 0;
     for (int i = 0; i < tosearch.size(); i++) {
-        if(st[at].next.find(tosearch[i]) == st[at].next.end()) {
-            return false;
-        }
+        if (!st[at].count (tosearch[i])) return false;
         at = st[at].next[tosearch[i]];
     }
     return true;
@@ -130,7 +128,6 @@ int numdiffsub(int at) {
 }
 
 //Returns total length of various substrings
-
 int totlength(int at) {
     if(lw[at] != 0) return lw[at];
     for(auto to : st[at].next) {

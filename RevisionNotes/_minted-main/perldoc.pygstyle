@@ -1,0 +1,98 @@
+
+\makeatletter
+\def\PYGperldoc@reset{\let\PYGperldoc@it=\relax \let\PYGperldoc@bf=\relax%
+    \let\PYGperldoc@ul=\relax \let\PYGperldoc@tc=\relax%
+    \let\PYGperldoc@bc=\relax \let\PYGperldoc@ff=\relax}
+\def\PYGperldoc@tok#1{\csname PYGperldoc@tok@#1\endcsname}
+\def\PYGperldoc@toks#1+{\ifx\relax#1\empty\else%
+    \PYGperldoc@tok{#1}\expandafter\PYGperldoc@toks\fi}
+\def\PYGperldoc@do#1{\PYGperldoc@bc{\PYGperldoc@tc{\PYGperldoc@ul{%
+    \PYGperldoc@it{\PYGperldoc@bf{\PYGperldoc@ff{#1}}}}}}}
+\def\PYGperldoc#1#2{\PYGperldoc@reset\PYGperldoc@toks#1+\relax+\PYGperldoc@do{#2}}
+
+\expandafter\def\csname PYGperldoc@tok@w\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@c\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.13,0.55,0.13}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@cp\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.12,0.53,0.61}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@cs\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@s\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@sh\endcsname{\let\PYGperldoc@it=\textit\def\PYGperldoc@tc##1{\textcolor[rgb]{0.11,0.49,0.44}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@sr\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.11,0.49,0.44}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@sx\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.42,0.13}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@m\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@ow\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@k\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@kt\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@nc\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.55,0.27}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@ne\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.55,0.27}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@nf\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.55,0.27}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@nn\endcsname{\let\PYGperldoc@ul=\underline\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.55,0.27}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@nv\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@no\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@nd\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.44,0.48,0.49}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@nt\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@na\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.40,0.55,0.00}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@nb\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.40,0.55,0.00}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@gh\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@gu\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@gd\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.67,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@gi\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.67,0.00}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@gr\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.67,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@ge\endcsname{\let\PYGperldoc@it=\textit}
+\expandafter\def\csname PYGperldoc@tok@gs\endcsname{\let\PYGperldoc@bf=\textbf}
+\expandafter\def\csname PYGperldoc@tok@gp\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.33,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@go\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@gt\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.67,0.00,0.00}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@err\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.65,0.09,0.09}{##1}}\def\PYGperldoc@bc##1{\setlength{\fboxsep}{0pt}\colorbox[rgb]{0.89,0.82,0.82}{\strut ##1}}}
+\expandafter\def\csname PYGperldoc@tok@kc\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@kd\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@kn\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@kp\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@kr\endcsname{\let\PYGperldoc@bf=\textbf\def\PYGperldoc@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@bp\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.40,0.55,0.00}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@fm\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.55,0.27}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@vc\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@vg\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@vi\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@vm\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@sa\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@sb\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@sc\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@dl\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@sd\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@s2\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@se\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@si\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@s1\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@ss\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@mb\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@mf\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@mh\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@mi\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@il\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@mo\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@ch\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.13,0.55,0.13}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@cm\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.13,0.55,0.13}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@cpf\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.13,0.55,0.13}{##1}}}
+\expandafter\def\csname PYGperldoc@tok@c1\endcsname{\def\PYGperldoc@tc##1{\textcolor[rgb]{0.13,0.55,0.13}{##1}}}
+
+\def\PYGperldocZbs{\char`\\}
+\def\PYGperldocZus{\char`\_}
+\def\PYGperldocZob{\char`\{}
+\def\PYGperldocZcb{\char`\}}
+\def\PYGperldocZca{\char`\^}
+\def\PYGperldocZam{\char`\&}
+\def\PYGperldocZlt{\char`\<}
+\def\PYGperldocZgt{\char`\>}
+\def\PYGperldocZsh{\char`\#}
+\def\PYGperldocZpc{\char`\%}
+\def\PYGperldocZdl{\char`\$}
+\def\PYGperldocZhy{\char`\-}
+\def\PYGperldocZsq{\char`\'}
+\def\PYGperldocZdq{\char`\"}
+\def\PYGperldocZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYGperldocZat{@}
+\def\PYGperldocZlb{[}
+\def\PYGperldocZrb{]}
+\makeatother
+

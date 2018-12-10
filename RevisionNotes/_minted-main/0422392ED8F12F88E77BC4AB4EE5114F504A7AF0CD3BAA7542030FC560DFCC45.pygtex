@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{preorder} \PYG{p}{(}\PYG{n}{v}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{n}{visit} \PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+	\PYG{n}{preorder} \PYG{p}{(}\PYG{n}{left} \PYG{p}{(}\PYG{n}{v}\PYG{p}{));}
+	\PYG{n}{preorder} \PYG{p}{(}\PYG{n}{right} \PYG{p}{(}\PYG{n}{v}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{inorder} \PYG{p}{(}\PYG{n}{v}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{n}{inorder} \PYG{p}{(}\PYG{n}{left} \PYG{p}{(}\PYG{n}{v}\PYG{p}{));}
+	\PYG{n}{visit} \PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+	\PYG{n}{inorder} \PYG{p}{(}\PYG{n}{right} \PYG{p}{(}\PYG{n}{v}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{postorder} \PYG{p}{(}\PYG{n}{v}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{n}{postorder} \PYG{p}{(}\PYG{n}{left} \PYG{p}{(}\PYG{n}{v}\PYG{p}{));}
+	\PYG{n}{postorder} \PYG{p}{(}\PYG{n}{right} \PYG{p}{(}\PYG{n}{v}\PYG{p}{));}
+	\PYG{n}{visit} \PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

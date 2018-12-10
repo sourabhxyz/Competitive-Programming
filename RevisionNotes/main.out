@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{Maths}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Game Theory}{section.1}% 2
+\BOOKMARK [3][-]{subsubsection.1.1.1}{What is a Combinatorial Game?}{subsection.1.1}% 3
+\BOOKMARK [1][-]{section.2}{Graphs}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Tree}{section.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Important Problems}{subsection.2.1}% 6
+\BOOKMARK [1][-]{section.3}{Some Basic}{}% 7
+\BOOKMARK [1][-]{section.4}{Strings}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Minimum Edit Distance}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Length of longest Palindrome possible by removing 0 or more characters}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{Longest Common Subsequence}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.4}{Prefix Function and KMP}{section.4}% 12
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Prefix Function}{subsection.4.4}% 13
+\BOOKMARK [3][-]{subsubsection.4.4.2}{KMP}{subsection.4.4}% 14
+\BOOKMARK [3][-]{subsubsection.4.4.3}{Counting number of occurrences of each prefix}{subsection.4.4}% 15
+\BOOKMARK [2][-]{subsection.4.5}{Notes}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.6}{SAM}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.7}{Important Problems}{section.4}% 18
