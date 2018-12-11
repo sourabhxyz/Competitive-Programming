@@ -50,7 +50,6 @@ The pack­age pro­vides ex­ten­sive fa­cil­i­ties, both for con­struct­i
 }
 \newcommand{\revised}{Should be \textcolor{red}{\textbf{revised}}.}
 \newcommand{\tested}{Should be \textcolor{red}{\textbf{tested}}.}
-\newcommand{\added}{Should be \textcolor{red}{\textbf{added}}.}
 \titlespacing*{\section}
 {0pt}{0px plus 1px minus 0px}{-2px plus 0px minus 0px}
 \titlespacing*{\subsection}
@@ -108,7 +107,7 @@ with this other one, you can add a value to the existing one:
 
 \section{Maths}
 \subsection{Game Theory}
-Games like chess or checkers are partizan type.\\
+Games like chess or checkers are partizan type.
 \subsubsection{What is a Combinatorial Game?}
 \begin{enumerate}
 \item There are 2 players.
@@ -122,15 +121,15 @@ Games like chess or checkers are partizan type.\\
 \begin{enumerate}
 \item Label every terminal position as P - postion
 \item Position which can move to a P position is N position
-\item Position whole all moves are to N positoin is P position.
+\item Position whose all moves are to N positoin is P position.
 \end{enumerate}
-\textbf{Note: } Every Position is either a P or N. \\
+\textbf{Note: } Every Position is either a P or N. For games using misere play all is same except that step 1 is replaced by the condition that all terminal positions are \textbf{N} postions. \\
 Directed graph G = ($X, F$), where $X$ is positions (vertices) and $F$ is a function that gives for each $x \in X$ a subset of $X$, i.e. \textit {followers of $x$}. If $F (x)$ is empty, $x$ is called a terminal position.\\
 $g(x) = min \{ n \geq 0 : n \neq g (y)$ for $y \in F (x)\}$\\
-Positions $x$ for which $g(x)$ is 0 are P postions and all others are N positions.\\
+Positions $x$ for which $g(x)$ is 0 are P postions and all others are N positions. \textbf{Note:} $g(x)$ is 0 if $x$ is a terminal position\\
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sumgraph}
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sgth}
-\textbf{Thus}, if a position is a \textbf{N} position, we can cleverly see which position should we go to (which component game move to take) such that we reach \textbf {P} position.
+\textbf{Thus}, if a position is a \textbf{N} position, we can cleverly see which position should we go to (what move of a component game to take) such that we reach \textbf {P} position.
 \section{Graphs}
 \subsection{Tree}
 Undirected, acyclic, connected, $|V| - 1$ edges.\\
@@ -165,7 +164,7 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_112.cpp}{UVA 112 Sol}, \href {https://uva.onlinejudge.org/external/1/112.pdf}{UVA 112 Prob}: Just see how I processed the input.	
 	\item \href {https://gist.github.com/sourabh2311/6b761c14bef4e5887e6b03b809bc4983}{UVA 10029 Sol}, \href {https://uva.onlinejudge.org/external/100/10029.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
 	\item \href {https://gist.github.com/sourabh2311/d73572fab5cf6d390f509d29abf4cd60}{UVA 536 Sol}, \href {https://uva.onlinejudge.org/external/5/536.pdf}{UVA 536 Prob}: Construct binary tree with preorder and inorder	
-	\item \href {https://gist.github.com/sourabh2311/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
+	\item \href {https://gist.github.com/sourabh2311/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10459 Prob}: Centers of diameters are best where as corners are worst.	
 \end{itemize}
 \section{Some Basic}
 \begin{minted}{cpp}
@@ -474,7 +473,7 @@ for (int i = 0; i <= n; i++)  // as only intermediate strings were considered, w
 \subsection{Notes}
 \begin{itemize}
 	\item In case of hashing a string, we follow polynomial rolling hash function, with p as a prime number roughly equal to the size of character domain and m as a huge prime number.
-	\item If s is palindrome and if $s[0...n - 2]$ is palindrome, that means all characters are same thus if all characters are not same then the longest non palindromic substring is $s[0...n - 2]$
+	\item If s is palindrome and if $s[0...n - 2]$ is palindrome, that means all characters are same thus if all characters are not same then the longest non palindromic substring is $s[0...n - 2]$ or $s[1...n - 1]$
 \end{itemize}
 \subsection{SAM}
 A suffix automaton for a given string s is a minimal DFA that accepts all the suffixes of the string s.
@@ -492,8 +491,8 @@ Lemma 2: Consider two non-empty substrings u and w (with length(u) ≤ length(w)
 Lemma 3: Consider an endpos-equivalence class. Sort all the substrings in this class by non-increasing length. Then in the resulting sequence each substring will be one shorter than the previous one, and at the same time will be a suffix of the previous one. In other words the substrings in the same equivalence class are actually each others suffixes, and take all possible lengths in a certain interval [x;y].\\
 Consider some state v ≠ $t_0$ in the automaton. As we know, the state v corresponds to the class of strings with the same endpos values. And if we denote by w the longest of these strings, then all the other strings are suffixes of w. \textbf{suffix link} \textit{link(v)} leads to the state that corresponds to the longest suffix of w that is another endpos-equivalent class.\\
 Lemma 4: Suffix links form a tree with the root $t_0$.\\
-Lemma 5: If we build a endpos tree from all the existing sets (according to the principle “the set-parent contains as subsets of all its children”), then it will coincide in structure with the tree of suffix references.\\
-Note: For each state v one or multiple substrings match. We denote by longest(v) the longest such string, and through len(v) its length. We denote by shortest(v) the shortest such substring, and its length with minlen(v). Then all the strings corresponding to this state are different suffixes of the string longest(v) and have all possible lengths in the interval [minlength(v);len(v)]. For each state v ≠ $t_0$ a suffix link is defined as a link, that leads to a state that corresponds to the suffix of the string longest(v) of length minlen(v)$ − 1$. minlen(v) = len(link(v))+1 \\
+Lemma 5: If we build a endpos tree from all the existing sets (according to the principle “the set-parent contains as subsets of all its children”), then it will coincide in structure with the tree of suffix references. \textbf{Note: }$endpos(t_0) = \{-1, 0, \dots, length(s)-1\}$\\
+Note: For each state v one or multiple substrings match. We denote by longest(v) the longest such string, and through len(v) its length. We denote by shortest(v) the shortest such substring, and its length with minlen(v). Then all the strings corresponding to this state are different suffixes of the string longest(v) and have all possible lengths in the interval [minlength(v);len(v)]. For each state v ≠ $t_0$ a suffix link is defined as a link, that leads to a state that corresponds to the suffix of the string longest(v) of length $minlen(v) − 1$. minlen(v) = len(link(v))+1 \\
 Number of states in suffix automaton of the string s of length n doesn't exceed $2n - 1$ (for n $\geq$ 2)\\
 Number of transitions $\leq 3n - 4$.
 \begin{minted}{cpp}
@@ -821,7 +820,7 @@ int main() {
 \subsection{Important Problems}
 \textit{Review: cf 631D}
 \begin{itemize}
-	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10739.cpp}{UVA 10739 Sol}, \href {https://uva.onlinejudge.org/external/107/10739.pdf}{UVA 10739 Prob}: String to palindrom, just see the minimum edit distance between this string and its reverse but need to divide by 2 later as both strings are it itself.	
+	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10739.cpp}{UVA 10739 Sol}, \href {https://uva.onlinejudge.org/external/107/10739.pdf}{UVA 10739 Prob}: String to palindrome, just see the minimum edit distance between this string and its reverse but need to divide by 2 later as both strings are it itself.	
 	\item \href {https://codeforces.com/contest/245/problem/H}{Queries for the number of palindromic substrings within given range}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/514C%20-%20Watto%20And%20Mechanism.cpp}{\textbf {See this soln to see power of hashing.}}: \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{palsub} 	
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - simple}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - complicated but more powerful}: Problem is to find the longest substring shared by more than half of given strings.	
 	\item \href {https://gist.github.com/sourabh2311/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
