@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{while} \PYG{p}{(}\PYG{n}{first} \PYG{o}{||} \PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{temp}\PYG{p}{)} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// something \PYGZcb{}}
+\end{Verbatim}

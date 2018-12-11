@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{next} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{order}\PYG{p}{[}\PYG{n}{j}\PYG{p}{].}\PYG{n}{second} \PYG{o}{!=} \PYG{n}{next}\PYG{p}{)} \PYG{n}{Toswap}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{order}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]);}
+    \PYG{k}{else} \PYG{n}{next}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{sort} \PYG{p}{(}\PYG{n}{Toswap}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{Toswap}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+\end{Verbatim}

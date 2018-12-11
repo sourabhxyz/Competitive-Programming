@@ -130,6 +130,89 @@ Positions $x$ for which $g(x)$ is 0 are P postions and all others are N position
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sumgraph}
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sgth}
 \textbf{Thus}, if a position is a \textbf{N} position, we can cleverly see which position should we go to (what move of a component game to take) such that we reach \textbf {P} position.
+\subsection{Modulo}
+\begin{minted}{cpp}
+const int m1 = (int) 1e9 + 7;
+template <typename T>
+inline T add(T a, T b) {
+    a += b;
+    if (a >= m1) a -= m1;
+    return a;
+}
+template <typename T>
+inline T sub(T a, T b) {
+    a -= b;
+    if (a < 0) a += m1;
+    return a;
+}
+
+template <typename T>
+inline T mul(T a, T b) {
+    return (T) (((long long) a * b) % m1);
+}
+
+template <typename T>
+inline T power(T a, T b) {
+    int res = 1;
+    while (b > 0) {
+        if (b & 1) {
+            res = mul<T>(res, a);
+        }
+        a = mul<T>(a, a);
+        b >>= 1;
+    }
+    return res;
+}
+
+template <typename T>
+inline T inv(T a) {
+    return power<T>(a, m1 - 2);
+}
+\end{minted}
+\subsection{Prob}
+\begin{itemize}
+    \item $E[X] = \sum E(X|A_i)P(A_i)$
+    \item \href {https://codeforces.com/contest/908/problem/D}{k, $p_a$, $p_b$ prob}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Good%20Bye%202017/D.cpp}{Sol}, if $n + m \geq k \rightarrow p_b(i + j) + p_a*p_b*(i + j + 1) + p_a^2*p_b*(i + j + 2)\dots = (i + j) + \frac{p_a}{p_b}$
+    \item 
+\end{itemize}
+\subsection{Euler's Totient Function}
+Also known as phi-function $\phi (n)$, counts the number of integers between 1 and $n$ inclusive, which are coprime to $n$.
+\\If $p$ is prime $\phi (p) = p - 1.$
+\\If $p$ is a prime number and $k \ge 1$, then there are exactly $p^k / p$ numbers between $1$ and $p^k$ that are divisible by $p$. Which gives us:$\phi(p^k) = p^k - p^{k-1}.$
+\\If $a$ and $b$ are relatively prime, then: $\phi(a b) = \phi(a) \cdot \phi(b).$ This relation is not trivial to see. It follows from the Chinese remainder theorem.
+\\In general, for not coprime $a$ and $b$, the equation $$\phi(ab) = \phi(a) \cdot \phi(b) \cdot \dfrac{d}{\phi(d)}$$ with $d = \gcd(a, b)$ holds.\\
+$ \phi (n) = \phi ({p_1}^{a_1}) \cdot \phi ({p_2}^{a_2}) \cdots \phi ({p_k}^{a_k})$\\
+$ = \left({p_1}^{a_1} - {p_1}^{a_1 - 1}\right) \cdot \left({p_2}^{a_2} - {p_2}^{a_2 - 1}\right) \cdots \left({p_k}^{a_k} - {p_k}^{a_k - 1}\right)$\\
+$ = p_1^{a_1} \cdot \left(1 - \frac{1}{p_1}\right) \cdot p_2^{a_2} \cdot \left(1 - \frac{1}{p_2}\right) \cdots p_k^{a_k} \cdot \left(1 - \frac{1}{p_k}\right)$ \\ 
+$= n \cdot \left(1 - \frac{1}{p_1}\right) \cdot \left(1 - \frac{1}{p_2}\right) \cdots \left(1 - \frac{1}{p_k}\right) $\\
+\textbf{Eulers Theorem: }\\
+$$a^{\phi(m)} \equiv 1 \pmod m$$ if $a$ and $m$ are relatively prime.
+
+In the particular case when $m$ is prime, Euler's theorem turns into Fermat's little theorem: $$a^{m - 1} \equiv 1 \pmod m$$
+\subsection{Catalan}
+$Cat(n) = \binom{2n}{n} / (n + 1)$
+\\$Cat(m) = (2m*(2m - 1)/(m*(m + 1))) * Cat(m - 1)$
+$Cat(n) = $\begin{enumerate}
+    \item the number of ways a convex polygon with n+2 sides can be cut into n triangles
+    \item the number of ways to use n rectangles to tile a stairstep shape (1, 2, ..., n−1, n).
+    \item No. of expressions containing n pairs of parentheses which are correctly matched.
+    \item the number of planar binary trees with n+1 leaves
+    \item No. of distinct binary trees with n vertices
+    \item No. of different ways in which n + 1 factors can be completely parenthesized. Like for \{a, b, c, d\}, one parenthing will be ((ab)c)d.
+    \item the number of monotonic paths of length 2n through an n-by-n grid that do not rise above the main diagonal
+\end{enumerate}
+\textbf{Note: }Its better to use bigint for catalan computations.
+\subsection{Side Notes}
+\begin{enumerate}
+    \item No. of digits in a no. $n = \lfloor(\log_{10}{n})\rfloor + 1$
+    \item No. of digits in $\binom{n}{k} = \lfloor(\sum_{i = n - k + 1}^{n}\log_{10}{i} - \sum_{i = 1}^{k}\log_{10}{i)})\rfloor + 1$
+\end{enumerate}
+\subsubsection{Important Problems}
+\begin{itemize}
+	\item \href {https://gist.github.com/sourabh2311/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the number of hops to travel between flights.\\
+	Problem Sol: Just link the center of diameters. Brute force which edge to remove. 
+	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_112.cpp}{UVA 112 Sol}, \href {https://uva.onlinejudge.org/external/1/112.pdf}{UVA 112 Prob}: Just see how I processed the input.
+\end{itemize}
 \section{Graphs}
 \subsection{Tree}
 Undirected, acyclic, connected, $|V| - 1$ edges.\\
@@ -165,11 +248,283 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 	\item \href {https://gist.github.com/sourabh2311/6b761c14bef4e5887e6b03b809bc4983}{UVA 10029 Sol}, \href {https://uva.onlinejudge.org/external/100/10029.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
 	\item \href {https://gist.github.com/sourabh2311/d73572fab5cf6d390f509d29abf4cd60}{UVA 536 Sol}, \href {https://uva.onlinejudge.org/external/5/536.pdf}{UVA 536 Prob}: Construct binary tree with preorder and inorder	
 	\item \href {https://gist.github.com/sourabh2311/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10459 Prob}: Centers of diameters are best where as corners are worst.	
+    \item \href {https://codeforces.com/contest/911/problem/F}{Tree Destruction}, \href {https://codeforces.com/contest/911/submission/34122817}{Sol}:
 \end{itemize}
 \section{Some Basic}
-\begin{minted}{cpp}
-	while (first || cin >> temp) {  // something }
+
+\begin{itemize}
+    \item \begin{minted}{cpp}
+#pragma GCC optimize("Ofast")  // tells the compiler to optimize the code for speed to make it as fast as possible (and not look for space)
+#pragma GCC optimize ("unroll-loops")  // normally if we have a loop there is a "++i" instruction somewhere. We normally dont care because code inside the loop requires much more time but in this case there is only one instruction inside the loop so we want the compiler to optimize this.
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")  // tell the compiler that our cpu has simd instructions and allow him to vectorize our code
 \end{minted}
+    \item \begin{minted}{cpp}
+while (first || cin >> temp) {  // something }
+            \end{minted}
+    \item \textbf{Prob: }We have a stack of turtles and we have some final permutation of them, each turtule can crawl out of its position and move to top. Determine a minimal sequence of operations to obtain the final permutation.\\\textbf{Sol: }
+    \begin{minted}{cpp}
+for (int j = n - 1, next = n - 1; j >= 0; j--) {
+    if (order[j].second != next) Toswap.push_back(order[j]);
+    else next--;
+}
+sort (Toswap.begin(), Toswap.end());
+\end{minted}
+    \item \begin{minted}{cpp}
+// Months are 0 indexed
+//The following Code solves problems: UVA 893 
+
+int numberDaysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+int numberDaysInMonthLeap[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+bool IsLeapYear(int year)
+{
+   return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+}
+
+int MonthToDay(int month, int year)
+{
+   int daysBefore = 0;
+   for (int i = 0; i < month; ++i)
+       daysBefore += numberDaysInMonth[i];
+   if (month > 1 && IsLeapYear(year))
+       ++daysBefore;
+   return daysBefore;
+}
+
+int YearToDay(int year)
+{
+   int base = year * 365;
+   int numLeapYears = year / 4 - year / 100 + year / 400;
+   return base + numLeapYears;
+}
+
+int GetYearFromNumDays(int& numDays)
+{
+   int year = 1;
+   int sizeOfYear = 365;
+
+   while (numDays > sizeOfYear)
+   {
+       numDays -= sizeOfYear;
+       ++year;
+       sizeOfYear = (IsLeapYear(year)) ? 366 : 365;
+   }
+
+   return year;
+}
+
+int GetMonthFromNumDays(int& numDays, int year)
+{
+   int month = 0;
+   int * numDayUsed = (IsLeapYear(year)) ? numberDaysInMonthLeap : numberDaysInMonth;
+   for (;numDays > numDayUsed[month]; ++month)
+       numDays -= numDayUsed[month];
+   return month + 1;
+}
+
+int main()
+{
+   int dayForward, day, month, year;
+   while (cin >> dayForward >> day >> month >> year, year)
+   {
+       --month;
+       day += MonthToDay(month, year);
+       --year;
+       day += YearToDay(year);
+       day += dayForward;
+
+       year = GetYearFromNumDays(day);
+       month = GetMonthFromNumDays(day, year);
+       cout << day << ' ' << month << ' ' << year << '\n';
+   }
+}
+//--
+string int2roman(int n) {
+   string roman;
+   string ones[] = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+   string tens[] = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+   string hundreds[] = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+   string thousands[] = {"", "M", "MM", "MMM"};
+
+   int o = n % 10;
+   n /= 10;
+   int t = n % 10;
+   n /= 10;
+   int h = n % 10;
+   n /= 10;
+   int th = n % 10;
+
+   roman += thousands[th] + hundreds[h] + tens[t] + ones[o];//Or
+   //roman=thousands[th] + hundreds[h] + tens[t] + ones[o] but the written one is
+   //faster.
+
+   return roman;
+}
+
+    \end{minted}
+    \item \textbf{Algorithm to convert from infix to postifx: }
+        \begin{enumerate}
+        \item Scan the infix expression from left to right.
+        \item If the scanned character is an operand, output it.
+        \item Else,
+            \begin{enumerate}
+            \item If the precedence of the scanned operator is greater than the precedence of the operator in the stack (or the stack is empty or the stack contains a ‘(‘ ), push it.
+            \item  Else, Pop all the operators from the stack which are greater than or equal to in precedence than that of the scanned operator. After doing that Push the scanned operator to the stack. (If you encounter parenthesis while popping then stop there and push the scanned operator in the stack.)
+            \end{enumerate}
+        \item If the scanned character is an ‘(‘, push it to the stack.
+        \item If the scanned character is an ‘)’, pop the stack and and output it until a ‘(‘ is encountered, and discard both the parenthesis.
+        \item Repeat steps 2-6 until infix expression is scanned.
+        \item Print the output
+        \item Pop and output from the stack until it is not empty.
+        \end{enumerate}
+    \item \textbf{Algorithm to convert from infix to prefix: }
+        \begin{enumerate}
+        \item Properly reverse the infix exp.
+        \item Gets its postfix as above
+        \item Reverse postfix and output it.
+        \end{enumerate}
+    \item \textbf{Algorithm to convert from postfix to infix: }
+        \begin{enumerate}
+        \item If the symbol is an operand, push it onto stack
+        \item Else, if there are fewer than two values in stack, show error. Else, pop top 2 expressions from stack (say e1, e2), put the operator (op) between them and push to stack ((e1 op e2))
+        \item After reading postfix expression, Stack should have only one item which is our answer 
+        \end{enumerate}
+    \item \textbf{Merge Sort}
+    \begin{minted}{cpp}
+void merge(int arr[], int l, int m, int r)
+{
+   int i, j, k;
+   int n1 = m - l + 1;
+   int n2 =  r - m;
+
+   /* create temp arrays */
+   int L[n1], R[n2];
+
+   /* Copy data to temp arrays L[] and R[] */
+   for (i = 0; i < n1; i++)
+       L[i] = arr[l + i];
+   for (j = 0; j < n2; j++)
+       R[j] = arr[m + 1+ j];
+
+   /* Merge the temp arrays back into arr[l..r]*/
+   i = 0; // Initial index of first subarray
+   j = 0; // Initial index of second subarray
+   k = l; // Initial index of merged subarray
+   while (i < n1 && j < n2)
+   {
+       if (L[i] <= R[j])
+       {
+           arr[k] = L[i];
+           i++;
+       }
+       else///i.e we need to swap
+       {
+           arr[k] = R[j];
+           swaps+=n1-i;//Most important line. basically once we are doing arr[k]=R[j] that means we are
+           ///putting R[j] before each of n1-i elements thus there are that many swaps.
+           j++;
+       }
+       k++;
+   }
+
+   /* Copy the remaining elements of L[], if there
+      are any */
+   while (i < n1)
+   {
+       arr[k] = L[i];
+       i++;
+       k++;
+   }
+
+   /* Copy the remaining elements of R[], if there
+      are any */
+   while (j < n2)
+   {
+       arr[k] = R[j];
+       j++;
+       k++;
+   }
+}
+
+/* l is for left index and r is right index of the
+  sub-array of arr to be sorted */
+void mergeSort(int arr[], int l, int r)
+{
+   if (l < r)
+   {
+       // Same as (l+r)/2, but avoids overflow for
+       // large l and h
+       int m = l+(r-l)/2;
+
+       // Sort first and second halves
+       mergeSort(arr, l, m);
+       mergeSort(arr, m+1, r);
+
+       merge(arr, l, m, r);
+   }
+}
+    \end{minted}
+    \item set is like min heap. Only unique elements are present.
+    \item On a line you are given the x coordinates of various houses, tell the house of vito (h) such that $\sum |h_i - h|$ is minimised. \textbf{Obs1: } h could be any of $h_i$ so $O(n^2)$ algo. will work. \textbf{Obs2: } Taking derivative we get $i - j = 0$ i.e. $i = j = n/2$, that means simply sort and output the middlemost house.\\
+    \textbf{Note: }Some times the math become cumbersome, in such cases, use \textbf{ternary search}
+    \item \textbf{Prob: }n people have to cross the bridge, one torch, atmost 2 can travel\\
+    \textbf{Sol: }if $n = 3 \Rightarrow$ time = $x + y + z$, if $n \geq 4$ let A, B, a, b be the fastest, second fastest, slowest, second slowest resp. \textbf{Goal: }Get the slowest members to the other side. So choose the best among the two options.\\\textbf{option 1: }Fastest member does back and forth.\\\textbf{option 2: }The two fastest members go, allowing the two slowest two to go together.
+    \item \textbf{Inversions: }From a permutation, parity of number of swaps needed to get to the identical permutation is same as parity of inversion count of this permutation.
+    \\Parity of inversions can be calculated in $O(n)$ by finding the number of cycles.
+    \\Exact value of number of inverions can be calculated in $(nlog(n))$ by using segment trees.
+    \item \textbf{Prob: }You are given two positive integer numbers a and b. Permute (change order) of the digits of a to construct maximal number not exceeding b.
+    \\\textbf{Sol: }Take the number as string. sort string a, then for each $i \in [1, n]$ swap it with $j$ trying from $n to i + 1$ such that it is $\leq b$ (normal string comparison can be used).
+    \item \textbf{Prob: }From a digraph, remove atmost one edge so that it becomes DAG.
+    \\\textbf{Sol: }Get any one cycle the iteratively try to remove each edge and see if it makes it DAG or not.
+    \item \textbf{UFDS}
+    \begin{minted}{cpp}
+struct UFDS {
+    vector<int> p, rank, setSizes;
+    int numSets;
+    UFDS(int N) {
+        numSets = N;
+        rank.assign(N, 0);
+        p.assign(N, 0);
+        for (int i = 0; i < N; i++)
+            p[i] = i;
+        setSizes.assign(N, 1);
+    }
+    int findSet(int i) {
+        return (p[i] == i) ? i : p[i] = findSet(p[i]);
+    }
+    bool isSameSet(int i, int j) {
+        return findSet(i) == findSet(j);
+    }
+    void unionSet(int i, int j) {
+        if (!isSameSet(i, j)) {
+            int x = findSet(i), y = findSet(j);
+            if (rank[x] > rank[y]) {
+                setSizes[findSet(x)] += setSizes[findSet(y)];
+                p[y] = x;
+            } else {
+                setSizes[findSet(y)] += setSizes[findSet(x)];
+                p[x] = y;
+                if (rank[x] == rank[y])
+                    rank[y]++;
+            }
+            numSets--;
+        }
+    }
+    int setSize(int i) {
+        return setSizes[findSet(i)];
+    }
+    int numDisjointSets() {
+        return numSets;
+    }
+};
+    \end{minted}
+    \item \href {https://uva.onlinejudge.org/external/101/10158.pdf}{UVA 10158 Prob}, \href {https://gist.github.com/sourabh2311/3a2daf2a9f77104a94d1db9af8b40b1a}{UVA 10158 Sol}
+    \item \href {https://codeforces.com/contest/915/problem/F}{Imbalance of a tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/F.cpp}{Sol}, summation(max - min) is same as summation(max) - summation(min).
+    \item \href {https://codeforces.com/contest/913/problem/C}{Party Lemonade}, \href {https://codeforces.com/contest/913/submission/34067096}{Sol}
+    \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/34071120}{Sol}: pr denotes from what grammer it is derived. Also number of functions on n variables $= 2^{2^n}$.
+
+
+\end{itemize}
 \section{DP}
 \subsection{Balanced Bracket Sequence}
 A Balanced bracket sequence is a string consisting of only brackets, such that this sequence, when certain numbers and $+$ is inserted gives a valid mathematical expression.
