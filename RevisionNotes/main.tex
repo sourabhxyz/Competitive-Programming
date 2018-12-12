@@ -42,6 +42,7 @@ The pack­age pro­vides ex­ten­sive fa­cil­i­ties, both for con­struct­i
 %       This is one example of the concept of, 'glue', in TeX
 \end{comment}
 \usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc}
 \newcommand{\swastik}[1]{%
     \begin{tikzpicture}[#1]
         \draw (-1,1)  -- (-1,0) -- (1,0) -- (1,-1);
@@ -131,6 +132,9 @@ Positions $x$ for which $g(x)$ is 0 are P postions and all others are N position
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sgth}
 \textbf{Thus}, if a position is a \textbf{N} position, we can cleverly see which position should we go to (what move of a component game to take) such that we reach \textbf {P} position.
 \subsection{Modulo}
+$(a + b) mod m = (a mod m + b mod m) mod m$\\
+$.........................-...............$\\
+$.........................*...............$\\
 \begin{minted}{cpp}
 const int m1 = (int) 1e9 + 7;
 template <typename T>
@@ -169,11 +173,19 @@ inline T inv(T a) {
     return power<T>(a, m1 - 2);
 }
 \end{minted}
-\subsection{Prob}
+\subsection{Prob and Comb}
 \begin{itemize}
     \item $E[X] = \sum E(X|A_i)P(A_i)$
-    \item \href {https://codeforces.com/contest/908/problem/D}{k, $p_a$, $p_b$ prob}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Good%20Bye%202017/D.cpp}{Sol}, if $n + m \geq k \rightarrow p_b(i + j) + p_a*p_b*(i + j + 1) + p_a^2*p_b*(i + j + 2)\dots = (i + j) + \frac{p_a}{p_b}$
-    \item 
+    \item \href {https://codeforces.com/contest/908/problem/D}{k, $p_a$, $p_b$ prob}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Good%20Bye%202017/D.cpp}{Sol}, if $n + m \geq k \rightarrow p_b(i + j) + p_a*p_b*(i + j + 1) + p_a^2*p_b*(i + j + 2)\dots = (i + j) + \frac{p_a}{p_b}$ Also
+    \begin{eqnarray}
+    dp[0][0] & = & p_a * dp[1][0] + p_b * dp[0][0]\\
+             & = & p_a * dp[1][0] / (1 - p_b)\\
+             & = & dp[1][0]
+    \end{eqnarray}
+    \item \textbf{Dearrangement of n objects}
+    \\ $n! * \sum_{k = 0}^n (-1)^k / {k!} =\text{ } !n$
+    \\ $!n = (n - 1) * [!(n - 1) + !(n - 2)] \text{ for n }\geq 2$
+
 \end{itemize}
 \subsection{Euler's Totient Function}
 Also known as phi-function $\phi (n)$, counts the number of integers between 1 and $n$ inclusive, which are coprime to $n$.
@@ -192,7 +204,7 @@ In the particular case when $m$ is prime, Euler's theorem turns into Fermat's li
 \subsection{Catalan}
 $Cat(n) = \binom{2n}{n} / (n + 1)$
 \\$Cat(m) = (2m*(2m - 1)/(m*(m + 1))) * Cat(m - 1)$
-$Cat(n) = $\begin{enumerate}
+\\$Cat(n) = $\begin{enumerate}
     \item the number of ways a convex polygon with n+2 sides can be cut into n triangles
     \item the number of ways to use n rectangles to tile a stairstep shape (1, 2, ..., n−1, n).
     \item No. of expressions containing n pairs of parentheses which are correctly matched.
@@ -200,18 +212,197 @@ $Cat(n) = $\begin{enumerate}
     \item No. of distinct binary trees with n vertices
     \item No. of different ways in which n + 1 factors can be completely parenthesized. Like for \{a, b, c, d\}, one parenthing will be ((ab)c)d.
     \item the number of monotonic paths of length 2n through an n-by-n grid that do not rise above the main diagonal
+    \item n pair of people on circle can do non cross hand shakes.
 \end{enumerate}
-\textbf{Note: }Its better to use bigint for catalan computations.
+\textbf{Note: }Its better to use bigint for catalan computations. Also no. of binary trees with n labelled nodes $= cat[n] * fact[n]$
+\subsection{Floyd Cycle Finding}
+\begin{minted}{cpp}
+// mu = start of the cycle
+// lam = its length
+// O (mu + lam) time complexity
+// O (1) space complexity
+ii floydCycleFinding(int x0) {
+    // 1st part: finding k * lam
+    int tortoise = f(x0), hare = f (f (x0));
+    // hare moves at twice speed
+    while (tortoise != hare) {
+        tortoise = f (tortoise); hare = f(f(hare));
+    }
+    // thus tor = x_i; hare = x_2i
+    // i.e. x_2i = x_{i + k * lam}
+    // i.e. k * lam = i.
+    // Now if hare is set to beginning
+    // i.e. hare = x_0, tor = x_i
+    // thus if both now move same no. of steps and in between they become equal, i.e.
+    // x_l = x_{i + l}
+    // i.e. x_l = x_{l + k * lam}
+    // Thus l must be the minimum index and therefore l = mu
+    int mu = 0;
+    hare = x0;
+    while (tortoise != hare) {
+        tortoise = f (tortoise); hare = f(hare); mu++
+    }
+    // finding lam
+    int lam = 1; hare = f (tortoise);
+    while (tortoise != hare) {
+        hare = f (hare); lambda++;
+    }
+    return ii (mu, lambda);
+}
+\end{minted}
+\subsection{Base Conversion}
+\begin{minted}{cpp}
+// decimal no. to some base
+stack<int> S;
+while (q) {
+    s.push (q % b);
+    q /= b;
+}
+while (!s.empty ()) {
+    cout << process (s.top ()) << " ";
+    s.pop ();
+}
+// base to decimal no.
+ll baseToDec () {
+    ll ret = 0;
+    for (auto &c : num) {
+        ret = (ret * base + (c - 48)); // can take mod if final answer is required in mod
+    }
+    return ret;
+}
+\end{minted}
+\subsection{Extended Euclid}
+$ax + by = c$ this is called diophantine eqn and is solvable only when $d = gcd(a, b)$ divides c. so first solve $ax + by = d$ then multiply x, y with $c / d$. Also once we have found a particular soln to this eqn then their exist infinite solns of the form $(x0 + (b/d)*n, y0 - (a/d)*n)$ where n is any integer. Assume we hound the coefs (x1, y1) for (b, a mod b) $\rightarrow$ $b*x1 + (a\text{ mod }b)y1 = g\\ \rightarrow b*x1 + (a - \lfloor(a/b)\rfloor*b)*y1=g\\
+\rightarrow a*y1 + b*(x1 - \lfloor (a/b)\rfloor * y1) = g\\
+\rightarrow x = y1\text{ \& }y = x1 - \lfloor (a/b)\rfloor*y1$
+\begin{minted}{cpp}
+void extendedEuclid(int a, int b) {
+   if (b == 0) { x = 1; y = 0; d = a; return; } // base case
+   extendedEuclid(b, a % b); // similar as the original gcd
+   int x1 = y;
+   int y1 = x - (a / b) * y;
+   x = x1;
+   y = y1;
+}
+\end{minted}
+\subsection{Sieve}
+\begin{minted}{cpp}
+    ll _sieve_size; // ll is defined as: typedef long long ll;
+bitset<10000010> bs; // 10^7 should be enough for most cases
+vi primes; // compact list of primes in form of vector<int>
+void sieve(ll upperbound) { // create list of primes in [0..upperbound]
+   _sieve_size = upperbound + 1; // add 1 to include upperbound
+   bs.set(); // set all bits to 1
+   bs[0] = bs[1] = 0; // except index 0 and 1
+   for (ll i = 2; i <= _sieve_size; i++) if (bs[i]) {
+// cross out multiples of i starting from i * i!
+           for (ll j = i * i; j <= _sieve_size; j += i) bs[j] = 0;
+           primes.push_back((int)i); // add this prime to the list of primes
+       } } // call this method in main method
+bool isPrime(ll N) { // a good enough deterministic prime tester
+    // O(#primes < sqrt(N))
+    // O(sqrt(N)/ln(sqrt(N)))
+   if (N <= _sieve_size) return bs[N]; // O(1) for small primes
+   for (int i = 0; i < (int)primes.size(); i++)
+       if (N % primes[i] == 0) return false;
+   return true; // it takes longer time if N is a large prime!
+} // note: only work for N <= (last prime in vi "primes")^2
+
+vi primeFactors(ll N) { // remember: vi is vector<int>, ll is long long
+   vi factors;
+   ll PF_idx = 0, PF = primes[PF_idx]; // primes has been populated by sieve
+   while (PF * PF <= N) { // stop at sqrt(N); N can get smaller
+       while (N % PF == 0) { N /= PF; factors.push_back(PF); } // remove PF
+       PF = primes[++PF_idx]; // only consider primes!
+   }
+   if (N != 1) factors.push_back(N); // special case if N is a prime
+   return factors; // if N does not fit in 32-bit integer and is a prime
+} // then ‘factors’ will have to be changed to vector<ll>
+
+
+memset(numDiffPF, 0, sizeof numDiffPF);
+//Modified Sieve.
+void pre() {
+   for (int i = 2; i < MAX_N; i++)
+       if (numDiffPF[i] == 0) // i is a prime number
+           for (int j = i; j < MAX_N; j += i)
+               numDiffPF[j]++; // increase the values of multiples of i
+}
+// Bottom up euler totient function
+for (int i = 0; i <= limit; i++) eu[i] = i;
+for (int i = 2; i <= limit; i++) {
+    if (eu[i] == i) {
+        for (int j = i; j <= limit; j += i) {
+            eu[j] -= eu[j] / i;
+        }
+    }
+}
+\end{minted}
 \subsection{Side Notes}
 \begin{enumerate}
+    \item People in cycle will commit suicide.
+    \item Every positive integer can be expressed uniquely as a sum of fibonacci numbers such that no two numbers are equal or consecutive fibonacci numbers.
+    \item Every even no. greater than or equal to 4 can be expressed as a sum of 2 prime nos.
     \item No. of digits in a no. $n = \lfloor(\log_{10}{n})\rfloor + 1$
     \item No. of digits in $\binom{n}{k} = \lfloor(\sum_{i = n - k + 1}^{n}\log_{10}{i} - \sum_{i = 1}^{k}\log_{10}{i)})\rfloor + 1$
+    \item No. of digits of a no. in some base b$ = floor(1 + \log_b{no.} + eps)$. Also make sure that input no. is not 0.
+    \item for $\binom{n}{r}$ always do $r = min (r, n - r)$. Also to compute it either we can use dp or for a specific pair, if it is guarenteed that the final solution lies within data types limit then we can compute it as. \begin{minted}{cpp}
+ll ncr(ll n, ll r) {
+    r = min (r, n - r);
+    ll res = 1;
+    for (int k = 1; k <= r; k++, n--) {
+        res *= n;
+        res /= k;
+    }
+}
+    \end{minted}
+    \item $(t^a - 1) / (t^b - 1)$ is not an integer with less than 100 digits if t = 1 or $a < b$ or $a \bmod b \neq 0$ or $(a - b) * \log_{10}{t} > 99.0$
+    \item \begin{minted}{cpp}
+for (int j = 0; j < bigint_var.a.size (); j++) {
+    int temp = bigint_var.a[j];
+    while (temp > 9) {
+        sum += temp % 10;
+        temp /= 10;
+    }
+    sum += temp;
+}
+    \end{minted}
+    \item \[\begin{bmatrix}
+    1 & 1\\
+    1 & 0
+    \end{bmatrix}^{\!p}
+=
+\begin{bmatrix}
+    fib(p + 1) & fib (p)\\
+    fib (p) & fib (p - 1)
+    \end{bmatrix}
+    \]
+    \textit{Thus higher fibs can be computed in $O(\log{p})$}
 \end{enumerate}
-\subsubsection{Important Problems}
+\subsection{Important Problems}
 \begin{itemize}
-	\item \href {https://gist.github.com/sourabh2311/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the number of hops to travel between flights.\\
-	Problem Sol: Just link the center of diameters. Brute force which edge to remove. 
-	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_112.cpp}{UVA 112 Sol}, \href {https://uva.onlinejudge.org/external/1/112.pdf}{UVA 112 Prob}: Just see how I processed the input.
+	\item \href {https://uva.onlinejudge.org/external/113/11310.pdf}{UVA 11310 Prob}: $dp[n] = dp[n - 1] + 4 * dp[n - 2] + 2 * dp[n - 3]$
+	\item \href {https://uva.onlinejudge.org/external/112/11204.pdf}{UVA 11204 Prob}: Tricky problem, it just asks \textit{How many possible arrangements maximizing the assignment of the \textbf{first priority}.} Thus only first priority instrument matters, so if 2 want A, 4 want B, 3 want C, then ans is $2 * 4 * 3$.
+    \item \href {https://uva.onlinejudge.org/external/107/10790.pdf}{UVA 10790 Prob}: If there is an intersection that means we have a quadrilateral, hence answer is the number of quadrilaterals $ = \binom{a}{2} * \binom{b}{2}$.
+    \item \href {https://uva.onlinejudge.org/external/5/568.pdf}{last non zero digit of fact(n)}, \href {https://gist.github.com/sourabh2311/3e7d2c8c905cce7f04eb86400d4aac35}{Sol}. If you know multiplicatioin limit, take mod with ($10^{\text{no. of digits}}$)
+    \item \href {https://uva.onlinejudge.org/external/5/542.pdf}{France 98}, \href {https://gist.github.com/sourabh2311/94629bd0303d3c4f918bda3bdaf8e711}{Sol}.
+    \item \href {https://uva.onlinejudge.org/external/100/10061.pdf}{How many zeros and how many digits?} Sol: then iterate through factors of base and get their powers in n!, take min. of all such powers divided by power of prime factor in that base. And for how many digits part, use that log formula.
+    \item Given n, maximize (find x) $n - p*x$ where $p*x \leq n < (p + 1)*x$ which somehow happens with $p = 1$
+    \item \textbf{Prob: }Lenghts from 1 to n, max. no. of triangles?
+            \\\textbf{Sol: }\begin{minted}{cpp}
+void precal () {
+    F[3] = P[3] = 0;
+    ll var = 0;
+    for (int i = 4; i <= 1000000; i++) {
+        if (i % 2 == 0) {
+            var++;
+        }
+        P[i] = P[i - 1] + var;
+        F[i] = F[i - 1] + P[i];
+    }
+    // F[n] has ans
+}
+            \end{minted}
 \end{itemize}
 \section{Graphs}
 \subsection{Tree}
@@ -240,6 +431,10 @@ void postorder (v) {
 It is \textbf {impossible} to construct binary tree with just Preorder traversal.\\ 
 It is \textbf {impossible} to construct binary tree with just Inorder traversal.\\
 It is \textbf {impossible} to construct binary tree with just Postorder traversal.
+\subsubsection{LCA}
+\begin{itemize}
+    \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{lca}
+\end{itemize}
 \subsubsection{Important Problems}
 \begin{itemize}
 	\item \href {https://gist.github.com/sourabh2311/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the number of hops to travel between flights.\\
@@ -250,8 +445,203 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 	\item \href {https://gist.github.com/sourabh2311/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10459 Prob}: Centers of diameters are best where as corners are worst.	
     \item \href {https://codeforces.com/contest/911/problem/F}{Tree Destruction}, \href {https://codeforces.com/contest/911/submission/34122817}{Sol}:
 \end{itemize}
-\section{Some Basic}
+\subsection{Terminology}
+\begin{itemize}
+    \item A \textbf{vertex cover} is a subset of vertices S, such that for each edge (u, v) in graph, either u or v (or both) are in S.
+    \item An \textbf{independent set} is a subset of vertices S, such that no two vertices u, v in S are adjacent in graph.
+    \item A subset of vertices is a vertex cover iff the complement of the set is an independent set. I.e. $MinVC + MaxIS = V$.
+    \item A matching is a subset of edges such that each vertex is adjacent to at most one edge in the subset. Clearly Matching edges can be atmost $|V|/2$ as each edge joins two vertices and now no other matched edge can touch them.
+    \item Once we have maximum matching. Clearly since these matching edges are aswell edges of the graph and minimum vertex cover should have vertices that are adjacent to these edges. But since matching edges have no vertex in common, size of minimum vertex cover is atleast the size of maximum matching.
+    \item Maximum matchings can be found in polynomial time for any graph, while minimum vertex cover is NP complete. Thus, finding maximum independent sets is another NP-complete problem.
+    \item The equivalence between matching and covering articulated in Kőnig's theorem allows minimum vertex covers and maximum independent sets to be computed in polynomial time for bipartite graphs, despite the NP-completeness of these problems for more general graph families.
+\end{itemize}
+\subsection{Konigs Theorem}
+Size of Min VC in a bipartite graph is equal to the size of Max Matching in that graph.
+\\Kőnig's theorem can be proven in a way that provides additional useful information beyond just its truth: the proof provides a way of constructing a minimum vertex cover from a maximum matching.
+\\\textbf{Proof: } Let $G = (V, E)$ be a bipartite graph, and let the vertex set $V$ V be partitioned into left set $L$ and right set $R$. Suppose that $M$ is a maximum matching for $G$.
+\\let $U$ be the set of unmatched vertices in $L$ (possibly empty), and let $Z$ be the set of vertices that are either in $U$ or are connected to $U$ by alternating paths. Let $K = ( L \setminus Z ) \cup ( R \cap Z )$. 
+\\Every edge $e$ in $E$ either belongs to an alternating path (and has a right endpoint in $K$, or it has a left endpoint in $K$. For, if $e$ is matched but not in an alternating path, then its left endpoint cannot be in an alternating path (for such a path would have had to have included $e$) and thus belongs to $L \setminus Z$. Alternatively, if $e$ is unmatched but not in an alternating path, then its left endpoint cannot be in an alternating path, for such a path could be extended by adding $e$ to it. Thus, $K$ forms a vertex cover.\\
+Additionally, every vertex in $K$ is an endpoint of a matched edge. For, every vertex in $L \setminus Z$ is matched because $Z$ is a superset of $U$. And every vertex in $R \cap Z$ must also be matched, for if there existed an alternating path to an unmatched vertex then changing the matching by removing the matched edges from this path and adding the unmatched edges in their place would increase the size of the matching. However, no matched edge can have both of its endpoints in $K$. Thus, $K$ is a vertex cover of cardinality equal to $M$, and must be a minimum vertex cover.
+\\Small diagram to understand proof well.
+\definecolor{myblue}{RGB}{80,80,160}
+\definecolor{mygreen}{RGB}{80,160,80}
 
+\begin{tikzpicture}[thick,
+  every node/.style={draw,circle},
+  fsnode/.style={fill=myblue},
+  ssnode/.style={fill=mygreen},
+  every fit/.style={ellipse,draw,inner sep=-2pt,text width=2cm},
+  ->,shorten >= 3pt,shorten <= 3pt
+]
+
+% the vertices of U
+\begin{scope}[start chain=going below,node distance=7mm]
+\foreach \i in {1,2, 3}
+  \node[fsnode,on chain] (f\i) [label=left: \i] {};
+\end{scope}
+
+% the vertices of V
+\begin{scope}[xshift=4cm,yshift=-0.5cm,start chain=going below,node distance=7mm]
+\foreach \i in {4, 5}
+  \node[ssnode,on chain] (s\i) [label=right: \i] {};
+\end{scope}
+
+% the set U
+\node [myblue,fit=(f1) (f3),label=above:$U$] {};
+% the set V
+\node [mygreen,fit=(s4) (s5),label=above:$V$] {};
+
+% the edges
+\draw (f1) -- (s5);
+\draw (f2) -- (s4);
+\draw (f3) -- (s5);
+\end{tikzpicture}
+\\Matched edges are (2, 4) and (3, 5).\\
+$U = \{1\}$, 
+$Z = \{1, 5, 3\}$, 
+$L = \{1, 2, 3\}$, 
+$K = \{2, 5\}$
+\subsection{Bipartite Matching}
+\subsubsection{Hopcroft Karp}
+\begin{enumerate}
+    \item \textbf{Free node or vertex: }Given a matching M, a node that is not a part of mathing is called a free node. Initially all vertices are free.
+    \item \textbf{Matching and not matching edges: }Given a matching M, edges that are part of matching are called matching edges and edges that are not part of M (or connect free nodes) are called non matching edges.
+    \item \textbf{Alternating Paths: }Given a matching M, an alternating path is a path in which edges belong alternatively to the matching and not matching.
+    \item \textbf{Augmenting path: }Given a matching M, an augmenting path is an alternating path that starts from and ends on free vertices.
+    \item The Hopcroft karp algorithm is based on below concept:
+    \item A matching M is not maximum if there exist an augmenting path. It is also true other way, i.e., a matching is maximum if no augmenting path exists.
+    \item Hopcroft Karp Algo $O(\sqrt{V}*E)$: \begin{enumerate}
+        \item Initialize maximal matching M as empty.
+        \item While there exists an augmenting path P, remove matching edges of P from M and add not matching edges of P to M. (This increases size of M by 1 as P starts and ends with a free vertex).
+        \item Return M.
+    \end{enumerate}
+The following is the sol to problem \href {https://uva.onlinejudge.org/external/114/11419.pdf}{UVA 11419} where we were just required to find minimum vertex cover.
+    \begin{minted}{cpp}
+#include <bits/stdc++.h>
+#define FOR(i, a, b) for (int i = a; i <= b; i++)
+#define REP(i, n) for (int i = 0; i < n; i++)
+#define pb push_back
+#define INF 500000000
+#define maxN 1010
+using namespace std;
+
+int n, m, matchX[maxN], matchY[maxN];
+int dist[maxN];
+vector<int> adj[maxN];
+bool Free[maxN];
+
+bool bfs() {
+    queue<int> Q;
+    FOR (i, 1, n)
+        if (!matchX[i]) {  // only free vertices are pushed in queue and have their distance set to 0. Thus already matched vertices in X will have their distance set to INF.
+            dist[i] = 0;
+            Q.push(i);
+        }
+        else dist[i] = INF;
+    dist[0] = INF;  // 0 is nil
+    // Thus we would always start from free vertices traverse then alternating path and if in end from Y there is no match i.e. its a free vertice, we found an augmenting path.
+    // Side Notes: If we popped an already matched vertex from queue then it wont go to its matching edges neighbor as its matchY is popped vertex itself and hence it wont have distance set to INF.
+    while (!Q.empty()) {
+        int i = Q.front(); Q.pop();
+        REP(k, adj[i].size()) {
+            int j = adj[i][k];
+            if (dist[matchY[j]] == INF) {
+                dist[matchY[j]] = dist[i] + 1;
+                Q.push(matchY[j]);
+            }
+        }
+    }
+    return dist[0] != INF;
+}
+
+bool dfs(int i) {
+    if (!i) return true; // to handle nil.
+    REP(k, adj[i].size()) {
+        int j = adj[i][k];
+        if (dist[matchY[j]] == dist[i] + 1 && dfs(matchY[j])) {
+            matchX[i] = j;
+            matchY[j] = i;
+            return true;
+        }
+    }
+    dist[i] = INF;
+    return false;
+}
+
+int hopcroft_karp() {
+    int matching = 0;
+    while (bfs())
+        FOR (i, 1, n)
+            if (!matchX[i] && dfs(i))
+                matching++;
+    return matching;
+}
+
+void dfs_konig(int i) {
+    Free[i] = false;
+    REP(k, adj[i].size()) {
+        int j = adj[i][k];
+        if (matchY[j] && matchY[j] != INF) {
+            int x = matchY[j];
+            matchY[j] = INF;  // as we have undirected edge, we dont want to traverse that same edge again, so its just a way of noting that.
+            if (Free[x]) dfs_konig(x);
+        }
+    }
+}
+
+void solve() {
+    printf("%d", hopcroft_karp());
+    FOR (i, 1, n)
+        if (!matchX[i])
+            dfs_konig(i);  // finding Z.
+    FOR (i, 1, n)
+        if (matchX[i] && Free[i])  // i.e. in L but not in Z.
+            printf(" r%d", i);
+    FOR (j, 1, m)
+        if (matchY[j] == INF)  // i.e. we traversed this edge i.e. its in R intersection Z.
+            printf(" c%d", j);
+    putchar('\n');
+}
+
+void initialize() {
+    FOR (i, 1, n) {
+        adj[i].clear();
+        matchX[i] = 0;
+        Free[i] = true;
+    }
+    memset(matchY, 0, (m + 1) * sizeof(int));
+}
+
+int ar[5];
+char buff[20];
+void read_line() {
+    gets(buff);
+    int len = strlen(buff), i = 0, m = 0;
+    while (i < len)
+        if (buff[i] != ' ') {
+            ar[m] = 0;
+            while (i < len && buff[i] != ' ')
+                ar[m] = ar[m] * 10 + buff[i++] - 48;
+            m++;
+        }
+        else i++;
+}
+
+main() {
+    int k, u, v;
+    while (scanf(" %d %d %d ", &n, &m, &k) != EOF) {
+        if (!n && !m && !k) break;
+        initialize();
+        while (k--) {
+            read_line();
+            adj[ar[0]].pb(ar[1]);
+        }
+        solve();
+    }
+}
+    \end{minted}
+\end{enumerate}
+\section{Some Basic}
 \begin{itemize}
     \item \begin{minted}{cpp}
 #pragma GCC optimize("Ofast")  // tells the compiler to optimize the code for speed to make it as fast as possible (and not look for space)
@@ -261,6 +651,33 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
     \item \begin{minted}{cpp}
 while (first || cin >> temp) {  // something }
             \end{minted}
+    \item \textbf{Interval Covering: }Tell the minimum no. of intervals to cover the entire big interval.
+    \begin{minted}{cpp}
+void solve() {
+    // Greedy Algorithm
+    sort (data.begin (), data.end ()); 
+    for (; i < data.size(); i = j) {
+       if (data[i].first > rightmost) break;
+       for (j = i + 1; j < data.size() and data[j].first <= rightmost; j++) {
+           if (data[j].second > data[i].second) {
+               i = j;
+           }
+       }
+       ans.push_back(data[i]);
+       rightmost = data[i].second;
+       if (rightmost >= m) break;
+
+    }
+    if (rightmost < m) {
+       cout << "0\n";
+    }
+}
+
+    \end{minted}
+    \item \begin{minted}{cpp}
+    int gcd (int a, int b) { return b == 0 ? a : gcd (b, a % b); }
+    int lcm (int a, int b) { return a * (b / gcd (a, b)); }
+            \end{minted}
     \item \textbf{Prob: }We have a stack of turtles and we have some final permutation of them, each turtule can crawl out of its position and move to top. Determine a minimal sequence of operations to obtain the final permutation.\\\textbf{Sol: }
     \begin{minted}{cpp}
 for (int j = n - 1, next = n - 1; j >= 0; j--) {
@@ -269,6 +686,29 @@ for (int j = n - 1, next = n - 1; j >= 0; j--) {
 }
 sort (Toswap.begin(), Toswap.end());
 \end{minted}
+    \item \begin{minted}{cpp}
+        #define MAX_N 2 // Fibonacci matrix, increase/decrease this value as needed
+struct Matrix { int mat[MAX_N][MAX_N]; }; // we will return a 2D array
+Matrix matMul(Matrix a, Matrix b) { // O(n^3)
+   Matrix ans; int i, j, k;
+   for (i = 0; i < MAX_N; i++)
+       for (j = 0; j < MAX_N; j++)
+           for (ans.mat[i][j] = k = 0; k < MAX_N; k++) // if necessary, use
+               ans.mat[i][j] += a.mat[i][k] * b.mat[k][j]; // modulo arithmetic
+   return ans;
+}
+Matrix matPow(Matrix base, int p) { // O(n^3 log p)
+   Matrix ans; int i, j;
+   for (i = 0; i < MAX_N; i++) for (j = 0; j < MAX_N; j++)
+           ans.mat[i][j] = (i == j); // prepare identity matrix
+   while (p) { // iterative version of Divide & Conquer exponentiation
+       if (p & 1) ans = matMul(ans, base); // if p is odd (last bit is on)
+       base = matMul(base, base); // square the base
+       p >>= 1; // divide p by 2
+   }
+   return ans;
+}
+    \end{minted}
     \item \begin{minted}{cpp}
 // Months are 0 indexed
 //The following Code solves problems: UVA 893 
@@ -522,10 +962,98 @@ struct UFDS {
     \item \href {https://codeforces.com/contest/915/problem/F}{Imbalance of a tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/F.cpp}{Sol}, summation(max - min) is same as summation(max) - summation(min).
     \item \href {https://codeforces.com/contest/913/problem/C}{Party Lemonade}, \href {https://codeforces.com/contest/913/submission/34067096}{Sol}
     \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/34071120}{Sol}: pr denotes from what grammer it is derived. Also number of functions on n variables $= 2^{2^n}$.
-
-
+    \item \href {https://codeforces.com/contest/916/problem/B}{Jamie and binary sequence}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/B.cpp}{Sol}.
+\end{itemize}
+\section{Data Structures}
+\subsection{Segment Tree}
+\begin{itemize}
+    \item \href {https://codeforces.com/contest/916/problem/D}{Jamie and to do list}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/D.cpp}{Sol}: Just basic application of Persistent segment tree. When updating some element, at most O(logn) nodes in the segment tree get changed: the nodes along the path from root to the updated leaf. For each timepoint, instead of creating a copy of the entire segment tree, copy only nodes on the path to be updated and update them. Therefore total storage is O(n + t\*logn).
 \end{itemize}
 \section{DP}
+\subsection{Coin Change}
+\begin{minted}{cpp}
+/*No. of ways in which we can make change of that money O(N*V)*/
+// Recurrence: dp[value] = dp[value - type1] + ... + dp[value - typen]
+int N = 5, V, coinValue[5] = {1, 5, 10, 25, 50};
+long long int memo[6][30000];
+long long int ways(int type, int value) {
+   if (value == 0)              return 1;
+   if (value < 0 || type == N)  return 0;
+   if (memo[type][value] != -1) return memo[type][value];
+   return memo[type][value] = ways(type + 1, value) + ways(type, value - coinValue[type]);
+}
+/*Bottom up version of the above solution*/
+long long int solve() {
+   dp[0] = 1; //rest all are 0;
+   for(i = 0; i < coinTypes; ++i){
+       for(j = coins[i]; j <= value; ++j)
+           dp[j] += dp[j - coins[i]];
+   }
+}
+/*Of problem above, in case you want dp[i][j] where it means, no. of ways to represent val j using coin
+* types [0...i] */
+void solve() {
+   dp[0][0] = 1; //rest all are 0;
+   for(int i = 0; i < coinType; i++){
+       if(i) {
+           for(int j = 0; j <= maxVal; j++) {
+               dp[i][j] = dp[i - 1][j];
+           }
+       }
+       for(int j = coinValue[i]; j <= maxVal; ++j)
+           dp[i][j] += dp[i][j - coinValue[i]];
+   }
+}
+// Minimum no. of coins/bills given to fullfill an amount >= x when each coin/bill can be used any no. of times
+// Recurrence: dp[value] = min_i{dp[value - type_i] + 1}
+void solve() {
+   vector<long long int> dp;
+   dp.assign(30000, INT_MAX);
+   dp[0] = 0;
+   for(int i = 0; i < 5; i++) {
+       for(int j = coinValue[i]; j <= V; j++) {
+           if(dp[j - coinValue[i]] != INT_MAX) {
+               dp[j] = min(dp[j], dp[j - coinValue[i]] + 1);
+           }
+
+       }
+   }
+   res = dp[V];
+}
+/*Minimum no. of coins/bills given to fullfill an amount >= x when each coin/bill can be used only once*/
+void solve() {
+   int dp [10000 + 10];
+   for ( int i = 0; i < 10010; i++ )
+       dp [i] = INT_MAX;
+   dp [0] = 0;
+   for (int i = 0; i < coinNumber; i++) {
+       for (int j = 10000 - coins[i]; j >= 0; j--) {
+           if (dp[j] != INT_MAX && dp[j + coins[i]] > dp[j] + 1)
+               dp[j + coins[i]] = dp[j] + 1;
+       }
+   }
+   for ( int i = x; i <= 10000; i++ ) {
+       if ( dp [i] != INT_MAX ) {
+           printf ("%d %d\n", i, dp [i]);
+           break;
+       }
+   }
+}
+/*Minimum no. of coins/bills given to fullfill an amount >= x when each coin/bill can be used
+* a fixed no. of times*/
+void solve() {
+   vector<ll> buyer(505, LLONG_MAX);
+   buyer[0] = 0;
+   for (int i = 0; i < 6; i++) {
+       for(int k = 0; k < cnt[i]; k++) {
+           for (int j = 500 - coinValue[i]; j >= 0; j--) {
+               if (buyer[j] != LLONG_MAX && buyer[j + coinValue[i]] > buyer[j] + 1)
+                   buyer[j + coinValue[i]] = buyer[j] + 1;
+           }
+       }
+   }
+}
+\end{minted}
 \subsection{Balanced Bracket Sequence}
 A Balanced bracket sequence is a string consisting of only brackets, such that this sequence, when certain numbers and $+$ is inserted gives a valid mathematical expression.
 \subsubsection{One type of bracket}

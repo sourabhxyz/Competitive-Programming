@@ -2,31 +2,43 @@
 \contentsline {subsection}{\numberline {1.1}Game Theory}{1}{subsection.1.1}
 \contentsline {subsubsection}{\numberline {1.1.1}What is a Combinatorial Game?}{1}{subsubsection.1.1.1}
 \contentsline {subsection}{\numberline {1.2}Modulo}{1}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Prob}{2}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.3}Prob and Comb}{2}{subsection.1.3}
 \contentsline {subsection}{\numberline {1.4}Euler's Totient Function}{2}{subsection.1.4}
 \contentsline {subsection}{\numberline {1.5}Catalan}{2}{subsection.1.5}
-\contentsline {subsection}{\numberline {1.6}Side Notes}{2}{subsection.1.6}
-\contentsline {subsubsection}{\numberline {1.6.1}Important Problems}{2}{subsubsection.1.6.1}
-\contentsline {section}{\numberline {2}Graphs}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}Tree}{2}{subsection.2.1}
-\contentsline {subsubsection}{\numberline {2.1.1}Important Problems}{2}{subsubsection.2.1.1}
-\contentsline {section}{\numberline {3}Some Basic}{2}{section.3}
-\contentsline {section}{\numberline {4}DP}{4}{section.4}
-\contentsline {subsection}{\numberline {4.1}Balanced Bracket Sequence}{4}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}One type of bracket}{4}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}MultiType}{4}{subsubsection.4.1.2}
-\contentsline {subsubsection}{\numberline {4.1.3}No. of balanced Sequences}{4}{subsubsection.4.1.3}
-\contentsline {subsubsection}{\numberline {4.1.4}Lexicographically next balanced sequence}{4}{subsubsection.4.1.4}
-\contentsline {subsubsection}{\numberline {4.1.5}Sequence Index}{5}{subsubsection.4.1.5}
-\contentsline {subsubsection}{\numberline {4.1.6}Finding the kth sequence}{5}{subsubsection.4.1.6}
-\contentsline {section}{\numberline {5}Strings}{6}{section.5}
-\contentsline {subsection}{\numberline {5.1}Minimum Edit Distance}{6}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Length of longest Palindrome possible by removing 0 or more characters}{6}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Longest Common Subsequence}{6}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Prefix Function and KMP}{6}{subsection.5.4}
-\contentsline {subsubsection}{\numberline {5.4.1}Prefix Function}{6}{subsubsection.5.4.1}
-\contentsline {subsubsection}{\numberline {5.4.2}KMP}{6}{subsubsection.5.4.2}
-\contentsline {subsubsection}{\numberline {5.4.3}Counting number of occurrences of each prefix}{7}{subsubsection.5.4.3}
-\contentsline {subsection}{\numberline {5.5}Notes}{7}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}SAM}{7}{subsection.5.6}
-\contentsline {subsection}{\numberline {5.7}Important Problems}{9}{subsection.5.7}
+\contentsline {subsection}{\numberline {1.6}Floyd Cycle Finding}{2}{subsection.1.6}
+\contentsline {subsection}{\numberline {1.7}Base Conversion}{2}{subsection.1.7}
+\contentsline {subsection}{\numberline {1.8}Extended Euclid}{2}{subsection.1.8}
+\contentsline {subsection}{\numberline {1.9}Sieve}{2}{subsection.1.9}
+\contentsline {subsection}{\numberline {1.10}Side Notes}{3}{subsection.1.10}
+\contentsline {subsection}{\numberline {1.11}Important Problems}{3}{subsection.1.11}
+\contentsline {section}{\numberline {2}Graphs}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Tree}{3}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}LCA}{3}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Important Problems}{4}{subsubsection.2.1.2}
+\contentsline {subsection}{\numberline {2.2}Terminology}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Konigs Theorem}{4}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Bipartite Matching}{4}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}Hopcroft Karp}{4}{subsubsection.2.4.1}
+\contentsline {section}{\numberline {3}Some Basic}{5}{section.3}
+\contentsline {section}{\numberline {4}Data Structures}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}Segment Tree}{7}{subsection.4.1}
+\contentsline {section}{\numberline {5}DP}{7}{section.5}
+\contentsline {subsection}{\numberline {5.1}Coin Change}{7}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Balanced Bracket Sequence}{8}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}One type of bracket}{8}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}MultiType}{8}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}No. of balanced Sequences}{8}{subsubsection.5.2.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Lexicographically next balanced sequence}{8}{subsubsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.5}Sequence Index}{8}{subsubsection.5.2.5}
+\contentsline {subsubsection}{\numberline {5.2.6}Finding the kth sequence}{9}{subsubsection.5.2.6}
+\contentsline {section}{\numberline {6}Strings}{9}{section.6}
+\contentsline {subsection}{\numberline {6.1}Minimum Edit Distance}{10}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Length of longest Palindrome possible by removing 0 or more characters}{10}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Longest Common Subsequence}{10}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Prefix Function and KMP}{10}{subsection.6.4}
+\contentsline {subsubsection}{\numberline {6.4.1}Prefix Function}{10}{subsubsection.6.4.1}
+\contentsline {subsubsection}{\numberline {6.4.2}KMP}{10}{subsubsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.3}Counting number of occurrences of each prefix}{10}{subsubsection.6.4.3}
+\contentsline {subsection}{\numberline {6.5}Notes}{11}{subsection.6.5}
+\contentsline {subsection}{\numberline {6.6}SAM}{11}{subsection.6.6}
+\contentsline {subsection}{\numberline {6.7}Important Problems}{11}{subsection.6.7}

@@ -2,31 +2,43 @@
 \BOOKMARK [2][-]{subsection.1.1}{Game Theory}{section.1}% 2
 \BOOKMARK [3][-]{subsubsection.1.1.1}{What is a Combinatorial Game?}{subsection.1.1}% 3
 \BOOKMARK [2][-]{subsection.1.2}{Modulo}{section.1}% 4
-\BOOKMARK [2][-]{subsection.1.3}{Prob}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.3}{Prob and Comb}{section.1}% 5
 \BOOKMARK [2][-]{subsection.1.4}{Euler's Totient Function}{section.1}% 6
 \BOOKMARK [2][-]{subsection.1.5}{Catalan}{section.1}% 7
-\BOOKMARK [2][-]{subsection.1.6}{Side Notes}{section.1}% 8
-\BOOKMARK [3][-]{subsubsection.1.6.1}{Important Problems}{subsection.1.6}% 9
-\BOOKMARK [1][-]{section.2}{Graphs}{}% 10
-\BOOKMARK [2][-]{subsection.2.1}{Tree}{section.2}% 11
-\BOOKMARK [3][-]{subsubsection.2.1.1}{Important Problems}{subsection.2.1}% 12
-\BOOKMARK [1][-]{section.3}{Some Basic}{}% 13
-\BOOKMARK [1][-]{section.4}{DP}{}% 14
-\BOOKMARK [2][-]{subsection.4.1}{Balanced Bracket Sequence}{section.4}% 15
-\BOOKMARK [3][-]{subsubsection.4.1.1}{One type of bracket}{subsection.4.1}% 16
-\BOOKMARK [3][-]{subsubsection.4.1.2}{MultiType}{subsection.4.1}% 17
-\BOOKMARK [3][-]{subsubsection.4.1.3}{No. of balanced Sequences}{subsection.4.1}% 18
-\BOOKMARK [3][-]{subsubsection.4.1.4}{Lexicographically next balanced sequence}{subsection.4.1}% 19
-\BOOKMARK [3][-]{subsubsection.4.1.5}{Sequence Index}{subsection.4.1}% 20
-\BOOKMARK [3][-]{subsubsection.4.1.6}{Finding the kth sequence}{subsection.4.1}% 21
-\BOOKMARK [1][-]{section.5}{Strings}{}% 22
-\BOOKMARK [2][-]{subsection.5.1}{Minimum Edit Distance}{section.5}% 23
-\BOOKMARK [2][-]{subsection.5.2}{Length of longest Palindrome possible by removing 0 or more characters}{section.5}% 24
-\BOOKMARK [2][-]{subsection.5.3}{Longest Common Subsequence}{section.5}% 25
-\BOOKMARK [2][-]{subsection.5.4}{Prefix Function and KMP}{section.5}% 26
-\BOOKMARK [3][-]{subsubsection.5.4.1}{Prefix Function}{subsection.5.4}% 27
-\BOOKMARK [3][-]{subsubsection.5.4.2}{KMP}{subsection.5.4}% 28
-\BOOKMARK [3][-]{subsubsection.5.4.3}{Counting number of occurrences of each prefix}{subsection.5.4}% 29
-\BOOKMARK [2][-]{subsection.5.5}{Notes}{section.5}% 30
-\BOOKMARK [2][-]{subsection.5.6}{SAM}{section.5}% 31
-\BOOKMARK [2][-]{subsection.5.7}{Important Problems}{section.5}% 32
+\BOOKMARK [2][-]{subsection.1.6}{Floyd Cycle Finding}{section.1}% 8
+\BOOKMARK [2][-]{subsection.1.7}{Base Conversion}{section.1}% 9
+\BOOKMARK [2][-]{subsection.1.8}{Extended Euclid}{section.1}% 10
+\BOOKMARK [2][-]{subsection.1.9}{Sieve}{section.1}% 11
+\BOOKMARK [2][-]{subsection.1.10}{Side Notes}{section.1}% 12
+\BOOKMARK [2][-]{subsection.1.11}{Important Problems}{section.1}% 13
+\BOOKMARK [1][-]{section.2}{Graphs}{}% 14
+\BOOKMARK [2][-]{subsection.2.1}{Tree}{section.2}% 15
+\BOOKMARK [3][-]{subsubsection.2.1.1}{LCA}{subsection.2.1}% 16
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Important Problems}{subsection.2.1}% 17
+\BOOKMARK [2][-]{subsection.2.2}{Terminology}{section.2}% 18
+\BOOKMARK [2][-]{subsection.2.3}{Konigs Theorem}{section.2}% 19
+\BOOKMARK [2][-]{subsection.2.4}{Bipartite Matching}{section.2}% 20
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Hopcroft Karp}{subsection.2.4}% 21
+\BOOKMARK [1][-]{section.3}{Some Basic}{}% 22
+\BOOKMARK [1][-]{section.4}{Data Structures}{}% 23
+\BOOKMARK [2][-]{subsection.4.1}{Segment Tree}{section.4}% 24
+\BOOKMARK [1][-]{section.5}{DP}{}% 25
+\BOOKMARK [2][-]{subsection.5.1}{Coin Change}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.2}{Balanced Bracket Sequence}{section.5}% 27
+\BOOKMARK [3][-]{subsubsection.5.2.1}{One type of bracket}{subsection.5.2}% 28
+\BOOKMARK [3][-]{subsubsection.5.2.2}{MultiType}{subsection.5.2}% 29
+\BOOKMARK [3][-]{subsubsection.5.2.3}{No. of balanced Sequences}{subsection.5.2}% 30
+\BOOKMARK [3][-]{subsubsection.5.2.4}{Lexicographically next balanced sequence}{subsection.5.2}% 31
+\BOOKMARK [3][-]{subsubsection.5.2.5}{Sequence Index}{subsection.5.2}% 32
+\BOOKMARK [3][-]{subsubsection.5.2.6}{Finding the kth sequence}{subsection.5.2}% 33
+\BOOKMARK [1][-]{section.6}{Strings}{}% 34
+\BOOKMARK [2][-]{subsection.6.1}{Minimum Edit Distance}{section.6}% 35
+\BOOKMARK [2][-]{subsection.6.2}{Length of longest Palindrome possible by removing 0 or more characters}{section.6}% 36
+\BOOKMARK [2][-]{subsection.6.3}{Longest Common Subsequence}{section.6}% 37
+\BOOKMARK [2][-]{subsection.6.4}{Prefix Function and KMP}{section.6}% 38
+\BOOKMARK [3][-]{subsubsection.6.4.1}{Prefix Function}{subsection.6.4}% 39
+\BOOKMARK [3][-]{subsubsection.6.4.2}{KMP}{subsection.6.4}% 40
+\BOOKMARK [3][-]{subsubsection.6.4.3}{Counting number of occurrences of each prefix}{subsection.6.4}% 41
+\BOOKMARK [2][-]{subsection.6.5}{Notes}{section.6}% 42
+\BOOKMARK [2][-]{subsection.6.6}{SAM}{section.6}% 43
+\BOOKMARK [2][-]{subsection.6.7}{Important Problems}{section.6}% 44

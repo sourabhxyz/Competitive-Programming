@@ -12,7 +12,7 @@ ll arr[100010], seg_t[400010], seg_lazy[400010];
 int ord[100010], uord[100010], dep[100010], subt_size[100010], ancs[100010][18], now_ord;
 vector<int> edge[100010];
 int root_now, root_lbound, root_rbound;
-
+// recall that global variables are initialised to 0.
 void dfs(int now, int prev) {
 	ord[now] = now_ord; uord[now_ord] = now; now_ord++;
 	subt_size[now] = 1; ancs[now][0] = prev;
@@ -22,7 +22,7 @@ void dfs(int now, int prev) {
 		subt_size[now] += subt_size[edge[now][i]];
 	}
 }
-
+// 0 indexed segment tree.
 void build_seg(int l, int r, int pos) {
 	if (l==r) {
 		seg_t[pos] = arr[uord[l]];
@@ -81,7 +81,7 @@ int nth_ancs(int u, int n) {
 int LCA(int u, int v) {
 	if (dep[u]<dep[v]) swap(u, v);
 	int dep_dif = dep[u]-dep[v];
-	u = nth_ancs(u, dep_dif);
+	u = nth_ancs(u, dep_dif);  // bringing both on same level.
 	if (u==v) return u;
 	for (int i=16;i>=0;i--) if (ancs[u][i]!=ancs[v][i]) {
 		u = ancs[u][i];
@@ -101,6 +101,7 @@ int main() {
 	}
 	dfs(1, 0); build_seg(0, n-1, 0);
 	for (int j=1;j<17;j++) for (int i=1;i<=n;i++) ancs[i][j] = ancs[ancs[i][j-1]][j-1];
+	// thus this lca algo required O(nlogn) preprocessing and answer query O(logn).
 	for (int i=0;i<q;i++) {
 		int op; cin >> op;
 		if (op==1) {

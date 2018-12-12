@@ -1,0 +1,52 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n}{ll} \PYG{n}{\PYGZus{}sieve\PYGZus{}size}\PYG{p}{;} \PYG{c+c1}{// ll is defined as: typedef long long ll;}
+\PYG{n}{bitset}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{10000010}\PYG{o}{\PYGZgt{}} \PYG{n}{bs}\PYG{p}{;} \PYG{c+c1}{// 10\PYGZca{}7 should be enough for most cases}
+\PYG{n}{vi} \PYG{n}{primes}\PYG{p}{;} \PYG{c+c1}{// compact list of primes in form of vector\PYGZlt{}int\PYGZgt{}}
+\PYG{k+kt}{void} \PYG{n+nf}{sieve}\PYG{p}{(}\PYG{n}{ll} \PYG{n}{upperbound}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// create list of primes in [0..upperbound]}
+   \PYG{n}{\PYGZus{}sieve\PYGZus{}size} \PYG{o}{=} \PYG{n}{upperbound} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// add 1 to include upperbound}
+   \PYG{n}{bs}\PYG{p}{.}\PYG{n}{set}\PYG{p}{();} \PYG{c+c1}{// set all bits to 1}
+   \PYG{n}{bs}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{bs}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{c+c1}{// except index 0 and 1}
+   \PYG{k}{for} \PYG{p}{(}\PYG{n}{ll} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{\PYGZus{}sieve\PYGZus{}size}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{k}{if} \PYG{p}{(}\PYG{n}{bs}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+\PYG{c+c1}{// cross out multiples of i starting from i * i!}
+           \PYG{k}{for} \PYG{p}{(}\PYG{n}{ll} \PYG{n}{j} \PYG{o}{=} \PYG{n}{i} \PYG{o}{*} \PYG{n}{i}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}=} \PYG{n}{\PYGZus{}sieve\PYGZus{}size}\PYG{p}{;} \PYG{n}{j} \PYG{o}{+=} \PYG{n}{i}\PYG{p}{)} \PYG{n}{bs}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+           \PYG{n}{primes}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{((}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{i}\PYG{p}{);} \PYG{c+c1}{// add this prime to the list of primes}
+       \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{}} \PYG{c+c1}{// call this method in main method}
+\PYG{k+kt}{bool} \PYG{n+nf}{isPrime}\PYG{p}{(}\PYG{n}{ll} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// a good enough deterministic prime tester}
+    \PYG{c+c1}{// O(\PYGZsh{}primes \PYGZlt{} sqrt(N))}
+    \PYG{c+c1}{// O(sqrt(N)/ln(sqrt(N)))}
+   \PYG{k}{if} \PYG{p}{(}\PYG{n}{N} \PYG{o}{\PYGZlt{}=} \PYG{n}{\PYGZus{}sieve\PYGZus{}size}\PYG{p}{)} \PYG{k}{return} \PYG{n}{bs}\PYG{p}{[}\PYG{n}{N}\PYG{p}{];} \PYG{c+c1}{// O(1) for small primes}
+   \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{primes}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+       \PYG{k}{if} \PYG{p}{(}\PYG{n}{N} \PYG{o}{\PYGZpc{}} \PYG{n}{primes}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+   \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;} \PYG{c+c1}{// it takes longer time if N is a large prime!}
+\PYG{p}{\PYGZcb{}} \PYG{c+c1}{// note: only work for N \PYGZlt{}= (last prime in vi \PYGZdq{}primes\PYGZdq{})\PYGZca{}2}
+
+\PYG{n}{vi} \PYG{n+nf}{primeFactors}\PYG{p}{(}\PYG{n}{ll} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// remember: vi is vector\PYGZlt{}int\PYGZgt{}, ll is long long}
+   \PYG{n}{vi} \PYG{n}{factors}\PYG{p}{;}
+   \PYG{n}{ll} \PYG{n}{PF\PYGZus{}idx} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{PF} \PYG{o}{=} \PYG{n}{primes}\PYG{p}{[}\PYG{n}{PF\PYGZus{}idx}\PYG{p}{];} \PYG{c+c1}{// primes has been populated by sieve}
+   \PYG{k}{while} \PYG{p}{(}\PYG{n}{PF} \PYG{o}{*} \PYG{n}{PF} \PYG{o}{\PYGZlt{}=} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// stop at sqrt(N); N can get smaller}
+       \PYG{k}{while} \PYG{p}{(}\PYG{n}{N} \PYG{o}{\PYGZpc{}} \PYG{n}{PF} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{n}{N} \PYG{o}{/=} \PYG{n}{PF}\PYG{p}{;} \PYG{n}{factors}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{PF}\PYG{p}{);} \PYG{p}{\PYGZcb{}} \PYG{c+c1}{// remove PF}
+       \PYG{n}{PF} \PYG{o}{=} \PYG{n}{primes}\PYG{p}{[}\PYG{o}{++}\PYG{n}{PF\PYGZus{}idx}\PYG{p}{];} \PYG{c+c1}{// only consider primes!}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{k}{if} \PYG{p}{(}\PYG{n}{N} \PYG{o}{!=} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{factors}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{N}\PYG{p}{);} \PYG{c+c1}{// special case if N is a prime}
+   \PYG{k}{return} \PYG{n}{factors}\PYG{p}{;} \PYG{c+c1}{// if N does not fit in 32\PYGZhy{}bit integer and is a prime}
+\PYG{p}{\PYGZcb{}} \PYG{c+c1}{// then ‘factors’ will have to be changed to vector\PYGZlt{}ll\PYGZgt{}}
+
+
+\PYG{n}{memset}\PYG{p}{(}\PYG{n}{numDiffPF}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof} \PYG{n}{numDiffPF}\PYG{p}{);}
+\PYG{c+c1}{//Modified Sieve.}
+\PYG{k+kt}{void} \PYG{n+nf}{pre}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+   \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{MAX\PYGZus{}N}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+       \PYG{k}{if} \PYG{p}{(}\PYG{n}{numDiffPF}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{c+c1}{// i is a prime number}
+           \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{MAX\PYGZus{}N}\PYG{p}{;} \PYG{n}{j} \PYG{o}{+=} \PYG{n}{i}\PYG{p}{)}
+               \PYG{n}{numDiffPF}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{o}{++}\PYG{p}{;} \PYG{c+c1}{// increase the values of multiples of i}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// Bottom up euler totient function}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{limit}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{n}{eu}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{limit}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{eu}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}=} \PYG{n}{limit}\PYG{p}{;} \PYG{n}{j} \PYG{o}{+=} \PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{eu}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZhy{}=} \PYG{n}{eu}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{/} \PYG{n}{i}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
