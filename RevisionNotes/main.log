@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.8)  12 DEC 2018 18:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.8)  12 DEC 2018 21:23
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -861,12 +861,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write8
 \openout8 = `main.toc'.
 
-<sumgraph.png, id=228, 893.13675pt x 320.397pt>
+<sumgraph.png, id=233, 893.13675pt x 320.397pt>
 File: sumgraph.png Graphic file (type png)
 <use sumgraph.png>
 Package pdftex.def Info: sumgraph.png  used on input line 131.
 (pdftex.def)             Requested size: 275.9837pt x 99.00426pt.
-<sgth.png, id=230, 885.90974pt x 72.27pt>
+<sgth.png, id=235, 885.90974pt x 72.27pt>
 File: sgth.png Graphic file (type png)
 <use sgth.png>
 Package pdftex.def Info: sgth.png  used on input line 132.
@@ -881,10 +881,15 @@ Overfull \hbox (4.98932pt too wide) in paragraph at lines 127--134
 []
  []
 
+
+Underfull \hbox (badness 1253) in paragraph at lines 135--137
+[]\OT1/cmr/m/n/8 Prob[], []Sol: []$[][] \OML/cmm/m/it/8 h\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 g\OT1/cmr/m/n/8 ) \OMS/cmsy/m/n/8 ^^C \OML/cmm/m/it/8 cnt\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 g\OT1/cmr/m/n/8 ]$ where $\OML/cmm/m/it/8 cnt\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 g\OT1/cmr/m/n/8 ] =$ no. of ar-rays with
+ []
+
 \openout3 = `main.pyg'.
 
 (./_minted-main/default-pyg-prefix.pygstyle) (./_minted-main/perldoc.pygstyle) (./_minted-main/0CF3413E2B121D96EB2E597E05F491B6504A7AF0CD3BAA7542030FC560DFCC45.pygtex
-Underfull \hbox (badness 10000) in paragraph at lines 135--1
+Underfull \hbox (badness 10000) in paragraph at lines 138--1
 
  []
 
@@ -894,18 +899,18 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
 
 
  <./sumgraph.PNG> <./sgth.PNG>])
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 178.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 181.
  (d:/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 178.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 181.
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--201
+Underfull \hbox (badness 10000) in paragraph at lines 198--204
 
  []
 
-LaTeX Font Info:    Try loading font information for LUC+uhcmj on input line 209.
+LaTeX Font Info:    Try loading font information for LUC+uhcmj on input line 212.
 (d:/texlive/2018/texmf-dist/tex/latex/kotex-utf/lucuhcmj.fd
 File: lucuhcmj.fd 2013/09/26 UHC Myeongjo font definitions
 )
@@ -934,23 +939,23 @@ Missing character: There is no ^^R in font uwmj22!
 \openout3 = `main.pyg'.
 
  (./_minted-main/0422392ED8F12F88E77BC4AB4EE5114F504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<lca.png, id=292, 785.334pt x 411.939pt>
+<lca.png, id=301, 785.334pt x 411.939pt>
 File: lca.png Graphic file (type png)
 <use lca.png>
-Package pdftex.def Info: lca.png  used on input line 436.
+Package pdftex.def Info: lca.png  used on input line 439.
 (pdftex.def)             Requested size: 275.99744pt x 144.77165pt.
 
-Underfull \hbox (badness 2799) in paragraph at lines 436--437
+Underfull \hbox (badness 2799) in paragraph at lines 439--440
 [][]\OT1/cmr/m/n/8 Jammie and Tree[], []Sol[]: One stop soln to un-der-stand LCA.
  []
 
 
-Overfull \hbox (22.00603pt too wide) in paragraph at lines 436--437
+Overfull \hbox (22.00603pt too wide) in paragraph at lines 439--440
 [] 
  []
 
 [3]
-Underfull \hbox (badness 1072) in paragraph at lines 456--457
+Underfull \hbox (badness 1072) in paragraph at lines 459--460
 []\OT1/cmr/m/n/8 The equiv-a-lence be-tween match-ing and cov-er-ing ar-tic-u-lated in
  []
 
@@ -976,7 +981,7 @@ Overfull \hbox (22.26256pt too wide) in paragraph at lines 4--4
  (./_minted-main/2DD708B7BBD05ACE30720D6B6C86F1FA504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
- (./_minted-main/9452F8DA0820EB61B8279521CBA9BD67504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+ (./_minted-main/CF94AFB6BB36F5747E4AC918FFCE3FD4504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
  (./_minted-main/FBB759EF6DD3EFF92CDE4E50FEC99455504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
@@ -1021,12 +1026,12 @@ Underfull \vbox (badness 3601) has occurred while \output is active []
 \openout3 = `main.pyg'.
 
  (./_minted-main/B5B046D9215E9B2B521CDB12AD216D0F504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-Underfull \hbox (badness 1424) in paragraph at lines 1224--1225
+Underfull \hbox (badness 1424) in paragraph at lines 1228--1229
 \OT1/cmr/m/n/8 all of them are palin-dromes in $\OML/cmm/m/it/8 O\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 n[]\OT1/cmr/m/n/8 )$ or in $\OML/cmm/m/it/8 O\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 n[]\OT1/cmr/m/n/8 )$ by us-ing dp
  []
 
 
-Underfull \hbox (badness 1009) in paragraph at lines 1224--1225
+Underfull \hbox (badness 1009) in paragraph at lines 1228--1229
 \OT1/cmr/m/n/8 ($\OML/cmm/m/it/8 dp\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 startpos\OT1/cmr/m/n/8 ][\OML/cmm/m/it/8 endpos\OT1/cmr/m/n/8 ] = (\OML/cmm/m/it/8 s\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 startpos\OT1/cmr/m/n/8 ] == \OML/cmm/m/it/8 s\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 endpos\OT1/cmr/m/n/8 ]&&\OML/cmm/m/it/8 dp\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 startpos \OT1/cmr/m/n/8 +
  []
 
@@ -1040,7 +1045,7 @@ Underfull \hbox (badness 1009) in paragraph at lines 1224--1225
 
  (./_minted-main/9C82A3CEB051934C1662C33AA35BDC1E504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 1302.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 1306.
 
 \openout3 = `main.pyg'.
 
@@ -1054,52 +1059,52 @@ LaTeX Warning: Command \textellipsis invalid in math mode on input line 1302.
 \openout3 = `main.pyg'.
 
  (./_minted-main/91342119C672C39E1A407939592D84F0504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<palsub.png, id=404, 759.43726pt x 386.04225pt>
+<palsub.png, id=413, 759.43726pt x 386.04225pt>
 File: palsub.png Graphic file (type png)
 <use palsub.png>
-Package pdftex.def Info: palsub.png  used on input line 1707.
+Package pdftex.def Info: palsub.png  used on input line 1711.
 (pdftex.def)             Requested size: 275.99292pt x 140.29457pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1707--1708
+Underfull \hbox (badness 10000) in paragraph at lines 1711--1712
 [][]\OT1/cmr/m/n/8 Queries for the num-ber of palin-dromic sub-strings within
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 1707--1708
+Underfull \hbox (badness 2809) in paragraph at lines 1711--1712
 \OT1/cmr/m/n/8 given range[], []\OT1/cmr/bx/n/8 See this soln to see power of hash-ing.[]\OT1/cmr/m/n/8 :
  []
 
 
-Overfull \hbox (22.00151pt too wide) in paragraph at lines 1707--1708
+Overfull \hbox (22.00151pt too wide) in paragraph at lines 1711--1712
 [] 
  []
 
 
 AED: lastpage setting LastPage
 [11 <./palsub.PNG>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1711.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1711.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1715.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1715.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1711.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1711.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1715.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1715.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 09EB45136EA1F9B32BFE335227B38AAD;2945.
+(rerunfilecheck)             Checksum: 3F245165BAF31A62B4D4662FBA5B40CB;3002.
 runsystem(del main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 23766 strings out of 492639
- 469529 string characters out of 6133088
+ 23768 strings out of 492639
+ 469561 string characters out of 6133088
  642112 words of memory out of 5000000
- 26926 multiletter control sequences out of 15000+600000
+ 26927 multiletter control sequences out of 15000+600000
  14534 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,78p,1061b,877s stack positions out of 5000i,500n,10000p,200000b,80000s
 <d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/uhc/umj/umj01.pfb>
-Output written on main.pdf (11 pages, 525780 bytes).
+Output written on main.pdf (11 pages, 527549 bytes).
 PDF statistics:
- 500 PDF objects out of 1000 (max. 8388607)
- 456 compressed objects within 5 object streams
- 110 named destinations out of 1000 (max. 500000)
- 385 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 509 PDF objects out of 1000 (max. 8388607)
+ 465 compressed objects within 5 object streams
+ 111 named destinations out of 1000 (max. 500000)
+ 393 words of extra memory for PDF output out of 10000 (max. 10000000)
 

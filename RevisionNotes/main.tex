@@ -131,6 +131,9 @@ Positions $x$ for which $g(x)$ is 0 are P postions and all others are N position
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sumgraph}
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sgth}
 \textbf{Thus}, if a position is a \textbf{N} position, we can cleverly see which position should we go to (what move of a component game to take) such that we reach \textbf {P} position.
+\subsection{Mobius}
+Just read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
+\\\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is summation of mobius function. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(d)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
 \subsection{Modulo}
 $(a + b) mod m = (a mod m + b mod m) mod m$\\
 $.........................-...............$\\
@@ -675,6 +678,7 @@ void solve() {
 
     \end{minted}
     \item \begin{minted}{cpp}
+    // time complexity O(log(min(a, b) / gcd(a, b)))
     int gcd (int a, int b) { return b == 0 ? a : gcd (b, a % b); }
     int lcm (int a, int b) { return a * (b / gcd (a, b)); }
             \end{minted}

@@ -1,4 +1,5 @@
 \begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{c+c1}{// time complexity O(log(min(a, b) / gcd(a, b)))}
     \PYG{k+kt}{int} \PYG{n+nf}{gcd} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{b} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o}{?} \PYG{n+nl}{a} \PYG{p}{:} \PYG{n}{gcd} \PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{a} \PYG{o}{\PYGZpc{}} \PYG{n}{b}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
     \PYG{k+kt}{int} \PYG{n+nf}{lcm} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{a} \PYG{o}{*} \PYG{p}{(}\PYG{n}{b} \PYG{o}{/} \PYG{n}{gcd} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{));} \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
