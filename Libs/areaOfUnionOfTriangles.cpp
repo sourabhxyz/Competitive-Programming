@@ -66,7 +66,7 @@ int main() {
 
 	vector<point> b;
 	b.reserve (n*n*3);
-	// Number of distinct intersection points can be atmost (3 * n * n), as an example, take just 
+	// Number of distinct intersection points can be atmost (3 * n * n), as an example, take just
 	// 2 inverted triangles
 	for (size_t i=0; i<a.size(); ++i)
 		for (size_t j=i+1; j<a.size(); ++j)
@@ -76,7 +76,7 @@ int main() {
 	for (size_t i=0; i<b.size(); ++i)
 		xs[i] = b[i].x; // Getting the absicca of the intersection points
 	sort (xs.begin(), xs.end()); // sorting them, so that any subsequent xs[i] and xs[i + 1] define a
-	// vertical strip where which we will get a trapezoid since there would be by definition no 
+	// vertical strip where which we will get a trapezoid since there would be by definition no
 	// intersections in this region.
 	xs.erase (unique (xs.begin(), xs.end(), &eq), xs.end()); // Having only unique points
 	// as different intersection points can have the same x coordinate
@@ -90,21 +90,24 @@ int main() {
 		size_t csz = 0; // initialised each time to zero
 		for (size_t j=0; j<a.size(); ++j)
 			if (a[j].x1 != a[j].x2) // Verticle lines (segments) are ignored
-				if (a[j].x1 <= x1+EPS && a[j].x2 >= x2-EPS) { // i.e. segment intersect the region
+				if (a[j].x1 <= x1+EPS && a[j].x2 >= x2-EPS) { // i.e. segment should encompass equal or more width than the width of vertical region. i.e. line making up our vertical region lies within this segment.
 					item it = { segment_y (a[j], x1), segment_y (a[j], x2), (int)j/3 };
 					cc[csz] = (int)csz;
 					c[csz++] = it;
 				}
 		sort (cc.begin(), cc.begin()+csz, &cmp_y1_y2); // y1 will always be the left y intersection.
+		// we are sorting such that first we want y1 to be below and if there is equality then y2 to be below. Thus now we will be starting from below.
 		double add_res = 0;
 		for (size_t j=0; j<csz; ) {
 			item lower = c[cc[j++]];
 			used[lower.triangle_id] = true;
-			int cnt = 1;
+			int cnt = 1;  // denotes our current number of open triangles i.e. we have opened this segment of triangle but haven't yet found its counterpart.
+			// Clearly due to our sorting and the way below algo is written, we wont consider area between high (upper) of one segment and lower of the segment above it.
+			// Now for a particular region, if there are many triangles crossing that region, we want to take the lowest of one triangle and highest of other triangle.
 			while (cnt && j<csz) {
 				char &cur = used[c[cc[j++]].triangle_id]; // Notice that it is &cur
-				// clearly for any closed figure, if there is one segment crossing some x region, 
-				// there will exist other one crossing the same x region, so our aim is to 
+				// clearly for any closed figure, if there is one segment crossing some x region,
+				// there will exist other one crossing the same x region, so our aim is to
 				// get the topmost and the bottom most of such segments
 				cur = !cur;
 				if (cur)  ++cnt;  else  --cnt;

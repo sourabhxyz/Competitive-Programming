@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Code to find euler tour (will be able to euler path provided we start with correct vertex) for an undirected graph.}
+\PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{cyc}\PYG{p}{;} \PYG{c+c1}{// we need list for fast insertion in the middle}
+\PYG{k+kt}{void} \PYG{n+nf}{EulerTour}\PYG{p}{(}\PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{iterator} \PYG{n}{i}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{AdjList}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{ii} \PYG{n}{v} \PYG{o}{=} \PYG{n}{AdjList}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{v}\PYG{p}{.}\PYG{n}{second}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// if this edge can still be used/not removed}
+            \PYG{n}{v}\PYG{p}{.}\PYG{n}{second} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{c+c1}{// make the weight of this edge to be 0 (‘removed’)}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{AdjList}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{n}{k}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{ii} \PYG{n}{uu} \PYG{o}{=} \PYG{n}{AdjList}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{][}\PYG{n}{k}\PYG{p}{];} \PYG{c+c1}{// remove bi\PYGZhy{}directional edge}
+                \PYG{k}{if} \PYG{p}{(}\PYG{n}{uu}\PYG{p}{.}\PYG{n}{first} \PYG{o}{==} \PYG{n}{u} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{uu}\PYG{p}{.}\PYG{n}{second}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                    \PYG{n}{uu}\PYG{p}{.}\PYG{n}{second} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+                    \PYG{k}{break}\PYG{p}{;}
+                \PYG{p}{\PYGZcb{}}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n}{EulerTour}\PYG{p}{(}\PYG{n}{cyc}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{n}{u}\PYG{p}{),} \PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// inside int main()}
+\PYG{n}{cyc}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();}
+\PYG{n}{EulerTour}\PYG{p}{(}\PYG{n}{cyc}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{A}\PYG{p}{);} \PYG{c+c1}{// cyc contains an Euler tour starting at A}
+\PYG{k}{for} \PYG{p}{(}\PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{iterator} \PYG{n}{it} \PYG{o}{=} \PYG{n}{cyc}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();} \PYG{n}{it} \PYG{o}{!=} \PYG{n}{cyc}\PYG{p}{.}\PYG{n}{end}\PYG{p}{();} \PYG{n}{it}\PYG{o}{++}\PYG{p}{)}
+    \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{o}{*}\PYG{n}{it}\PYG{p}{);} \PYG{c+c1}{// the Euler tour}
+\end{Verbatim}

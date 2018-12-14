@@ -70,10 +70,8 @@ double cross(vec a, vec b) { return a.x * b.y - a.y * b.x; }
 // returns true if point r is on the left side of line pq
 bool ccw(vec p, vec q, vec r) {
     return cross(q - p, r - q) > 0; }
-/* bool ccw(vec p, vec q, vec r) { // I think this is better
-    double crs = cross(q - p, r - q);
-    if (crs < eps) return 0;
-    return 1;
+/* bool ccw(vec p, vec q, vec r) { // I think this is better, but yeah we'll call ccw after checking for collinearity.
+    return cross (q - p, r - q) > eps;
 } */
 
 vec rotate(vec p, double theta) {
@@ -93,17 +91,18 @@ bool collinear(vec p, vec q, vec r) {
 bool isPerp(vec p, vec q) {
     return (abs(dot(p, q)) < eps);
 }
-bool inAngle(vec a, vec b, vec c, vec x) {
+bool inAngle(vec a, vec b, vec c, vec x) {  // is point 'x' in angle between AB and AC?
     if (collinear(a, b, c)) {
         return collinear(a, c, x);
     }
     if (!ccw(a, b, c)) swap(b,c);
+    // getting C on left of AB.
     return ccw(a,b,x) && !ccw(a,c,x);
 }
-double orientedAngle(vec a, vec b, vec c) {
+double orientedAngle(vec a, vec b, vec c) {  // not getting angle between vectors but oriented angle.
     if (ccw(a, b, c))
         return angle(b-a, c-a);
-    else
+    else  // i.e. B is on left of AC.
         return 2*pi - angle(b-a, c-a);
 }
 /* Point library ends */
@@ -151,7 +150,7 @@ void reduce(line &l) {
     }
     return;
 }
-line vcToLine(vec v, double c) {
+line vcToLine(vec v, double c) {  // basically v gives us a, b and acc. to him the eqn of line is ax + by = c. basically 'v' points in dirn perpendicular to line.
     line l;
     l.a = v.x, l.b = v.y;
     l.c = -c;
@@ -495,8 +494,8 @@ bool inPolygonOrOn(vec pt, const vector<vec> &P) { // Works for both convex and 
     return false;
 }
 /* Polar sort function, useful to handle questions like: The are N points on the plane (N is even).
-No three points belong to the same strait line. Your task is to select two points in such a way,
-that strait line they belong to divides the set of points into two equal-sized parts.
+No three points belong to the same straight line. Your task is to select two points in such a way,
+that straight line they belong to divides the set of points into two equal-sized parts.
 Answer to this is simply, run polar sort, output data[0].second and data[n / 2].second */
 /* Assumptions: No three points lie on a straight line */
 /*typedef pair<vec, int> pvi;
@@ -520,15 +519,82 @@ void polarSort(vector<pvi> &P) { // the content of P may be reshuffled
     return;
 }*/
 /* ------------------------------------------------------------------
- * ------------polygon library ends ---------------------------------
- */
-// continuation from the earlier part
+//-------------------------------------------------------------
+/*CH1: For non collinear points*/
+point sa, sb;
+point pivot(0, 0);
+bool angleCmp(point a, point b) { // angle-sorting function
+   if (collinear(pivot, a, b)) // special case
+       return dist(pivot, a) < dist(pivot, b); // check which one is closer
+   double d1x = a.x - pivot.x, d1y = a.y - pivot.y;
+   double d2x = b.x - pivot.x, d2y = b.y - pivot.y;
+   return (atan2(d1y, d1x) - atan2(d2y, d2x)) < 0; } // compare two angles
+// atan2 returns principal arc tangent of y/x in the interval [-pi, pi].
+// but since the pivot is bottommost and in case of tie, take the rightmost. That means all angles will lie in [0, pi]
+vector<point> CH1(vector<point> P) { // the content of P may be reshuffled
+   int i, j, n = (int)P.size();
+   if (n <= 3) {
+       if (!(P[0] == P[n-1])) P.push_back(P[0]); // safeguard from corner case
+       return P; } // special case, the CH is P itself
+// first, find P0 = point with lowest Y and if tie: rightmost X
+   int P0 = 0;
+   for (i = 1; i < n; i++)
+       if (P[i].y < P[P0].y || (P[i].y == P[P0].y && P[i].x > P[P0].x))
+           P0 = i;
+   point temp = P[0]; P[0] = P[P0]; P[P0] = temp; // swap P[P0] with P[0]
+// second, sort points by angle w.r.t. pivot P0
+   pivot = P[0]; // use this global variable as reference
+   sort(++P.begin(), P.end(), angleCmp); // we do not sort P[0]
 // third, the ccw tests
-vector<point> S;
-S.push_back(P[n-1]); S.push_back(P[0]); S.push_back(P[1]); // initial S
-i = 2; // then, we check the rest
-while (i < n) { // note: N must be >= 3 for this method to work
-j = (int)S.size()-1;
-if (ccw(S[j-1], S[j], P[i])) S.push_back(P[i++]); // left turn, accept
-else S.pop_back(); } // or pop the top of S until we have a left turn
-return S; } // return the resul
+   vector<point> S;
+   S.push_back(P[n-1]); S.push_back(P[0]); S.push_back(P[1]); // initial S
+   i = 2; // then, we check the rest
+   while (i < n) { // note: N must be >= 3 for this method to work
+       j = (int)S.size()-1;
+       if (ccw(S[j-1], S[j], P[i])) S.push_back(P[i++]); // left turn, accept
+       else S.pop_back(); } // or pop the top of S until we have a left turn
+   return S; } // return the result
+
+/*CH2: Will accept collinear points but all points should be distinct*/
+bool cmp(point a, point b) { // angle-sorting function
+   if (collinear(pivot, a, b)) // special case
+   {
+       if (dot(toVec(sa, sb), toVec(sa, a)) < EPS) {  // dot product is <= 0 if angle b/w vectors >= 90.
+           return dist(pivot, a) > dist(pivot, b);
+       }
+       else
+           return dist(pivot, a) < dist(pivot, b); // check which one is closer
+   }
+   double d1x = a.x - pivot.x, d1y = a.y - pivot.y;
+   double d2x = b.x - pivot.x, d2y = b.y - pivot.y;
+   return (atan2(d1y, d1x) - atan2(d2y, d2x)) < 0; } // compare two angles
+
+vector<point> CH2(vector<point> P) { // the content of P may be reshuffled
+   int i, j, n = (int)P.size();
+   if (n <= 3) {
+       P.push_back(P[0]); // safeguard from corner case
+       return P; } // special case, the CH is P itself
+// first, find P0 = point with lowest Y and if tie: rightmost X
+   int P0 = 0;
+   for (i = 1; i < n; i++)
+       if (P[i].y < P[P0].y || (P[i].y == P[P0].y && P[i].x > P[P0].x))
+           P0 = i;
+   point temp = P[0]; P[0] = P[P0]; P[P0] = temp; // swap P[P0] with P[0]
+// second, sort points by angle w.r.t. pivot P0
+   pivot = P[0]; // use this global variable as reference
+   sort(++P.begin(), P.end(), angleCmp); // we do not sort P[0]
+   sa = P[0], sb = P[1];
+   sort(++P.begin(), P.end(), cmp);
+// to be continued
+   // continuation from the earlier part
+// third, the ccw tests
+   vector<point> S;
+   S.push_back(P[n-1]); S.push_back(P[0]); S.push_back(P[1]); // initial S
+   i = 2; // then, we check the rest
+   while (i < n) { // note: N must be >= 3 for this method to work
+       j = (int)S.size()-1;
+       if (ccw(S[j-1], S[j], P[i]) || collinear(S[j - 1], S[j], P[i])) S.push_back(P[i++]); // left turn, accept
+       else S.pop_back(); } // or pop the top of S until we have a left turn
+   return S; } // return the result
+
+//------------polygon library ends ---------------------------------

@@ -49,8 +49,7 @@ The pack­age pro­vides ex­ten­sive fa­cil­i­ties, both for con­struct­i
         \draw (-1,-1) -- (0,-1) -- (0,1) -- (1,1);
     \end{tikzpicture}%
 }
-\newcommand{\revised}{Should be \textcolor{red}{\textbf{revised}}.}
-\newcommand{\tested}{Should be \textcolor{red}{\textbf{tested}}.}
+\newcommand{\revised}{To be \textcolor{red}{\textbf{revised}}.}
 \titlespacing*{\section}
 {0pt}{0px plus 1px minus 0px}{-2px plus 0px minus 0px}
 \titlespacing*{\subsection}
@@ -134,6 +133,8 @@ Positions $x$ for which $g(x)$ is 0 are P postions and all others are N position
 \subsection{Mobius}
 Just read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
 \\\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is summation of mobius function. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(d)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
+\subsection{Bell, Burnside, etc}
+Just read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}
 \subsection{Modulo}
 $(a + b) mod m = (a mod m + b mod m) mod m$\\
 $.........................-...............$\\
@@ -188,6 +189,7 @@ inline T inv(T a) {
     \item \textbf{Dearrangement of n objects}
     \\ $n! * \sum_{k = 0}^n (-1)^k / {k!} =\text{ } !n$
     \\ $!n = (n - 1) * [!(n - 1) + !(n - 2)] \text{ for n }\geq 2$
+    \item \textbf{Gambler ruin's problem: }Probability that first player (p for each step) wins. $(1 - (q/p)^{n_1})/(1 - (q/p)^{n_1 + n_2})$. $n_1 = \lceil ev_1/d \rceil$, $n_2 = \lceil ev_2/d \rceil$. In case $p = q = 1/2$, formula is $n_1/(n_1 + n_2)$.
 
 \end{itemize}
 \subsection{Euler's Totient Function}
@@ -341,6 +343,166 @@ for (int i = 2; i <= limit; i++) {
     }
 }
 \end{minted}
+\subsection{Frac lib and Eqn solving}
+\revised
+\begin{minted}{cpp}
+class Frac {
+public:
+   long long a, b;
+   Frac() {
+       a = 0, b = 1;
+   }
+   Frac(int x, int y) {
+       a = x, b = y;
+       reduce(); ///So we are always reducing out fractions...
+   }
+   Frac operator+(const Frac &y) {
+       long long ta, tb;
+       tb = this->b/gcd(this->b, y.b)*y.b;
+       ta = this->a*(tb/this->b) + y.a*(tb/y.b);
+       Frac z(ta, tb);
+       return z;
+   }
+   Frac operator-(const Frac &y) {
+       long long ta, tb;
+       tb = this->b/gcd(this->b, y.b)*y.b;
+       ta = this->a*(tb/this->b) - y.a*(tb/y.b);
+       Frac z(ta, tb);
+       return z;
+   }
+   Frac operator*(const Frac &y) {
+       long long tx, ty, tz, tw, g;
+       tx = this->a, ty = y.b;
+       g = gcd(tx, ty), tx /= g, ty /= g;
+       tz = this->b, tw = y.a;
+       g = gcd(tz, tw), tz /= g, tw /= g;
+       Frac z(tx*tw, ty*tz);
+       return z;
+   }
+   Frac operator/(const Frac &y) {
+       long long tx, ty, tz, tw, g;
+       tx = this->a, ty = y.a;
+       g = gcd(tx, ty), tx /= g, ty /= g;
+       tz = this->b, tw = y.b;
+       g = gcd(tz, tw), tz /= g, tw /= g;
+       Frac z(tx*tw, ty*tz);
+       return z;
+   }
+   bool operator == (const frac &other) const {
+        return a == other.a and b == other.b;
+    }
+    bool operator < (const frac &other) const {
+        if (a != other.a) return a < other.a;
+        else return b > other.b;
+    }
+private:
+   static long long gcd(long long x, long long y) {
+       return b == 0 ? a : gcd (b, a % b);
+   }
+   void reduce() {
+       if (a == 0) {  // to handle case when b == 0 (not required in this problem) a = inf (so as to have same ground)
+           b = 1;
+           return;
+       } else {
+            long long g = gcd(abs(a), abs(b));
+            a /= g, b /= g;
+            if(b < 0)   a *= -1, b *= -1;
+       }
+   }
+    
+};
+ostream& operator<<(ostream& out, const Frac&x) {
+   out << x.a;
+   if(x.b != 1)
+       out << '/' << x.b;
+   return out;
+}
+int main() {//UVA 10109
+   int n, m, i, j, k, N;
+   char NUM[100], first = 0;
+   long long X, Y;
+   Frac matrix[100][100];
+   while(scanf("%d", &N) == 1 && N) {
+       scanf("%d %d", &n, &m);
+       for(i = 0; i < m; i++) {
+           for(j = 0; j <= n; j++) {
+               scanf("%s", NUM);
+               if(sscanf(NUM, "%lld/%lld", &X, &Y) == 2) {
+                   matrix[i][j].a = X;
+                   matrix[i][j].b = Y;
+               } else
+                   sscanf(NUM, "%lld", &matrix[i][j].a), matrix[i][j].b = 1;
+           }
+       }
+       Frac tmp, one(1,1);
+       int idx = 0, rank = 0;
+       for(i = 0; i < m; i++) {
+           while(idx < n) {
+               int ch = -1;
+               for(j = i; j < m; j++)
+                   if(matrix[j][idx].a) {///This means that idx must be incremented to check
+                       ///the pivot at correct row...
+                       ch = j;
+                       break;
+                   }
+               if(ch == -1) {
+                   idx++;
+                   continue;
+               }///this if condition executes if all the elements in desired column
+               ///and below the i-1 th row are zero so we need to go to the next column...
+               if(i != ch)///So if the desired pivot element is zero we swap that row with
+                   ///the closest row that has non zero pivot...
+                   for(j = idx; j <= n; j++)
+                       swap(matrix[ch][j], matrix[i][j]);
+               break;
+           }
+           if(idx >= n) break;
+           tmp = one/matrix[i][idx];
+           rank++;
+           for(j = idx; j <= n; j++)
+               matrix[i][j] = matrix[i][j]*tmp;///So here we are making pivot element 1.
+           for(j = 0; j < m; j++) {
+               if(i == j)  continue;///This condition executes means that we are ignoring the
+               ///pivot row...
+               tmp = matrix[j][i]/matrix[i][idx];
+               for(k = idx; k <= n; k++) {
+                   matrix[j][k] = matrix[j][k] - tmp*matrix[i][k];///Thus now we are making
+                   ///all the elements below pivot as zero..
+               }
+           }
+           idx++;
+       }
+       if(first)   puts("");
+       first = 1;
+       printf("Solution for Matrix System # %d\n", N);
+       int sol = 0;
+       for(i = 0; i < m; i++) {
+           for(j = 0; j < n; j++) {
+               if(matrix[i][j].a)
+                   break;
+           }
+           if(j == n) {
+               if(matrix[i][n].a == 0 && sol != 1)
+                   sol = 0; // INFINITELY
+               else
+                   sol = 1; // No Solution.
+           }
+       }
+       if(rank == n && sol == 0) {
+           for(i = 0; i < n; i++) {
+               printf("x[%d] = ", i+1);
+               cout << matrix[i][n] << endl;
+           }
+           continue;
+       }
+       if(sol == 1)
+           puts("No Solution.");
+       else
+           printf("Infinitely many solutions containing %d arbitrary constants.\n", n-rank);
+   }
+   return 0;
+}
+\end{minted}
 \subsection{Side Notes}
 \begin{enumerate}
     \item People in cycle will commit suicide.
@@ -381,6 +543,18 @@ for (int j = 0; j < bigint_var.a.size (); j++) {
     \end{bmatrix}
     \]
     \textit{Thus higher fibs can be computed in $O(\log{p})$}
+    \item To get all divisors of a number $n$.
+    \begin{minted}{cpp}
+for (int i = 1; i * i <= n; i++) {
+    if (n % i == 0) {
+        d.push_back(i);
+        if (i != n / i) d.push_back (n / i);
+    }
+}
+    \end{minted}
+    \item We can find the nth root using pow func.
+    \item Some times we can generate first few terms and then look up at oeis.org
+    \item 
 \end{enumerate}
 \subsection{Important Problems}
 \begin{itemize}
@@ -390,6 +564,7 @@ for (int j = 0; j < bigint_var.a.size (); j++) {
     \item \href {https://uva.onlinejudge.org/external/5/568.pdf}{last non zero digit of fact(n)}, \href {https://gist.github.com/sourabh2311/3e7d2c8c905cce7f04eb86400d4aac35}{Sol}. If you know multiplicatioin limit, take mod with ($10^{\text{no. of digits}}$)
     \item \href {https://uva.onlinejudge.org/external/5/542.pdf}{France 98}, \href {https://gist.github.com/sourabh2311/94629bd0303d3c4f918bda3bdaf8e711}{Sol}.
     \item \href {https://uva.onlinejudge.org/external/100/10061.pdf}{How many zeros and how many digits?} Sol: then iterate through factors of base and get their powers in n!, take min. of all such powers divided by power of prime factor in that base. And for how many digits part, use that log formula.
+    \item Is $n!$ divisible by m? Sol: Use prime factors
     \item Given n, maximize (find x) $n - p*x$ where $p*x \leq n < (p + 1)*x$ which somehow happens with $p = 1$
     \item \textbf{Prob: }Lenghts from 1 to n, max. no. of triangles?
             \\\textbf{Sol: }\begin{minted}{cpp}
@@ -406,6 +581,12 @@ void precal () {
     // F[n] has ans
 }
             \end{minted}
+    \item Bottom right corner of a chess board must be white. If c == 0/1 bottom right corner of painting is black/white.
+    \begin{minted}{cpp}
+if (c == 0) ans = (n - 7) * (m - 7) / 2
+else ans = ((n - 7) * (m - 7) + 1) / 2
+    \end{minted}
+    \item for 2 nos (a, b) output 2 nos (c, d) such that a = gcd(c, d) \& b = lcm(c, d) and c is minimum. Sol: basically soln exist if $b \bmod a = 0$ and soln is c = a, d = b.
 \end{itemize}
 \section{Graphs}
 \subsection{Tree}
@@ -644,6 +825,97 @@ main() {
 }
     \end{minted}
 \end{enumerate}
+\subsection{Paths}
+\begin{itemize}
+    \item An \textbf{euler path} is defined as a path in a graph which visits each edge of the graph exactly once. Similarly and \textbf{euler tour/cycle }is an euler path which starts \& ends on the same vertex. A graph which has either an euler path or an euler tour is called \textbf{eulerian}.
+    \item For $undirected graph$ euler tour exist $iff$ all vertices have even deg.
+    \item For $undirected graph$ euler path exists $iff$ all except 2 vertices have even deg. This euler path will start from one of thee odd deg vertices and end in the other.
+    \item For $directed graph$, euler tour exists $iff$ every verte has equal indeg \& outdeg.
+    \item For $directed graph$, euler path exists $iff$ at most one vertex has $(outdeg) - (indeg) = 1$, atmost one vertex has $(indeg) - (outdeg) = 1$, every other vertex has $indeg = outdeg$.
+\end{itemize}
+\begin{minted}{cpp}
+// Code to find euler tour (will be able to euler path provided we start with correct vertex) for an undirected graph.
+list<int> cyc; // we need list for fast insertion in the middle
+void EulerTour(list<int>::iterator i, int u) {
+    for (int j = 0; j < (int)AdjList[u].size(); j++) {
+        ii v = AdjList[u][j];
+        if (v.second) { // if this edge can still be used/not removed
+            v.second = 0; // make the weight of this edge to be 0 (‘removed’)
+            for (int k = 0; k < (int)AdjList[v.first].size(); k++) {
+                ii uu = AdjList[v.first][k]; // remove bi-directional edge
+                if (uu.first == u && uu.second) {
+                    uu.second = 0;
+                    break;
+                } 
+            }
+            EulerTour(cyc.insert(i, u), v.first);
+        } 
+    }
+}
+// inside int main()
+cyc.clear();
+EulerTour(cyc.begin(), A); // cyc contains an Euler tour starting at A
+for (list<int>::iterator it = cyc.begin(); it != cyc.end(); it++)
+    printf("%d\n", *it); // the Euler tour
+\end{minted}
+\subsection{SCC}
+\subsubsection{Kosaraju}
+\begin{enumerate}
+    \item It is obvious that strongly connected components do not intersect each other, i.e. this is a partition of all graph vertices. Thus we can give a definition of condensation graph $G^{SCC}$ as a graph containing every strongly connected component as one vertex. Each vertex of the condensation graph corresponds to the strongly connected component of the graph $G$. There is a direccted edge b/w two vertice $C_i$ and $C_j$ of the condensation graph iff there are 2 vertices $u \in C_i$ and $v \in C_j$ such that there is an edge in initial graph, i.e. $(u, v) \in E$. The most important property of the condensation grph is that it is acyclic.
+    \item Let $C \& C^`$ be 2 diff SCC \& there is an edge $(C, C^`)$ in a condensation graph then $tout[C] > tout[C^`]$, note: $tout[C] = max_{v_i \in C}(tout[v_i])$.
+\end{enumerate}
+\begin{minted}{cpp}
+vector < vector<int> > g, gr;
+vector<bool> used;
+vector<int> order, component;
+
+void dfs1 (int v) {
+    used[v] = true;
+    for (size_t i=0; i<g[v].size(); ++i)
+        if (!used[ g[v][i] ])
+            dfs1 (g[v][i]);
+    order.push_back (v);
+}
+
+void dfs2 (int v) {
+    used[v] = true;
+    component.push_back (v);
+    for (size_t i=0; i<gr[v].size(); ++i)
+        if (!used[ gr[v][i] ])
+            dfs2 (gr[v][i]);
+}
+
+int main() {
+    int n;
+    ... reading n ...
+    for (;;) {
+        int a, b;
+        ... reading next edge (a,b) ...
+        g[a].push_back (b);
+        gr[b].push_back (a);
+    }
+
+    used.assign (n, false);
+    for (int i=0; i<n; ++i)
+        if (!used[i])
+            dfs1 (i);
+    used.assign (n, false);
+    for (int i=0; i<n; ++i) {
+        int v = order[n-1-i];
+        if (!used[v]) {
+            dfs2 (v);
+            ... printing next component ...
+            component.clear();
+        }
+    }
+}
+\end{minted}
+\subsection{SAT}
+\subsubsection{1 SAT}
+$f = x_1 \wedge x_2 \wedge \dots \wedge x_n$ is satisfiable iff there isnt both $x_i \& \bar{x_i}$ in $f$.
+\subsubsection{2 SAT}
+$f = (x_1 \vee y_1) \wedge \dots \wedge (x_n \vee y_n)$ is satisfiable iff both $x_i \& \bar{x_i}$ are not in same SCC as one them has to be true and in SCC one value is true all others must be true. For each $(x_i \vee y_i)$ add 2 edges $\bar{x_i} \rightarrow y_i$ and $\bar{y_i} \rightarrow x_i$. 
+\\After seeing whether the soln exists or not, soln can be constructed with the help of Kosaraju's algo, let comp[v] denote the index of strongly connected component to which the vertex v belongs. Then, if $comp[x] < comp[\bar{x}]$ we assign x with false and true otherwise.
 \section{Some Basic}
 \begin{itemize}
     \item \begin{minted}{cpp}
@@ -651,6 +923,8 @@ main() {
 #pragma GCC optimize ("unroll-loops")  // normally if we have a loop there is a "++i" instruction somewhere. We normally dont care because code inside the loop requires much more time but in this case there is only one instruction inside the loop so we want the compiler to optimize this.
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")  // tell the compiler that our cpu has simd instructions and allow him to vectorize our code
 \end{minted}
+    \item Outputing a double or even int my have an exponential form so it is better to do << fixed << s...(0).
+    \item Range of double is $10^{15}$
     \item \begin{minted}{cpp}
 while (first || cin >> temp) {  // something }
             \end{minted}
@@ -967,6 +1241,8 @@ struct UFDS {
     \item \href {https://codeforces.com/contest/913/problem/C}{Party Lemonade}, \href {https://codeforces.com/contest/913/submission/34067096}{Sol}
     \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/34071120}{Sol}: pr denotes from what grammer it is derived. Also number of functions on n variables $= 2^{2^n}$.
     \item \href {https://codeforces.com/contest/916/problem/B}{Jamie and binary sequence}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/B.cpp}{Sol}.
+    \item \href {https://codeforces.com/contest/912/problem/E}{Prime gift}, \href {https://codeforces.com/contest/912/submission/33976448}{Sol}. awesome 2 pointers problem.
+    \item \href {https://codeforces.com/contest/912/problem/D}{Fishes}, \href {https://codeforces.com/blog/entry/56920}{Sol}. 
 \end{itemize}
 \section{Data Structures}
 \subsection{Segment Tree}
@@ -1712,4 +1988,154 @@ int main() {
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - simple}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - complicated but more powerful}: Problem is to find the longest substring shared by more than half of given strings.	
 	\item \href {https://gist.github.com/sourabh2311/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
 \end{itemize}
+\section{Geometry}
+\begin{itemize}
+    \item for given 3 points of a valid parallelogram, there are 3 possible locations for the 4th point.
+    \item we have a hexagon with integral sides and all interior angles equal to 120 deg. we draw lines parallel to the side of the hexagon, such that we get equilateral triangles of side 1 unit, how many equilateral triangles did we got? Sol: \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{triangle} 
+    \item An inscribed angle is an angle formed by 2 chords in a circle which have a common endpoint. This common endpoint form the vertex o the inscribed angle. The other 2 endpoints define what we call an intercepted arc.
+    \item Measure of intercepted arc of a unit circle is $2/\pi$ that of inscribed angle.
+    \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{basiccircle} 
+    \item Circles will certainly not touch or intersect iff the dist. between their center is greater than the sum of their radii.
+    \item A circle 'a' contains a circle 'b' iff the distance between their centers is less than the absolute value of their radii difference.
+    \item let the bottom left/top right corner point be denoted as a/c resp. Then rectangles intersect iff $max(a1.x, a2.x) < min(c1.x, c2.x)$ and $max(a1.y, a2.y) < min(c1.y, c2.y)$.
+    \item Similarly in case of 3d, vol of intersection of all cuboids is given by $(ux - lx)(uy - ly)(uz - lz)$ where lx = max(x1, x2, ..., xn) and ux = min(...).
+    \item To get unique points 
+    \begin{minted}{cpp}
+    sort(cops.begin(), cops.end());
+    cops.resize (distance(cops.begin (), unique (cops.begin(), cops.end())))
+    \end{minted}
+    \item Remember that we can apply bisection method ($while (abs(hi - lo) < eps$) and ternary search in geometry.
+    \item for a quadrilateral drawn inside circle sum of opposite angles is 180 deg.
+    \item Sum of all angles of a quadrilateral is always 360 deg.
+    \item Center of mass of pts $= \sum m_i \vec{r_i}/\sum{m_i}$. This is same as centre of mass of union of mutually exclusive objects where each $\vec{r_i}$ is that objects COM and $m_i$ is that objects mass.
+    \item COM of a line is its midpoint
+    \item COM of $\triangle = (\vec{r_1} + \vec{r_2} + \vec{r_3}) / 3$ but this is not the case for general polygon.
+    \item For a general convex polygon, we may triangulate it, find that triangles area and COM and the combine to get COM of original figure.
+    \item Similarly in case of 3D, COM of tetrahadron $= \sum_{i = 1}^{4}r_i/4$ and a general 3d object can be again divided into tetrahedrons.
+    \item For general polygon we can do $\vec{r_c} = (\sum_{i}\vec{r_{z,p_i, p_{i + 1}}} * S_{z, p_i, p_{i + 1}}) / \sum_i S_{z, p_i, p_{i + 1}}$ where S term denotes triangles area with sign. 
+    \item \textbf{Some properties of triangles}
+    \begin{itemize}
+        \item $s = p/2$
+        \item $A = \sqrt{s*(s - a)*(s - b)*(s - c)}$
+        \item $a/\sin{\alpha} = b/\sin{\beta} = c/\sin{\gamma} = 2*R$
+        \item $R = abc/(4*A)$
+        \item Inscribed circle (incircle), $r = A/s$
+        \item Center of incircle is the meeting point of angle bisectors.
+        \item Medians divide a triangle into 6 triangles of equal area and area of original triangle is $= 4/3 * \sqrt{s * (s - a) * (s - b) * (s - c)}$, here a, b, c is the length of medians.
+        \item For valid $\triangle$ sum of any 2 sides should be greater than third. If the three lengths are sorted, we can simply check whether $a + b > c$. For quadrangle sum of any 3 sides should be greater than 4th.
+        \item The center of circumcircle is the meeting point of $]triangle$'s perpendicular bisector.
+        \item Triangle angle bisector property: $|AB|/|AC| = |BD|/|DC|$ where AD is the angle bisector of angle BAC. 
+        \item Given sides of triangle, sort them, then see 3 consecutive sides, if the area is positive (using herons formula), they form a valid triangle, mx = max (mx, area).
+    \end{itemize}
+    \item Kite is a quadrilateral which has two pair of sides of same length which are adjacent to each other. The area of kits is $diagonal_1*diagonal_2/2$. Diagonals of kite are perpendicular.
+    \item Rhombus is a special parallelogram where every side has equal length. It is also a special case of kits where every side has equal length.    
+    \item Convex Polygon: All interior angles should be less than 180 deg. Polygon which is not Convex is Concave
+    \item Concave polygon has critical point (point from which entire polygon is not visible).
+    \item \textbf{Pick's Theorem}. $A=i+\frac{b}{2}-1$, where: $P$ is a simple polygon whose vertices are grid points, $A$ is area of $P$, $i$ is \# of grid points in the interior of $P$, and $b$ is \# of grid points on the boundary of $P$. \\
+    If $h$ is \# of holes of $P$ ($h+1$ simple closed curves in total), $A=i+\frac{b}{2}+h-1$.
+    \begin{minted}{cpp}
+// way to get boundary points
+
+ll getb (vector<point> &poly) {
+    ll b = 0;
+    int n = P.size () - 1;
+    for (int i = 0; i < n ;i++) {
+        int j = i + 1; 
+        ll ret = gcd (abs(poly[i].x - poly[j].x), abs (poly[i].y - poly[j].y));
+        // for point to be on lattice its x and y coordinate has to be a multiple of gcd.
+        b += ret;
+    }
+    return b;
+}
+    \end{minted}
+    \item To check whether a point is on or inside a polygon that area method is best.
+    \item Centroid of a polygon, $C_x = 1/(6*A)*\sum_{i = 0}^{n - 1}(x_i + x_{i + 1}) * (x_i * y_{i + 1} - x_{i + 1} * y_i)$
+    \\$C_y = 1/(6*A)*\sum_{i = 0}^{n - 1}(y_i + y_{i + 1}) * (x_i * y_{i + 1} - x_{i + 1} * y_i)$
+    \\\textbf{Here: }$(x_n, y_n) = (x_0, y_0)$. And dont given absolute value to A.
+    \item \[A = 1/2\begin{bmatrix}
+    x_0 & y_0\\
+    x_1 & y_1\\
+    \vdots & \vdots\\
+    x_n & y_n
+    \end{bmatrix} = 1/2 * ((x_0 * y_1 + x_1 * y_2 + \dots + x_{n - 2} * y_{n - 1}) - (x_1*y_0 \dots)\]
+    \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{p1} 
+    \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{p2}
+    \item \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/areaOfUnionOfTriangles.cpp}{Area of union of triangles}
+    \item \href{http://e-maxx.ru/algo/circle_tangents}{Finding common tangents to two circles}
+    \item \href{https://uva.onlinejudge.org/external/101/10173.pdf}{Minimum Bounding Rectangle}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10173.cpp}{Sol}: basically use atan2 and rotate wrt that point.
+    \item Given a set of points, to determine whether a point lies inside a triangle formed by any 3 points, it is enough to check whether the given point lies inside the convex hull of given data points.
+\end{itemize}
+\subsection{Klee's Algo}
+Given $n$ segments on a line, each described by a pair of coordinates $(a_{i1}, a_{i2})$. We have to find the length of their union.
+\\It works in $O(n\log n)$ and has been proven to be the asymptotically optimal.
+\begin{minted}{cpp}
+// Returns sum of lengths covered by union of given 
+// segments 
+int segmentUnionLength(const vector <pair <int,int> > &seg) {
+    int n = seg.size(); 
+    // Create a vector to store starting and ending 
+    // points 
+    vector <pair <int, bool> > points(n * 2); 
+    for (int i = 0; i < n; i++) 
+    { 
+        points[i*2]     = make_pair(seg[i].first, false); 
+        points[i*2 + 1] = make_pair(seg[i].second, true); 
+    } 
+  
+    // Sorting all points by point value 
+    sort(points.begin(), points.end()); 
+  
+    int result = 0; // Initialize result 
+  
+    // To keep track of counts of current open segments 
+    // (Starting point is processed, but ending point 
+    // is not) 
+    int Counter = 0; 
+  
+    // Trvaerse through all points 
+    for (int i=0; i<n*2; i++) 
+    { 
+        // If there are open points, then we add the 
+        // difference between previous and current point. 
+        // This is interesting as we don't check whether 
+        // current point is opening or closing, 
+        if (Counter) 
+            result += (points[i].first - points[i-1].first); 
+  
+        // If this is an ending point, reduce, count of 
+        // open points. 
+        (points[i].second)? Counter-- : Counter++; 
+    } 
+    return result; 
+} 
+\end{minted}
+\subsection{Closest Pair Problem}
+\begin{minted}{cpp}
+// First sort the points by their x coordinates. Do whatever if there is tie.
+double dvac(int low, int high) {
+   if(low < high) {
+       if(low == high - 1) {
+           return dist(data[low], data[high]);
+       }
+       int mid = (low + high) / 2;
+       double d1 = dvac(low, mid);
+       double d2 = dvac(mid + 1, high);
+       double dp = min(d1, d2);
+       double d3 = 10000;
+       // It is guarenteed that there can be atmost 6 points
+       for(int i = mid; i >= low; i--) {
+           double temp = dist(point(data[i].x, 0), point(data[mid].x, 0));
+           if(temp > dp - EPS) break;
+           for(int j = mid + 1; j <= high; j++) {
+               double temp2 = dist(point(data[i].x, 0), point(data[j].x, 0));
+               if(temp2 > dp - EPS) break;
+               d3 = min(d3, dist(data[i], data[j]));
+           }
+       }
+       return min(dp, d3);
+   }
+   return 10000;
+}
+
+\end{minted}
 \end{document}
