@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1544878284 "c:/Users/Sourabh/Documents/GitHub/Competitive-Programming/RevisionNotes/main.tex" "main.pdf" "main" 1544878289
+["pdflatex"] 1544888390 "c:/Users/Sourabh/Documents/GitHub/Competitive-Programming/RevisionNotes/main.tex" "main.pdf" "main" 1544888395
   "_minted-main/0422392ED8F12F88E77BC4AB4EE5114F504A7AF0CD3BAA7542030FC560DFCC45.pygtex" 1544416741 977 28ed981bdd3bab076589ed12358d5a6b ""
   "_minted-main/04C1D9FD8C1E63D222D757D3EE38C7A8504A7AF0CD3BAA7542030FC560DFCC45.pygtex" 1544849226 3008 2f33c00808233c9cac67786aaf08570e ""
   "_minted-main/053865CEAF6A1057D968E5E4837DD313504A7AF0CD3BAA7542030FC560DFCC45.pygtex" 1544690090 272 e4aadc4ab40e93e7e8a90a25cd7b0389 ""
@@ -74,7 +74,7 @@
   "_minted-main/perldoc.pygstyle" 1544416741 8881 8be8ac42e560644db7d590fc53cd609e ""
   "basiccircle.png" 1544683799 52484 bb55c5620bd6bbcb139d6d79a0e88dae ""
   "bflow.PNG" 1544861304 25117 00a7fefb842efbc50e468a599c86ddd8 ""
-  "c:/Users/Sourabh/Documents/GitHub/Competitive-Programming/RevisionNotes/main.tex" 1544878283 155134 e8fc5661a21807de342493046f92c440 ""
+  "c:/Users/Sourabh/Documents/GitHub/Competitive-Programming/RevisionNotes/main.tex" 1544888389 155635 07d23c0c5dcc21fdd4b827965e149e3b ""
   "d:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1544255064 3332 103109f5612ad95229751940c61aada0 ""
   "d:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1544252840 1004 54797486969f23fa377b128694d548df ""
   "d:/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1544252840 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -304,10 +304,10 @@
   "d:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1544258780 4218693 914c662fd069d5b5f4c6ed11ee73cb74 ""
   "d:/texlive/2018/texmf.cnf" 1544258593 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   "lca.PNG" 1544617814 146903 24d4d61a094cbcf8222cf39a7ba860e4 ""
-  "main.aux" 1544878288 14768 ed25fd9515514fdf0149e6c32810d313 ""
-  "main.out" 1544878288 5321 f1634ca49714ffec3a6ee6e729ad1451 ""
-  "main.tex" 1544878283 155134 e8fc5661a21807de342493046f92c440 ""
-  "main.toc" 1544878288 6601 54398533b1cee5c5f6f02aa3891bea53 ""
+  "main.aux" 1544888395 14768 ed25fd9515514fdf0149e6c32810d313 ""
+  "main.out" 1544888395 5321 f1634ca49714ffec3a6ee6e729ad1451 ""
+  "main.tex" 1544888389 155635 07d23c0c5dcc21fdd4b827965e149e3b ""
+  "main.toc" 1544888395 6601 54398533b1cee5c5f6f02aa3891bea53 ""
   "nul" 0 0 d41d8cd98f00b204e9800998ecf8427e ""
   "p1.PNG" 1544694741 45986 6d427702381f778cac1a24c426be8488 ""
   "p2.PNG" 1544694760 46450 0357a5c4236c7ef4347dc6d64ef4830e ""
@@ -318,6 +318,6 @@
   (generated)
   "main.out"
   "main.aux"
-  "main.pdf"
   "main.toc"
   "main.log"
+  "main.pdf"

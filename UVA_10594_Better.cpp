@@ -1,4 +1,4 @@
-/* Toughest problem of the day, it took me maybe more than 4 hours. I dont think this topic is nicely explained in the Halims book */
+// First case in input is wrong, it should be 10 instead of 1.
 
 #include<bits/stdc++.h>
 
