@@ -1,9 +1,12 @@
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{c+c1}{// First sort the points by their x coordinates. Do whatever if there is tie.}
+\PYG{c+c1}{// I have to write the correct implementation following the idea mentioned in cormen and use it to solve codejams prob.}
+\PYG{c+c1}{// Commented section shows how to solve the problem:}
+\PYG{c+c1}{// Find out the maximum size such that if you draw such size quared around each point (that point will be at the center of the square) and no two squared will intersct each other (cna touch but not intersect). To make the problem simple the sides of the square will be parallel to X and Y axis.}
 \PYG{k+kt}{double} \PYG{n+nf}{dvac}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{low}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{high}\PYG{p}{)} \PYG{p}{\PYGZob{}}
    \PYG{k}{if}\PYG{p}{(}\PYG{n}{low} \PYG{o}{\PYGZlt{}} \PYG{n}{high}\PYG{p}{)} \PYG{p}{\PYGZob{}}
        \PYG{k}{if}\PYG{p}{(}\PYG{n}{low} \PYG{o}{==} \PYG{n}{high} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-           \PYG{k}{return} \PYG{n}{dist}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{n}{low}\PYG{p}{],} \PYG{n}{data}\PYG{p}{[}\PYG{n}{high}\PYG{p}{]);}
+           \PYG{k}{return} \PYG{n}{dist}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{n}{low}\PYG{p}{],} \PYG{n}{data}\PYG{p}{[}\PYG{n}{high}\PYG{p}{]);}  \PYG{c+c1}{// return max (data[high].x \PYGZhy{} data[low].x, abs (data[high].y \PYGZhy{} data[low].y));}
        \PYG{p}{\PYGZcb{}}
        \PYG{k+kt}{int} \PYG{n}{mid} \PYG{o}{=} \PYG{p}{(}\PYG{n}{low} \PYG{o}{+} \PYG{n}{high}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{;}
        \PYG{k+kt}{double} \PYG{n}{d1} \PYG{o}{=} \PYG{n}{dvac}\PYG{p}{(}\PYG{n}{low}\PYG{p}{,} \PYG{n}{mid}\PYG{p}{);}
@@ -18,6 +21,7 @@
                \PYG{k+kt}{double} \PYG{n}{temp2} \PYG{o}{=} \PYG{n}{dist}\PYG{p}{(}\PYG{n}{point}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{x}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{),} \PYG{n}{point}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{n}{j}\PYG{p}{].}\PYG{n}{x}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{));}
                \PYG{k}{if}\PYG{p}{(}\PYG{n}{temp2} \PYG{o}{\PYGZgt{}} \PYG{n}{dp} \PYG{o}{\PYGZhy{}} \PYG{n}{EPS}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;}
                \PYG{n}{d3} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{d3}\PYG{p}{,} \PYG{n}{dist}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{data}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]));}
+               \PYG{c+c1}{// d3 = min (d3, max (data[j].x \PYGZhy{} data[i].x, abs(...));)}
            \PYG{p}{\PYGZcb{}}
        \PYG{p}{\PYGZcb{}}
        \PYG{k}{return} \PYG{n}{min}\PYG{p}{(}\PYG{n}{dp}\PYG{p}{,} \PYG{n}{d3}\PYG{p}{);}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{l+m+mi}{1011101010000000} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{l+m+mi}{8} \PYG{o}{=\PYGZgt{}} \PYG{n}{num} \PYG{n}{is} \PYG{l+m+mi}{10111010} \PYG{n}{similarly} \PYG{n}{num} \PYG{o}{\PYGZlt{}\PYGZlt{}=} \PYG{l+m+mi}{8} \PYG{n}{implies} \PYG{n}{num} \PYG{n}{is} \PYG{l+m+mi}{10000000}
+\end{Verbatim}

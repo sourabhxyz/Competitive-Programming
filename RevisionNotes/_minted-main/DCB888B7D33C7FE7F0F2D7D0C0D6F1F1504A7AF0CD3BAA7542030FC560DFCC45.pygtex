@@ -1,0 +1,139 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{c+c1}{// dfs\PYGZus{}low[u] will store the lowest iteration count vertex u can reach from u’s current DFS Tree (i.e u can only reach vertices of lower iteration count only if a back\PYGZhy{}edge exists in one of its children)}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{;}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{;}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{;}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{bool}\PYG{o}{\PYGZgt{}} \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{dfs\PYGZus{}root}\PYG{p}{,} \PYG{n}{root\PYGZus{}children}\PYG{p}{;}
+
+\PYG{k+kt}{void} \PYG{n+nf}{ArticulationPoint}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// Initially, dfs\PYGZus{}num = dfs\PYGZus{}low}
+    \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfs\PYGZus{}num\PYGZus{}counter}\PYG{o}{++}\PYG{p}{;}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{adj\PYGZus{}list}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{adj\PYGZus{}list}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{i}\PYG{p}{];}
+
+        \PYG{c+c1}{// v was not previously visited, i.e a normal tree edge}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{u}\PYG{p}{;}
+
+            \PYG{c+c1}{// special case if u is root}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{u} \PYG{o}{==} \PYG{n}{dfs\PYGZus{}root}\PYG{p}{)} \PYG{n}{root\PYGZus{}children}\PYG{o}{++}\PYG{p}{;}
+
+            \PYG{n}{ArticulationPoint}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+
+            \PYG{c+c1}{// To detect articulation points}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZgt{}=} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}
+                \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+            \PYG{c+c1}{// To detect bridges}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}
+                \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Edge (\PYGZpc{}d, \PYGZpc{}d) is a bridge}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{);}
+
+            \PYG{c+c1}{// update dfs\PYGZus{}low[u] if dfs\PYGZus{}low[v] is lower}
+            \PYG{c+c1}{// i.e a back\PYGZhy{}edge exists in one of u\PYGZsq{}s children}
+            \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{],} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]);}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{c+c1}{// if v was previously visited, and v is not the parent of u}
+        \PYG{c+c1}{// then a back\PYGZhy{}edge certainly exists, not a direct cycle}
+        \PYG{c+c1}{// update dfs\PYGZus{}low[u] to store dfs\PYGZus{}num of ancestor is lower than}
+        \PYG{c+c1}{// current dfs\PYGZus{}low}
+        \PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{v} \PYG{o}{!=} \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}
+            \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{],} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Example main usage}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{dfs\PYGZus{}num\PYGZus{}counter} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{dfs\PYGZus{}num}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{n}{dfs\PYGZus{}low}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+    \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();} \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+    \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();} \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{);}
+
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n}{dfs\PYGZus{}root} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;} \PYG{n}{root\PYGZus{}children} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+            \PYG{n}{ArticulationPoint}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+
+            \PYG{c+c1}{// special case for root}
+            \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{[}\PYG{n}{dfs\PYGZus{}root}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{root\PYGZus{}children} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+cm}{/* Variation}
+
+\PYG{c+cm}{A slight variation to this problem is how many disconnected components would result as a direct consequence of removing a vertex u}
+
+\PYG{c+cm}{Another variation is to find the articulation vertex whose removal would cause a greater amount of components to be disconnected.}
+\PYG{c+cm}{General Idea of Variation}
+
+\PYG{c+cm}{Instead of keeping track of whether or not a node is an articulation point using vector\PYGZlt{}bool\PYGZgt{} articulation\PYGZus{}vertex, we’ll use a vector\PYGZlt{}int\PYGZgt{} articulation\PYGZus{}vertex to keep track of how many components will be connected after the removal of vertex u.}
+
+\PYG{c+cm}{To achieve this, we’ll first assume that each node in our graph G is not an articulation vertex. In other words, the removal of any node u in G will result in there being only one connected component (G will remain one entity and not be disconnected).}
+
+\PYG{c+cm}{We’ll then use the same algorithm we’ve used before, however, this around around, whenever we find that u is an articulation vertex relative to one of its children, we’ll increment articulation\PYGZus{}vertex[u].}
+
+\PYG{c+cm}{So, if we have a vertex u with say, 3 child components with no back\PYGZhy{}edges, the removal of u will result in G being cut into four connected components.}
+\PYG{c+cm}{*/}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{;}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{;}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{dfs\PYGZus{}root}\PYG{p}{,} \PYG{n}{root\PYGZus{}children}\PYG{p}{;}
+
+
+\PYG{c+c1}{// vector\PYGZlt{}int\PYGZgt{} instead of vector\PYGZlt{}bool\PYGZgt{}}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{;}
+
+\PYG{k+kt}{void} \PYG{n+nf}{ArticulationPoint}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfs\PYGZus{}num\PYGZus{}counter}\PYG{o}{++}\PYG{p}{;}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{adj\PYGZus{}list}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{adj\PYGZus{}list}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{i}\PYG{p}{];}
+
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{u}\PYG{p}{;}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{u} \PYG{o}{==} \PYG{n}{dfs\PYGZus{}root}\PYG{p}{)} \PYG{n}{root\PYGZus{}children}\PYG{o}{++}\PYG{p}{;}
+
+            \PYG{n}{ArticulationPoint}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+
+            \PYG{c+c1}{// we increment articulation\PYGZus{}vertex here}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZgt{}=} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}
+                \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{++}\PYG{p}{;}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}
+                \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Edge (\PYGZpc{}d, \PYGZpc{}d) is a bridge}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{);}
+
+            \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{],} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]);}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{v} \PYG{o}{!=} \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}
+            \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{],} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{dfs\PYGZus{}num\PYGZus{}counter} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{dfs\PYGZus{}num}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{n}{dfs\PYGZus{}low}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+    \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();} \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+
+    \PYG{c+c1}{// articulation\PYGZus{}vertex initialized to 1 here}
+    \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{.}\PYG{n}{clear}\PYG{p}{();} \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{);}
+
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n}{dfs\PYGZus{}root} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;} \PYG{n}{root\PYGZus{}children} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+            \PYG{n}{ArticulationPoint}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+
+            \PYG{c+c1}{// special case for root}
+            \PYG{c+c1}{// number of connected components after the removal of root}
+            \PYG{c+c1}{// is equal to how many children root has}
+            \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{[}\PYG{n}{dfs\PYGZus{}root}\PYG{p}{]} \PYG{o}{=} \PYG{n}{root\PYGZus{}children}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

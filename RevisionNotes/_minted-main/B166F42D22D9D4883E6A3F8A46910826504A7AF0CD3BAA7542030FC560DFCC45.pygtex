@@ -1,9 +1,23 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{ans}\PYG{p}{(}\PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
-\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}  \PYG{c+c1}{// Longest prefix is favored and will have correct count. But remember that longest prefix also have smaller prefix in it. So here i is string index}
-    \PYG{n}{ans}\PYG{p}{[}\PYG{n}{pi}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]]}\PYG{o}{++}\PYG{p}{;}
-\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)}  \PYG{c+c1}{// here i is prefix length. Thus we are doing backward propagation}
-    \PYG{n}{ans}\PYG{p}{[}\PYG{n}{pi}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]]} \PYG{o}{+=} \PYG{n}{ans}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
-\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}  \PYG{c+c1}{// as only intermediate strings were considered, we didn\PYGZsq{}t consider original prefix.}
-    \PYG{n}{ans}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{++}\PYG{p}{;}
+	\PYG{c+c1}{// Idea: \PYGZdq{}dep\PYGZdq{} indicates the imbalance in the string s[0...i \PYGZhy{} 1]. Now after replacing s[i] with \PYGZsq{})\PYGZsq{}, dep dec. and we want to add the lexicographically least string having \PYGZsq{}dep \PYGZhy{} 1\PYGZsq{} closing brackets reserved.}
+	\PYG{k+kt}{bool} \PYG{n+nf}{next\PYGZus{}balanced\PYGZus{}sequence}\PYG{p}{(}\PYG{n}{string} \PYG{o}{\PYGZam{}} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{n}{s}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();}
+    \PYG{k+kt}{int} \PYG{n}{depth} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+sc}{\PYGZsq{}(\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{depth}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+        \PYG{k}{else}
+            \PYG{n}{depth}\PYG{o}{++}\PYG{p}{;}
+
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+sc}{\PYGZsq{}(\PYGZsq{}} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{depth} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{depth}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+            \PYG{k+kt}{int} \PYG{n}{open} \PYG{o}{=} \PYG{p}{(}\PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{n}{depth}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{;}
+            \PYG{k+kt}{int} \PYG{n}{close} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{n}{open}\PYG{p}{;}
+            \PYG{n}{string} \PYG{n}{next} \PYG{o}{=} \PYG{n}{s}\PYG{p}{.}\PYG{n}{substr}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{i}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+sc}{\PYGZsq{})\PYGZsq{}} \PYG{o}{+} \PYG{n}{string}\PYG{p}{(}\PYG{n}{open}\PYG{p}{,} \PYG{l+s+sc}{\PYGZsq{}(\PYGZsq{}}\PYG{p}{)} \PYG{o}{+} \PYG{n}{string}\PYG{p}{(}\PYG{n}{close}\PYG{p}{,} \PYG{l+s+sc}{\PYGZsq{})\PYGZsq{}}\PYG{p}{);}
+            \PYG{n}{s}\PYG{p}{.}\PYG{n}{swap}\PYG{p}{(}\PYG{n}{next}\PYG{p}{);}
+            \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
 \end{Verbatim}

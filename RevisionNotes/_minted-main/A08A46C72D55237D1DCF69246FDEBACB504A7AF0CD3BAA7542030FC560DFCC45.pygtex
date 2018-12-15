@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{x} \PYG{o}{=} \PYG{n}{A}\PYG{p}{,} \PYG{n}{y} \PYG{o}{=} \PYG{n}{B}\PYG{p}{;}
+\PYG{n}{x} \PYG{o}{=} \PYG{n}{x} \PYG{o}{\PYGZca{}} \PYG{n}{y}\PYG{p}{;}
+\PYG{n}{y} \PYG{o}{=} \PYG{n}{x} \PYG{o}{\PYGZca{}} \PYG{n}{y}\PYG{p}{;} \PYG{c+c1}{// i.e. (A \PYGZca{} B) \PYGZca{} B = A}
+\PYG{n}{x} \PYG{o}{=} \PYG{n}{x} \PYG{o}{\PYGZca{}} \PYG{n}{y}\PYG{p}{;} \PYG{c+c1}{// i.e. (A \PYGZca{} B) \PYGZca{} A = B}
+\end{Verbatim}

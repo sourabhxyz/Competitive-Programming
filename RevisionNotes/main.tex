@@ -503,8 +503,29 @@ int main() {//UVA 10109
    return 0;
 }
 \end{minted}
+\subsection{GCD, LCM}
+\begin{minted}{cpp}
+    // time complexity O(log(min(a, b) / gcd(a, b)))
+    int gcd (int a, int b) { return b == 0 ? a : gcd (b, a % b); }
+    int lcm (int a, int b) { return a * (b / gcd (a, b)); }
+\end{minted}
+For a series of numbers if you want next no. to have gcd 1 with all previous no. then $GCD(a_j, LCM(a_1, a_2, \dots, a_{j - 1})) = 1$.
 \subsection{Side Notes}
 \begin{enumerate}
+    \item 2 nos a, b are said to be congruent modulo n, if there difference is an integer multiple of n, i.e. they give same remainder . We denote this as $a \equiv b (\text{mod n})$
+    \item For (a, b) three operations exist:
+    \begin{enumerate}
+        \item If a, b are even then (a/2, b/2).
+        \item (a + 1, b + 1)
+        \item If (a, b) exist and (b, c) exist then (a, c) exist.
+    \end{enumerate}
+    Every (x, y) pair s.t. $x < y$ can be transformed to (1, 1 + k x d) where k is any positive integer and d is maximal odd divisor of y - x. We want to generate $(1, a_1), (1, a_2), \dots, (1, a_n)$. So $d | gcd(a_1 - 1, a_2 - 1, \dots, a_n - 1)$. No. of pairs (x, y) which have d as their maximal odd divisors: these are cards with y - x = d, 2d, 4d, 8d, etc. as odd into odd is odd thus we can't multiply with any odd number as it will give bigger odd divisor. Don't forget that numbers x, y must no exceed m. Total no. of cards with some fixed difference t = y - x is exactly m - t. $1 \leq x < y \leq m$\\
+    $1 - x \leq 0 < t \leq m - x$\\
+    $1 \leq x \leq m - t$\\
+    $m - t \geq 1$\\
+    $t \leq m - 1$
+    \\$2^l * d \leq m - 1$\\
+    So sum up $m - 2^l * d$ where d is any odd divisor of gcd($a_1 - 1, \dots$) and l is such that $2^l * d \leq m - 1$.
     \item People in cycle will commit suicide.
     \item Every positive integer can be expressed uniquely as a sum of fibonacci numbers such that no two numbers are equal or consecutive fibonacci numbers.
     \item Every even no. greater than or equal to 4 can be expressed as a sum of 2 prime nos.
@@ -589,6 +610,198 @@ else ans = ((n - 7) * (m - 7) + 1) / 2
     \item for 2 nos (a, b) output 2 nos (c, d) such that a = gcd(c, d) \& b = lcm(c, d) and c is minimum. Sol: basically soln exist if $b \bmod a = 0$ and soln is c = a, d = b.
 \end{itemize}
 \section{Graphs}
+\subsection{Basic}
+\begin{itemize}
+    \item The shortest path b/w vertices i and j after edge (u, v) is added is equal to $min(d_{i, j}, d_{i, u} + w_{u, v} + d_{v, j}, d_{i, v} + w_{v, u} + d_{u, j})$
+    \item In BFS, in case of multiple sources, enqueue them all in queue and set dist[v] = 0. Some trick works in case of dijkstra.
+    \item Also in case we are given both source and destination then we can terminate our while loop by checking whether the element we pop from queue is the destination or not. Same trick would work with weighted graph provided we have no -ve edges (dijkstra)
+    \item Adjacency matrix equal to its transpose that implies undirected graph.
+    \item To check whether the graph is bipartite, we can do bfs and color vertices 0/1.
+    \item Graph Check
+    \begin{minted}{cpp}
+void graphcheck (int u) {
+    dfs_num[u] = explored;
+    for (auto &v : adjlist[u]) {
+        if (dfs_num[v] == unvisited) {  // tree edge
+            dfs_parent[v] = u;
+            graphcheck (v);
+        } else if (dfs_num[v] == explored) {  // back edge hence not DAG.
+            if (v == dfs_parent[u]) cout << "two ways\n"
+            else cout << "back edge\n"
+        } else {  // dfs_num[v] == visited
+            // forward/cross edge
+            // [u [v v] u] this is tree/forward
+            // [v [u u] v] back
+            // [v v] [u u] cross
+        }
+
+    }
+}
+    \end{minted}
+    \item Floodfill
+    \begin{minted}{cpp}
+int R, C;
+string grid[100];
+int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
+int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
+int floodfill (int r, int c, char c1, char c2) {
+    if (r < 0 || r >= R || c < 0 || c >= C) return 0;
+    if (grid[r][c] != c1) return 0;
+    int ans = 0;
+    grid[r][c] = c2;
+    for (int d = 0; d < 8; d++) {
+        ans += floodfill (r + dr[d], c + dc[d], c1, c2);
+    }
+    return ans;
+}
+    \end{minted}
+    \item We can find the number of connected components by simply doing dfs (offline), and online using UFDS.
+    \item Highest average is possible only by taking large 
+\end{itemize}
+\subsection{Articulation Points and Bridges (undirected graph)}
+\begin{itemize}
+    \item An articulation point is defined as a vertex in a graph G whose removal (all edges incident to this vertex are also removed) disconnects G. A graph without any articulatioin point is called "Biconnected" Similarly, a "Bridge" is defined as an edge in a graph G whose removal disconnects G.
+    \begin{minted}{cpp}
+        // dfs_low[u] will store the lowest iteration count vertex u can reach from u’s current DFS Tree (i.e u can only reach vertices of lower iteration count only if a back-edge exists in one of its children)
+vector<int> dfs_num;
+vector<int> dfs_low;
+vector<int> dfs_parent;
+vector<bool> articulation_vertex;
+int dfs_root, root_children;
+
+void ArticulationPoint(int u)
+{
+    // Initially, dfs_num = dfs_low
+    dfs_num[u] = dfs_low[u] = dfs_num_counter++;
+    for(int i = 0; i < adj_list[u].size(); i++)
+    {
+        int v = adj_list[u][i];
+        
+        // v was not previously visited, i.e a normal tree edge
+        if(dfs_num[v] == -1)
+        {
+            dfs_parent[v] = u;
+            
+            // special case if u is root
+            if(u == dfs_root) root_children++;
+
+            ArticulationPoint(v);
+            
+            // To detect articulation points
+            if(dfs_low[v] >= dfs_num[u])
+                articulation_vertex[u] = true;
+            // To detect bridges
+            if (dfs_low[v.first] > dfs_num[u])
+                printf(" Edge (%d, %d) is a bridge\n", u, v.first);
+            
+            // update dfs_low[u] if dfs_low[v] is lower
+            // i.e a back-edge exists in one of u's children
+            dfs_low[u] = min(dfs_low[u], dfs_low[v]);
+        }
+        // if v was previously visited, and v is not the parent of u
+        // then a back-edge certainly exists, not a direct cycle
+        // update dfs_low[u] to store dfs_num of ancestor is lower than
+        // current dfs_low
+        else if(v != dfs_parent[u])
+            dfs_low[u] = min(dfs_low[u], dfs_num[v]);
+    }
+}
+
+// Example main usage
+int main() 
+{
+    dfs_num_counter = 0;
+    dfs_num.clear(); dfs_num.resize(N, -1);
+    dfs_low.clear(); dfs_low.resize(N, 0);
+    dfs_parent.clear(); dfs_parent.resize(N, 0);
+    articulation_vertex.clear(); articulation_vertex.resize(N, false);
+
+    for(int i = 0; i < N; i++)
+        if (dfs_num[i] == -1)
+        {
+            dfs_root = i; root_children = 0;
+            ArticulationPoint(i);
+            
+            // special case for root
+            articulation_vertex[dfs_root] = (root_children > 1);
+        }
+}
+/* Variation
+
+A slight variation to this problem is how many disconnected components would result as a direct consequence of removing a vertex u
+
+Another variation is to find the articulation vertex whose removal would cause a greater amount of components to be disconnected.
+General Idea of Variation
+
+Instead of keeping track of whether or not a node is an articulation point using vector<bool> articulation_vertex, we’ll use a vector<int> articulation_vertex to keep track of how many components will be connected after the removal of vertex u.
+
+To achieve this, we’ll first assume that each node in our graph G is not an articulation vertex. In other words, the removal of any node u in G will result in there being only one connected component (G will remain one entity and not be disconnected).
+
+We’ll then use the same algorithm we’ve used before, however, this around around, whenever we find that u is an articulation vertex relative to one of its children, we’ll increment articulation_vertex[u].
+
+So, if we have a vertex u with say, 3 child components with no back-edges, the removal of u will result in G being cut into four connected components.
+*/
+vector<int> dfs_num;
+vector<int> dfs_low;
+vector<int> dfs_parent;
+int dfs_root, root_children;
+
+
+// vector<int> instead of vector<bool>
+vector<int> articulation_vertex;
+
+void ArticulationPoint(int u)
+{
+    dfs_num[u] = dfs_low[u] = dfs_num_counter++;
+    for(int i = 0; i < adj_list[u].size(); i++)
+    {
+        int v = adj_list[u][i];
+        
+        if(dfs_num[v] == -1)
+        {
+            dfs_parent[v] = u;
+            if(u == dfs_root) root_children++;
+
+            ArticulationPoint(v);
+            
+            // we increment articulation_vertex here
+            if(dfs_low[v] >= dfs_num[u])
+                articulation_vertex[u]++;
+            if (dfs_low[v.first] > dfs_num[u])
+                printf(" Edge (%d, %d) is a bridge\n", u, v.first);
+                
+            dfs_low[u] = min(dfs_low[u], dfs_low[v]);
+        }
+        else if(v != dfs_parent[u])
+            dfs_low[u] = min(dfs_low[u], dfs_num[v]);
+    }
+}
+
+int main() 
+{
+    dfs_num_counter = 0;
+    dfs_num.clear(); dfs_num.resize(N, -1);
+    dfs_low.clear(); dfs_low.resize(N, 0);
+    dfs_parent.clear(); dfs_parent.resize(N, 0);
+    
+    // articulation_vertex initialized to 1 here
+    articulation_vertex.clear(); articulation_vertex.resize(N, 1);
+
+    for(int i = 0; i < N; i++)
+        if (dfs_num[i] == -1)
+        {
+            dfs_root = i; root_children = 0;
+            ArticulationPoint(i);
+            
+            // special case for root
+            // number of connected components after the removal of root
+            // is equal to how many children root has
+            articulation_vertex[dfs_root] = root_children;
+        }
+}
+    \end{minted}
+    \item \href{https://gist.github.com/sourabh2311/01c2bdf3f7389c2b84d40db5cce506f9}{Two way to one way UVA 610}
+\end{itemize}
 \subsection{Tree}
 Undirected, acyclic, connected, $|V| - 1$ edges.\\
 All edges are bridges, and internal vertices (degree $> 1$) are articulation points.\\
@@ -629,12 +842,68 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 	\item \href {https://gist.github.com/sourabh2311/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10459 Prob}: Centers of diameters are best where as corners are worst.	
     \item \href {https://codeforces.com/contest/911/problem/F}{Tree Destruction}, \href {https://codeforces.com/contest/911/submission/34122817}{Sol}:
 \end{itemize}
+\subsubsection{MVC on Tree}
+\begin{minted}{cpp}
+int mvc(int at, int flag, int parent) { //You can start this from any node, i.e. in main: int ans =  min(mvc(0, 0, -1), mvc(0, 1, -1)); and handle the case n == 1 seperately
+   if(memo[at][flag] != -1) {
+       return memo[at][flag];
+   }
+   if(glist[at].size() == 1 and parent != -1) { //leaf node
+       return memo[at][flag] = flag;
+   }
+   int ans = flag;
+   if(flag) // to take this
+   {
+       for(auto to : glist[at]) {
+           if(to != parent)
+               ans += min(mvc(to, 0, at), mvc(to, 1, at));
+       }
+   } else { //we must take its neighbours
+       for(auto to : glist[at]) {
+           if(to != parent)
+               ans += mvc(to, 1, at);
+       }
+   }
+   return memo[at][flag] = ans;
+}  // Similar code can be written to find MWIS.
+\end{minted}
+\subsubsection{MWIS on Tree}
+\begin{minted}{cpp}
+int mwis(int at, int flag, int parent) { //You can start this from any node, i.e. in main: int ans =  max(mwis(0, 0, -1), mwis(0, 1, -1)); and handle the case n == 1 seperately
+   if(memo[at][flag] != -1) {
+       return memo[at][flag];
+   }
+   if(glist[at].size() == 1 and parent != -1) { //leaf node
+        flag ? ans = weight[at] : 0;
+        return ans;
+   }
+   if (flag) {
+       ans = weight[v];
+       for (auto to : glist[at]) {
+           if (to != parent)
+            ans += mwis (to, 0, at);
+       }
+   } else {
+        ans = 0;
+        for (auto &to : glist[at]) {
+            ans += max (mwic(to, 1, at), mwic(to, 0, at));
+        }
+   }
+   return memo[at][flag] = ans;
+}  // Similar code can be written to find MWIS.
+\end{minted}
 \subsection{Terminology}
 \begin{itemize}
     \item A \textbf{vertex cover} is a subset of vertices S, such that for each edge (u, v) in graph, either u or v (or both) are in S.
     \item An \textbf{independent set} is a subset of vertices S, such that no two vertices u, v in S are adjacent in graph.
     \item A subset of vertices is a vertex cover iff the complement of the set is an independent set. I.e. $MinVC + MaxIS = V$.
+    \item It is easy to see why it is the case, firstly for vertices in the complement of MinVC, they can't have any edge between them as then our MinVC isnt VC. Also if we add to this IS any more vertex then it wont be an IS. Suppost it is not the maximum then there occurs an MIS with size more than this, clearly its complement is VC which would have size smaller than our MinVC which leads to contradiction. 
+    \item Complement of VC is an IS and vice versa (easy to see)
+    \item Given an undirected graph G = (V, E) and weighting function defined on the vertex set, the minimum weighted vertex cover problem is to find a vertex set S ⊆ V whose total weight is minimum subject to every edge of G has at least one end point in S. 
+    \item In the maximum-weight independent set problem, the input is an undirected graph with weights on its vertices and the output is an independent set with maximum total weight.
+    \item Again it happens to be the case that size of MWVC + MWIS = Total weight = V.
     \item A matching is a subset of edges such that each vertex is adjacent to at most one edge in the subset. Clearly Matching edges can be atmost $|V|/2$ as each edge joins two vertices and now no other matched edge can touch them.
+    \item Note: This MVC, MIS, MM, is defined for undirected, unweighted graph.
     \item Once we have maximum matching. Clearly since these matching edges are aswell edges of the graph and minimum vertex cover should have vertices that are adjacent to these edges. But since matching edges have no vertex in common, size of minimum vertex cover is atleast the size of maximum matching.
     \item Maximum matchings can be found in polynomial time for any graph, while minimum vertex cover is NP complete. Thus, finding maximum independent sets is another NP-complete problem.
     \item The equivalence between matching and covering articulated in Kőnig's theorem allows minimum vertex covers and maximum independent sets to be computed in polynomial time for bipartite graphs, despite the NP-completeness of these problems for more general graph families.
@@ -694,7 +963,8 @@ $K = \{2, 5\}$
     \item \textbf{Augmenting path: }Given a matching M, an augmenting path is an alternating path that starts from and ends on free vertices.
     \item The Hopcroft karp algorithm is based on below concept:
     \item A matching M is not maximum if there exist an augmenting path. It is also true other way, i.e., a matching is maximum if no augmenting path exists.
-    \item Hopcroft Karp Algo $O(\sqrt{V}*E)$: \begin{enumerate}
+    \item Hopcroft Karp Algo $O(\sqrt{V}*E)$: 
+    \begin{enumerate}
         \item Initialize maximal matching M as empty.
         \item While there exists an augmenting path P, remove matching edges of P from M and add not matching edges of P to M. (This increases size of M by 1 as P starts and ends with a free vertex).
         \item Return M.
@@ -825,6 +1095,9 @@ main() {
 }
     \end{minted}
 \end{enumerate}
+\subsubsection{Using max flow algo}
+Our MM problem can be reduced to max flow problem by assigning a dummy source vertex s connected to all vertices in set 1 and all vertices in set 2 are connected to dummy sink vertex t. The edges are directed (s to u, u to v, v to t) where u belongs to set 1 and v belongs to set 2). By setting capacities of all edges in this flow graph to 1, we satisfy the criteria of matching. Thus, this max flow will be equal to the max. no. of matchings on the original graph.
+
 \subsection{Paths}
 \begin{itemize}
     \item An \textbf{euler path} is defined as a path in a graph which visits each edge of the graph exactly once. Similarly and \textbf{euler tour/cycle }is an euler path which starts \& ends on the same vertex. A graph which has either an euler path or an euler tour is called \textbf{eulerian}.
@@ -859,6 +1132,38 @@ for (list<int>::iterator it = cyc.begin(); it != cyc.end(); it++)
     printf("%d\n", *it); // the Euler tour
 \end{minted}
 \subsection{SCC}
+Strongly Connected Components. A directed graph is strongly connected if there is a path between all pairs of vertices. A strongly connected component (SCC) of a directed graph is a maximal strongly connected subgraph
+\subsubsection{Tarjan}
+\begin{minted}{cpp}
+vi dfs_num, dfs_low, S, visited; // global variables
+void tarjanSCC(int u) {
+    dfs_low[u] = dfs_num[u] = dfsNumberCounter++; // dfs_low[u] <= dfs_num[u]
+    S.push_back(u); // stores u in a vector based on order of visitation
+    visited[u] = 1;
+    for (int j = 0; j < (int)AdjList[u].size(); j++) {
+        ii v = AdjList[u][j];
+        if (dfs_num[v.first] == UNVISITED)
+            tarjanSCC(v.first);
+        if (visited[v.first]) // condition for update
+            dfs_low[u] = min(dfs_low[u], dfs_low[v.first]); 
+    }
+    if (dfs_low[u] == dfs_num[u]) { // if this is a root (start) of an SCC
+        printf("SCC %d:", ++numSCC); // this part is done after recursion
+        while (1) {
+            int v = S.back(); S.pop_back(); visited[v] = 0;
+            printf(" %d", v);
+            if (u == v) break; 
+        }
+        printf("\n");
+    } 
+}
+// inside int main()
+dfs_num.assign(V, UNVISITED); dfs_low.assign(V, 0); visited.assign(V, 0);
+dfsNumberCounter = numSCC = 0;
+for (int i = 0; i < V; i++)
+    if (dfs_num[i] == UNVISITED)
+        tarjanSCC(i);
+\end{minted}
 \subsubsection{Kosaraju}
 \begin{enumerate}
     \item It is obvious that strongly connected components do not intersect each other, i.e. this is a partition of all graph vertices. Thus we can give a definition of condensation graph $G^{SCC}$ as a graph containing every strongly connected component as one vertex. Each vertex of the condensation graph corresponds to the strongly connected component of the graph $G$. There is a direccted edge b/w two vertice $C_i$ and $C_j$ of the condensation graph iff there are 2 vertices $u \in C_i$ and $v \in C_j$ such that there is an edge in initial graph, i.e. $(u, v) \in E$. The most important property of the condensation grph is that it is acyclic.
@@ -916,6 +1221,328 @@ $f = x_1 \wedge x_2 \wedge \dots \wedge x_n$ is satisfiable iff there isnt both 
 \subsubsection{2 SAT}
 $f = (x_1 \vee y_1) \wedge \dots \wedge (x_n \vee y_n)$ is satisfiable iff both $x_i \& \bar{x_i}$ are not in same SCC as one them has to be true and in SCC one value is true all others must be true. For each $(x_i \vee y_i)$ add 2 edges $\bar{x_i} \rightarrow y_i$ and $\bar{y_i} \rightarrow x_i$. 
 \\After seeing whether the soln exists or not, soln can be constructed with the help of Kosaraju's algo, let comp[v] denote the index of strongly connected component to which the vertex v belongs. Then, if $comp[x] < comp[\bar{x}]$ we assign x with false and true otherwise.
+\subsection{DAG}
+topological sort or topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge uv from vertex u to vertex v, u comes before v in the ordering.
+\\A topological ordering is possible if and only if the graph has no directed cycles, that is, if it is a directed acyclic graph (DAG). Any DAG has at least one topological ordering.
+\begin{minted}{cpp}
+void dfs (int from) {
+    visited[from] = true;
+    for (int i = 0; i < adjlist[from].size (); i++) {
+        if (!visited[adjlist[from][i]]) dfs (adjlist[from][i]);
+    }
+    ts.pb (from); 
+}
+// in main
+for (int i = 0; i  < V; i++) {
+    if (!visited[i]) {
+        dfs(i);
+    }
+}
+reverse (ts.begin (), ts.end ());
+\end{minted}
+\subsubsection{SSSP}
+Do topological sort then relax edges according to this order.
+\subsubsection{SSLP}
+Simply negate all the edge weights and run SSSP as above.
+\\Pay attention on the word "we are not allowed to go back" so dont use normal SSSP algo but relax edges according to the required order.
+\subsubsection{Counting Paths in DAG}
+find toposort. Set numPaths[firstElement] = 1. Then we process the remaining vertices one by one acc. to toposort. When processing a vertex u, we update each neighbour v of u by setting numPaths[v] += numPaths[u].
+\subsubsection{Min Path cover on DAG}
+This is described as a problem of finding the min. no. of paths to cover each vertex on DAG. The start of each path can be arbitrary, we are just interested in min. no. of paths.
+\\Construct a bipartite graph $G' = (V_out \cup V_in, E')$ from G where $V_{out/in} = \{v \in V: v has poitive out/in degree\}$
+\\$E' = \{(u, v) \in (V_out, V_in) : (u, v) \in E\}$
+\\G' is a bipartite graph, do max. matching on it. Say answer obtained is m that means ans is $|V| - m$ as initially |V| vertices can be convered with |V| paths of length of length 0 (the vertices themselves). One matching b/w vertex a and b using edge (a, b) says that we can use one less path as edge (a, b) in E' can cover path $a \in V_out \& b\in V_in$
+\subsection{APSP Floyd Warshalls}
+\begin{minted}{cpp}
+for (int k = 0; k < V; k++) {
+    for (int i = 0; i < V; i++) {
+        for (int j = 0; j < V; j++) {
+            if (adjmat[i][j] > adjmat[i][k] + adjmat[k][j]) {
+                adjmat[i][j] = adjmat[i][k] + adjmat[k][j];
+                path[i][j] = path[k][j];
+            }
+        }
+    }
+}
+void printPath (int u) {
+    if (u == i) cout << i << " ";
+    else {
+        printPath (path[i][u]);
+        cout << u << " ";
+    }
+}
+// in main printPath(j).
+// Initially path[i][j] = i for edge (i, j);
+// in APSP problems, always do 
+cin >> u >> v >> wt;
+adjmat[u][v] = min (graph[u][v], wt);
+// very initially
+if (i != j) adjmat[i][j] = inf;
+else adjmat[i][j] = 0;
+\end{minted}
+\begin{itemize}
+    \item If diagonal (initially 0) becomes negative = negative cycle
+    \item If diagonal (initially inf) becomes finite = cycle
+    \item The smallest non negative adjmat[i][i] for all i is the cheapest cycle
+    \item Transitive closure to determine if i is connected to j or not.
+    \begin{minted}{cpp}
+adjmat[i][j] |= (adjmat[i][k] & adjmat[k][j])
+    \end{minted}
+    \item Diameter of a graph is maximum shortest path distance between any pair of vertices of that graph. So do simply max (adjmat[i][j] for all i, j) after doing APSP.
+    \item SCC of a directed graph (aliter): first do transitive closure then to find all members of an SCC that contains vertex i, check all vertices j, if (adjmat[i][j] \&\& adjmat[j][i]) is true then vertex i and j belong to same SCC.
+    \item Minimax: Minimax path problem of finding the minimum of maximum edge weight among all posssible paths between two vertices i to j. The reverse problem maximin is defined similarly.
+    \begin{minted}{cpp}
+adjmat[i][j] = min (adjmat[i][j], max (adjmat[i][k], adjmat[k][j]));
+    \end{minted}
+\end{itemize}
+\subsection{MST (Kruskal)}
+\begin{minted}{cpp}
+// O (ElogV)
+// Connected, undirected weighted graph
+vector<pair<int, ii> > edgelist;
+for (int i = 0; i < E; i++) {
+    cin >> u >> v >> w;
+    edgelist.pb (make_pair(w, ii (u, v)));
+}
+sort(edgelist.begin (), edgelist.end ());
+int mstCost = 0;
+UFDS uf (V);
+for (int i = 0; i < E and uf.numSets > 1; i++) {
+    auto front = edgelist[i];
+    if (!uf.isSameSet (front.second.first, front.second.second)) {
+        mstCost += front.first;
+        uf.unionSet (front.second.first, front.second.second);
+    }
+}
+cout << mstCost;
+\end{minted}
+\begin{itemize}
+    \item If maximum instead of minimum, simply sort by dec. edge weights
+    \item Minimum spanning subgraph: first union all these fixed edges, then run MST as normal
+    \item Minimum spanning forest (we want to form a forest of k connected components (k subtrees)) in the least cost way; soln: run kruskal until no. of connected components (numsets) equals k.
+    \item Second best ST O(VE). While doing this also check that in resultant ST, numdisjointset == 1 or not.
+\end{itemize}
+\subsection{SSSP}
+\subsubsection{Dijkstra}
+\begin{minted}{cpp}
+// Subpaths of shortest paths from u to v are shortest paths
+// This implementation would work even if the graph has negative edge provided there is no negative cycle
+// O(ElogV)
+struct node {
+    int cost, vertex;
+    node () {}
+    node (int n, int c) {
+        vertex = n; cost = c;
+    }
+    bool operator < (const node &node) const {
+        return cost > node.cost;  // as priority queue is max heap
+    }
+}
+int dijkstra (int s, int e) {
+    memset (dist, inf, sizeof (dist));
+    dist[s] = 0;
+    priority_queue<node> pq;
+    pq.push (node (s, 0));
+    int from, to, wt, cost;
+    while (!pq.empty ()) {
+        from = pq.top ().vertex;
+        cost = pq.top ().cost;
+        pq.pop ();
+        if (from == e) return dist[e];
+        if (cost == dist[from]) {  // lazily deleting
+            for (int i = 0; i < adjlist[from].size (); i++) {
+                to = adjlist[form][i].first;
+                wt = adjlist[from][i].second;
+                if (dist[to] > dist[from] + wt) {
+                    dist[to] = dist[from] + wt;
+                    p[to] = from;
+                    pq.push (node (to, dist[to]));
+                }
+            }
+        }
+    }
+}
+\end{minted}
+\begin{itemize}
+    \item \href{https://uva.onlinejudge.org/external/116/11635.pdf}{Hotel Booking Problem}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_11635.cpp}{sol}
+    \item \href{https://uva.onlinejudge.org/external/113/11367.pdf}{Fuel Tank problem}, \href{https://gist.github.com/sourabh2311/8bfef5f916820d71a8770fc4c7adc598}{sol}
+    \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/34071120}{Sol}: pr denotes from what grammer it is derived. Also number of functions on n variables $= 2^{2^n}$.
+\end{itemize}
+\subsubsection{Bellman ford}
+\begin{minted}{cpp} 
+// For negative edge weights provided we have no negative cycles.
+// Idea: Shortest path must have atmost |V| - 1 edges.
+// Thus if we relax each each edge |V| - 1 times then we would have got the answer as in first relaxation edge(start, neighbour) will be correct and so on...
+vi dist (V, inf);
+dist[s] = 0;
+bool modified = true;
+for (int i = 0; i < V - 1 and modified; i++) {
+    modified = false;
+    for (int u = 0; u < V; u++) {
+        for (int j = 0; j < adjlist[u].size (); j++) {
+            ii v = adjlist[u][j];
+            if (dist[v.first] > dist[u] + v.second) {
+                dist[v.first] = dist[u] + v.second;
+                p[v.first] = u;
+                modified = true;
+            }
+        }
+    }
+}
+// to check for negative cycle
+void solve()
+{
+    vector<int> d(n);
+    vector<int> p(n, -1);
+    int x;
+    for (int i = 0; i < n; ++i) {
+        x = -1;
+        for (Edge e : edges) {
+            if (d[e.a] + e.cost < d[e.b]) {
+                d[e.b] = d[e.a] + e.cost;
+                p[e.b] = e.a;
+                x = e.b;
+            }
+        }
+    }
+
+    if (x == -1) {
+        cout << "No negative cycle found.";
+    } else {
+        for (int i = 0; i < n; ++i)
+            x = p[x];
+
+        vector<int> cycle;
+        for (int v = x;; v = p[v]) {
+            cycle.push_back(v);
+            if (v == x && cycle.size() > 1)
+                break;
+        }
+        reverse(cycle.begin(), cycle.end());
+
+        cout << "Negative cycle: ";
+        for (int v : cycle)
+            cout << v << ' ';
+        cout << endl;
+    }
+}
+// To check for negative cycle, run this one more time
+int x = -1;
+for (int u = 0; u < V; u++) {
+    for(int j = 0; j < adjlist[u].size (); j++) {
+        ii v = adjlist[u][j];
+        if (dist[v.first] > dist[u] + v.second) {
+            dist[v.first] = dist[u] + v.second;
+            p[v.first] = u;
+            x = v.first;
+        }
+    }
+}
+if (x != -1) {  // negative cycle
+    int y = x;
+    for (int i=0; i<n; ++i)
+        y = p[y];
+    vector<int> path;
+    for (int cur=y; ; cur=p[cur])
+    {
+        path.push_back (cur);
+        if (cur == y && path.size() > 1)
+            break;
+    }
+    reverse (path.begin(), path.end());
+    cout << "Negative cycle: ";
+    for (size_t i=0; i<path.size(); ++i)
+        cout << path[i] << ' ';
+}
+\end{minted}
+\begin{itemize}
+    \item \href{}{Hopeless/winnable UVA 10557}: Basically check for positive cycle and see if it is connected from that.
+    \item \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Summer%202017/UVA_11280.cpp}{Stop problem UVA 11280}.
+\end{itemize}
+\subsection{Max Flow}
+\subsubsection{Edmond karps}
+\begin{minted}{cpp}
+// O (V * E^2)
+void augment(int v, int minEdge) { // traverse BFS spanning tree from s->t
+    if (v == s) { f = minEdge; return; } // record minEdge in a global var f
+    else if (p[v] != -1) { augment(p[v], min(minEdge, res[p[v]][v]));
+    res[p[v]][v] -= f; res[v][p[v]] += f; }
+}
+    // in main
+    mf = 0; // mf stands for max_flow
+    while (1) { // O(VE^2) (actually O(V^3 E) Edmonds Karp’s algorithm
+        f = 0;
+        // run BFS
+        vi dist(MAX_V, INF); dist[s] = 0; queue<int> q; q.push(s);
+        p.assign(MAX_V, -1); // record the BFS spanning tree, from s to t!
+        while (!q.empty()) {
+            int u = q.front(); q.pop();
+            if (u == t) break; // immediately stop BFS if we already reach sink t
+            for (int v = 0; v < MAX_V; v++) // note: this part is slow
+                if (res[u][v] > 0 && dist[v] == INF)
+                    dist[v] = dist[u] + 1, q.push(v), p[v] = u; // 3 lines in 1!
+        }
+        augment(t, INF); // find the min edge weight ‘f’ in this path, if any
+        if (f == 0) break; // we cannot send any more flow (‘f’ = 0), terminate
+        mf += f; // we can still send a flow, increase the max flow!
+    }
+\end{minted}
+\begin{itemize}
+    \item Reason why we need to consider back flow: so that if by back flow we reach destination then that means we could have done it in straight way. 
+    \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{bflow} 
+    \item VIMP Note: if you are traversing through all 'v' like in the code above then its fine but otherwise if you do glist[u].pb(v) you \textbf{must} also do glist[v].pb (u) but only set res[u][v].
+    \item Lets define an s-t cut C = (s-component, t-component) as a partition of V s.t. source s belongs to s-component and sink t belongs to t-component. Lets also define a cut-set to be set $\{(u, v) \in E | u \in s-comp, v \in t-comp\}$ such that if all edges in cut-set of C are removed, max flow from s to t is 0. (i.e. s and t are disconnected). The cost of an s-t cut C is defined by the sum of capacities of edges in cut-set of C. The min cut problem (min cut) is to minimize the amount of capacity of an s-t cut. Sol: After running max flow algo, do bfs/dfs from s, all vertices reachable from s using positive weighted edges in the residual graph belong to s-comp. and remaining belong to t-comp. and mf = min cut value. This is max-flow min-cut theorem.
+    \item Multisource/multisink: Create a supersource ss and super sing st. Connect ss with all s with infinite capacity and also connect all t with st with infinte capacity, then run edmonds karps as per normal.
+    \item Vertex capacities: Network flow variant where capacities are not just defined along the edges but also on the vertices. Split each v to vin and vout, reassigning its incomint/outgoing edges to vin/vout resp. and finally putting the original vertex v's weight as the weight of edge vin -$>$ vout. Note that this will double the number of vertices
+    \item Max Independent paths: two paths are said to be independent if they do not share any vertex apart from s and t. Soln: construct a flow network N = (V, E) from G with vertex capacitites, where N is the carbon copy of G except that the capacity of each v in V is 1 (i.e. each vertex can only be used once) and the capacity of each edge e in V is also 1. Then run edmonds karps algo as per normal.
+    \item Max edge disjoint paths: finding the maximum number of edge disjoint paths rom s to t is simlar to finding max independent paths. The only difference is that this time we do not have any vertex capacity (i.e. 2 edge disjoint paths can still share the same vertex)
+    \item \href{https://uva.onlinejudge.org/external/5/563.pdf}{Crimewave}, \href{https://gist.github.com/sourabh2311/d9125c7f5149f80b267514b66ec65d3b}{sol} 
+    \item \textbf{MWIS on a bipartite graph}
+    \\Problem is equivalent to finding the minimum weight vertex cover in the graph. The latter can be solved using maximum flow techniques:
+    \\Introduce a super-source S and a super-sink T. connect the nodes on the left side of the bipartite graph to S, via edges that have their weight as capacity. Do the same thing for the right side and sink T. Assign infinite capacity to the edges of the original graph.
+
+    Now find the minimum S-T cut in the constructed network. The value of the cut is the weight of the minimum vertex cover. To see why this is true, think about the cut edges: They can't be the original edges, because those have infinite capacity. If a left-side edge is cut, this corresponds to taking the corresponding left-side node into the vertex cover. If we do not cut a left-side edge, we need to cut all the right-side edges from adjacent vertices on the right side.
+
+    Thus, to actually reconstruct the vertex cover, just collect all the vertices that are adjacent to cut edges, or alternatively, the left-side nodes not reachable from S and the right-side nodes reachable from S.
+    
+
+\end{itemize}
+\subsection{Minimum Cost Flow}
+Given a network $G$ consisting of $n$ vertices and $m$ edges. For each edge (generally speaking, oriented edges, but see below), the capacity (a non-negative integer) and the cost per unit of flow along this edge (some integer) are given. Also the source $s$ and the sink $t$ are marked.
+
+For a given value $K$, we have to find a flow of this quantity, and among all flows of this quantity we have to choose the flow with the lowest cost. This task is called minimum-cost flow problem.
+
+Sometimes the task is given a little differently: you want to find the maximum flow, and among all maximal flows we want to find the one with the least cost. This is called the minimum-cost maximum-flow problem.
+
+Both these problems can be solved effectively with the algorithm of sucessive shortest paths.
+
+First we only consider the simplest case, where the graph is oriented, and there is at most one edge between any pair of vertices (e.g. if $(i, j)$ is an edge in the graph, then $(j, i)$ cannot be part in it as well).
+
+Let $U_{i j}$ be the capacity of an edge $(i, j)$ if this edge exists. And let $C_{i j}$ be the cost per unit of flow along this edge $(i, j)$. And finally let $F_{i, j}$ be the flow along the edge $(i, j)$. Initially all flow values are zero.
+
+We modify the network as follows: for each edge $(i, j)$ we add the reverse edge $(j, i)$ to the network with the capacity $U_{j i} = 0$ and the cost $C_{j i} = -C_{i j}$. Since, according to our restrictions, the edge $(j, i)$ was not in the network before, we still have a network that is not a multigraph (graph with multiple edges). In addition we will always keep the condition $F_{j i} = -F_{i j}$ true during the steps of the algorithm.
+
+We define the residual network for some fixed flow $F$ as follow (just like in the Ford-Fulkerson algorithm): the residual network contains only unsaturated edges (i.e. edges in which $F_{i j} < U_{i j}$), and the residual capacity of each such edge is $R_{i j} = U_{i j} - F_{i j}$.
+
+Now we can talk about the algorithms to compute the minimum-cost flow. At each iteration of the algorithm we find the shortest path in the residual graph from $s$ to $t$. In contrary to Edmonds-Karp we look for the shortest path in terms of the cost of the path, instead of the number of edges. If there doesn't exists a path anymore, then the algorithm terminates, and the stream $F$ is the desired one. If a path was found, we increase the flow along it as much as possible (i.e. we find the minimal residual capacity $R$ of the path, and increase the flow by it, and reduce the back edges by the same amount). If at some point the flow reaches the value $K$, then we stop the algorithm (note that in the last iteration of the algorithm it is necessary to increase the flow by only such an amount so that the final flow value doesn't surpass $K$).
+
+It is not difficult to see, that if we set $K$ to infinity, then the algorithm will find the minimum-cost maximum-flow. So both variations of the problem can be solved by the same algorithm.
+
+The case of an undirected graph or a multigraph doesn't differ conceptually from the algorithm above. The algorithm will also work on these graphs. However it becomes a little more difficult to implement it.
+
+An undirected edge $(i, j)$ is actually the same as two oriented edges $(i, j)$ and $(j, i)$ with the same capacity and values. Since the above-described minimum-cost flow algorithm generates a back edge for each directed edge, so it splits the undirected edge into $4$ directed edges, and we actually get a multigraph.
+
+How do we deal with multiple edges? First the flow for each of the multiple edges must be kept separately. Secondly, when searching for the shortest path, it is necessary to take into account that it is important which of the multiple edges is used in the path. Thus instead of the usual ancestor array we additionally must store the edge number from which we came from along with the ancestor. Thirdly, as the flow increases along a certain edge, it is necessary to reduce the flow along the back edge. Since we have multiple edges, we have to store the edge number for the reversed edge for each edge.
+
+There are no other obstructions with undirected graphs or multigraphs.
+\\Sample Prob: \href{https://uva.onlinejudge.org/external/105/10594.pdf}{UVA 10594}
+\subsection{More Problems}
+\begin{itemize}
+    \item \href{}{UVA 928}: just bfs with dp
+    \item \href{https://uva.onlinejudge.org/external/102/10246.pdf}{That worst feast problem UVA 10246}, \href{https://gist.github.com/sourabh2311/e55a0e3f7453e4514f1251b1ae6f0827}{sol}
+    \item \href{https://gist.github.com/sourabh2311/a9f9b7584631b8859692df0f4af0843d}{Atcoder}
+    \item df
+\end{itemize}
 \section{Some Basic}
 \begin{itemize}
     \item \begin{minted}{cpp}
@@ -923,8 +1550,111 @@ $f = (x_1 \vee y_1) \wedge \dots \wedge (x_n \vee y_n)$ is satisfiable iff both 
 #pragma GCC optimize ("unroll-loops")  // normally if we have a loop there is a "++i" instruction somewhere. We normally dont care because code inside the loop requires much more time but in this case there is only one instruction inside the loop so we want the compiler to optimize this.
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")  // tell the compiler that our cpu has simd instructions and allow him to vectorize our code
 \end{minted}
+\begin{minted}{cpp}
+// Backtracking
+void bktk () {
+    if (state == complete ) {
+        // process it
+    } else {
+        for each possible next move P {
+            apply move P;
+            bktk ();
+            undo move P;
+        }
+    }
+}
+// ex1: generating permutations O(n! * n)
+// better use next_permutation. 
+// think of doing such things for n <= 11. 11! ~ 4 * 10^7
+void bktk () {
+    if (perm.size () == n) {
+        // process permutation 
+    } else {
+        for (int i = 0; i < n; i++) {
+            if (!chosen[i]) {
+                chosen[i] = true;
+                perm.push_back (i);
+                bktk ();
+                perm.pop_back ();
+                chosen[i] = false;
+            }
+        }
+    }
+}
+// ex2: generating subsets
+void bktk (int k) {
+    if (k == n) {
+        // process subset
+    } else {
+        // Move one is to not push it and move 2 is to consider it.
+        bktk (k + 1);
+        subset.push_back(k);
+        bktk (k + 1);
+        subset.pop_back;
+    }
+}
+// better way to generate subsets O(2^n) so valid for n <= 25. So whenever you see this, think of iterating through subsets
+// 1 << 0 = 1.
+for (int i = 0; i < (1 << n); i++) {
+    for (int b = 0; b < n; b++) {
+        if (i & (1 << b)) {
+            subset.pb (b);
+        }
+        // process subset
+    }
+}
+\end{minted}
+    \item Remember that just like we could have solved \href{}{this} using binary search, we can actually solve many problems which ask to find optimal value using binary search.
     \item Outputing a double or even int my have an exponential form so it is better to do << fixed << s...(0).
     \item Range of double is $10^{15}$
+    \item Inbuilt swap can be used to basically swap anything.
+    \item $ceil(m/a) = (m + a - 1) / m$
+    \item Consider $m*n$ surface, you have a sq. of size $a*a$. Min. no. of squares to cover completely the surface? Ans: $ceil(m/a)*ceil(n/a)$
+    \item Not neccessary to cover the border cells? Ans: $m/a * n/a$
+    \item Note: Sides of the square must be parallel to grid.
+    \item  lower\_bound Returns an iterator pointing to the first element in the range [first,last) which does not compare less than val. Unlike upper\_bound, the value pointed by the iterator returned by this function may also be equivalent to val, and not only greater. If all the element in the range compare less than val, the function returns last.
+    \item upper\_bound Returns an iterator pointing to the first element in the range [first,last) which compares greater than val. If no element in the range compares greater than val, the function returns last.
+    \item 
+    \begin{minted}{cpp}
+    /* we need to do binary search for range [st + 1, en - 1], i.e. [st + 1, en). */
+        if (binary_search (arr.begin() + st + 1, arr.begin() + en, leftover_))
+    \end{minted}
+    \item If you want to iterate through subsets of fixed size k, you may want to use k for loops.
+    \item
+    \begin{minted}{cpp}
+    One can write i = (m % n == 0 ? n - 1 : m % n - 1) as
+    i = (m + n - 1) % n.
+    \end{minted}
+    \begin{minted}{cpp}
+    We can use cin.peek () to see the next available character
+    \end{minted}
+    \item
+    \begin{minted}{cpp}
+    1011101010000000 >>= 8 => num is 10111010 similarly num <<= 8 implies num is 10000000
+    \end{minted}
+    \item tictactoe game starts by placing 'X' so if in between $O_cnt = X_cnt$ and X has win that means invalid game. And if $O_cnt + 1 = X_cnt$ and O has win that means not a valid game.
+    \item 
+    \begin{eqnarray}
+    24_{hours} & = & 10_{decimalHours} \\
+    24 * 60 * 60 * 100_{normalCC} & = & 10 * (100^3)_{decimalCC} \\
+    1_{decimalCC} & = & 0.864_{normalCC} 
+    \end{eqnarray}
+    that means $1_{nCC} * (1_{dCC}/0.864_{nCC})$ Would give us dCC
+    \item XOR is associative and commutative
+    \item x\^{}x = 0, x\^{}0 = x.
+    \item x\^{}(string of 1's, i.e. (\~{}0)) = \~{}x
+    \item x\^{}y = x\^{}z implies y = z. (how? just take xor with x on both sides)
+    \item Swapping 2 nos with XOR
+    \begin{minted}{cpp}
+x = A, y = B;
+x = x ^ y;
+y = x ^ y; // i.e. (A ^ B) ^ B = A
+x = x ^ y; // i.e. (A ^ B) ^ A = B
+    \end{minted}
+    \item \href{}{UVA 10309 Lights off}:
+    \begin{minted}{cpp}
+    This problem is solved using complete search technique. Notice that each bulb can be toggled by 3 switches on the same row and 1 switch on the upper row and another one on the lower row, keep this in mind as we will use it later. Our solution has three steps: 1. For the first row try all 2^10 possible combinations of switches. We expect to have some switches turned on after this step. 2. For the rest of the rows, toggle switch (i, j) if (i-1, j) is switched on, this means toggle any switch if the bulb above it (in the previous row is turned on). This step insures that all bulbs will be turned off using the switch in the next row, except the last row, as there is no next row. 3. Check the bulbs in the last row, if all bulbs are turned off, then the current solution if valid, if any of the bulbs is on, this solution is not valid. Keep track of the number of switches toggled in each solution, and the final result is their minimum value.
+    \end{minted}
     \item \begin{minted}{cpp}
 while (first || cin >> temp) {  // something }
             \end{minted}
@@ -951,11 +1681,6 @@ void solve() {
 }
 
     \end{minted}
-    \item \begin{minted}{cpp}
-    // time complexity O(log(min(a, b) / gcd(a, b)))
-    int gcd (int a, int b) { return b == 0 ? a : gcd (b, a % b); }
-    int lcm (int a, int b) { return a * (b / gcd (a, b)); }
-            \end{minted}
     \item \textbf{Prob: }We have a stack of turtles and we have some final permutation of them, each turtule can crawl out of its position and move to top. Determine a minimal sequence of operations to obtain the final permutation.\\\textbf{Sol: }
     \begin{minted}{cpp}
 for (int j = n - 1, next = n - 1; j >= 0; j--) {
@@ -1109,6 +1834,7 @@ string int2roman(int n) {
         \end{enumerate}
     \item \textbf{Merge Sort}
     \begin{minted}{cpp}
+    // IMP NOTE: In both bubble sort and merge sort we are getting minimum no. of swaps to sort an array (i.e. by swapping adjacent elements)
 void merge(int arr[], int l, int m, int r)
 {
    int i, j, k;
@@ -1239,17 +1965,197 @@ struct UFDS {
     \item \href {https://uva.onlinejudge.org/external/101/10158.pdf}{UVA 10158 Prob}, \href {https://gist.github.com/sourabh2311/3a2daf2a9f77104a94d1db9af8b40b1a}{UVA 10158 Sol}
     \item \href {https://codeforces.com/contest/915/problem/F}{Imbalance of a tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/F.cpp}{Sol}, summation(max - min) is same as summation(max) - summation(min).
     \item \href {https://codeforces.com/contest/913/problem/C}{Party Lemonade}, \href {https://codeforces.com/contest/913/submission/34067096}{Sol}
-    \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/34071120}{Sol}: pr denotes from what grammer it is derived. Also number of functions on n variables $= 2^{2^n}$.
     \item \href {https://codeforces.com/contest/916/problem/B}{Jamie and binary sequence}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/B.cpp}{Sol}.
     \item \href {https://codeforces.com/contest/912/problem/E}{Prime gift}, \href {https://codeforces.com/contest/912/submission/33976448}{Sol}. awesome 2 pointers problem.
     \item \href {https://codeforces.com/contest/912/problem/D}{Fishes}, \href {https://codeforces.com/blog/entry/56920}{Sol}. 
+    \item \textbf{Max 1D Range Sum (kadane)}
+    \begin{minted}{cpp}
+sum = ans = 0;
+finish = -1;
+local_start = 0;
+for (int i = 0; i < n ;i++) {
+    sum += A[i];
+    if (sum > ans) {
+        ans = sum;
+        start = local_start;
+        finish = i;
+    }
+    if (sum < 0) {
+        sum = 0;
+        local_start = i + 1;
+    }
+}
+// if instead of maximum you want to find minimum, simply negate all terms. As suppose minimum sum is (ak, a_{k + 1}, ..., a_{k + l}) which must be negative and most (maximum in other dirn) negative possible. Thus (-ak,...) is maximum positive possible as suppose there was some other range with maximum possible that means its negative (actual) is more minimum then our current which leads to contradiction
+    \end{minted}
+    \item \textbf{Max 2D range sum, algo1}
+    \begin{minted}{cpp}
+// grid need not be square
+// O(n^4)
+// Commented part shows for torus
+cin >> n;
+for (int i = 0; i < n; i++) { // < 2n
+    for (int j = 0; j < n; j++) { // <2n
+        cin >> A[i][j]; 
+        /*
+        if (i < n and j < n) {
+            cin >> A[i][j];
+            A[i + n][j] = A[i][j + n] = A[i + n][j + n] = A[i][j];
+        }
+        */
+        if (i) A[i][j] += A[i - 1][j];
+        if (j) A[i][j] += A[i][j - 1];
+        if (i and j) A[i][j] -= A[i - 1][j - 1];
+    }
+    int maxSubRect = -127 * 100 * 100;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            for (int k = i; k < n; k++) {  // < i + n
+                for (int l = j; l < n; l++) {  // < j + n
+                    subRect = A[k][l];
+                    if (i) subRect -= A[i - 1][l];
+                    if (j) subRect -= A[k][j - 1];
+                    if (i and j) subRect += A[i - 1][j - 1];
+                    maxSubRect = max (maxSubRect, subRect);
+                }
+            }
+        }
+    }
+// "No tree" => make tree (1) = -inf
+// no tree (0) = 1.
+}
+    \end{minted}
+    \item \textbf{Max 2D range sum, algo1} 
+    \begin{minted}{cpp}
+// O(n^3)
+int maxSum2D () {
+    int maxsum = INT_MIN, finalleft, finalright, finaltop, finalbottom;
+    for (int leftc = 0; leftc < COL; leftc++) {
+        vector<int> temp (ROW, 0);
+        for (int rightc = leftc; rightc < COL; rightc++) {
+            for (int i = 0; i < ROW; i++) {
+                temp[i] += M[i][rightc]
+            }
+            int rstart, rend;
+            sum = kadane (temp, rstart, rend);
+            // kadane will give us rstart and rend
+            if (sum > maxsum) {
+                maxsum = sum;
+                finalleft = left;
+                finalright = right;
+                finaltop = rstart;
+                finalbottom = rend;
+            } 
+        }
+    }
+}
+    \end{minted}
+    \item Given an $n*m$ graph with each cell containing either 0 or 1, count how many rectangles can be formed by using the 1s (UVA 10502), Precalculate array sum[i][j],the numbers of 1 from graph[1][1] to graph[i][j] (index starting from 1 would be easier to deal with around edges) using $sum[i][j] = sum[i-1][j]+sum[i][j-1]-sum[i-1][j-1] + graph[i][j]-'0'$. Thus use algo1 of max 2d range.
+    Then we could iterate through all possible rectangle in the given size in $O(n^4)$
+    \item A problem is said to have optimal substructure if an optimal solution can be constructed from optimal solutions of its subproblems.
+    \item A problem must exhibit these two properties in order for a greedy algorithm to work.
+    \begin{itemize}
+        \item It has optimal substructures
+        \item It has the greedy property (if we make a choice that seems like the best at the moment and proceed to solve the remaining subproblem, we reach the optimal soln. We will never have to reconsider our previous choices)
+    \end{itemize}
+    \item \textbf{Stack Sorting: }If there exist a way to perform the operations such that array b is sorted in non descending order in the end then array a is called stack sortable. Operations availabe:
+    \begin{enumerate}
+        \item Take the first element of a, push it into S and remove it from a.
+        \item Take the top element from S, append it to the end of array b and remove it from S.
+    \end{enumerate}
+    If you think about it you can see that problem occurs if we have sequence (x, y, z) where z < x < y. So after an element we want either all elements which are smaller than it to come first than elements which are bigger than it or all elements bigger than it. So say if we are given prefix of some permutation as [6, 3, 1] and asked to find lexicographic sequence to append such that it is stack sortable then we can read prefix number one by one and do\\
+    $6 + A(1, 5) + A(7, 7)$\\
+    $6 + 3 + A(1, 2) + A(4, 5) + A(7, 7)$\\
+    $6 + 3 + 1 + 2 + 5 + 4 \text{ i.e. reverse each A(l, r) } + 7$\\
+    And if at any time we couldn't proceed as desired that means soln does not exist.
+    \item stoi, stol, stoll, stod
+    \item to\_{}string
+    \item 
+    \begin{minted}{cpp}
+int __builtin_clz(int x);// number of leading zero
+int __builtin_ctz(int x);// number of trailing zero
+int __builtin_clzll(long long x);// number of leading zero
+int __builtin_ctzll(long long x);// number of trailing zero
+int __builtin_popcount(int x);// number of 1-bits in x
+int __builtin_popcountll(long long x);// number of 1-bits in x
+
+lsb(n): (n & -n); // last bit (smallest)
+floor(log2(n)): 31 - __builtin_clz(n | 1);
+floor(log2(n)): 63 - __builtin_clzll(n | 1);
+// Suppose we have a pattern of N bits set to 1 in an integer and we want the next permutation of N 1 bits in a lexicographical sense. For example, if N is 3 and the bit pattern is 00010011, the next patterns would be 00010101, 00010110, 00011001,00011010, 00011100, 00100011, and so forth. The following is a fast way to compute the next permutation.
+
+unsigned int v; // current permutation of bits 
+unsigned int w; // next permutation of bits
+
+unsigned int t = v | (v - 1); // t gets v's least significant 0 bits set to 1
+// Next set to 1 the most significant bit to change, 
+// set to 0 the least significant ones, and add the necessary 1 bits.
+w = (t + 1) | (((~t & -~t) - 1) >> (__builtin_ctz(v) + 1));  
+    \end{minted}
 \end{itemize}
+\subsection{LIS}
+\begin{minted}{cpp}
+// O(n^2)
+int LIS () {
+    vi L (n, 1);
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (sequence[j] > sequence[i]) {
+                L[j] = max (L[j], L[i] + 1);
+            }
+        }
+    }
+    return *max_element(L.begin (), L.end ());
+}
+vi LIS (int ans) {
+    vi lis;
+    for (int i = n - 1; i >= 0; i--) {
+        if (L[i] == ans) {
+            lis.pb (sequence[i]);
+            ans--;
+        }
+    }
+    reverse (lis.begin (), lis.end ());
+    return lis;
+}
+//------------------------
+// O(nlogk)
+int LIS (vi &seq) {
+    vi L(n, 1);
+    vi I;
+    for (int i = 0; i < seq.size (); i++) {
+        int pos = lower_bound (I.begin (), I.end (), seq[i]) - I.begin ();
+        if (pos == I.size ()) {
+            I.pb (seq[i]);
+        } else {
+            I[pos] = num;
+        }
+        L[i] = pos + 1;
+        ans = max (ans, L[i]);
+    }
+    return ans;
+}
+\end{minted}
+LIS of reverse sequence LDS starting from pos after reversing L.\\
+LIS of reverse negative sequence gives LIS stating from pos after reversing L.\\
+
 \section{Data Structures}
 \subsection{Segment Tree}
 \begin{itemize}
+    \item Construction of segment tree is O(n) (by masters theorem) and height of segment tree is O(logn). Also time complexity of each query is O(logn).
+    \item \href{https://uva.onlinejudge.org/external/112/11235.pdf}{freq}, \href{https://gist.github.com/sourabh2311/adf33f80e4b1e95bdb7d7a0e28ae23e6}{sol}
+    \item \href{https://uva.onlinejudge.org/external/112/11297.pdf}{simple update}, \href{https://gist.github.com/sourabh2311/1376c934be55a72ca3f7c6f7481125ca}{sol}
+    \item \href{https://uva.onlinejudge.org/external/114/11402.pdf}{lazy range update}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_11402.cpp}{sol}
+    \item In similar way segment tree can be used to answer queries regarding gcd/lcm.
+    \item \href{https://codeforces.com/problemset/problem/380/C}{Sereja and brackets}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/380C%20-%20Seraja%20And%20Brackets.cpp}{sol}
+    \item \href{https://codeforces.com/problemset/problem/981/E}{Addition on Segments}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/Problem%20-%20E%20Addition%20On%20Segments_sol_tourist.cpp}{sol}
     \item \href {https://codeforces.com/contest/916/problem/D}{Jamie and to do list}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/D.cpp}{Sol}: Just basic application of Persistent segment tree. When updating some element, at most O(logn) nodes in the segment tree get changed: the nodes along the path from root to the updated leaf. For each timepoint, instead of creating a copy of the entire segment tree, copy only nodes on the path to be updated and update them. Therefore total storage is O(n + t\*logn).
 \end{itemize}
 \section{DP}
+Following are the two main properties of a problem that suggests that the given problem can be solved using Dynamic programming.
+\begin{enumerate}
+    \item Overlapping Subproblems: Like Divide and Conquer, Dynamic Programming combines solutions to sub-problems. Dynamic Programming is mainly used when solutions of same subproblems are needed again and again.
+    \item Optimal Substructure
+\end{enumerate}
 \subsection{Coin Change}
 \begin{minted}{cpp}
 /*No. of ways in which we can make change of that money O(N*V)*/
@@ -1332,6 +2238,32 @@ void solve() {
            }
        }
    }
+}
+\end{minted}
+
+\subsection{0/1 Knapsack}
+Given weights and values of n items, put these items in a knapsack of capacity W to get the maximum total value in the knapsack. You cannot break an item, either pick the complete item, or don’t pick it (thus we cannot use greedy algorithm)
+\begin{minted}{cpp}
+int value (int id, int w) {
+    if (id == N || w == 0) return 0;
+    if (memo[id][w] != -1) return memo[id][w];
+    int a = (w[id] > w) ? 0 : v[id] + value (id + 1, w - w[id]);
+    int b = value(id + 1, w);
+    taken[id][w] = a > b;
+    return memo[id][w] = max(a, b);
+}
+void printSol () {
+    i = 0;
+    j = MW;
+    while (i < N) {
+        if (take[i][j]) {
+            track.pb (i);
+            cnt++;
+            j = j - w[i];
+        }
+        i++;
+    }
+    // something
 }
 \end{minted}
 \subsection{Balanced Bracket Sequence}
@@ -1483,6 +2415,15 @@ Here is an implementation using two types of brackets: round and square:
     return ans;
 }
 \end{minted}
+\subsection{Important Problems}
+\begin{itemize}
+    \item \href{https://gist.github.com/sourabh2311/b0f96d91095c812b6100874667724a17}{dividing coins sol}
+    \item \href{https://uva.onlinejudge.org/external/104/10496.pdf}{TSP}, \href{https://gist.github.com/sourabh2311/52e95aab8f9ff43c17a6143ea80d7108}{Sol}
+    \item \href{https://uva.onlinejudge.org/external/103/10364.pdf}{Square}, \href{https://gist.github.com/sourabh2311/b043d57f0aea7d66edadb747d1c9a9d2}{Sol}
+    \item \href{https://uva.onlinejudge.org/external/106/10651.pdf}{Pebble Solitare}, \href{https://gist.github.com/sourabh2311/03ee5ac77c042b2ee5d3188b745b2c0b}{sol}
+    \item \href{https://uva.onlinejudge.org/external/109/10911.pdf}{Forming Quiz Teams}, \href{https://gist.github.com/sourabh2311/4985382867071c0518c9dd8b8fd727e9}{sol}
+    \item \href{https://uva.onlinejudge.org/external/113/11307.pdf}{Simple tree coloring}, \href{https://gist.github.com/sourabh2311/fc1112b44a455310f601967768e1d212}{sol}
+\end{itemize}
 \section{Strings}
 To map keyboard etc, it is better to create 2 strings then loop through and map.\\
 To transform complete string to lowercase: 
@@ -1495,6 +2436,10 @@ vector1.insert (vector1.end (), vector2.begin (), vector2.end ());
 \end{minted}
 \begin{minted}{cpp} 
 string.substr (startposn, length); // Where startposn is 0 indexed.
+str.erase (posn); // erase single character
+str.erase (posn, length);
+str.insert (pos, anotherString_orCharacter);
+
 \end{minted}
 \begin{minted}{cpp}
 int pos1 = line.find ("U=");
@@ -2017,8 +2962,9 @@ int main() {
     \begin{itemize}
         \item $s = p/2$
         \item $A = \sqrt{s*(s - a)*(s - b)*(s - c)}$
-        \item $a/\sin{\alpha} = b/\sin{\beta} = c/\sin{\gamma} = 2*R$
+        \item $a/\sin{A} = b/\sin{B} = c/\sin{C} = 2*R$
         \item $R = abc/(4*A)$
+        \item $c^2 = a^2 + b^2 - 2*a*b*\cos(C)$
         \item Inscribed circle (incircle), $r = A/s$
         \item Center of incircle is the meeting point of angle bisectors.
         \item Medians divide a triangle into 6 triangles of equal area and area of original triangle is $= 4/3 * \sqrt{s * (s - a) * (s - b) * (s - c)}$, here a, b, c is the length of medians.
@@ -2110,12 +3056,16 @@ int segmentUnionLength(const vector <pair <int,int> > &seg) {
 } 
 \end{minted}
 \subsection{Closest Pair Problem}
+\revised
 \begin{minted}{cpp}
 // First sort the points by their x coordinates. Do whatever if there is tie.
+// I have to write the correct implementation following the idea mentioned in cormen and use it to solve codejams prob.
+// Commented section shows how to solve the problem: 
+// Find out the maximum size such that if you draw such size quared around each point (that point will be at the center of the square) and no two squared will intersct each other (cna touch but not intersect). To make the problem simple the sides of the square will be parallel to X and Y axis.
 double dvac(int low, int high) {
    if(low < high) {
        if(low == high - 1) {
-           return dist(data[low], data[high]);
+           return dist(data[low], data[high]);  // return max (data[high].x - data[low].x, abs (data[high].y - data[low].y));  
        }
        int mid = (low + high) / 2;
        double d1 = dvac(low, mid);
@@ -2130,6 +3080,7 @@ double dvac(int low, int high) {
                double temp2 = dist(point(data[i].x, 0), point(data[j].x, 0));
                if(temp2 > dp - EPS) break;
                d3 = min(d3, dist(data[i], data[j]));
+               // d3 = min (d3, max (data[j].x - data[i].x, abs(...));)
            }
        }
        return min(dp, d3);

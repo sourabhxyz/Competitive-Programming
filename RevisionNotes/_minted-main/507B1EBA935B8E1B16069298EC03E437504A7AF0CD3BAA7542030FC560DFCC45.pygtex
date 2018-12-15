@@ -1,4 +1,5 @@
 \begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{c+c1}{// IMP NOTE: In both bubble sort and merge sort we are getting minimum no. of swaps to sort an array (i.e. by swapping adjacent elements)}
 \PYG{k+kt}{void} \PYG{n+nf}{merge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{m}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{r}\PYG{p}{)}
 \PYG{p}{\PYGZob{}}
    \PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{,} \PYG{n}{k}\PYG{p}{;}

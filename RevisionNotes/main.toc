@@ -4,53 +4,77 @@
 \contentsline {subsection}{\numberline {1.2}Mobius}{1}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}Bell, Burnside, etc}{1}{subsection.1.3}
 \contentsline {subsection}{\numberline {1.4}Modulo}{1}{subsection.1.4}
-\contentsline {subsection}{\numberline {1.5}Prob and Comb}{2}{subsection.1.5}
-\contentsline {subsection}{\numberline {1.6}Euler's Totient Function}{2}{subsection.1.6}
-\contentsline {subsection}{\numberline {1.7}Catalan}{2}{subsection.1.7}
+\contentsline {subsection}{\numberline {1.5}Prob and Comb}{1}{subsection.1.5}
+\contentsline {subsection}{\numberline {1.6}Euler's Totient Function}{1}{subsection.1.6}
+\contentsline {subsection}{\numberline {1.7}Catalan}{1}{subsection.1.7}
 \contentsline {subsection}{\numberline {1.8}Floyd Cycle Finding}{2}{subsection.1.8}
 \contentsline {subsection}{\numberline {1.9}Base Conversion}{2}{subsection.1.9}
 \contentsline {subsection}{\numberline {1.10}Extended Euclid}{2}{subsection.1.10}
-\contentsline {subsection}{\numberline {1.11}Sieve}{3}{subsection.1.11}
-\contentsline {subsection}{\numberline {1.12}Frac lib and Eqn solving}{3}{subsection.1.12}
-\contentsline {subsection}{\numberline {1.13}Side Notes}{4}{subsection.1.13}
-\contentsline {subsection}{\numberline {1.14}Important Problems}{4}{subsection.1.14}
-\contentsline {section}{\numberline {2}Graphs}{5}{section.2}
-\contentsline {subsection}{\numberline {2.1}Tree}{5}{subsection.2.1}
-\contentsline {subsubsection}{\numberline {2.1.1}LCA}{5}{subsubsection.2.1.1}
-\contentsline {subsubsection}{\numberline {2.1.2}Important Problems}{5}{subsubsection.2.1.2}
-\contentsline {subsection}{\numberline {2.2}Terminology}{5}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Konigs Theorem}{5}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Bipartite Matching}{5}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}Hopcroft Karp}{5}{subsubsection.2.4.1}
-\contentsline {subsection}{\numberline {2.5}Paths}{6}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}SCC}{7}{subsection.2.6}
-\contentsline {subsubsection}{\numberline {2.6.1}Kosaraju}{7}{subsubsection.2.6.1}
-\contentsline {subsection}{\numberline {2.7}SAT}{7}{subsection.2.7}
-\contentsline {subsubsection}{\numberline {2.7.1}1 SAT}{7}{subsubsection.2.7.1}
-\contentsline {subsubsection}{\numberline {2.7.2}2 SAT}{7}{subsubsection.2.7.2}
-\contentsline {section}{\numberline {3}Some Basic}{7}{section.3}
-\contentsline {section}{\numberline {4}Data Structures}{9}{section.4}
-\contentsline {subsection}{\numberline {4.1}Segment Tree}{9}{subsection.4.1}
-\contentsline {section}{\numberline {5}DP}{9}{section.5}
-\contentsline {subsection}{\numberline {5.1}Coin Change}{9}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Balanced Bracket Sequence}{10}{subsection.5.2}
-\contentsline {subsubsection}{\numberline {5.2.1}One type of bracket}{10}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}MultiType}{10}{subsubsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.3}No. of balanced Sequences}{10}{subsubsection.5.2.3}
-\contentsline {subsubsection}{\numberline {5.2.4}Lexicographically next balanced sequence}{10}{subsubsection.5.2.4}
-\contentsline {subsubsection}{\numberline {5.2.5}Sequence Index}{10}{subsubsection.5.2.5}
-\contentsline {subsubsection}{\numberline {5.2.6}Finding the kth sequence}{11}{subsubsection.5.2.6}
-\contentsline {section}{\numberline {6}Strings}{11}{section.6}
-\contentsline {subsection}{\numberline {6.1}Minimum Edit Distance}{11}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Length of longest Palindrome possible by removing 0 or more characters}{12}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Longest Common Subsequence}{12}{subsection.6.3}
-\contentsline {subsection}{\numberline {6.4}Prefix Function and KMP}{12}{subsection.6.4}
-\contentsline {subsubsection}{\numberline {6.4.1}Prefix Function}{12}{subsubsection.6.4.1}
-\contentsline {subsubsection}{\numberline {6.4.2}KMP}{12}{subsubsection.6.4.2}
-\contentsline {subsubsection}{\numberline {6.4.3}Counting number of occurrences of each prefix}{12}{subsubsection.6.4.3}
-\contentsline {subsection}{\numberline {6.5}Notes}{12}{subsection.6.5}
-\contentsline {subsection}{\numberline {6.6}SAM}{12}{subsection.6.6}
-\contentsline {subsection}{\numberline {6.7}Important Problems}{15}{subsection.6.7}
-\contentsline {section}{\numberline {7}Geometry}{15}{section.7}
-\contentsline {subsection}{\numberline {7.1}Klee's Algo}{16}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Closest Pair Problem}{17}{subsection.7.2}
+\contentsline {subsection}{\numberline {1.11}Sieve}{2}{subsection.1.11}
+\contentsline {subsection}{\numberline {1.12}Frac lib and Eqn solving}{2}{subsection.1.12}
+\contentsline {subsection}{\numberline {1.13}GCD, LCM}{3}{subsection.1.13}
+\contentsline {subsection}{\numberline {1.14}Side Notes}{3}{subsection.1.14}
+\contentsline {subsection}{\numberline {1.15}Important Problems}{4}{subsection.1.15}
+\contentsline {section}{\numberline {2}Graphs}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Basic}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Articulation Points and Bridges (undirected graph)}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Tree}{6}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}LCA}{6}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}Important Problems}{6}{subsubsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.3}MVC on Tree}{6}{subsubsection.2.3.3}
+\contentsline {subsubsection}{\numberline {2.3.4}MWIS on Tree}{6}{subsubsection.2.3.4}
+\contentsline {subsection}{\numberline {2.4}Terminology}{6}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Konigs Theorem}{6}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Bipartite Matching}{7}{subsection.2.6}
+\contentsline {subsubsection}{\numberline {2.6.1}Hopcroft Karp}{7}{subsubsection.2.6.1}
+\contentsline {subsubsection}{\numberline {2.6.2}Using max flow algo}{8}{subsubsection.2.6.2}
+\contentsline {subsection}{\numberline {2.7}Paths}{8}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}SCC}{8}{subsection.2.8}
+\contentsline {subsubsection}{\numberline {2.8.1}Tarjan}{8}{subsubsection.2.8.1}
+\contentsline {subsubsection}{\numberline {2.8.2}Kosaraju}{8}{subsubsection.2.8.2}
+\contentsline {subsection}{\numberline {2.9}SAT}{9}{subsection.2.9}
+\contentsline {subsubsection}{\numberline {2.9.1}1 SAT}{9}{subsubsection.2.9.1}
+\contentsline {subsubsection}{\numberline {2.9.2}2 SAT}{9}{subsubsection.2.9.2}
+\contentsline {subsection}{\numberline {2.10}DAG}{9}{subsection.2.10}
+\contentsline {subsubsection}{\numberline {2.10.1}SSSP}{9}{subsubsection.2.10.1}
+\contentsline {subsubsection}{\numberline {2.10.2}SSLP}{9}{subsubsection.2.10.2}
+\contentsline {subsubsection}{\numberline {2.10.3}Counting Paths in DAG}{9}{subsubsection.2.10.3}
+\contentsline {subsubsection}{\numberline {2.10.4}Min Path cover on DAG}{9}{subsubsection.2.10.4}
+\contentsline {subsection}{\numberline {2.11}APSP Floyd Warshalls}{9}{subsection.2.11}
+\contentsline {subsection}{\numberline {2.12}MST (Kruskal)}{9}{subsection.2.12}
+\contentsline {subsection}{\numberline {2.13}SSSP}{9}{subsection.2.13}
+\contentsline {subsubsection}{\numberline {2.13.1}Dijkstra}{9}{subsubsection.2.13.1}
+\contentsline {subsubsection}{\numberline {2.13.2}Bellman ford}{10}{subsubsection.2.13.2}
+\contentsline {subsection}{\numberline {2.14}Max Flow}{10}{subsection.2.14}
+\contentsline {subsubsection}{\numberline {2.14.1}Edmond karps}{10}{subsubsection.2.14.1}
+\contentsline {subsection}{\numberline {2.15}Minimum Cost Flow}{11}{subsection.2.15}
+\contentsline {subsection}{\numberline {2.16}More Problems}{11}{subsection.2.16}
+\contentsline {section}{\numberline {3}Some Basic}{11}{section.3}
+\contentsline {subsection}{\numberline {3.1}LIS}{16}{subsection.3.1}
+\contentsline {section}{\numberline {4}Data Structures}{16}{section.4}
+\contentsline {subsection}{\numberline {4.1}Segment Tree}{16}{subsection.4.1}
+\contentsline {section}{\numberline {5}DP}{16}{section.5}
+\contentsline {subsection}{\numberline {5.1}Coin Change}{16}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}0/1 Knapsack}{16}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Balanced Bracket Sequence}{16}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}One type of bracket}{16}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}MultiType}{17}{subsubsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3}No. of balanced Sequences}{17}{subsubsection.5.3.3}
+\contentsline {subsubsection}{\numberline {5.3.4}Lexicographically next balanced sequence}{17}{subsubsection.5.3.4}
+\contentsline {subsubsection}{\numberline {5.3.5}Sequence Index}{17}{subsubsection.5.3.5}
+\contentsline {subsubsection}{\numberline {5.3.6}Finding the kth sequence}{17}{subsubsection.5.3.6}
+\contentsline {subsection}{\numberline {5.4}Important Problems}{18}{subsection.5.4}
+\contentsline {section}{\numberline {6}Strings}{18}{section.6}
+\contentsline {subsection}{\numberline {6.1}Minimum Edit Distance}{18}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Length of longest Palindrome possible by removing 0 or more characters}{18}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Longest Common Subsequence}{18}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Prefix Function and KMP}{19}{subsection.6.4}
+\contentsline {subsubsection}{\numberline {6.4.1}Prefix Function}{19}{subsubsection.6.4.1}
+\contentsline {subsubsection}{\numberline {6.4.2}KMP}{19}{subsubsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.3}Counting number of occurrences of each prefix}{19}{subsubsection.6.4.3}
+\contentsline {subsection}{\numberline {6.5}Notes}{19}{subsection.6.5}
+\contentsline {subsection}{\numberline {6.6}SAM}{20}{subsection.6.6}
+\contentsline {subsection}{\numberline {6.7}Important Problems}{22}{subsection.6.7}
+\contentsline {section}{\numberline {7}Geometry}{22}{section.7}
+\contentsline {subsection}{\numberline {7.1}Klee's Algo}{23}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Closest Pair Problem}{24}{subsection.7.2}

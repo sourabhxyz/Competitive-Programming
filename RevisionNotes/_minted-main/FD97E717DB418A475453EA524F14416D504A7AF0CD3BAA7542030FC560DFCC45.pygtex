@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{c+cm}{/* we need to do binary search for range [st + 1, en \PYGZhy{} 1], i.e. [st + 1, en). */}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{binary\PYGZus{}search} \PYG{p}{(}\PYG{n}{arr}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{()} \PYG{o}{+} \PYG{n}{st} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{arr}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{()} \PYG{o}{+} \PYG{n}{en}\PYG{p}{,} \PYG{n}{leftover\PYGZus{}}\PYG{p}{))}
+\end{Verbatim}
