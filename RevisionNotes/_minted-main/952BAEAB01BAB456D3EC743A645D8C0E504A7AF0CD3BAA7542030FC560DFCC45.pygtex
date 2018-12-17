@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{build} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{c} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{d} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{level} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{n}{a} \PYG{o}{+} \PYG{n}{c}\PYG{p}{,} \PYG{n}{y} \PYG{o}{=} \PYG{n}{b} \PYG{o}{+} \PYG{n}{d}\PYG{p}{;}
+    \PYG{n}{build} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{level} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{n}{build} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{level} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// Search algo for fractions, algo will not terminate irrational nos}
+\PYG{n}{string} \PYG{n+nf}{find} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{y}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{c} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{d} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{m} \PYG{o}{=} \PYG{n}{a} \PYG{o}{+} \PYG{n}{c}\PYG{p}{,} \PYG{n}{n} \PYG{o}{=} \PYG{n}{b} \PYG{o}{+} \PYG{n}{d}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{==} \PYG{n}{m} \PYG{n}{and} \PYG{n}{y} \PYG{o}{==} \PYG{n}{n}\PYG{p}{)} \PYG{k}{return} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{*} \PYG{n}{n} \PYG{o}{\PYGZlt{}} \PYG{n}{y} \PYG{o}{*} \PYG{n}{m}\PYG{p}{)} \PYG{k}{return} \PYG{l+s}{\PYGZdq{}L\PYGZdq{}} \PYG{o}{+} \PYG{n}{find} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{m}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
+    \PYG{k}{else} \PYG{k}{return} \PYG{l+s}{\PYGZdq{}R\PYGZdq{}} \PYG{o}{+} \PYG{n}{find} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{m}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

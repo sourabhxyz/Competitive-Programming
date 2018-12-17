@@ -190,8 +190,15 @@ inline T inv(T a) {
     \\ $n! * \sum_{k = 0}^n (-1)^k / {k!} =\text{ } !n$
     \\ $!n = (n - 1) * [!(n - 1) + !(n - 2)] \text{ for n }\geq 2$
     \item \textbf{Gambler ruin's problem: }Probability that first player (p for each step) wins. $(1 - (q/p)^{n_1})/(1 - (q/p)^{n_1 + n_2})$. $n_1 = \lceil ev_1/d \rceil$, $n_2 = \lceil ev_2/d \rceil$. In case $p = q = 1/2$, formula is $n_1/(n_1 + n_2)$.
-
+    \item \href{}{UVA 10491}, $ans = (N_{cows} / (N_{cows} + N_{cars})) * (N_{cars} / (N_{cows} + N_{cars} - N_{shows} - 1)) + (N_{cars} / (N_{cows} + N_{cars})) * ((N_{cars} - 1) / (N_{cows} + N_{cars} - N_{shows} - 1))$
+    \item $\binom{n}{r} = \binom{n - 1}{r - 1} + \binom{n - 1}{r}$
+    \item $\binom{n}{r} = n / r * \binom{n - 1}{r - 1}$
+    \item $\sum_{r = 0}^n \binom{n}{r} = 2^n$
+    \item $\sum_{m = 0}^n \binom{m}{r} = \binom{n + 1}{r + 1}$
+    \item $\sum_{k = 0}^m \binom{n + k}{k} = \binom{n + m - 1}{m}$
+    \item $\sum_{i = 0}^n \binom{n}{i}^2 = \binom{2n}{n}$
 \end{itemize}
+\subsection{jk }
 \subsection{Euler's Totient Function}
 Also known as phi-function $\phi (n)$, counts the number of integers between 1 and $n$ inclusive, which are coprime to $n$.
 \\If $p$ is prime $\phi (p) = p - 1.$
@@ -217,7 +224,9 @@ $Cat(n) = \binom{2n}{n} / (n + 1)$
     \item No. of distinct binary trees with n vertices
     \item No. of different ways in which n + 1 factors can be completely parenthesized. Like for \{a, b, c, d\}, one parenthing will be ((ab)c)d.
     \item the number of monotonic paths of length 2n through an n-by-n grid that do not rise above the main diagonal
-    \item n pair of people on circle can do non cross hand shakes.
+    \item n pair of people on circle can do non cross hand shakes. i.e. no of ways to connect the 2n points on a circle to form n disjoint chords
+    \item no. of permutations of length n that an be stack sorted
+    \item no. of non crossing partitions of a set of n elements
 \end{enumerate}
 \textbf{Note: }Its better to use bigint for catalan computations. Also no. of binary trees with n labelled nodes $= cat[n] * fact[n]$
 \subsection{Floyd Cycle Finding}
@@ -277,7 +286,7 @@ ll baseToDec () {
 }
 \end{minted}
 \subsection{Extended Euclid}
-$ax + by = c$ this is called diophantine eqn and is solvable only when $d = gcd(a, b)$ divides c. so first solve $ax + by = d$ then multiply x, y with $c / d$. Also once we have found a particular soln to this eqn then their exist infinite solns of the form $(x0 + (b/d)*n, y0 - (a/d)*n)$ where n is any integer. Assume we hound the coefs (x1, y1) for (b, a mod b) $\rightarrow$ $b*x1 + (a\text{ mod }b)y1 = g\\ \rightarrow b*x1 + (a - \lfloor(a/b)\rfloor*b)*y1=g\\
+$ax + by = c$ this is called diophantine eqn and is solvable only when $d = gcd(a, b)$ divides c. so first solve $ax + by = d$ then multiply x, y with $c / d$. Also once we have found a particular soln to this eqn then their exist infinite solns of the form $(x0 + (b/d)*n, y0 - (a/d)*n)$ where n is any integer, note that these infinite solutions are as well the solution to original diophantine eqn. Assume we found the coefs (x1, y1) for (b, a mod b) $\rightarrow$ $b*x1 + (a\text{ mod }b)y1 = g\\ \rightarrow b*x1 + (a - \lfloor(a/b)\rfloor*b)*y1=g\\
 \rightarrow a*y1 + b*(x1 - \lfloor (a/b)\rfloor * y1) = g\\
 \rightarrow x = y1\text{ \& }y = x1 - \lfloor (a/b)\rfloor*y1$
 \begin{minted}{cpp}
@@ -290,6 +299,49 @@ void extendedEuclid(int a, int b) {
    y = y1;
 }
 \end{minted}
+\href{https://codeforces.com/problemsets/acmsguru/problem/99999/106}{SGU 106 Equation}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Extended%20Euclid/106-The%20Equation.cpp}{Sol}
+\\Prob: To find the soln with minimum value of $x + y$ and obviously there has to be range of x, y. Sol: Now $x + y = x_0 + y_0 + n * (b/d - a/d)$. If $a < b$, select smallest possible value of n. If $a > b$ select the largest. And if $a = b$, all solutions have same sum of $x + y$
+\subsection{Linear Congruence Equation}
+This equation is of the form:
+$$a \cdot x = b \pmod n,$$
+
+where $a$, $b$ and $n$ are given integers and $x$ is an unknown integer.
+
+It is required to find the value $x$ from the interval $[0, n-1]$ (clearly, on the entire number line there can be infinitely many solutions that will differ from each other in $n \cdot k$ , where $k$ is any integer). If the solution is not unique, then we will consider how to get all the solutions.
+\subsubsection{Solution by finding the inverse element}
+
+Let us first consider a simpler case where $a$ and $n$ are coprime ($\gcd(a, n) = 1$). Then one can find the inverse of $a$, and multiplying both sides of the equation with the inverse, and we can get a unique solution.
+
+$$x = b \cdot a ^ {- 1} \pmod n$$
+
+Now consider the case where $a$ and $n$ are not coprime ($\gcd(a, n) \ne 1$). Then the solution will not always exist (for example $2 \cdot x = 1 \pmod 4$ has no solution).
+
+Let $g = \gcd(a, n)$, i.e. the greatest common divisor of $a$ and $n$ (which in this case is greater than one).
+
+Then, if $b$ is not divisible by $g$, there is no solution. In fact, for any $x$ the left side of the equation $a \cdot x \pmod n$ , is always divisible by $g$, while the right-hand side is not divisible by it, hence it follows that there are no solutions.
+
+If $g$ divides $b$, then by dividing both sides of the equation by $g$ (i.e. dividing $a$, $b$ and $n$ by $g$), we receive a new equation:
+
+$$a^\prime \cdot x = b^\prime \pmod{n^\prime}$$
+
+in which $a^\prime$ and $n^\prime$ are already relatively prime, and we have already learned how to handle such an equation. We get $x^\prime$ as solution for $x$.
+
+It is clear that this $x^\prime$ will also be a solution of the original equation. However it will not be the only solution. It can be shown that the original equation has exactly $g$ solutions, and they will look like this:
+
+$$x_i = (x^\prime + i\cdot n^\prime) \pmod n \quad \text{for } i = 0 \ldots g-1$$
+
+Summarizing, we can say that the number of solutions of the linear congruence equation is equal to either $g = \gcd(a, n)$ or to zero.
+\subsubsection{Solution with the Advanced Euclidean Algorithm}
+
+We can rewrite the linear congruence to the following Diophantine equation:
+
+$$a \cdot x + n \cdot k = b,$$
+
+where $x$ and $k$ are unknown integers.
+
+The method of solving this equation is described in the corresponding article Linear Diophantine equations and it consists of applying the Extended Euclidean Algorithm.
+
+It also describes the method of obtaining all solutions of this equation from one found solution, and incidentally this method, when carefully considered, is absolutely equivalent to the method described in the previous section.
 \subsection{Sieve}
 \begin{minted}{cpp}
     ll _sieve_size; // ll is defined as: typedef long long ll;
@@ -503,15 +555,535 @@ int main() {//UVA 10109
    return 0;
 }
 \end{minted}
+\subsection{Balanced Ternary}
+It is a ternary (base 3) no. system in which digits have values $-1, 0, 1$. Balanced ternary can represent all integers without using a seperate minus sign. To convert unbalanced ternary (0, 1, 2) to balanced ternary (which may have digits after a radix point) start from the right most digit and proceed towards left, if the digit is 0, 1, then ignore, but if it is 2, replace it with z and add 1 to the digit towards left.
+\\Ex: $200120_{unbal} = 2002z0 = 201zz0 = 1z01zz0_{bal}$
+\\Ex: $022_{unbal} = 0003z = 0010z_{bal}$
+\\\href{https://apps.topcoder.com/wiki/display/tc/SRM+604}{Just see both the power of 3 problems}
+\subsection{15 Puzzle Game: Existence Of The Solution}
+
+This game is played on a $4 \times 4$ board. On this board there are 15 playing tiles numbered from 1 to 15. One cell is left empty (denoted by 0). You need to get the board to the position presented below by repeatedly moving one of the tiles to the free space:
+
+$$\begin{matrix} 1 & 2 & 3 & 4 \\ 5 & 6 & 7 & 8 \\ 9 & 10 & 11 & 12 \\ 13 & 14 & 15 & 0 \end{matrix}$$
+
+\subsubsection{Existence Of The Solution}j
+
+Let's consider this problem: given position on the board, determine whether a sequence of moves which leads to a solution exists.
+
+Suppose we have some position on the board:
+
+$$\begin{matrix} a_1 & a_2 & a_3 & a_4 \\ a_5 & a_6 & a_7 & a_8 \\ a_9 & a_{10} & a_{11} & a_{12} \\ a_{13} & a_{14} & a_{15} & a_{16} \end{matrix}$$
+
+where one of the elements equals zero and indicates an empty cell $a_z = 0$
+
+Let’s consider the permutation:
+
+$$a_1 a_2 ... a_{z-1} a_{z+1} ... a_{15} a_{16}$$
+
+(i.e. the permutation of numbers corresponding to the position on the board without a zero element)
+
+Let $N$ be the number of inversions in this permutation (i.e. the number of such elements $a_i$ and $a_j$ that $i > j$, but $a_i < a_j$).
+
+Suppose $K$ is an index of a row where the empty element is located (i.e. in our indications $K = (z - 1) \ div \ 4 + 1$).
+
+Then, the solution exists iff $N + K$ is even.
+\subsection{Stern Broco Tree}
+At zero iteration, we have 2 fractions (0/1 and 1/0) further at each subsequent iteration, this list of fractions is taken and between each 2 adjacent fractions a/b and c/d their median is inserted ($(a+c)/(b+d)$). It is stated that it is possible to obtain the set of all non negative fractions. Moreover all recieved fractions will be different and irreducible. Any tow adjacent fractions a/b, c/d with ($a/b < c/d$) satisfies $bc - ad = 1$, this statement aswell holds for farey sequence of any order. Converse is aswell true, so if a/b and c/d are first two terms and next term is p/q then $c/d = (p + a)/(b + q)$ Note that we cannot say $c = p + a, d = b + q$. So, $kc = a + p, kd = b + q$ i.e. $p(k) = kc - a, q(k) = kd - b$, and k happens to be $\lfloor(n + b)/d\rfloor$. Thus for constructing farey sequence of order n, we can start with a/b = 0/1 and c/d = 1/n.
+\\Algo for constructing this tree:
+\begin{minted}{cpp}
+void build (int a = 0, int b = 1, int c = 1, int d = 0, int level = 1) {
+    int x = a + c, y = b + d;
+    build (a, b, x, y, level + 1);
+    build (x, y, c, d, level + 1);
+}
+// Search algo for fractions, algo will not terminate irrational nos
+string find (int x, int y, int a = 0, int b = 1, int c = 1, int d = 0) {
+    int m = a + c, n = b + d;
+    if (x == m and y == n) return "";
+    if (x * n < y * m) return "L" + find (x, y, a, b, m, n);
+    else return "R" + find (x, y, m, n, c, d);
+}
+\end{minted} 
+\textbf{Farey sequence} of order n is the sequence of completely reduced fractions between 0 and 1 which when in irreducible form have denominators less than or equal to n, arranged in order of increasing size. $F_5 = \{0/1, 1/5, 1/4, 1/3, 2/5, 1/2, 3/5, 2/3, 3/4, 4/5, 1/1\}$
+\\The order (n) farey sequence contains all the elements of farey sequence with order $n - 1$ and also all irreducible fractions with denominators equal to n but this no. is $\phi(n)$. Thus $L_n = L_{n - 1} + \phi(n) = 1 + \sum_{k = 1}^n \phi(k)$
+
+\subsection{Finding Power Of Factorial Divisor}
+You are given two numbers $n$ and $k$. Find the largest power of $k$ (say $x$) such that $n!$ is divisible by $k^x$.
+\subsubsection{Prime $k$}
+
+Let's first consider the case of prime $k$. The explicit expression for factorial
+
+$$n! = 1 \cdot 2 \cdot 3 \ldots (n-1) \cdot n$$
+
+Note that every $k$-th element of the product is divisible by $k$, i.e. adds $+1$ to the answer; the number of such elements is $\Bigl\lfloor\dfrac{n}{k}\Bigr\rfloor$.
+
+Next, every $k^2$-th element is divisible by $k^2$, i.e. adds another $+1$ to the answer (the first power of $k$ has already been counted in the previous paragraph). The number of such elements is $\Bigl\lfloor\dfrac{n}{k^2}\Bigr\rfloor$.
+
+And so on, for every $i$ each $k^i$-th element adds another $+1$ to the answer, and there are $\Bigl\lfloor\dfrac{n}{k^i}\Bigr\rfloor$ such elements.
+
+The final answer is
+
+$$\Bigl\lfloor\dfrac{n}{k}\Bigr\rfloor + \Bigl\lfloor\dfrac{n}{k^2}\Bigr\rfloor + \ldots + \Bigl\lfloor\dfrac{n}{k^i}\Bigr\rfloor + \ldots$$
+
+The sum is of course finite, since only approximately the first $\log_k n$ elements are not zeros. Thus, the runtime of this algorithm is $O(\log_k n)$.
+Implementation:
+\begin{minted}{cpp}
+int fact_pow (int n, int k) {
+	int res = 0;
+	while (n) {
+		n /= k;
+		res += n;
+	}
+	return res;
+}
+\end{minted}
+\subsubsection{Composite $k$}
+
+The same idea can't be applied directly. Instead we can factor $k$, representing it as $k = k_1^{p_1} \cdot \ldots \cdot k_m^{p_m}$. For each $k_i$, we find the number of times it is present in $n!$ using the algorithm described above - let's call this value $a_i$. The answer for composite $k$ will be
+
+$$\min_ {i=1 \ldots m} \dfrac{a_i}{p_i}$$
 \subsection{GCD, LCM}
 \begin{minted}{cpp}
     // time complexity O(log(min(a, b) / gcd(a, b)))
     int gcd (int a, int b) { return b == 0 ? a : gcd (b, a % b); }
     int lcm (int a, int b) { return a * (b / gcd (a, b)); }
 \end{minted}
-For a series of numbers if you want next no. to have gcd 1 with all previous no. then $GCD(a_j, LCM(a_1, a_2, \dots, a_{j - 1})) = 1$.
+\begin{itemize}
+    \item For a series of numbers if you want next no. to have gcd 1 with all previous no. then $GCD(a_j, LCM(a_1, a_2, \dots, a_{j - 1})) = 1$.
+    \item if $p|N \& p|M$ then $p|gcd(N, M)$ as $N = pk, M = pl \rightarrow$ N, M have p common so gcd will also have p.
+    \item $N|P \& M|P \rightarrow lcm(N, M)|P$.
+    \item $N = gcd(N, m) \Leftrightarrow N|M$
+    \item $M = lcdm(N, M) \Leftrightarrow N|M$
+    \item $gcd(P*N, P*M) = P*gcd(N, M)$
+    \item $lcm(P*N, P*M) = P*lcm(N, M)$
+    \item If $gcd(N_1, N_2) = 1$ then $gcd(N_1 * N_2, M) = gcd(N_1, M) * gcd(N_2, M)$ and $lcm(N_1*N_2, M) = lcm(N_1, M)*lcm(N_2, M)/M$
+    \item gcd(gcd(N, M), P) = gcd(N, gcd(M, P))
+    \item lcm(lcm(N, M), P) = lcm(N, lcm(M, P))
+    \item gcd(M, N, P) = gcd(gcd(M, N), P) = gcd(M, gcd(N, P))
+    \item lcm(M, N, P) = lcm(lcm(M, N), P) = lcm(M, lcm(N, P))
+    \item for integers $N_1, \dots, N_k$ and $k \geq 2$, 
+    $$lcm(gcd(N_1, M), gcd(N_2, M), \dots, gcd(N_k, M)) = gcd(lcm(N_1, \dots, N_k), M)$$
+    $$gcd(lcm(N_1, M), lcm(N_2, M), \dots, lcm(N_k, M)) = lcm(gcd(N_1, \dots, N_k), M)$$
+\end{itemize}
+\subsection{Some properties of Fibonacci numbers}
+\begin{itemize}
+    \item $F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2}$
+    \item Cassini's identity: $F_{n-1} F_{n+1} - F_n^2 = (-1)^n$
+    \item The "addition" rule: $F_{n+k} = F_k F_{n+1} + F_{k-1} F_n$
+    \item Applying the previous identity to the case $k = n$, we get: $F_{2n} = F_n (F_{n+1} + F_{n-1})$
+    \item From this we can prove by induction that for any positive integer $k$, $F_{nk}$ is multiple of $F_n$.
+    The inverse is also true: if $F_m$ is multiple of $F_n$, then $m$ is multiple of $n$.
+    \item GCD identity: $GCD(F_m, F_n) = F_{GCD(m, n)}$
+    \item Every positive integer can be expressed uniquely as a sum of fibonacci numbers such that no two numbers are equal or consecutive fibonacci numbers. This can be done greedily by taking the highest fibonacci no. at each point.
+    \item Fibonacci nos are periodic under modulo. The period of the fibonacci sequence modula a positive integer j is the smallest positive integer m such that such that $F_m \equiv 0 (mod j) \& F_{m + 1} \equiv 1 (mod j)$
+    \item \[\begin{bmatrix}
+    1 & 1\\
+    1 & 0
+    \end{bmatrix}^{\!p}
+=
+\begin{bmatrix}
+    fib(p + 1) & fib (p)\\
+    fib (p) & fib (p - 1)
+    \end{bmatrix}
+    \]
+    \textit{Thus higher fibs can be computed in $O(\log{p})$}
+    \item $$F_n = \frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n}{\sqrt{5}}$$
+    \item You can immediately notice that the second term's absolute value is always less than $1$, and it also decreases very rapidly (exponentially). Hence the value of the first term alone is "almost" $F_n$. This can be written strictly as:
+    $$F_n = \left[\frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n}{\sqrt{5}}\right]$$
+\end{itemize}
+\subsection{Wilson Theorem}
+States that for a prime no. p, $(p - 1)! \mod p = p - 1$.
+\\Note that $n! \mod p$ is 0 if $n \geq p$. Suppose p is prime and is close to input number n. For example $25! \mod 29$. From wilson theorem, we know that $28! \mod 29 = -1 \equiv 28$, so we basically need to find $(28 * inverse(28, 29) * inverse (27, 29) * inverse (26, 29)) \mod 29$
+\\Time complexity $O((p - n) * \log n)$
+\subsection{Factorial modulo $p$ in $O(p \log n)$}
+In some cases it is necessary to consider complex formulas modulo $p$, containing factorials in both numerator and denominator. We consider the case when $p$ is relatively small. This problem makes sense only when factorials are included in both numerator and denominator of fractions. Otherwise $p!$ and subsequent terms will reduce to zero, but in fractions all multipliers containing $p$ can be reduced, and the resulting expression will be non-zero modulo $p$.
+
+Thus, formally the task is: You want to calculate $n! \bmod p$, without taking all the multiple factors of $p$ into account that appear in the factorial. Imaging you write down the prime factorization of $n!$, remove all factors $p$, and compute the product modulo $p$. We will denote this modified factorial with $n!_{\mod p}$.
+
+Learning how to effectively calculate this modified factorial allows us to quickly calculate the value of the various combinatorial formulae (for example, Binomial coefficients).
+
+\subsubsection{Algorithm}
+Let's write this modified factorial explicitly.
+
+\begin{eqnarray} n!_{\mod p} &=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \\
+& &\quad \cdot (2p+1) \cdot \ldots \cdot (p^2-1) \cdot \underbrace{1}_{p^2} \cdot (p^2 +1) \cdot \ldots \cdot n \pmod{p} \\ &=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{2}_{2p} \cdot 1 \cdot 2 \\
+& &\quad \cdot \ldots \cdot (p-1) \cdot \underbrace{1}_{p^2} \cdot 1 \cdot 2 \cdot \ldots \cdot (n \bmod p) \pmod{p} \end{eqnarray}
+
+It can be clearly seen that factorial is divided into several blocks of same length expect for the last one.
+
+\noindent\begin{eqnarray} n!_{\mod p}&=& \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{1\text{st}} \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 2}_{2\text{nd}} \cdot \ldots \\ & & \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{p\text{th}} \cdot \ldots \cdot \quad \underbrace{1 \cdot 2 \cdot \cdot \ldots \cdot (n \bmod p)}_{\text{tail}} \pmod{p}. \end{eqnarray}
+
+The general part of the blocks it is easy to count — it's just $(p-1)!\ \mathrm{mod}\ p$ that you can calculate programmatically or via Wilson theorem, according to which $(p-1)! \bmod p = p-1$. To multiply these common parts of all blocks, we can raise the value to the higher power modulo $p$, which can be done in $O(\log n)$ operations using Binary Exponentiation; however, you may notice that the result will always be either $1$ or $p-1$, depending on the parity of the index. The value of the last partial block can be calculated separately in $O(p)$. Leaving only the last elements of the blocks, we can examine that:
+
+\noindent$$n!_{\mod p} = \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 2} \cdot \ldots \cdot \underbrace{ \ldots \cdot (p-1)} \cdot \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 1} \cdot \underbrace{ \ldots \cdot 2} \cdots$$
+
+And again, by removing the blocks that we already computed, we receive a "modified" factorial but with smaller dimension ($\lfloor n / p \rfloor$ blocks remain). Thus, in the calculation of "modified" the factorial $n!{\mod p}$ we did $O(p)$ operations and are left with the calculation of $(n/p)!{\mod p}$. Revealing this recursive dependence, we obtain that the recursion depth is $O(\log_p n)$, the total asymptotic behavior of the algorithm is thus $O(p \log_p n)$.
+\subsubsection{Implementation}
+We don't need recursion because this is a case of tail recursion and thus can be easily implemented using iteration.
+\begin{minted}{cpp}
+int factmod(int n, int p) {
+	int res = 1;
+	while (n > 1) {
+		res = (res * ((n/p) % 2 ?  p-1 : 1)) % p;
+		for (int i = 2; i <= n%p; ++i)
+			res = (res * i) % p;
+		n /= p;
+	}
+	return res % p;
+}
+\end{minted}
+This implementation works in $O(p \log_p n)$.
+\subsection{Modular Inverse}
+A modular multiplicative inverse of an integer $a$ is an integer $x$ such that $a \cdot x$ is congruent to $1$ modular some modulus $m$. $a \cdot x \equiv 1 \mod m.$ We will also denote $x$ with $a^{-1}$.
+
+It can be proven that the modular inverse exists if and only if $a$ and $m$ are relatively prime (i.e. $\gcd(a, m) = 1$).
+
+For an arbitrary (but coprime) modulus $m$: $a ^ {\phi (m) - 1} \equiv a ^{-1} \mod m$\\
+For a prime modulus $m$: $a ^ {m - 2} \equiv a ^ {-1} \mod m$
+From these results, we can easily find the modular inverse using the binary exponentiation algorithm, which works in O(logm) time.
+\\Or
+Consider the following equation (with unknown $x$ and $y$):
+
+$$a \cdot x + m \cdot y = 1$$
+
+This is a Linear Diophantine equation in two variables. As shown in the linked article, when $\gcd(a, m) = 1$, the equation has a solution which can be found using the extended Euclidean algorithm. Note that $\gcd(a, m) = 1$ is also the condition for the modular inverse to exist.
+
+Now, if we take modulo $m$ of both sides, we can get rid of $m \cdot y$, and the equation becomes:
+
+$$a \cdot x \equiv 1 \mod m$$
+
+Thus, the modular inverse of $a$ is $x$.
+
+The implementation is as follows:
+\begin{minted}{cpp}
+int x, y;
+int g = extended_euclidean(a, m, x, y);
+if (g != 1) {
+    cout << "No solution!";
+}
+else {
+    x = (x % m + m) % m;
+    cout << x << endl;
+}
+\end{minted}
+Notice that we way we modify x. The resulting x from the extended Euclidean algorithm may be negative, so x % m might also be negative, and we first have to add m to make it positive.
+
+The problem is the following: we want to compute the modular inverse for every number in the range $[1, m-1]$.
+
+Applying the algorithms described in the previous sections, we can obtain a solution with complexity $O(m \log m)$.
+
+Here we present a better algorithm with complexity $O(m)$. However for this specific algorithm we require that the modulus $m$ is prime.
+
+We denote by $\text{inv}[i]$ the modular inverse of $i$. Then for $i > 1$ the following equation is valid:
+
+$$\text{inv}[i] = - \left\lfloor \frac{m}{i} \right\rfloor \cdot \text{inv}[m \bmod i] \bmod m$$
+
+Thus the implementation is very simple:
+\begin{minted}{cpp}
+inv[1] = 1;
+for(int i = 2; i < m; ++i)
+    inv[i] = (m - (m/i) * inv[m%i] % m) % m;
+\end{minted}
+\textbf{Proof}
+
+We have: $$m \bmod i = m - \left\lfloor \frac{m}{i} \right\rfloor \cdot i$$ Taking both sides modulo $m$ yields: $$m \bmod i \equiv - \left\lfloor \frac{m}{i} \right\rfloor \cdot i \mod m$$ Multiply both sides by $i^{-1} \cdot (m \bmod i)^{-1}$ yields $$(m \bmod i) \cdot i^{-1} \cdot (m \bmod i)^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot i \cdot i^{-1} \cdot (m \bmod i)^{-1} \mod m,$$ which simplifies to: $$i^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot (m \bmod i)^{-1} \mod m,$$
+\\
+\textbf{Binomial coeff modulo large prime no}
+\begin{minted}{cpp}
+fact[0] = 1;
+for (int i = 1; i <= maxn; i++) {
+    fact[i] = (fact[i - 1] * (i % m)) % m;
+}
+// afterwards we can compute binomial coeff in O(log m)
+ll getC(int n, int k) {
+    ll res = fact[n];
+    ll div = fact[k] * fact[n - k] % m;
+    div = pow (div, m - 2, m);
+    return (res * div) % m;
+}
+\end{minted}
+\textbf{Binomial Coeff modulo prime power}
+Here we want to compute the binomial coefficient modulo some prime power, i.e. $m = p^b$ for some prime $p$. If $p > \max(k, n-k)$, then we can use the same method as described in the previous section. But if $p \le \max(k, n-k)$, then at least one of $k!$ and $(n-k)!$ are not coprime with $m$, and therefore we cannot compute the inverses - they don't exist. Nevertheless we can compute the binomial coefficient.
+
+The idea is the following: We compute for each $x!$ the biggest exponent $c$ such that $p^c$ divides $x!$, i.e. $p^c | x!$. Let $c(x)$ be that number. And let $g(x) := \frac{x!}{p^{c(x)}}$. Then we can write the binomial coefficient as: $$\binom n k = \frac {g(n) p^{c(n)}} {g(k) p^{c(k)} g(n-k) p^{c(n-k)}} = \frac {g(n)} {g(k) g(n-k)}p^{c(n) - c(k) - c(n-k)}$$
+
+The interesting thing is, that $g(x)$ is now free from the prime divisor $p$. Therefore $g(x)$ is coprime to m, and we can compute the modular inverses of $g(k)$ and $g(n-k)$.
+
+After precomputing all values for $g$ and $c$, which can be done efficiently using dynamic programming in $\mathcal{O}(n)$, we can compute the binomial coefficient in $O(\log m)$ time. Or precompute all inverses and all powers of $p$, and then compute the binomial coefficient in $O(1)$.
+
+Notice, if $c(n) - c(k) - c(n-k) \ge b$, than $p^b | p^{c(n) - c(k) - c(n-k)}$, and the binomial coefficient is $0$.
+\\\textbf{Binomial coefficient modulo an arbitrary number}
+Now we compute the binomial coefficient modulo some arbitrary modulus $m$.
+
+Let the prime factorization of $m$ be $m = p_1^{e_1} p_2^{e_2} \cdots p_h^{e_h}$. We can compute the binomial coefficient modulo $p_i^{e_i}$ for every $i$. This gives us $h$ different congruences. Since all moduli $p_i^{e_i}$ are coprime, we can apply the Chinese Remainder Theorem to compute the binomial coefficient modulo the product of the moduli, which is the desired binomial coefficient modulo $m$.
+\\%------------------------------------
+\textbf{Lucas's theorem}
+For non-negative integers m and n and a prime p, the following congruence relation holds:
+
+    ${\binom {m}{n}}\equiv \prod _{i=0}^{k}{\binom {m_{i}}{n_{i}}}{\pmod {p}}$
+
+where
+
+    $m=m_{k}p^{k}+m_{k-1}p^{k-1}+\cdots +m_{1}p+m_{0}$
+
+and
+
+    $n=n_{k}p^{k}+n_{k-1}p^{k-1}+\cdots +n_{1}p+n_{0}$ 
+
+are the base p expansions of m and n respectively. This uses the convention that  ${\tbinom {m}{n}}=0$ if m < n. 
+\\\textbf{Binomial coefficient for large $n$ and small modulo}
+When $n$ is too large, the $\mathcal{O}(n)$ algorithms discussed above become impractical. However, if the modulo $m$ is small there are still ways to calculate $\binom{n}{k} \bmod m$.
+
+When the modulo $m$ is prime, there are 2 options:
+
+    Lucas's theorem can be applied which breaks the problem of computing $\binom{n}{k} \bmod m$ into $\log_m n$ problems of the form $\binom{x_i}{y_i} \bmod m$ where $x_i, y_i < m$. If each reduced coefficient is calculated using precomputed factorials and inverse factorials, the complexity is $\mathcal{O}(m + \log_m n)$.
+    \\The method of computing factorial modulo P can be used to get the required $g$ and $c$ values and use them as described in the section of modulo prime power. This takes $\mathcal{O}(m \log_m n)$.
+
+When $m$ is not prime but square-free, the prime factors of $m$ can be obtained and the coefficient modulo each prime factor can be calculated using either of the above methods, and the overall answer can be obtained by the Chinese Remainder Theorem.
+
+When $m$ is not square-free, a generalization of Lucas's theorem for prime powers can be applied instead of Lucas's theorem. I don't think that I need to consider that.
+\subsection{Gray Code}
+Gray code is a binary numeral system where two successive values differ in only one bit.
+
+For example, the sequence of Gray codes for 3-bit numbers is: 000, 001, 011, 010, 110, 111, 101, 100, so $G(4) = 6$.
+\subsubsection{Finding Gray Code}
+Let's look at the bits of number $n$ and the bits of number $G(n)$. Notice that $i$-th bit of $G(n)$ equals 1 only when $i$-th bit of $n$ equals 1 and $i + 1$-th bit equals 0 or the other way around ($i$-th bit equals 0 and $i + 1$-th bit equals 1). Thus, $G(n) = n \oplus (n >> 1)$:
+\begin{minted}{cpp}
+int g (int n) {
+    return n ^ (n >> 1);
+}
+\end{minted}
+\subsubsection{Finding inverse gray code}
+Given Gray code $g$, restore the original number $n$.
+
+We will move from the most significant bits to the least significant ones (the least significant bit has index 1 and the most significant bit has index $k$). The relation between the bits $n_i$ of number $n$ and the bits $g_i$ of number $g$:
+
+ \begin{eqnarray}n_k &= g_k, \\ n_{k-1} &= g_{k-1} \oplus n_k = g_k \oplus g_{k-1}, \\ n_{k-2} &= g_{k-2} \oplus n_{k-1} = g_k \oplus g_{k-1} \oplus g_{k-2}, \\ n_{k-3} &= g_{k-3} \oplus n_{k-2} = g_k \oplus g_{k-1} \oplus g_{k-2} \oplus g_{k-3}, \\ \vdots \end{eqnarray}
+
+The easiest way to write it in code is:
+\begin{minted}{cpp}
+    int rev_g (int g) {
+  int n = 0;
+  for (; g; g >>= 1)
+    n ^= g;
+  return n;
+}
+\end{minted}
+
+\href{https://codeforces.com/problemsets/acmsguru/problem/99999/249}{SGU 249 Matrix}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Gray%20Code/SGU249-Matrix.cpp}{Sol}
+\subsection{Discrete Logarithm}
+
+The discrete logarithm is an integer $x$ solving the equation
+
+$a^x \equiv b \pmod m$
+
+where $a$ and $m$ are relatively prime. (Note: if they are not relatively prime, then the algorithm described below is incorrect, though it can be modified so that it can work).
+
+In this article, we describe the Baby step - giant step algorithm, proposed by Shanks in 1971, which has complexity $O(\sqrt{m} \log m)$. This algorithm is also known as meet-in-the-middle, because of it uses technique separation of tasks in half.
+\subsubsection{Algorithm}
+
+Consider the equation:
+
+$a^x \equiv b \pmod m$
+
+where $a$ and $m$ are relatively prime.
+
+Let $x = np - q$, where $n$ is some pre-selected constant (we will describe how to select $n$ later). $p$ is known as giant step, since increasing it by one increases $x$ by $n$. Similarly, $q$ is known as baby step.
+
+Obviously, any value of $x$ in the interval $[0; m)$ can be represented in this form, where $p \in [1; \lceil \frac{m}{n} \rceil ]$ and $q \in [0; n]$.
+
+Then, the equation becomes:
+
+$a^{np - q} \equiv b \pmod m$.
+
+Using the fact that $a$ and $m$ are relatively prime, we obtain:
+
+$a^{np} \equiv ba^q \pmod m$
+
+This new equation can be rewritten in a simplified form:
+
+$f_1(p) = f_2(q)$.
+
+This problem can be solved using the method meet-in-the-middle as follows:
+
+    We calculate $f_1$ for all possible values of $p$. Sort these values.
+    For each value of $q$, calculate $f_2$, and look for the corresponding value of $p$ using the sorted array of $f_1$ using binary search.
+
+\subsubsection{Complexity}
+
+For each value of $p$, we can calculate $f_1(p)$ in $O(\log m)$ using binary exponentation algorithm. Similar for $f_2(q)$.
+
+In the first step of the algorithm, we need to calculate $f_1$ for every possible values of $p$, and then sort them. Thus, this step has complexity:
+
+$O(\lceil \frac{m}{n} \rceil (\log m + \log \lceil \frac{m}{n} \rceil )) = O( \lceil \frac {m}{n} \rceil \log m)$
+
+In the second step of the algorithm, we need to calculate $f_2(q)$ for each possible value of $q$, and then do a binary search on the array of values of $f_1$, thus this step has complexity:
+
+$O(n (\log m + \log \frac{m}{n} ) ) = O(n \log m)$.
+
+Now, when we add these two complexity, we would get $\log m$ multiplied by $n$ and $m/n$, which has minimum value when $n = m/n$, which means, to achieve optimal performance, $n$ should be chosen such that:
+
+$n = \sqrt{m}$.
+
+Then, the complexity of the algorithm becomes:
+
+$O(\sqrt {m} \log m)$.
+\subsubsection{Implementation}
+The simplest implementation
+
+In the following code, function powmod performs binary exponential $a^b \pmod m$, and function solve produces a proper solution to the problem. It will returns $-1$ if there is no solution, and returns one possible solution in case a solution exists.
+\begin{minted}{cpp}
+int powmod (int a, int b, int m) {
+	int res = 1;
+	while (b > 0)
+		if (b & 1) {
+			res = (res * a) % m;
+			--b;
+		}
+		else {
+			a = (a * a) % m;
+			b >>= 1;
+		}
+	return res % m;
+}
+ 
+int solve (int a, int b, int m) {
+	int n = (int) sqrt (m + .0) + 1;
+	map<int,int> vals;
+	for (int i=n; i>=1; --i)
+		vals[ powmod (a, i * n, m) ] = i;
+	for (int i=0; i<=n; ++i) {
+		int cur = (powmod (a, i, m) * b) % m;
+		if (vals.count(cur)) {
+			int ans = vals[cur] * n - i;
+			if (ans < m)
+				return ans;
+		}
+	}
+	return -1;
+}
+\end{minted}
+In this code, we used map from C++ STL to store the values of $f_1 (i)$. Internally, map uses red-black-tree to store values. This code is a little bit slower than if we uses array and binary search for $f1$, but is much easier to write.
+
+Another thing to note is that, if there are multiple values of $p$ that has same value of $f_1$, we only store one such value. This works in this case because we only want to return one possible solution. If we need to return all possible solutions, we need to change map<int,int> to, say, map<int, vector<int> >. And we also need to change the second step accordingly.
+\subsubsection{Improved implementation}j
+
+A possible improvement is to get rid of binary exponentiation in the second phase of the algorithm. This can be done by keeping a variable that multiplies by $a$ each time we increase $q$. With this change, the complexity of the algorithm is still the same, but now the log part is only for $map$. Instead of $map$, we can also use hash table (unordered\_{}map in GNU C++) which has complexity $O(1)$ for inserting and searching. And when the value of $m$ is small enough, we can also get rid of $map$, and use a regular array to store and lookup values of $f_1$.
+\begin{minted}{cpp}
+int solve (int a, int b, int m) {
+	int n = (int) sqrt (m + .0) + 1;
+ 
+	int an = 1;
+	for (int i=0; i<n; ++i)
+		an = (an * a) % m;
+ 
+	map<int,int> vals;
+	for (int i=1, cur=an; i<=n; ++i) {
+		if (!vals.count(cur))
+			vals[cur] = i;
+		cur = (cur * an) % m;
+	}
+ 
+	for (int i=0, cur=b; i<=n; ++i) {
+		if (vals.count(cur)) {
+			int ans = vals[cur] * n - i;
+			if (ans < m)
+				return ans;
+		}
+		cur = (cur * a) % m;
+	}
+	return -1;
+}
+\end{minted}
+\subsection{Chinese Remainder Theorem}
+Given pairwise coprime positive integers $n_1, n_2, \dots, n_k$ and arbitrary integers $a_1, a_2, \dots, a_k$ the system of simultaneous congruences \begin{eqnarray}
+x & \equiv & a_1 (\mod n_1)\\
+x & \equiv & a_2 (\mod n_2)\\
+\vdots\\
+x & \equiv & a_k (\mod n_k)
+\end{eqnarray}
+has a soln and the soln is unique modulo $N = n_1 * n_2 *\dots*n_k$
+\\To compute that soln
+\begin{enumerate}
+    \item Compute $N = n_1 * n_2 * \dots * n_k$
+    \item for each $i = 1, 2, \dots, k$ compute $y_i = N/n_i$
+    \item for each $i = 1, 2, \dots, k$ compute $z_i = y_{i}^{-1} \mod n_i$ $z_i$ exist since $n_1, n_2, \dots, n_k$ are pairwise coprime.
+    \item The integer $x = \sum_{i = 1}^k a_i * y_i * z_i$ is a soln to the system of congruences and $x \mod N$ is the unique soln modulo N.
+\end{enumerate}
+Note:
+\begin{itemize}
+    \item $a \leftrightarrow (a_1, a_2, \dots, a_k)$ where $(a_i = a \mod n_i)$
+    \item $b \leftrightarrow (b_1, b_2, \dots, b_k)$ where $(b_i = b \mod n_i)$
+    \item Then
+    $$(a+b) \mod N \leftrightarrow ((a_1 + b_1) \mod n_1, \dots, (a_k + b_k) \mod n_k)$$ 
+    $$(a-b) \mod N \leftrightarrow ((a_1 - b_1) \mod n_1, \dots, (a_k - b_k) \mod n_k)$$
+    $$(a*b) \mod N \leftrightarrow ((a_1 * b_1) \mod n_1, \dots, (a_k * b_k) \mod n_k)$$
+\end{itemize}
+Corollary if $n_1, n_2, \dots, n_k$ are pairwise coprime and $n = n_1*n_2*\dots * n_k$, then for all integers x and a, $x \equiv a (\mod n_i)$ fot $i = 1, 2, \dots, k$ iff $x \equiv a (mod n)$
+\\Now if moduli $n_i's$ are not neccessarily pairwise coprime. Let $d_{i, j} = gcd(n_i, n_j)$ for $i \neq j$. Then the above system has a simultaneous soln iff $d_{i, j}$ divides $a_i - a_j$ for all $i \neq j$. Further such a soln is unique module $lcm(n_1, n_2, \dots, n_k)$.
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{crt}
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{crt2}
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{crt3}
+\begin{minted}{cpp}
+#include<bits/stdc++.h>
+using namespace std;
+const int N = 20;
+long long GCD(long long a, long long b) { return (b == 0) ? a : GCD(b, a % b); }
+inline long long LCM(long long a, long long b) { return a / GCD(a, b) * b; }
+inline long long normalize(long long x, long long mod) { x %= mod; if (x < 0) x += mod; return x; }
+struct GCD_type { long long x, y, d; };
+GCD_type ex_GCD(long long a, long long b)
+{
+    if (b == 0) return {1, 0, a};
+    GCD_type pom = ex_GCD(b, a % b);
+    return {pom.y, pom.x - a / b * pom.y, pom.d};
+}
+int testCases;
+int t;
+long long a[N], n[N], ans, lcm;
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cin >> t;
+    for(int i = 1; i <= t; i++) cin >> a[i] >> n[i], normalize(a[i], n[i]);
+    ans = a[1];
+    lcm = n[1];
+    for(int i = 2; i <= t; i++)
+    {
+        auto pom = ex_GCD(lcm, n[i]);
+        int x1 = pom.x;
+        int d = pom.d;
+        if((a[i] - ans) % d != 0) return cerr << "No solutions" << endl, 0;
+        ans = normalize(ans + x1 * (a[i] - ans) / d % (n[i] / d) * lcm, lcm * n[i] / d);
+        lcm = LCM(lcm, n[i]); // you can save time by replacing above lcm * n[i] /d by lcm = lcm * n[i] / d
+    }
+    cout << ans << " " << lcm << endl;
+ 
+    return 0;
+}
+\end{minted}
+\href{https://codeforces.com/problemset/problem/687/B}{\textbf{Remainders Game}}\\
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{rem}
+\subsection{Josephus Problem}
+Given natural no. n and k, we write natural nos 1 to n along the circle. Then delete the kth no, (i..e no. k initially) and then from this position next kth no. is deleted and so on.
+\\The process stops when there is only one no. remaining, problem asks us to find this no.
+\subsubsection{For k = 2}
+\begin{eqnarray}n & = & 1, 2, 3, 4, 5, 6\\
+f(n) & = & 1, 1, 3, 1, 3, 5
+\end{eqnarray}
+Thm: if $n = 2^m + l$ where $0 \leq l < 2^m$ then $f(n) = 2l + 1$.
+\subsubsection{For general $k \geq 1$}
+We should note that after the kth person is killed we are left with a circle of n - 1 and we start the next count with the person whose no in the original problem was $(k \mod n) + 1$. The position of the survivior in the remaining circle would be $f(n - 1, k)$ if we start counting at 1; shifting this to account for the fact that we are starting at $(k \mod n) + 1$ yilds the recurrence $f(n, k) =  ((f(n - 1, k) + k - 1) \mod n) + 1$ with $f(1, k) = 1$ which takes the simpler form $g(n, k) = (g(n - 1, k) + k) \mod n$ with $g(1, k) = 0$. This approach has running time O(n).
+\\But for small k and large n, there is another approach. The second apprach alaso uses dp but has running time O(klogn) and is based on cosidering killing kth, 2kth, ..., $(\lfloor n/k \rfloor * k)$th person as one step, then changing the numbering.
+\begin{eqnarray}
+g(n, k) &=& 0 \text{ if n = 1 (because of 0 indexing)}\\
+        &=& (g(n - 1, k) + k) \mod n \text{ if $1 < n < k$}\\
+        &=& \lfloor k * ((g(n_m, k) - n \mod k) \mod n_m) / (k - 1) \rfloor \text{ where $n_m = n - \lfloor n/k \rfloor$ if $k \leq n$}
+\end{eqnarray}
 \subsection{Side Notes}
 \begin{enumerate}
+    \item relatively prime is same as coprime.
     \item 2 nos a, b are said to be congruent modulo n, if there difference is an integer multiple of n, i.e. they give same remainder . We denote this as $a \equiv b (\text{mod n})$
     \item For (a, b) three operations exist:
     \begin{enumerate}
@@ -527,7 +1099,7 @@ For a series of numbers if you want next no. to have gcd 1 with all previous no.
     \\$2^l * d \leq m - 1$\\
     So sum up $m - 2^l * d$ where d is any odd divisor of gcd($a_1 - 1, \dots$) and l is such that $2^l * d \leq m - 1$.
     \item People in cycle will commit suicide.
-    \item Every positive integer can be expressed uniquely as a sum of fibonacci numbers such that no two numbers are equal or consecutive fibonacci numbers.
+    
     \item Every even no. greater than or equal to 4 can be expressed as a sum of 2 prime nos.
     \item No. of digits in a no. $n = \lfloor(\log_{10}{n})\rfloor + 1$
     \item No. of digits in $\binom{n}{k} = \lfloor(\sum_{i = n - k + 1}^{n}\log_{10}{i} - \sum_{i = 1}^{k}\log_{10}{i)})\rfloor + 1$
@@ -541,6 +1113,15 @@ ll ncr(ll n, ll r) {
         res /= k;
     }
 }
+// Another way is
+int c[maxn + 5][maxn + 5];
+for (int n = 0; n <= maxn; n++) {
+    c[n][0] = c[n][n] = 1;
+    for (int k = 1; k < n; k++) {
+        c[n][k] = c[n - 1][k - 1] + c[n - 1][k];
+    }
+}
+// Or if long arithmetic is allowed, we can do fact[n] / fact[n - k] / fact[k].
     \end{minted}
     \item $(t^a - 1) / (t^b - 1)$ is not an integer with less than 100 digits if t = 1 or $a < b$ or $a \bmod b \neq 0$ or $(a - b) * \log_{10}{t} > 99.0$
     \item \begin{minted}{cpp}
@@ -553,17 +1134,6 @@ for (int j = 0; j < bigint_var.a.size (); j++) {
     sum += temp;
 }
     \end{minted}
-    \item \[\begin{bmatrix}
-    1 & 1\\
-    1 & 0
-    \end{bmatrix}^{\!p}
-=
-\begin{bmatrix}
-    fib(p + 1) & fib (p)\\
-    fib (p) & fib (p - 1)
-    \end{bmatrix}
-    \]
-    \textit{Thus higher fibs can be computed in $O(\log{p})$}
     \item To get all divisors of a number $n$.
     \begin{minted}{cpp}
 for (int i = 1; i * i <= n; i++) {
@@ -575,7 +1145,25 @@ for (int i = 1; i * i <= n; i++) {
     \end{minted}
     \item We can find the nth root using pow func.
     \item Some times we can generate first few terms and then look up at oeis.org
-    \item 
+    \item
+\begin{minted}{cpp}
+// to compute (a * b) mod m when a * b can go above ll
+ll bmodm;
+ll compute (ll a, ll &b, ll &m) {
+    if (a == 1) return bmodm;
+    if (a & 1) return (((2 % m) * compute (a / 2, b, m) + bmodm) % m);
+    else return ((2 % m) * compute (a/2, b, m)) % m;
+}
+\end{minted}
+    \item Say $A = [a, b, c, d, e]$ and $P = [4, 3, 2, 0, 1] \rightarrow \text{final array is } [e, d, c, a, b]$. but if we were to get $P^k$ applied to A, we should first represent P by matrix.
+    \[\begin{bmatrix}
+    0 & 0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 0 & 1\\
+    0 & 0 & 1 & 0 & 0\\
+    0 & 1 & 0 & 0 & 0\\
+    1 & 0 & 0 & 0 & 0
+    \end{bmatrix}\]
+    And then compute it kth power and then do $A * P^k$
 \end{enumerate}
 \subsection{Important Problems}
 \begin{itemize}
@@ -1604,9 +2192,10 @@ for (int i = 0; i < (1 << n); i++) {
     }
 }
 \end{minted}
-    \item Remember that just like we could have solved \href{}{this} using binary search, we can actually solve many problems which ask to find optimal value using binary search.
+    \item Remember that just like we could have solved \href{https://uva.onlinejudge.org/external/7/714.pdf}{this} using binary search (other than simple DP), we can actually solve many problems which ask to find optimal value using binary search.
     \item Outputing a double or even int my have an exponential form so it is better to do << fixed << s...(0).
     \item Range of double is $10^{15}$
+    \item Range of int64 is $9 * 10^{18}$
     \item Inbuilt swap can be used to basically swap anything.
     \item $ceil(m/a) = (m + a - 1) / m$
     \item Consider $m*n$ surface, you have a sq. of size $a*a$. Min. no. of squares to cover completely the surface? Ans: $ceil(m/a)*ceil(n/a)$
@@ -2093,6 +2682,405 @@ unsigned int t = v | (v - 1); // t gets v's least significant 0 bits set to 1
 w = (t + 1) | (((~t & -~t) - 1) >> (__builtin_ctz(v) + 1));  
     \end{minted}
 \end{itemize}
+\subsection{Meet in the middle}
+Given a set of n integers where $n \leq 40$. Each of them is at most $10^{12}$, determine the maximum sum subset having sum less than or equal S where S <= $10^{13}$.
+
+Example:
+
+Input  : set[] = {45, 34, 4, 12, 5, 2} and S = 42
+Output : 41
+Maximum possible subset sum is 41 which can be obtained by summing 34, 5 and 2.
+
+Input  : Set[] = {3, 34, 4, 12, 5, 2} and S = 10
+Output : 10
+Maximum possible subset sum is 10 which can be obtained by summing 2, 3 and 5.
+
+A Brute Force approach to solve this problem would be find all possible subset sums of N integers and check if it is less than or equal S and keep track of such a subset with maximum sum. The time complexity using this approach would be $O(2^n)$ and n is at most 40. 240 will be quite large and hence we need to find more optimal approach.
+
+Meet in the middle is a search technique which is used when the input is small but not as small that brute force can be used. Like divide and conquer it splits the problem into two, solves them individually and then merge them. But we can’t apply meet in the middle like divide and conquer because we don’t have the same structure as the original problem.
+
+    Split the set of integers into 2 subsets say A and B. A having first n/2 integers and B having rest.
+    Find all possible subset sums of integers in set A and store in an array X. Similarly calculate all possible subset sums of integers in set B and store in array Y. Hence, Size of each of the array X and Y will be at most $2^{n/2}$.
+    Now merge these 2 subproblems. Find combinations from array X and Y such that their sum is less than or equal to S.
+        One way to do that is simply iterate over all elements of array Y for each element of array X to check the existence of such a combination. This will take $O((2^{n/2})^2)$ which is equivalent to $O(2^n)$.
+        To make it less complex, first sort array Y and then iterate over each element of X and for each element x in X use binary search to find maximum element y in Y such that $x + y \leq S$.
+        Binary search here helps in reducing complexity from $2^n$ to $2^{n/2} \log{2^{n/2}}$ which is equivalent to $2^{n/2} *n$.
+
+\begin{minted}{cpp}
+// C++ program to demonstrate working of Meet in the 
+// Middle algorithm for maximum subset sum problem. 
+#include <bits/stdc++.h> 
+using namespace std; 
+typedef long long int ll; 
+ll X[2000005],Y[2000005]; 
+  
+// Find all possible sum of elements of a[] and store 
+// in x[] 
+void calcsubarray(ll a[], ll x[], int n, int c) 
+{ 
+    for (int i=0; i<(1<<n); i++) 
+    { 
+        ll s = 0; 
+        for (int j=0; j<n; j++) 
+            if (i & (1<<j)) 
+                s += a[j+c]; 
+        x[i] = s; 
+    } 
+} 
+  
+// Returns the maximum possible sum less or equal to S 
+ll solveSubsetSum(ll a[], int n, ll S) 
+{ 
+    // Compute all subset sums of first and second 
+    // halves 
+    calcsubarray(a, X, n/2, 0); 
+    calcsubarray(a, Y, n-n/2, n/2); 
+  
+    int size_X = 1<<(n/2); 
+    int size_Y = 1<<(n-n/2); 
+  
+    // Sort Y (we need to do doing binary search in it) 
+    sort(Y, Y+size_Y); 
+  
+    // To keep track of the maximum sum of a subset 
+    // such that the maximum sum is less than S 
+    ll max = 0; 
+  
+    // Traverse all elements of X and do Binary Search 
+    // for a pair in Y with maximum sum less than S. 
+    for (int i=0; i<size_X; i++) 
+    { 
+        if (X[i] <= S) 
+        { 
+            // lower_bound() returns the first address 
+            // which has value greater than or equal to 
+            // S-X[i]. 
+            int p = lower_bound(Y, Y+size_Y, S-X[i]) - Y; 
+  
+            // If S-X[i] was not in array Y then decrease 
+            // p by 1 
+            if (p == size_Y || Y[p] != (S-X[i])) 
+                p--; 
+  
+            if ((Y[p]+X[i]) > max) 
+                max = Y[p]+X[i]; 
+        } 
+    } 
+    return max; 
+} 
+  
+// Driver code 
+int main() 
+{ 
+    ll a[] = {3, 34, 4, 12, 5, 2}; 
+    int n=sizeof(a)/sizeof(a[0]); 
+    ll S = 10; 
+    printf("Largest value smaller than or equal to given "
+           "sum is %lld\n", solveSubsetSum(a,n,S)); 
+    return 0; 
+} 
+
+Output: Largest value smaller than or equal to given sum is 10
+\end{minted}
+\subsection{To find subarray (continguous) with maximum average and of length k}
+It doesnt make sense to introduce average here as our length is fixed, so it just asks to find maximum sum subarray of length k. Which is easy to compute by simply using sliding window.
+\begin{minted}{cpp}
+
+// C++ program to find maximum average subarray 
+// of given length. 
+#include<bits/stdc++.h> 
+using namespace std; 
+  
+// Returns beginning index of maximum average 
+// subarray of length 'k' 
+int findMaxAverage(int arr[], int n, int k) 
+{ 
+    // Check if 'k' is valid 
+    if (k > n) 
+        return -1; 
+  
+    // Compute sum of first 'k' elements 
+    int sum = arr[0]; 
+    for (int i=1; i<k; i++) 
+        sum += arr[i]; 
+  
+    int max_sum = sum, max_end = k-1; 
+  
+    // Compute sum of remaining subarrays 
+    for (int i=k; i<n; i++) 
+    { 
+        int sum = sum + arr[i] - arr[i-k]; 
+        if (sum > max_sum) 
+        { 
+            max_sum = sum; 
+            max_end = i; 
+        } 
+    } 
+  
+    // Return starting index 
+    return max_end - k + 1; 
+} 
+  
+// Driver program 
+int main() 
+{ 
+    int arr[] = {1, 12, -5, -6, 50, 3}; 
+    int k = 4; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    cout << "The maximum average subarray of "
+         "length "<< k << " begins at index "
+         << findMaxAverage(arr, n, k); 
+    return 0; 
+} 
+\end{minted}
+\subsection{To find subarray (contiguous) with maximum average and length more than \textbf{k}}
+Clearly we could have done this in $O(n^2)$ but i'll describe $O(n \log n)$ soln below.
+\begin{enumerate}
+    \item Binary search for the maximum average (let it be x)
+    \item Subtract x from every element of array
+\\Now the problem reduces to finding longest subarray with sum $\geq 0$ as then average would be $\geq 0$.
+    \item Replace $a_i$ by the partial sums $S_i = \sum_{j = 1}^i a_j$\\
+Now we are looking for a pair $0 \leq l \leq r \leq N$ s.t. $S_r - S_{l - 1} \geq 0$ and $r - (l - 1) \geq k$.
+    \item Mark the positions of mimimas of $S_i$ from left to right in array A and position for maximums $S_i$ from right to left in array B of an array containing S.
+    \item Do 2 pointers technique now.
+\end{enumerate}
+\begin{minted}{cpp}
+// This is the code for steps 2-5.
+int maxIndexDiff(int arr[], int n) 
+{ 
+    int maxDiff; 
+    int i, j; 
+  
+    int LMin[n], RMax[n]; 
+  
+    // Construct LMin[] such that LMin[i] 
+    // stores the minimum value 
+    // from (arr[0], arr[1], ... arr[i]) 
+    LMin[0] = arr[0]; 
+    for (i = 1; i < n; ++i) 
+        LMin[i] = min(arr[i], LMin[i - 1]); 
+  
+    // Construct RMax[] such that RMax[j] 
+    // stores the maximum value 
+    // from (arr[j], arr[j+1], ..arr[n-1]) 
+    RMax[n - 1] = arr[n - 1]; 
+    for (j = n - 2; j >= 0; --j) 
+        RMax[j] = max(arr[j], RMax[j + 1]); 
+  
+    // Traverse both arrays from left to right 
+    // to find optimum j - i 
+    // This process is similar to merge() 
+    // of MergeSort 
+    i = 0, j = 0, maxDiff = -1; 
+    while (j < n && i < n) { 
+        if (LMin[i] < RMax[j]) { 
+            maxDiff = max(maxDiff, j - i); 
+            j = j + 1; 
+        } 
+        else
+            i = i + 1; 
+    } 
+  
+    return maxDiff + 1; 
+} 
+  
+// utility Function which subtracts X from all 
+// the elements in the array 
+void modifyarr(int arr[], int n, int x) 
+{ 
+    for (int i = 0; i < n; i++) 
+        arr[i] = arr[i] - x; 
+} 
+  
+// Calculating the prefix sum array 
+// of the modified array 
+void calcprefix(int arr[], int n) 
+{ 
+    int s = 0; 
+    for (int i = 0; i < n; i++) { 
+        s += arr[i]; 
+        arr[i] = s; 
+    } 
+} 
+  
+// Function to find the length of the longest 
+// subarray with average >= x 
+int longestsubarray(int arr[], int n, int x) 
+{ 
+    modifyarr(arr, n, x); 
+    calcprefix(arr, n); 
+  
+    return maxIndexDiff(arr, n); 
+} 
+  
+// Driver code 
+int main() 
+{ 
+    int arr[] = { 1, 1, 2, -1, -1, 1 }; 
+    int x = 1; 
+    int n = sizeof(arr) / sizeof(int); 
+    cout << longestsubarray(arr, n, x) << endl; 
+  
+    return 0; 
+} 
+\end{minted}
+\subsection{Find subarray with given sum, elements are non negative}
+\begin{minted}{cpp}
+
+/* A simple program to print subarray with sum as given sum */
+#include<stdio.h> 
+  
+/* Returns true if the there is a subarray of arr[] with sum equal to 'sum' 
+   otherwise returns false.  Also, prints the result */
+int subArraySum(int arr[], int n, int sum) 
+{ 
+    int curr_sum, i, j; 
+  
+    // Pick a starting point 
+    for (i = 0; i < n; i++) 
+    { 
+        curr_sum = arr[i]; 
+  
+        // try all subarrays starting with 'i' 
+        for (j = i+1; j <= n; j++) 
+        { 
+            if (curr_sum == sum) 
+            { 
+                printf ("Sum found between indexes %d and %d", i, j-1); 
+                return 1; 
+            } 
+            if (curr_sum > sum || j == n) 
+                break; 
+           curr_sum = curr_sum + arr[j]; 
+        } 
+    } 
+  
+    printf("No subarray found"); 
+    return 0; 
+} 
+  
+// Driver program to test above function 
+int main() 
+{ 
+    int arr[] = {15, 2, 4, 8, 9, 5, 10, 23}; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    int sum = 23; 
+    subArraySum(arr, n, sum); 
+    return 0; 
+} 
+
+\end{minted}
+\subsection{Largest subarray with gcd one}
+if any two elements have GCD equals to one, then whole array has GCD one. So the output is either -1 or length of array.
+\subsection{Smallest subarray with given gcd}
+The idea is to use Segment Tree and Binary Search to achieve time complexity O(n (logn)2).
+\begin{enumerate}
+    \item If we have any number equal to ‘k’ in the array then the answer is 1 as GCD of k is k. Return 1.
+    \item If there is no number which is divisible by k, then GCD doesn’t exist. Return -1.
+    \item If none of the above cases is true, the length of minimum subarray is either greater than 1 or GCD doesn’t exist. In this case, we follow following steps.
+        \begin{enumerate}
+        \item Build segment tree so that we can quicky find GCD of any subarray using the approach discussed here
+        \item After building Segment Tree, we consider every index as starting point and do binary search for ending point such that the subarray between these two points has GCD k
+        \end{enumerate}
+\end{enumerate}
+\begin{minted}{cpp}
+// Returns size of smallest subarray of arr[0..n-1] 
+// with GCD equal to k. 
+int findSmallestSubarr(int arr[], int n, int k) 
+{ 
+    // To check if a multiple of k exists. 
+    bool found = false; 
+  
+    // Find if k or its multiple is present 
+    for (int i=0; i<n; i++) 
+    { 
+        // If k is present, then subarray size is 1. 
+        if (arr[i] == k) 
+            return 1; 
+  
+        // Break the loop to indicate presence of a 
+        // multiple of k. 
+        if (arr[i] % k == 0) 
+            found = true; 
+    } 
+  
+    // If there was no multiple of k in arr[], then 
+    // we can't get k as GCD. 
+    if (found == false) 
+        return -1; 
+  
+    // If there is a multiple of k in arr[], build 
+    // segment tree from given array 
+    constructSegmentTree(arr, n); 
+  
+    // Initialize result 
+    int res = n+1; 
+  
+    // Now consider every element as starting point 
+    // and search for ending point using Binary Search 
+    for (int i=0; i<n-1; i++) 
+    { 
+        // a[i] cannot be a starting point, if it is 
+        // not a multiple of k. 
+        if (arr[i] % k != 0) 
+            continue; 
+  
+        // Initialize indexes for binary search of closest 
+        // ending point to i with GCD of subarray as k. 
+        int low = i+1; 
+        int high = n-1; 
+  
+        // Initialize closest ending point for i. 
+        int closest = 0; 
+  
+        // Binary Search for closest ending point 
+        // with GCD equal to k. 
+        while (true) 
+        { 
+            // Find middle point and GCD of subarray 
+            // arr[i..mid] 
+            int mid = low + (high-low)/2; 
+            int gcd = findRangeGcd(i, mid, arr, n); 
+  
+            // If GCD is more than k, look further 
+            if (gcd > k) 
+                low = mid; 
+  
+            // If GCD is k, store this point and look for 
+            // a closer point 
+            else if (gcd == k) 
+            { 
+                high = mid; 
+                closest = mid; 
+                break; 
+            } 
+  
+            // If GCD is less than, look closer 
+            else
+                high = mid; 
+  
+            // If termination condition reached, set 
+            // closest 
+            if (abs(high-low) <= 1) 
+            { 
+                if (findRangeGcd(i, low, arr, n) == k) 
+                    closest = low; 
+                else if (findRangeGcd(i, high, arr, n)==k) 
+                    closest = high; 
+                break; 
+            } 
+        } 
+  
+        if (closest != 0) 
+            res = min(res, closest - i + 1); 
+    } 
+  
+    // If res was not changed by loop, return -1, 
+    // else return its value. 
+    return (res == n+1) ? -1 : res; 
+} 
+\end{minted}
+\textbf{This same idea can be extended to find largest subarray with given gcd}
 \subsection{LIS}
 \begin{minted}{cpp}
 // O(n^2)
@@ -3011,6 +3999,34 @@ ll getb (vector<point> &poly) {
     \item \href{http://e-maxx.ru/algo/circle_tangents}{Finding common tangents to two circles}
     \item \href{https://uva.onlinejudge.org/external/101/10173.pdf}{Minimum Bounding Rectangle}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10173.cpp}{Sol}: basically use atan2 and rotate wrt that point.
     \item Given a set of points, to determine whether a point lies inside a triangle formed by any 3 points, it is enough to check whether the given point lies inside the convex hull of given data points.
+\end{itemize}
+\subsection{Fast application of a set of geometric operations to a set of points}
+\begin{itemize}
+    \item Given n points $p_i = [x_i, y_i, z_i]$, apply m transformations to each of these points. Each transformation can be a shift, a scaling or a rotation around a given axis by a given angle. There is also a "loop" operation which applies a given list of transformations k times. ("loop" operations can be nested) All the operations should be applied faster than $O(n * length)$, where length is the total no. of transformations to be applied (after unrolling "loop" operations).
+    \\ Sol. Each of the transformation can be written as a linear combination of old coordinates giving us a 4x4 matrix.
+    \item point is represented as $[x, y, z, 1]$ and here I am multiplying operation to the right of the point (actually I should have done it as a transpose of whole thing)
+    \item Shift x by 5, y by 7, z by 9.
+    \[\begin{bmatrix}
+    1 & 1 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    5 & 7 & 9 & 1
+    \end{bmatrix}\]
+    \item Scale x by 10 other two by 5.
+    \[\begin{bmatrix}
+    10 & 0 & 0 & 0\\
+    0 & 5 & 0 & 0\\
+    0 & 0 & 5 & 0\\
+    0 & 0 & 0 & 1
+    \end{bmatrix}\]
+    \item Rotate $\theta$ deg. around x axis.
+    \[\begin{bmatrix}
+    1 & 1 & 0 & 0\\
+    0 & \cos{\theta} & -\sin{\theta} & 0\\
+    0 & \sin{\theta} & \cos{\theta} & 0\\
+    0 & 0 & 0 & 1
+    \end{bmatrix}\]
+    \item Now, once every transformation is described as a matrix, the sequence of transformations can be described as a product of these matrices and a "loop" of k repetitions can be described as the matrix raised to the power k (which can be calc. using binary exponentiation). Time complexity $O(n + m * \log{k})$.
 \end{itemize}
 \subsection{Klee's Algo}
 Given $n$ segments on a line, each described by a pair of coordinates $(a_{i1}, a_{i2})$. We have to find the length of their union.

@@ -28,6 +28,7 @@ int main ( ) {
         cin >> m >> S;
         memset(dp, -1, sizeof(dp));
         dp[0][0] = 0;
+        coins.clear ();
         for (int i = 0; i < m; i++) {
             int u, v;
             cin >> u >> v;
