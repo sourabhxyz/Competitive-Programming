@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1545217192 "c:/Users/Sourabh/Documents/GitHub/Competitive-Programming/RevisionNotes/main.tex" "main.pdf" "main" 1545217199
+["pdflatex"] 1545230137 "c:/Users/Sourabh/Documents/GitHub/Competitive-Programming/RevisionNotes/main.tex" "main.pdf" "main" 1545230144
   "_minted-main/0422392ED8F12F88E77BC4AB4EE5114F504A7AF0CD3BAA7542030FC560DFCC45.pygtex" 1544416741 977 28ed981bdd3bab076589ed12358d5a6b ""
   "_minted-main/04C1D9FD8C1E63D222D757D3EE38C7A8504A7AF0CD3BAA7542030FC560DFCC45.pygtex" 1544849226 3008 2f33c00808233c9cac67786aaf08570e ""
   "_minted-main/053865CEAF6A1057D968E5E4837DD313504A7AF0CD3BAA7542030FC560DFCC45.pygtex" 1544690090 272 e4aadc4ab40e93e7e8a90a25cd7b0389 ""
@@ -106,7 +106,8 @@
   "_minted-main/perldoc.pygstyle" 1544416741 8881 8be8ac42e560644db7d590fc53cd609e ""
   "basiccircle.png" 1544683799 52484 bb55c5620bd6bbcb139d6d79a0e88dae ""
   "bflow.PNG" 1544861304 25117 00a7fefb842efbc50e468a599c86ddd8 ""
-  "c:/Users/Sourabh/Documents/GitHub/Competitive-Programming/RevisionNotes/main.tex" 1545217184 255313 07783f3df77258648beb0e03578c487d ""
+  "brnsq.PNG" 1545230041 46685 8b8b0333f3e57edb979d42dbce271f69 ""
+  "c:/Users/Sourabh/Documents/GitHub/Competitive-Programming/RevisionNotes/main.tex" 1545230129 255792 13864cbac1dba365ac5094cd14138a13 ""
   "crt.PNG" 1544974046 164824 081122ca26bb6b9efcc65422ad36db5b ""
   "crt2.PNG" 1544975252 281670 614e98aa4ad68dcd2c280086898fb49d ""
   "crt3.PNG" 1544975289 74201 4695f591a37ab616b7063bff9b568953 ""
@@ -344,10 +345,10 @@
   "d:/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1544258780 4218693 914c662fd069d5b5f4c6ed11ee73cb74 ""
   "d:/texlive/2018/texmf.cnf" 1544258593 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   "lca.PNG" 1544617814 146903 24d4d61a094cbcf8222cf39a7ba860e4 ""
-  "main.aux" 1545217198 26140 d736f2b6fd1dad88f2bbc1b0517b80d0 ""
-  "main.out" 1545217198 11369 875473e38733f4025d14ead9127d041c ""
-  "main.tex" 1545217184 255313 07783f3df77258648beb0e03578c487d ""
-  "main.toc" 1545217198 13861 7815221b05d4226f3b3af9c9eb9e2683 ""
+  "main.aux" 1545230143 26167 aa5d67c2ee4c36a082ce32a657a4e90b ""
+  "main.out" 1545230143 11369 875473e38733f4025d14ead9127d041c ""
+  "main.tex" 1545230129 255792 13864cbac1dba365ac5094cd14138a13 ""
+  "main.toc" 1545230143 13864 41b8b6aa01aca74f8c999eea45736e24 ""
   "nul" 0 0 d41d8cd98f00b204e9800998ecf8427e ""
   "p1.PNG" 1544694741 45986 6d427702381f778cac1a24c426be8488 ""
   "p2.PNG" 1544694760 46450 0357a5c4236c7ef4347dc6d64ef4830e ""
@@ -358,8 +359,8 @@
   "tar.PNG" 1525938794 141559 e22181136576edec4c1f31d9c42332a4 ""
   "triangle.PNG" 1544683573 111973 1e43967a0ec4559b9c9c1be985aa4714 ""
   (generated)
-  "main.toc"
+  "main.pdf"
   "main.log"
   "main.out"
-  "main.pdf"
   "main.aux"
+  "main.toc"
