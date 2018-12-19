@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// finding maximum in case of double, similarly we can do for minimum}
+\PYG{k+kt}{double} \PYG{n+nf}{ternary\PYGZus{}search}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{l}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// 300 iterations are as well fine.}
+    \PYG{k+kt}{double} \PYG{n}{eps} \PYG{o}{=} \PYG{l+m+mf}{1e\PYGZhy{}9}\PYG{p}{;}              \PYG{c+c1}{//set the error limit here}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{r} \PYG{o}{\PYGZhy{}} \PYG{n}{l} \PYG{o}{\PYGZgt{}} \PYG{n}{eps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{double} \PYG{n}{m1} \PYG{o}{=} \PYG{n}{l} \PYG{o}{+} \PYG{p}{(}\PYG{n}{r} \PYG{o}{\PYGZhy{}} \PYG{n}{l}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{3}\PYG{p}{;}
+        \PYG{k+kt}{double} \PYG{n}{m2} \PYG{o}{=} \PYG{n}{r} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{r} \PYG{o}{\PYGZhy{}} \PYG{n}{l}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{3}\PYG{p}{;}
+        \PYG{k+kt}{double} \PYG{n}{f1} \PYG{o}{=} \PYG{n}{f}\PYG{p}{(}\PYG{n}{m1}\PYG{p}{);}      \PYG{c+c1}{//evaluates the function at m1}
+        \PYG{k+kt}{double} \PYG{n}{f2} \PYG{o}{=} \PYG{n}{f}\PYG{p}{(}\PYG{n}{m2}\PYG{p}{);}      \PYG{c+c1}{//evaluates the function at m2}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{f1} \PYG{o}{\PYGZlt{}} \PYG{n}{f2}\PYG{p}{)}
+            \PYG{n}{l} \PYG{o}{=} \PYG{n}{m1}\PYG{p}{;}
+        \PYG{k}{else}
+            \PYG{n}{r} \PYG{o}{=} \PYG{n}{m2}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{f}\PYG{p}{(}\PYG{n}{l}\PYG{p}{);}                    \PYG{c+c1}{//return the maximum of f(x) in [l, r]}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

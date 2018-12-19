@@ -111,38 +111,45 @@
 \BOOKMARK [2][-]{subsection.3.6}{Smallest subarray with given gcd}{section.3}% 111
 \BOOKMARK [2][-]{subsection.3.7}{LIS}{section.3}% 112
 \BOOKMARK [2][-]{subsection.3.8}{LIS of consecutive integers}{section.3}% 113
-\BOOKMARK [2][-]{subsection.3.9}{Optimal schedule of jobs given their deadlines and durations}{section.3}% 114
-\BOOKMARK [2][-]{subsection.3.10}{Scheduling jobs on one machine}{section.3}% 115
-\BOOKMARK [3][-]{subsubsection.3.10.1}{Linear penalty functions}{subsection.3.10}% 116
-\BOOKMARK [3][-]{subsubsection.3.10.2}{Exponential penalty function}{subsection.3.10}% 117
-\BOOKMARK [3][-]{subsubsection.3.10.3}{Identical monotone penalty function}{subsection.3.10}% 118
-\BOOKMARK [3][-]{subsubsection.3.10.4}{Summary}{subsection.3.10}% 119
-\BOOKMARK [2][-]{subsection.3.11}{Scheduling jobs on two machine}{section.3}% 120
-\BOOKMARK [1][-]{section.4}{Data Structures}{}% 121
-\BOOKMARK [2][-]{subsection.4.1}{Segment Tree}{section.4}% 122
-\BOOKMARK [1][-]{section.5}{DP}{}% 123
-\BOOKMARK [2][-]{subsection.5.1}{Coin Change}{section.5}% 124
-\BOOKMARK [2][-]{subsection.5.2}{0/1 Knapsack}{section.5}% 125
-\BOOKMARK [2][-]{subsection.5.3}{Balanced Bracket Sequence}{section.5}% 126
-\BOOKMARK [3][-]{subsubsection.5.3.1}{One type of bracket}{subsection.5.3}% 127
-\BOOKMARK [3][-]{subsubsection.5.3.2}{MultiType}{subsection.5.3}% 128
-\BOOKMARK [3][-]{subsubsection.5.3.3}{No. of balanced Sequences}{subsection.5.3}% 129
-\BOOKMARK [3][-]{subsubsection.5.3.4}{Lexicographically next balanced sequence}{subsection.5.3}% 130
-\BOOKMARK [3][-]{subsubsection.5.3.5}{Sequence Index}{subsection.5.3}% 131
-\BOOKMARK [3][-]{subsubsection.5.3.6}{Finding the kth sequence}{subsection.5.3}% 132
-\BOOKMARK [2][-]{subsection.5.4}{Important Problems}{section.5}% 133
-\BOOKMARK [1][-]{section.6}{Strings}{}% 134
-\BOOKMARK [2][-]{subsection.6.1}{Minimum Edit Distance}{section.6}% 135
-\BOOKMARK [2][-]{subsection.6.2}{Length of longest Palindrome possible by removing 0 or more characters}{section.6}% 136
-\BOOKMARK [2][-]{subsection.6.3}{Longest Common Subsequence}{section.6}% 137
-\BOOKMARK [2][-]{subsection.6.4}{Prefix Function and KMP}{section.6}% 138
-\BOOKMARK [3][-]{subsubsection.6.4.1}{Prefix Function}{subsection.6.4}% 139
-\BOOKMARK [3][-]{subsubsection.6.4.2}{KMP}{subsection.6.4}% 140
-\BOOKMARK [3][-]{subsubsection.6.4.3}{Counting number of occurrences of each prefix}{subsection.6.4}% 141
-\BOOKMARK [2][-]{subsection.6.5}{Notes}{section.6}% 142
-\BOOKMARK [2][-]{subsection.6.6}{SAM}{section.6}% 143
-\BOOKMARK [2][-]{subsection.6.7}{Important Problems}{section.6}% 144
-\BOOKMARK [1][-]{section.7}{Geometry}{}% 145
-\BOOKMARK [2][-]{subsection.7.1}{Fast application of a set of geometric operations to a set of points}{section.7}% 146
-\BOOKMARK [2][-]{subsection.7.2}{Klee's Algo}{section.7}% 147
-\BOOKMARK [2][-]{subsection.7.3}{Closest Pair Problem}{section.7}% 148
+\BOOKMARK [2][-]{subsection.3.9}{nth element}{section.3}% 114
+\BOOKMARK [2][-]{subsection.3.10}{Optimal schedule of jobs given their deadlines and durations}{section.3}% 115
+\BOOKMARK [2][-]{subsection.3.11}{Scheduling jobs on one machine}{section.3}% 116
+\BOOKMARK [3][-]{subsubsection.3.11.1}{Linear penalty functions}{subsection.3.11}% 117
+\BOOKMARK [3][-]{subsubsection.3.11.2}{Exponential penalty function}{subsection.3.11}% 118
+\BOOKMARK [3][-]{subsubsection.3.11.3}{Identical monotone penalty function}{subsection.3.11}% 119
+\BOOKMARK [3][-]{subsubsection.3.11.4}{Summary}{subsection.3.11}% 120
+\BOOKMARK [2][-]{subsection.3.12}{Scheduling jobs on two machine}{section.3}% 121
+\BOOKMARK [2][-]{subsection.3.13}{Ternary Search}{section.3}% 122
+\BOOKMARK [2][-]{subsection.3.14}{Submask Enumeration}{section.3}% 123
+\BOOKMARK [3][-]{subsubsection.3.14.1}{Iterating through all masks with their submasks. Complexity O\(3n\)}{subsection.3.14}% 124
+\BOOKMARK [2][-]{subsection.3.15}{MOS Algorithm}{section.3}% 125
+\BOOKMARK [2][-]{subsection.3.16}{MOS Algorithm with updates}{section.3}% 126
+\BOOKMARK [2][-]{subsection.3.17}{Important Problems}{section.3}% 127
+\BOOKMARK [1][-]{section.4}{Data Structures}{}% 128
+\BOOKMARK [2][-]{subsection.4.1}{Segment Tree}{section.4}% 129
+\BOOKMARK [1][-]{section.5}{DP}{}% 130
+\BOOKMARK [2][-]{subsection.5.1}{Coin Change}{section.5}% 131
+\BOOKMARK [2][-]{subsection.5.2}{0/1 Knapsack}{section.5}% 132
+\BOOKMARK [2][-]{subsection.5.3}{Balanced Bracket Sequence}{section.5}% 133
+\BOOKMARK [3][-]{subsubsection.5.3.1}{One type of bracket}{subsection.5.3}% 134
+\BOOKMARK [3][-]{subsubsection.5.3.2}{MultiType}{subsection.5.3}% 135
+\BOOKMARK [3][-]{subsubsection.5.3.3}{No. of balanced Sequences}{subsection.5.3}% 136
+\BOOKMARK [3][-]{subsubsection.5.3.4}{Lexicographically next balanced sequence}{subsection.5.3}% 137
+\BOOKMARK [3][-]{subsubsection.5.3.5}{Sequence Index}{subsection.5.3}% 138
+\BOOKMARK [3][-]{subsubsection.5.3.6}{Finding the kth sequence}{subsection.5.3}% 139
+\BOOKMARK [2][-]{subsection.5.4}{Important Problems}{section.5}% 140
+\BOOKMARK [1][-]{section.6}{Strings}{}% 141
+\BOOKMARK [2][-]{subsection.6.1}{Minimum Edit Distance}{section.6}% 142
+\BOOKMARK [2][-]{subsection.6.2}{Length of longest Palindrome possible by removing 0 or more characters}{section.6}% 143
+\BOOKMARK [2][-]{subsection.6.3}{Longest Common Subsequence}{section.6}% 144
+\BOOKMARK [2][-]{subsection.6.4}{Prefix Function and KMP}{section.6}% 145
+\BOOKMARK [3][-]{subsubsection.6.4.1}{Prefix Function}{subsection.6.4}% 146
+\BOOKMARK [3][-]{subsubsection.6.4.2}{KMP}{subsection.6.4}% 147
+\BOOKMARK [3][-]{subsubsection.6.4.3}{Counting number of occurrences of each prefix}{subsection.6.4}% 148
+\BOOKMARK [2][-]{subsection.6.5}{Notes}{section.6}% 149
+\BOOKMARK [2][-]{subsection.6.6}{SAM}{section.6}% 150
+\BOOKMARK [2][-]{subsection.6.7}{Important Problems}{section.6}% 151
+\BOOKMARK [1][-]{section.7}{Geometry}{}% 152
+\BOOKMARK [2][-]{subsection.7.1}{Fast application of a set of geometric operations to a set of points}{section.7}% 153
+\BOOKMARK [2][-]{subsection.7.2}{Klee's Algo}{section.7}% 154
+\BOOKMARK [2][-]{subsection.7.3}{Closest Pair Problem}{section.7}% 155

@@ -1889,7 +1889,8 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 	\item \href {https://gist.github.com/sourabh2311/6b761c14bef4e5887e6b03b809bc4983}{UVA 10029 Sol}, \href {https://uva.onlinejudge.org/external/100/10029.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
 	\item \href {https://gist.github.com/sourabh2311/d73572fab5cf6d390f509d29abf4cd60}{UVA 536 Sol}, \href {https://uva.onlinejudge.org/external/5/536.pdf}{UVA 536 Prob}: Construct binary tree with preorder and inorder	
 	\item \href {https://gist.github.com/sourabh2311/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10459 Prob}: Centers of diameters are best where as corners are worst.	
-    \item \href {https://codeforces.com/contest/911/problem/F}{Tree Destruction}, \href {https://codeforces.com/contest/911/submission/34122817}{Sol}:
+    \item \href{https://codeforces.com/contest/911/problem/F}{Tree Destruction}, \href{https://codeforces.com/contest/911/submission/34122817}{Sol}:
+    \item \href{https://codeforces.com/contest/1092/problem/F}{Tree with maximum cost}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/527%20Div3/F.cpp}{sol}
 \end{itemize}
 \subsubsection{MVC on Tree}
 \begin{minted}{cpp}
@@ -2643,7 +2644,8 @@ We will divide the tree into vertex-disjoint chains ( Meaning no two chains has 
 \end{itemize}
 \section{Some Basic}
 \begin{itemize}
-    \item \begin{minted}{cpp}
+    \item 
+\begin{minted}{cpp}
 #pragma GCC optimize("Ofast")  // tells the compiler to optimize the code for speed to make it as fast as possible (and not look for space)
 #pragma GCC optimize ("unroll-loops")  // normally if we have a loop there is a "++i" instruction somewhere. We normally dont care because code inside the loop requires much more time but in this case there is only one instruction inside the loop so we want the compiler to optimize this.
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")  // tell the compiler that our cpu has simd instructions and allow him to vectorize our code
@@ -2702,6 +2704,7 @@ for (int i = 0; i < (1 << n); i++) {
     }
 }
 \end{minted}
+    \item $\leq 10^8 \Rightarrow 2$ sec.
     \item Remember that just like we could have solved \href{https://uva.onlinejudge.org/external/7/714.pdf}{this} using binary search (other than simple DP), we can actually solve many problems which ask to find optimal value using binary search.
     \item Outputing a double or even int my have an exponential form so it is better to do << fixed << s...(0).
     \item Range of double is $10^{15}$
@@ -2719,6 +2722,21 @@ for (int i = 0; i < (1 << n); i++) {
         if (binary_search (arr.begin() + st + 1, arr.begin() + en, leftover_))
     \end{minted}
     \item If you want to iterate through subsets of fixed size k, you may want to use k for loops.
+    \item or a better way is, considering a set of numbers from 1 to n,The first combination will be 1, 2, ..., k. Now let's see how to find the combination that immediately follows this, lexicographically. To do so, we consider our current combination, and find the rightmost element that has not yet reached its highest possible value. Once finding this element, we increment it by 1, and assign the lowest valid value to all subsequent elements.
+\begin{minted}{cpp}
+bool next_combination(vector<int>& a, int n) {
+    int k = (int)a.size();
+    for (int i = k - 1; i >= 0; i--) {
+        if (a[i] < n - k + i + 1) {
+            a[i]++;
+            for (int j = i + 1; j < k; j++)
+                a[j] = a[j - 1] + 1;
+            return true;
+        }
+    }
+    return false;
+}
+\end{minted}
     \item \href{https://uva.onlinejudge.org/external/4/410.pdf}{UVA 410 Load Balancing}, \href{https://gist.github.com/sourabh2311/5405601b47b1bd9c8fa769c82b280328}{sol}
     \item \href{https://uva.onlinejudge.org/external/104/10440.pdf}{ferry loading}, \href{https://gist.github.com/sourabh2311/4af5bc294ab613057de828b308da587a}{sol}, just know that best time is last cars arrival + t/2, so just achieve it.
     \begin{minted}{cpp}
@@ -3760,6 +3778,22 @@ int main()
 \end{minted}
 LIS of reverse sequence LDS starting from pos after reversing L.\\
 LIS of reverse negative sequence gives LIS stating from pos after reversing L.\\
+\\\href{https://codeforces.com/problemset/problem/486/E}{LIS of sequence}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/LIS%20Using%20Segment%20Trees/Problem/sol2_ifsmirnov.cpp}{Sol}: Conecpt:
+Let F1i be the length of LIS ending exactly at ai of sequence \{a1, a2, ..., ai\}.
+
+Let F2i be the length of LIS beginning exactly at ai of sequence \{ai, ai + 1, ..., an\}
+
+First, calculate F1i and F2i for all i. Obviously, if F1i + F2i - 1 ≠ l than answer for i is 1, otherwise it is 2 or 3.
+
+Then, assume there are two elements i and j with answer different from 1 such that F1i = F1j. You can prove that in this case ai or aj does not belong to every LIS.
+\\Proof: 
+Case1: if a[i] equal a[j] and thus ai is not needed in lis of a[j] and vice versa.
+\\Case2: if $a[i] > a[j]$ and thus a[j]'s lis will not contain a[i] and vice versa
+\\Case3: if $a[i] < a[j]$ in this case all elements in the lis of a[i] and greater than a[i] and in position less than j have to be greater than a[j] too as suppose this was not the case then all these could have been in corporated in LIS of a[j] giving us bigger LIS. 
+\\Hence proved. 
+\\Thus the answer for i is 2 (and for j it is 2 too, of course). It can also be shown that if F1i is unique among all F1 then the answer for i is 3.
+\\Say y = smallest no. of non inc. subsequences covering this seq. then y = length of LIS.
+\\Proof: see \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/LIS%20Using%20Segment%20Trees/LongestIncreasingSubsequence.pdf}{this}
 \subsection{LIS of consecutive integers}
 \begin{minted}{cpp}
 void solve (vi &arr) {
@@ -3784,6 +3818,20 @@ void solve (vi &arr) {
         }
     }
 }
+\end{minted}
+\subsection{nth element}
+Rearranges the elements in the range [first,last), in such a way that the element at the nth position is the element that would be in that position in a sorted sequence.
+
+The other elements are left without any specific order, except that none of the elements preceding nth are greater than it, and none of the elements following it are less.
+
+Time complexity is O(last - first).
+\begin{minted}{cpp}
+for (int i = 0; i < 15; i++) data.pb(i);
+random_shuffle (data.begin (), data.end());
+nth_element(data.begin (), data.begin() + 1, data.end ()); // data[1] has 1
+random_shuffle (data.begin (), data.end());
+nth_element(data.begin (), data.begin() + 1, data.end (), cmp); // data[1] has 13
+bool cmp (int a, int b) return a > b;
 \end{minted}
 \subsection{Optimal schedule of jobs given their deadlines and durations}
 The execution of a job cannot be interrupted prior to its ending. It is required to create such a schedule to accomplish the biggest number of jobs (thus we may not be able to finish all the jobs).\\We have greedy algorithm for this which works in $O(n \log n)$
@@ -3859,6 +3907,66 @@ The Livshits-Kladov theorem establishes, that the permutation method is only app
 Time complexity $O(n \log n)$
 \subsection{Scheduling jobs on two machine}
 Just see relevant part of that pdf.
+\subsection{Ternary Search}
+\begin{minted}{cpp}
+// finding maximum in case of double, similarly we can do for minimum
+double ternary_search(double l, double r) {  // 300 iterations are as well fine.
+    double eps = 1e-9;              //set the error limit here
+    while (r - l > eps) {
+        double m1 = l + (r - l) / 3;
+        double m2 = r - (r - l) / 3;
+        double f1 = f(m1);      //evaluates the function at m1
+        double f2 = f(m2);      //evaluates the function at m2
+        if (f1 < f2)
+            l = m1;
+        else
+            r = m2;
+    }
+    return f(l);                    //return the maximum of f(x) in [l, r]
+}
+\end{minted}
+Once $(r - l) < 3$, the remaining pool of candidate points $(l, l + 1, \ldots, r)$ needs to be checked to find the point which produces the maximum/minimum value $f(x)$.
+\\\href{https://codeforces.com/contest/185/problem/B}{prob}, \href{https://codeforces.com/contest/185/submission/1654904}{sol}
+\\Gor a sorted array, you want to have a subset S, s.t. $max(S) - mean(S)$ is maximum. For this take maximum element of array as max(S), take remaining element from 0 to some index for which you need to do ternary search.
+\subsection{Submask Enumeration}
+\begin{minted}{cpp}
+for (int s=m; ; s=(s-1)&m) {
+ ... you can use s ...
+ if (s==0) break;
+}
+\end{minted}
+Let us examine why the above code visits all submasks of $m$, without repetition, and in descending order.
+
+Suppose we have a current bitmask $s$, and we want to move on to the next bitmask. By subtracting from the mask $s$ one unit, we will remove the rightmost set bit and all bits to the right of it will become 1. Then we remove all the "extra" one bits that are not included in the mask $m$ and therefore can't be a part of a submask. We do this removal by using the bitwise operation (s-1) \& m. As a result, we "cut" mask s-1 to determine the highest value that it can take, that is, the next submask after $s$ in descending order.
+
+Thus, this algorithm generates all submasks of this mask in descending order, performing only two operations per iteration.
+
+A special case is when $s = 0$. After executing $s-1$ we get a mask where all bits are set (bit representation of -1), and after (s-1) \& m we will have that $s$ will be equal to $m$. 
+\subsubsection{Iterating through all masks with their submasks. Complexity $O(3^n)$}
+
+In many problems, especially those that use bitmask dynamic programming, you want to iterate through all bitmasks and for each mask, iterate through all of its submasks:
+\begin{minted}{cpp}
+for (int m=0; m<(1<<n); ++m)
+	for (int s=m; s; s=(s-1)&m)
+ ... s and m ...
+\end{minted}
+Let's prove that the inner loop will execute a total of $O(3^n)$ iterations.
+
+First proof: Consider the i-th bit. There are exactly three options for it: it is not included in the mask $m$ (and therefore not included in submask $s$); it is included in $m$, but not included in $s$, or it's included in both $m$ and $s$. As there are a total of $n$ bits, there will be $3^n$ different combinations.
+
+Second proof: Note that if mask $m$ has $k$ enabled bits, then it will have $2^k$ submasks. As we have a total of $\binom{n}{k}$ masks with $k$ enabled bits (see "binomial coefficients"), then the total number of combinations for all masks will be:
+
+$$\sum_{k=0}^n \binom{n}{k} \cdot 2^k$$
+
+To calculate this number, note that the sum above is equal to the expansion of $(1+2)^n$ using the binomial theorem. Therefore, we have $3^n$ combinations, as we wanted to prove.
+\subsection{MOS Algorithm}
+Just read \href{https://blog.anudeep2011.com/mos-algorithm/}{this}. \href{https://codeforces.com/contest/86/problem/D}{Powerful Array}, \href{https://codeforces.com/contest/86/submission/39212866}{Sol}
+\subsection{MOS Algorithm with updates}
+Personally, I think HLD should be enough.
+\subsection{Important Problems}
+\begin{itemize}
+    \item \href{https://codeforces.com/contest/981/problem/D}{BookShelves}, \href{https://codeforces.com/contest/981/submission/38660572}{Sol}
+\end{itemize}
 \section{Data Structures}
 \subsection{Segment Tree}
 \begin{itemize}

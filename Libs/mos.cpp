@@ -50,11 +50,11 @@ int main() {
     int currentL = 0, currentR = 0;
     for(int i=0; i<t; i++) {
         int L = q[i].L, R = q[i].R;
-        while(currentL < L) {
+        while(currentL < L) { //[1, L - 1] are removed
             remove(currentL);
             currentL++;
         }
-        while(currentL > L) {
+        while(currentL > L) { //[L, ] are added
             add(currentL-1);
             currentL--;
         }
