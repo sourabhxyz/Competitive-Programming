@@ -1,4 +1,3 @@
-// http://codeforces.com/blog/entry/12239
 #pragma comment(linker,"/STACK:100000000000,100000000000")
 
 #include <iostream>
@@ -95,8 +94,8 @@ void dfs(int v, int pr = 0){
 }
 
 void hld(int v, int pr = -1){
-  chain[v] = cnt - 1; // what chain does this vertex belong to
-  num[v] = all++; // seemingly, ordering will be like, contiguous one will be belonging to same chain
+  chain[v] = cnt - 1; // what chain does this vertex belong to, cnt is initiallized to 1.
+  num[v] = all++; // seemingly, ordering will be like, contiguous one will be belonging to same chain, all is initiallized to 0.
   if(!csz[cnt - 1]) { // if the size of this chain is 0, make top vertex of this chain as 'v'
     top[cnt - 1] = v;
   }

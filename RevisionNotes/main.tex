@@ -93,6 +93,7 @@ with this other one, you can add a value to the existing one:
 \partopsep = vertical space added above and below the list, but only if the list starts a new paragraph.
 
 \end{comment}
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
 \begin{document}
 \title{\swastik {scale = 0.2} {}Short Revision Notes{} \swastik {scale = 0.2}}
 \author{Sourabh Aggarwal (\href {https://codeforces.com/profile/sourabh23}{sourabh23})}
@@ -135,6 +136,11 @@ Just read \href{https://github.com/sourabh2311/Competitive-Programming/blob/mast
 \\\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is summation of mobius function. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(d)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
 \subsection{Bell, Burnside, etc}
 Just read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}
+\\Stirling no. of second kind obey the recurrence $$\stirling{n + 1}{k} = k * \stirling{n}{k} + \stirling{n}{k - 1} \forall n, k > 0$$ where $\stirling{0}{0} = 1$, $\stirling{n}{0} = \stirling{0}{n} = 0$
+\\$\frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^n$
+\subsubsection{Inclusion Exclusion Principle}
+$$\left|\bigcup_{i=1}^n A_i \right| = \sum_{\emptyset \neq J\subseteq \{1,2,\ldots ,n\}} (-1)^{|J|-1}{\Biggl |}\bigcap_{j\in J}A_{j}{\Biggr |}$$
+$$|\bigcap_{i = 1}^n A_{i}^c| = total - |\bigcap_{i = 1}^n A_i|$$
 \subsection{Modulo}
 $(a + b) mod m = (a mod m + b mod m) mod m$\\
 $.........................-...............$\\
@@ -198,7 +204,57 @@ inline T inv(T a) {
     \item $\sum_{k = 0}^m \binom{n + k}{k} = \binom{n + m - 1}{m}$
     \item $\sum_{i = 0}^n \binom{n}{i}^2 = \binom{2n}{n}$
 \end{itemize}
-\subsection{jk }
+\subsection{Placing Bishops on a Chessboard}
+
+Find the number of ways to place $K$ bishops on an $N \times N$ chessboard so that no two bishops attack each other.
+\subsubsection{Algorithm}
+
+This problem can be solved using dynamic programming.
+
+Let's enumerate the diagonals of the chessboard as follows: black diagonals have odd indices, white diagonals have even indices, and the diagonals are numbered in non-decreasing order of the number of squares in them. Here is an example for a $5 \times 5$ chessboard.
+
+\[\begin{bmatrix} \bf{1} & 2 & \bf{5} & 6 & \bf{9} \\\
+2 & \bf{5} & 6 & \bf{9} & 8 \\
+\bf{5} & 6 & \bf{9} & 8 & \bf{7} \\
+6 & \bf{9} & 8 & \bf{7} & 4 \\
+\bf{9} & 8 & \bf{7} & 4 & \bf{3} \\
+\end{bmatrix}\]
+
+Let D[i][j] denote the number of ways to place j bishops on diagonals with indices up to i which have the same color as diagonal i. Then i = 1...2N-1 and j = 0...K.
+
+We can calculate D[i][j] using only values of D[i-2] (we subtract 2 because we only consider diagonals of the same color as $i$). There are two ways to get D[i][j]. Either we place all j bishops on previous diagonals: then there are D[i-2][j] ways to achieve this. Or we place one bishop on diagonal i and j-1 bishops on previous diagonals. The number of ways to do this equals the number of squares in diagonal i minus j-1, because each of j-1 bishops placed on previous diagonals will block one square on the current diagonal. The number of squares in diagonal i can be calculated as follows:
+\begin{minted}{cpp}
+int squares (int i) {
+    if (i & 1)
+        return i / 4 * 2 + 1;
+    else
+        return (i - 1) / 4 * 2 + 2;
+}
+\end{minted}
+The base case is simple: D[i][0] = 1, D[1][1] = 1.
+
+Once we have calculated all values of D[i][j], the answer can be obtained as follows: consider all possible numbers of bishops placed on black diagonals i=0...K, with corresponding numbers of bishops on white diagonals K-i. The bishops placed on black and white diagonals never attack each other, so the placements can be done independently. The index of the last black diagonal is 2N-1, the last white one is 2N-2. For each i we add D[2N-1][i] * D[2N-2][K-i] to the answer.
+\subsubsection{Implementation}
+\begin{minted}{cpp}
+int bishop_placements(int N, int K)
+{
+    if (K > 2 * N - 1)
+        return 0;
+
+    vector<vector<int>> D(N * 2, vector<int>(K + 1));
+    for (int i = 0; i < N * 2; ++i)
+        D[i][0] = 1;
+    D[1][1] = 1;
+    for (int i = 2; i < N * 2; ++i)
+        for (int j = 1; j <= K; ++j)
+            D[i][j] = D[i-2][j] + D[i-2][j-1] * (squares(i) - j + 1);
+
+    int ans = 0;
+    for (int i = 0; i <= K; ++i)
+        ans += D[N*2-1][i] * D[N*2-2][K-i];
+    return ans;
+}
+\end{minted}
 \subsection{Euler's Totient Function}
 Also known as phi-function $\phi (n)$, counts the number of integers between 1 and $n$ inclusive, which are coprime to $n$.
 \\If $p$ is prime $\phi (p) = p - 1.$
@@ -213,6 +269,7 @@ $= n \cdot \left(1 - \frac{1}{p_1}\right) \cdot \left(1 - \frac{1}{p_2}\right) \
 $$a^{\phi(m)} \equiv 1 \pmod m$$ if $a$ and $m$ are relatively prime.
 
 In the particular case when $m$ is prime, Euler's theorem turns into Fermat's little theorem: $$a^{m - 1} \equiv 1 \pmod m$$
+\\Converse of euler theorem is also true i.e. if $a^{\phi(m)} \equiv 1 (\mod n)$ then a and n must be coprime.
 \subsection{Catalan}
 $Cat(n) = \binom{2n}{n} / (n + 1)$
 \\$Cat(m) = (2m*(2m - 1)/(m*(m + 1))) * Cat(m - 1)$
@@ -395,6 +452,26 @@ for (int i = 2; i <= limit; i++) {
     }
 }
 \end{minted}
+\subsection{Matrix}
+Rank of a matrix is defined as 
+\begin{itemize}
+    \item Max. no. of linearly independent column vectors in the matrix or
+    \item the max. no. of linearly independent row vectors in the matrix.
+\end{itemize}
+Both definitions are equivalent
+\\For an r x c matrix
+\begin{itemize}
+    \item max rank = min (r, c)
+    \item rank = no. of non zero rows of matrix in RREF.
+\end{itemize}
+To explain how gaussian elimination allows the computation of the determinant of a square matrix, we should know
+\begin{itemize}
+    \item Swapping two rows multiplies the determinant by -1
+    \item Multiplying a row by a non zero scalar multiplies the determinant by same scalar
+    \item Adding to one row a scalar multiple of another does not change the determinant
+\end{itemize}
+So if d is the product of scalar by which determinant has been multiplied having matrix in row echelon form, we have $det(A) = (\prod diag(B))/d$
+\\To find inverse of the matrix augment it with identity matrix and get it RREF, if left block is identity matrix $\rightarrow$ right block is inverse. 
 \subsection{Frac lib and Eqn solving}
 \revised
 \begin{minted}{cpp}
@@ -1065,6 +1142,136 @@ int main()
 \end{minted}
 \href{https://codeforces.com/problemset/problem/687/B}{\textbf{Remainders Game}}\\
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{rem}
+\subsection{Primitive Root}
+\subsubsection{Definition}
+
+In modular arithmetic, a number $g$ is called a primitive root modulo n if every number coprime to $n$ is congruent to a power of $g$ modulo $n$. Mathematically, $g$ is a primitive root modulo n if and only if for any integer $a$ such that $gcd(a, n) = 1$, there exists an integer $k$ such that:
+
+$g^k \equiv a \pmod n$.
+
+$k$ is then called the index or discrete logarithm of $a$ to the base $g$ modulo $n$. $g$ is also called the generator of the multiplicative group of integers modulo $n$.
+
+In particular, for the case where $n$ is a prime, the powers of primitive root runs through all numbers from $1$ to $n-1$.
+\subsubsection{Existence}
+
+Primitive root modulo $n$ exists if and only if:
+\begin{itemize}
+    \item $n$ is 1, 2, 4, or
+    \item $n$ is power of an odd prime number $(n = p^k)$, or
+    \item $n$ is twice power of an odd prime number $(n = 2 . p^k)$.
+\end{itemize}
+This theorem was proved by Gauss in 1801.
+\subsubsection{Relation with the Euler function}
+
+Let $g$ be a primitive root modulo $n$. Then we can show that the smallest number $k$ for which $g^k \equiv 1 \pmod n$ is equal $\phi (n)$. Thus gcd (g, n) = 1. Moreover, the reverse is also true, and this fact will be used in this article to find a primitive root.
+
+Furthermore, the number of primitive roots modulo $n$, if there are any, is equal to $\phi (\phi (n) )$.
+\subsubsection{Algorithm for finding a primitive root}
+From previous section, we know that if the smallest number $k$ for which $g^k \equiv 1 \pmod n$ is $\phi (n)$, then $g$ is a primitive root. Since for any number $a$ relative prime to $n$, we know from Euler's theorem that $a ^ { \phi (n) } \equiv 1 \pmod n$, then to check if $g$ is primitive root, it is enough to check that for all $d$ less than $\phi (n)$, $g^d \not \equiv 1 \pmod n$. However, this algorithm is still too slow. $O(g * \phi (n))$j
+
+From Lagrange's theorem, we know that the index of any number modulo $n$ must be a divisor of $\phi (n)$. Thus, it is sufficient to verify for all proper divisor $d , | , \phi (n)$ that $g^d \not \equiv 1 \pmod n$. This is already a much faster algorithm, but we can still do better.
+
+Factorize $\phi (n) = p_1 ^ {a_1} ... p_s ^ {a_s}$. We prove that in the previous algorithm, it is sufficient to consider only the values of $d$ which has the form $\frac { \phi (n) } {p_j}$. Indeed, let $d$ be any proper divisor of $\phi (n)$. Then, obviously, there exists such $j$ that $d , | , \frac { \phi (n) } {p_j}$, i.e. $d . k = \frac { \phi (n) } {p_j}$. However, if $g^d \equiv 1 \pmod n$, we would get:
+
+$g ^ { \frac { \phi (n)} {p_j} } \equiv g ^ {d . k} \equiv (g^d) ^k \equiv 1^k \equiv 1 \pmod n$.
+
+i.e. among the numbers of the form $\frac {\phi (n)} {p_i}$, there would be at least one such that the conditions are not met.
+
+Now we have a complete algorithm for finding the primitive root:
+\begin{itemize}
+    \item First, find $\phi (n)$ and factorize it.
+    \item Then iterate through all numbers $g = 1 ... n$, and for each number, to check if it is primitive root, we do the following:
+        \begin{itemize}
+        \item Calculate all $g ^ { \frac {\phi (n)} {p_i}} \pmod n$.
+        \item If all the calculated values are different from $1$, then $g$ is a primitive root.
+        \end{itemize}
+\end{itemize}
+Running time of this algorithm is $O(Ans . log \phi (n) . \log n)$ (assume that $\phi (n)$ has $\log \phi (n)$ divisors).
+
+Shoup (1990, 1992) proved, assuming the generalized Riemann hypothesis, that $g$ is $O(log^6 p)$.
+\subsubsection{Implementation}
+
+The following code assumes that the modulo p is a prime number. To make it works for any value of p, we must add calculation of $\phi (p)$.
+\begin{minted}{cpp}
+int generator (int p) {
+	vector<int> fact;
+	int phi = p-1,  n = phi;
+	for (int i=2; i*i<=n; ++i)
+		if (n % i == 0) {
+			fact.push_back (i);
+			while (n % i == 0)
+				n /= i;
+		}
+	if (n > 1)
+		fact.push_back (n);
+ 
+	for (int res=2; res<p; ++res) {
+		bool ok = true;
+		for (size_t i=0; i<fact.size() && ok; ++i)
+			ok &= powmod (res, phi / fact[i], p) != 1;
+		if (ok)  return res;
+	}
+	return -1;
+}
+\end{minted}
+\subsection{Discrete Root}
+
+The problem of finding discrete root is defined as follows. Given a prime $n$ and two integers $a$ and $k$, find all $x$ for which:
+
+$x^k \equiv a \pmod n$
+\subsubsection{The algorithm}
+
+We will solve this problem by reducing it to the discrete logarithm problem.
+
+Let's apply the concept of a primitive root modulo $n$. Let $g$ be a primitive root modulo $n$. Note that since $n$ is prime, it must exist, and it can be found in $O(Ans \cdot \log \phi (n) \cdot \log n) = O(Ans \cdot \log^2 n)$ plus time of factoring $\phi (n)$.
+
+We can easily discard the case where $a = 0$. In this case, obviously there is only one answer: $x = 0$.
+
+Since we jnow that $n$ is a prime, any number between 1 and $n-1$ can be represented as a power of the primitive root, and we can represent the discrete root problem as follows:
+
+$(g^y)^k \equiv a \pmod n$
+
+where
+
+$x \equiv g^y \pmod n$
+
+This, in turn, can be rewritten as
+
+$(g^k)^y \equiv a \pmod n$
+
+Now we have one unknown $y$, which is a discrete logarithm problem. The solution can be found using Shanks' baby-step-giant-step algorithm in $O(\sqrt {n} \log n)$ (or we can verify that there are no solutions).
+
+Having found one solution $y_0$, one of solutions of discrete root problem will be $x_0 = g^{y_0} \pmod n$.
+Finding all solutions from one known solution
+
+To solve the given problem in full, we need to find all solutions knowing one of them: $x_0 = g^{y_0} \pmod n$.
+
+Let's recall the fact that a primitive root always has order of $\phi (n)$, i.e. the smallest power of $g$ which gives 1 is $\phi (n)$. Therefore, if we add the term $\phi (n)$ to the exponential, we still get the same value:
+
+$x^k \equiv g^{ y_0 \cdot k + l \cdot \phi (n)} \equiv a \pmod n \forall l \in Z$
+
+Hence, all the solutions are of the form:
+
+$x = g^{y_0 + \frac {l \cdot \phi (n)}{k}} \pmod n \forall l \in Z$.
+
+where $l$ is chosen such that the fraction must be an integer. For this to be true, the numerator has to be divisible by the least common multiple of $\phi (n)$ and $k$. Remember that least common multiple of two numbers $lcm(a, b) = \frac{a \cdot b}{gcd(a, b)}$; we'll get
+
+$x = g^{y_0 + i \frac {\phi (n)}{gcd(k, \phi (n))}} \pmod n \forall i \in Z$.
+
+This is the final formula for all solutions of discrete root problem.
+\subsubsection{Implementation}
+\begin{minted}{cpp}
+    int delta = phi / gcd (k, phi);
+	vector<int> ans;
+	for (int cur=any_ans % delta; cur < phi; cur += delta)
+		ans.push_back (powmod (g, cur, n));
+	sort (ans.begin(), ans.end());
+	printf ("%d\n", ans.size());
+	for (size_t i=0; i<ans.size(); ++i)
+		printf ("%d ", ans[i]);
+\end{minted}
+\subsection{Fermats last theorem}
+No 3 positive integerss a, b, c satisfying the eqn $a^n + b^n = c^n$ for any integer value of n greater than 2.
 \subsection{Josephus Problem}
 Given natural no. n and k, we write natural nos 1 to n along the circle. Then delete the kth no, (i..e no. k initially) and then from this position next kth no. is deleted and so on.
 \\The process stops when there is only one no. remaining, problem asks us to find this no.
@@ -1081,6 +1288,205 @@ g(n, k) &=& 0 \text{ if n = 1 (because of 0 indexing)}\\
         &=& (g(n - 1, k) + k) \mod n \text{ if $1 < n < k$}\\
         &=& \lfloor k * ((g(n_m, k) - n \mod k) \mod n_m) / (k - 1) \rfloor \text{ where $n_m = n - \lfloor n/k \rfloor$ if $k \leq n$}
 \end{eqnarray}
+\subsection{Root Solving}
+\begin{minted}{cpp}
+// Following is the solution for UVA 10428
+#include<bits/stdc++.h>
+
+using namespace std;
+
+typedef long long int ll;
+const double eps = 1e-7;
+struct Polynomial {
+    vector<double> coef;
+    int deg;
+    Polynomial() {}
+    Polynomial(int dd) {
+        deg = dd;
+        coef.resize(deg + 1);
+    }
+    void fix(Polynomial &given) {
+        int dec = 0;
+        for (int i = given.deg; i >= 0; i--) {
+            if (abs(given.coef[i]) < eps) {
+                dec++;
+            } else break;
+        }
+        dec *= -1;
+        given.coef.resize(given.deg + dec + 1);
+        given.deg += dec;
+        return;
+    }
+    Polynomial operator + (const Polynomial &other) {
+        Polynomial ret;
+        if (deg > other.deg) {
+            ret.deg = deg;
+            ret.coef.resize(deg + 1);
+            for (int i = deg; i > other.deg; i--) {
+                ret.coef[i] = coef[i];
+            }
+            for (int i = other.deg; i >= 0; i--) {
+                ret.coef[i] = coef[i] + other.coef[i];
+            }
+            fix(ret);
+            return ret;
+        } else {
+            ret.deg = other.deg;
+            ret.coef.resize(other.deg + 1);
+            for (int i = other.deg; i > deg; i--) {
+                ret.coef[i] = other.coef[i];
+            }
+            for (int i = deg; i >= 0; i--) {
+                ret.coef[i] = coef[i] + other.coef[i];
+            }
+            fix(ret);
+            return ret;
+        }
+    }
+    Polynomial operator - (const Polynomial &other) {
+        Polynomial ret;
+        if (deg > other.deg) {
+            ret.deg = deg;
+            ret.coef.resize(deg + 1);
+            for (int i = deg; i > other.deg; i--) {
+                ret.coef[i] = coef[i];
+            }
+            for (int i = other.deg; i >= 0; i--) {
+                ret.coef[i] = coef[i] - other.coef[i];
+            }
+            fix(ret);
+            return ret;
+        } else {
+            ret.deg = other.deg;
+            ret.coef.resize(other.deg + 1);
+            for (int i = other.deg; i > deg; i--) {
+                ret.coef[i] = other.coef[i];
+            }
+            for (int i = deg; i >= 0; i--) {
+                ret.coef[i] = coef[i] - other.coef[i];
+            }
+            fix(ret);
+            return ret;
+        }
+    }
+    Polynomial operator * (const pair<double, int> u) {
+        double d = u.first;
+        int dega = u.second;
+        Polynomial ret;
+        ret.deg = deg + dega;
+        ret.coef.assign(ret.deg + 1, 0);
+        for (int i = deg; i >= 0; i--) {
+            ret.coef[i + dega] = (coef[i] * d);
+        }
+        fix(ret);
+        return ret;
+    }
+    bool operator != (const Polynomial &other) {
+        if (deg != other.deg) return true;
+        for (int i = deg; i >= 0; i--) {
+            if (coef[i] != other.coef[i]) return true;
+        }
+        return false;
+    }
+
+};
+
+pair<Polynomial, Polynomial> polyDiv(Polynomial &n, Polynomial &d) { // To do n / d
+    Polynomial zero;
+    zero.deg = 0;
+    zero.coef.push_back(0);
+    if (n.deg < d.deg) {
+        return make_pair(zero, n);
+    }
+    Polynomial q;
+    q.deg = (n.deg);
+    q.coef.assign(q.deg + 1, 0);
+    Polynomial r = n;
+    while (r != zero and r.deg >= d.deg) {
+        double t = (r.coef[r.deg] / d.coef[d.deg]);
+        q.coef[r.deg - d.deg] += t;
+        r = r - d * make_pair(t, r.deg - d.deg);
+    }
+    q.fix(q); r.fix(r);
+    return make_pair(q, r);
+}
+double f(Polynomial &a, double x) {
+    double result = 0;
+    for (int i = a.deg; i >= 0; i--) {
+        result = result * x + a.coef[i];
+    }
+    return result;
+}
+double f_(Polynomial &a, double x) {
+    double result = 0;
+    for (int i = a.deg; i > 0; i--) {
+        result = result * x + a.coef[i] * i;
+    }
+    return result;
+}
+double newtonsMethod(Polynomial &a, double x0) {
+    double x1 = x0;
+    while (true) {
+        x0 = x1;
+        x1 = x0 - f(a, x0)/f_(a, x0);
+        if (abs(x1 - x0) < eps) break;
+    }
+    return x1;
+}
+void findRoot(Polynomial a, vector<double> &roots, int n) {
+    for (int i = 0; i < n; i++) {
+        roots.push_back(newtonsMethod(a, 0));
+        Polynomial d(1);
+        d.coef[1] = 1;
+        d.coef[0] = -roots.back();
+        auto u = polyDiv(a, d);
+        a = u.first;
+    }
+}
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+   //  freopen("ina.txt", "r", stdin);
+   //  freopen("outa.txt", "w", stdout);
+    cout << fixed << setprecision(4);
+    int n;
+    int caseno = 0;
+    while (cin >> n and n) {
+        Polynomial a(n);
+        caseno++;
+        for (int i = n; i >= 0; i--) {
+            cin >> a.coef[i];
+        }
+        cout << "Equation " << caseno << ": ";
+        vector<double> roots;
+        findRoot(a, roots, n);
+        sort(roots.begin(), roots.end());
+        cout << roots[0];
+        for (int i = 1; i < n; i++) {
+            cout << " " << roots[i];
+        }
+        cout << "\n";
+    }
+}
+\end{minted}
+\subsection{Integration}
+\subsubsection{Simpson rule}
+$$x_i = a + i h, ~~ i = 0 \ldots 2n,$$ $$h = \frac {b-a} {2n}.$$
+$$\int_a ^ b f (x) dx \approx \left(f (x_0) + 4 f (x_1) + 2 f (x_2) + 4f(x_3) + 2 f(x_4) + \ldots + 4 f(x_{2N-1}) + f(x_{2N}) \right)\frac {h} {3} $$
+\begin{minted}{cpp}
+    const int N = 1000 * 1000; // number of steps (already multiplied by 2)
+
+double simpson_integration(double a, double b){
+    double h = (b - a) / N;
+    double s = f(a) + f(b); // a = x_0 and b = x_2n
+    for (int i = 1; i <= N - 1; ++i) { // Refer to final Simpson's formula
+        double x = a + h * i;
+        s += f(x) * ((i & 1) ? 4 : 2);
+    }
+    s *= h / 3;
+    return s;
+}
+\end{minted}
 \subsection{Side Notes}
 \begin{enumerate}
     \item relatively prime is same as coprime.
@@ -1226,6 +1632,52 @@ void graphcheck (int u) {
     }
 }
     \end{minted}
+    \item Getting any cycle
+\begin{minted}{cpp}
+bool dfs(int v) {
+    color[v] = 1;
+    for (int u : adj[v]) {
+        if (color[u] == 0) {
+            parent[u] = v;
+            if (dfs(u))
+                return true;
+        } else if (color[u] == 1) {
+            cycle_end = v;
+            cycle_start = u;
+            return true;
+        }
+    }
+    color[v] = 2;
+    return false;
+}
+
+void find_cycle() {
+    color.assign(n, 0);
+    parent.assign(n, -1);
+    cycle_start = -1;
+
+    for (int v = 0; v < n; v++) {
+        if (dfs(v))
+            break;
+    }
+
+    if (cycle_start == -1) {
+        cout << "Acyclic" << endl;
+    } else {
+        vector<int> cycle;
+        cycle.push_back(cycle_start);
+        for (int v = cycle_end; v != cycle_start; v = parent[v])
+            cycle.push_back(v);
+        cycle.push_back(cycle_start);
+        reverse(cycle.begin(), cycle.end());
+
+        cout << "Cycle found: ";
+        for (int v : cycle)
+            cout << v << " ";
+        cout << endl;
+    }
+}
+    \end{minted}
     \item Floodfill
     \begin{minted}{cpp}
 int R, C;
@@ -1245,6 +1697,13 @@ int floodfill (int r, int c, char c1, char c2) {
     \end{minted}
     \item We can find the number of connected components by simply doing dfs (offline), and online using UFDS.
     \item Highest average is possible only by taking large 
+    \item We can use BFS for finding the shortest path in a graph with weights 0 or 1. This required just a little modificatio to normal BFS, if the current edge is of 0 weight and distance to the vertex is shorter than the current found distance, then add this vertex not to the back but to the front of the queue. (we can use dequeue which supports front, back, push\_{}back, push\_{}front, pop\_{}back, pop\_{}front) in O(1).
+    \item Find the shortest path of even length from a source vertex s to a target vertex t in an unweighted graph. For this, we must construct an auxiliary graph, whose vertices are the state (v, c) where v is the current node, c = 0, 1 denots the current parity. Any edge (u, v) of the original graph in this new graph will turn into two edges ((u, 0), (v, 1)) and ((u, 1), (v, 0)). After that we run a BFS to find the shortest path from (s, 0) to (t, 0).
+    \item Find all the vertices on any shortest path between a given pair of vertices (a, b). To accomplish that, run 2 BFS: one from a and one from b. Let da[] be the array containing shortest distances obtained from first BFS (from a) and db[] be the array containing shortest distances obtained from the second BFS (from b). Now for every vertex it is easy to check whether it lies on any shortest path between a and b: the criterion is the condition da[v] + db[v] = da[b].
+    \item Similarly edge (u, v) lies on shortest path if da[u] + 1 + db[v] = da[b].
+    \item Finding shortest cycle in a directed unweighted graph. For each vertex $v_i$: do a BFS from it and if we try to gro from the current vertex to an already visited vertex then it means that we have found a cycle and should stop BFS.
+    \\Take minimum of all such cycles (one for each $v_i$ to get the shortest length cycle.
+    \item Using DFS, we can also tell whether vertex i is an ancestor of j by using either that subtree method or by checking if $entry[i] < entry[j]$ and $exit[i] > exit[j]$
 \end{itemize}
 \subsection{Articulation Points and Bridges (undirected graph)}
 \begin{itemize}
@@ -1418,7 +1877,9 @@ It is \textbf {impossible} to construct binary tree with just Inorder traversal.
 It is \textbf {impossible} to construct binary tree with just Postorder traversal.
 \subsubsection{LCA}
 \begin{itemize}
-    \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{lca}
+    \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. Note that LCA of two nodes u, v is the node w that is ancestor of both u and v and that has the greatest depth in the tree.\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{lca}
+    \item Tarjan's offline LCA. for each query (a, b) you should do q[a].pb(b) and q[b].pb(a).
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{tar}
 \end{itemize}
 \subsubsection{Important Problems}
 \begin{itemize}
@@ -1719,6 +2180,15 @@ EulerTour(cyc.begin(), A); // cyc contains an Euler tour starting at A
 for (list<int>::iterator it = cyc.begin(); it != cyc.end(); it++)
     printf("%d\n", *it); // the Euler tour
 \end{minted}
+\subsubsection{No. of paths}
+\begin{itemize}
+    \item No. of paths of length L, from a to b is stored in $M^L[a][b]$. Note that the graph is directed and unweighted, basically $m_{i, j} = 1$ if there is an edge from i to j. This would work even in case of multiple edges if some pair of vertices (i, j) is connected with m edges then we can record this in the adjacency matrix by setting M[i][j] = m. Also this would work if the graph contains loops (a loop is an edge that connects a vertex with itself).\\Proof of this algo: $C_{k + 1}[i][j] = \sum_{p = 1}^nC_k[i][p]\cdot G[p][j]$
+    \item No. of shortest paths of fixed length: We are given a directed weighted graph G, G[i][j] = weight of an edge (i, j) and is equal to infinity if there is no edge for each pair of vertices (i, j) we have to find the length of the shortest path between i and j that consists of exactly k edges. $$L_{k + 1}[i][j] = min_{p = 1, \dots, n}(L_k[i][p] + G[p][j])$$
+    i.e. $L_{k + 1} = L_k \odot G$ where $A \odot B = C \Leftrightarrow C_{i, j} = min_{p = 1, \dots, n}(A_{i, p} + B_{p, j})$.\\$L_k = G^{\odot k}$. Note that n is the number of vertices.
+    \item The above two solns were for fixed k. However the solns can be adapted for solving problems for which the paths are allowed to contain no more than k edges. This can be done by slightly modifying the input graph. We duplicate each vertex: for each vertex v, we create one more vertex $\hat{v}$ and add edge (v, $\hat{v}$) and the loop ($\hat{v}, \hat{v}$). The no. of paths between i and j with atmost k edges is the same no. as the no. of paths between i and $\hat{j}$ with exactly $k + 1$ edges since there is a bijection that maps every path [$p_0 = i, p_1, \dots, p_{m - 1}, p_m = j$] of length $m \leq k$ to the path [$p_0 = i, p_1, \dots, p_{m - 1}, p_m = j, \hat{j}, \dots, \hat{j}$] of length $k + 1$.
+    \\ The same trick can be applied to compute the shortest paths with atmost k edges. We again duplicate each vertex and add 2 mentioned edges with weight 0. 
+\end{itemize}
+
 \subsection{SCC}
 Strongly Connected Components. A directed graph is strongly connected if there is a path between all pairs of vertices. A strongly connected component (SCC) of a directed graph is a maximal strongly connected subgraph
 \subsubsection{Tarjan}
@@ -1870,6 +2340,8 @@ else adjmat[i][j] = 0;
 \end{minted}
 \begin{itemize}
     \item If diagonal (initially 0) becomes negative = negative cycle
+    \item This algo will still work correctly for all pair of i and j for which there doesn't exist a pth starting at i, visiting a negative cycle and end at j.
+    \item i.e. Shortest path between 2 vertices i, j does not exist (due to presence of negative cycle) iff there exist a vertex t that is reachable from i and also from j and for which $d[t][t] < 0$.
     \item If diagonal (initially inf) becomes finite = cycle
     \item The smallest non negative adjmat[i][i] for all i is the cheapest cycle
     \item Transitive closure to determine if i is connected to j or not.
@@ -1909,6 +2381,7 @@ cout << mstCost;
     \item Minimum spanning subgraph: first union all these fixed edges, then run MST as normal
     \item Minimum spanning forest (we want to form a forest of k connected components (k subtrees)) in the least cost way; soln: run kruskal until no. of connected components (numsets) equals k.
     \item Second best ST O(VE). While doing this also check that in resultant ST, numdisjointset == 1 or not.
+    \item MST does not change if wee add a const. weight in all edges of the graph
 \end{itemize}
 \subsection{SSSP}
 \subsubsection{Dijkstra}
@@ -2124,12 +2597,49 @@ How do we deal with multiple edges? First the flow for each of the multiple edge
 
 There are no other obstructions with undirected graphs or multigraphs.
 \\Sample Prob: \href{https://uva.onlinejudge.org/external/105/10594.pdf}{UVA 10594}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10594_Better.cpp}{sol}
+\subsection{Kirchhoff's matrix tree theorem}
+Problem: You are given a connected undirected graph (with possible multiple edges) represented using an adjacency matrix. Find the number of different spanning trees of this graph.
+\\Let $A$ be the adjacency matrix of the graph: $A_{u,v}$ is the number of edges between $u$ and $v$. Let $D$ be the degree matrix of the graph: a diagonal matrix with $D_{u,u}$ being the degree of vertex $u$ (including multiple edges and loops - edges which connect vertex $u$ with itself).
+The Laplacian matrix of the graph is defined as $L = D - A$. According to Kirchhoff's theorem, all cofactors of this matrix are equal to each other, and they are equal to the number of spanning trees of the graph. The $(i,j)$ cofactor of a matrix is the product of $(-1)^{i + j}$ with the determinant of the matrix that you get after removing the $i$-th row and $j$-th column.\\ Thus we can get answer in $O(n^3)$.
+\subsection{Counting Labeled graphs}
+\subsubsection{Labeled graphs}
+
+Let the number of vertices in a graph be $n$. We have to compute the number $G_n$ of labeled graphs with $n$ vertices (labeled means that the vertices are marked with the numbers from $1$ to $n$). The edges of the graphs are considered undirected, and loops and multiple edges are forbidden.
+
+We consider the set of all possible edges of the graph. For each edge $(i, j)$ we can assume that $i < j$ (because the graph is undirected, and there are no loops). Therefore the set of all edges has the cardinality $\binom{n}{2}$, i.e. $\frac{n(n-1)}{2}$.
+
+Since any labeled graph is uniquely determined by its edges, the number of labeled graphs with $n$ vertices is equal to: $$G_n = 2^{\frac{n(n-1)}{2}}$$
+\subsubsection{Connected labeled graphs}
+
+Here, we additionally impose the restriction that the graph has to be connected.
+
+Let's denote the required number of connected graphs with $n$ vertices as $C_n$.
+
+We will first discuss how many disconnected graphs exists. Then the number of connected graphs will be $G_n$ minus the number of disconnected graphs. Even more, we will count the number of disconnected, rooted graphs.A rooted graph is a graph, where we emphasize one vertex by labeling it as root. Obviously we have $n$ possibilities to root a graph with $n$ labeled vertices, therefore we will need to divide the number of disconnected rooted graphs by $n$ at the end to get the number of disconnected graphs.
+
+The root vertex will appear in a connected component of size $1, \dots n-1$. There are $k \binom{n}{k} C_k G_{n-k}$ graphs such that the root vertex is in a connected component with $k$ vertices (there are $\binom{n}{k}$ ways to choose $k$ vertices for the component, these are connected in one of $C_k$ ways, the root vertex can be any of the $k$ vertices, and the remainder $n-k$ vertices can be connected/disconnected in any way, which gives a factor of $G_{n-k}$). Therefore the number of disconnected graphs with $n$ vertices is: $$\frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}$$ And finally the number of connected graphs is: $$C_n = G_n - \frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}$$
+\subsubsection{Labeled graphs with $k$ connected components}
+
+Based on the formula from the previous section, we will learn how to count the number of labeled graphs with $n$ vertices and $k$ connected components.
+
+This number can be computed using dynamic programming. We will compute $D[i][j]$ - the number of labeled graphs with $i$ vertices and $j$ components - for each $i \le n$ and $j \le k$.
+
+Let's discuss how to compute the next element $D[n][k]$ if we already know the previous values. We use a common approach, we take the last vertex (index $n$). This vertex belongs to some component. If the size of this component be $s$, then there are $\binom{n-1}{s-1}$ ways to choose such a set of vertices, and $C_s$ ways to connect them.After removing this component from the graph we have $n-s$ remaining vertices with $k-1$ connected components. Therefore we obtain the following recurrence relation: $$D[n][k] = \sum_{s=1}^{n} \binom{n-1}{s-1} C_s D[n-s][k-1]$$
+\subsection{Heavy Light Decomposition}
+We will divide the tree into vertex-disjoint chains ( Meaning no two chains has a node in common ) in such a way that to move from any node in the tree to the root node, we will have to change at most log N chains. Now the path from any node A to any node B can be  broken into two paths: A to LCA( A, B ) and B to LCA( A, B ).
+\\We already know that queries in each chain can be answered with O( log N ) complexity and there are at most log N chains we need to consider per path. So on the whole we have $O(log^2 N)$ complexity solution.
+\\Special Child : Among all child nodes of a node, the one with maximum sub-tree size is considered as Special child. Each non leaf node has exactly one Special child.
+\\Special Edge : For each non-leaf node, the edge connecting the node with its Special child is considered as Special Edge.
+\\What happens if you go to each node, find the special child and special edge and mark all special edges with green color and other edges are still black? Well, what happens is HLD. What would the graph look like then? Colorful yes. Not just colorful. Green edges actually forms vertex disjoint chains and black edges will be the connectors between chains. Let us explore one chain, start at root, move to the special child of root (there is only one special child, so easy pick), then to its special child and so on until you reach a leaf node, what you just traveled is a chain which starts at root node. Let us assume that root node has m child nodes. Note that all m-1 normal child nodes are starting nodes of some other chains.
+\\When you move from a node to any of its normal child, the sub-tree size is at most half the sub-tree size of current node.
+\\Changing a chain means we are moving for a node to a normal child, so each time we change chain we are at least halving the sub-tree size. For a tree with size N, we can halve it at most log N times.
+\\\href{http://acm.timus.ru/problem.aspx?space=1&num=1553}{Timus 1553}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1553.cpp}{Sol}
 \subsection{More Problems}
 \begin{itemize}
     \item \href{}{UVA 928}: just bfs with dp
     \item \href{https://uva.onlinejudge.org/external/102/10246.pdf}{That worst feast problem UVA 10246}, \href{https://gist.github.com/sourabh2311/e55a0e3f7453e4514f1251b1ae6f0827}{sol}
     \item \href{https://gist.github.com/sourabh2311/a9f9b7584631b8859692df0f4af0843d}{Atcoder}
-    \item df
+    \item \href{https://codeforces.com/problemset/problem/986/C}{986C AND graph}, \href{https://codeforces.com/blog/entry/59758}{Sol}
 \end{itemize}
 \section{Some Basic}
 \begin{itemize}
@@ -2504,8 +3014,19 @@ void mergeSort(int arr[], int l, int r)
     \item \textbf{Prob: }n people have to cross the bridge, one torch, atmost 2 can travel\\
     \textbf{Sol: }if $n = 3 \Rightarrow$ time = $x + y + z$, if $n \geq 4$ let A, B, a, b be the fastest, second fastest, slowest, second slowest resp. \textbf{Goal: }Get the slowest members to the other side. So choose the best among the two options.\\\textbf{option 1: }Fastest member does back and forth.\\\textbf{option 2: }The two fastest members go, allowing the two slowest two to go together.
     \item \textbf{Inversions: }From a permutation, parity of number of swaps needed to get to the identical permutation is same as parity of inversion count of this permutation.
-    \\Parity of inversions can be calculated in $O(n)$ by finding the number of cycles.
-    \\Exact value of number of inverions can be calculated in $(nlog(n))$ by using segment trees.
+    \\Parity of inversions can be calculated in $O(n)$ by finding the number of cycles. Consider the permutation [5, 2, 4, 3, 6, 1], if we view the permutation as a mapping from [1, 2, 3, 4, 5, 6] to [5, 2, 4, 3, 6, 1] the permutation can be decomposed into disjoint cycles. A cycle is a subset of elements that map to each other. For example, 1 gets mapped to 5, which gets mapped to 6, which gets mapped back to 1. So one cycle is [1, 5, 6]. The other cycles are [2] and [3, 4]. Thus the no. of cycles for this permutation is 3. Parity of $n -$ no. of cycles = parity of inversions.
+    \begin{minted}{cpp}
+    for (int i = 1; i <= n; i++) {  // 1 indexed
+        if (was[i]) continue;
+        cyc++;
+        int p = i;
+        while (!was[p]) {
+            was[p] = 1;
+            p = a[p];
+        }
+    }
+    \end{minted}
+    \item Exact value of number of inverions can be calculated in $(nlog(n))$ by using segment trees. 
     \item \textbf{Prob: }You are given two positive integer numbers a and b. Permute (change order) of the digits of a to construct maximal number not exceeding b.
     \\\textbf{Sol: }Take the number as string. sort string a, then for each $i \in [1, n]$ swap it with $j$ trying from $n to i + 1$ such that it is $\leq b$ (normal string comparison can be used).
     \item \textbf{Prob: }From a digraph, remove atmost one edge so that it becomes DAG.
@@ -3123,10 +3644,221 @@ int LIS (vi &seq) {
     }
     return ans;
 }
+// LIS with segment trees, O(n log n)
+// function to compare two pairs
+int compare(pair<int, int> p1, pair<int, int> p2)
+{
+     /* For same values, element with the higher 
+        index appear earlier in the sorted array.
+        This is for strictly increasing subsequence.
+        For increasing subsequence, the lower index 
+         appears earlier in the sorted array. */
+    if (p1.first == p2.first) 
+        return p1.second > p2.second;
+     
+    // Sorting the array according to their values.
+    return p1.first < p2.first;
+}
+ 
+// Building the entire Segment tree, the root of which
+// contains the length of the LIS
+void buildTree(int* tree, int pos, int low, int high, 
+                                 int index, int value)
+{
+    // index is the original index of current element
+    // If the index is not present in the given range, 
+    // then simply return
+    if (index < low || index > high)
+        return;
+ 
+    // If low == high then the current position should 
+    // be updated to the value
+    if (low == high) {
+        tree[pos] = value;
+        return;
+    }
+ 
+    int mid = (high + low) / 2;
+ 
+    // Recursively call the function on the 
+    // child nodes
+    buildTree(tree, 2 * pos + 1, low, mid, index, value);
+    buildTree(tree, 2 * pos + 2, mid + 1, high, index, value);
+ 
+    // Assign the current position the max of the 2 child 
+    // nodes
+    tree[pos] = max(tree[2 * pos + 1], tree[2 * pos + 2]);
+}
+ 
+// Function to query the Segment tree and return the
+// value for a given range
+int findMax(int* tree, int pos, int low, int high, 
+                               int start, int end)
+{
+    // Query: Same as the query function of Segment tree
+    // If the current range is totally inside the query 
+    // range, return the value of current position
+    if (low >= start && high <= end) 
+        return tree[pos];
+     
+    // If it is out of bound, return the minimum which
+    // would be 0 in this case
+    if (start > high || end < low) 
+        return 0;    
+ 
+    // Partial overlap
+    int mid = (high + low) / 2;
+ 
+    // Call findMax on child nodes recursively and 
+    // return the maximum of the two
+    return max(findMax(tree, 2 * pos + 1, low, mid, 
+                                        start, end), 
+               findMax(tree, 2 * pos + 2, mid + 1, 
+                                high, start, end));
+}
+ 
+int findLIS(int arr[], int n)
+{
+    // The array of pairs stores the integers and 
+    // indices in p[i]
+    pair<int, int> p[n];
+    for (int i = 0; i < n; i++) {
+        p[i].first = arr[i]; 
+        p[i].second = i; 
+    }
+ 
+    // Sorting the array in increasing order
+    // of the elements
+    sort(p, p + n, compare);
+ 
+    // Calculating the length of the segment-tree
+    int len = pow(2, (int)(ceil(sqrt(n))) + 1) - 1;
+    int tree[len];
+ 
+    // Initializing the tree with zeroes
+    memset(tree, 0, sizeof(tree)); 
+ 
+    // Building the segment-tree, the root node of 
+    // which contains the length of LIS for the n
+    // elements
+    for (int i = 0; i < n; i++) {
+        buildTree(tree, 0, 0, n - 1, p[i].second, 
+     findMax(tree, 0, 0, n - 1, 0, p[i].second) + 1);
+    }
+     
+    return tree[0];
+}
+ 
+// Driver code
+int main()
+{
+    int arr[] = { 10, 22, 9, 33, 21, 50, 41, 60 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << "Length of the LIS: " << findLIS(arr, n);
+    return 0;
+}
 \end{minted}
 LIS of reverse sequence LDS starting from pos after reversing L.\\
 LIS of reverse negative sequence gives LIS stating from pos after reversing L.\\
+\subsection{LIS of consecutive integers}
+\begin{minted}{cpp}
+void solve (vi &arr) {
+    map<int, int> hsh;
+    int ans = 1, last = 0;
+    for (int i = 0; i < arr.size (); i++) {
+        hsh[arr[i]] = hsh[arr[i] - 1] + 1;
+        if (ans < hsh[arr[i]]) {
+            ans = hsh[arr[i]];
+            last = arr[i];
+        }
+    }
+    cout << ans << "\n";
+    if (ans == 1) {
+        cout << "1\n"; return;
+    }
+    int start = last - ans + 1;
+    for (int i = 0; i < arr.size (); i++) {
+        if (arr[i] == start) {
+            cout << i + 1 << " ";
+            start++;
+        }
+    }
+}
+\end{minted}
+\subsection{Optimal schedule of jobs given their deadlines and durations}
+The execution of a job cannot be interrupted prior to its ending. It is required to create such a schedule to accomplish the biggest number of jobs (thus we may not be able to finish all the jobs).\\We have greedy algorithm for this which works in $O(n \log n)$
+\begin{minted}{cpp}
+    struct Job {
+    int deadline, duration, idx;
 
+    bool operator<(Job o) const {
+        return deadline < o.deadline;
+    }
+};
+
+vector<int> compute_schedule(vector<Job> jobs) {
+    sort(jobs.begin(), jobs.end());
+
+    set<pair<int,int>> s;
+    vector<int> schedule;
+    for (int i = jobs.size()-1; i >= 0; i--) {
+        int t = jobs[i].deadline - (i ? jobs[i-1].deadline : 0);
+        s.insert(make_pair(jobs[i].duration, jobs[i].idx));
+        while (t && !s.empty()) {
+            auto it = s.begin();
+            if (it->first <= t) {
+                t -= it->first;
+                schedule.push_back(it->second);
+            } else {
+                s.insert(make_pair(it->first - t, it->second));
+                t = 0;
+            }
+            s.erase(it);
+        }
+    }
+    return schedule;
+}
+\end{minted}
+\subsection{Scheduling jobs on one machine}
+
+This task is about finding an optimal schedule for $n$ jobs on a single machine, if the job $i$ can be processed in $t_i$ time, but for the $t$ seconds waiting before processing the job a penalty of $f_i(t)$ has to be paid.
+
+Thus the task asks to find such an permutation of the jobs, so that the total penalty is minimal. If we denote by $\pi$ the permutation of the jobs ($\pi_1$ is the first processed item, $\pi_2$ the second, etc.), then the total penalty is equal to: $$F(\pi) = f_{\pi_1}(0) + f_{\pi_2}(t_{\pi_1}) + f_{\pi_3}(t_{\pi_1} + t_{\pi_2}) + \dots + f_{\pi_n}\left(\sum_{i=1}^{n-1} t_{\pi_i}\right)$$
+Solutions for special cases
+\subsubsection{Linear penalty functions}
+
+First we will solve the problem in the case that all penalty functions $f_i(t)$ are linear, i.e. they have the form $f_i(t) = c_i \cdot t$, where $c_i$ is a non-negative number. Note that these functions don't have a constant term. Otherwise we can sum up all constant term, and resolve the problem without them.
+
+Let us fixate some permutation $\pi$, and take an index $i = 1 \dots n-1$. Let the permutation $\pi'$ be equal to the permutation $\pi$ with the elements $i$ and $i+1$ switched. Let's see how much the penalty changed. $$F(\pi') - F(\pi) =$$ It is easy to see that the changes only occur in the $i$-th and $(i+1)$-th summands: 
+\begin{eqnarray} 
+&= c_{\pi_i'} \cdot \sum_{k = 1}^{i-1} t_{\pi_k'} + c_{\pi_{i+1}'} \cdot \sum_{k = 1}^i t_{\pi_k'} - c_{\pi_i} \cdot \sum_{k = 1}^{i-1} t_{\pi_k} - c_{\pi_{i+1}} \cdot \sum_{k = 1}^i t_{\pi_k} \\ &= c_{\pi_{i+1}} \cdot \sum_{k = 1}^{i-1} t_{\pi_k'} + c_{\pi_i} \cdot \sum_{k = 1}^i t_{\pi_k'} - c_{\pi_i} \cdot \sum_{k = 1}^{i-1} t_{\pi_k} - c_{\pi_{i+1}} \cdot \sum_{k = 1}^i t_{\pi_k} \\ &= c_{\pi_i} \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i} 
+\end{eqnarray}
+
+It is easy to see, that if the schedule $\pi$ is optimal, than any change in it leads to an increased penalty (or to the identical penalty), therefore for the optimal schedule we can write down the following condition: $$c \cdot t_{\pi_{i+1}} - c_{\pi_{i+1}} \cdot t_{\pi_i} \ge 0 \quad \forall i = 1 \dots n-1$$ And after rearranging we get: $$\frac{c_{\pi_i}}{t_{\pi_i}} \ge \frac{c_{\pi_{i+1}}}{t_{\pi_{i+1}}} \quad \forall i = 1 \dots n-1$$
+
+Thus we obtain the optimal schedule by simply sorting the jobs by the fraction $\frac{c_i}{t_i}$ in non-ascending order.
+
+It should be noted, that we constructed this algorithm by the so-called permutation method: we tried to swap two adjacent elements, calculated how much the penalty changed, and then derived the algorithm for finding the optimal method.
+\subsubsection{Exponential penalty function}
+
+Let the penalty function look like this: $$f_i(t) = c_i \cdot e^{\alpha \cdot t},$$ where all numbers $c_i$ are non-negative and the constant $\alpha$ is positive.
+
+By applying the permutation method, it is easy to determine that the jobs must be sorted in non-ascending order of the value: $$v_i = \frac{1 - e^{\alpha \cdot t_i}}{c_i}$$
+\subsubsection{Identical monotone penalty function}
+
+In this case we consider the case that all $f_i(t)$ are equal, and this function is monotone increasing.
+
+It is obvious that in this case the optimal permutation is to arrange the jobs by non-ascending processing time $t_i$.
+\subsubsection{Summary}
+The Livshits-Kladov theorem establishes, that the permutation method is only applicable for the above mentioned three cases, i.e.:
+\begin{itemize}
+    \item Linear case: $f_i(t) = c_i(t) + d_i$, where $c_i$ are non-negative constants,
+    \item Exponential case: $f_i(t) = c_i \cdot e_{\alpha \cdot t} + d_i$, where $c_i$ and $\alpha$ are positive constants,
+    \item Identical case: $f_i(t) = \phi(t)$, where $\phi$ is a monotone increasing function.
+\end{itemize}
+Time complexity $O(n \log n)$
+\subsection{Scheduling jobs on two machine}
+Just see relevant part of that pdf.
 \section{Data Structures}
 \subsection{Segment Tree}
 \begin{itemize}
