@@ -4826,7 +4826,7 @@ ll getb (vector<point> &poly) {
     return b;
 }
     \end{minted}
-    \item To check whether a point is on or inside a polygon that area method is best.
+    \item To check whether a point is on or inside a convex polygon that area method is best.
     \item Centroid of a polygon, $C_x = 1/(6*A)*\sum_{i = 0}^{n - 1}(x_i + x_{i + 1}) * (x_i * y_{i + 1} - x_{i + 1} * y_i)$
     \\$C_y = 1/(6*A)*\sum_{i = 0}^{n - 1}(y_i + y_{i + 1}) * (x_i * y_{i + 1} - x_{i + 1} * y_i)$
     \\\textbf{Here: }$(x_n, y_n) = (x_0, y_0)$. And dont given absolute value to A.
@@ -4949,4 +4949,16 @@ double dvac(int low, int high) {
 }
 
 \end{minted}
+\subsection{2D geo lib}
+Circle line intersection, same as sphere line intersection.\\
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{circleline}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{circlecircle}
+\subsection{3D geo lib}
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{facearea}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sph}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{segsegcir}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{segsegcir2}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{segsegcir3}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{orientedangle}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{spherearea}
 \end{document}

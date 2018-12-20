@@ -1,3 +1,6 @@
+// in 2d lib for polygon p[n - 1] = p[0] but this is not the case for 3d lib
+#include <bits/stdc++.h>
+using namespace std;
 /* 2D Geo Lib */
 #define inf 1000000000
 const double eps = 1e-8;
@@ -49,6 +52,7 @@ double sqVec(vec a) {
 vec unit(vec a) {
     return (a / abs(a));
 }
+// dot product doesn't change when one vector moves perpendicular to other.
 double dot(vec a, vec b)
 { return (a.x * b.x + a.y * b.y); }
 double norm_sq(vec v)
@@ -196,11 +200,14 @@ vec v = b - a;
 auto cmpProj = [&](vec &a, vec &b) {
     return dot(v, a) < dot(v, b);
 };*/
+// translate the line by vector t. So if point p lies on line l then (p + t) lies on new line. i.e. c' = vec(l.a, l.b).(p + t) = -l.c + l.a * t.x + l.b * t.y.
+
 line translate(line &l, vec t) {
     line ret = l;
     ret.c = l.c - l.a * t.x - l.b * t.y;
     return ret;
 }
+// shifting the line by amount d along its perpendicular
 line translate(line &l, double d) {
     // shift the line up/down (depends on the sign of d) by d
     vec perpen(l.a, l.b);
@@ -208,6 +215,8 @@ line translate(line &l, double d) {
     perpen = perpen * d;
     return translate(l, perpen);
 }
+// dont know whether the following code works...
+// we define internal bisector as the line whose direction vector points between the direction vector of l1 and l2.
 vector<line> bisector(line &l1, line &l2) { // first one is internal, second one is external
     vec v1(l1.a, l1.b), v2(l2.a, l2.b);
     if (abs(cross(v1, v2)) < eps) {
@@ -248,6 +257,7 @@ double distBwParallel(line &l1, line &l2) {
     // to compute distance between two parallel lines
     return (abs(l1.c - l2.c) / abs(vec(l1.a, l1.b)));
 }
+// distance between point p and line passing through ab.
 double distToLine(vec p, vec a, vec b, vec &c) { // have to take care if a == b
 // formula: c = a + u * ab
     vec ap = p - a, ab = b - a;
@@ -258,10 +268,7 @@ double distToLine(vec p, vec a, vec b, vec &c) { // have to take care if a == b
     double u = dot(ap, ab) / norm_sq(ab);
     c = a + (ab) * u;
     return dist(p, c);
-} // Euclidean distance between p and c
-// returns the distance from p to the line segment ab defined by
-// two points a and b (still OK if a == b)
-// the closest point is stored in the 4th parameter (byref)
+} 
 /* ------------------------------------------------------------------
  * ------------Line library ends ---------------------------------
  */
@@ -323,15 +330,15 @@ double lineseglinesegDist(linesegment &l1, linesegment &l2) {
     return ret;
 }
 /* ------------------------------------------------------------------
- * ------------Line library ends ---------------------------------
+ * ------------Line segment library ends ---------------------------------
  */
 /* ------------------------------------------------------------------
  * ------------circle library starts ---------------------------------
  */
-int circleLine(vec c, double r, line l, pair<vec, vec> &out) { // to tell circle line intersection
+int circleLine(vec c, double r, line l, pair<vec, vec> &out) { // to tell circle line intersection, returns the number of intersection
     double h2 = (r * r) - sqdistToLine(c, l);
-    if (h2 < -eps) return 0;
-    if (abs(h2) < eps) {
+    if (h2 < -eps) return 0;  // no intersection
+    if (abs(h2) < eps) {  // only one intersection
         vec p = proj(c, l);
         out = {p, p};
         return 1;
@@ -341,6 +348,7 @@ int circleLine(vec c, double r, line l, pair<vec, vec> &out) { // to tell circle
     out = {p - h, p + h};
     return 2;
 }
+// given two points on circle and circles radius, we can get two centers, to get the other center, call by swapping two points, I can easily derive a formula for this (by getting a line perpendicular to p1, p2 passing through their mid point and some specific distance away), so no need to bother about this code's logic.
 bool circle2PtsRad(vec p1, vec p2, double r, vec &c) {
     double d2 = (p1.x - p2.x) * (p1.x - p2.x) +
                 (p1.y - p2.y) * (p1.y - p2.y);
@@ -351,29 +359,35 @@ bool circle2PtsRad(vec p1, vec p2, double r, vec &c) {
     c.y = (p1.y + p2.y) * 0.5 + (p2.x - p1.x) * h;
     return true; } // to get the other center, reverse p1 and p2
 
-double areaCircleCircleIntersection(vec o1, double r1, vec o2, double r2) {
-    vec d=o2-o1; double d2 = norm_sq(d);
-    if (r1 < eps and r2 < eps) {
-        return 0;
-    }
-    if (d2 < eps) { // same or concentric circles
-        double temp = min(r1, r2);
-        return pi * temp * temp;
-    }
-    double ad = sqrt(d2);
-    if (ad < abs(r1 - r2) + eps) { // one is contained within other
-        double temp = min(r1, r2);
-        return pi * temp * temp;
-    }
-    if (ad > r1 + r2 - eps) {
-        return 0;
-    }
-    double phi = acos(ad / (2 * r1)), theta = acos(ad / (2 * r2));
-    double l = sqrt(r1 * r1 - (ad * ad) / 4);
-    return (r1 * r1 * phi + r2 * r2 * theta - l * ad);
-}
+// // area of intersection of two circles
+// double areaCircleCircleIntersection(vec o1, double r1, vec o2, double r2) {
+//     vec d = o2 - o1; double d2 = norm_sq(d);
+//     if (r1 < eps and r2 < eps) {
+//         return 0;
+//     }
+//     if (d2 < eps) { // same or concentric circles
+//         double temp = min(r1, r2);
+//         return pi * temp * temp;
+//     }
+//     double ad = sqrt(d2);
+//     if (ad < abs(r1 - r2) + eps) { // one is contained within other
+//         double temp = min(r1, r2);
+//         return pi * temp * temp;
+//     }
+//     if (ad > r1 + r2 - eps) {
+//         return 0;
+//     }
+//     // phi is what intersection points have angle with o1, similarly for o2 we have theta.
+//     double phi = acos(ad / (2 * r1)), theta = acos(ad / (2 * r2));
+//     // 2l is the distance between intersecting points
+//     double l = sqrt(r1 * r1 - (ad * ad) / 4);
+//     // required area = sector 1 + sector 2 - area of rhombus
+//     // area of rhombus = 1/2 * (2l) * (ad) = l * ad.
+//     return (r1 * r1 * phi + r2 * r2 * theta - l * ad);
+// }
+// getting the point of intersection of two circles
 void circleCircle(vec o1, double r1, vec o2, double r2) {
-    vec d=o2-o1; double d2 = norm_sq(d);
+    vec d = o2 - o1; double d2 = norm_sq(d);
     if (r1 < eps and r2 < eps and d2 < eps) {
         cout << o1 << "\n";
         return;
@@ -405,6 +419,32 @@ void circleCircle(vec o1, double r1, vec o2, double r2) {
         }
         cout << "\n";
     }
+}
+// Getting area of intersection of two circles
+double areacircleCircle(vec o1, double r1, vec o2, double r2) {
+    vec d = o2 - o1; double d2 = norm_sq(d);
+    if (r1 < eps and r2 < eps and d2 < eps) {
+        cout << o1 << "\n";
+        return;
+    }
+    if (d2 < eps and abs(r1 - r2) < eps) {
+        cout << "THE CIRCLES ARE THE SAME\n";
+        return;
+    }
+    if (d2 < eps) {
+        cout << "NO INTERSECTION\n";
+        return;
+    }
+    double ad = sqrt(d2);
+    double pd = (d2 + r1*r1 - r2*r2)/2; // = |O_1P| * d
+    double o1p = pd/ad;
+    double o2p = ad - o1p;
+    double h2 = r1*r1 - pd*pd/d2; // = hˆ2
+    double ah = sqrt (h2);
+    // phi is what intersection points have angle with o1, similarly for o2 we have theta.
+    double phi = acos (o1p / r1);
+    double theta = acos (o2p / r2);
+    return (r1 * r1 * phi + r2 * r2 * theta - ah * ad);
 }
 /* ------------------------------------------------------------------
  * ------------circle library ends ---------------------------------
@@ -521,9 +561,9 @@ void polarSort(vector<pvi> &P) { // the content of P may be reshuffled
 /* ------------------------------------------------------------------
 //-------------------------------------------------------------
 /*CH1: For non collinear points*/
-point sa, sb;
-point pivot(0, 0);
-bool angleCmp(point a, point b) { // angle-sorting function
+vec sa, sb;
+vec pivot(0, 0);
+bool angleCmp(vec a, vec b) { // angle-sorting function
    if (collinear(pivot, a, b)) // special case
        return dist(pivot, a) < dist(pivot, b); // check which one is closer
    double d1x = a.x - pivot.x, d1y = a.y - pivot.y;
@@ -531,7 +571,7 @@ bool angleCmp(point a, point b) { // angle-sorting function
    return (atan2(d1y, d1x) - atan2(d2y, d2x)) < 0; } // compare two angles
 // atan2 returns principal arc tangent of y/x in the interval [-pi, pi].
 // but since the pivot is bottommost and in case of tie, take the rightmost. That means all angles will lie in [0, pi]
-vector<point> CH1(vector<point> P) { // the content of P may be reshuffled
+vector<vec> CH1(vector<vec> P) { // the content of P may be reshuffled
    int i, j, n = (int)P.size();
    if (n <= 3) {
        if (!(P[0] == P[n-1])) P.push_back(P[0]); // safeguard from corner case
@@ -541,12 +581,12 @@ vector<point> CH1(vector<point> P) { // the content of P may be reshuffled
    for (i = 1; i < n; i++)
        if (P[i].y < P[P0].y || (P[i].y == P[P0].y && P[i].x > P[P0].x))
            P0 = i;
-   point temp = P[0]; P[0] = P[P0]; P[P0] = temp; // swap P[P0] with P[0]
+   vec temp = P[0]; P[0] = P[P0]; P[P0] = temp; // swap P[P0] with P[0]
 // second, sort points by angle w.r.t. pivot P0
    pivot = P[0]; // use this global variable as reference
    sort(++P.begin(), P.end(), angleCmp); // we do not sort P[0]
 // third, the ccw tests
-   vector<point> S;
+   vector<vec> S;
    S.push_back(P[n-1]); S.push_back(P[0]); S.push_back(P[1]); // initial S
    i = 2; // then, we check the rest
    while (i < n) { // note: N must be >= 3 for this method to work
@@ -556,10 +596,10 @@ vector<point> CH1(vector<point> P) { // the content of P may be reshuffled
    return S; } // return the result
 
 /*CH2: Will accept collinear points but all points should be distinct*/
-bool cmp(point a, point b) { // angle-sorting function
+bool cmp(vec a, vec b) { // angle-sorting function
    if (collinear(pivot, a, b)) // special case
    {
-       if (dot(toVec(sa, sb), toVec(sa, a)) < EPS) {  // dot product is <= 0 if angle b/w vectors >= 90.
+       if (dot(sb - sa, a - sa) < eps) {  // dot product is <= 0 if angle b/w vectors >= 90.
            return dist(pivot, a) > dist(pivot, b);
        }
        else
@@ -569,7 +609,7 @@ bool cmp(point a, point b) { // angle-sorting function
    double d2x = b.x - pivot.x, d2y = b.y - pivot.y;
    return (atan2(d1y, d1x) - atan2(d2y, d2x)) < 0; } // compare two angles
 
-vector<point> CH2(vector<point> P) { // the content of P may be reshuffled
+vector<vec> CH2(vector<vec> P) { // the content of P may be reshuffled
    int i, j, n = (int)P.size();
    if (n <= 3) {
        P.push_back(P[0]); // safeguard from corner case
@@ -579,7 +619,7 @@ vector<point> CH2(vector<point> P) { // the content of P may be reshuffled
    for (i = 1; i < n; i++)
        if (P[i].y < P[P0].y || (P[i].y == P[P0].y && P[i].x > P[P0].x))
            P0 = i;
-   point temp = P[0]; P[0] = P[P0]; P[P0] = temp; // swap P[P0] with P[0]
+   vec temp = P[0]; P[0] = P[P0]; P[P0] = temp; // swap P[P0] with P[0]
 // second, sort points by angle w.r.t. pivot P0
    pivot = P[0]; // use this global variable as reference
    sort(++P.begin(), P.end(), angleCmp); // we do not sort P[0]
@@ -588,7 +628,7 @@ vector<point> CH2(vector<point> P) { // the content of P may be reshuffled
 // to be continued
    // continuation from the earlier part
 // third, the ccw tests
-   vector<point> S;
+   vector<vec> S;
    S.push_back(P[n-1]); S.push_back(P[0]); S.push_back(P[1]); // initial S
    i = 2; // then, we check the rest
    while (i < n) { // note: N must be >= 3 for this method to work

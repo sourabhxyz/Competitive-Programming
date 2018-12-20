@@ -91,7 +91,7 @@
 \contentsline {subsection}{\numberline {2.12}MST (Kruskal)}{19}{subsection.2.12}
 \contentsline {subsection}{\numberline {2.13}SSSP}{19}{subsection.2.13}
 \contentsline {subsubsection}{\numberline {2.13.1}Dijkstra}{19}{subsubsection.2.13.1}
-\contentsline {subsubsection}{\numberline {2.13.2}Bellman ford}{19}{subsubsection.2.13.2}
+\contentsline {subsubsection}{\numberline {2.13.2}Bellman ford}{20}{subsubsection.2.13.2}
 \contentsline {subsection}{\numberline {2.14}Max Flow}{20}{subsection.2.14}
 \contentsline {subsubsection}{\numberline {2.14.1}Edmond karps}{20}{subsubsection.2.14.1}
 \contentsline {subsection}{\numberline {2.15}Minimum Cost Flow}{21}{subsection.2.15}
@@ -104,13 +104,13 @@
 \contentsline {subsection}{\numberline {2.19}More Problems}{22}{subsection.2.19}
 \contentsline {section}{\numberline {3}Some Basic}{22}{section.3}
 \contentsline {subsection}{\numberline {3.1}Meet in the middle}{26}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}To find subarray (continguous) with maximum average and of length k}{26}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}To find subarray (continguous) with maximum average and of length k}{27}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}To find subarray (contiguous) with maximum average and length more than \textbf {k}}{27}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Find subarray with given sum, elements are non negative}{27}{subsection.3.4}
 \contentsline {subsection}{\numberline {3.5}Largest subarray with gcd one}{28}{subsection.3.5}
 \contentsline {subsection}{\numberline {3.6}Smallest subarray with given gcd}{28}{subsection.3.6}
 \contentsline {subsection}{\numberline {3.7}LIS}{28}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}LIS of consecutive integers}{29}{subsection.3.8}
+\contentsline {subsection}{\numberline {3.8}LIS of consecutive integers}{30}{subsection.3.8}
 \contentsline {subsection}{\numberline {3.9}nth element}{30}{subsection.3.9}
 \contentsline {subsection}{\numberline {3.10}Optimal schedule of jobs given their deadlines and durations}{30}{subsection.3.10}
 \contentsline {subsection}{\numberline {3.11}Scheduling jobs on one machine}{30}{subsection.3.11}
@@ -119,7 +119,7 @@
 \contentsline {subsubsection}{\numberline {3.11.3}Identical monotone penalty function}{30}{subsubsection.3.11.3}
 \contentsline {subsubsection}{\numberline {3.11.4}Summary}{30}{subsubsection.3.11.4}
 \contentsline {subsection}{\numberline {3.12}Scheduling jobs on two machine}{30}{subsection.3.12}
-\contentsline {subsection}{\numberline {3.13}Ternary Search}{30}{subsection.3.13}
+\contentsline {subsection}{\numberline {3.13}Ternary Search}{31}{subsection.3.13}
 \contentsline {subsection}{\numberline {3.14}Submask Enumeration}{31}{subsection.3.14}
 \contentsline {subsubsection}{\numberline {3.14.1}Iterating through all masks with their submasks. Complexity $O(3^n)$}{31}{subsubsection.3.14.1}
 \contentsline {subsection}{\numberline {3.15}MOS Algorithm}{31}{subsection.3.15}
@@ -130,9 +130,9 @@
 \contentsline {section}{\numberline {5}DP}{31}{section.5}
 \contentsline {subsection}{\numberline {5.1}Coin Change}{31}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}0/1 Knapsack}{31}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Balanced Bracket Sequence}{31}{subsection.5.3}
-\contentsline {subsubsection}{\numberline {5.3.1}One type of bracket}{31}{subsubsection.5.3.1}
-\contentsline {subsubsection}{\numberline {5.3.2}MultiType}{31}{subsubsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3}Balanced Bracket Sequence}{32}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}One type of bracket}{32}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}MultiType}{32}{subsubsection.5.3.2}
 \contentsline {subsubsection}{\numberline {5.3.3}No. of balanced Sequences}{32}{subsubsection.5.3.3}
 \contentsline {subsubsection}{\numberline {5.3.4}Lexicographically next balanced sequence}{32}{subsubsection.5.3.4}
 \contentsline {subsubsection}{\numberline {5.3.5}Sequence Index}{32}{subsubsection.5.3.5}
@@ -148,8 +148,10 @@
 \contentsline {subsubsection}{\numberline {6.4.3}Counting number of occurrences of each prefix}{35}{subsubsection.6.4.3}
 \contentsline {subsection}{\numberline {6.5}Notes}{35}{subsection.6.5}
 \contentsline {subsection}{\numberline {6.6}SAM}{35}{subsection.6.6}
-\contentsline {subsection}{\numberline {6.7}Important Problems}{37}{subsection.6.7}
+\contentsline {subsection}{\numberline {6.7}Important Problems}{38}{subsection.6.7}
 \contentsline {section}{\numberline {7}Geometry}{38}{section.7}
 \contentsline {subsection}{\numberline {7.1}Fast application of a set of geometric operations to a set of points}{39}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Klee's Algo}{39}{subsection.7.2}
 \contentsline {subsection}{\numberline {7.3}Closest Pair Problem}{39}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}2D geo lib}{40}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}3D geo lib}{40}{subsection.7.5}
