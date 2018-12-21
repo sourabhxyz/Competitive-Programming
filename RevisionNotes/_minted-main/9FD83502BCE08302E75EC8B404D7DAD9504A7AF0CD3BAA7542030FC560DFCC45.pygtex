@@ -1,43 +1,97 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/* A simple program to print subarray with sum as given sum */}
-\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
-
-\PYG{c+cm}{/* Returns true if the there is a subarray of arr[] with sum equal to \PYGZsq{}sum\PYGZsq{}}
-\PYG{c+cm}{   otherwise returns false.  Also, prints the result */}
-\PYG{k+kt}{int} \PYG{n+nf}{subArraySum}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{sum}\PYG{p}{)}
+\PYG{c+c1}{// Returns size of smallest subarray of arr[0..n\PYGZhy{}1]}
+\PYG{c+c1}{// with GCD equal to k.}
+\PYG{k+kt}{int} \PYG{n+nf}{findSmallestSubarr}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{k}\PYG{p}{)}
 \PYG{p}{\PYGZob{}}
-    \PYG{k+kt}{int} \PYG{n}{curr\PYGZus{}sum}\PYG{p}{,} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{;}
+    \PYG{c+c1}{// To check if a multiple of k exists.}
+    \PYG{k+kt}{bool} \PYG{n}{found} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
 
-    \PYG{c+c1}{// Pick a starting point}
-    \PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+    \PYG{c+c1}{// Find if k or its multiple is present}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
     \PYG{p}{\PYGZob{}}
-        \PYG{n}{curr\PYGZus{}sum} \PYG{o}{=} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+        \PYG{c+c1}{// If k is present, then subarray size is 1.}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{k}\PYG{p}{)}
+            \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
 
-        \PYG{c+c1}{// try all subarrays starting with \PYGZsq{}i\PYGZsq{}}
-        \PYG{k}{for} \PYG{p}{(}\PYG{n}{j} \PYG{o}{=} \PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
-        \PYG{p}{\PYGZob{}}
-            \PYG{k}{if} \PYG{p}{(}\PYG{n}{curr\PYGZus{}sum} \PYG{o}{==} \PYG{n}{sum}\PYG{p}{)}
-            \PYG{p}{\PYGZob{}}
-                \PYG{n}{printf} \PYG{p}{(}\PYG{l+s}{\PYGZdq{}Sum found between indexes \PYGZpc{}d and \PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
-                \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
-            \PYG{p}{\PYGZcb{}}
-            \PYG{k}{if} \PYG{p}{(}\PYG{n}{curr\PYGZus{}sum} \PYG{o}{\PYGZgt{}} \PYG{n}{sum} \PYG{o}{||} \PYG{n}{j} \PYG{o}{==} \PYG{n}{n}\PYG{p}{)}
-                \PYG{k}{break}\PYG{p}{;}
-           \PYG{n}{curr\PYGZus{}sum} \PYG{o}{=} \PYG{n}{curr\PYGZus{}sum} \PYG{o}{+} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
-        \PYG{p}{\PYGZcb{}}
+        \PYG{c+c1}{// Break the loop to indicate presence of a}
+        \PYG{c+c1}{// multiple of k.}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZpc{}} \PYG{n}{k} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)}
+            \PYG{n}{found} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
-    \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}No subarray found\PYGZdq{}}\PYG{p}{);}
-    \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// If there was no multiple of k in arr[], then}
+    \PYG{c+c1}{// we can\PYGZsq{}t get k as GCD.}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{found} \PYG{o}{==} \PYG{n+nb}{false}\PYG{p}{)}
+        \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
 
-\PYG{c+c1}{// Driver program to test above function}
-\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
-\PYG{p}{\PYGZob{}}
-    \PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{15}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{23}\PYG{p}{\PYGZcb{};}
-    \PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)}\PYG{o}{/}\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);}
-    \PYG{k+kt}{int} \PYG{n}{sum} \PYG{o}{=} \PYG{l+m+mi}{23}\PYG{p}{;}
-    \PYG{n}{subArraySum}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{n}{sum}\PYG{p}{);}
-    \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{c+c1}{// If there is a multiple of k in arr[], build}
+    \PYG{c+c1}{// segment tree from given array}
+    \PYG{n}{constructSegmentTree}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
+
+    \PYG{c+c1}{// Initialize result}
+    \PYG{k+kt}{int} \PYG{n}{res} \PYG{o}{=} \PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+
+    \PYG{c+c1}{// Now consider every element as starting point}
+    \PYG{c+c1}{// and search for ending point using Binary Search}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{c+c1}{// a[i] cannot be a starting point, if it is}
+        \PYG{c+c1}{// not a multiple of k.}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZpc{}} \PYG{n}{k} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{)}
+            \PYG{k}{continue}\PYG{p}{;}
+
+        \PYG{c+c1}{// Initialize indexes for binary search of closest}
+        \PYG{c+c1}{// ending point to i with GCD of subarray as k.}
+        \PYG{k+kt}{int} \PYG{n}{low} \PYG{o}{=} \PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{k+kt}{int} \PYG{n}{high} \PYG{o}{=} \PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+
+        \PYG{c+c1}{// Initialize closest ending point for i.}
+        \PYG{k+kt}{int} \PYG{n}{closest} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+        \PYG{c+c1}{// Binary Search for closest ending point}
+        \PYG{c+c1}{// with GCD equal to k.}
+        \PYG{k}{while} \PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{c+c1}{// Find middle point and GCD of subarray}
+            \PYG{c+c1}{// arr[i..mid]}
+            \PYG{k+kt}{int} \PYG{n}{mid} \PYG{o}{=} \PYG{n}{low} \PYG{o}{+} \PYG{p}{(}\PYG{n}{high}\PYG{o}{\PYGZhy{}}\PYG{n}{low}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;}
+            \PYG{k+kt}{int} \PYG{n}{gcd} \PYG{o}{=} \PYG{n}{findRangeGcd}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{n}{mid}\PYG{p}{,} \PYG{n}{arr}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
+
+            \PYG{c+c1}{// If GCD is more than k, look further}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{gcd} \PYG{o}{\PYGZgt{}} \PYG{n}{k}\PYG{p}{)}
+                \PYG{n}{low} \PYG{o}{=} \PYG{n}{mid}\PYG{p}{;}
+
+            \PYG{c+c1}{// If GCD is k, store this point and look for}
+            \PYG{c+c1}{// a closer point}
+            \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{gcd} \PYG{o}{==} \PYG{n}{k}\PYG{p}{)}
+            \PYG{p}{\PYGZob{}}
+                \PYG{n}{high} \PYG{o}{=} \PYG{n}{mid}\PYG{p}{;}
+                \PYG{n}{closest} \PYG{o}{=} \PYG{n}{mid}\PYG{p}{;}
+                \PYG{k}{break}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+
+            \PYG{c+c1}{// If GCD is less than, look closer}
+            \PYG{k}{else}
+                \PYG{n}{high} \PYG{o}{=} \PYG{n}{mid}\PYG{p}{;}
+
+            \PYG{c+c1}{// If termination condition reached, set}
+            \PYG{c+c1}{// closest}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{high}\PYG{o}{\PYGZhy{}}\PYG{n}{low}\PYG{p}{)} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{1}\PYG{p}{)}
+            \PYG{p}{\PYGZob{}}
+                \PYG{k}{if} \PYG{p}{(}\PYG{n}{findRangeGcd}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{n}{low}\PYG{p}{,} \PYG{n}{arr}\PYG{p}{,} \PYG{n}{n}\PYG{p}{)} \PYG{o}{==} \PYG{n}{k}\PYG{p}{)}
+                    \PYG{n}{closest} \PYG{o}{=} \PYG{n}{low}\PYG{p}{;}
+                \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{findRangeGcd}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{n}{high}\PYG{p}{,} \PYG{n}{arr}\PYG{p}{,} \PYG{n}{n}\PYG{p}{)}\PYG{o}{==}\PYG{n}{k}\PYG{p}{)}
+                    \PYG{n}{closest} \PYG{o}{=} \PYG{n}{high}\PYG{p}{;}
+                \PYG{k}{break}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{closest} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{)}
+            \PYG{n}{res} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{res}\PYG{p}{,} \PYG{n}{closest} \PYG{o}{\PYGZhy{}} \PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// If res was not changed by loop, return \PYGZhy{}1,}
+    \PYG{c+c1}{// else return its value.}
+    \PYG{k}{return} \PYG{p}{(}\PYG{n}{res} \PYG{o}{==} \PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{?} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{:} \PYG{n}{res}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}

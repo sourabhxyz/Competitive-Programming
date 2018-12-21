@@ -1490,6 +1490,11 @@ double simpson_integration(double a, double b){
     return s;
 }
 \end{minted}
+\subsection{Continued Fractions}
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{confr}
+\\\href{https://uva.onlinejudge.org/external/8/834.pdf}{UVA 834}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_834.cpp}{Sol}
+\subsection{Pells eqn}
+
 \subsection{Side Notes}
 \begin{enumerate}
     \item relatively prime is same as coprime.
@@ -2647,6 +2652,8 @@ We will divide the tree into vertex-disjoint chains ( Meaning no two chains has 
 \end{itemize}
 \section{Some Basic}
 \begin{itemize}
+    \item To save memory dont use c++ things like string, vector, map, etc.
+    \item Doing cout five million times is far worse than storing the results in array and doing cout only once.
     \item 
 \begin{minted}{cpp}
 #pragma GCC optimize("Ofast")  // tells the compiler to optimize the code for speed to make it as fast as possible (and not look for space)
@@ -3965,7 +3972,7 @@ To calculate this number, note that the sum above is equal to the expansion of $
 \subsection{MOS Algorithm}
 Just read \href{https://blog.anudeep2011.com/mos-algorithm/}{this}. \href{https://codeforces.com/contest/86/problem/D}{Powerful Array}, \href{https://codeforces.com/contest/86/submission/39212866}{Sol}
 \subsection{MOS Algorithm with updates}
-Personally, I think HLD should be enough.
+For now survive with HLD.
 \subsection{Important Problems}
 \begin{itemize}
     \item \href{https://codeforces.com/contest/981/problem/D}{BookShelves}, \href{https://codeforces.com/contest/981/submission/38660572}{Sol}
@@ -4159,7 +4166,7 @@ First, we start with only one bracket type.
 
 We will iterate over the characters in the string we want to generate. As in the previous problem we store a counter $\text{depth}$, the current nesting depth. In each position we have to decide if we use an opening of a closing bracket. To put an opening bracket character, it $d[2n - i - 1][\text{depth}+1] \ge k$. We increment the counter $\text{depth}$, and move on to the next character. Otherwise we decrement $k$ by $d[2n - i - 1][\text{depth}+1]$, put a closing bracket and move on.
 \begin{minted}{cpp}
-	string kth_balanced(int n, int k) {
+string kth_balanced(int n, int k) {
     vector<vector<int>> d(2*n+1, vector<int>(n+1, 0));
     d[0][0] = 1;
     for (int i = 1; i <= 2*n; i++) {
@@ -4422,6 +4429,7 @@ A suffix automaton for a given string s is a minimal DFA that accepts all the su
 	\item One of the states $t_0$ is the initial state
 	\item All transitions originating from a state must have different labels
 	\item One or multiple states are marked as terminal states. If we start from the initial state $t_0$ and move along transitions to a terminal state, then the labels of the passed transitions must spell one of the suffixes of the string s. Each of the suffixes of s must be spellable using a path from $t_0$ to a terminal state.
+    \item Note that terminal states can also have outgoing arrows.
 \end{itemize}
 Consider any non-empty substring t of the string s. We will denote with endpos(t) the set of all positions in the string s, in which the occurrences of t end. For instance, we have endpos("bc")= \{2,4\} for the string "abcbc".\\
 We will call two substrings t1 and t2 endpos-equivalent, if their ending sets coincide i.e. endpos(t1) = endpos(t2). Thus all non-empty substrings of the string s can be decomposed into several equivalence classes according to their sets endpos.\\
@@ -4429,10 +4437,10 @@ It turns out, that in a suffix machine endpos-equivalent substrings correspond t
 Lemma 1: Two non-empty substrings u and w (with length(u) ≤ length(w)) are endpos-equivalent, if and only if the string u occurs in s only in the form of a suffix of w. (Proof is obvious)\\
 Lemma 2: Consider two non-empty substrings u and w (with length(u) ≤ length(w)). Then their sets endpos either don't intersect at all, or endpos(w) is a subset of endpos(u). And it depends on if u is a suffix of w or not. (Proof is obvious)\\
 Lemma 3: Consider an endpos-equivalence class. Sort all the substrings in this class by non-increasing length. Then in the resulting sequence each substring will be one shorter than the previous one, and at the same time will be a suffix of the previous one. In other words the substrings in the same equivalence class are actually each others suffixes, and take all possible lengths in a certain interval [x;y].\\
-Consider some state v ≠ $t_0$ in the automaton. As we know, the state v corresponds to the class of strings with the same endpos values. And if we denote by w the longest of these strings, then all the other strings are suffixes of w. \textbf{suffix link} \textit{link(v)} leads to the state that corresponds to the longest suffix of w that is another endpos-equivalent class.\\
+Consider some state $v \neq t_0$ in the automaton. As we know, the state v corresponds to the class of strings with the same endpos values. And if we denote by w the longest of these strings, then all the other strings are suffixes of w. \textbf{suffix link} \textit{link(v)} leads to the state that corresponds to the longest suffix of w that is another endpos-equivalent class.\\
 Lemma 4: Suffix links form a tree with the root $t_0$.\\
 Lemma 5: If we build a endpos tree from all the existing sets (according to the principle “the set-parent contains as subsets of all its children”), then it will coincide in structure with the tree of suffix references. \textbf{Note: }$endpos(t_0) = \{-1, 0, \dots, length(s)-1\}$\\
-Note: For each state v one or multiple substrings match. We denote by longest(v) the longest such string, and through len(v) its length. We denote by shortest(v) the shortest such substring, and its length with minlen(v). Then all the strings corresponding to this state are different suffixes of the string longest(v) and have all possible lengths in the interval [minlength(v);len(v)]. For each state v ≠ $t_0$ a suffix link is defined as a link, that leads to a state that corresponds to the suffix of the string longest(v) of length $minlen(v) − 1$. minlen(v) = len(link(v))+1 \\
+Note: For each state v one or multiple substrings match. We denote by longest(v) the longest such string, and through len(v) its length. We denote by shortest(v) the shortest such substring, and its length with minlen(v). Then all the strings corresponding to this state are different suffixes of the string longest(v) and have all possible lengths in the interval [minlength(v);len(v)]. For each state $v \neq t_0$ a suffix link is defined as a link, that leads to a state that corresponds to the suffix of the string longest(v) of length $minlen(v) − 1$. minlen(v) = len(link(v))+1 \\
 Number of states in suffix automaton of the string s of length n doesn't exceed $2n - 1$ (for n $\geq$ 2)\\
 Number of transitions $\leq 3n - 4$.
 \begin{minted}{cpp}
@@ -4487,9 +4495,9 @@ void sa_extend (char c) {
         st[p].next[c] = cur;
     if (p == -1) // In case we came to the root, every non-empty suffix of string sc is accepted by state cur hence we can make link(cur) = t0 and finish our work on this step.
         st[cur].link = 0;
-    else {  // Otherwise we found such state q`, which already has transition by character c. It means that all suffixes of length ≤ len(q`) + 1 are already accepted by some state in automaton hence we don’t need to add transitions to state new anymore. But we also have to calculate suffix link for state new.
+    else {  // Otherwise we found such state p, which already has transition by character c. It means that all suffixes of length ≤ len(p) + 1 are already accepted by some state in automaton hence we don’t need to add transitions to state cur anymore. But we also have to calculate suffix link for state cur.
         int q = st[p].next[c];
-        if (st[p].len + 1 == st[q].len)  // The largest string accepted by this state will be suffix of sc of length len(q`) + 1. It is accepted by state t at the moment, in which there is transition by character c from state q`. But state t can also accept strings of bigger length. So, if len(t) = len(q`) + 1, then t is the suffix link we are looking for. We make link(cur) = t and finish algorithm.
+        if (st[p].len + 1 == st[q].len)  // The largest string accepted by this state will be suffix of sc of length len(p) + 1. It is accepted by state q at the moment, in which there is transition by character c from state p. But state q can also accept strings of bigger length. So, if len(q) = len(p) + 1, then q is the suffix link we are looking for. We make link(cur) = q and finish algorithm.
             st[cur].link = q;
         else {
             int clone = sz++;
@@ -4507,7 +4515,7 @@ void sa_extend (char c) {
     }
     last = cur;
 }
-// A state v will correspond to set of endpos equivalent strings, cnt[v] will give the number of occurences of such strings
+// A state v will correspond to set of endpos equivalent strings, cnt[v] will give the number of occurences of such strings. And is equal to size of endpos of state v.
 void processcnt() {
     int maxlen = st[last].len;
     for(int i = maxlen; i >= 0; i--) {
@@ -4566,6 +4574,7 @@ bool exist(string &tosearch) {
 
 // Returns number of different substrings = number of paths in DAG. And number of paths is clearly not a function of number of states in DAG.
 // d[v] = 1 + summation (d[w])
+// this same recurrence will give the size of subtree in case of a tree.
 int numdiffsub(int at) {
     if(d[at] != 0) return d[at];
     d[at] = 1;
@@ -4761,9 +4770,10 @@ int main() {
 \textit{Review: cf 631D}
 \begin{itemize}
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10739.cpp}{UVA 10739 Sol}, \href {https://uva.onlinejudge.org/external/107/10739.pdf}{UVA 10739 Prob}: String to palindrome, just see the minimum edit distance between this string and its reverse but need to divide by 2 later as both strings are it itself.	
-	\item \href {https://codeforces.com/contest/245/problem/H}{Queries for the number of palindromic substrings within given range}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/514C%20-%20Watto%20And%20Mechanism.cpp}{\textbf {See this soln to see power of hashing.}}: \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{palsub} 	
+	\item \href {https://codeforces.com/contest/245/problem/H}{Queries for the number of palindromic substrings within given range}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/245H%20-%20Queries%20for%20Number%20of%20Palindromes.cpp}{\textbf {See this soln to see power of hashing.}}: 
+    \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{palsub} 	
+    \\\href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/514C%20-%20Watto%20And%20Mechanism.cpp}{One more problem to see how to use hashing.}
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - simple}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - complicated but more powerful}: Problem is to find the longest substring shared by more than half of given strings.	
-	\item \href {https://gist.github.com/sourabh2311/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
 \end{itemize}
 \section{Geometry}
 \begin{itemize}
@@ -4950,11 +4960,13 @@ double dvac(int low, int high) {
 
 \end{minted}
 \subsection{2D geo lib}
-Circle line intersection, same as sphere line intersection.\\
+\href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/2dgeoLib.cpp}{2D geo lib}
+\\Circle line intersection, same as sphere line intersection.\\
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{circleline}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{circlecircle}
 \subsection{3D geo lib}
-\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{facearea}
+\href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/3dgeoLib.cpp}{3D Geo Lib}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{facearea}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sph}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{segsegcir}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{segsegcir2}

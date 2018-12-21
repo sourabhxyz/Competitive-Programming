@@ -50,9 +50,9 @@
         \PYG{n}{st}\PYG{p}{[}\PYG{n}{p}\PYG{p}{].}\PYG{n}{next}\PYG{p}{[}\PYG{n}{c}\PYG{p}{]} \PYG{o}{=} \PYG{n}{cur}\PYG{p}{;}
     \PYG{k}{if} \PYG{p}{(}\PYG{n}{p} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{c+c1}{// In case we came to the root, every non\PYGZhy{}empty suffix of string sc is accepted by state cur hence we can make link(cur) = t0 and finish our work on this step.}
         \PYG{n}{st}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{link} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
-    \PYG{k}{else} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// Otherwise we found such state q`, which already has transition by character c. It means that all suffixes of length ≤ len(q`) + 1 are already accepted by some state in automaton hence we don’t need to add transitions to state new anymore. But we also have to calculate suffix link for state new.}
+    \PYG{k}{else} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// Otherwise we found such state p, which already has transition by character c. It means that all suffixes of length ≤ len(p) + 1 are already accepted by some state in automaton hence we don’t need to add transitions to state cur anymore. But we also have to calculate suffix link for state cur.}
         \PYG{k+kt}{int} \PYG{n}{q} \PYG{o}{=} \PYG{n}{st}\PYG{p}{[}\PYG{n}{p}\PYG{p}{].}\PYG{n}{next}\PYG{p}{[}\PYG{n}{c}\PYG{p}{];}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{st}\PYG{p}{[}\PYG{n}{p}\PYG{p}{].}\PYG{n}{len} \PYG{o}{+} \PYG{l+m+mi}{1} \PYG{o}{==} \PYG{n}{st}\PYG{p}{[}\PYG{n}{q}\PYG{p}{].}\PYG{n}{len}\PYG{p}{)}  \PYG{c+c1}{// The largest string accepted by this state will be suffix of sc of length len(q`) + 1. It is accepted by state t at the moment, in which there is transition by character c from state q`. But state t can also accept strings of bigger length. So, if len(t) = len(q`) + 1, then t is the suffix link we are looking for. We make link(cur) = t and finish algorithm.}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{st}\PYG{p}{[}\PYG{n}{p}\PYG{p}{].}\PYG{n}{len} \PYG{o}{+} \PYG{l+m+mi}{1} \PYG{o}{==} \PYG{n}{st}\PYG{p}{[}\PYG{n}{q}\PYG{p}{].}\PYG{n}{len}\PYG{p}{)}  \PYG{c+c1}{// The largest string accepted by this state will be suffix of sc of length len(p) + 1. It is accepted by state q at the moment, in which there is transition by character c from state p. But state q can also accept strings of bigger length. So, if len(q) = len(p) + 1, then q is the suffix link we are looking for. We make link(cur) = q and finish algorithm.}
             \PYG{n}{st}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{].}\PYG{n}{link} \PYG{o}{=} \PYG{n}{q}\PYG{p}{;}
         \PYG{k}{else} \PYG{p}{\PYGZob{}}
             \PYG{k+kt}{int} \PYG{n}{clone} \PYG{o}{=} \PYG{n}{sz}\PYG{o}{++}\PYG{p}{;}
@@ -70,7 +70,7 @@
     \PYG{p}{\PYGZcb{}}
     \PYG{n}{last} \PYG{o}{=} \PYG{n}{cur}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
-\PYG{c+c1}{// A state v will correspond to set of endpos equivalent strings, cnt[v] will give the number of occurences of such strings}
+\PYG{c+c1}{// A state v will correspond to set of endpos equivalent strings, cnt[v] will give the number of occurences of such strings. And is equal to size of endpos of state v.}
 \PYG{k+kt}{void} \PYG{n+nf}{processcnt}\PYG{p}{()} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{maxlen} \PYG{o}{=} \PYG{n}{st}\PYG{p}{[}\PYG{n}{last}\PYG{p}{].}\PYG{n}{len}\PYG{p}{;}
     \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{maxlen}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
@@ -129,6 +129,7 @@
 
 \PYG{c+c1}{// Returns number of different substrings = number of paths in DAG. And number of paths is clearly not a function of number of states in DAG.}
 \PYG{c+c1}{// d[v] = 1 + summation (d[w])}
+\PYG{c+c1}{// this same recurrence will give the size of subtree in case of a tree.}
 \PYG{k+kt}{int} \PYG{n+nf}{numdiffsub}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{at}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k}{if}\PYG{p}{(}\PYG{n}{d}\PYG{p}{[}\PYG{n}{at}\PYG{p}{]} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{return} \PYG{n}{d}\PYG{p}{[}\PYG{n}{at}\PYG{p}{];}
     \PYG{n}{d}\PYG{p}{[}\PYG{n}{at}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}

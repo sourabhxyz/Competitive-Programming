@@ -13,8 +13,8 @@ void print(vector<itn> &ans) {
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-     freopen("inc.txt", "r", stdin);
-     freopen("outc.txt", "w", stdout);
+    freopen("inc.txt", "r", stdin);
+    freopen("outc.txt", "w", stdout);
     int n, d;
     while (cin >> n >> d) {
         vector<int> ans;
@@ -32,6 +32,7 @@ int main() {
         while (n != 1) {
             int q = n / d;
             int r = n % d;
+            // in c++ when we divide negative no. with positive no. both quotient and rem are -ve.
             if (n < 0) {
                 q--;
                 r = r + d;
