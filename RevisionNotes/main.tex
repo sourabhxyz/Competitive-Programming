@@ -2653,6 +2653,7 @@ We will divide the tree into vertex-disjoint chains ( Meaning no two chains has 
 \section{Some Basic}
 \begin{itemize}
     \item To save memory dont use c++ things like string, vector, map, etc.
+    \item In case of vector, string its better to reserve some size before hand as otherwise size gets incremented by a factor of 2.
     \item Doing cout five million times is far worse than storing the results in array and doing cout only once.
     \item 
 \begin{minted}{cpp}
@@ -3989,6 +3990,54 @@ For now survive with HLD.
     \item \href{https://codeforces.com/problemset/problem/981/E}{Addition on Segments}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/Problem%20-%20E%20Addition%20On%20Segments_sol_tourist.cpp}{sol}
     \item \href {https://codeforces.com/contest/916/problem/D}{Jamie and to do list}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/D.cpp}{Sol}: Just basic application of Persistent segment tree. When updating some element, at most O(logn) nodes in the segment tree get changed: the nodes along the path from root to the updated leaf. For each timepoint, instead of creating a copy of the entire segment tree, copy only nodes on the path to be updated and update them. Therefore total storage is O(n + t\*logn).
 \end{itemize}
+\begin{minted}{cpp}
+/* Basic Segment Tree */
+struct segmentTree {
+    struct seg {
+        int val;
+        seg () { val = 0; }
+    };
+    vector<seg> st;
+    segmentTree () {
+    }
+    segmentTree (int n) {
+        st.resize (4 * n);
+    }
+    int left(int at) { return at << 1; }
+    int right(int at) {return at << 1 | 1; }
+    void build (int at, int start, int end) {
+        if (start == end) {
+            st[at].val = s[start] - 'a' + 1;
+        } else {
+            int mid = (start + end) >> 1;
+            build (left (at), start, mid);
+            build (right (at), mid + 1, end);
+            st[at].val = add<int> (st[left(at)].val, mul<int> (st[right (at)].val, pow1[mid - start + 1]));
+        }
+    }
+    void update(int at, int start, int end, int l, int r, char c) {
+        if(r < start || end < l || start > end) return;
+        if(start == end) {
+            st[at].val = c - 'a' + 1;
+            return;
+        }
+        int mid = (start + end) >> 1;
+        update(left(at), start, mid, l, r, c);
+        update(right(at), mid + 1, end, l, r, c);
+        st[at].val = add<int> (st[left(at)].val, mul<int> (st[right (at)].val, pow1[mid - start + 1]));
+    }
+    pair<int, ii> query(int at, int start, int end, int l, int r) {
+        if (start >= l and end <= r) return make_pair (st[at].val, ii (start, end));
+        int mid = (start + end) >> 1;
+        if (r <= mid) return query (left (at), start, mid, l, r);
+        else if (l > mid) return query (right (at), mid + 1, end, l, r);
+        auto lf = query(left(at), start, mid, l, r);
+        auto ri = query(right(at), mid + 1, end, l, r);
+        int ret = add<int> (lf.first, mul<int> (ri.first, pow1[lf.second.second - lf.second.first + 1]));
+        return make_pair(ret, ii(lf.second.first, ri.second.second));
+    }
+};
+\end{minted}
 \section{DP}
 Following are the two main properties of a problem that suggests that the given problem can be solved using Dynamic programming.
 \begin{enumerate}
@@ -4045,7 +4094,7 @@ void solve() {
    }
    res = dp[V];
 }
-/*Minimum no. of coins/bills given to fullfill an amount >= x when each coin/bill can be used only once*/
+/*Minimum no. of coins/bills given to fullfill an amount >= x when each coin/bill can be used only once. This could have been easily done using bitset like that addition on segment question*/
 void solve() {
    int dp [10000 + 10];
    for ( int i = 0; i < 10010; i++ )
@@ -4108,9 +4157,9 @@ void printSol () {
 \subsection{Balanced Bracket Sequence}
 A Balanced bracket sequence is a string consisting of only brackets, such that this sequence, when certain numbers and $+$ is inserted gives a valid mathematical expression.
 \subsubsection{One type of bracket}
-Let depth be the current no. of open brackets, initially depth $= 0$. We iterate over all character of the string; if the current bracket character is an opening bracket then we increment depth, o/w we decrement it. I f at any time the variable depth gets negative, or at the end it is different from 0, then the string is not a balanced sequence otherwise it is.
+Let depth be the current no. of open brackets, initially depth $= 0$. We iterate over all character of the string; if the current bracket character is an opening bracket then we increment depth, o/w we decrement it. If at any time the variable depth gets negative, or at the end it is different from 0, then the string is not a balanced sequence otherwise it is.
 \subsubsection{MultiType}
-Maintain a stack, in chich we will store all opening brackets that we meet. If the current bracket character is an opening one, we put it onto the stack. If it is a closing one, then we check if the stack is non empty, and if the top element is of the same type as the current closing bracket, if both conditions are fulfilled, then we remove the opening bracker from the stack. If at any time one of the ocnditions is not fulfilled or at the end the stack is non empty, then the string is not balanced otherwise it is.
+Maintain a stack, in which we will store all opening brackets that we meet. If the current bracket character is an opening one, we put it onto the stack. If it is a closing one, then we check if the stack is non empty, and if the top element is of the same type as the current closing bracket, if both conditions are fulfilled, then we remove the opening bracker from the stack. If at any time one of the conditions is not fulfilled or at the end the stack is non empty, then the string is not balanced otherwise it is.
 \subsubsection{No. of balanced Sequences}
 The number of balanced bracket sequences with only one bracket type can be calculated using the Catalan numbers. The number of balanced bracket sequences of length $2n$ ($n$ pairs of brackets) is: $$\frac{1}{n+1} \binom{2n}{n}$$
 
@@ -4164,7 +4213,7 @@ As in the previous section we compute the auxiliary array $d[i][j]$, the number 
 
 First, we start with only one bracket type.
 
-We will iterate over the characters in the string we want to generate. As in the previous problem we store a counter $\text{depth}$, the current nesting depth. In each position we have to decide if we use an opening of a closing bracket. To put an opening bracket character, it $d[2n - i - 1][\text{depth}+1] \ge k$. We increment the counter $\text{depth}$, and move on to the next character. Otherwise we decrement $k$ by $d[2n - i - 1][\text{depth}+1]$, put a closing bracket and move on.
+We will iterate over the characters in the string we want to generate. As in the previous problem we store a counter $\text{depth}$, the current nesting depth. In each position we have to decide if we use an opening of a closing bracket. To put an opening bracket character, if $d[2n - i - 1][\text{depth}+1] \ge k$. We increment the counter $\text{depth}$, and move on to the next character. Otherwise we decrement $k$ by $d[2n - i - 1][\text{depth}+1]$, put a closing bracket and move on.
 \begin{minted}{cpp}
 string kth_balanced(int n, int k) {
     vector<vector<int>> d(2*n+1, vector<int>(n+1, 0));
@@ -4773,6 +4822,7 @@ int main() {
 	\item \href {https://codeforces.com/contest/245/problem/H}{Queries for the number of palindromic substrings within given range}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/245H%20-%20Queries%20for%20Number%20of%20Palindromes.cpp}{\textbf {See this soln to see power of hashing.}}: 
     \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{palsub} 	
     \\\href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/514C%20-%20Watto%20And%20Mechanism.cpp}{One more problem to see how to use hashing.}
+    \item \href{http://acm.timus.ru/problem.aspx?space=1&num=1989}{Timus 1989 Subpalindromes}, \href{}{Sol}
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - simple}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - complicated but more powerful}: Problem is to find the longest substring shared by more than half of given strings.	
 \end{itemize}
 \section{Geometry}
