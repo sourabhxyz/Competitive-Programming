@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.8)  22 DEC 2018 16:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.12.8)  22 DEC 2018 16:40
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1583,11 +1583,8 @@ Overfull \hbox (22.00151pt too wide) in paragraph at lines 4822--4825
 [] 
  []
 
-
-Package hyperref Warning: Suppressing link with empty target on input line 4825.
-
 [38 <./palsub.PNG>]
-<triangle.png, id=1278, 751.00575pt x 458.31226pt>
+<triangle.png, id=1279, 751.00575pt x 458.31226pt>
 File: triangle.png Graphic file (type png)
 <use triangle.png>
 Package pdftex.def Info: triangle.png  used on input line 4831.
@@ -1617,7 +1614,7 @@ Overfull \hbox (21.99702pt too wide) in paragraph at lines 4831--4832
 [] 
  []
 
-<basiccircle.png, id=1279, 457.71pt x 482.55281pt>
+<basiccircle.png, id=1280, 457.71pt x 482.55281pt>
 File: basiccircle.png Graphic file (type png)
 <use basiccircle.png>
 Package pdftex.def Info: basiccircle.png  used on input line 4834.
@@ -1641,7 +1638,7 @@ Overfull \hbox (19.47458pt too wide) detected at line 4898
 \OML/cmm/m/it/8 A \OT1/cmr/m/n/8 = 1\OML/cmm/m/it/8 =\OT1/cmr/m/n/8 2 [] = 1\OML/cmm/m/it/8 =\OT1/cmr/m/n/8 2 \OMS/cmsy/m/n/8 ^^C \OT1/cmr/m/n/8 ((\OML/cmm/m/it/8 x[] \OMS/cmsy/m/n/8 ^^C \OML/cmm/m/it/8 y[] \OT1/cmr/m/n/8 + \OML/cmm/m/it/8 x[] \OMS/cmsy/m/n/8 ^^C \OML/cmm/m/it/8 y[] \OT1/cmr/m/n/8 + [] + \OML/cmm/m/it/8 x[] \OMS/cmsy/m/n/8 ^^C \OML/cmm/m/it/8 y[]\OT1/cmr/m/n/8 ) \OMS/cmsy/m/n/8 ^^@ \OT1/cmr/m/n/8 (\OML/cmm/m/it/8 x[] \OMS/cmsy/m/n/8 ^^C \OML/cmm/m/it/8 y[] [] \OT1/cmr/m/n/8 )
  []
 
-<p1.png, id=1280, 917.829pt x 228.25275pt>
+<p1.png, id=1281, 917.829pt x 228.25275pt>
 File: p1.png Graphic file (type png)
 <use p1.png>
 Package pdftex.def Info: p1.png  used on input line 4899.
@@ -1655,7 +1652,7 @@ Overfull \hbox (22.00363pt too wide) in paragraph at lines 4899--4900
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [39 <./triangle.PNG> <./basiccircle.png>]
-<p2.png, id=1288, 916.6245pt x 238.491pt>
+<p2.png, id=1289, 916.6245pt x 238.491pt>
 File: p2.png Graphic file (type png)
 <use p2.png>
 Package pdftex.def Info: p2.png  used on input line 4900.
@@ -1671,12 +1668,12 @@ Overfull \hbox (22.00508pt too wide) in paragraph at lines 4900--4901
 \openout3 = `main.pyg'.
 
  (./_minted-main/C46A809E22A2BA11EFDBC4387F260E39504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<circleline.png, id=1294, 208.3785pt x 266.1945pt>
+<circleline.png, id=1295, 208.3785pt x 266.1945pt>
 File: circleline.png Graphic file (type png)
 <use circleline.png>
 Package pdftex.def Info: circleline.png  used on input line 5015.
 (pdftex.def)             Requested size: 275.99525pt x 352.57199pt.
-<circlecircle.png, id=1295, 587.796pt x 572.1375pt>
+<circlecircle.png, id=1296, 587.796pt x 572.1375pt>
 File: circlecircle.png Graphic file (type png)
 <use circlecircle.png>
 Package pdftex.def Info: circlecircle.png  used on input line 5016.
@@ -1695,37 +1692,37 @@ Overfull \hbox (5.00343pt too wide) in paragraph at lines 5013--5017
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [40 <./p1.PNG> <./p2.PNG>]
-<facearea.png, id=1304, 508.90125pt x 486.618pt>
+<facearea.png, id=1305, 508.90125pt x 486.618pt>
 File: facearea.png Graphic file (type png)
 <use facearea.png>
 Package pdftex.def Info: facearea.png  used on input line 5019.
 (pdftex.def)             Requested size: 275.99843pt x 263.91328pt.
-<sph.png, id=1305, 728.12025pt x 381.22424pt>
+<sph.png, id=1306, 728.12025pt x 381.22424pt>
 File: sph.png Graphic file (type png)
 <use sph.png>
 Package pdftex.def Info: sph.png  used on input line 5020.
 (pdftex.def)             Requested size: 275.99974pt x 144.50606pt.
-<segsegcir.png, id=1306, 590.80725pt x 648.021pt>
+<segsegcir.png, id=1307, 590.80725pt x 648.021pt>
 File: segsegcir.png Graphic file (type png)
 <use segsegcir.png>
 Package pdftex.def Info: segsegcir.png  used on input line 5021.
 (pdftex.def)             Requested size: 276.00266pt x 302.73074pt.
-<segsegcir2.png, id=1307, 611.886pt x 628.14674pt>
+<segsegcir2.png, id=1308, 611.886pt x 628.14674pt>
 File: segsegcir2.png Graphic file (type png)
 <use segsegcir2.png>
 Package pdftex.def Info: segsegcir2.png  used on input line 5022.
 (pdftex.def)             Requested size: 275.99037pt x 283.32477pt.
-<segsegcir3.png, id=1308, 588.39825pt x 615.4995pt>
+<segsegcir3.png, id=1309, 588.39825pt x 615.4995pt>
 File: segsegcir3.png Graphic file (type png)
 <use segsegcir3.png>
 Package pdftex.def Info: segsegcir3.png  used on input line 5023.
 (pdftex.def)             Requested size: 275.99954pt x 288.7119pt.
-<orientedangle.png, id=1309, 722.7pt x 396.2805pt>
+<orientedangle.png, id=1310, 722.7pt x 396.2805pt>
 File: orientedangle.png Graphic file (type png)
 <use orientedangle.png>
 Package pdftex.def Info: orientedangle.png  used on input line 5024.
 (pdftex.def)             Requested size: 275.98523pt x 151.3319pt.
-<spherearea.png, id=1310, 720.89325pt x 377.61075pt>
+<spherearea.png, id=1311, 720.89325pt x 377.61075pt>
 File: spherearea.png Graphic file (type png)
 <use spherearea.png>
 Package pdftex.def Info: spherearea.png  used on input line 5025.
@@ -1796,10 +1793,10 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  55i,13n,78p,3093b,877s stack positions out of 5000i,500n,10000p,200000b,80000s
 <d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/nanumtype1/nanumgtm22.pfb><d:/texlive/2018/texmf-dist/fonts/type1/uhc/umj/umj01.pfb>
-Output written on main.pdf (43 pages, 2634203 bytes).
+Output written on main.pdf (43 pages, 2634214 bytes).
 PDF statistics:
- 1462 PDF objects out of 1728 (max. 8388607)
- 1334 compressed objects within 14 object streams
+ 1463 PDF objects out of 1728 (max. 8388607)
+ 1335 compressed objects within 14 object streams
  296 named destinations out of 1000 (max. 500000)
  1410 words of extra memory for PDF output out of 10000 (max. 10000000)
 
