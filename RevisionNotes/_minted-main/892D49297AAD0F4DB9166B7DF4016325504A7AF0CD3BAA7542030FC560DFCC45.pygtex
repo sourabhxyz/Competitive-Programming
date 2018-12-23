@@ -20,10 +20,10 @@
         \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{isSameSet}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{))} \PYG{p}{\PYGZob{}}
             \PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{i}\PYG{p}{),} \PYG{n}{y} \PYG{o}{=} \PYG{n}{findSet}\PYG{p}{(}\PYG{n}{j}\PYG{p}{);}
             \PYG{k}{if} \PYG{p}{(}\PYG{n}{rank}\PYG{p}{[}\PYG{n}{x}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{rank}\PYG{p}{[}\PYG{n}{y}\PYG{p}{])} \PYG{p}{\PYGZob{}}
-                \PYG{n}{setSizes}\PYG{p}{[}\PYG{n}{findSet}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)]} \PYG{o}{+=} \PYG{n}{setSizes}\PYG{p}{[}\PYG{n}{findSet}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)];}
+                \PYG{n}{setSizes}\PYG{p}{[}\PYG{n}{x}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{setSizes}\PYG{p}{[}\PYG{n}{y}\PYG{p}{];}
                 \PYG{n}{p}\PYG{p}{[}\PYG{n}{y}\PYG{p}{]} \PYG{o}{=} \PYG{n}{x}\PYG{p}{;}
             \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
-                \PYG{n}{setSizes}\PYG{p}{[}\PYG{n}{findSet}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)]} \PYG{o}{+=} \PYG{n}{setSizes}\PYG{p}{[}\PYG{n}{findSet}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)];}
+                \PYG{n}{setSizes}\PYG{p}{[}\PYG{n}{y}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{setSizes}\PYG{p}{[}\PYG{n}{x}\PYG{p}{];}
                 \PYG{n}{p}\PYG{p}{[}\PYG{n}{x}\PYG{p}{]} \PYG{o}{=} \PYG{n}{y}\PYG{p}{;}
                 \PYG{k}{if} \PYG{p}{(}\PYG{n}{rank}\PYG{p}{[}\PYG{n}{x}\PYG{p}{]} \PYG{o}{==} \PYG{n}{rank}\PYG{p}{[}\PYG{n}{y}\PYG{p}{])}
                     \PYG{n}{rank}\PYG{p}{[}\PYG{n}{y}\PYG{p}{]}\PYG{o}{++}\PYG{p}{;}

@@ -11,7 +11,7 @@
     \PYG{p}{\PYGZcb{}}
     \PYG{k}{return} \PYG{o}{*}\PYG{n}{max\PYGZus{}element}\PYG{p}{(}\PYG{n}{L}\PYG{p}{.}\PYG{n}{begin} \PYG{p}{(),} \PYG{n}{L}\PYG{p}{.}\PYG{n}{end} \PYG{p}{());}
 \PYG{p}{\PYGZcb{}}
-\PYG{n}{vi} \PYG{n+nf}{LIS} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{ans}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{n}{vi} \PYG{n+nf}{getLIS} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{ans}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{n}{vi} \PYG{n}{lis}\PYG{p}{;}
     \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{if} \PYG{p}{(}\PYG{n}{L}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{ans}\PYG{p}{)} \PYG{p}{\PYGZob{}}
@@ -23,7 +23,7 @@
     \PYG{k}{return} \PYG{n}{lis}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
-\PYG{c+c1}{// O(nlogk)}
+\PYG{c+c1}{// O(nlogk) \PYGZhy{} k is the length of LIS.}
 \PYG{k+kt}{int} \PYG{n+nf}{LIS} \PYG{p}{(}\PYG{n}{vi} \PYG{o}{\PYGZam{}}\PYG{n}{seq}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{n}{vi} \PYG{n}{L}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{);}
     \PYG{n}{vi} \PYG{n}{I}\PYG{p}{;}

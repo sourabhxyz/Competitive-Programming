@@ -1,5 +1,5 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-    \PYG{k}{struct} \PYG{n}{Job} \PYG{p}{\PYGZob{}}
+\PYG{k}{struct} \PYG{n}{Job} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{deadline}\PYG{p}{,} \PYG{n}{duration}\PYG{p}{,} \PYG{n}{idx}\PYG{p}{;}
 
     \PYG{k+kt}{bool} \PYG{k}{operator}\PYG{o}{\PYGZlt{}}\PYG{p}{(}\PYG{n}{Job} \PYG{n}{o}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}

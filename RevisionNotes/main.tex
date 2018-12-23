@@ -1891,6 +1891,7 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 \end{itemize}
 \subsubsection{Important Problems}
 \begin{itemize}
+    \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabh2311/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
 	\item \href {https://gist.github.com/sourabh2311/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the number of hops to travel between flights.\\
 	Problem Sol: Just link the center of diameters. Brute force which edge to remove. 
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_112.cpp}{UVA 112 Sol}, \href {https://uva.onlinejudge.org/external/1/112.pdf}{UVA 112 Prob}: Just see how I processed the input.	
@@ -1948,7 +1949,7 @@ int mwis(int at, int flag, int parent) { //You can start this from any node, i.e
         }
    }
    return memo[at][flag] = ans;
-}  // Similar code can be written to find MWIS.
+}  
 \end{minted}
 \subsection{Terminology}
 \begin{itemize}
@@ -2717,7 +2718,7 @@ for (int i = 0; i < (1 << n); i++) {
 \end{minted}
     \item $\leq 10^8 \Rightarrow 2$ sec.
     \item Remember that just like we could have solved \href{https://uva.onlinejudge.org/external/7/714.pdf}{this} using binary search (other than simple DP), we can actually solve many problems which ask to find optimal value using binary search.
-    \item Outputing a double or even int my have an exponential form so it is better to do << fixed << s...(0).
+    \item Outputing a double or even int my have an exponential form so it is better to do $<<$ fixed $<<$ s...(0).
     \item Range of double is $10^{15}$
     \item Range of int64 is $9 * 10^{18}$
     \item Inbuilt swap can be used to basically swap anything.
@@ -2761,7 +2762,7 @@ bool next_combination(vector<int>& a, int n) {
     \begin{minted}{cpp}
     1011101010000000 >>= 8 => num is 10111010 similarly num <<= 8 implies num is 10000000
     \end{minted}
-    \item tictactoe game starts by placing 'X' so if in between $O_cnt = X_cnt$ and X has win that means invalid game. And if $O_cnt + 1 = X_cnt$ and O has win that means not a valid game.
+    \item tictactoe game starts by placing 'X' so if in between $O_{cnt} = X_{cnt}$ and X has win that means invalid game. And if $O_{cnt} + 1 = X_{cnt}$ and O has win that means not a valid game.
     \item 
     \begin{eqnarray}
     24_{hours} & = & 10_{decimalHours} \\
@@ -2819,7 +2820,7 @@ for (int j = n - 1, next = n - 1; j >= 0; j--) {
 sort (Toswap.begin(), Toswap.end());
 \end{minted}
     \item \begin{minted}{cpp}
-        #define MAX_N 2 // Fibonacci matrix, increase/decrease this value as needed
+#define MAX_N 2 // Fibonacci matrix, increase/decrease this value as needed
 struct Matrix { int mat[MAX_N][MAX_N]; }; // we will return a 2D array
 Matrix matMul(Matrix a, Matrix b) { // O(n^3)
    Matrix ans; int i, j, k;
@@ -3057,9 +3058,9 @@ void mergeSort(int arr[], int l, int r)
     \end{minted}
     \item Exact value of number of inverions can be calculated in $(nlog(n))$ by using segment trees. 
     \item \textbf{Prob: }You are given two positive integer numbers a and b. Permute (change order) of the digits of a to construct maximal number not exceeding b.
-    \\\textbf{Sol: }Take the number as string. sort string a, then for each $i \in [1, n]$ swap it with $j$ trying from $n to i + 1$ such that it is $\leq b$ (normal string comparison can be used).
+    \\\textbf{Sol: }Take the number as string. sort string a, then for each $i \in [1, n]$ swap it with $j$ trying from $\text{n to i} + 1$ such that it is $\leq b$ (normal string comparison can be used).
     \item \textbf{Prob: }From a digraph, remove atmost one edge so that it becomes DAG.
-    \\\textbf{Sol: }Get any one cycle the iteratively try to remove each edge and see if it makes it DAG or not.
+    \\\textbf{Sol: }Get any one cycle then iteratively try to remove each edge and see if it makes it DAG or not.
     \item \textbf{UFDS}
     \begin{minted}{cpp}
 struct UFDS {
@@ -3083,10 +3084,10 @@ struct UFDS {
         if (!isSameSet(i, j)) {
             int x = findSet(i), y = findSet(j);
             if (rank[x] > rank[y]) {
-                setSizes[findSet(x)] += setSizes[findSet(y)];
+                setSizes[x] += setSizes[y];
                 p[y] = x;
             } else {
-                setSizes[findSet(y)] += setSizes[findSet(x)];
+                setSizes[y] += setSizes[x];
                 p[x] = y;
                 if (rank[x] == rank[y])
                     rank[y]++;
@@ -3189,7 +3190,7 @@ int maxSum2D () {
     }
 }
     \end{minted}
-    \item Given an $n*m$ graph with each cell containing either 0 or 1, count how many rectangles can be formed by using the 1s (UVA 10502), Precalculate array sum[i][j],the numbers of 1 from graph[1][1] to graph[i][j] (index starting from 1 would be easier to deal with around edges) using $sum[i][j] = sum[i-1][j]+sum[i][j-1]-sum[i-1][j-1] + graph[i][j]-'0'$. Thus use algo1 of max 2d range.
+    \item Given an $n*m$ grid with each cell containing either 0 or 1, count how many rectangles can be formed by using the 1s (UVA 10502), Precalculate array sum[i][j],the numbers of 1 from graph[1][1] to graph[i][j] (index starting from 1 would be easier to deal with around edges) using $sum[i][j] = sum[i-1][j]+sum[i][j-1]-sum[i-1][j-1] + graph[i][j]-'0'$. Thus use algo1 of max 2d range.
     Then we could iterate through all possible rectangle in the given size in $O(n^4)$
     \item A problem is said to have optimal substructure if an optimal solution can be constructed from optimal solutions of its subproblems.
     \item A problem must exhibit these two properties in order for a greedy algorithm to work.
@@ -3202,7 +3203,7 @@ int maxSum2D () {
         \item Take the first element of a, push it into S and remove it from a.
         \item Take the top element from S, append it to the end of array b and remove it from S.
     \end{enumerate}
-    If you think about it you can see that problem occurs if we have sequence (x, y, z) where z < x < y. So after an element we want either all elements which are smaller than it to come first than elements which are bigger than it or all elements bigger than it. So say if we are given prefix of some permutation as [6, 3, 1] and asked to find lexicographic sequence to append such that it is stack sortable then we can read prefix number one by one and do\\
+    If you think about it you can see that problem occurs if we have sequence (x, y, z) where $z < x < y$. So after an element we want either all elements which are smaller than it to come first then elements which are bigger than it or all elements bigger than it. So say if we are given prefix of some permutation as [6, 3, 1] and asked to find lexicographic sequence to append such that it is stack sortable then we can read prefix number one by one and do\\
     $6 + A(1, 5) + A(7, 7)$\\
     $6 + 3 + A(1, 2) + A(4, 5) + A(7, 7)$\\
     $6 + 3 + 1 + 2 + 5 + 4 \text{ i.e. reverse each A(l, r) } + 7$\\
@@ -3233,7 +3234,7 @@ w = (t + 1) | (((~t & -~t) - 1) >> (__builtin_ctz(v) + 1));
     \end{minted}
 \end{itemize}
 \subsection{Meet in the middle}
-Given a set of n integers where $n \leq 40$. Each of them is at most $10^{12}$, determine the maximum sum subset having sum less than or equal S where S <= $10^{13}$.
+Given a set of n integers where $n \leq 40$. Each of them is at most $10^{12}$, determine the maximum sum subset having sum less than or equal S where S $\leq 10^{13}$.
 
 Example:
 
@@ -3245,7 +3246,7 @@ Input  : Set[] = {3, 34, 4, 12, 5, 2} and S = 10
 Output : 10
 Maximum possible subset sum is 10 which can be obtained by summing 2, 3 and 5.
 
-A Brute Force approach to solve this problem would be find all possible subset sums of N integers and check if it is less than or equal S and keep track of such a subset with maximum sum. The time complexity using this approach would be $O(2^n)$ and n is at most 40. 240 will be quite large and hence we need to find more optimal approach.
+A Brute Force approach to solve this problem would be find all possible subset sums of N integers and check if it is less than or equal S and keep track of such a subset with maximum sum. The time complexity using this approach would be $O(2^n)$ and n is at most 40. $2^{40}$ will be quite large and hence we need to find more optimal approach.
 
 Meet in the middle is a search technique which is used when the input is small but not as small that brute force can be used. Like divide and conquer it splits the problem into two, solves them individually and then merge them. But we can’t apply meet in the middle like divide and conquer because we don’t have the same structure as the original problem.
 
@@ -3384,7 +3385,7 @@ int main()
 } 
 \end{minted}
 \subsection{To find subarray (contiguous) with maximum average and length more than \textbf{k}}
-Clearly we could have done this in $O(n^2)$ but i'll describe $O(n \log n)$ soln below.
+Clearly we could have done this in $O(n^2)$ but I'll describe $O(n \log n)$ soln below.
 \begin{enumerate}
     \item Binary search for the maximum average (let it be x)
     \item Subtract x from every element of array
@@ -3476,35 +3477,41 @@ int main()
 \end{minted}
 \subsection{Find subarray with given sum, elements are non negative}
 \begin{minted}{cpp}
-
-/* A simple program to print subarray with sum as given sum */
+/* An efficient program to print subarray with sum as given sum */
 #include<stdio.h> 
   
 /* Returns true if the there is a subarray of arr[] with sum equal to 'sum' 
    otherwise returns false.  Also, prints the result */
 int subArraySum(int arr[], int n, int sum) 
 { 
-    int curr_sum, i, j; 
+    /* Initialize curr_sum as value of first element 
+       and starting point as 0 */
+    int curr_sum = arr[0], start = 0, i; 
   
-    // Pick a starting point 
-    for (i = 0; i < n; i++) 
+    /* Add elements one by one to curr_sum and if the curr_sum exceeds the 
+       sum, then remove starting element */
+    for (i = 1; i <= n; i++) 
     { 
-        curr_sum = arr[i]; 
-  
-        // try all subarrays starting with 'i' 
-        for (j = i+1; j <= n; j++) 
+        // If curr_sum exceeds the sum, then remove the starting elements 
+        while (curr_sum > sum && start < i-1) 
         { 
-            if (curr_sum == sum) 
-            { 
-                printf ("Sum found between indexes %d and %d", i, j-1); 
-                return 1; 
-            } 
-            if (curr_sum > sum || j == n) 
-                break; 
-           curr_sum = curr_sum + arr[j]; 
+            curr_sum = curr_sum - arr[start]; 
+            start++; 
         } 
+  
+        // If curr_sum becomes equal to sum, then return true 
+        if (curr_sum == sum) 
+        { 
+            printf ("Sum found between indexes %d and %d", start, i-1); 
+            return 1; 
+        } 
+  
+        // Add this element to curr_sum 
+        if (i < n) 
+          curr_sum = curr_sum + arr[i]; 
     } 
   
+    // If we reach here, then no subarray 
     printf("No subarray found"); 
     return 0; 
 } 
@@ -3518,18 +3525,17 @@ int main()
     subArraySum(arr, n, sum); 
     return 0; 
 } 
-
 \end{minted}
 \subsection{Largest subarray with gcd one}
 if any two elements have GCD equals to one, then whole array has GCD one. So the output is either -1 or length of array.
 \subsection{Smallest subarray with given gcd}
-The idea is to use Segment Tree and Binary Search to achieve time complexity O(n (logn)2).
+The idea is to use Segment Tree and Binary Search to achieve time complexity $O(n(logn)^2)$.
 \begin{enumerate}
     \item If we have any number equal to ‘k’ in the array then the answer is 1 as GCD of k is k. Return 1.
     \item If there is no number which is divisible by k, then GCD doesn’t exist. Return -1.
     \item If none of the above cases is true, the length of minimum subarray is either greater than 1 or GCD doesn’t exist. In this case, we follow following steps.
         \begin{enumerate}
-        \item Build segment tree so that we can quicky find GCD of any subarray using the approach discussed here
+        \item Build segment tree so that we can quicky find GCD of any subarray. 
         \item After building Segment Tree, we consider every index as starting point and do binary search for ending point such that the subarray between these two points has GCD k
         \end{enumerate}
 \end{enumerate}
@@ -3645,7 +3651,7 @@ int LIS () {
     }
     return *max_element(L.begin (), L.end ());
 }
-vi LIS (int ans) {
+vi getLIS (int ans) {
     vi lis;
     for (int i = n - 1; i >= 0; i--) {
         if (L[i] == ans) {
@@ -3657,7 +3663,7 @@ vi LIS (int ans) {
     return lis;
 }
 //------------------------
-// O(nlogk)
+// O(nlogk) - k is the length of LIS.
 int LIS (vi &seq) {
     vi L(n, 1);
     vi I;
@@ -3787,7 +3793,7 @@ int main()
     return 0;
 }
 \end{minted}
-LIS of reverse sequence LDS starting from pos after reversing L.\\
+LIS of reverse sequence gives LDS starting from pos after reversing L.\\
 LIS of reverse negative sequence gives LIS stating from pos after reversing L.\\
 \\\href{https://codeforces.com/problemset/problem/486/E}{LIS of sequence}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/LIS%20Using%20Segment%20Trees/Problem/sol2_ifsmirnov.cpp}{Sol}: Conecpt:
 Let F1i be the length of LIS ending exactly at ai of sequence \{a1, a2, ..., ai\}.
@@ -3847,7 +3853,7 @@ bool cmp (int a, int b) return a > b;
 \subsection{Optimal schedule of jobs given their deadlines and durations}
 The execution of a job cannot be interrupted prior to its ending. It is required to create such a schedule to accomplish the biggest number of jobs (thus we may not be able to finish all the jobs).\\We have greedy algorithm for this which works in $O(n \log n)$
 \begin{minted}{cpp}
-    struct Job {
+struct Job {
     int deadline, duration, idx;
 
     bool operator<(Job o) const {
@@ -3917,7 +3923,7 @@ The Livshits-Kladov theorem establishes, that the permutation method is only app
 \end{itemize}
 Time complexity $O(n \log n)$
 \subsection{Scheduling jobs on two machine}
-Just see relevant part of that pdf.
+Just see relevant part of \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Scheduling%20jobs%20on%20two%20machines/P402.pdf}{that} pdf.
 \subsection{Ternary Search}
 \begin{minted}{cpp}
 // finding maximum in case of double, similarly we can do for minimum
@@ -3938,7 +3944,7 @@ double ternary_search(double l, double r) {  // 300 iterations are as well fine.
 \end{minted}
 Once $(r - l) < 3$, the remaining pool of candidate points $(l, l + 1, \ldots, r)$ needs to be checked to find the point which produces the maximum/minimum value $f(x)$.
 \\\href{https://codeforces.com/contest/185/problem/B}{prob}, \href{https://codeforces.com/contest/185/submission/1654904}{sol}
-\\Gor a sorted array, you want to have a subset S, s.t. $max(S) - mean(S)$ is maximum. For this take maximum element of array as max(S), take remaining element from 0 to some index for which you need to do ternary search.
+\\Given a sorted array, you want to have a subset S, s.t. $max(S) - mean(S)$ is maximum. For this take maximum element of array as max(S), take remaining element from 0 to some index for which you need to do ternary search.
 \subsection{Submask Enumeration}
 \begin{minted}{cpp}
 for (int s=m; ; s=(s-1)&m) {
@@ -3977,6 +3983,7 @@ For now survive with HLD.
 \subsection{Important Problems}
 \begin{itemize}
     \item \href{https://codeforces.com/contest/981/problem/D}{BookShelves}, \href{https://codeforces.com/contest/981/submission/38660572}{Sol}
+    \item \href{https://codeforces.com/contest/1092}{See problem D1, D2}, \href{https://codeforces.com/blog/entry/63961}{sol}
 \end{itemize}
 \section{Data Structures}
 \subsection{Segment Tree}

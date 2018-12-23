@@ -20,5 +20,5 @@
         \PYG{p}{\PYGZcb{}}
    \PYG{p}{\PYGZcb{}}
    \PYG{k}{return} \PYG{n}{memo}\PYG{p}{[}\PYG{n}{at}\PYG{p}{][}\PYG{n}{flag}\PYG{p}{]} \PYG{o}{=} \PYG{n}{ans}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}  \PYG{c+c1}{// Similar code can be written to find MWIS.}
+\PYG{p}{\PYGZcb{}}
 \end{Verbatim}
