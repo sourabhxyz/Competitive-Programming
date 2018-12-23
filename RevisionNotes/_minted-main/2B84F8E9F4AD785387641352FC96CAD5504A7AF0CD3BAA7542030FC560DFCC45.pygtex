@@ -1,30 +1,18 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{vi} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{,} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{,} \PYG{n}{S}\PYG{p}{,} \PYG{n}{visited}\PYG{p}{;} \PYG{c+c1}{// global variables}
-\PYG{k+kt}{void} \PYG{n+nf}{tarjanSCC}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfsNumberCounter}\PYG{o}{++}\PYG{p}{;} \PYG{c+c1}{// dfs\PYGZus{}low[u] \PYGZlt{}= dfs\PYGZus{}num[u]}
-    \PYG{n}{S}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{u}\PYG{p}{);} \PYG{c+c1}{// stores u in a vector based on order of visitation}
-    \PYG{n}{visited}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
-    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{AdjList}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{n}{ii} \PYG{n}{v} \PYG{o}{=} \PYG{n}{AdjList}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{==} \PYG{n}{UNVISITED}\PYG{p}{)}
-            \PYG{n}{tarjanSCC}\PYG{p}{(}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{);}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{visited}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{])} \PYG{c+c1}{// condition for update}
-            \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{],} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]);}
+\PYG{n}{sum} \PYG{o}{=} \PYG{n}{ans} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{n}{finish} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{n}{local\PYGZus{}start} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n} \PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{sum} \PYG{o}{+=} \PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{sum} \PYG{o}{\PYGZgt{}} \PYG{n}{ans}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{ans} \PYG{o}{=} \PYG{n}{sum}\PYG{p}{;}
+        \PYG{n}{start} \PYG{o}{=} \PYG{n}{local\PYGZus{}start}\PYG{p}{;}
+        \PYG{n}{finish} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
-    \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{==} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// if this is a root (start) of an SCC}
-        \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}SCC \PYGZpc{}d:\PYGZdq{}}\PYG{p}{,} \PYG{o}{++}\PYG{n}{numSCC}\PYG{p}{);} \PYG{c+c1}{// this part is done after recursion}
-        \PYG{k}{while} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-            \PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{S}\PYG{p}{.}\PYG{n}{back}\PYG{p}{();} \PYG{n}{S}\PYG{p}{.}\PYG{n}{pop\PYGZus{}back}\PYG{p}{();} \PYG{n}{visited}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
-            \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} \PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{n}{v}\PYG{p}{);}
-            \PYG{k}{if} \PYG{p}{(}\PYG{n}{u} \PYG{o}{==} \PYG{n}{v}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;}
-        \PYG{p}{\PYGZcb{}}
-        \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{);}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{sum} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{sum} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+        \PYG{n}{local\PYGZus{}start} \PYG{o}{=} \PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
-\PYG{c+c1}{// inside int main()}
-\PYG{n}{dfs\PYGZus{}num}\PYG{p}{.}\PYG{n}{assign}\PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{n}{UNVISITED}\PYG{p}{);} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{.}\PYG{n}{assign}\PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);} \PYG{n}{visited}\PYG{p}{.}\PYG{n}{assign}\PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
-\PYG{n}{dfsNumberCounter} \PYG{o}{=} \PYG{n}{numSCC} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
-\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
-    \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{UNVISITED}\PYG{p}{)}
-        \PYG{n}{tarjanSCC}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+\PYG{c+c1}{// if instead of maximum you want to find minimum, simply negate all terms. As suppose minimum sum is (ak, a\PYGZus{}\PYGZob{}k + 1\PYGZcb{}, ..., a\PYGZus{}\PYGZob{}k + l\PYGZcb{}) which must be negative and most (maximum in other dirn) negative possible. Thus (\PYGZhy{}ak,...) is maximum positive possible as suppose there was some other range with maximum possible that means its negative (actual) is more minimum then our current which leads to contradiction}
 \end{Verbatim}

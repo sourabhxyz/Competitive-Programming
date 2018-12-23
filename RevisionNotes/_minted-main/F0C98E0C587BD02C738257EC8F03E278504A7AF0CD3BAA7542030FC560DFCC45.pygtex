@@ -1,54 +1,5 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{// Backtracking}
-\PYG{k+kt}{void} \PYG{n+nf}{bktk} \PYG{p}{()} \PYG{p}{\PYGZob{}}
-    \PYG{k}{if} \PYG{p}{(}\PYG{n}{state} \PYG{o}{==} \PYG{n}{complete} \PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{c+c1}{// process it}
-    \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
-        \PYG{k}{for} \PYG{n}{each} \PYG{n}{possible} \PYG{n}{next} \PYG{n}{move} \PYG{n}{P} \PYG{p}{\PYGZob{}}
-            \PYG{n}{apply} \PYG{n}{move} \PYG{n}{P}\PYG{p}{;}
-            \PYG{n}{bktk} \PYG{p}{();}
-            \PYG{n}{undo} \PYG{n}{move} \PYG{n}{P}\PYG{p}{;}
-        \PYG{p}{\PYGZcb{}}
-    \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\PYG{c+c1}{// ex1: generating permutations O(n! * n)}
-\PYG{c+c1}{// better use next\PYGZus{}permutation.}
-\PYG{c+c1}{// think of doing such things for n \PYGZlt{}= 11. 11! \PYGZti{} 4 * 10\PYGZca{}7}
-\PYG{k+kt}{void} \PYG{n+nf}{bktk} \PYG{p}{()} \PYG{p}{\PYGZob{}}
-    \PYG{k}{if} \PYG{p}{(}\PYG{n}{perm}\PYG{p}{.}\PYG{n}{size} \PYG{p}{()} \PYG{o}{==} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{c+c1}{// process permutation}
-    \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
-        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-            \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{chosen}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}
-                \PYG{n}{chosen}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
-                \PYG{n}{perm}\PYG{p}{.}\PYG{n}{push\PYGZus{}back} \PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
-                \PYG{n}{bktk} \PYG{p}{();}
-                \PYG{n}{perm}\PYG{p}{.}\PYG{n}{pop\PYGZus{}back} \PYG{p}{();}
-                \PYG{n}{chosen}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
-            \PYG{p}{\PYGZcb{}}
-        \PYG{p}{\PYGZcb{}}
-    \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\PYG{c+c1}{// ex2: generating subsets}
-\PYG{k+kt}{void} \PYG{n+nf}{bktk} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{if} \PYG{p}{(}\PYG{n}{k} \PYG{o}{==} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{c+c1}{// process subset}
-    \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
-        \PYG{c+c1}{// Move one is to not push it and move 2 is to consider it.}
-        \PYG{n}{bktk} \PYG{p}{(}\PYG{n}{k} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
-        \PYG{n}{subset}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{k}\PYG{p}{);}
-        \PYG{n}{bktk} \PYG{p}{(}\PYG{n}{k} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
-        \PYG{n}{subset}\PYG{p}{.}\PYG{n}{pop\PYGZus{}back}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\PYG{c+c1}{// better way to generate subsets O(2\PYGZca{}n) so valid for n \PYGZlt{}= 25. So whenever you see this, think of iterating through subsets}
-\PYG{c+c1}{// 1 \PYGZlt{}\PYGZlt{} 0 = 1.}
-\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{n}\PYG{p}{);} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{b} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{b}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZam{}} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{b}\PYG{p}{))} \PYG{p}{\PYGZob{}}
-            \PYG{n}{subset}\PYG{p}{.}\PYG{n}{pb} \PYG{p}{(}\PYG{n}{b}\PYG{p}{);}
-        \PYG{p}{\PYGZcb{}}
-        \PYG{c+c1}{// process subset}
-    \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{m}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{m}\PYG{o}{\PYGZlt{}}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{n}\PYG{p}{);} \PYG{o}{++}\PYG{n}{m}\PYG{p}{)}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{s}\PYG{o}{=}\PYG{n}{m}\PYG{p}{;} \PYG{n}{s}\PYG{p}{;} \PYG{n}{s}\PYG{o}{=}\PYG{p}{(}\PYG{n}{s}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{n}{m}\PYG{p}{)}
+ \PYG{p}{...} \PYG{n}{s} \PYG{n}{and} \PYG{n}{m} \PYG{p}{...}
 \end{Verbatim}

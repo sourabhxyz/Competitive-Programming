@@ -1,27 +1,30 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{k}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-            \PYG{k}{if} \PYG{p}{(}\PYG{n}{adjmat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{adjmat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{adjmat}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{n}{j}\PYG{p}{])} \PYG{p}{\PYGZob{}}
-                \PYG{n}{adjmat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{adjmat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{k}\PYG{p}{]} \PYG{o}{+} \PYG{n}{adjmat}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
-                \PYG{n}{path}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{path}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
-            \PYG{p}{\PYGZcb{}}
+\PYG{n}{vi} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{,} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{,} \PYG{n}{S}\PYG{p}{,} \PYG{n}{visited}\PYG{p}{;} \PYG{c+c1}{// global variables}
+\PYG{k+kt}{void} \PYG{n+nf}{tarjanSCC}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfsNumberCounter}\PYG{o}{++}\PYG{p}{;} \PYG{c+c1}{// dfs\PYGZus{}low[u] \PYGZlt{}= dfs\PYGZus{}num[u]}
+    \PYG{n}{S}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{u}\PYG{p}{);} \PYG{c+c1}{// stores u in a vector based on order of visitation}
+    \PYG{n}{visited}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{AdjList}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{ii} \PYG{n}{v} \PYG{o}{=} \PYG{n}{AdjList}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{==} \PYG{n}{UNVISITED}\PYG{p}{)}
+            \PYG{n}{tarjanSCC}\PYG{p}{(}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{);}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{visited}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{])} \PYG{c+c1}{// condition for update}
+            \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{],} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{==} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// if this is a root (start) of an SCC}
+        \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}SCC \PYGZpc{}d:\PYGZdq{}}\PYG{p}{,} \PYG{o}{++}\PYG{n}{numSCC}\PYG{p}{);} \PYG{c+c1}{// this part is done after recursion}
+        \PYG{k}{while} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{S}\PYG{p}{.}\PYG{n}{back}\PYG{p}{();} \PYG{n}{S}\PYG{p}{.}\PYG{n}{pop\PYGZus{}back}\PYG{p}{();} \PYG{n}{visited}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+            \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} \PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{n}{v}\PYG{p}{);}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{u} \PYG{o}{==} \PYG{n}{v}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;}
         \PYG{p}{\PYGZcb{}}
+        \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{);}
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
-\PYG{k+kt}{void} \PYG{n}{printPath} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{if} \PYG{p}{(}\PYG{n}{u} \PYG{o}{==} \PYG{n}{i}\PYG{p}{)} \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{i} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{;}
-    \PYG{k}{else} \PYG{p}{\PYGZob{}}
-        \PYG{n}{printPath} \PYG{p}{(}\PYG{n}{path}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{u}\PYG{p}{]);}
-        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{u} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
-\PYG{c+c1}{// in main printPath(j).}
-\PYG{c+c1}{// Initially path[i][j] = i for edge (i, j);}
-\PYG{c+c1}{// in APSP problems, always do}
-\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{u} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{v} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{wt}\PYG{p}{;}
-\PYG{n}{adjmat}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{min} \PYG{p}{(}\PYG{n}{graph}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{],} \PYG{n}{wt}\PYG{p}{);}
-\PYG{c+c1}{// very initially}
-\PYG{k}{if} \PYG{p}{(}\PYG{n}{i} \PYG{o}{!=} \PYG{n}{j}\PYG{p}{)} \PYG{n}{adjmat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{inf}\PYG{p}{;}
-\PYG{k}{else} \PYG{n}{adjmat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{c+c1}{// inside int main()}
+\PYG{n}{dfs\PYGZus{}num}\PYG{p}{.}\PYG{n}{assign}\PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{n}{UNVISITED}\PYG{p}{);} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{.}\PYG{n}{assign}\PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);} \PYG{n}{visited}\PYG{p}{.}\PYG{n}{assign}\PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{n}{dfsNumberCounter} \PYG{o}{=} \PYG{n}{numSCC} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{UNVISITED}\PYG{p}{)}
+        \PYG{n}{tarjanSCC}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
 \end{Verbatim}

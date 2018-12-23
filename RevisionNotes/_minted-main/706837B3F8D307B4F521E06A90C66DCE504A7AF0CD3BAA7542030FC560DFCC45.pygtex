@@ -1,5 +1,32 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{m}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{m}\PYG{o}{\PYGZlt{}}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{n}\PYG{p}{);} \PYG{o}{++}\PYG{n}{m}\PYG{p}{)}
-	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{s}\PYG{o}{=}\PYG{n}{m}\PYG{p}{;} \PYG{n}{s}\PYG{p}{;} \PYG{n}{s}\PYG{o}{=}\PYG{p}{(}\PYG{n}{s}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{n}{m}\PYG{p}{)}
- \PYG{p}{...} \PYG{n}{s} \PYG{n}{and} \PYG{n}{m} \PYG{p}{...}
+    \PYG{k}{struct} \PYG{n}{Job} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{deadline}\PYG{p}{,} \PYG{n}{duration}\PYG{p}{,} \PYG{n}{idx}\PYG{p}{;}
+
+    \PYG{k+kt}{bool} \PYG{k}{operator}\PYG{o}{\PYGZlt{}}\PYG{p}{(}\PYG{n}{Job} \PYG{n}{o}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{deadline} \PYG{o}{\PYGZlt{}} \PYG{n}{o}\PYG{p}{.}\PYG{n}{deadline}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{compute\PYGZus{}schedule}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Job}\PYG{o}{\PYGZgt{}} \PYG{n}{jobs}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{sort}\PYG{p}{(}\PYG{n}{jobs}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{jobs}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+
+    \PYG{n}{set}\PYG{o}{\PYGZlt{}}\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{,}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{s}\PYG{p}{;}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{schedule}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{jobs}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{t} \PYG{o}{=} \PYG{n}{jobs}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{deadline} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{i} \PYG{o}{?} \PYG{n}{jobs}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{].}\PYG{n+nl}{deadline} \PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{);}
+        \PYG{n}{s}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{jobs}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{duration}\PYG{p}{,} \PYG{n}{jobs}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{idx}\PYG{p}{));}
+        \PYG{k}{while} \PYG{p}{(}\PYG{n}{t} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{!}\PYG{n}{s}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+            \PYG{k}{auto} \PYG{n}{it} \PYG{o}{=} \PYG{n}{s}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{it}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{first} \PYG{o}{\PYGZlt{}=} \PYG{n}{t}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{t} \PYG{o}{\PYGZhy{}=} \PYG{n}{it}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{first}\PYG{p}{;}
+                \PYG{n}{schedule}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{it}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{second}\PYG{p}{);}
+            \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+                \PYG{n}{s}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{it}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{first} \PYG{o}{\PYGZhy{}} \PYG{n}{t}\PYG{p}{,} \PYG{n}{it}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{second}\PYG{p}{));}
+                \PYG{n}{t} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n}{s}\PYG{p}{.}\PYG{n}{erase}\PYG{p}{(}\PYG{n}{it}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{schedule}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
 \end{Verbatim}

@@ -1,23 +1,92 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-        \PYG{c+cp}{\PYGZsh{}define MAX\PYGZus{}N 2 }\PYG{c+c1}{// Fibonacci matrix, increase/decrease this value as needed}
-\PYG{k}{struct} \PYG{n}{Matrix} \PYG{p}{\PYGZob{}} \PYG{k+kt}{int} \PYG{n}{mat}\PYG{p}{[}\PYG{n}{MAX\PYGZus{}N}\PYG{p}{][}\PYG{n}{MAX\PYGZus{}N}\PYG{p}{];} \PYG{p}{\PYGZcb{};} \PYG{c+c1}{// we will return a 2D array}
-\PYG{n}{Matrix} \PYG{n+nf}{matMul}\PYG{p}{(}\PYG{n}{Matrix} \PYG{n}{a}\PYG{p}{,} \PYG{n}{Matrix} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// O(n\PYGZca{}3)}
-   \PYG{n}{Matrix} \PYG{n}{ans}\PYG{p}{;} \PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{,} \PYG{n}{k}\PYG{p}{;}
-   \PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{MAX\PYGZus{}N}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
-       \PYG{k}{for} \PYG{p}{(}\PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{MAX\PYGZus{}N}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
-           \PYG{k}{for} \PYG{p}{(}\PYG{n}{ans}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{n}{MAX\PYGZus{}N}\PYG{p}{;} \PYG{n}{k}\PYG{o}{++}\PYG{p}{)} \PYG{c+c1}{// if necessary, use}
-               \PYG{n}{ans}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{a}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{k}\PYG{p}{]} \PYG{o}{*} \PYG{n}{b}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];} \PYG{c+c1}{// modulo arithmetic}
-   \PYG{k}{return} \PYG{n}{ans}\PYG{p}{;}
+\PYG{c+c1}{// Months are 0 indexed}
+\PYG{c+c1}{//The following Code solves problems: UVA 893}
+
+\PYG{k+kt}{int} \PYG{n}{numberDaysInMonth}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{28}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{\PYGZcb{};}
+\PYG{k+kt}{int} \PYG{n}{numberDaysInMonthLeap}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{29}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{31}\PYG{p}{\PYGZcb{};}
+
+\PYG{k+kt}{bool} \PYG{n+nf}{IsLeapYear}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{year}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{k}{return} \PYG{n}{year} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{4} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{(}\PYG{n}{year} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{100} \PYG{o}{!=} \PYG{l+m+mi}{0} \PYG{o}{||} \PYG{n}{year} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{400} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{);}
 \PYG{p}{\PYGZcb{}}
-\PYG{n}{Matrix} \PYG{n+nf}{matPow}\PYG{p}{(}\PYG{n}{Matrix} \PYG{n}{base}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// O(n\PYGZca{}3 log p)}
-   \PYG{n}{Matrix} \PYG{n}{ans}\PYG{p}{;} \PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{;}
-   \PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{MAX\PYGZus{}N}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{k}{for} \PYG{p}{(}\PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{MAX\PYGZus{}N}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
-           \PYG{n}{ans}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{i} \PYG{o}{==} \PYG{n}{j}\PYG{p}{);} \PYG{c+c1}{// prepare identity matrix}
-   \PYG{k}{while} \PYG{p}{(}\PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// iterative version of Divide \PYGZam{} Conquer exponentiation}
-       \PYG{k}{if} \PYG{p}{(}\PYG{n}{p} \PYG{o}{\PYGZam{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{ans} \PYG{o}{=} \PYG{n}{matMul}\PYG{p}{(}\PYG{n}{ans}\PYG{p}{,} \PYG{n}{base}\PYG{p}{);} \PYG{c+c1}{// if p is odd (last bit is on)}
-       \PYG{n}{base} \PYG{o}{=} \PYG{n}{matMul}\PYG{p}{(}\PYG{n}{base}\PYG{p}{,} \PYG{n}{base}\PYG{p}{);} \PYG{c+c1}{// square the base}
-       \PYG{n}{p} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// divide p by 2}
+
+\PYG{k+kt}{int} \PYG{n+nf}{MonthToDay}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{month}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{year}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{k+kt}{int} \PYG{n}{daysBefore} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+   \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{month}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+       \PYG{n}{daysBefore} \PYG{o}{+=} \PYG{n}{numberDaysInMonth}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+   \PYG{k}{if} \PYG{p}{(}\PYG{n}{month} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{IsLeapYear}\PYG{p}{(}\PYG{n}{year}\PYG{p}{))}
+       \PYG{o}{++}\PYG{n}{daysBefore}\PYG{p}{;}
+   \PYG{k}{return} \PYG{n}{daysBefore}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{YearToDay}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{year}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{k+kt}{int} \PYG{n}{base} \PYG{o}{=} \PYG{n}{year} \PYG{o}{*} \PYG{l+m+mi}{365}\PYG{p}{;}
+   \PYG{k+kt}{int} \PYG{n}{numLeapYears} \PYG{o}{=} \PYG{n}{year} \PYG{o}{/} \PYG{l+m+mi}{4} \PYG{o}{\PYGZhy{}} \PYG{n}{year} \PYG{o}{/} \PYG{l+m+mi}{100} \PYG{o}{+} \PYG{n}{year} \PYG{o}{/} \PYG{l+m+mi}{400}\PYG{p}{;}
+   \PYG{k}{return} \PYG{n}{base} \PYG{o}{+} \PYG{n}{numLeapYears}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{GetYearFromNumDays}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{\PYGZam{}} \PYG{n}{numDays}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{k+kt}{int} \PYG{n}{year} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+   \PYG{k+kt}{int} \PYG{n}{sizeOfYear} \PYG{o}{=} \PYG{l+m+mi}{365}\PYG{p}{;}
+
+   \PYG{k}{while} \PYG{p}{(}\PYG{n}{numDays} \PYG{o}{\PYGZgt{}} \PYG{n}{sizeOfYear}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+       \PYG{n}{numDays} \PYG{o}{\PYGZhy{}=} \PYG{n}{sizeOfYear}\PYG{p}{;}
+       \PYG{o}{++}\PYG{n}{year}\PYG{p}{;}
+       \PYG{n}{sizeOfYear} \PYG{o}{=} \PYG{p}{(}\PYG{n}{IsLeapYear}\PYG{p}{(}\PYG{n}{year}\PYG{p}{))} \PYG{o}{?} \PYG{l+m+mi}{366} \PYG{o}{:} \PYG{l+m+mi}{365}\PYG{p}{;}
    \PYG{p}{\PYGZcb{}}
-   \PYG{k}{return} \PYG{n}{ans}\PYG{p}{;}
+
+   \PYG{k}{return} \PYG{n}{year}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{GetMonthFromNumDays}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{\PYGZam{}} \PYG{n}{numDays}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{year}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+   \PYG{k+kt}{int} \PYG{n}{month} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+   \PYG{k+kt}{int} \PYG{o}{*} \PYG{n}{numDayUsed} \PYG{o}{=} \PYG{p}{(}\PYG{n}{IsLeapYear}\PYG{p}{(}\PYG{n}{year}\PYG{p}{))} \PYG{o}{?} \PYG{n+nl}{numberDaysInMonthLeap} \PYG{p}{:} \PYG{n}{numberDaysInMonth}\PYG{p}{;}
+   \PYG{k}{for} \PYG{p}{(;}\PYG{n}{numDays} \PYG{o}{\PYGZgt{}} \PYG{n}{numDayUsed}\PYG{p}{[}\PYG{n}{month}\PYG{p}{];} \PYG{o}{++}\PYG{n}{month}\PYG{p}{)}
+       \PYG{n}{numDays} \PYG{o}{\PYGZhy{}=} \PYG{n}{numDayUsed}\PYG{p}{[}\PYG{n}{month}\PYG{p}{];}
+   \PYG{k}{return} \PYG{n}{month} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+   \PYG{k+kt}{int} \PYG{n}{dayForward}\PYG{p}{,} \PYG{n}{day}\PYG{p}{,} \PYG{n}{month}\PYG{p}{,} \PYG{n}{year}\PYG{p}{;}
+   \PYG{k}{while} \PYG{p}{(}\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{dayForward} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{day} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{month} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{year}\PYG{p}{,} \PYG{n}{year}\PYG{p}{)}
+   \PYG{p}{\PYGZob{}}
+       \PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{month}\PYG{p}{;}
+       \PYG{n}{day} \PYG{o}{+=} \PYG{n}{MonthToDay}\PYG{p}{(}\PYG{n}{month}\PYG{p}{,} \PYG{n}{year}\PYG{p}{);}
+       \PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{year}\PYG{p}{;}
+       \PYG{n}{day} \PYG{o}{+=} \PYG{n}{YearToDay}\PYG{p}{(}\PYG{n}{year}\PYG{p}{);}
+       \PYG{n}{day} \PYG{o}{+=} \PYG{n}{dayForward}\PYG{p}{;}
+
+       \PYG{n}{year} \PYG{o}{=} \PYG{n}{GetYearFromNumDays}\PYG{p}{(}\PYG{n}{day}\PYG{p}{);}
+       \PYG{n}{month} \PYG{o}{=} \PYG{n}{GetMonthFromNumDays}\PYG{p}{(}\PYG{n}{day}\PYG{p}{,} \PYG{n}{year}\PYG{p}{);}
+       \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{day} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+sc}{\PYGZsq{} \PYGZsq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{month} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+sc}{\PYGZsq{} \PYGZsq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{year} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+sc}{\PYGZsq{}\PYGZbs{}n\PYGZsq{}}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{//\PYGZhy{}\PYGZhy{}}
+\PYG{n}{string} \PYG{n+nf}{int2roman}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+   \PYG{n}{string} \PYG{n}{roman}\PYG{p}{;}
+   \PYG{n}{string} \PYG{n}{ones}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}I\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}II\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}III\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}IV\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}V\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}VI\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}VII\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}VIII\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}IX\PYGZdq{}}\PYG{p}{\PYGZcb{};}
+   \PYG{n}{string} \PYG{n}{tens}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}X\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}XX\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}XXX\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}XL\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}L\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}LX\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}LXX\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}LXXX\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}XC\PYGZdq{}}\PYG{p}{\PYGZcb{};}
+   \PYG{n}{string} \PYG{n}{hundreds}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}C\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}CC\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}CCC\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}CD\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}D\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}DC\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}DCC\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}DCCC\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}CM\PYGZdq{}}\PYG{p}{\PYGZcb{};}
+   \PYG{n}{string} \PYG{n}{thousands}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}M\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}MM\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}MMM\PYGZdq{}}\PYG{p}{\PYGZcb{};}
+
+   \PYG{k+kt}{int} \PYG{n}{o} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{10}\PYG{p}{;}
+   \PYG{n}{n} \PYG{o}{/=} \PYG{l+m+mi}{10}\PYG{p}{;}
+   \PYG{k+kt}{int} \PYG{n}{t} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{10}\PYG{p}{;}
+   \PYG{n}{n} \PYG{o}{/=} \PYG{l+m+mi}{10}\PYG{p}{;}
+   \PYG{k+kt}{int} \PYG{n}{h} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{10}\PYG{p}{;}
+   \PYG{n}{n} \PYG{o}{/=} \PYG{l+m+mi}{10}\PYG{p}{;}
+   \PYG{k+kt}{int} \PYG{n}{th} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{10}\PYG{p}{;}
+
+   \PYG{n}{roman} \PYG{o}{+=} \PYG{n}{thousands}\PYG{p}{[}\PYG{n}{th}\PYG{p}{]} \PYG{o}{+} \PYG{n}{hundreds}\PYG{p}{[}\PYG{n}{h}\PYG{p}{]} \PYG{o}{+} \PYG{n}{tens}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{+} \PYG{n}{ones}\PYG{p}{[}\PYG{n}{o}\PYG{p}{];}\PYG{c+c1}{//Or}
+   \PYG{c+c1}{//roman=thousands[th] + hundreds[h] + tens[t] + ones[o] but the written one is}
+   \PYG{c+c1}{//faster.}
+
+   \PYG{k}{return} \PYG{n}{roman}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}
