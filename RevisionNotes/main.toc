@@ -150,10 +150,11 @@
 \contentsline {subsubsection}{\numberline {6.4.3}Counting number of occurrences of each prefix}{34}{subsubsection.6.4.3}
 \contentsline {subsection}{\numberline {6.5}Notes}{34}{subsection.6.5}
 \contentsline {subsection}{\numberline {6.6}SAM}{34}{subsection.6.6}
-\contentsline {subsection}{\numberline {6.7}Important Problems}{37}{subsection.6.7}
-\contentsline {section}{\numberline {7}Geometry}{37}{section.7}
-\contentsline {subsection}{\numberline {7.1}Fast application of a set of geometric operations to a set of points}{38}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Klee's Algo}{38}{subsection.7.2}
+\contentsline {subsection}{\numberline {6.7}EertreE}{37}{subsection.6.7}
+\contentsline {subsection}{\numberline {6.8}Important Problems}{38}{subsection.6.8}
+\contentsline {section}{\numberline {7}Geometry}{38}{section.7}
+\contentsline {subsection}{\numberline {7.1}Fast application of a set of geometric operations to a set of points}{39}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Klee's Algo}{39}{subsection.7.2}
 \contentsline {subsection}{\numberline {7.3}Closest Pair Problem}{39}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}2D geo lib}{39}{subsection.7.4}
-\contentsline {subsection}{\numberline {7.5}3D geo lib}{39}{subsection.7.5}
+\contentsline {subsection}{\numberline {7.4}2D geo lib}{40}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}3D geo lib}{40}{subsection.7.5}

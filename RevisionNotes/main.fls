@@ -1005,6 +1005,12 @@ INPUT d:/texlive/2018/texmf-dist/fonts/vf/uhc/wmj/wmj07.vf
 INPUT d:/texlive/2018/texmf-dist/tex/latex/nanumtype1/lucnanumgt.fd
 INPUT d:/texlive/2018/texmf-dist/tex/latex/nanumtype1/lucnanumgt.fd
 INPUT d:/texlive/2018/texmf-dist/fonts/tfm/public/nanumtype1/nanumgtm22.tfm
+OUTPUT main.pyg
+INPUT ./main.pyg
+INPUT _minted-main/E65B55A24741E0FB34591B18B61C619E504A7AF0CD3BAA7542030FC560DFCC45.pygtex
+INPUT _minted-main/E65B55A24741E0FB34591B18B61C619E504A7AF0CD3BAA7542030FC560DFCC45.pygtex
+INPUT _minted-main/E65B55A24741E0FB34591B18B61C619E504A7AF0CD3BAA7542030FC560DFCC45.pygtex
+INPUT _minted-main/E65B55A24741E0FB34591B18B61C619E504A7AF0CD3BAA7542030FC560DFCC45.pygtex
 INPUT palsub.PNG
 INPUT ./palsub.PNG
 INPUT ./palsub.PNG
