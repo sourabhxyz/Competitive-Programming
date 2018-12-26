@@ -1,0 +1,86 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// For negative edge weights provided we have no negative cycles.}
+\PYG{c+c1}{// Idea: Shortest path must have atmost |V| \PYGZhy{} 1 edges.}
+\PYG{c+c1}{// Thus if we relax each each edge |V| \PYGZhy{} 1 times then we would have got the answer as in first relaxation edge(start, neighbour) will be correct and so on...}
+\PYG{n}{vi} \PYG{n+nf}{dist} \PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{n}{inf}\PYG{p}{);}
+\PYG{n}{dist}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k+kt}{bool} \PYG{n}{modified} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{V} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{n}{and} \PYG{n}{modified}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{modified} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{u} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{u}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{adjlist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size} \PYG{p}{();} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{ii} \PYG{n}{v} \PYG{o}{=} \PYG{n}{adjlist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{dist}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{v}\PYG{p}{.}\PYG{n}{second}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{dist}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{v}\PYG{p}{.}\PYG{n}{second}\PYG{p}{;}
+                \PYG{n}{p}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{=} \PYG{n}{u}\PYG{p}{;}
+                \PYG{n}{modified} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// to check for negative cycle}
+\PYG{k+kt}{void} \PYG{n}{solve}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{d}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{p}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{x} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{n}{Edge} \PYG{n+nl}{e} \PYG{p}{:} \PYG{n}{edges}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{d}\PYG{p}{[}\PYG{n}{e}\PYG{p}{.}\PYG{n}{a}\PYG{p}{]} \PYG{o}{+} \PYG{n}{e}\PYG{p}{.}\PYG{n}{cost} \PYG{o}{\PYGZlt{}} \PYG{n}{d}\PYG{p}{[}\PYG{n}{e}\PYG{p}{.}\PYG{n}{b}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+                \PYG{n}{d}\PYG{p}{[}\PYG{n}{e}\PYG{p}{.}\PYG{n}{b}\PYG{p}{]} \PYG{o}{=} \PYG{n}{d}\PYG{p}{[}\PYG{n}{e}\PYG{p}{.}\PYG{n}{a}\PYG{p}{]} \PYG{o}{+} \PYG{n}{e}\PYG{p}{.}\PYG{n}{cost}\PYG{p}{;}
+                \PYG{n}{p}\PYG{p}{[}\PYG{n}{e}\PYG{p}{.}\PYG{n}{b}\PYG{p}{]} \PYG{o}{=} \PYG{n}{e}\PYG{p}{.}\PYG{n}{a}\PYG{p}{;}
+                \PYG{n}{x} \PYG{o}{=} \PYG{n}{e}\PYG{p}{.}\PYG{n}{b}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}No negative cycle found.\PYGZdq{}}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+            \PYG{n}{x} \PYG{o}{=} \PYG{n}{p}\PYG{p}{[}\PYG{n}{x}\PYG{p}{];}
+
+        \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{cycle}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{x}\PYG{p}{;;} \PYG{n}{v} \PYG{o}{=} \PYG{n}{p}\PYG{p}{[}\PYG{n}{v}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+            \PYG{n}{cycle}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{v} \PYG{o}{==} \PYG{n}{x} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{cycle}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{)}
+                \PYG{k}{break}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{reverse}\PYG{p}{(}\PYG{n}{cycle}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{cycle}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Negative cycle: \PYGZdq{}}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n+nl}{v} \PYG{p}{:} \PYG{n}{cycle}\PYG{p}{)}
+            \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{v} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+sc}{\PYGZsq{} \PYGZsq{}}\PYG{p}{;}
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// To check for negative cycle, run this one more time}
+\PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{u} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{u}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{adjlist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size} \PYG{p}{();} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{ii} \PYG{n}{v} \PYG{o}{=} \PYG{n}{adjlist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{dist}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{v}\PYG{p}{.}\PYG{n}{second}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{dist}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{v}\PYG{p}{.}\PYG{n}{second}\PYG{p}{;}
+            \PYG{n}{p}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{=} \PYG{n}{u}\PYG{p}{;}
+            \PYG{n}{x} \PYG{o}{=} \PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// negative cycle}
+    \PYG{k+kt}{int} \PYG{n}{y} \PYG{o}{=} \PYG{n}{x}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+        \PYG{n}{y} \PYG{o}{=} \PYG{n}{p}\PYG{p}{[}\PYG{n}{y}\PYG{p}{];}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{path}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{cur}\PYG{o}{=}\PYG{n}{y}\PYG{p}{;} \PYG{p}{;} \PYG{n}{cur}\PYG{o}{=}\PYG{n}{p}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{])}
+    \PYG{p}{\PYGZob{}}
+        \PYG{n}{path}\PYG{p}{.}\PYG{n}{push\PYGZus{}back} \PYG{p}{(}\PYG{n}{cur}\PYG{p}{);}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{cur} \PYG{o}{==} \PYG{n}{y} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{path}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{)}
+            \PYG{k}{break}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{reverse} \PYG{p}{(}\PYG{n}{path}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{path}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Negative cycle: \PYGZdq{}}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{size\PYGZus{}t} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{path}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{path}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s+sc}{\PYGZsq{} \PYGZsq{}}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,5 +1,5 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-        \PYG{c+c1}{// dfs\PYGZus{}low[u] will store the lowest iteration count vertex u can reach from u’s current DFS Tree (i.e u can only reach vertices of lower iteration count only if a back\PYGZhy{}edge exists in one of its children)}
+\PYG{c+c1}{// dfs\PYGZus{}low[u] will store the lowest iteration count vertex u can reach from u’s current DFS Tree (i.e u can only reach vertices of lower iteration count only if a back\PYGZhy{}edge exists in one of its children)}
 \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{;}
 \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{;}
 \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{;}

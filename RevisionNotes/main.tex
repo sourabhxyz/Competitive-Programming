@@ -99,7 +99,7 @@ with this other one, you can add a value to the existing one:
 \author{Sourabh Aggarwal (\href {https://codeforces.com/profile/sourabh23}{sourabh23})}
 \date{Compiled on \today}
 \maketitle
-\pagenumbering {roman}
+\pagenumbering{roman}
 \tableofcontents
 \newpage
 \thispagestyle{fancy}  % else it was not giving fancy header to the first page
@@ -133,7 +133,7 @@ Positions $x$ for which $g(x)$ is 0 are P postions and all others are N position
 \textbf{Thus}, if a position is a \textbf{N} position, we can cleverly see which position should we go to (what move of a component game to take) such that we reach \textbf {P} position.
 \subsection{Mobius}
 Just read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
-\\\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is summation of mobius function. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(d)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
+\\\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is $\mu \circ e = \mu$. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(d)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
 \subsection{Bell, Burnside, etc}
 Just read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}
 \\For burnside just see \href{https://codeforces.com/blog/entry/62401}{this} and \href{http://poj.org/problem?id=1286}{burnside on circle prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/BURNSIDE/2.CPP}{sol}
@@ -404,7 +404,7 @@ The method of solving this equation is described in the corresponding article Li
 It also describes the method of obtaining all solutions of this equation from one found solution, and incidentally this method, when carefully considered, is absolutely equivalent to the method described in the previous section.
 \subsection{Sieve}
 \begin{minted}{cpp}
-    ll _sieve_size; // ll is defined as: typedef long long ll;
+ll _sieve_size; // ll is defined as: typedef long long ll;
 bitset<10000010> bs; // 10^7 should be enough for most cases
 vi primes; // compact list of primes in form of vector<int>
 void sieve(ll upperbound) { // create list of primes in [0..upperbound]
@@ -473,166 +473,175 @@ To explain how gaussian elimination allows the computation of the determinant of
     \item Multiplying a row by a non zero scalar multiplies the determinant by same scalar
     \item Adding to one row a scalar multiple of another does not change the determinant
 \end{itemize}
+Note that the above 3 operations are called as elementary row operations and are used to perform row reduction
+\\In row echelon form:
+\begin{itemize}
+    \item all nonzero rows (rows with at least one nonzero element) are above any rows of all zeroes (all zero rows, if any, belong at the bottom of the matrix), and
+    \item the leading coefficient (the first nonzero number from the left, also called the pivot) of a nonzero row is always strictly to the right of the leading coefficient of the row above it
+\end{itemize}
+In RREF, 
+\begin{itemize}
+    \item It is in row echelon form
+    \item leading coefficient is one.
+    \item Each column contains a leading 1 and zero everywhere else.
+\end{itemize}
 So if d is the product of scalar by which determinant has been multiplied having matrix in row echelon form, we have $det(A) = (\prod diag(B))/d$
 \\To find inverse of the matrix augment it with identity matrix and get it RREF, if left block is identity matrix $\rightarrow$ right block is inverse. 
 \subsection{Frac lib and Eqn solving}
-\revised
+\href{https://uva.onlinejudge.org/external/101/10109.pdf}{UVA 10109}
 \begin{minted}{cpp}
-class Frac {
-public:
-   long long a, b;
-   Frac() {
-       a = 0, b = 1;
-   }
-   Frac(int x, int y) {
-       a = x, b = y;
-       reduce(); ///So we are always reducing out fractions...
-   }
-   Frac operator+(const Frac &y) {
-       long long ta, tb;
-       tb = this->b/gcd(this->b, y.b)*y.b;
-       ta = this->a*(tb/this->b) + y.a*(tb/y.b);
-       Frac z(ta, tb);
-       return z;
-   }
-   Frac operator-(const Frac &y) {
-       long long ta, tb;
-       tb = this->b/gcd(this->b, y.b)*y.b;
-       ta = this->a*(tb/this->b) - y.a*(tb/y.b);
-       Frac z(ta, tb);
-       return z;
-   }
-   Frac operator*(const Frac &y) {
-       long long tx, ty, tz, tw, g;
-       tx = this->a, ty = y.b;
-       g = gcd(tx, ty), tx /= g, ty /= g;
-       tz = this->b, tw = y.a;
-       g = gcd(tz, tw), tz /= g, tw /= g;
-       Frac z(tx*tw, ty*tz);
-       return z;
-   }
-   Frac operator/(const Frac &y) {
-       long long tx, ty, tz, tw, g;
-       tx = this->a, ty = y.a;
-       g = gcd(tx, ty), tx /= g, ty /= g;
-       tz = this->b, tw = y.b;
-       g = gcd(tz, tw), tz /= g, tw /= g;
-       Frac z(tx*tw, ty*tz);
-       return z;
-   }
-   bool operator == (const frac &other) const {
+struct Frac {
+    long long a, b;
+    Frac() {
+        a = 0, b = 1;
+    }
+    Frac(int x, int y) {
+        a = x, b = y;
+        reduce(); ///So we are always reducing out fractions...
+    }
+    Frac operator+(const Frac &y) {
+        long long ta, tb;
+        tb = this->b/gcd(this->b, y.b)*y.b;
+        ta = this->a*(tb/this->b) + y.a*(tb/y.b);
+        Frac z(ta, tb);
+        return z;
+    }
+    Frac operator-(const Frac &y) {
+        long long ta, tb;
+        tb = this->b/gcd(this->b, y.b)*y.b;
+        ta = this->a*(tb/this->b) - y.a*(tb/y.b);
+        Frac z(ta, tb);
+        return z;
+    }
+    Frac operator*(const Frac &y) {
+        long long tx, ty, tz, tw, g;
+        tx = this->a, ty = y.b;
+        g = gcd(tx, ty), tx /= g, ty /= g;
+        tz = this->b, tw = y.a;
+        g = gcd(tz, tw), tz /= g, tw /= g;
+        Frac z(tx*tw, ty*tz);
+        return z;
+    }
+    Frac operator/(const Frac &y) {
+        long long tx, ty, tz, tw, g;
+        tx = this->a, ty = y.a;
+        g = gcd(tx, ty), tx /= g, ty /= g;
+        tz = this->b, tw = y.b;
+        g = gcd(tz, tw), tz /= g, tw /= g;
+        Frac z(tx*tw, ty*tz);
+        return z;
+    }
+    bool operator == (const Frac &other) const {
         return a == other.a and b == other.b;
     }
-    bool operator < (const frac &other) const {
+    bool operator < (const Frac &other) const {
         if (a != other.a) return a < other.a;
         else return b > other.b;
     }
-private:
-   static long long gcd(long long x, long long y) {
-       return b == 0 ? a : gcd (b, a % b);
-   }
-   void reduce() {
-       if (a == 0) {  // to handle case when b == 0 (not required in this problem) a = inf (so as to have same ground)
-           b = 1;
-           return;
-       } else {
+    static long long gcd(long long x, long long y) {
+        return y == 0 ? x : gcd (y, x % y);
+    }
+    void reduce() {
+        if (a == 0) {  // to handle case when b == 0 (not required in this problem) a = inf (so as to have same ground)
+            b = 1;
+            return;
+        } else {
             long long g = gcd(abs(a), abs(b));
             a /= g, b /= g;
             if(b < 0)   a *= -1, b *= -1;
-       }
-   }
-    
+        }
+    }
+
 };
 ostream& operator<<(ostream& out, const Frac&x) {
-   out << x.a;
-   if(x.b != 1)
-       out << '/' << x.b;
-   return out;
+    out << x.a;
+    if(x.b != 1)
+        out << '/' << x.b;
+    return out;
 }
-int main() {//UVA 10109
-   int n, m, i, j, k, N;
-   char NUM[100], first = 0;
-   long long X, Y;
-   Frac matrix[100][100];
-   while(scanf("%d", &N) == 1 && N) {
-       scanf("%d %d", &n, &m);
-       for(i = 0; i < m; i++) {
-           for(j = 0; j <= n; j++) {
-               scanf("%s", NUM);
-               if(sscanf(NUM, "%lld/%lld", &X, &Y) == 2) {
-                   matrix[i][j].a = X;
-                   matrix[i][j].b = Y;
-               } else
-                   sscanf(NUM, "%lld", &matrix[i][j].a), matrix[i][j].b = 1;
-           }
-       }
-       Frac tmp, one(1,1);
-       int idx = 0, rank = 0;
-       for(i = 0; i < m; i++) {
-           while(idx < n) {
-               int ch = -1;
-               for(j = i; j < m; j++)
-                   if(matrix[j][idx].a) {///This means that idx must be incremented to check
-                       ///the pivot at correct row...
-                       ch = j;
-                       break;
-                   }
-               if(ch == -1) {
-                   idx++;
-                   continue;
-               }///this if condition executes if all the elements in desired column
-               ///and below the i-1 th row are zero so we need to go to the next column...
-               if(i != ch)///So if the desired pivot element is zero we swap that row with
-                   ///the closest row that has non zero pivot...
-                   for(j = idx; j <= n; j++)
-                       swap(matrix[ch][j], matrix[i][j]);
-               break;
-           }
-           if(idx >= n) break;
-           tmp = one/matrix[i][idx];
-           rank++;
-           for(j = idx; j <= n; j++)
-               matrix[i][j] = matrix[i][j]*tmp;///So here we are making pivot element 1.
-           for(j = 0; j < m; j++) {
-               if(i == j)  continue;///This condition executes means that we are ignoring the
-               ///pivot row...
-               tmp = matrix[j][i]/matrix[i][idx];
-               for(k = idx; k <= n; k++) {
-                   matrix[j][k] = matrix[j][k] - tmp*matrix[i][k];///Thus now we are making
-                   ///all the elements below pivot as zero..
-               }
-           }
-           idx++;
-       }
-       if(first)   puts("");
-       first = 1;
-       printf("Solution for Matrix System # %d\n", N);
-       int sol = 0;
-       for(i = 0; i < m; i++) {
-           for(j = 0; j < n; j++) {
-               if(matrix[i][j].a)
-                   break;
-           }
-           if(j == n) {
-               if(matrix[i][n].a == 0 && sol != 1)
-                   sol = 0; // INFINITELY
-               else
-                   sol = 1; // No Solution.
-           }
-       }
-       if(rank == n && sol == 0) {
-           for(i = 0; i < n; i++) {
-               printf("x[%d] = ", i+1);
-               cout << matrix[i][n] << endl;
-           }
-           continue;
-       }
-       if(sol == 1)
-           puts("No Solution.");
-       else
-           printf("Infinitely many solutions containing %d arbitrary constants.\n", n-rank);
-   }
-   return 0;
+int main() { // UVA 10109
+    int n, m, i, j, k, N;
+    char NUM[100], first = 0;
+    long long X, Y;
+    Frac matrix[100][100];
+    while(scanf("%d", &N) == 1 && N) {
+        // m is the number of equations and n is the number of unknowns
+        scanf("%d %d", &n, &m);
+        for(i = 0; i < m; i++) {
+            for(j = 0; j <= n; j++) {
+                scanf("%s", NUM);
+                if(sscanf(NUM, "%lld/%lld", &X, &Y) == 2) {
+                    matrix[i][j].a = X;
+                    matrix[i][j].b = Y;
+                } else
+                    sscanf(NUM, "%lld", &matrix[i][j].a), matrix[i][j].b = 1;
+            }
+        }
+        Frac tmp, one(1,1);
+        int idx = 0, rank = 0;
+        for(i = 0; i < m; i++) {
+            while(idx < n) {
+                int ch = -1;
+                for(j = i; j < m; j++)
+                    if(matrix[j][idx].a) {  // found a non zero element pivot.
+                        ch = j;
+                        break;
+                    }
+                if(ch == -1) { // this if condition executes if all the elements in desired column and below the i-1 th row are zero so we need to go to the next column...
+                    idx++;
+                    continue;
+                }
+                if(i != ch) // So if the desired pivot element is zero we swap that row with
+                    // the closest row that has non zero pivot...
+                    for(j = idx; j <= n; j++)
+                        swap(matrix[ch][j], matrix[i][j]);
+                break;
+            }
+            if(idx >= n) break;
+            tmp = one/matrix[i][idx];
+            rank++;
+            for(j = idx; j <= n; j++)
+                matrix[i][j] = matrix[i][j]*tmp; // So here we are making pivot element 1.
+            for(j = 0; j < m; j++) {
+                if(i == j)  continue; // This condition executes means that we are ignoring the
+                ///pivot row...
+                tmp = matrix[j][idx];
+                for(k = idx; k <= n; k++) {
+                    matrix[j][k] = matrix[j][k] - tmp*matrix[i][k];///Thus now we are making
+                    ///all the elements below and above pivot as zero..
+                }
+            }
+            idx++;
+        }
+        if(first)   puts("");
+        first = 1;
+        printf("Solution for Matrix System # %d\n", N);
+        int sol = 0;
+        for(i = 0; i < m; i++) {
+            for(j = 0; j < n; j++) {
+                if(matrix[i][j].a)
+                    break;
+            }
+            if(j == n) {
+                if(matrix[i][n].a == 0 && sol != 1)
+                    sol = 0; // INFINITELY
+                else
+                    sol = 1; // No Solution.
+            }
+        }
+        if(rank == n && sol == 0) {
+            for(i = 0; i < n; i++) {
+                printf("x[%d] = ", i+1);
+                cout << matrix[i][n] << endl;
+            }
+            continue;
+        }
+        if(sol == 1)
+            puts("No Solution.");
+        else
+            printf("Infinitely many solutions containing %d arbitrary constants.\n", n-rank);
+    }
+    return 0;
 }
 \end{minted}
 \subsection{Balanced Ternary}
@@ -646,7 +655,7 @@ This game is played on a $4 \times 4$ board. On this board there are 15 playing 
 
 $$\begin{matrix} 1 & 2 & 3 & 4 \\ 5 & 6 & 7 & 8 \\ 9 & 10 & 11 & 12 \\ 13 & 14 & 15 & 0 \end{matrix}$$
 
-\subsubsection{Existence Of The Solution}j
+\subsubsection{Existence Of The Solution}
 
 Let's consider this problem: given position on the board, determine whether a sequence of moves which leads to a solution exists.
 
@@ -733,7 +742,7 @@ $$\min_ {i=1 \ldots m} \dfrac{a_i}{p_i}$$
     \item if $p|N \& p|M$ then $p|gcd(N, M)$ as $N = pk, M = pl \rightarrow$ N, M have p common so gcd will also have p.
     \item $N|P \& M|P \rightarrow lcm(N, M)|P$.
     \item $N = gcd(N, m) \Leftrightarrow N|M$
-    \item $M = lcdm(N, M) \Leftrightarrow N|M$
+    \item $M = lcm(N, M) \Leftrightarrow N|M$
     \item $gcd(P*N, P*M) = P*gcd(N, M)$
     \item $lcm(P*N, P*M) = P*lcm(N, M)$
     \item If $gcd(N_1, N_2) = 1$ then $gcd(N_1 * N_2, M) = gcd(N_1, M) * gcd(N_2, M)$ and $lcm(N_1*N_2, M) = lcm(N_1, M)*lcm(N_2, M)/M$
@@ -785,7 +794,7 @@ Learning how to effectively calculate this modified factorial allows us to quick
 \subsubsection{Algorithm}
 Let's write this modified factorial explicitly.
 
-\begin{eqnarray} n!_{\mod p} &=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \\
+\begin{eqnarray}n!_{\mod p} &=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \\
 & &\quad \cdot (2p+1) \cdot \ldots \cdot (p^2-1) \cdot \underbrace{1}_{p^2} \cdot (p^2 +1) \cdot \ldots \cdot n \pmod{p} \\ &=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{2}_{2p} \cdot 1 \cdot 2 \\
 & &\quad \cdot \ldots \cdot (p-1) \cdot \underbrace{1}_{p^2} \cdot 1 \cdot 2 \cdot \ldots \cdot (n \bmod p) \pmod{p} \end{eqnarray}
 
@@ -1704,12 +1713,12 @@ int floodfill (int r, int c, char c1, char c2) {
 }
     \end{minted}
     \item We can find the number of connected components by simply doing dfs (offline), and online using UFDS.
-    \item Highest average is possible only by taking large 
+    \item Highest average is possible only by taking largest edge weight/s. 
     \item We can use BFS for finding the shortest path in a graph with weights 0 or 1. This required just a little modificatio to normal BFS, if the current edge is of 0 weight and distance to the vertex is shorter than the current found distance, then add this vertex not to the back but to the front of the queue. (we can use dequeue which supports front, back, push\_{}back, push\_{}front, pop\_{}back, pop\_{}front) in O(1).
     \item Find the shortest path of even length from a source vertex s to a target vertex t in an unweighted graph. For this, we must construct an auxiliary graph, whose vertices are the state (v, c) where v is the current node, c = 0, 1 denots the current parity. Any edge (u, v) of the original graph in this new graph will turn into two edges ((u, 0), (v, 1)) and ((u, 1), (v, 0)). After that we run a BFS to find the shortest path from (s, 0) to (t, 0).
     \item Find all the vertices on any shortest path between a given pair of vertices (a, b). To accomplish that, run 2 BFS: one from a and one from b. Let da[] be the array containing shortest distances obtained from first BFS (from a) and db[] be the array containing shortest distances obtained from the second BFS (from b). Now for every vertex it is easy to check whether it lies on any shortest path between a and b: the criterion is the condition da[v] + db[v] = da[b].
     \item Similarly edge (u, v) lies on shortest path if da[u] + 1 + db[v] = da[b].
-    \item Finding shortest cycle in a directed unweighted graph. For each vertex $v_i$: do a BFS from it and if we try to gro from the current vertex to an already visited vertex then it means that we have found a cycle and should stop BFS.
+    \item Finding shortest cycle in a directed unweighted graph. For each vertex $v_i$: do a BFS from it and if we try to go from the current vertex to an already visited vertex then it means that we have found a cycle and should stop BFS.
     \\Take minimum of all such cycles (one for each $v_i$ to get the shortest length cycle.
     \item Using DFS, we can also tell whether vertex i is an ancestor of j by using either that subtree method or by checking if $entry[i] < entry[j]$ and $exit[i] > exit[j]$
 \end{itemize}
@@ -1717,7 +1726,7 @@ int floodfill (int r, int c, char c1, char c2) {
 \begin{itemize}
     \item An articulation point is defined as a vertex in a graph G whose removal (all edges incident to this vertex are also removed) disconnects G. A graph without any articulatioin point is called "Biconnected" Similarly, a "Bridge" is defined as an edge in a graph G whose removal disconnects G.
     \begin{minted}{cpp}
-        // dfs_low[u] will store the lowest iteration count vertex u can reach from u’s current DFS Tree (i.e u can only reach vertices of lower iteration count only if a back-edge exists in one of its children)
+// dfs_low[u] will store the lowest iteration count vertex u can reach from u’s current DFS Tree (i.e u can only reach vertices of lower iteration count only if a back-edge exists in one of its children)
 vector<int> dfs_num;
 vector<int> dfs_low;
 vector<int> dfs_parent;
@@ -1891,6 +1900,7 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 \end{itemize}
 \subsubsection{Important Problems}
 \begin{itemize}
+    \item Say path length is defined as the sum of edge weights along that path. And diameter is length of the longest simple path. Given sum of edge weights 'm' we need to assign weights to edges so that diameter is minimum. Sol: Consider the center of the tree like before, now the length of all paths from this tree should be minimum, which is only possible if we assign length to be the same. \href{https://codeforces.com/contest/1086/submission/47400574}{code}
     \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabh2311/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
 	\item \href {https://gist.github.com/sourabh2311/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the number of hops to travel between flights.\\
 	Problem Sol: Just link the center of diameters. Brute force which edge to remove. 
@@ -1972,7 +1982,7 @@ Size of Min VC in a bipartite graph is equal to the size of Max Matching in that
 \\Kőnig's theorem can be proven in a way that provides additional useful information beyond just its truth: the proof provides a way of constructing a minimum vertex cover from a maximum matching.
 \\\textbf{Proof: } Let $G = (V, E)$ be a bipartite graph, and let the vertex set $V$ V be partitioned into left set $L$ and right set $R$. Suppose that $M$ is a maximum matching for $G$.
 \\let $U$ be the set of unmatched vertices in $L$ (possibly empty), and let $Z$ be the set of vertices that are either in $U$ or are connected to $U$ by alternating paths. Let $K = ( L \setminus Z ) \cup ( R \cap Z )$. 
-\\Every edge $e$ in $E$ either belongs to an alternating path (and has a right endpoint in $K$, or it has a left endpoint in $K$. For, if $e$ is matched but not in an alternating path, then its left endpoint cannot be in an alternating path (for such a path would have had to have included $e$) and thus belongs to $L \setminus Z$. Alternatively, if $e$ is unmatched but not in an alternating path, then its left endpoint cannot be in an alternating path, for such a path could be extended by adding $e$ to it. Thus, $K$ forms a vertex cover.\\
+\\Every edge $e$ in $E$ either belongs to an alternating path (and has a right endpoint in $K$), or it has a left endpoint in $K$. For, if $e$ is matched but not in an alternating path, then its left endpoint cannot be in an alternating path (for such a path would have had to have included $e$) and thus belongs to $L \setminus Z$. Alternatively, if $e$ is unmatched but not in an alternating path, then its left endpoint cannot be in an alternating path, for such a path could be extended by adding $e$ to it. Thus, $K$ forms a vertex cover.\\
 Additionally, every vertex in $K$ is an endpoint of a matched edge. For, every vertex in $L \setminus Z$ is matched because $Z$ is a superset of $U$. And every vertex in $R \cap Z$ must also be matched, for if there existed an alternating path to an unmatched vertex then changing the matching by removing the matched edges from this path and adding the unmatched edges in their place would increase the size of the matching. However, no matched edge can have both of its endpoints in $K$. Thus, $K$ is a vertex cover of cardinality equal to $M$, and must be a minimum vertex cover.
 \\Small diagram to understand proof well.
 \definecolor{myblue}{RGB}{80,80,160}
@@ -2016,7 +2026,7 @@ $K = \{2, 5\}$
 \subsection{Bipartite Matching}
 \subsubsection{Hopcroft Karp}
 \begin{enumerate}
-    \item \textbf{Free node or vertex: }Given a matching M, a node that is not a part of mathing is called a free node. Initially all vertices are free.
+    \item \textbf{Free node or vertex: }Given a matching M, a node that is not a part of matching is called a free node. Initially all vertices are free.
     \item \textbf{Matching and not matching edges: }Given a matching M, edges that are part of matching are called matching edges and edges that are not part of M (or connect free nodes) are called non matching edges.
     \item \textbf{Alternating Paths: }Given a matching M, an alternating path is a path in which edges belong alternatively to the matching and not matching.
     \item \textbf{Augmenting path: }Given a matching M, an augmenting path is an alternating path that starts from and ends on free vertices.
@@ -2161,12 +2171,12 @@ Our MM problem can be reduced to max flow problem by assigning a dummy source ve
 \begin{itemize}
     \item An \textbf{euler path} is defined as a path in a graph which visits each edge of the graph exactly once. Similarly and \textbf{euler tour/cycle }is an euler path which starts \& ends on the same vertex. A graph which has either an euler path or an euler tour is called \textbf{eulerian}.
     \item For $undirected graph$ euler tour exist $iff$ all vertices have even deg.
-    \item For $undirected graph$ euler path exists $iff$ all except 2 vertices have even deg. This euler path will start from one of thee odd deg vertices and end in the other.
-    \item For $directed graph$, euler tour exists $iff$ every verte has equal indeg \& outdeg.
+    \item For $undirected graph$ euler path exists $iff$ all except 2 vertices have even deg. This euler path will start from one of the odd deg vertices and end in the other.
+    \item For $directed graph$, euler tour exists $iff$ every vertex has equal indeg \& outdeg.
     \item For $directed graph$, euler path exists $iff$ at most one vertex has $(outdeg) - (indeg) = 1$, atmost one vertex has $(indeg) - (outdeg) = 1$, every other vertex has $indeg = outdeg$.
 \end{itemize}
 \begin{minted}{cpp}
-// Code to find euler tour (will be able to euler path provided we start with correct vertex) for an undirected graph.
+// Code to find euler tour (will be able to find euler path provided we start with correct vertex) for an undirected graph.
 list<int> cyc; // we need list for fast insertion in the middle
 void EulerTour(list<int>::iterator i, int u) {
     for (int j = 0; j < (int)AdjList[u].size(); j++) {
@@ -2234,7 +2244,7 @@ for (int i = 0; i < V; i++)
 \end{minted}
 \subsubsection{Kosaraju}
 \begin{enumerate}
-    \item It is obvious that strongly connected components do not intersect each other, i.e. this is a partition of all graph vertices. Thus we can give a definition of condensation graph $G^{SCC}$ as a graph containing every strongly connected component as one vertex. Each vertex of the condensation graph corresponds to the strongly connected component of the graph $G$. There is a direccted edge b/w two vertice $C_i$ and $C_j$ of the condensation graph iff there are 2 vertices $u \in C_i$ and $v \in C_j$ such that there is an edge in initial graph, i.e. $(u, v) \in E$. The most important property of the condensation grph is that it is acyclic.
+    \item It is obvious that strongly connected components do not intersect each other, i.e. this is a partition of all graph vertices. Thus we can give a definition of condensation graph $G^{SCC}$ as a graph containing every strongly connected component as one vertex. Each vertex of the condensation graph corresponds to the strongly connected component of the graph $G$. There is a directed edge b/w two vertices $C_i$ and $C_j$ of the condensation graph iff there are 2 vertices $u \in C_i$ and $v \in C_j$ such that there is an edge in initial graph, i.e. $(u, v) \in E$. The most important property of the condensation grph is that it is acyclic.
     \item Let $C \& C^`$ be 2 diff SCC \& there is an edge $(C, C^`)$ in a condensation graph then $tout[C] > tout[C^`]$, note: $tout[C] = max_{v_i \in C}(tout[v_i])$.
 \end{enumerate}
 \begin{minted}{cpp}
@@ -2317,9 +2327,9 @@ Simply negate all the edge weights and run SSSP as above.
 find toposort. Set numPaths[firstElement] = 1. Then we process the remaining vertices one by one acc. to toposort. When processing a vertex u, we update each neighbour v of u by setting numPaths[v] += numPaths[u].
 \subsubsection{Min Path cover on DAG}
 This is described as a problem of finding the min. no. of paths to cover each vertex on DAG. The start of each path can be arbitrary, we are just interested in min. no. of paths.
-\\Construct a bipartite graph $G' = (V_out \cup V_in, E')$ from G where $V_{out/in} = \{v \in V: v has poitive out/in degree\}$
-\\$E' = \{(u, v) \in (V_out, V_in) : (u, v) \in E\}$
-\\G' is a bipartite graph, do max. matching on it. Say answer obtained is m that means ans is $|V| - m$ as initially |V| vertices can be convered with |V| paths of length of length 0 (the vertices themselves). One matching b/w vertex a and b using edge (a, b) says that we can use one less path as edge (a, b) in E' can cover path $a \in V_out \& b\in V_in$
+\\Construct a bipartite graph $G' = (V_{out} \cup V_{in}, E')$ from G where $V_{out/in} = \{v \in V: v \text{ has poitive out/in degree}\}$
+\\$E' = \{(u, v) \in (V_{out}, V_{in}) : (u, v) \in E\}$
+\\G' is a bipartite graph, do max. matching on it. Say answer obtained is m that means ans is $|V| - m$ as initially |V| vertices can be convered with |V| paths of length of length 0 (the vertices themselves). One matching b/w vertex a and b using edge (a, b) says that we can use one less path as edge (a, b) in E' can cover path $a \in V_{out} \& b\in V_{in}$
 \subsection{APSP Floyd Warshalls}
 \begin{minted}{cpp}
 for (int k = 0; k < V; k++) {
@@ -2349,10 +2359,10 @@ if (i != j) adjmat[i][j] = inf;
 else adjmat[i][j] = 0;
 \end{minted}
 \begin{itemize}
-    \item If diagonal (initially 0) becomes negative = negative cycle
+    \item If diagonal (initially 0) becomes negative $\Rightarrow$ negative cycle
     \item This algo will still work correctly for all pair of i and j for which there doesn't exist a pth starting at i, visiting a negative cycle and end at j.
     \item i.e. Shortest path between 2 vertices i, j does not exist (due to presence of negative cycle) iff there exist a vertex t that is reachable from i and also from j and for which $d[t][t] < 0$.
-    \item If diagonal (initially inf) becomes finite = cycle
+    \item If diagonal (initially inf) becomes finite $\Rightarrow$ cycle
     \item The smallest non negative adjmat[i][i] for all i is the cheapest cycle
     \item Transitive closure to determine if i is connected to j or not.
     \begin{minted}{cpp}
@@ -2437,7 +2447,7 @@ int dijkstra (int s, int e) {
 \begin{itemize}
     \item \href{https://uva.onlinejudge.org/external/116/11635.pdf}{Hotel Booking Problem}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_11635.cpp}{sol}
     \item \href{https://uva.onlinejudge.org/external/113/11367.pdf}{Fuel Tank problem}, \href{https://gist.github.com/sourabh2311/8bfef5f916820d71a8770fc4c7adc598}{sol}
-    \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/34071120}{Sol}: pr denotes from what grammer it is derived. Also number of functions on n variables $= 2^{2^n}$.
+    \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/47482331}{Sol}: pr denotes from what grammer it is derived. Also number of functions on n variables $= 2^{2^n}$.
 \end{itemize}
 \subsubsection{Bellman ford}
 \begin{minted}{cpp} 
@@ -5031,3 +5041,7 @@ double dvac(int low, int high) {
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{orientedangle}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{spherearea}
 \end{document}
+\subsection{Important Problems}
+\begin{itemize}
+    \item Sometimes it makes sense to gridize the region, like in \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1333.cpp}{Timus 1333}
+\end{itemize}

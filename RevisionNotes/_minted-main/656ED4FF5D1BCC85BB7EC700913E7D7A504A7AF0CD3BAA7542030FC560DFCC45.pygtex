@@ -1,5 +1,5 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{// Code to find euler tour (will be able to euler path provided we start with correct vertex) for an undirected graph.}
+\PYG{c+c1}{// Code to find euler tour (will be able to find euler path provided we start with correct vertex) for an undirected graph.}
 \PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{cyc}\PYG{p}{;} \PYG{c+c1}{// we need list for fast insertion in the middle}
 \PYG{k+kt}{void} \PYG{n+nf}{EulerTour}\PYG{p}{(}\PYG{n}{list}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{iterator} \PYG{n}{i}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{AdjList}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}

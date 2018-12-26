@@ -1,5 +1,5 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-    \PYG{n}{ll} \PYG{n}{\PYGZus{}sieve\PYGZus{}size}\PYG{p}{;} \PYG{c+c1}{// ll is defined as: typedef long long ll;}
+\PYG{n}{ll} \PYG{n}{\PYGZus{}sieve\PYGZus{}size}\PYG{p}{;} \PYG{c+c1}{// ll is defined as: typedef long long ll;}
 \PYG{n}{bitset}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{10000010}\PYG{o}{\PYGZgt{}} \PYG{n}{bs}\PYG{p}{;} \PYG{c+c1}{// 10\PYGZca{}7 should be enough for most cases}
 \PYG{n}{vi} \PYG{n}{primes}\PYG{p}{;} \PYG{c+c1}{// compact list of primes in form of vector\PYGZlt{}int\PYGZgt{}}
 \PYG{k+kt}{void} \PYG{n+nf}{sieve}\PYG{p}{(}\PYG{n}{ll} \PYG{n}{upperbound}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// create list of primes in [0..upperbound]}

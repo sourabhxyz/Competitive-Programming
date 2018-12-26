@@ -1,0 +1,80 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// This is the code for steps 2\PYGZhy{}5.}
+\PYG{k+kt}{int} \PYG{n+nf}{maxIndexDiff}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{maxDiff}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{;}
+
+    \PYG{k+kt}{int} \PYG{n}{LMin}\PYG{p}{[}\PYG{n}{n}\PYG{p}{],} \PYG{n}{RMax}\PYG{p}{[}\PYG{n}{n}\PYG{p}{];}
+
+    \PYG{c+c1}{// Construct LMin[] such that LMin[i]}
+    \PYG{c+c1}{// stores the minimum value}
+    \PYG{c+c1}{// from (arr[0], arr[1], ... arr[i])}
+    \PYG{n}{LMin}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{arr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{];}
+    \PYG{k}{for} \PYG{p}{(}\PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+        \PYG{n}{LMin}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{LMin}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]);}
+
+    \PYG{c+c1}{// Construct RMax[] such that RMax[j]}
+    \PYG{c+c1}{// stores the maximum value}
+    \PYG{c+c1}{// from (arr[j], arr[j+1], ..arr[n\PYGZhy{}1])}
+    \PYG{n}{RMax}\PYG{p}{[}\PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{];}
+    \PYG{k}{for} \PYG{p}{(}\PYG{n}{j} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{j}\PYG{p}{)}
+        \PYG{n}{RMax}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{n}{j}\PYG{p}{],} \PYG{n}{RMax}\PYG{p}{[}\PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]);}
+
+    \PYG{c+c1}{// Traverse both arrays from left to right}
+    \PYG{c+c1}{// to find optimum j \PYGZhy{} i}
+    \PYG{c+c1}{// This process is similar to merge()}
+    \PYG{c+c1}{// of MergeSort}
+    \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{maxDiff} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{n} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{LMin}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{RMax}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+            \PYG{n}{maxDiff} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{maxDiff}\PYG{p}{,} \PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{n}{i}\PYG{p}{);}
+            \PYG{n}{j} \PYG{o}{=} \PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{else}
+            \PYG{n}{i} \PYG{o}{=} \PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k}{return} \PYG{n}{maxDiff} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// utility Function which subtracts X from all}
+\PYG{c+c1}{// the elements in the array}
+\PYG{k+kt}{void} \PYG{n+nf}{modifyarr}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+        \PYG{n}{arr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{x}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Calculating the prefix sum array}
+\PYG{c+c1}{// of the modified array}
+\PYG{k+kt}{void} \PYG{n+nf}{calcprefix}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{s} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{s} \PYG{o}{+=} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+        \PYG{n}{arr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{s}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Function to find the length of the longest}
+\PYG{c+c1}{// subarray with average \PYGZgt{}= x}
+\PYG{k+kt}{int} \PYG{n+nf}{longestsubarray}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{modifyarr}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{n}{x}\PYG{p}{);}
+    \PYG{n}{calcprefix}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
+
+    \PYG{k}{return} \PYG{n}{maxIndexDiff}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Driver code}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1} \PYG{p}{\PYGZcb{};}
+    \PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)} \PYG{o}{/} \PYG{k}{sizeof}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{);}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{longestsubarray}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{n}{x}\PYG{p}{)} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+
+    \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

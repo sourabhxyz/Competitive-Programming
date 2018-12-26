@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n}{We} \PYG{n}{can} \PYG{n}{use} \PYG{n}{cin}\PYG{p}{.}\PYG{n}{peek} \PYG{p}{()} \PYG{n}{to} \PYG{n}{see} \PYG{n}{the} \PYG{n}{next} \PYG{n}{available} \PYG{n}{character}
+\end{Verbatim}

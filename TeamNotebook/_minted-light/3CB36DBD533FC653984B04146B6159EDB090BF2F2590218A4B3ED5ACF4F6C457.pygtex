@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// O (V * E\PYGZca{}2)}
+\PYG{k+kt}{void} \PYG{n+nf}{augment}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{minEdge}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// traverse BFS spanning tree from s\PYGZhy{}\PYGZgt{}t}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{v} \PYG{o}{==} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{n}{f} \PYG{o}{=} \PYG{n}{minEdge}\PYG{p}{;} \PYG{k}{return}\PYG{p}{;} \PYG{p}{\PYGZcb{}} \PYG{c+c1}{// record minEdge in a global var f}
+    \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{p}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{n}{augment}\PYG{p}{(}\PYG{n}{p}\PYG{p}{[}\PYG{n}{v}\PYG{p}{],} \PYG{n}{min}\PYG{p}{(}\PYG{n}{minEdge}\PYG{p}{,} \PYG{n}{res}\PYG{p}{[}\PYG{n}{p}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]][}\PYG{n}{v}\PYG{p}{]));}
+    \PYG{n}{res}\PYG{p}{[}\PYG{n}{p}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]][}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZhy{}=} \PYG{n}{f}\PYG{p}{;} \PYG{n}{res}\PYG{p}{[}\PYG{n}{v}\PYG{p}{][}\PYG{n}{p}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]]} \PYG{o}{+=} \PYG{n}{f}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// in main}
+    \PYG{n}{mf} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{c+c1}{// mf stands for max\PYGZus{}flow}
+    \PYG{k}{while} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// O(VE\PYGZca{}2) (actually O(V\PYGZca{}3 E) Edmonds Karp’s algorithm}
+        \PYG{n}{f} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+        \PYG{c+c1}{// run BFS}
+        \PYG{n}{vi} \PYG{n+nf}{dist}\PYG{p}{(}\PYG{n}{MAX\PYGZus{}V}\PYG{p}{,} \PYG{n}{INF}\PYG{p}{);} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{queue}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{q}\PYG{p}{;} \PYG{n}{q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{s}\PYG{p}{);}
+        \PYG{n}{p}\PYG{p}{.}\PYG{n}{assign}\PYG{p}{(}\PYG{n}{MAX\PYGZus{}V}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);} \PYG{c+c1}{// record the BFS spanning tree, from s to t!}
+        \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{q}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+            \PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{n}{q}\PYG{p}{.}\PYG{n}{front}\PYG{p}{();} \PYG{n}{q}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{u} \PYG{o}{==} \PYG{n}{t}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;} \PYG{c+c1}{// immediately stop BFS if we already reach sink t}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{v} \PYG{o}{\PYGZlt{}} \PYG{n}{MAX\PYGZus{}V}\PYG{p}{;} \PYG{n}{v}\PYG{o}{++}\PYG{p}{)} \PYG{c+c1}{// note: this part is slow}
+                \PYG{k}{if} \PYG{p}{(}\PYG{n}{res}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{==} \PYG{n}{INF}\PYG{p}{)}
+                    \PYG{n}{dist}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{v}\PYG{p}{),} \PYG{n}{p}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{u}\PYG{p}{;} \PYG{c+c1}{// 3 lines in 1!}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{augment}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,} \PYG{n}{INF}\PYG{p}{);} \PYG{c+c1}{// find the min edge weight ‘f’ in this path, if any}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{f} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;} \PYG{c+c1}{// we cannot send any more flow (‘f’ = 0), terminate}
+        \PYG{n}{mf} \PYG{o}{+=} \PYG{n}{f}\PYG{p}{;} \PYG{c+c1}{// we can still send a flow, increase the max flow!}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

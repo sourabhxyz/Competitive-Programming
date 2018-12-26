@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{m}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{m}\PYG{o}{\PYGZlt{}}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{n}\PYG{p}{);} \PYG{o}{++}\PYG{n}{m}\PYG{p}{)}
+	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{s}\PYG{o}{=}\PYG{n}{m}\PYG{p}{;} \PYG{n}{s}\PYG{p}{;} \PYG{n}{s}\PYG{o}{=}\PYG{p}{(}\PYG{n}{s}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZam{}}\PYG{n}{m}\PYG{p}{)}
+ \PYG{p}{...} \PYG{n}{s} \PYG{n}{and} \PYG{n}{m} \PYG{p}{...}
+\end{Verbatim}

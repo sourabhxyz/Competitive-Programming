@@ -1,0 +1,180 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Following is the solution for UVA 10428}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
+
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
+
+\PYG{k}{typedef} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{k+kt}{int} \PYG{n}{ll}\PYG{p}{;}
+\PYG{k}{const} \PYG{k+kt}{double} \PYG{n}{eps} \PYG{o}{=} \PYG{l+m+mf}{1e\PYGZhy{}7}\PYG{p}{;}
+\PYG{k}{struct} \PYG{n}{Polynomial} \PYG{p}{\PYGZob{}}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}} \PYG{n}{coef}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{deg}\PYG{p}{;}
+    \PYG{n}{Polynomial}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
+    \PYG{n}{Polynomial}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{dd}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{deg} \PYG{o}{=} \PYG{n}{dd}\PYG{p}{;}
+        \PYG{n}{coef}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{deg} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{void} \PYG{n}{fix}\PYG{p}{(}\PYG{n}{Polynomial} \PYG{o}{\PYGZam{}}\PYG{n}{given}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{dec} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{given}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{given}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{o}{\PYGZlt{}} \PYG{n}{eps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{dec}\PYG{o}{++}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{break}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{dec} \PYG{o}{*=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{n}{given}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{given}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{+} \PYG{n}{dec} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+        \PYG{n}{given}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{+=} \PYG{n}{dec}\PYG{p}{;}
+        \PYG{k}{return}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{Polynomial} \PYG{k}{operator} \PYG{o}{+} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Polynomial} \PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Polynomial} \PYG{n}{ret}\PYG{p}{;}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{deg} \PYG{o}{\PYGZgt{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{ret}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{=} \PYG{n}{deg}\PYG{p}{;}
+            \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{deg} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{other}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+} \PYG{n}{other}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n}{fix}\PYG{p}{(}\PYG{n}{ret}\PYG{p}{);}
+            \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+            \PYG{n}{ret}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{=} \PYG{n}{other}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{;}
+            \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{other}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{other}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}} \PYG{n}{deg}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{other}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+} \PYG{n}{other}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n}{fix}\PYG{p}{(}\PYG{n}{ret}\PYG{p}{);}
+            \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{Polynomial} \PYG{k}{operator} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Polynomial} \PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Polynomial} \PYG{n}{ret}\PYG{p}{;}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{deg} \PYG{o}{\PYGZgt{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{ret}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{=} \PYG{n}{deg}\PYG{p}{;}
+            \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{deg} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{other}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n}{fix}\PYG{p}{(}\PYG{n}{ret}\PYG{p}{);}
+            \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+            \PYG{n}{ret}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{=} \PYG{n}{other}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{;}
+            \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{other}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{other}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}} \PYG{n}{deg}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{other}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n}{fix}\PYG{p}{(}\PYG{n}{ret}\PYG{p}{);}
+            \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{Polynomial} \PYG{k}{operator} \PYG{o}{*} \PYG{p}{(}\PYG{k}{const} \PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{u}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{double} \PYG{n}{d} \PYG{o}{=} \PYG{n}{u}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
+        \PYG{k+kt}{int} \PYG{n}{dega} \PYG{o}{=} \PYG{n}{u}\PYG{p}{.}\PYG{n}{second}\PYG{p}{;}
+        \PYG{n}{Polynomial} \PYG{n}{ret}\PYG{p}{;}
+        \PYG{n}{ret}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{=} \PYG{n}{deg} \PYG{o}{+} \PYG{n}{dega}\PYG{p}{;}
+        \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{.}\PYG{n}{assign}\PYG{p}{(}\PYG{n}{ret}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{ret}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i} \PYG{o}{+} \PYG{n}{dega}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{n}{d}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{fix}\PYG{p}{(}\PYG{n}{ret}\PYG{p}{);}
+        \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{!=} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Polynomial} \PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{deg} \PYG{o}{!=} \PYG{n}{other}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{)} \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{other}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+\PYG{p}{\PYGZcb{};}
+
+\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{n}{Polynomial}\PYG{p}{,} \PYG{n}{Polynomial}\PYG{o}{\PYGZgt{}} \PYG{n}{polyDiv}\PYG{p}{(}\PYG{n}{Polynomial} \PYG{o}{\PYGZam{}}\PYG{n}{n}\PYG{p}{,} \PYG{n}{Polynomial} \PYG{o}{\PYGZam{}}\PYG{n}{d}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// To do n / d}
+    \PYG{n}{Polynomial} \PYG{n}{zero}\PYG{p}{;}
+    \PYG{n}{zero}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{zero}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{);}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{n}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{\PYGZlt{}} \PYG{n}{d}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{zero}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{Polynomial} \PYG{n}{q}\PYG{p}{;}
+    \PYG{n}{q}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{=} \PYG{p}{(}\PYG{n}{n}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{);}
+    \PYG{n}{q}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{.}\PYG{n}{assign}\PYG{p}{(}\PYG{n}{q}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+    \PYG{n}{Polynomial} \PYG{n}{r} \PYG{o}{=} \PYG{n}{n}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{r} \PYG{o}{!=} \PYG{n}{zero} \PYG{n}{and} \PYG{n}{r}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{\PYGZgt{}=} \PYG{n}{d}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{double} \PYG{n}{t} \PYG{o}{=} \PYG{p}{(}\PYG{n}{r}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{r}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{]} \PYG{o}{/} \PYG{n}{d}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{d}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{]);}
+        \PYG{n}{q}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{r}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{\PYGZhy{}} \PYG{n}{d}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{t}\PYG{p}{;}
+        \PYG{n}{r} \PYG{o}{=} \PYG{n}{r} \PYG{o}{\PYGZhy{}} \PYG{n}{d} \PYG{o}{*} \PYG{n}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,} \PYG{n}{r}\PYG{p}{.}\PYG{n}{deg} \PYG{o}{\PYGZhy{}} \PYG{n}{d}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{q}\PYG{p}{.}\PYG{n}{fix}\PYG{p}{(}\PYG{n}{q}\PYG{p}{);} \PYG{n}{r}\PYG{p}{.}\PYG{n}{fix}\PYG{p}{(}\PYG{n}{r}\PYG{p}{);}
+    \PYG{k}{return} \PYG{n+nf}{make\PYGZus{}pair}\PYG{p}{(}\PYG{n}{q}\PYG{p}{,} \PYG{n}{r}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{double} \PYG{n}{f}\PYG{p}{(}\PYG{n}{Polynomial} \PYG{o}{\PYGZam{}}\PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{double} \PYG{n}{result} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{a}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{result} \PYG{o}{=} \PYG{n}{result} \PYG{o}{*} \PYG{n}{x} \PYG{o}{+} \PYG{n}{a}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{double} \PYG{n}{f\PYGZus{}}\PYG{p}{(}\PYG{n}{Polynomial} \PYG{o}{\PYGZam{}}\PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{double} \PYG{n}{result} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{a}\PYG{p}{.}\PYG{n}{deg}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{result} \PYG{o}{=} \PYG{n}{result} \PYG{o}{*} \PYG{n}{x} \PYG{o}{+} \PYG{n}{a}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{n}{i}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{result}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{double} \PYG{n}{newtonsMethod}\PYG{p}{(}\PYG{n}{Polynomial} \PYG{o}{\PYGZam{}}\PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{x0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{double} \PYG{n}{x1} \PYG{o}{=} \PYG{n}{x0}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{x0} \PYG{o}{=} \PYG{n}{x1}\PYG{p}{;}
+        \PYG{n}{x1} \PYG{o}{=} \PYG{n}{x0} \PYG{o}{\PYGZhy{}} \PYG{n}{f}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{x0}\PYG{p}{)}\PYG{o}{/}\PYG{n}{f\PYGZus{}}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{x0}\PYG{p}{);}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{x1} \PYG{o}{\PYGZhy{}} \PYG{n}{x0}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{x1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n}{findRoot}\PYG{p}{(}\PYG{n}{Polynomial} \PYG{n}{a}\PYG{p}{,} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{roots}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{roots}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{newtonsMethod}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{));}
+        \PYG{n}{Polynomial} \PYG{n+nf}{d}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+        \PYG{n}{d}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{n}{d}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{roots}\PYG{p}{.}\PYG{n}{back}\PYG{p}{();}
+        \PYG{k}{auto} \PYG{n}{u} \PYG{o}{=} \PYG{n}{polyDiv}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{d}\PYG{p}{);}
+        \PYG{n}{a} \PYG{o}{=} \PYG{n}{u}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{int} \PYG{n}{main}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{n}{ios}\PYG{o}{::}\PYG{n}{sync\PYGZus{}with\PYGZus{}stdio}\PYG{p}{(}\PYG{n+nb}{false}\PYG{p}{);}
+    \PYG{n}{cin}\PYG{p}{.}\PYG{n}{tie}\PYG{p}{(}\PYG{k}{nullptr}\PYG{p}{);}
+   \PYG{c+c1}{//  freopen(\PYGZdq{}ina.txt\PYGZdq{}, \PYGZdq{}r\PYGZdq{}, stdin);}
+   \PYG{c+c1}{//  freopen(\PYGZdq{}outa.txt\PYGZdq{}, \PYGZdq{}w\PYGZdq{}, stdout);}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{fixed} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{setprecision}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{);}
+    \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{caseno} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{n} \PYG{n}{and} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Polynomial} \PYG{n}{a}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+        \PYG{n}{caseno}\PYG{o}{++}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{a}\PYG{p}{.}\PYG{n}{coef}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Equation \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{caseno} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}: \PYGZdq{}}\PYG{p}{;}
+        \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{o}{\PYGZgt{}} \PYG{n}{roots}\PYG{p}{;}
+        \PYG{n}{findRoot}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{roots}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
+        \PYG{n}{sort}\PYG{p}{(}\PYG{n}{roots}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{roots}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{roots}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{];}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{roots}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

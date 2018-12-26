@@ -1,0 +1,149 @@
+\BOOKMARK [1][-]{section.1}{Maths}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Game Theory}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Mobius}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Burnside}{section.1}% 4
+\BOOKMARK [3][-]{subsubsection.1.3.1}{Inclusion Exclusion Principle}{subsection.1.3}% 5
+\BOOKMARK [2][-]{subsection.1.4}{Modulo}{section.1}% 6
+\BOOKMARK [2][-]{subsection.1.5}{Prob and Comb}{section.1}% 7
+\BOOKMARK [2][-]{subsection.1.6}{Euler's Totient Function}{section.1}% 8
+\BOOKMARK [2][-]{subsection.1.7}{Catalan}{section.1}% 9
+\BOOKMARK [2][-]{subsection.1.8}{Floyd Cycle Finding}{section.1}% 10
+\BOOKMARK [2][-]{subsection.1.9}{Base Conversion}{section.1}% 11
+\BOOKMARK [2][-]{subsection.1.10}{Extended Euclid}{section.1}% 12
+\BOOKMARK [2][-]{subsection.1.11}{Linear Congruence Equation}{section.1}% 13
+\BOOKMARK [2][-]{subsection.1.12}{Sieve}{section.1}% 14
+\BOOKMARK [2][-]{subsection.1.13}{Matrix}{section.1}% 15
+\BOOKMARK [2][-]{subsection.1.14}{Frac lib and Eqn solving}{section.1}% 16
+\BOOKMARK [2][-]{subsection.1.15}{Finding Power Of Factorial Divisor}{section.1}% 17
+\BOOKMARK [3][-]{subsubsection.1.15.1}{Prime k}{subsection.1.15}% 18
+\BOOKMARK [3][-]{subsubsection.1.15.2}{Composite k}{subsection.1.15}% 19
+\BOOKMARK [2][-]{subsection.1.16}{GCD, LCM}{section.1}% 20
+\BOOKMARK [2][-]{subsection.1.17}{Some properties of Fibonacci numbers}{section.1}% 21
+\BOOKMARK [2][-]{subsection.1.18}{Wilson Theorem}{section.1}% 22
+\BOOKMARK [2][-]{subsection.1.19}{Factorial modulo p in O\(p logn\)}{section.1}% 23
+\BOOKMARK [3][-]{subsubsection.1.19.1}{Algorithm}{subsection.1.19}% 24
+\BOOKMARK [3][-]{subsubsection.1.19.2}{Implementation}{subsection.1.19}% 25
+\BOOKMARK [2][-]{subsection.1.20}{Modular Inverse}{section.1}% 26
+\BOOKMARK [2][-]{subsection.1.21}{Gray Code}{section.1}% 27
+\BOOKMARK [3][-]{subsubsection.1.21.1}{Finding Gray Code}{subsection.1.21}% 28
+\BOOKMARK [3][-]{subsubsection.1.21.2}{Finding inverse gray code}{subsection.1.21}% 29
+\BOOKMARK [2][-]{subsection.1.22}{Discrete Logarithm}{section.1}% 30
+\BOOKMARK [3][-]{subsubsection.1.22.1}{Algorithm}{subsection.1.22}% 31
+\BOOKMARK [3][-]{subsubsection.1.22.2}{Complexity}{subsection.1.22}% 32
+\BOOKMARK [3][-]{subsubsection.1.22.3}{Implementation}{subsection.1.22}% 33
+\BOOKMARK [3][-]{subsubsection.1.22.4}{Improved implementation}{subsection.1.22}% 34
+\BOOKMARK [2][-]{subsection.1.23}{Chinese Remainder Theorem}{section.1}% 35
+\BOOKMARK [2][-]{subsection.1.24}{Primitive Root}{section.1}% 36
+\BOOKMARK [3][-]{subsubsection.1.24.1}{Definition}{subsection.1.24}% 37
+\BOOKMARK [3][-]{subsubsection.1.24.2}{Existence}{subsection.1.24}% 38
+\BOOKMARK [3][-]{subsubsection.1.24.3}{Relation with the Euler function}{subsection.1.24}% 39
+\BOOKMARK [3][-]{subsubsection.1.24.4}{Algorithm for finding a primitive root}{subsection.1.24}% 40
+\BOOKMARK [3][-]{subsubsection.1.24.5}{Implementation}{subsection.1.24}% 41
+\BOOKMARK [2][-]{subsection.1.25}{Discrete Root}{section.1}% 42
+\BOOKMARK [3][-]{subsubsection.1.25.1}{The algorithm}{subsection.1.25}% 43
+\BOOKMARK [3][-]{subsubsection.1.25.2}{Implementation}{subsection.1.25}% 44
+\BOOKMARK [2][-]{subsection.1.26}{Fermats last theorem}{section.1}% 45
+\BOOKMARK [2][-]{subsection.1.27}{Josephus Problem}{section.1}% 46
+\BOOKMARK [3][-]{subsubsection.1.27.1}{For k = 2}{subsection.1.27}% 47
+\BOOKMARK [3][-]{subsubsection.1.27.2}{For general k 1}{subsection.1.27}% 48
+\BOOKMARK [2][-]{subsection.1.28}{Root Solving}{section.1}% 49
+\BOOKMARK [2][-]{subsection.1.29}{Integration}{section.1}% 50
+\BOOKMARK [3][-]{subsubsection.1.29.1}{Simpson rule}{subsection.1.29}% 51
+\BOOKMARK [2][-]{subsection.1.30}{Continued Fractions}{section.1}% 52
+\BOOKMARK [2][-]{subsection.1.31}{Pells eqn}{section.1}% 53
+\BOOKMARK [2][-]{subsection.1.32}{Side Notes}{section.1}% 54
+\BOOKMARK [2][-]{subsection.1.33}{Important Problems}{section.1}% 55
+\BOOKMARK [1][-]{section.2}{Graphs}{}% 56
+\BOOKMARK [2][-]{subsection.2.1}{Basic}{section.2}% 57
+\BOOKMARK [2][-]{subsection.2.2}{Articulation Points and Bridges \(undirected graph\)}{section.2}% 58
+\BOOKMARK [2][-]{subsection.2.3}{Tree}{section.2}% 59
+\BOOKMARK [3][-]{subsubsection.2.3.1}{LCA}{subsection.2.3}% 60
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Important Problems}{subsection.2.3}% 61
+\BOOKMARK [3][-]{subsubsection.2.3.3}{MVC on Tree}{subsection.2.3}% 62
+\BOOKMARK [3][-]{subsubsection.2.3.4}{MWIS on Tree}{subsection.2.3}% 63
+\BOOKMARK [2][-]{subsection.2.4}{Terminology}{section.2}% 64
+\BOOKMARK [2][-]{subsection.2.5}{Konigs Theorem}{section.2}% 65
+\BOOKMARK [2][-]{subsection.2.6}{Bipartite Matching}{section.2}% 66
+\BOOKMARK [3][-]{subsubsection.2.6.1}{Hopcroft Karp}{subsection.2.6}% 67
+\BOOKMARK [3][-]{subsubsection.2.6.2}{Using max flow algo}{subsection.2.6}% 68
+\BOOKMARK [2][-]{subsection.2.7}{Paths}{section.2}% 69
+\BOOKMARK [3][-]{subsubsection.2.7.1}{No. of paths}{subsection.2.7}% 70
+\BOOKMARK [2][-]{subsection.2.8}{SCC}{section.2}% 71
+\BOOKMARK [3][-]{subsubsection.2.8.1}{Tarjan}{subsection.2.8}% 72
+\BOOKMARK [3][-]{subsubsection.2.8.2}{Kosaraju}{subsection.2.8}% 73
+\BOOKMARK [2][-]{subsection.2.9}{SAT}{section.2}% 74
+\BOOKMARK [3][-]{subsubsection.2.9.1}{1 SAT}{subsection.2.9}% 75
+\BOOKMARK [3][-]{subsubsection.2.9.2}{2 SAT}{subsection.2.9}% 76
+\BOOKMARK [2][-]{subsection.2.10}{DAG}{section.2}% 77
+\BOOKMARK [3][-]{subsubsection.2.10.1}{SSSP}{subsection.2.10}% 78
+\BOOKMARK [3][-]{subsubsection.2.10.2}{SSLP}{subsection.2.10}% 79
+\BOOKMARK [3][-]{subsubsection.2.10.3}{Counting Paths in DAG}{subsection.2.10}% 80
+\BOOKMARK [3][-]{subsubsection.2.10.4}{Min Path cover on DAG}{subsection.2.10}% 81
+\BOOKMARK [2][-]{subsection.2.11}{APSP Floyd Warshalls}{section.2}% 82
+\BOOKMARK [2][-]{subsection.2.12}{MST \(Kruskal\)}{section.2}% 83
+\BOOKMARK [2][-]{subsection.2.13}{SSSP}{section.2}% 84
+\BOOKMARK [3][-]{subsubsection.2.13.1}{Dijkstra}{subsection.2.13}% 85
+\BOOKMARK [3][-]{subsubsection.2.13.2}{Bellman ford}{subsection.2.13}% 86
+\BOOKMARK [2][-]{subsection.2.14}{Max Flow}{section.2}% 87
+\BOOKMARK [3][-]{subsubsection.2.14.1}{Edmond karps}{subsection.2.14}% 88
+\BOOKMARK [2][-]{subsection.2.15}{Minimum Cost Flow}{section.2}% 89
+\BOOKMARK [2][-]{subsection.2.16}{Kirchhoff's matrix tree theorem}{section.2}% 90
+\BOOKMARK [2][-]{subsection.2.17}{Counting Labeled graphs}{section.2}% 91
+\BOOKMARK [3][-]{subsubsection.2.17.1}{Labeled graphs}{subsection.2.17}% 92
+\BOOKMARK [3][-]{subsubsection.2.17.2}{Connected labeled graphs}{subsection.2.17}% 93
+\BOOKMARK [3][-]{subsubsection.2.17.3}{Labeled graphs with k connected components}{subsection.2.17}% 94
+\BOOKMARK [2][-]{subsection.2.18}{Heavy Light Decomposition}{section.2}% 95
+\BOOKMARK [2][-]{subsection.2.19}{More Problems}{section.2}% 96
+\BOOKMARK [1][-]{section.3}{Some Basic}{}% 97
+\BOOKMARK [2][-]{subsection.3.1}{Meet in the middle}{section.3}% 98
+\BOOKMARK [2][-]{subsection.3.2}{To find subarray \(continguous\) with maximum average and of length k}{section.3}% 99
+\BOOKMARK [2][-]{subsection.3.3}{To find subarray \(contiguous\) with maximum average and length more than k}{section.3}% 100
+\BOOKMARK [2][-]{subsection.3.4}{Find subarray with given sum, elements are non negative}{section.3}% 101
+\BOOKMARK [2][-]{subsection.3.5}{Largest subarray with gcd one}{section.3}% 102
+\BOOKMARK [2][-]{subsection.3.6}{Smallest subarray with given gcd}{section.3}% 103
+\BOOKMARK [2][-]{subsection.3.7}{LIS}{section.3}% 104
+\BOOKMARK [2][-]{subsection.3.8}{LIS of consecutive integers}{section.3}% 105
+\BOOKMARK [2][-]{subsection.3.9}{nth element}{section.3}% 106
+\BOOKMARK [2][-]{subsection.3.10}{Optimal schedule of jobs given their deadlines and durations}{section.3}% 107
+\BOOKMARK [2][-]{subsection.3.11}{Scheduling jobs on one machine}{section.3}% 108
+\BOOKMARK [3][-]{subsubsection.3.11.1}{Linear penalty functions}{subsection.3.11}% 109
+\BOOKMARK [3][-]{subsubsection.3.11.2}{Exponential penalty function}{subsection.3.11}% 110
+\BOOKMARK [3][-]{subsubsection.3.11.3}{Identical monotone penalty function}{subsection.3.11}% 111
+\BOOKMARK [3][-]{subsubsection.3.11.4}{Summary}{subsection.3.11}% 112
+\BOOKMARK [2][-]{subsection.3.12}{Scheduling jobs on two machine}{section.3}% 113
+\BOOKMARK [2][-]{subsection.3.13}{Ternary Search}{section.3}% 114
+\BOOKMARK [2][-]{subsection.3.14}{Submask Enumeration}{section.3}% 115
+\BOOKMARK [3][-]{subsubsection.3.14.1}{Iterating through all masks with their submasks. Complexity O\(3n\)}{subsection.3.14}% 116
+\BOOKMARK [2][-]{subsection.3.15}{MOS Algorithm}{section.3}% 117
+\BOOKMARK [2][-]{subsection.3.16}{MOS Algorithm with updates}{section.3}% 118
+\BOOKMARK [2][-]{subsection.3.17}{Important Problems}{section.3}% 119
+\BOOKMARK [1][-]{section.4}{Data Structures}{}% 120
+\BOOKMARK [2][-]{subsection.4.1}{Segment Tree}{section.4}% 121
+\BOOKMARK [1][-]{section.5}{DP}{}% 122
+\BOOKMARK [2][-]{subsection.5.1}{Coin Change}{section.5}% 123
+\BOOKMARK [2][-]{subsection.5.2}{0/1 Knapsack}{section.5}% 124
+\BOOKMARK [2][-]{subsection.5.3}{Balanced Bracket Sequence}{section.5}% 125
+\BOOKMARK [3][-]{subsubsection.5.3.1}{One type of bracket}{subsection.5.3}% 126
+\BOOKMARK [3][-]{subsubsection.5.3.2}{MultiType}{subsection.5.3}% 127
+\BOOKMARK [3][-]{subsubsection.5.3.3}{No. of balanced Sequences}{subsection.5.3}% 128
+\BOOKMARK [3][-]{subsubsection.5.3.4}{Lexicographically next balanced sequence}{subsection.5.3}% 129
+\BOOKMARK [3][-]{subsubsection.5.3.5}{Sequence Index}{subsection.5.3}% 130
+\BOOKMARK [3][-]{subsubsection.5.3.6}{Finding the kth sequence}{subsection.5.3}% 131
+\BOOKMARK [2][-]{subsection.5.4}{Important Problems}{section.5}% 132
+\BOOKMARK [1][-]{section.6}{Strings}{}% 133
+\BOOKMARK [2][-]{subsection.6.1}{Minimum Edit Distance}{section.6}% 134
+\BOOKMARK [2][-]{subsection.6.2}{Length of longest Palindrome possible by removing 0 or more characters}{section.6}% 135
+\BOOKMARK [2][-]{subsection.6.3}{Longest Common Subsequence}{section.6}% 136
+\BOOKMARK [2][-]{subsection.6.4}{Prefix Function and KMP}{section.6}% 137
+\BOOKMARK [3][-]{subsubsection.6.4.1}{Prefix Function}{subsection.6.4}% 138
+\BOOKMARK [3][-]{subsubsection.6.4.2}{KMP}{subsection.6.4}% 139
+\BOOKMARK [3][-]{subsubsection.6.4.3}{Counting number of occurrences of each prefix}{subsection.6.4}% 140
+\BOOKMARK [2][-]{subsection.6.5}{Notes}{section.6}% 141
+\BOOKMARK [2][-]{subsection.6.6}{SAM}{section.6}% 142
+\BOOKMARK [2][-]{subsection.6.7}{Important Problems}{section.6}% 143
+\BOOKMARK [1][-]{section.7}{Geometry}{}% 144
+\BOOKMARK [2][-]{subsection.7.1}{Fast application of a set of geometric operations to a set of points}{section.7}% 145
+\BOOKMARK [2][-]{subsection.7.2}{Klee's Algo}{section.7}% 146
+\BOOKMARK [2][-]{subsection.7.3}{Closest Pair Problem}{section.7}% 147
+\BOOKMARK [2][-]{subsection.7.4}{2D geo lib}{section.7}% 148
+\BOOKMARK [2][-]{subsection.7.5}{3D geo lib}{section.7}% 149

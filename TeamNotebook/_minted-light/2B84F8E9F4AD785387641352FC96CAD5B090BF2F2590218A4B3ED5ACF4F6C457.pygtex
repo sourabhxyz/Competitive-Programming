@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{sum} \PYG{o}{=} \PYG{n}{ans} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{n}{finish} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{n}{local\PYGZus{}start} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n} \PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{sum} \PYG{o}{+=} \PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{sum} \PYG{o}{\PYGZgt{}} \PYG{n}{ans}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{ans} \PYG{o}{=} \PYG{n}{sum}\PYG{p}{;}
+        \PYG{n}{start} \PYG{o}{=} \PYG{n}{local\PYGZus{}start}\PYG{p}{;}
+        \PYG{n}{finish} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{sum} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{sum} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+        \PYG{n}{local\PYGZus{}start} \PYG{o}{=} \PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// if instead of maximum you want to find minimum, simply negate all terms. As suppose minimum sum is (ak, a\PYGZus{}\PYGZob{}k + 1\PYGZcb{}, ..., a\PYGZus{}\PYGZob{}k + l\PYGZcb{}) which must be negative and most (maximum in other dirn) negative possible. Thus (\PYGZhy{}ak,...) is maximum positive possible as suppose there was some other range with maximum possible that means its negative (actual) is more minimum then our current which leads to contradiction}
+\end{Verbatim}

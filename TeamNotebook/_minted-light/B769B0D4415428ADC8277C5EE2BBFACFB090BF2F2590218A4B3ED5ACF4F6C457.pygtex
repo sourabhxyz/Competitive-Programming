@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{g} \PYG{o}{=} \PYG{n}{extended\PYGZus{}euclidean}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{m}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{);}
+\PYG{k}{if} \PYG{p}{(}\PYG{n}{g} \PYG{o}{!=} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}No solution!\PYGZdq{}}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{else} \PYG{p}{\PYGZob{}}
+    \PYG{n}{x} \PYG{o}{=} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZpc{}} \PYG{n}{m} \PYG{o}{+} \PYG{n}{m}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{m}\PYG{p}{;}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{x} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

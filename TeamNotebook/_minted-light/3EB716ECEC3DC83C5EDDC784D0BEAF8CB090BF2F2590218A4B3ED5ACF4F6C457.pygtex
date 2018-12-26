@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// O(n\PYGZca{}3)}
+\PYG{k+kt}{int} \PYG{n+nf}{maxSum2D} \PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{maxsum} \PYG{o}{=} \PYG{n}{INT\PYGZus{}MIN}\PYG{p}{,} \PYG{n}{finalleft}\PYG{p}{,} \PYG{n}{finalright}\PYG{p}{,} \PYG{n}{finaltop}\PYG{p}{,} \PYG{n}{finalbottom}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{leftc} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{leftc} \PYG{o}{\PYGZlt{}} \PYG{n}{COL}\PYG{p}{;} \PYG{n}{leftc}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{temp} \PYG{p}{(}\PYG{n}{ROW}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{rightc} \PYG{o}{=} \PYG{n}{leftc}\PYG{p}{;} \PYG{n}{rightc} \PYG{o}{\PYGZlt{}} \PYG{n}{COL}\PYG{p}{;} \PYG{n}{rightc}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{ROW}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{temp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{M}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{rightc}\PYG{p}{]}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{k+kt}{int} \PYG{n}{rstart}\PYG{p}{,} \PYG{n}{rend}\PYG{p}{;}
+            \PYG{n}{sum} \PYG{o}{=} \PYG{n}{kadane} \PYG{p}{(}\PYG{n}{temp}\PYG{p}{,} \PYG{n}{rstart}\PYG{p}{,} \PYG{n}{rend}\PYG{p}{);}
+            \PYG{c+c1}{// kadane will give us rstart and rend}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{sum} \PYG{o}{\PYGZgt{}} \PYG{n}{maxsum}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{maxsum} \PYG{o}{=} \PYG{n}{sum}\PYG{p}{;}
+                \PYG{n}{finalleft} \PYG{o}{=} \PYG{n}{left}\PYG{p}{;}
+                \PYG{n}{finalright} \PYG{o}{=} \PYG{n}{right}\PYG{p}{;}
+                \PYG{n}{finaltop} \PYG{o}{=} \PYG{n}{rstart}\PYG{p}{;}
+                \PYG{n}{finalbottom} \PYG{o}{=} \PYG{n}{rend}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

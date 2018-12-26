@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n}{One} \PYG{n}{can} \PYG{n}{write} \PYG{n}{i} \PYG{o}{=} \PYG{p}{(}\PYG{n}{m} \PYG{o}{\PYGZpc{}} \PYG{n}{n} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o}{?} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{o}{:} \PYG{n}{m} \PYG{o}{\PYGZpc{}} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{as}
+    \PYG{n}{i} \PYG{o}{=} \PYG{p}{(}\PYG{n}{m} \PYG{o}{+} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{n}\PYG{p}{.}
+\end{Verbatim}

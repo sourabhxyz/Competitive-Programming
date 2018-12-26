@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n+nf}{mvc}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{at}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{flag}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{parent}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{//You can start this from any node, i.e. in main: int ans =  min(mvc(0, 0, \PYGZhy{}1), mvc(0, 1, \PYGZhy{}1)); and handle the case n == 1 seperately}
+   \PYG{k}{if}\PYG{p}{(}\PYG{n}{memo}\PYG{p}{[}\PYG{n}{at}\PYG{p}{][}\PYG{n}{flag}\PYG{p}{]} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+       \PYG{k}{return} \PYG{n}{memo}\PYG{p}{[}\PYG{n}{at}\PYG{p}{][}\PYG{n}{flag}\PYG{p}{];}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{k}{if}\PYG{p}{(}\PYG{n}{glist}\PYG{p}{[}\PYG{n}{at}\PYG{p}{].}\PYG{n}{size}\PYG{p}{()} \PYG{o}{==} \PYG{l+m+mi}{1} \PYG{n}{and} \PYG{n}{parent} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{//leaf node}
+       \PYG{k}{return} \PYG{n}{memo}\PYG{p}{[}\PYG{n}{at}\PYG{p}{][}\PYG{n}{flag}\PYG{p}{]} \PYG{o}{=} \PYG{n}{flag}\PYG{p}{;}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{k+kt}{int} \PYG{n}{ans} \PYG{o}{=} \PYG{n}{flag}\PYG{p}{;}
+   \PYG{k}{if}\PYG{p}{(}\PYG{n}{flag}\PYG{p}{)} \PYG{c+c1}{// to take this}
+   \PYG{p}{\PYGZob{}}
+       \PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{to} \PYG{p}{:} \PYG{n}{glist}\PYG{p}{[}\PYG{n}{at}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+           \PYG{k}{if}\PYG{p}{(}\PYG{n}{to} \PYG{o}{!=} \PYG{n}{parent}\PYG{p}{)}
+               \PYG{n}{ans} \PYG{o}{+=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{mvc}\PYG{p}{(}\PYG{n}{to}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{at}\PYG{p}{),} \PYG{n}{mvc}\PYG{p}{(}\PYG{n}{to}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{at}\PYG{p}{));}
+       \PYG{p}{\PYGZcb{}}
+   \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}} \PYG{c+c1}{//we must take its neighbours}
+       \PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{to} \PYG{p}{:} \PYG{n}{glist}\PYG{p}{[}\PYG{n}{at}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+           \PYG{k}{if}\PYG{p}{(}\PYG{n}{to} \PYG{o}{!=} \PYG{n}{parent}\PYG{p}{)}
+               \PYG{n}{ans} \PYG{o}{+=} \PYG{n}{mvc}\PYG{p}{(}\PYG{n}{to}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{at}\PYG{p}{);}
+       \PYG{p}{\PYGZcb{}}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{k}{return} \PYG{n}{memo}\PYG{p}{[}\PYG{n}{at}\PYG{p}{][}\PYG{n}{flag}\PYG{p}{]} \PYG{o}{=} \PYG{n}{ans}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}  \PYG{c+c1}{// Similar code can be written to find MWIS.}
+\end{Verbatim}

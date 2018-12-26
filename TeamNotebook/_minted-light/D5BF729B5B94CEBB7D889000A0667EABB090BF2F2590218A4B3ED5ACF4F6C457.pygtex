@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}pragma GCC optimize(\PYGZdq{}Ofast\PYGZdq{})  }\PYG{c+c1}{// tells the compiler to optimize the code for speed to make it as fast as possible (and not look for space)}
+\PYG{c+cp}{\PYGZsh{}pragma GCC optimize (\PYGZdq{}unroll\PYGZhy{}loops\PYGZdq{})  }\PYG{c+c1}{// normally if we have a loop there is a \PYGZdq{}++i\PYGZdq{} instruction somewhere. We normally dont care because code inside the loop requires much more time but in this case there is only one instruction inside the loop so we want the compiler to optimize this.}
+\PYG{c+cp}{\PYGZsh{}pragma GCC target(\PYGZdq{}sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native\PYGZdq{})  }\PYG{c+c1}{// tell the compiler that our cpu has simd instructions and allow him to vectorize our code}
+\end{Verbatim}
