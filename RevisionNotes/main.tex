@@ -855,7 +855,7 @@ else {
     cout << x << endl;
 }
 \end{minted}
-Notice that we way we modify x. The resulting x from the extended Euclidean algorithm may be negative, so x % m might also be negative, and we first have to add m to make it positive.
+Notice that we modify x as resulting x from the extended Euclidean algorithm may be negative, so x \% m might also be negative, and we first have to add m to make it positive.
 
 The problem is the following: we want to compute the modular inverse for every number in the range $[1, m-1]$.
 
@@ -1054,8 +1054,8 @@ int solve (int a, int b, int m) {
 \end{minted}
 In this code, we used map from C++ STL to store the values of $f_1 (i)$. Internally, map uses red-black-tree to store values. This code is a little bit slower than if we uses array and binary search for $f1$, but is much easier to write.
 
-Another thing to note is that, if there are multiple values of $p$ that has same value of $f_1$, we only store one such value. This works in this case because we only want to return one possible solution. If we need to return all possible solutions, we need to change map<int,int> to, say, map<int, vector<int> >. And we also need to change the second step accordingly.
-\subsubsection{Improved implementation}j
+Another thing to note is that, if there are multiple values of $p$ that has same value of $f_1$, we only store one such value. This works in this case because we only want to return one possible solution. If we need to return all possible solutions, we need to change $map<int,int>$ to, say, $map<int, vector<int>>$. And we also need to change the second step accordingly.
+\subsubsection{Improved implementation}
 
 A possible improvement is to get rid of binary exponentiation in the second phase of the algorithm. This can be done by keeping a variable that multiplies by $a$ each time we increase $q$. With this change, the complexity of the algorithm is still the same, but now the log part is only for $map$. Instead of $map$, we can also use hash table (unordered\_{}map in GNU C++) which has complexity $O(1)$ for inserting and searching. And when the value of $m$ is small enough, we can also get rid of $map$, and use a regular array to store and lookup values of $f_1$.
 \begin{minted}{cpp}

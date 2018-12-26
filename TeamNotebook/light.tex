@@ -575,30 +575,7 @@ States that for a prime no. p, $(p - 1)! \mod p = p - 1$.
 \\Note that $n! \mod p$ is 0 if $n \geq p$. Suppose p is prime and is close to input number n. For example $25! \mod 29$. From wilson theorem, we know that $28! \mod 29 = -1 \equiv 28$, so we basically need to find $(28 * inverse(28, 29) * inverse (27, 29) * inverse (26, 29)) \mod 29$
 \\Time complexity $O((p - n) * \log n)$
 \subsection{Factorial modulo $p$ in $O(p \log n)$}
-In some cases it is necessary to consider complex formulas modulo $p$, containing factorials in both numerator and denominator. We consider the case when $p$ is relatively small. This problem makes sense only when factorials are included in both numerator and denominator of fractions. Otherwise $p!$ and subsequent terms will reduce to zero, but in fractions all multipliers containing $p$ can be reduced, and the resulting expression will be non-zero modulo $p$.
-
-Thus, formally the task is: You want to calculate $n! \bmod p$, without taking all the multiple factors of $p$ into account that appear in the factorial. Imaging you write down the prime factorization of $n!$, remove all factors $p$, and compute the product modulo $p$. We will denote this modified factorial with $n!_{\mod p}$.
-
-Learning how to effectively calculate this modified factorial allows us to quickly calculate the value of the various combinatorial formulae (for example, Binomial coefficients).
-
-\subsubsection{Algorithm}
-Let's write this modified factorial explicitly.
-
-\begin{eqnarray} n!_{\mod p} &=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \\
-& &\quad \cdot (2p+1) \cdot \ldots \cdot (p^2-1) \cdot \underbrace{1}_{p^2} \cdot (p^2 +1) \cdot \ldots \cdot n \pmod{p} \\ &=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{2}_{2p} \cdot 1 \cdot 2 \\
-& &\quad \cdot \ldots \cdot (p-1) \cdot \underbrace{1}_{p^2} \cdot 1 \cdot 2 \cdot \ldots \cdot (n \bmod p) \pmod{p} \end{eqnarray}
-
-It can be clearly seen that factorial is divided into several blocks of same length expect for the last one.
-
-\noindent\begin{eqnarray} n!_{\mod p}&=& \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{1\text{st}} \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 2}_{2\text{nd}} \cdot \ldots \\ & & \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{p\text{th}} \cdot \ldots \cdot \quad \underbrace{1 \cdot 2 \cdot \cdot \ldots \cdot (n \bmod p)}_{\text{tail}} \pmod{p}. \end{eqnarray}
-
-The general part of the blocks it is easy to count — it's just $(p-1)!\ \mathrm{mod}\ p$ that you can calculate programmatically or via Wilson theorem, according to which $(p-1)! \bmod p = p-1$. To multiply these common parts of all blocks, we can raise the value to the higher power modulo $p$, which can be done in $O(\log n)$ operations using Binary Exponentiation; however, you may notice that the result will always be either $1$ or $p-1$, depending on the parity of the index. The value of the last partial block can be calculated separately in $O(p)$. Leaving only the last elements of the blocks, we can examine that:
-
-\noindent$$n!_{\mod p} = \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 2} \cdot \ldots \cdot \underbrace{ \ldots \cdot (p-1)} \cdot \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 1} \cdot \underbrace{ \ldots \cdot 2} \cdots$$
-
-And again, by removing the blocks that we already computed, we receive a "modified" factorial but with smaller dimension ($\lfloor n / p \rfloor$ blocks remain). Thus, in the calculation of "modified" the factorial $n!{\mod p}$ we did $O(p)$ operations and are left with the calculation of $(n/p)!{\mod p}$. Revealing this recursive dependence, we obtain that the recursion depth is $O(\log_p n)$, the total asymptotic behavior of the algorithm is thus $O(p \log_p n)$.
-\subsubsection{Implementation}
-We don't need recursion because this is a case of tail recursion and thus can be easily implemented using iteration.
+all divisors of p are 1, find mod p.
 \begin{minted}{cpp}
 int factmod(int n, int p) {
 	int res = 1;
@@ -613,60 +590,13 @@ int factmod(int n, int p) {
 \end{minted}
 This implementation works in $O(p \log_p n)$.
 \subsection{Modular Inverse}
-A modular multiplicative inverse of an integer $a$ is an integer $x$ such that $a \cdot x$ is congruent to $1$ modular some modulus $m$. $a \cdot x \equiv 1 \mod m.$ We will also denote $x$ with $a^{-1}$.
-
-It can be proven that the modular inverse exists if and only if $a$ and $m$ are relatively prime (i.e. $\gcd(a, m) = 1$).
-
 For an arbitrary (but coprime) modulus $m$: $a ^ {\phi (m) - 1} \equiv a ^{-1} \mod m$\\
 For a prime modulus $m$: $a ^ {m - 2} \equiv a ^ {-1} \mod m$
-From these results, we can easily find the modular inverse using the binary exponentiation algorithm, which works in O(logm) time.
-\\Or
-Consider the following equation (with unknown $x$ and $y$):
-
-$$a \cdot x + m \cdot y = 1$$
-
-This is a Linear Diophantine equation in two variables. As shown in the linked article, when $\gcd(a, m) = 1$, the equation has a solution which can be found using the extended Euclidean algorithm. Note that $\gcd(a, m) = 1$ is also the condition for the modular inverse to exist.
-
-Now, if we take modulo $m$ of both sides, we can get rid of $m \cdot y$, and the equation becomes:
-
-$$a \cdot x \equiv 1 \mod m$$
-
-Thus, the modular inverse of $a$ is $x$.
-
-The implementation is as follows:
-\begin{minted}{cpp}
-int x, y;
-int g = extended_euclidean(a, m, x, y);
-if (g != 1) {
-    cout << "No solution!";
-}
-else {
-    x = (x % m + m) % m;
-    cout << x << endl;
-}
-\end{minted}
-Notice that we way we modify x. The resulting x from the extended Euclidean algorithm may be negative, so x % m might also be negative, and we first have to add m to make it positive.
-
-The problem is the following: we want to compute the modular inverse for every number in the range $[1, m-1]$.
-
-Applying the algorithms described in the previous sections, we can obtain a solution with complexity $O(m \log m)$.
-
-Here we present a better algorithm with complexity $O(m)$. However for this specific algorithm we require that the modulus $m$ is prime.
-
-We denote by $\text{inv}[i]$ the modular inverse of $i$. Then for $i > 1$ the following equation is valid:
-
-$$\text{inv}[i] = - \left\lfloor \frac{m}{i} \right\rfloor \cdot \text{inv}[m \bmod i] \bmod m$$
-
-Thus the implementation is very simple:
 \begin{minted}{cpp}
 inv[1] = 1;
 for(int i = 2; i < m; ++i)
     inv[i] = (m - (m/i) * inv[m%i] % m) % m;
 \end{minted}
-\textbf{Proof}
-
-We have: $$m \bmod i = m - \left\lfloor \frac{m}{i} \right\rfloor \cdot i$$ Taking both sides modulo $m$ yields: $$m \bmod i \equiv - \left\lfloor \frac{m}{i} \right\rfloor \cdot i \mod m$$ Multiply both sides by $i^{-1} \cdot (m \bmod i)^{-1}$ yields $$(m \bmod i) \cdot i^{-1} \cdot (m \bmod i)^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot i \cdot i^{-1} \cdot (m \bmod i)^{-1} \mod m,$$ which simplifies to: $$i^{-1} \equiv -\left\lfloor \frac{m}{i} \right\rfloor \cdot (m \bmod i)^{-1} \mod m,$$
-\\
 \textbf{Binomial coeff modulo large prime no}
 \begin{minted}{cpp}
 fact[0] = 1;
@@ -682,51 +612,13 @@ ll getC(int n, int k) {
 }
 \end{minted}
 \textbf{Binomial Coeff modulo prime power}
-Here we want to compute the binomial coefficient modulo some prime power, i.e. $m = p^b$ for some prime $p$. If $p > \max(k, n-k)$, then we can use the same method as described in the previous section. But if $p \le \max(k, n-k)$, then at least one of $k!$ and $(n-k)!$ are not coprime with $m$, and therefore we cannot compute the inverses - they don't exist. Nevertheless we can compute the binomial coefficient.
+let $g(x) := \frac{x!}{p^{c(x)}}$. Then we can write the binomial coefficient as: $$\binom n k = \frac {g(n) p^{c(n)}} {g(k) p^{c(k)} g(n-k) p^{c(n-k)}} = \frac {g(n)} {g(k) g(n-k)}p^{c(n) - c(k) - c(n-k)}$$
 
-The idea is the following: We compute for each $x!$ the biggest exponent $c$ such that $p^c$ divides $x!$, i.e. $p^c | x!$. Let $c(x)$ be that number. And let $g(x) := \frac{x!}{p^{c(x)}}$. Then we can write the binomial coefficient as: $$\binom n k = \frac {g(n) p^{c(n)}} {g(k) p^{c(k)} g(n-k) p^{c(n-k)}} = \frac {g(n)} {g(k) g(n-k)}p^{c(n) - c(k) - c(n-k)}$$
-
-The interesting thing is, that $g(x)$ is now free from the prime divisor $p$. Therefore $g(x)$ is coprime to m, and we can compute the modular inverses of $g(k)$ and $g(n-k)$.
-
-After precomputing all values for $g$ and $c$, which can be done efficiently using dynamic programming in $\mathcal{O}(n)$, we can compute the binomial coefficient in $O(\log m)$ time. Or precompute all inverses and all powers of $p$, and then compute the binomial coefficient in $O(1)$.
+Now $g(x)$ is now free from the prime divisor $p$. Therefore $g(x)$ is coprime to m, and we can compute the modular inverses of $g(k)$ and $g(n-k)$.
 
 Notice, if $c(n) - c(k) - c(n-k) \ge b$, than $p^b | p^{c(n) - c(k) - c(n-k)}$, and the binomial coefficient is $0$.
-\\\textbf{Binomial coefficient modulo an arbitrary number}
-Now we compute the binomial coefficient modulo some arbitrary modulus $m$.
-
-Let the prime factorization of $m$ be $m = p_1^{e_1} p_2^{e_2} \cdots p_h^{e_h}$. We can compute the binomial coefficient modulo $p_i^{e_i}$ for every $i$. This gives us $h$ different congruences. Since all moduli $p_i^{e_i}$ are coprime, we can apply the Chinese Remainder Theorem to compute the binomial coefficient modulo the product of the moduli, which is the desired binomial coefficient modulo $m$.
-\\%------------------------------------
-\textbf{Lucas's theorem}
-For non-negative integers m and n and a prime p, the following congruence relation holds:
-
-    ${\binom {m}{n}}\equiv \prod _{i=0}^{k}{\binom {m_{i}}{n_{i}}}{\pmod {p}}$
-
-where
-
-    $m=m_{k}p^{k}+m_{k-1}p^{k-1}+\cdots +m_{1}p+m_{0}$
-
-and
-
-    $n=n_{k}p^{k}+n_{k-1}p^{k-1}+\cdots +n_{1}p+n_{0}$ 
-
-are the base p expansions of m and n respectively. This uses the convention that  ${\tbinom {m}{n}}=0$ if m < n. 
-\\\textbf{Binomial coefficient for large $n$ and small modulo}
-When $n$ is too large, the $\mathcal{O}(n)$ algorithms discussed above become impractical. However, if the modulo $m$ is small there are still ways to calculate $\binom{n}{k} \bmod m$.
-
-When the modulo $m$ is prime, there are 2 options:
-
-    Lucas's theorem can be applied which breaks the problem of computing $\binom{n}{k} \bmod m$ into $\log_m n$ problems of the form $\binom{x_i}{y_i} \bmod m$ where $x_i, y_i < m$. If each reduced coefficient is calculated using precomputed factorials and inverse factorials, the complexity is $\mathcal{O}(m + \log_m n)$.
-    \\The method of computing factorial modulo P can be used to get the required $g$ and $c$ values and use them as described in the section of modulo prime power. This takes $\mathcal{O}(m \log_m n)$.
-
-When $m$ is not prime but square-free, the prime factors of $m$ can be obtained and the coefficient modulo each prime factor can be calculated using either of the above methods, and the overall answer can be obtained by the Chinese Remainder Theorem.
-
-When $m$ is not square-free, a generalization of Lucas's theorem for prime powers can be applied instead of Lucas's theorem. I don't think that I need to consider that.
 \subsection{Gray Code}
-Gray code is a binary numeral system where two successive values differ in only one bit.
-
-For example, the sequence of Gray codes for 3-bit numbers is: 000, 001, 011, 010, 110, 111, 101, 100, so $G(4) = 6$.
-\subsubsection{Finding Gray Code}
-Let's look at the bits of number $n$ and the bits of number $G(n)$. Notice that $i$-th bit of $G(n)$ equals 1 only when $i$-th bit of $n$ equals 1 and $i + 1$-th bit equals 0 or the other way around ($i$-th bit equals 0 and $i + 1$-th bit equals 1). Thus, $G(n) = n \oplus (n >> 1)$:
+000, 001, 011, 010, 110, 111, 101, 100, so $G(4) = 6$.
 \begin{minted}{cpp}
 int g (int n) {
     return n ^ (n >> 1);
@@ -734,120 +626,33 @@ int g (int n) {
 \end{minted}
 \subsubsection{Finding inverse gray code}
 Given Gray code $g$, restore the original number $n$.
-
-We will move from the most significant bits to the least significant ones (the least significant bit has index 1 and the most significant bit has index $k$). The relation between the bits $n_i$ of number $n$ and the bits $g_i$ of number $g$:
-
- \begin{eqnarray}n_k &= g_k, \\ n_{k-1} &= g_{k-1} \oplus n_k = g_k \oplus g_{k-1}, \\ n_{k-2} &= g_{k-2} \oplus n_{k-1} = g_k \oplus g_{k-1} \oplus g_{k-2}, \\ n_{k-3} &= g_{k-3} \oplus n_{k-2} = g_k \oplus g_{k-1} \oplus g_{k-2} \oplus g_{k-3}, \\ \vdots \end{eqnarray}
-
-The easiest way to write it in code is:
+\\The easiest way to write it in code is:
 \begin{minted}{cpp}
-    int rev_g (int g) {
+int rev_g (int g) {
   int n = 0;
   for (; g; g >>= 1)
     n ^= g;
   return n;
 }
 \end{minted}
-
-\href{https://codeforces.com/problemsets/acmsguru/problem/99999/249}{SGU 249 Matrix}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Gray%20Code/SGU249-Matrix.cpp}{Sol}
 \subsection{Discrete Logarithm}
-
 The discrete logarithm is an integer $x$ solving the equation
 
 $a^x \equiv b \pmod m$
 
-where $a$ and $m$ are relatively prime. (Note: if they are not relatively prime, then the algorithm described below is incorrect, though it can be modified so that it can work).
+where $a$ and $m$ are relatively prime. 
 
-In this article, we describe the Baby step - giant step algorithm, proposed by Shanks in 1971, which has complexity $O(\sqrt{m} \log m)$. This algorithm is also known as meet-in-the-middle, because of it uses technique separation of tasks in half.
+$O(\sqrt{m} \log m)$
 \subsubsection{Algorithm}
-
-Consider the equation:
-
-$a^x \equiv b \pmod m$
-
-where $a$ and $m$ are relatively prime.
-
-Let $x = np - q$, where $n$ is some pre-selected constant (we will describe how to select $n$ later). $p$ is known as giant step, since increasing it by one increases $x$ by $n$. Similarly, $q$ is known as baby step.
+Let $x = np - q$
 
 Obviously, any value of $x$ in the interval $[0; m)$ can be represented in this form, where $p \in [1; \lceil \frac{m}{n} \rceil ]$ and $q \in [0; n]$.
 
-Then, the equation becomes:
-
-$a^{np - q} \equiv b \pmod m$.
-
-Using the fact that $a$ and $m$ are relatively prime, we obtain:
-
 $a^{np} \equiv ba^q \pmod m$
 
-This new equation can be rewritten in a simplified form:
 
-$f_1(p) = f_2(q)$.
-
-This problem can be solved using the method meet-in-the-middle as follows:
-
-    We calculate $f_1$ for all possible values of $p$. Sort these values.
-    For each value of $q$, calculate $f_2$, and look for the corresponding value of $p$ using the sorted array of $f_1$ using binary search.
-
-\subsubsection{Complexity}
-
-For each value of $p$, we can calculate $f_1(p)$ in $O(\log m)$ using binary exponentation algorithm. Similar for $f_2(q)$.
-
-In the first step of the algorithm, we need to calculate $f_1$ for every possible values of $p$, and then sort them. Thus, this step has complexity:
-
-$O(\lceil \frac{m}{n} \rceil (\log m + \log \lceil \frac{m}{n} \rceil )) = O( \lceil \frac {m}{n} \rceil \log m)$
-
-In the second step of the algorithm, we need to calculate $f_2(q)$ for each possible value of $q$, and then do a binary search on the array of values of $f_1$, thus this step has complexity:
-
-$O(n (\log m + \log \frac{m}{n} ) ) = O(n \log m)$.
-
-Now, when we add these two complexity, we would get $\log m$ multiplied by $n$ and $m/n$, which has minimum value when $n = m/n$, which means, to achieve optimal performance, $n$ should be chosen such that:
-
-$n = \sqrt{m}$.
-
-Then, the complexity of the algorithm becomes:
-
-$O(\sqrt {m} \log m)$.
+$n = m/n$
 \subsubsection{Implementation}
-The simplest implementation
-
-In the following code, function powmod performs binary exponential $a^b \pmod m$, and function solve produces a proper solution to the problem. It will returns $-1$ if there is no solution, and returns one possible solution in case a solution exists.
-\begin{minted}{cpp}
-int powmod (int a, int b, int m) {
-	int res = 1;
-	while (b > 0)
-		if (b & 1) {
-			res = (res * a) % m;
-			--b;
-		}
-		else {
-			a = (a * a) % m;
-			b >>= 1;
-		}
-	return res % m;
-}
- 
-int solve (int a, int b, int m) {
-	int n = (int) sqrt (m + .0) + 1;
-	map<int,int> vals;
-	for (int i=n; i>=1; --i)
-		vals[ powmod (a, i * n, m) ] = i;
-	for (int i=0; i<=n; ++i) {
-		int cur = (powmod (a, i, m) * b) % m;
-		if (vals.count(cur)) {
-			int ans = vals[cur] * n - i;
-			if (ans < m)
-				return ans;
-		}
-	}
-	return -1;
-}
-\end{minted}
-In this code, we used map from C++ STL to store the values of $f_1 (i)$. Internally, map uses red-black-tree to store values. This code is a little bit slower than if we uses array and binary search for $f1$, but is much easier to write.
-
-Another thing to note is that, if there are multiple values of $p$ that has same value of $f_1$, we only store one such value. This works in this case because we only want to return one possible solution. If we need to return all possible solutions, we need to change map<int,int> to, say, map<int, vector<int> >. And we also need to change the second step accordingly.
-\subsubsection{Improved implementation}j
-
-A possible improvement is to get rid of binary exponentiation in the second phase of the algorithm. This can be done by keeping a variable that multiplies by $a$ each time we increase $q$. With this change, the complexity of the algorithm is still the same, but now the log part is only for $map$. Instead of $map$, we can also use hash table (unordered\_{}map in GNU C++) which has complexity $O(1)$ for inserting and searching. And when the value of $m$ is small enough, we can also get rid of $map$, and use a regular array to store and lookup values of $f_1$.
 \begin{minted}{cpp}
 int solve (int a, int b, int m) {
 	int n = (int) sqrt (m + .0) + 1;
