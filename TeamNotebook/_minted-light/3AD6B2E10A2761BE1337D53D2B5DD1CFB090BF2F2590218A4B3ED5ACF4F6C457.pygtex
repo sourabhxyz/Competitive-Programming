@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// graph check}
+\PYG{k+kt}{void} \PYG{n+nf}{graphcheck} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{explored}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k}{auto} \PYG{o}{\PYGZam{}}\PYG{n+nl}{v} \PYG{p}{:} \PYG{n}{adjlist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{==} \PYG{n}{unvisited}\PYG{p}{)} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// tree edge}
+            \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{u}\PYG{p}{;}
+            \PYG{n}{graphcheck} \PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{==} \PYG{n}{explored}\PYG{p}{)} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// back edge hence not DAG.}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{v} \PYG{o}{==} \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])} \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}two ways}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}
+            \PYG{k}{else} \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}back edge}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}
+        \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// dfs\PYGZus{}num[v] == visited}
+            \PYG{c+c1}{// forward/cross edge}
+            \PYG{c+c1}{// [u [v v] u] this is tree/forward}
+            \PYG{c+c1}{// [v [u u] v] back}
+            \PYG{c+c1}{// [v v] [u u] cross}
+        \PYG{p}{\PYGZcb{}}
+
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

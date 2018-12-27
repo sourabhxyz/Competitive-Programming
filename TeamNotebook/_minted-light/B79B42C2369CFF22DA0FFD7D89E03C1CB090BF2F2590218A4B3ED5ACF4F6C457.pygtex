@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// For negative edge weights provided we have no negative cycles.}
+\PYG{c+c1}{// Idea: Shortest path must have atmost |V| \PYGZhy{} 1 edges.}
+\PYG{c+c1}{// Thus if we relax each each edge |V| \PYGZhy{} 1 times then we would have got the answer as in first relaxation edge(start, neighbour) will be correct and so on...}
+\PYG{n}{vi} \PYG{n+nf}{dist} \PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{n}{inf}\PYG{p}{);}
+\PYG{n}{dist}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k+kt}{bool} \PYG{n}{modified} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{V} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{n}{and} \PYG{n}{modified}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{modified} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{u} \PYG{o}{\PYGZlt{}} \PYG{n}{V}\PYG{p}{;} \PYG{n}{u}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{adjlist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size} \PYG{p}{();} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{ii} \PYG{n}{v} \PYG{o}{=} \PYG{n}{adjlist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{j}\PYG{p}{];}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{dist}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{v}\PYG{p}{.}\PYG{n}{second}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{dist}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{v}\PYG{p}{.}\PYG{n}{second}\PYG{p}{;}
+                \PYG{n}{p}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{=} \PYG{n}{u}\PYG{p}{;}
+                \PYG{n}{modified} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

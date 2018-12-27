@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k}{while}\PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{dist}\PYG{p}{(}\PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{INF}\PYG{p}{);}
+            \PYG{n}{dist}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+            \PYG{n}{p}\PYG{p}{.}\PYG{n}{assign}\PYG{p}{(}\PYG{n}{n} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+            \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{u} \PYG{o}{\PYGZlt{}=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{u}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                    \PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{to} \PYG{p}{:} \PYG{n}{glist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+                        \PYG{k}{if}\PYG{p}{(}\PYG{n}{flow}\PYG{p}{[}\PYG{n}{to}\PYG{p}{][}\PYG{n}{u}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{mat}\PYG{p}{[}\PYG{n}{to}\PYG{p}{][}\PYG{n}{u}\PYG{p}{].}\PYG{n}{cost} \PYG{o}{\PYGZlt{}} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{to}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+                            \PYG{n}{dist}\PYG{p}{[}\PYG{n}{to}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{mat}\PYG{p}{[}\PYG{n}{to}\PYG{p}{][}\PYG{n}{u}\PYG{p}{].}\PYG{n}{cost}\PYG{p}{;}
+                            \PYG{n}{p}\PYG{p}{[}\PYG{n}{to}\PYG{p}{]} \PYG{o}{=} \PYG{n}{u}\PYG{p}{;}
+                        \PYG{p}{\PYGZcb{}}
+                        \PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{mat}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{to}\PYG{p}{].}\PYG{n}{cap} \PYG{o}{\PYGZhy{}} \PYG{n}{flow}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{to}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{mat}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{to}\PYG{p}{].}\PYG{n}{cost} \PYG{o}{\PYGZlt{}} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{to}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+                            \PYG{n}{dist}\PYG{p}{[}\PYG{n}{to}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{mat}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{to}\PYG{p}{].}\PYG{n}{cost}\PYG{p}{;}
+                            \PYG{n}{p}\PYG{p}{[}\PYG{n}{to}\PYG{p}{]} \PYG{o}{=} \PYG{n}{u}\PYG{p}{;} \PYG{p}{\PYGZcb{}\PYGZcb{}\PYGZcb{}\PYGZcb{}}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{dist}\PYG{p}{[}\PYG{n}{n}\PYG{p}{]} \PYG{o}{==} \PYG{n}{INF}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;}
+            \PYG{n}{augment}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{n}{INF}\PYG{p}{);}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{f} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{break}\PYG{p}{;}
+            \PYG{n}{mf} \PYG{o}{+=} \PYG{n}{f}\PYG{p}{;}
+            \PYG{n}{mincost} \PYG{o}{+=} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{n}\PYG{p}{]} \PYG{o}{*} \PYG{n}{f}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{mf} \PYG{o}{==} \PYG{n}{totransfer}\PYG{p}{)}
+            \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{mincost} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{;}
+\end{Verbatim}

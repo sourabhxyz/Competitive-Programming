@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{N} \PYG{o}{=} \PYG{l+m+mi}{1000} \PYG{o}{*} \PYG{l+m+mi}{1000}\PYG{p}{;} \PYG{c+c1}{// number of steps (already multiplied by 2)}
+\PYG{k+kt}{double} \PYG{n+nf}{simpson\PYGZus{}integration}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{b}\PYG{p}{)\PYGZob{}}
+    \PYG{k+kt}{double} \PYG{n}{h} \PYG{o}{=} \PYG{p}{(}\PYG{n}{b} \PYG{o}{\PYGZhy{}} \PYG{n}{a}\PYG{p}{)} \PYG{o}{/} \PYG{n}{N}\PYG{p}{;}
+    \PYG{k+kt}{double} \PYG{n}{s} \PYG{o}{=} \PYG{n}{f}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)} \PYG{o}{+} \PYG{n}{f}\PYG{p}{(}\PYG{n}{b}\PYG{p}{);} \PYG{c+c1}{// a = x\PYGZus{}0 and b = x\PYGZus{}2n}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{N} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// Refer to final Simpson\PYGZsq{}s formula}
+        \PYG{k+kt}{double} \PYG{n}{x} \PYG{o}{=} \PYG{n}{a} \PYG{o}{+} \PYG{n}{h} \PYG{o}{*} \PYG{n}{i}\PYG{p}{;}
+        \PYG{n}{s} \PYG{o}{+=} \PYG{n}{f}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{o}{*} \PYG{p}{((}\PYG{n}{i} \PYG{o}{\PYGZam{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{?} \PYG{l+m+mi}{4} \PYG{o}{:} \PYG{l+m+mi}{2}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{s} \PYG{o}{*=} \PYG{n}{h} \PYG{o}{/} \PYG{l+m+mi}{3}\PYG{p}{;}
+    \PYG{k}{return} \PYG{n}{s}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

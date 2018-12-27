@@ -1,0 +1,399 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/* 3D geometry lib */}
+\PYG{k}{typedef} \PYG{k+kt}{double} \PYG{n}{T}\PYG{p}{;}
+\PYG{k}{struct} \PYG{n}{v3} \PYG{p}{\PYGZob{}}
+    \PYG{n}{T} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{;}
+    \PYG{n}{v3}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
+    \PYG{n}{v3}\PYG{p}{(}\PYG{n}{T} \PYG{n}{xx}\PYG{p}{,} \PYG{n}{T} \PYG{n}{yy}\PYG{p}{,} \PYG{n}{T} \PYG{n}{zz}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{x} \PYG{o}{=} \PYG{n}{xx}\PYG{p}{;} \PYG{n}{y} \PYG{o}{=} \PYG{n}{yy}\PYG{p}{;} \PYG{n}{z} \PYG{o}{=} \PYG{n}{zz}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{v3} \PYG{k}{operator} \PYG{o}{+} \PYG{p}{(}\PYG{k}{const} \PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{v3}\PYG{p}{(}\PYG{n}{x} \PYG{o}{+} \PYG{n}{other}\PYG{p}{.}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y} \PYG{o}{+} \PYG{n}{other}\PYG{p}{.}\PYG{n}{y}\PYG{p}{,} \PYG{n}{z} \PYG{o}{+} \PYG{n}{other}\PYG{p}{.}\PYG{n}{z}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{v3} \PYG{k}{operator} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{v3}\PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y} \PYG{o}{\PYGZhy{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{y}\PYG{p}{,} \PYG{n}{z} \PYG{o}{\PYGZhy{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{z}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{v3} \PYG{k}{operator} \PYG{o}{*} \PYG{p}{(}\PYG{k}{const} \PYG{k+kt}{double} \PYG{o}{\PYGZam{}}\PYG{n}{dd}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{v3}\PYG{p}{(}\PYG{n}{x} \PYG{o}{*} \PYG{n}{dd}\PYG{p}{,} \PYG{n}{y} \PYG{o}{*} \PYG{n}{dd}\PYG{p}{,} \PYG{n}{z} \PYG{o}{*} \PYG{n}{dd}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{v3} \PYG{k}{operator} \PYG{o}{/} \PYG{p}{(}\PYG{k}{const} \PYG{k+kt}{double} \PYG{o}{\PYGZam{}}\PYG{n}{dd}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{v3}\PYG{p}{(}\PYG{n}{x} \PYG{o}{/} \PYG{n}{dd}\PYG{p}{,} \PYG{n}{y} \PYG{o}{/} \PYG{n}{dd}\PYG{p}{,} \PYG{n}{z} \PYG{o}{/} \PYG{n}{dd}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{T} \PYG{k}{operator} \PYG{o}{|} \PYG{p}{(}\PYG{k}{const} \PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// dot product}
+        \PYG{k}{return} \PYG{p}{(}\PYG{n}{x} \PYG{o}{*} \PYG{n}{other}\PYG{p}{.}\PYG{n}{x} \PYG{o}{+} \PYG{n}{y} \PYG{o}{*} \PYG{n}{other}\PYG{p}{.}\PYG{n}{y} \PYG{o}{+} \PYG{n}{z} \PYG{o}{*} \PYG{n}{other}\PYG{p}{.}\PYG{n}{z}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{v3} \PYG{k}{operator} \PYG{o}{*} \PYG{p}{(}\PYG{k}{const} \PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// cross product}
+        \PYG{k}{return} \PYG{p}{(}\PYG{n}{v3}\PYG{p}{(}\PYG{n}{y} \PYG{o}{*} \PYG{n}{other}\PYG{p}{.}\PYG{n}{z} \PYG{o}{\PYGZhy{}} \PYG{n}{z} \PYG{o}{*} \PYG{n}{other}\PYG{p}{.}\PYG{n}{y}\PYG{p}{,} \PYG{n}{z} \PYG{o}{*} \PYG{n}{other}\PYG{p}{.}\PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{n}{x} \PYG{o}{*} \PYG{n}{other}\PYG{p}{.}\PYG{n}{z}\PYG{p}{,} \PYG{n}{x} \PYG{o}{*} \PYG{n}{other}\PYG{p}{.}\PYG{n}{y} \PYG{o}{\PYGZhy{}} \PYG{n}{y} \PYG{o}{*} \PYG{n}{other}\PYG{p}{.}\PYG{n}{x}\PYG{p}{));}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{==} \PYG{p}{(}\PYG{k}{const} \PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{p}{(}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{x}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps} \PYG{n}{and} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{y} \PYG{o}{\PYGZhy{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{y}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps} \PYG{n}{and} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{z} \PYG{o}{\PYGZhy{}} \PYG{n}{other}\PYG{p}{.}\PYG{n}{z}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{!=} \PYG{p}{(}\PYG{k}{const} \PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{p}{(}\PYG{o}{!}\PYG{p}{(}\PYG{o}{*}\PYG{k}{this} \PYG{o}{==} \PYG{n}{other}\PYG{p}{));}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{other}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{tie}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{z}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{tie}\PYG{p}{(}\PYG{n}{other}\PYG{p}{.}\PYG{n}{x}\PYG{p}{,} \PYG{n}{other}\PYG{p}{.}\PYG{n}{y}\PYG{p}{,} \PYG{n}{other}\PYG{p}{.}\PYG{n}{y}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\PYG{k}{const} \PYG{n}{v3} \PYG{n+nf}{zero}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{n}{T} \PYG{n+nf}{sq}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{p} \PYG{o}{|} \PYG{n}{p}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{T} \PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{sq}\PYG{p}{(}\PYG{n}{p}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{v3} \PYG{n+nf}{unit}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{p} \PYG{o}{/} \PYG{p}{(}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{p}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{T} \PYG{n+nf}{angle}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{v1}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{v2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{double} \PYG{n}{costheta} \PYG{o}{=} \PYG{p}{(}\PYG{n}{v1} \PYG{o}{|} \PYG{n}{v2}\PYG{p}{)} \PYG{o}{/} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{v1}\PYG{p}{)} \PYG{o}{/} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{v2}\PYG{p}{);}
+    \PYG{k}{return} \PYG{n}{acos}\PYG{p}{(}\PYG{n}{max}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{n}{min}\PYG{p}{(}\PYG{l+m+mf}{1.0}\PYG{p}{,} \PYG{n}{costheta}\PYG{p}{)));}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// consider the plane defined by pqr.}
+\PYG{c+c1}{// basically n (normal) vector is along pq x pr}
+\PYG{c+c1}{// returns (pq x pr) . (ps), +ve if s lies on same side of plane (i.e. n vec)}
+\PYG{c+c1}{// 0 if s lies on the same plane (i.e. pqrs are coplanar) and \PYGZhy{}ve o/w}
+\PYG{c+c1}{// orient remains the same under cyclic shift, and swapping any two elements changes its sign}
+\PYG{c+c1}{// we can also say that orient is non zero iff lines pq and rs are skew (i.e. neither intersecting nor parallel), why? because intersecting and parallel lines lie on same plane, thus points p q r s lie on same plane. Ofcourse lines pq and rs are skew iff (pq x rs) . pr != 0 (another way)}
+\PYG{c+c1}{// |orient (P, Q, R, S)| is equal to six times the volume of tetrahedron PQRS}
+\PYG{n}{T} \PYG{n+nf}{orient}\PYG{p}{(}\PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{p}\PYG{p}{,} \PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{q}\PYG{p}{,} \PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{r}\PYG{p}{,} \PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{p}{(}\PYG{n}{q} \PYG{o}{\PYGZhy{}} \PYG{n}{p}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{r} \PYG{o}{\PYGZhy{}} \PYG{n}{p}\PYG{p}{)} \PYG{o}{|} \PYG{p}{(}\PYG{n}{s} \PYG{o}{\PYGZhy{}} \PYG{n}{p}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// Lets say we have a plane P and a vec n (normal) perpendicular to it. If we replace PS by vec n we get 2D orient (p\PYGZsq{}, q\PYGZsq{}, r\PYGZsq{}) on P, where p\PYGZsq{}, q\PYGZsq{}, r\PYGZsq{} are projections of p, q, r on P. 2D orient is just normal cross product of pq and pr.}
+\PYG{n}{T} \PYG{n+nf}{orientByNormal}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{q}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{r}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{p}{(}\PYG{n}{q}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{r}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{p}{)}\PYG{o}{|}\PYG{n}{n}\PYG{p}{;\PYGZcb{}}
+\PYG{c+c1}{// eqn of plane is ax + by + cz = d where a, b, c determines the orientation of the plane and d determines its position relative to origin.}
+\PYG{c+c1}{// eqn of plane is written as vec n . (x, y, z) = d.}
+\PYG{k}{struct} \PYG{n}{plane} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// different plane equations can essentially be same, (i.e. differ only by a const.}
+    \PYG{c+c1}{// factor). To avoid that you can normalise vector n, i.e. divide vec(n) by |vec(n)|.}
+    \PYG{c+c1}{// Also note that d / |vec(n)| represents distance of the plane from origin.}
+    \PYG{n}{v3} \PYG{n}{n}\PYG{p}{;} \PYG{n}{T} \PYG{n}{d}\PYG{p}{;}
+\PYG{c+c1}{// From normal n and offset d}
+    \PYG{n}{plane}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{n}\PYG{p}{,} \PYG{n}{T} \PYG{n}{d}\PYG{p}{)} \PYG{o}{:} \PYG{n}{n}\PYG{p}{(}\PYG{n}{n}\PYG{p}{),} \PYG{n}{d}\PYG{p}{(}\PYG{n}{d}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\PYG{c+c1}{// From normal n and point P}
+    \PYG{n}{plane}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{n}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{o}{:} \PYG{n}{n}\PYG{p}{(}\PYG{n}{n}\PYG{p}{),} \PYG{n}{d}\PYG{p}{(}\PYG{n}{n}\PYG{o}{|}\PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\PYG{c+c1}{// From three non\PYGZhy{}collinear points P,Q,R}
+    \PYG{n}{plane}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{q}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{r}\PYG{p}{)} \PYG{o}{:} \PYG{n}{plane}\PYG{p}{((}\PYG{n}{q}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{r}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{p}{),} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\PYG{c+c1}{// From two vectors u, v parallel to the plane we can find n.}
+\PYG{c+c1}{// \PYGZhy{} these work with T = int}
+\PYG{c+c1}{// side p is positive if p is on the side of plane P pointed by vec n. 0 if p lies on plane}
+\PYG{c+c1}{// this is same as orient (p, q, r, s) where P is defined by plane p, q, r.}
+    \PYG{n}{T} \PYG{n}{side}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{p}{(}\PYG{n}{n} \PYG{o}{|} \PYG{n}{p}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{n}{d}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{double} \PYG{n}{dist}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{side}\PYG{p}{(}\PYG{n}{p}\PYG{p}{))} \PYG{o}{/} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// translating a plane by vec t, suppose p lies on old plane, then p + t should lie on new plane, i.e. d\PYGZsq{} = n.(p + t) = n.p + n.t = d + n.t}
+    \PYG{n}{plane} \PYG{n}{translate}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{t}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{p}{\PYGZob{}}\PYG{n}{n}\PYG{p}{,} \PYG{n}{d} \PYG{o}{+} \PYG{p}{(}\PYG{n}{n} \PYG{o}{|} \PYG{n}{t}\PYG{p}{)\PYGZcb{};}
+    \PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// \PYGZhy{} these require T = double}
+\PYG{c+c1}{// and if we want to shift perpendicularly (in direction of n) by some distance dist}
+    \PYG{n}{plane} \PYG{n}{shiftUp}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{dist}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{c+c1}{// can easily be derived.}
+        \PYG{k}{return} \PYG{p}{\PYGZob{}}\PYG{n}{n}\PYG{p}{,} \PYG{n}{d} \PYG{o}{+} \PYG{n}{dist} \PYG{o}{*} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZcb{};}
+    \PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// projection of a point p on plane}
+\PYG{c+c1}{// we know that p + kn is on plane, from that we get k = \PYGZhy{}side(p)/sq(n)}
+    \PYG{n}{v3} \PYG{n}{proj}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{p} \PYG{o}{\PYGZhy{}} \PYG{n}{n} \PYG{o}{*} \PYG{n}{side}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)} \PYG{o}{/} \PYG{n}{sq}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{v3} \PYG{n}{refl}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{p} \PYG{o}{\PYGZhy{}} \PYG{n}{n} \PYG{o}{*} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{side}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)} \PYG{o}{/} \PYG{n}{sq}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\PYG{c+c1}{// coordinate system based on plane}
+\PYG{c+c1}{// like suppose we have few point that we know are coplanar, and we want to use some 2d algorithm on them}
+\PYG{c+c1}{// we define origin o on plane and two vectors dx, dy with norm 1 and perpendicular indicating direction of x, y axis.}
+\PYG{c+c1}{// Now op.dx = x, op.dy = y, z = op.dz where dz = dx x dy.}
+\PYG{k}{struct} \PYG{n}{coords} \PYG{p}{\PYGZob{}}
+    \PYG{n}{v3} \PYG{n}{o}\PYG{p}{,} \PYG{n}{dx}\PYG{p}{,} \PYG{n}{dy}\PYG{p}{,} \PYG{n}{dz}\PYG{p}{;}
+\PYG{c+c1}{// From three points P,Q,R on the plane:}
+    \PYG{c+c1}{// build an orthonormal 3D basis}
+    \PYG{n}{coords}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
+    \PYG{c+c1}{// getting coordinate system for plane defined by p, q, r.}
+    \PYG{n}{coords}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{q}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{o} \PYG{o}{=} \PYG{n}{p}\PYG{p}{;}
+        \PYG{n}{dx} \PYG{o}{=} \PYG{n}{unit}\PYG{p}{(}\PYG{n}{q}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{p}{);}
+        \PYG{n}{dz} \PYG{o}{=} \PYG{n}{unit}\PYG{p}{(}\PYG{n}{dx}\PYG{o}{*}\PYG{p}{(}\PYG{n}{r}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{p}{));}
+        \PYG{n}{dy} \PYG{o}{=} \PYG{n}{dz}\PYG{o}{*}\PYG{n}{dx}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// From four points P,Q,R,S:}
+\PYG{c+c1}{// take directions PQ, PR, PS as is}
+\PYG{c+c1}{// This can be useful if we don\PYGZsq{}t care that the 2D coordinate system (dx, dy) is not orthonormal (perpendicular and of norm 1), because it allows us to keep using integer coordinate. If dx and dy are not perpendicular or do not have a norm of 1, the computed distances and angles will not be correct. But if we are only interested in the relative positions of lines and points, and finding the intersection of lines or segments, then everything works fine. Computing 2D convex hull is an example of such a problem, because it only requires that the sign of orient is correct.}
+    \PYG{n}{coords}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{q}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{r}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{s}\PYG{p}{)} \PYG{o}{:}
+            \PYG{n}{o}\PYG{p}{(}\PYG{n}{p}\PYG{p}{),} \PYG{n}{dx}\PYG{p}{(}\PYG{n}{q}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{p}{),} \PYG{n}{dy}\PYG{p}{(}\PYG{n}{r}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{p}{),} \PYG{n}{dz}\PYG{p}{(}\PYG{n}{s}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+    \PYG{n}{vec} \PYG{n}{pos2d}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{p}{\PYGZob{}(}\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{o}\PYG{p}{)}\PYG{o}{|}\PYG{n}{dx}\PYG{p}{,} \PYG{p}{(}\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{o}\PYG{p}{)}\PYG{o}{|}\PYG{n}{dy}\PYG{p}{\PYGZcb{};\PYGZcb{}}
+    \PYG{n}{v3} \PYG{n}{pos3d}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{p}{\PYGZob{}(}\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{o}\PYG{p}{)}\PYG{o}{|}\PYG{n}{dx}\PYG{p}{,} \PYG{p}{(}\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{o}\PYG{p}{)}\PYG{o}{|}\PYG{n}{dy}\PYG{p}{,} \PYG{p}{(}\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{o}\PYG{p}{)}\PYG{o}{|}\PYG{n}{dz}\PYG{p}{\PYGZcb{};\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\PYG{c+c1}{// line is defined as o + kd}
+\PYG{k}{struct} \PYG{n}{line3d} \PYG{p}{\PYGZob{}}
+    \PYG{n}{v3} \PYG{n}{d}\PYG{p}{,} \PYG{n}{o}\PYG{p}{;}
+    \PYG{n}{line3d}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\PYG{c+c1}{// From two planes p1, p2 (requires T = double)}
+\PYG{c+c1}{// getting line as a intersection of two planes}
+    \PYG{n}{line3d}\PYG{p}{(}\PYG{n}{plane} \PYG{n}{p1}\PYG{p}{,} \PYG{n}{plane} \PYG{n}{p2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{d} \PYG{o}{=} \PYG{n}{p1}\PYG{p}{.}\PYG{n}{n}\PYG{o}{*}\PYG{n}{p2}\PYG{p}{.}\PYG{n}{n}\PYG{p}{;}
+\PYG{c+c1}{// this o just works, can be seen by putting this o in both planes equation.}
+        \PYG{n}{o} \PYG{o}{=} \PYG{p}{(}\PYG{n}{p2}\PYG{p}{.}\PYG{n}{n}\PYG{o}{*}\PYG{n}{p1}\PYG{p}{.}\PYG{n}{d} \PYG{o}{\PYGZhy{}} \PYG{n}{p1}\PYG{p}{.}\PYG{n}{n}\PYG{o}{*}\PYG{n}{p2}\PYG{p}{.}\PYG{n}{d}\PYG{p}{)}\PYG{o}{*}\PYG{n}{d}\PYG{o}{/}\PYG{n}{sq}\PYG{p}{(}\PYG{n}{d}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// From two points P, Q}
+    \PYG{n}{line3d}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{q}\PYG{p}{)} \PYG{o}{:} \PYG{n}{d}\PYG{p}{(}\PYG{n}{q}\PYG{o}{\PYGZhy{}}\PYG{n}{p}\PYG{p}{),} \PYG{n}{o}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\PYG{c+c1}{// Will be defined later:}
+    \PYG{c+c1}{// \PYGZhy{} these work with T = int}
+\PYG{c+c1}{// distance of a point from line, is simply |unit(d) x op|}
+    \PYG{k+kt}{double} \PYG{n}{sqDist}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{sq}\PYG{p}{(}\PYG{n}{d}\PYG{o}{*}\PYG{p}{(}\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{o}\PYG{p}{))}\PYG{o}{/}\PYG{n}{sq}\PYG{p}{(}\PYG{n}{d}\PYG{p}{);\PYGZcb{}}
+    \PYG{k+kt}{double} \PYG{n}{dist}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{sqDist}\PYG{p}{(}\PYG{n}{p}\PYG{p}{));\PYGZcb{}}
+\PYG{c+c1}{// sorting along a line}
+    \PYG{k+kt}{bool} \PYG{n}{cmpProj}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{q}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{p}{(}\PYG{n}{d}\PYG{o}{|}\PYG{n}{p}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{n}{d}\PYG{o}{|}\PYG{n}{q}\PYG{p}{);\PYGZcb{}}
+\PYG{c+c1}{// \PYGZhy{} these require T = double}
+\PYG{c+c1}{// projection of a point on line, o + (op.unit(d)) unit(d)}
+    \PYG{n}{v3} \PYG{n}{proj}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{o} \PYG{o}{+} \PYG{n}{d}\PYG{o}{*}\PYG{p}{(}\PYG{n}{d}\PYG{o}{|}\PYG{p}{(}\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{o}\PYG{p}{))}\PYG{o}{/}\PYG{n}{sq}\PYG{p}{(}\PYG{n}{d}\PYG{p}{);\PYGZcb{}}
+\PYG{c+c1}{// refl(p) + p = 2proj(p)}
+    \PYG{n}{v3} \PYG{n}{refl}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{proj}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{n}{p}\PYG{p}{;\PYGZcb{}}
+\PYG{c+c1}{// plane line intersection}
+\PYG{c+c1}{// n.(o + kd) = planes d =\PYGZgt{} k = (d \PYGZhy{} n.o) / n.d = \PYGZhy{}side (o) / n.d}
+    \PYG{n}{v3} \PYG{n}{inter}\PYG{p}{(}\PYG{n}{plane} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{o} \PYG{o}{\PYGZhy{}} \PYG{n}{d}\PYG{o}{*}\PYG{n}{p}\PYG{p}{.}\PYG{n}{side}\PYG{p}{(}\PYG{n}{o}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{n}{d}\PYG{o}{|}\PYG{n}{p}\PYG{p}{.}\PYG{n}{n}\PYG{p}{);\PYGZcb{}} \PYG{c+c1}{// Note, it could}
+    \PYG{c+c1}{// be that vec(n).vec(d) is 0 i.e. line is parallel to the plane}
+    \PYG{c+c1}{// in that case either there is no intersection or infinitely many}
+    \PYG{c+c1}{// intersection...}
+\PYG{p}{\PYGZcb{};}
+\PYG{k+kt}{double} \PYG{n+nf}{dist}\PYG{p}{(}\PYG{n}{line3d} \PYG{n}{l1}\PYG{p}{,} \PYG{n}{line3d} \PYG{n}{l2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{v3} \PYG{n}{n} \PYG{o}{=} \PYG{n}{l1}\PYG{p}{.}\PYG{n}{d}\PYG{o}{*}\PYG{n}{l2}\PYG{p}{.}\PYG{n}{d}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{n} \PYG{o}{==} \PYG{n}{zero}\PYG{p}{)} \PYG{c+c1}{// parallel}
+        \PYG{k}{return} \PYG{n}{l1}\PYG{p}{.}\PYG{n}{dist}\PYG{p}{(}\PYG{n}{l2}\PYG{p}{.}\PYG{n}{o}\PYG{p}{);}
+\PYG{c+c1}{// i.e. lines are either intersecting or are skew.}
+\PYG{c+c1}{// Define n = d1 x d2, i.e. n is direction which is perpendicular to both lines}
+\PYG{c+c1}{// Distance C1C2 = |C1C2.n|/|n|. Now dot product doesn\PYGZsq{}t change when one of the vectors move perpendicular to other =\PYGZgt{} dis = |O1C2.n|/|n| = |O1O2.n|/|n|.}
+    \PYG{k}{return} \PYG{n}{abs}\PYG{p}{((}\PYG{n}{l2}\PYG{p}{.}\PYG{n}{o}\PYG{o}{\PYGZhy{}}\PYG{n}{l1}\PYG{p}{.}\PYG{n}{o}\PYG{p}{)}\PYG{o}{|}\PYG{n}{n}\PYG{p}{)}\PYG{o}{/}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// Now to find C1, C2, consider plane P which contains l2 and has normal = d2 x n, thus this planes intersection with l1 gives us C1. which we can find as before}
+\PYG{n}{v3} \PYG{n+nf}{closestOnL1}\PYG{p}{(}\PYG{n}{line3d} \PYG{n}{l1}\PYG{p}{,} \PYG{n}{line3d} \PYG{n}{l2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{v3} \PYG{n}{n2} \PYG{o}{=} \PYG{n}{l2}\PYG{p}{.}\PYG{n}{d}\PYG{o}{*}\PYG{p}{(}\PYG{n}{l1}\PYG{p}{.}\PYG{n}{d}\PYG{o}{*}\PYG{n}{l2}\PYG{p}{.}\PYG{n}{d}\PYG{p}{);}
+    \PYG{k}{return} \PYG{n}{l1}\PYG{p}{.}\PYG{n}{o} \PYG{o}{+} \PYG{n}{l1}\PYG{p}{.}\PYG{n}{d}\PYG{o}{*}\PYG{p}{((}\PYG{n}{l2}\PYG{p}{.}\PYG{n}{o}\PYG{o}{\PYGZhy{}}\PYG{n}{l1}\PYG{p}{.}\PYG{n}{o}\PYG{p}{)}\PYG{o}{|}\PYG{n}{n2}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{n}{l1}\PYG{p}{.}\PYG{n}{d}\PYG{o}{|}\PYG{n}{n2}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// angle between two planes is same as angle between normals. Usually we\PYGZsq{}ll get two angles theta and pi \PYGZhy{} theta, we\PYGZsq{}ll take smaller of two.}
+\PYG{k+kt}{double} \PYG{n+nf}{smallAngle}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{v}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{w}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{acos}\PYG{p}{(}\PYG{n}{min}\PYG{p}{(}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{v}\PYG{o}{|}\PYG{n}{w}\PYG{p}{)}\PYG{o}{/}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}\PYG{o}{/}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{w}\PYG{p}{),} \PYG{l+m+mf}{1.0}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{double} \PYG{n+nf}{angle}\PYG{p}{(}\PYG{n}{plane} \PYG{n}{p1}\PYG{p}{,} \PYG{n}{plane} \PYG{n}{p2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{smallAngle}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{.}\PYG{n}{n}\PYG{p}{,} \PYG{n}{p2}\PYG{p}{.}\PYG{n}{n}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{isParallel}\PYG{p}{(}\PYG{n}{plane} \PYG{n}{p1}\PYG{p}{,} \PYG{n}{plane} \PYG{n}{p2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{p1}\PYG{p}{.}\PYG{n}{n}\PYG{o}{*}\PYG{n}{p2}\PYG{p}{.}\PYG{n}{n} \PYG{o}{==} \PYG{n}{zero}\PYG{p}{;}  \PYG{c+c1}{// need to be modified a bit}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{isPerpendicular}\PYG{p}{(}\PYG{n}{plane} \PYG{n}{p1}\PYG{p}{,} \PYG{n}{plane} \PYG{n}{p2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{p1}\PYG{p}{.}\PYG{n}{n}\PYG{o}{|}\PYG{n}{p2}\PYG{p}{.}\PYG{n}{n}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{double} \PYG{n+nf}{angle}\PYG{p}{(}\PYG{n}{line3d} \PYG{n}{l1}\PYG{p}{,} \PYG{n}{line3d} \PYG{n}{l2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{smallAngle}\PYG{p}{(}\PYG{n}{l1}\PYG{p}{.}\PYG{n}{d}\PYG{p}{,} \PYG{n}{l2}\PYG{p}{.}\PYG{n}{d}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{isParallel}\PYG{p}{(}\PYG{n}{line3d} \PYG{n}{l1}\PYG{p}{,} \PYG{n}{line3d} \PYG{n}{l2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{l1}\PYG{p}{.}\PYG{n}{d}\PYG{o}{*}\PYG{n}{l2}\PYG{p}{.}\PYG{n}{d} \PYG{o}{==} \PYG{n}{zero}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{isPerpendicular}\PYG{p}{(}\PYG{n}{line3d} \PYG{n}{l1}\PYG{p}{,} \PYG{n}{line3d} \PYG{n}{l2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{l1}\PYG{p}{.}\PYG{n}{d}\PYG{o}{|}\PYG{n}{l2}\PYG{p}{.}\PYG{n}{d}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// angle between a plane and a line is pi/2 \PYGZhy{} angle between line and normal}
+\PYG{k+kt}{double} \PYG{n+nf}{angle}\PYG{p}{(}\PYG{n}{plane} \PYG{n}{p}\PYG{p}{,} \PYG{n}{line3d} \PYG{n}{l}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{n}{smallAngle}\PYG{p}{(}\PYG{n}{p}\PYG{p}{.}\PYG{n}{n}\PYG{p}{,} \PYG{n}{l}\PYG{p}{.}\PYG{n}{d}\PYG{p}{);}
+    \PYG{c+c1}{// we take small angle because angle b/w plane and line}
+    \PYG{c+c1}{// can atmost be 90 deg}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{isParallel}\PYG{p}{(}\PYG{n}{plane} \PYG{n}{p}\PYG{p}{,} \PYG{n}{line3d} \PYG{n}{l}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{p}\PYG{p}{.}\PYG{n}{n}\PYG{o}{|}\PYG{n}{l}\PYG{p}{.}\PYG{n}{d}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{isPerpendicular}\PYG{p}{(}\PYG{n}{plane} \PYG{n}{p}\PYG{p}{,} \PYG{n}{line3d} \PYG{n}{l}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{p}\PYG{p}{.}\PYG{n}{n}\PYG{o}{*}\PYG{n}{l}\PYG{p}{.}\PYG{n}{d} \PYG{o}{==} \PYG{n}{zero}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// v3 o need not lie on plane.}
+\PYG{n}{line3d} \PYG{n+nf}{perpThrough}\PYG{p}{(}\PYG{n}{plane} \PYG{n}{p}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{o}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{line3d}\PYG{p}{(}\PYG{n}{o}\PYG{p}{,} \PYG{n}{o}\PYG{o}{+}\PYG{n}{p}\PYG{p}{.}\PYG{n}{n}\PYG{p}{);\PYGZcb{}}
+\PYG{n}{plane} \PYG{n+nf}{perpThrough}\PYG{p}{(}\PYG{n}{line3d} \PYG{n}{l}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{o}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{plane}\PYG{p}{(}\PYG{n}{l}\PYG{p}{.}\PYG{n}{d}\PYG{p}{,} \PYG{n}{o}\PYG{p}{);\PYGZcb{}}
+\PYG{c+c1}{// A polyhedron is a region of space delimited by polygonal faces}
+\PYG{c+c1}{// Some properties of polyhedron}
+\PYG{c+c1}{// \PYGZsh{} all faces are polygons that don\PYGZsq{}t intersect}
+\PYG{c+c1}{// \PYGZsh{} two faces either share a complete edge or share a single vertex or have no common point}
+\PYG{c+c1}{// \PYGZsh{} all edges are shared by exactly two faces}
+\PYG{c+c1}{// \PYGZsh{} if we define adjacent faces that share an edge, all faces are connected together.}
+\PYG{c+c1}{// Two compute surface area of a polyhedron we need to add the area of its faces.}
+\PYG{n}{v3} \PYG{n+nf}{vectorArea2}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{v3}\PYG{o}{\PYGZgt{}} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// vector area * 2 (to avoid divisions)}
+    \PYG{n}{v3} \PYG{n}{S} \PYG{o}{=} \PYG{n}{zero}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{n} \PYG{o}{=} \PYG{n}{p}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+        \PYG{n}{S} \PYG{o}{=} \PYG{n}{S} \PYG{o}{+} \PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{*}\PYG{n}{p}\PYG{p}{[(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{n}{n}\PYG{p}{];} \PYG{c+c1}{// all distinct points, i.e.}
+        \PYG{c+c1}{// last point is not same as first point}
+    \PYG{k}{return} \PYG{n}{S}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// computes area of a particular face. Look at photo.}
+\PYG{k+kt}{double} \PYG{n+nf}{area}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{v3}\PYG{o}{\PYGZgt{}} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{vectorArea2}\PYG{p}{(}\PYG{n}{p}\PYG{p}{))} \PYG{o}{/} \PYG{l+m+mf}{2.0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k}{struct} \PYG{n}{edge} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{;}
+    \PYG{k+kt}{bool} \PYG{n}{same}\PYG{p}{;} \PYG{c+c1}{// = is the common edge in the same order?}
+\PYG{p}{\PYGZcb{};}
+\PYG{c+c1}{// Given a series of faces (lists of points), reverse some of them}
+\PYG{c+c1}{// so that their orientations are consistent}
+\PYG{c+c1}{// Basically we want all vector areas S to either point inside the polyhedron or outside. So the following function achieves that.}
+\PYG{c+c1}{//  Note that because of circularity in P1, P2, ... , Pn, Pn is considered to come before P1 and not after.}
+\PYG{k+kt}{void} \PYG{n+nf}{reorient}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{v3}\PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{fs}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{n}{fs}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();}
+\PYG{c+c1}{// Find the common edges and create the resulting graph}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{edge}\PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{g}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+    \PYG{n}{map}\PYG{o}{\PYGZlt{}}\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{n}{v3}\PYG{p}{,}\PYG{n}{v3}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{es}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{u} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{u}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// going through all faces}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{m} \PYG{o}{=} \PYG{n}{fs}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{m}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// going through}
+            \PYG{c+c1}{// all its edges}
+            \PYG{n}{v3} \PYG{n}{a} \PYG{o}{=} \PYG{n}{fs}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{i}\PYG{p}{],} \PYG{n}{b} \PYG{o}{=} \PYG{n}{fs}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{n}{m}\PYG{p}{];} \PYG{c+c1}{// clearly last point}
+            \PYG{c+c1}{// is not the same as first point}
+\PYG{c+c1}{// Let’s look at edge [AB]}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{es}\PYG{p}{.}\PYG{n}{count}\PYG{p}{(\PYGZob{}}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{\PYGZcb{}))} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// seen in same order}
+                \PYG{c+c1}{// we have to flip when the order is same}
+                \PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{es}\PYG{p}{[\PYGZob{}}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{\PYGZcb{}];}
+                \PYG{n}{g}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(\PYGZob{}}\PYG{n}{v}\PYG{p}{,}\PYG{n+nb}{true}\PYG{p}{\PYGZcb{});}
+                \PYG{n}{g}\PYG{p}{[}\PYG{n}{v}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(\PYGZob{}}\PYG{n}{u}\PYG{p}{,}\PYG{n+nb}{true}\PYG{p}{\PYGZcb{});}
+            \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{es}\PYG{p}{.}\PYG{n}{count}\PYG{p}{(\PYGZob{}}\PYG{n}{b}\PYG{p}{,}\PYG{n}{a}\PYG{p}{\PYGZcb{}))} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// seen in different order}
+                \PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{es}\PYG{p}{[\PYGZob{}}\PYG{n}{b}\PYG{p}{,}\PYG{n}{a}\PYG{p}{\PYGZcb{}];}
+                \PYG{n}{g}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(\PYGZob{}}\PYG{n}{v}\PYG{p}{,}\PYG{n+nb}{false}\PYG{p}{\PYGZcb{});}
+                \PYG{n}{g}\PYG{p}{[}\PYG{n}{v}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(\PYGZob{}}\PYG{n}{u}\PYG{p}{,}\PYG{n+nb}{false}\PYG{p}{\PYGZcb{});}
+            \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// not seen yet}
+                \PYG{n}{es}\PYG{p}{[\PYGZob{}}\PYG{n}{a}\PYG{p}{,}\PYG{n}{b}\PYG{p}{\PYGZcb{}]} \PYG{o}{=} \PYG{n}{u}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// Perform BFS to find which faces should be flipped}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{bool}\PYG{o}{\PYGZgt{}} \PYG{n}{vis}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,}\PYG{n+nb}{false}\PYG{p}{),} \PYG{n}{flip}\PYG{p}{(}\PYG{n}{n}\PYG{p}{);}
+    \PYG{n}{flip}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}  \PYG{c+c1}{// i.e. no need to reverse the edges of first face.}
+    \PYG{n}{queue}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{q}\PYG{p}{;}
+    \PYG{n}{q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{);}
+    \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{q}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{n}{q}\PYG{p}{.}\PYG{n}{front}\PYG{p}{();}
+        \PYG{n}{q}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
+        \PYG{k}{for} \PYG{p}{(}\PYG{n}{edge} \PYG{n+nl}{e} \PYG{p}{:} \PYG{n}{g}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{vis}\PYG{p}{[}\PYG{n}{e}\PYG{p}{.}\PYG{n}{v}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+                \PYG{n}{vis}\PYG{p}{[}\PYG{n}{e}\PYG{p}{.}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+\PYG{c+c1}{// If the edge was in the same order,}
+\PYG{c+c1}{// exactly one of the two should be flipped}
+                \PYG{n}{flip}\PYG{p}{[}\PYG{n}{e}\PYG{p}{.}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{flip}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{\PYGZca{}} \PYG{n}{e}\PYG{p}{.}\PYG{n}{same}\PYG{p}{);}
+                \PYG{n}{q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{v}\PYG{p}{);}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// Actually perform the flips}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{u} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{u}\PYG{o}{++}\PYG{p}{)}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{flip}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}
+            \PYG{n}{reverse}\PYG{p}{(}\PYG{n}{fs}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{fs}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{end}\PYG{p}{());}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// Once we have correct (either all outside or all inside) orientation, we can compute the area of polyhedron}
+\PYG{c+c1}{// Area of pyramid OP1P2...Pn is equal to area of base * height/3. So area of base * height = S . op1.}
+\PYG{k+kt}{double} \PYG{n+nf}{volume}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{v3}\PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{fs}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{double} \PYG{n}{vol6} \PYG{o}{=} \PYG{l+m+mf}{0.0}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{v3}\PYG{o}{\PYGZgt{}} \PYG{n+nl}{f} \PYG{p}{:} \PYG{n}{fs}\PYG{p}{)}
+        \PYG{n}{vol6} \PYG{o}{+=} \PYG{p}{(}\PYG{n}{vectorArea2}\PYG{p}{(}\PYG{n}{f}\PYG{p}{)}\PYG{o}{|}\PYG{n}{f}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);}
+    \PYG{c+c1}{// divide by 6 because in the end we were required to divide by 2 aswell.}
+    \PYG{k}{return} \PYG{n}{abs}\PYG{p}{(}\PYG{n}{vol6}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mf}{6.0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// Spherical geometry}
+\PYG{c+c1}{// lat [\PYGZhy{}pi/2, pi/2] tells us how for north the point is. and lon (\PYGZhy{}pi, pi] tells us how far east the point is.}
+\PYG{c+c1}{// the following function returns the coordinates of a point on sphere.}
+\PYG{n}{v3} \PYG{n+nf}{sph}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{r}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{lat}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{lon}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{lat} \PYG{o}{*=} \PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{180}\PYG{p}{,} \PYG{n}{lon} \PYG{o}{*=} \PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{180}\PYG{p}{;}
+    \PYG{k}{return} \PYG{p}{\PYGZob{}}\PYG{n}{r}\PYG{o}{*}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{lat}\PYG{p}{)}\PYG{o}{*}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{lon}\PYG{p}{),} \PYG{n}{r}\PYG{o}{*}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{lat}\PYG{p}{)}\PYG{o}{*}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{lon}\PYG{p}{),} \PYG{n}{r}\PYG{o}{*}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{lat}\PYG{p}{)\PYGZcb{};}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// sphere line intersection, same as circle line intersection}
+\PYG{k+kt}{int} \PYG{n+nf}{sphereLine}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{o}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{r}\PYG{p}{,} \PYG{n}{line3d} \PYG{n}{l}\PYG{p}{,} \PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{n}{v3}\PYG{p}{,}\PYG{n}{v3}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{out}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{double} \PYG{n}{h2} \PYG{o}{=} \PYG{n}{r}\PYG{o}{*}\PYG{n}{r} \PYG{o}{\PYGZhy{}} \PYG{n}{l}\PYG{p}{.}\PYG{n}{sqDist}\PYG{p}{(}\PYG{n}{o}\PYG{p}{);}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{h2} \PYG{o}{\PYGZlt{}} \PYG{o}{\PYGZhy{}}\PYG{n}{eps}\PYG{p}{)} \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{c+c1}{// the line doesn’t touch the sphere}
+    \PYG{n}{v3} \PYG{n}{p} \PYG{o}{=} \PYG{n}{l}\PYG{p}{.}\PYG{n}{proj}\PYG{p}{(}\PYG{n}{o}\PYG{p}{);} \PYG{c+c1}{// point P}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{h2}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{out} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{p}\PYG{p}{,} \PYG{n}{p}\PYG{p}{\PYGZcb{};}
+        \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{v3} \PYG{n}{h} \PYG{o}{=} \PYG{n}{l}\PYG{p}{.}\PYG{n}{d}\PYG{o}{*}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{h2}\PYG{p}{)}\PYG{o}{/}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{l}\PYG{p}{.}\PYG{n}{d}\PYG{p}{);} \PYG{c+c1}{// vector parallel to l, of length h}
+    \PYG{n}{out} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{p}\PYG{o}{\PYGZhy{}}\PYG{n}{h}\PYG{p}{,} \PYG{n}{p}\PYG{o}{+}\PYG{n}{h}\PYG{p}{\PYGZcb{};}
+    \PYG{k}{return} \PYG{l+m+mi}{2}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// the shortest distance between two points a and b on a sphere (o, r).}
+\PYG{c+c1}{// this code also works if a and b are not actually on the sphere, in which case it will give the distance between their projections on sphere.}
+\PYG{k+kt}{double} \PYG{n+nf}{greatCircleDist}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{o}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{r}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{a}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{r} \PYG{o}{*} \PYG{n}{angle}\PYG{p}{(}\PYG{n}{a}\PYG{o}{\PYGZhy{}}\PYG{n}{o}\PYG{p}{,} \PYG{n}{b}\PYG{o}{\PYGZhy{}}\PYG{n}{o}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// returns 1 if x is greater than 0.}
+\PYG{c+c1}{// returns 0 if x is 0}
+\PYG{c+c1}{// returns \PYGZhy{}1 if x is \PYGZlt{} 0.}
+\PYG{k+kt}{int} \PYG{n+nf}{sgn}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{p}{(}\PYG{n}{eps} \PYG{o}{\PYGZlt{}} \PYG{n}{x}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{o}{\PYGZhy{}}\PYG{n}{eps}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// In the following discussion, center of sphere is assumed to be origin.}
+\PYG{c+cm}{/* For points a and b on a spere, we define sperical segment [a, b] as the path drawn by the great circle distance between a and b on the sphere. This is not well defined if a and b are directly opposite to each other on the sphere because there would be many possible shortest paths}
+\PYG{c+cm}{*/}
+\PYG{c+c1}{// we call a segment [a, b] valid if a and b are not opposite to each other.}
+\PYG{c+c1}{// Note that this function accepts segments where p = q.}
+\PYG{k+kt}{bool} \PYG{n+nf}{validSegment}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{q}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{p}\PYG{o}{*}\PYG{n}{q} \PYG{o}{!=} \PYG{n}{zero} \PYG{o}{||} \PYG{p}{(}\PYG{n}{p}\PYG{o}{|}\PYG{n}{q}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{n}{eps}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// segment segment intersection.}
+\PYG{c+c1}{// Note that the intersection point I must be in the intersection of planes OAB and OCD. So direction OI must be perpendicular to their normals A x B and C x D, that is parallel to (A x B) x (C x D). Multiplying this by the sign of od gives the correct direction. Note that out only gives the direction of the intersection. If we want to find the intersection on the sphere we need to scale it to have length r.}
+\PYG{k+kt}{bool} \PYG{n+nf}{properInter}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{a}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{b}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{c}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{d}\PYG{p}{,} \PYG{n}{v3} \PYG{o}{\PYGZam{}}\PYG{n}{out}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{v3} \PYG{n}{ab} \PYG{o}{=} \PYG{n}{a}\PYG{o}{*}\PYG{n}{b}\PYG{p}{,} \PYG{n}{cd} \PYG{o}{=} \PYG{n}{c}\PYG{o}{*}\PYG{n}{d}\PYG{p}{;} \PYG{c+c1}{// normals of planes OAB and OCD}
+    \PYG{k+kt}{int} \PYG{n}{oa} \PYG{o}{=} \PYG{n}{sgn}\PYG{p}{(}\PYG{n}{cd}\PYG{o}{|}\PYG{n}{a}\PYG{p}{),}
+            \PYG{n}{ob} \PYG{o}{=} \PYG{n}{sgn}\PYG{p}{(}\PYG{n}{cd}\PYG{o}{|}\PYG{n}{b}\PYG{p}{),}
+            \PYG{n}{oc} \PYG{o}{=} \PYG{n}{sgn}\PYG{p}{(}\PYG{n}{ab}\PYG{o}{|}\PYG{n}{c}\PYG{p}{),}
+            \PYG{n}{od} \PYG{o}{=} \PYG{n}{sgn}\PYG{p}{(}\PYG{n}{ab}\PYG{o}{|}\PYG{n}{d}\PYG{p}{);}
+    \PYG{n}{out} \PYG{o}{=} \PYG{n}{ab}\PYG{o}{*}\PYG{n}{cd}\PYG{o}{*}\PYG{n}{od}\PYG{p}{;} \PYG{c+c1}{// four multiplications =\PYGZgt{} careful with overflow!}
+    \PYG{k}{return} \PYG{p}{(}\PYG{n}{oa} \PYG{o}{!=} \PYG{n}{ob} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{oc} \PYG{o}{!=} \PYG{n}{od} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{oa} \PYG{o}{!=} \PYG{n}{oc}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// To check whether the point p is in segment [a, b]}
+\PYG{k+kt}{bool} \PYG{n+nf}{onSphSegment}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{a}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{b}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{v3} \PYG{n}{n} \PYG{o}{=} \PYG{n}{a}\PYG{o}{*}\PYG{n}{b}\PYG{p}{;}
+    \PYG{c+c1}{// special case when a == b, in which we just check whether p == a.}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{n} \PYG{o}{==} \PYG{n}{zero}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{a}\PYG{o}{*}\PYG{n}{p} \PYG{o}{==} \PYG{n}{zero} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{(}\PYG{n}{a}\PYG{o}{|}\PYG{n}{p}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{n}{eps}\PYG{p}{;}
+    \PYG{k}{return} \PYG{p}{(}\PYG{n}{n}\PYG{o}{|}\PYG{n}{p}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{(}\PYG{n}{n}\PYG{o}{|}\PYG{n}{a}\PYG{o}{*}\PYG{n}{p}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZhy{}}\PYG{n}{eps} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{(}\PYG{n}{n}\PYG{o}{|}\PYG{n}{b}\PYG{o}{*}\PYG{n}{p}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{struct} \PYG{n+nl}{directionSet} \PYG{p}{:} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{v3}\PYG{o}{\PYGZgt{}} \PYG{p}{\PYGZob{}}
+    \PYG{k}{using} \PYG{n}{vector}\PYG{o}{::}\PYG{n}{vector}\PYG{p}{;} \PYG{c+c1}{// import constructors}
+    \PYG{k+kt}{void} \PYG{n+nf}{insert}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{n}{v3} \PYG{n+nl}{q} \PYG{p}{:} \PYG{o}{*}\PYG{k}{this}\PYG{p}{)} \PYG{k}{if} \PYG{p}{(}\PYG{n}{p}\PYG{o}{*}\PYG{n}{q} \PYG{o}{==} \PYG{n}{zero}\PYG{p}{)} \PYG{k}{return}\PYG{p}{;}
+        \PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{p}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\PYG{c+c1}{// putting it all together}
+\PYG{n}{directionSet} \PYG{n+nf}{intersSph}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{a}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{b}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{c}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{d}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{assert}\PYG{p}{(}\PYG{n}{validSegment}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{validSegment}\PYG{p}{(}\PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{));}
+    \PYG{n}{v3} \PYG{n}{out}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{properInter}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{out}\PYG{p}{))} \PYG{k}{return} \PYG{p}{\PYGZob{}}\PYG{n}{out}\PYG{p}{\PYGZcb{};}
+    \PYG{n}{directionSet} \PYG{n}{s}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{onSphSegment}\PYG{p}{(}\PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{a}\PYG{p}{))} \PYG{n}{s}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{a}\PYG{p}{);}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{onSphSegment}\PYG{p}{(}\PYG{n}{c}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{b}\PYG{p}{))} \PYG{n}{s}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{b}\PYG{p}{);}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{onSphSegment}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{))} \PYG{n}{s}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{c}\PYG{p}{);}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{onSphSegment}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{d}\PYG{p}{))} \PYG{n}{s}\PYG{p}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{n}{d}\PYG{p}{);}
+    \PYG{k}{return} \PYG{n}{s}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// to compute angle between spherical segment ab and ac.}
+\PYG{c+c1}{// this is same as angle between planes oab and oac.}
+\PYG{k+kt}{double} \PYG{n+nf}{angleSph}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{a}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{b}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{c}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{angle}\PYG{p}{(}\PYG{n}{a}\PYG{o}{*}\PYG{n}{b}\PYG{p}{,} \PYG{n}{a}\PYG{o}{*}\PYG{n}{c}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// see photo}
+\PYG{k+kt}{double} \PYG{n+nf}{orientedAngleSph}\PYG{p}{(}\PYG{n}{v3} \PYG{n}{a}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{b}\PYG{p}{,} \PYG{n}{v3} \PYG{n}{c}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{((}\PYG{n}{a}\PYG{o}{*}\PYG{n}{b}\PYG{o}{|}\PYG{n}{c}\PYG{p}{)} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{angleSph}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{);}
+    \PYG{k}{else}
+        \PYG{k}{return} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{pi} \PYG{o}{\PYGZhy{}} \PYG{n}{angleSph}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{c}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// as always, all points in p are distinct i.e. p[0] != p[n \PYGZhy{} 1]}
+\PYG{c+c1}{// just know that this can be derived.}
+\PYG{k+kt}{double} \PYG{n+nf}{areaOnSphere}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{r}\PYG{p}{,} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{v3}\PYG{o}{\PYGZgt{}} \PYG{n}{p}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{n}{p}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();}
+    \PYG{k+kt}{double} \PYG{n}{sum} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{*} \PYG{n}{pi}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+        \PYG{n}{sum} \PYG{o}{+=} \PYG{n}{orientedAngleSph}\PYG{p}{(}\PYG{n}{p}\PYG{p}{[(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{n}{n}\PYG{p}{],} \PYG{n}{p}\PYG{p}{[(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{\PYGZpc{}}\PYG{n}{n}\PYG{p}{],} \PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+    \PYG{k}{return} \PYG{n}{r}\PYG{o}{*}\PYG{n}{r}\PYG{o}{*}\PYG{n}{sum}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+cm}{/*is the volume of the parallelepiped with base vectors (u and v) and vertical vector as w.*/}
+\end{Verbatim}

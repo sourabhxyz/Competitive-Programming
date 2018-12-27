@@ -82,7 +82,7 @@ void update(int at, int start, int end, int l, int r, int tt) {
         modify(at, start, end);
         return;
     }
-    if(start >= l and end <= r) {
+    if(start >= l and end <= r) {  // in normal update this part wont be there
         lazy[at] = tt;
         modify(at, start, end);
         return;

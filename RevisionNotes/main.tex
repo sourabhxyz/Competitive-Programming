@@ -1239,7 +1239,7 @@ Let's apply the concept of a primitive root modulo $n$. Let $g$ be a primitive r
 
 We can easily discard the case where $a = 0$. In this case, obviously there is only one answer: $x = 0$.
 
-Since we jnow that $n$ is a prime, any number between 1 and $n-1$ can be represented as a power of the primitive root, and we can represent the discrete root problem as follows:
+Since we know that $n$ is a prime, any number between 1 and $n-1$ can be represented as a power of the primitive root, and we can represent the discrete root problem as follows:
 
 $(g^y)^k \equiv a \pmod n$
 
@@ -1294,7 +1294,7 @@ f(n) & = & 1, 1, 3, 1, 3, 5
 Thm: if $n = 2^m + l$ where $0 \leq l < 2^m$ then $f(n) = 2l + 1$.
 \subsubsection{For general $k \geq 1$}
 We should note that after the kth person is killed we are left with a circle of n - 1 and we start the next count with the person whose no in the original problem was $(k \mod n) + 1$. The position of the survivior in the remaining circle would be $f(n - 1, k)$ if we start counting at 1; shifting this to account for the fact that we are starting at $(k \mod n) + 1$ yilds the recurrence $f(n, k) =  ((f(n - 1, k) + k - 1) \mod n) + 1$ with $f(1, k) = 1$ which takes the simpler form $g(n, k) = (g(n - 1, k) + k) \mod n$ with $g(1, k) = 0$. This approach has running time O(n).
-\\But for small k and large n, there is another approach. The second apprach alaso uses dp but has running time O(klogn) and is based on cosidering killing kth, 2kth, ..., $(\lfloor n/k \rfloor * k)$th person as one step, then changing the numbering.
+\\But for small k and large n, there is another approach. The second apprach also uses dp but has running time O(klogn) and is based on cosidering killing kth, 2kth, ..., $(\lfloor n/k \rfloor * k)$th person as one step, then changing the numbering.
 \begin{eqnarray}
 g(n, k) &=& 0 \text{ if n = 1 (because of 0 indexing)}\\
         &=& (g(n - 1, k) + k) \mod n \text{ if $1 < n < k$}\\
@@ -4986,7 +4986,7 @@ int main () {
     \item Center of mass of pts $= \sum m_i \vec{r_i}/\sum{m_i}$. This is same as centre of mass of union of mutually exclusive objects where each $\vec{r_i}$ is that objects COM and $m_i$ is that objects mass.
     \item COM of a line is its midpoint
     \item COM of $\triangle = (\vec{r_1} + \vec{r_2} + \vec{r_3}) / 3$ but this is not the case for general polygon.
-    \item For a general convex polygon, we may triangulate it, find that triangles area and COM and the combine to get COM of original figure.
+    \item For a general convex polygon, we may triangulate it, find that triangles area and COM and then combine to get COM of original figure.
     \item Similarly in case of 3D, COM of tetrahadron $= \sum_{i = 1}^{4}r_i/4$ and a general 3d object can be again divided into tetrahedrons.
     \item For general polygon we can do $\vec{r_c} = (\sum_{i}\vec{r_{z,p_i, p_{i + 1}}} * S_{z, p_i, p_{i + 1}}) / \sum_i S_{z, p_i, p_{i + 1}}$ where S term denotes triangles area with sign. 
     \item \textbf{Some properties of triangles}
@@ -5000,7 +5000,7 @@ int main () {
         \item Center of incircle is the meeting point of angle bisectors.
         \item Medians divide a triangle into 6 triangles of equal area and area of original triangle is $= 4/3 * \sqrt{s * (s - a) * (s - b) * (s - c)}$, here a, b, c is the length of medians.
         \item For valid $\triangle$ sum of any 2 sides should be greater than third. If the three lengths are sorted, we can simply check whether $a + b > c$. For quadrangle sum of any 3 sides should be greater than 4th.
-        \item The center of circumcircle is the meeting point of $]triangle$'s perpendicular bisector.
+        \item The center of circumcircle is the meeting point of $\triangle$'s perpendicular bisector.
         \item Triangle angle bisector property: $|AB|/|AC| = |BD|/|DC|$ where AD is the angle bisector of angle BAC. 
         \item Given sides of triangle, sort them, then see 3 consecutive sides, if the area is positive (using herons formula), they form a valid triangle, mx = max (mx, area).
     \end{itemize}

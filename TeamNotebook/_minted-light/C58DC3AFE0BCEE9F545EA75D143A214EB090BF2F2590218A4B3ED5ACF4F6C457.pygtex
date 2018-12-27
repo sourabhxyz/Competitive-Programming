@@ -1,0 +1,37 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kt}{void} \PYG{n+nf}{hld}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{pr} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+  \PYG{n}{chain}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{cnt} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// what chain does this vertex belong to, cnt is initiallized to 1.}
+  \PYG{n}{num}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{all}\PYG{o}{++}\PYG{p}{;} \PYG{c+c1}{// seemingly, ordering will be like, contiguous one will be belonging to same chain, all is initiallized to 0.}
+  \PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{csz}\PYG{p}{[}\PYG{n}{cnt} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{])} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// if the size of this chain is 0, make top vertex of this chain as \PYGZsq{}v\PYGZsq{}}
+    \PYG{n}{top}\PYG{p}{[}\PYG{n}{cnt} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{v}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{o}{++}\PYG{n}{csz}\PYG{p}{[}\PYG{n}{cnt} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{];} \PYG{c+c1}{// what size is of this chain}
+  \PYG{k}{if}\PYG{p}{(}\PYG{n}{nxt}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}}
+    \PYG{n}{hld}\PYG{p}{(}\PYG{n}{nxt}\PYG{p}{[}\PYG{n}{v}\PYG{p}{],} \PYG{n}{v}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{n}{forn}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{n}{g}\PYG{p}{[}\PYG{n}{v}\PYG{p}{].}\PYG{n}{size}\PYG{p}{())\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{to} \PYG{o}{=} \PYG{n}{g}\PYG{p}{[}\PYG{n}{v}\PYG{p}{][}\PYG{n}{i}\PYG{p}{];}
+    \PYG{k}{if}\PYG{p}{(}\PYG{n}{to} \PYG{o}{==} \PYG{n}{pr} \PYG{o}{||} \PYG{n}{to} \PYG{o}{==} \PYG{n}{nxt}\PYG{p}{[}\PYG{n}{v}\PYG{p}{])\PYGZob{}}
+      \PYG{k}{continue}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{o}{++}\PYG{n}{cnt}\PYG{p}{;} \PYG{c+c1}{// next chain}
+    \PYG{n}{hld}\PYG{p}{(}\PYG{n}{to}\PYG{p}{,} \PYG{n}{v}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{ll} \PYG{n+nf}{go}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{b}\PYG{p}{)\PYGZob{}}
+  \PYG{n}{ll} \PYG{n}{res} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{k}{while}\PYG{p}{(}\PYG{n}{chain}\PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{chain}\PYG{p}{[}\PYG{n}{b}\PYG{p}{])\PYGZob{}}
+    \PYG{k}{if}\PYG{p}{(}\PYG{n}{depth}\PYG{p}{[}\PYG{n}{top}\PYG{p}{[}\PYG{n}{chain}\PYG{p}{[}\PYG{n}{a}\PYG{p}{]]]} \PYG{o}{\PYGZlt{}} \PYG{n}{depth}\PYG{p}{[}\PYG{n}{top}\PYG{p}{[}\PYG{n}{chain}\PYG{p}{[}\PYG{n}{b}\PYG{p}{]]])} \PYG{n}{swap}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{);}
+    \PYG{k+kt}{int} \PYG{n}{start} \PYG{o}{=} \PYG{n}{top}\PYG{p}{[}\PYG{n}{chain}\PYG{p}{[}\PYG{n}{a}\PYG{p}{]];}
+    \PYG{k}{if}\PYG{p}{(}\PYG{n}{num}\PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o}{==} \PYG{n}{num}\PYG{p}{[}\PYG{n}{start}\PYG{p}{]} \PYG{o}{+} \PYG{n}{csz}\PYG{p}{[}\PYG{n}{chain}\PYG{p}{[}\PYG{n}{a}\PYG{p}{]]} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{c+c1}{// alone else part should be enough}
+      \PYG{n}{res} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{res}\PYG{p}{,} \PYG{n}{mx}\PYG{p}{[}\PYG{n}{chain}\PYG{p}{[}\PYG{n}{a}\PYG{p}{]]);}
+    \PYG{k}{else}
+      \PYG{n}{res} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{res}\PYG{p}{,} \PYG{n}{go}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{num}\PYG{p}{[}\PYG{n}{start}\PYG{p}{],} \PYG{n}{num}\PYG{p}{[}\PYG{n}{a}\PYG{p}{]));}
+    \PYG{n}{a} \PYG{o}{=} \PYG{n}{p}\PYG{p}{[}\PYG{n}{start}\PYG{p}{];}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{if}\PYG{p}{(}\PYG{n}{depth}\PYG{p}{[}\PYG{n}{a}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{depth}\PYG{p}{[}\PYG{n}{b}\PYG{p}{])} \PYG{n}{swap}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{);}
+  \PYG{n}{res} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{res}\PYG{p}{,} \PYG{n}{go}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{num}\PYG{p}{[}\PYG{n}{a}\PYG{p}{],} \PYG{n}{num}\PYG{p}{[}\PYG{n}{b}\PYG{p}{]));}
+  \PYG{k}{return} \PYG{n}{res}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

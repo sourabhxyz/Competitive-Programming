@@ -1,0 +1,47 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/* Variation}
+\PYG{c+cm}{A slight variation to this problem is how many disconnected components would result as a direct consequence of removing a vertex u */}
+\PYG{k+kt}{void} \PYG{n+nf}{ArticulationPoint}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfs\PYGZus{}num\PYGZus{}counter}\PYG{o}{++}\PYG{p}{;}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{adj\PYGZus{}list}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{adj\PYGZus{}list}\PYG{p}{[}\PYG{n}{u}\PYG{p}{][}\PYG{n}{i}\PYG{p}{];}
+
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{u}\PYG{p}{;}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{u} \PYG{o}{==} \PYG{n}{dfs\PYGZus{}root}\PYG{p}{)} \PYG{n}{root\PYGZus{}children}\PYG{o}{++}\PYG{p}{;}
+
+            \PYG{n}{ArticulationPoint}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+
+            \PYG{c+c1}{// we increment articulation\PYGZus{}vertex here}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZgt{}=} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}
+                \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{++}\PYG{p}{;}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}
+                \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Edge (\PYGZpc{}d, \PYGZpc{}d) is a bridge}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{.}\PYG{n}{first}\PYG{p}{);}
+
+            \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{],} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]);}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{else} \PYG{k}{if}\PYG{p}{(}\PYG{n}{v} \PYG{o}{!=} \PYG{n}{dfs\PYGZus{}parent}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}
+            \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{],} \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{dfs\PYGZus{}num\PYGZus{}counter} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{c+c1}{// articulation\PYGZus{}vertex initialized to 1 here}
+    \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{.}\PYG{n}{assign}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n}{dfs\PYGZus{}root} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;} \PYG{n}{root\PYGZus{}children} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+            \PYG{n}{ArticulationPoint}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+            \PYG{c+c1}{// special case for root}
+            \PYG{c+c1}{// number of connected components after the removal of root}
+            \PYG{c+c1}{// is equal to how many children root has}
+            \PYG{n}{articulation\PYGZus{}vertex}\PYG{p}{[}\PYG{n}{dfs\PYGZus{}root}\PYG{p}{]} \PYG{o}{=} \PYG{n}{root\PYGZus{}children}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
