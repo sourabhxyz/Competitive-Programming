@@ -13,19 +13,48 @@ const double eps = 1e-12;
 #define tmep temp
 
 void solve () {
-    int n;
-    string s;
-    cin >> n;
-    cin >> s;
-    int rep = 0;
-    string out;
-    int off = 0;
-    while (off < n) {
-        out.push_back (s[off]);
-        rep++;
-        off += rep;
+    int n, k;
+    cin >> n >> k;
+    int cnt = 0;
+    int bcnt[32];
+    memset (bcnt, 0, sizeof (bcnt));
+    for (int i = 31; i >= 0; i--) {
+        if (n & (1 << i)) {
+            bcnt[i]++;
+            cnt++;
+        }
     }
-    cout << out << "\n";
+    for (int i = 31; i >= 1; i--) {
+        if (cnt < k) {
+            bcnt[i - 1] += 2 * bcnt[i];
+            cnt += bcnt[i];
+            bcnt[i] = 0;
+        } else break;
+    }
+
+    for (int i = 0; i <= 30; i++) {
+        while (cnt > k and bcnt[i] >= 2) {
+            bcnt[i] -= 2;
+            bcnt[i + 1]++;
+            cnt--;
+        }
+    }
+    if (cnt != k) {
+        cout << "NO\n";
+        return;
+    }
+    cout << "YES\n";
+//    int powers[32];
+//    for (int i = 0; i <= 31; i++) {
+//
+//    }
+    for (int i = 0; i <= 31; i++) {
+        while (bcnt[i]) {
+            cout << (1 << i) << " ";
+            bcnt[i]--;
+        }
+    }
+
 }
 
 int main () {

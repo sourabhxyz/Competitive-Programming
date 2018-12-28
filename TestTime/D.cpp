@@ -7,25 +7,38 @@ using namespace std;
 #endif
 typedef long long int ll;
 typedef pair<int, int> ii;
-const int inf = 1000000;
+const int inf = 10000000;
 const double eps = 1e-12;
 #define itn int
 #define tmep temp
-
 void solve () {
     int n;
-    string s;
     cin >> n;
-    cin >> s;
-    int rep = 0;
-    string out;
-    int off = 0;
-    while (off < n) {
-        out.push_back (s[off]);
-        rep++;
-        off += rep;
+    ii next[n + 1];
+    for (int i = 1; i <= n; i++) {
+        int u, v;
+        cin >> u >> v;
+        next[i].first = u; next[i].second = v;
     }
-    cout << out << "\n";
+    int at = 1;
+    vector<int> lis;
+    lis.push_back(1);
+    while (lis.size() < n) {
+        int nei1 = next[at].first, nei2 = next[at].second;
+        if (next[nei1].first == nei2 or next[nei1].second == nei2) {
+            lis.push_back(nei1);
+            at = nei1;
+            continue;
+        }
+        if (next[nei2].first == nei1 or next[nei2].second == nei1) {
+            lis.push_back(nei2);
+            at = nei2;
+            continue;
+        }
+    }
+    for (auto &v : lis) {
+        cout << v << " ";
+    }
 }
 
 int main () {
