@@ -18,7 +18,7 @@
 \contentsline {subsubsection}{\numberline {1.15.1}Prime $k$}{4}{subsubsection.1.15.1}
 \contentsline {subsubsection}{\numberline {1.15.2}Composite $k$}{4}{subsubsection.1.15.2}
 \contentsline {subsection}{\numberline {1.16}GCD, LCM}{4}{subsection.1.16}
-\contentsline {subsection}{\numberline {1.17}Some properties of Fibonacci numbers}{4}{subsection.1.17}
+\contentsline {subsection}{\numberline {1.17}Some properties of Fibonacci numbers}{5}{subsection.1.17}
 \contentsline {subsection}{\numberline {1.18}Wilson Theorem}{5}{subsection.1.18}
 \contentsline {subsection}{\numberline {1.19}Factorial modulo $p$ in $O(p \qopname \relax o{log}n)$}{5}{subsection.1.19}
 \contentsline {subsection}{\numberline {1.20}Modular Inverse}{5}{subsection.1.20}
@@ -28,8 +28,8 @@
 \contentsline {subsubsection}{\numberline {1.22.1}Algorithm}{5}{subsubsection.1.22.1}
 \contentsline {subsubsection}{\numberline {1.22.2}Implementation}{5}{subsubsection.1.22.2}
 \contentsline {subsection}{\numberline {1.23}Chinese Remainder Theorem}{5}{subsection.1.23}
-\contentsline {subsection}{\numberline {1.24}Primitive Root}{5}{subsection.1.24}
-\contentsline {subsubsection}{\numberline {1.24.1}Definition}{5}{subsubsection.1.24.1}
+\contentsline {subsection}{\numberline {1.24}Primitive Root}{6}{subsection.1.24}
+\contentsline {subsubsection}{\numberline {1.24.1}Definition}{6}{subsubsection.1.24.1}
 \contentsline {subsubsection}{\numberline {1.24.2}Existence}{6}{subsubsection.1.24.2}
 \contentsline {subsubsection}{\numberline {1.24.3}Implementation}{6}{subsubsection.1.24.3}
 \contentsline {subsection}{\numberline {1.25}Discrete Root}{6}{subsection.1.25}
@@ -42,40 +42,41 @@
 \contentsline {subsection}{\numberline {1.28}Integration}{7}{subsection.1.28}
 \contentsline {subsubsection}{\numberline {1.28.1}Simpson rule}{7}{subsubsection.1.28.1}
 \contentsline {subsection}{\numberline {1.29}Continued Fractions}{7}{subsection.1.29}
-\contentsline {subsection}{\numberline {1.30}Side Notes}{7}{subsection.1.30}
-\contentsline {section}{\numberline {2}Graphs}{7}{section.2}
-\contentsline {subsection}{\numberline {2.1}Basic}{7}{subsection.2.1}
+\contentsline {subsection}{\numberline {1.30}FFT/NTT}{7}{subsection.1.30}
+\contentsline {subsection}{\numberline {1.31}Side Notes}{8}{subsection.1.31}
+\contentsline {section}{\numberline {2}Graphs}{8}{section.2}
+\contentsline {subsection}{\numberline {2.1}Basic}{8}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Articulation Points and Bridges (undirected graph)}{8}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Tree}{8}{subsection.2.3}
 \contentsline {subsubsection}{\numberline {2.3.1}LCA}{8}{subsubsection.2.3.1}
-\contentsline {subsubsection}{\numberline {2.3.2}Important Problems}{8}{subsubsection.2.3.2}
-\contentsline {subsubsection}{\numberline {2.3.3}MVC on Tree}{8}{subsubsection.2.3.3}
-\contentsline {subsection}{\numberline {2.4}Bipartite Matching}{8}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}Hopcroft Karp}{8}{subsubsection.2.4.1}
-\contentsline {subsubsection}{\numberline {2.4.2}Using max flow algo}{9}{subsubsection.2.4.2}
-\contentsline {subsection}{\numberline {2.5}Paths}{9}{subsection.2.5}
-\contentsline {subsubsection}{\numberline {2.5.1}No. of paths}{9}{subsubsection.2.5.1}
-\contentsline {subsection}{\numberline {2.6}SCC}{9}{subsection.2.6}
-\contentsline {subsubsection}{\numberline {2.6.1}Tarjan}{9}{subsubsection.2.6.1}
-\contentsline {subsubsection}{\numberline {2.6.2}Kosaraju}{9}{subsubsection.2.6.2}
+\contentsline {subsubsection}{\numberline {2.3.2}Important Problems}{9}{subsubsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.3}MVC on Tree}{9}{subsubsection.2.3.3}
+\contentsline {subsection}{\numberline {2.4}Bipartite Matching}{9}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}Hopcroft Karp}{9}{subsubsection.2.4.1}
+\contentsline {subsubsection}{\numberline {2.4.2}Using max flow algo}{10}{subsubsection.2.4.2}
+\contentsline {subsection}{\numberline {2.5}Paths}{10}{subsection.2.5}
+\contentsline {subsubsection}{\numberline {2.5.1}No. of paths}{10}{subsubsection.2.5.1}
+\contentsline {subsection}{\numberline {2.6}SCC}{10}{subsection.2.6}
+\contentsline {subsubsection}{\numberline {2.6.1}Tarjan}{10}{subsubsection.2.6.1}
+\contentsline {subsubsection}{\numberline {2.6.2}Kosaraju}{10}{subsubsection.2.6.2}
 \contentsline {subsection}{\numberline {2.7}DAG}{10}{subsection.2.7}
 \contentsline {subsubsection}{\numberline {2.7.1}Min Path cover on DAG}{10}{subsubsection.2.7.1}
-\contentsline {subsection}{\numberline {2.8}APSP Floyd Warshalls}{10}{subsection.2.8}
-\contentsline {subsection}{\numberline {2.9}MST (Kruskal)}{10}{subsection.2.9}
-\contentsline {subsection}{\numberline {2.10}SSSP}{10}{subsection.2.10}
-\contentsline {subsubsection}{\numberline {2.10.1}Dijkstra}{10}{subsubsection.2.10.1}
-\contentsline {subsubsection}{\numberline {2.10.2}Bellman ford}{10}{subsubsection.2.10.2}
-\contentsline {subsection}{\numberline {2.11}Max Flow}{10}{subsection.2.11}
-\contentsline {subsubsection}{\numberline {2.11.1}Edmond karps}{10}{subsubsection.2.11.1}
+\contentsline {subsection}{\numberline {2.8}APSP Floyd Warshalls}{11}{subsection.2.8}
+\contentsline {subsection}{\numberline {2.9}MST (Kruskal)}{11}{subsection.2.9}
+\contentsline {subsection}{\numberline {2.10}SSSP}{11}{subsection.2.10}
+\contentsline {subsubsection}{\numberline {2.10.1}Dijkstra}{11}{subsubsection.2.10.1}
+\contentsline {subsubsection}{\numberline {2.10.2}Bellman ford}{11}{subsubsection.2.10.2}
+\contentsline {subsection}{\numberline {2.11}Max Flow}{11}{subsection.2.11}
+\contentsline {subsubsection}{\numberline {2.11.1}Edmond karps}{11}{subsubsection.2.11.1}
 \contentsline {subsection}{\numberline {2.12}Minimum Cost Flow}{11}{subsection.2.12}
-\contentsline {subsection}{\numberline {2.13}Kirchhoff's matrix tree theorem}{11}{subsection.2.13}
-\contentsline {subsection}{\numberline {2.14}Counting Labeled graphs}{11}{subsection.2.14}
-\contentsline {subsubsection}{\numberline {2.14.1}Labeled graphs}{11}{subsubsection.2.14.1}
-\contentsline {subsubsection}{\numberline {2.14.2}Connected labeled graphs}{11}{subsubsection.2.14.2}
-\contentsline {subsubsection}{\numberline {2.14.3}Labeled graphs with $k$ connected components}{11}{subsubsection.2.14.3}
-\contentsline {subsection}{\numberline {2.15}Heavy Light Decomposition}{11}{subsection.2.15}
-\contentsline {section}{\numberline {3}Some Basic}{11}{section.3}
-\contentsline {subsection}{\numberline {3.1}To find subarray (contiguous) with maximum average and length more than \textbf {k}}{14}{subsection.3.1}
+\contentsline {subsection}{\numberline {2.13}Kirchhoff's matrix tree theorem}{12}{subsection.2.13}
+\contentsline {subsection}{\numberline {2.14}Counting Labeled graphs}{12}{subsection.2.14}
+\contentsline {subsubsection}{\numberline {2.14.1}Labeled graphs}{12}{subsubsection.2.14.1}
+\contentsline {subsubsection}{\numberline {2.14.2}Connected labeled graphs}{12}{subsubsection.2.14.2}
+\contentsline {subsubsection}{\numberline {2.14.3}Labeled graphs with $k$ connected components}{12}{subsubsection.2.14.3}
+\contentsline {subsection}{\numberline {2.15}Heavy Light Decomposition}{12}{subsection.2.15}
+\contentsline {section}{\numberline {3}Some Basic}{12}{section.3}
+\contentsline {subsection}{\numberline {3.1}To find subarray (contiguous) with maximum average and length more than \textbf {k}}{13}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}LIS}{14}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Optimal schedule of jobs given their deadlines and durations}{14}{subsection.3.3}
 \contentsline {subsection}{\numberline {3.4}Scheduling jobs on one machine}{14}{subsection.3.4}
@@ -84,9 +85,9 @@
 \contentsline {subsubsection}{\numberline {3.4.3}Identical monotone penalty function}{14}{subsubsection.3.4.3}
 \contentsline {subsection}{\numberline {3.5}Scheduling jobs on two machine}{14}{subsection.3.5}
 \contentsline {subsection}{\numberline {3.6}Ternary Search}{14}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Submask Enumeration}{15}{subsection.3.7}
-\contentsline {subsubsection}{\numberline {3.7.1}Iterating through all masks with their submasks. Complexity $O(3^n)$}{15}{subsubsection.3.7.1}
-\contentsline {subsection}{\numberline {3.8}MOS Algorithm}{15}{subsection.3.8}
+\contentsline {subsection}{\numberline {3.7}Submask Enumeration}{14}{subsection.3.7}
+\contentsline {subsubsection}{\numberline {3.7.1}Iterating through all masks with their submasks. Complexity $O(3^n)$}{14}{subsubsection.3.7.1}
+\contentsline {subsection}{\numberline {3.8}MOS Algorithm}{14}{subsection.3.8}
 \contentsline {section}{\numberline {4}Data Structures}{15}{section.4}
 \contentsline {subsection}{\numberline {4.1}Segment Tree}{15}{subsection.4.1}
 \contentsline {section}{\numberline {5}DP}{15}{section.5}
@@ -104,9 +105,9 @@
 \contentsline {subsubsection}{\numberline {6.4.2}KMP}{17}{subsubsection.6.4.2}
 \contentsline {subsubsection}{\numberline {6.4.3}Counting number of occurrences of each prefix}{17}{subsubsection.6.4.3}
 \contentsline {subsection}{\numberline {6.5}SAM}{17}{subsection.6.5}
-\contentsline {subsection}{\numberline {6.6}EertreE}{18}{subsection.6.6}
-\contentsline {section}{\numberline {7}Geometry}{19}{section.7}
-\contentsline {subsection}{\numberline {7.1}Klee's Algo}{20}{subsection.7.1}
+\contentsline {subsection}{\numberline {6.6}EertreE}{19}{subsection.6.6}
+\contentsline {section}{\numberline {7}Geometry}{20}{section.7}
+\contentsline {subsection}{\numberline {7.1}Klee's Algo}{21}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Closest Pair Problem}{21}{subsection.7.2}
 \contentsline {subsection}{\numberline {7.3}2D geo lib}{21}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}3D geo lib}{24}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.4}3D geo lib}{26}{subsection.7.4}

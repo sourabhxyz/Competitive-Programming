@@ -51,7 +51,8 @@
         \PYG{k}{return} \PYG{n}{y} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o}{?} \PYG{n+nl}{x} \PYG{p}{:} \PYG{n}{gcd} \PYG{p}{(}\PYG{n}{y}\PYG{p}{,} \PYG{n}{x} \PYG{o}{\PYGZpc{}} \PYG{n}{y}\PYG{p}{);}
     \PYG{p}{\PYGZcb{}}
     \PYG{k+kt}{void} \PYG{n}{reduce}\PYG{p}{()} \PYG{p}{\PYGZob{}}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{a} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// to handle case when b == 0 (not required in this problem) a = inf (so as to have same ground)}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{a} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// to handle case when b == 0}
+\PYG{c+c1}{// (not required in this problem) a = inf (so as to have same ground)}
             \PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
             \PYG{k}{return}\PYG{p}{;}
         \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
@@ -96,12 +97,16 @@
                         \PYG{n}{ch} \PYG{o}{=} \PYG{n}{j}\PYG{p}{;}
                         \PYG{k}{break}\PYG{p}{;}
                     \PYG{p}{\PYGZcb{}}
-                \PYG{k}{if}\PYG{p}{(}\PYG{n}{ch} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// this if condition executes if all the elements in desired column and below the i\PYGZhy{}1 th row are zero so we need to go to the next column...}
+                \PYG{k}{if}\PYG{p}{(}\PYG{n}{ch} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{c+c1}{// this if condition executes if all the elements in}
+\PYG{c+c1}{//desired column and below the i\PYGZhy{}1 th row are zero}
+\PYG{c+c1}{//so we need to go to the next column...}
                     \PYG{n}{idx}\PYG{o}{++}\PYG{p}{;}
                     \PYG{k}{continue}\PYG{p}{;}
                 \PYG{p}{\PYGZcb{}}
-                \PYG{k}{if}\PYG{p}{(}\PYG{n}{i} \PYG{o}{!=} \PYG{n}{ch}\PYG{p}{)} \PYG{c+c1}{// So if the desired pivot element is zero we swap that row with}
-                    \PYG{c+c1}{// the closest row that has non zero pivot...}
+                \PYG{k}{if}\PYG{p}{(}\PYG{n}{i} \PYG{o}{!=} \PYG{n}{ch}\PYG{p}{)}
+\PYG{c+c1}{// So if the desired pivot element is zero we swap that row with}
+\PYG{c+c1}{// the closest row that has non zero pivot...}
                     \PYG{k}{for}\PYG{p}{(}\PYG{n}{j} \PYG{o}{=} \PYG{n}{idx}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
                         \PYG{n}{swap}\PYG{p}{(}\PYG{n}{matrix}\PYG{p}{[}\PYG{n}{ch}\PYG{p}{][}\PYG{n}{j}\PYG{p}{],} \PYG{n}{matrix}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]);}
                 \PYG{k}{break}\PYG{p}{;}

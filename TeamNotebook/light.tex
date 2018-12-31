@@ -1,4 +1,4 @@
-% left out is to put the code for mos algorithm, lca, minimum cost flow (for directed graph), verify that no of paths of fixed length with weight minimum
+% left out is to put the code for minimum cost flow (for directed graph), 
 % Light!
 \documentclass[8pt, a4paper, oneside, twocolumn]{extarticle}
 \usepackage{verbatim}  % for multiline comments
@@ -35,6 +35,8 @@
 \setlength{\columnseprule}{0.4pt}
 \pagenumbering{arabic}
 \DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+\setminted{breaklines=true, tabsize=2, breaksymbolleft=}
+
 \begin{document}
 \title{\swastik {scale = 0.2} {}Team Light Notebook{} \swastik {scale = 0.2}}
 \author{Sourabh, Satvik and Himanshu}
@@ -325,7 +327,8 @@ void pre() {
    for (int i = 2; i < MAX_N; i++)
        if (numDiffPF[i] == 0) // i is a prime number
            for (int j = i; j < MAX_N; j += i)
-               numDiffPF[j]++; // increase the values of multiples of i
+               numDiffPF[j]++;//increase the values of multiples of i
+
 }
 // Bottom up euler totient function
 for (int i = 0; i <= limit; i++) eu[i] = i;
@@ -400,7 +403,8 @@ struct Frac {
         return y == 0 ? x : gcd (y, x % y);
     }
     void reduce() {
-        if (a == 0) {  // to handle case when b == 0 (not required in this problem) a = inf (so as to have same ground)
+        if (a == 0) {  // to handle case when b == 0 
+// (not required in this problem) a = inf (so as to have same ground)
             b = 1;
             return;
         } else {
@@ -445,12 +449,16 @@ int main() { // UVA 10109
                         ch = j;
                         break;
                     }
-                if(ch == -1) { // this if condition executes if all the elements in desired column and below the i-1 th row are zero so we need to go to the next column...
+                if(ch == -1) { 
+// this if condition executes if all the elements in 
+//desired column and below the i-1 th row are zero 
+//so we need to go to the next column...
                     idx++;
                     continue;
                 }
-                if(i != ch) // So if the desired pivot element is zero we swap that row with
-                    // the closest row that has non zero pivot...
+                if(i != ch) 
+// So if the desired pivot element is zero we swap that row with
+// the closest row that has non zero pivot...
                     for(j = idx; j <= n; j++)
                         swap(matrix[ch][j], matrix[i][j]);
                 break;
@@ -685,9 +693,8 @@ int solve (int a, int b, int m) {
 #include<bits/stdc++.h>
 using namespace std;
 const int N = 20;
-long long GCD(long long a, long long b) { return (b == 0) ? a : GCD(b, a % b); }
-inline long long LCM(long long a, long long b) { return a / GCD(a, b) * b; }
-inline long long normalize(long long x, long long mod) { x %= mod; if (x < 0) x += mod; return x; }
+inline long long normalize(long long x, long long mod) { 
+    x %= mod; if (x < 0) x += mod; return x; }
 struct GCD_type { long long x, y, d; };
 GCD_type ex_GCD(long long a, long long b)
 {
@@ -703,7 +710,8 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cin >> t;
-    for(int i = 1; i <= t; i++) cin >> a[i] >> n[i], normalize(a[i], n[i]);
+    for(int i = 1; i <= t; i++) {
+        cin >> a[i] >> n[i], normalize(a[i], n[i]);}
     ans = a[1];
     lcm = n[1];
     for(int i = 2; i <= t; i++)
@@ -712,8 +720,11 @@ int main()
         int x1 = pom.x;
         int d = pom.d;
         if((a[i] - ans) % d != 0) return cerr << "No solutions" << endl, 0;
-        ans = normalize(ans + x1 * (a[i] - ans) / d % (n[i] / d) * lcm, lcm * n[i] / d);
-        lcm = LCM(lcm, n[i]); // you can save time by replacing above lcm * n[i] /d by lcm = lcm * n[i] / d
+        ans = normalize(ans + x1 * (a[i] - ans) / d % (n[i] / d) * 
+        lcm, lcm * n[i] / d);
+        lcm = LCM(lcm, n[i]); 
+// you can save time by replacing above lcm * n[i] /d by 
+//lcm = lcm * n[i] / d
     }
     cout << ans << " " << lcm << endl;
  
@@ -762,49 +773,15 @@ int generator (int p) {
 \end{minted}
 \subsection{Discrete Root}
 
-The problem of finding discrete root is defined as follows. Given a prime $n$ and two integers $a$ and $k$, find all $x$ for which:
+Given a prime $n$ and two integers $a$ and $k$, find all $x$ for which:
 
 $x^k \equiv a \pmod n$
 \subsubsection{The algorithm}
-
-We will solve this problem by reducing it to the discrete logarithm problem.
-
-Let's apply the concept of a primitive root modulo $n$. Let $g$ be a primitive root modulo $n$. Note that since $n$ is prime, it must exist, and it can be found in $O(Ans \cdot \log \phi (n) \cdot \log n) = O(Ans \cdot \log^2 n)$ plus time of factoring $\phi (n)$.
-
-We can easily discard the case where $a = 0$. In this case, obviously there is only one answer: $x = 0$.
-
-Since we jnow that $n$ is a prime, any number between 1 and $n-1$ can be represented as a power of the primitive root, and we can represent the discrete root problem as follows:
-
-$(g^y)^k \equiv a \pmod n$
-
-where
-
-$x \equiv g^y \pmod n$
-
-This, in turn, can be rewritten as
-
 $(g^k)^y \equiv a \pmod n$
-
-Now we have one unknown $y$, which is a discrete logarithm problem. The solution can be found using Shanks' baby-step-giant-step algorithm in $O(\sqrt {n} \log n)$ (or we can verify that there are no solutions).
-
-Having found one solution $y_0$, one of solutions of discrete root problem will be $x_0 = g^{y_0} \pmod n$.
-Finding all solutions from one known solution
-
-To solve the given problem in full, we need to find all solutions knowing one of them: $x_0 = g^{y_0} \pmod n$.
-
-Let's recall the fact that a primitive root always has order of $\phi (n)$, i.e. the smallest power of $g$ which gives 1 is $\phi (n)$. Therefore, if we add the term $\phi (n)$ to the exponential, we still get the same value:
-
-$x^k \equiv g^{ y_0 \cdot k + l \cdot \phi (n)} \equiv a \pmod n \forall l \in Z$
-
-Hence, all the solutions are of the form:
 
 $x = g^{y_0 + \frac {l \cdot \phi (n)}{k}} \pmod n \forall l \in Z$.
 
-where $l$ is chosen such that the fraction must be an integer. For this to be true, the numerator has to be divisible by the least common multiple of $\phi (n)$ and $k$. Remember that least common multiple of two numbers $lcm(a, b) = \frac{a \cdot b}{gcd(a, b)}$; we'll get
-
 $x = g^{y_0 + i \frac {\phi (n)}{gcd(k, \phi (n))}} \pmod n \forall i \in Z$.
-
-This is the final formula for all solutions of discrete root problem.
 \subsubsection{Implementation}
 \begin{minted}{cpp}
     int delta = phi / gcd (k, phi);
@@ -1003,7 +980,8 @@ double simpson_integration(double a, double b){
 while (n != 1) {
             int q = n / d;
             int r = n % d;
-            // in c++ when we divide negative no. with positive no. both quotient and rem are -ve.
+// in c++ when we divide negative no. 
+//with positive no. both quotient and rem are -ve.
             if (n < 0) {
                 q--;
                 r = r + d;
@@ -1011,6 +989,49 @@ while (n != 1) {
             ans.push_back(q);
             n = d;
             d = r;
+}
+\end{minted}
+\subsection{FFT/NTT}
+\begin{minted}{cpp}
+using cd = complex<double>;
+const double PI = acos(-1);
+void fft(vector<cd> & a, bool invert) {
+    int n = a.size();
+    for (int i = 1, j = 0; i < n; i++) {
+        int bit = n >> 1;
+        for (; j & bit; bit >>= 1)
+            j ^= bit;
+        j ^= bit;
+
+        if (i < j)
+            swap(a[i], a[j]);
+    }
+    for (int len = 2; len <= n; len <<= 1) {
+        double ang = 2 * PI / len * (invert ? -1 : 1);
+        cd wlen(cos(ang), sin(ang));
+        for (int i = 0; i < n; i += len) {
+            cd w(1);
+            for (int j = 0; j < len / 2; j++) {
+                cd u = a[i+j], v = a[i+j+len/2] * w;
+                a[i+j] = u + v;
+                a[i+j+len/2] = u - v;
+                w *= wlen; }}}
+	// for (int len = 2; len <= n; len <<= 1) {
+    //     int wlen = invert ? root_1 : root;
+    //     for (int i = len; i < root_pw; i <<= 1)
+    //         wlen = (int)(1LL * wlen * wlen % mod);
+    //     for (int i = 0; i < n; i += len) {
+    //         int w = 1;
+    //         for (int j = 0; j < len / 2; j++) {
+    //             int u = a[i+j], v = (int)(1LL * a[i+j+len/2] * 
+    //w % mod);
+    //             a[i+j] = u + v < mod ? u + v : u + v - mod;
+    //             a[i+j+len/2] = u - v >= 0 ? u - v : u - v + mod;
+    //             w = (int)(1LL * w * wlen % mod); }}}
+    if (invert) {
+        for (cd & x : a)
+            x /= n;
+    }
 }
 \end{minted}
 \subsection{Side Notes}
@@ -1090,7 +1111,9 @@ bool dfs(int v) {
 \subsection{Articulation Points and Bridges (undirected graph)}
 \begin{minted}{cpp}
 /* Variation
-A slight variation to this problem is how many disconnected components would result as a direct consequence of removing a vertex u */
+A slight variation to this problem is how many
+ disconnected components would result as a direct 
+ consequence of removing a vertex u */
 void ArticulationPoint(int u)
 {
     dfs_num[u] = dfs_low[u] = dfs_num_counter++;
@@ -1137,6 +1160,82 @@ int main()
 \end{minted}
 \subsection{Tree}
 \subsubsection{LCA}
+\begin{minted}{cpp}
+int nth_ancs(int u, int n) {
+	for (int i=16;i>=0;i--) if (n&(1<<i)) u = ancs[u][i];
+	return u;
+}
+int LCA(int u, int v) {
+	if (dep[u]<dep[v]) swap(u, v);
+	int dep_dif = dep[u]-dep[v];
+	u = nth_ancs(u, dep_dif);  // bringing both on same level.
+	if (u==v) return u;
+	for (int i=16;i>=0;i--) if (ancs[u][i]!=ancs[v][i]) {
+		u = ancs[u][i];
+		v = ancs[v][i];
+	}
+	return ancs[u][0];
+}
+for (int j=1;j<17;j++) for (int i=1;i<=n;i++) 
+ancs[i][j] = ancs[ancs[i][j-1]][j-1];
+// in main.
+if (op==1) {
+    cin >> root_now;
+    root_lbound = ord[root_now]; 
+    root_rbound = ord[root_now]+subt_size[root_now]-1;
+} else if (op==2) {
+    int u, v; ll c; cin >> u >> v >> c;
+    int in_subt_cnt = 0, origin;
+    if (root_lbound<=ord[u]&&ord[u]<=root_rbound) in_subt_cnt++;
+    if (root_lbound<=ord[v]&&ord[v]<=root_rbound) in_subt_cnt++;
+    if (in_subt_cnt==2) {
+        origin = LCA(u, v);
+    } else if (in_subt_cnt==1) {
+        origin = root_now;
+    } else {
+        int x = LCA(u, root_now), y = LCA(v, root_now), z = LCA(u, v);
+        origin = dep[x]>dep[y]? x: y;
+        origin = dep[z]>dep[origin]? z: origin;
+    }
+    if (origin==root_now) {
+update_seg(0, n-1, 0, n-1, 0, c);
+    } else if (root_lbound<ord[origin]&&ord[origin]<=root_rbound) {
+update_seg(0, n-1, ord[origin], 
+ord[origin]+subt_size[origin]-1, 0, c);
+    } else if (ord[origin]<ord[root_now]&&
+ord[root_now]<=ord[origin]+subt_size[origin]-1) {
+        update_seg(0, n-1, 0, n-1, 0, c);
+        int dep_dif = dep[root_now]-dep[origin];
+        int undo = nth_ancs(root_now, dep_dif-1);
+        update_seg(0, n-1, ord[undo], 
+        ord[undo]+subt_size[undo]-1, 0, -c);
+    } else {
+        update_seg(0, n-1, ord[origin], 
+        ord[origin]+subt_size[origin]-1, 0, c);
+    }
+} else {
+    int origin; cin >> origin;
+    ll ans;
+    if (origin==root_now) {
+        ans = query_seg(0, n-1, 0, n-1, 0);
+    } else if (root_lbound<ord[origin]&&
+    ord[origin]<=root_rbound) {
+        ans = query_seg(0, n-1, ord[origin], 
+        ord[origin]+subt_size[origin]-1, 0);
+    } else if (ord[origin]<ord[root_now]&&
+    ord[root_now]<=ord[origin]+subt_size[origin]-1) {
+        ans = query_seg(0, n-1, 0, n-1, 0);
+        int dep_dif = dep[root_now]-dep[origin];
+        int undo = nth_ancs(root_now, dep_dif-1);
+        ans -= query_seg(0, n-1, ord[undo], 
+        ord[undo]+subt_size[undo]-1, 0);
+    } else {
+        ans = query_seg(0, n-1, ord[origin], 
+        ord[origin]+subt_size[origin]-1, 0);
+    }
+    cout << ans << endl;
+}
+\end{minted}
 \begin{itemize}
     \item Tarjan's offline LCA. for each query (a, b) you should do q[a].pb(b) and q[b].pb(a).
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{tar}
@@ -1144,7 +1243,7 @@ int main()
 \subsubsection{Important Problems}
 \subsubsection{MVC on Tree}
 \begin{minted}{cpp}
-int mvc(int at, int flag, int parent) { //You can start this from any node, i.e. in main: int ans =  min(mvc(0, 0, -1), mvc(0, 1, -1)); and handle the case n == 1 seperately
+int mvc(int at, int flag, int parent) { 
    if(memo[at][flag] != -1) {
        return memo[at][flag];
    }
@@ -1179,14 +1278,12 @@ bool Free[maxN];
 bool bfs() {
     queue<int> Q;
     FOR (i, 1, n)
-        if (!matchX[i]) {  // only free vertices are pushed in queue and have their distance set to 0. Thus already matched vertices in X will have their distance set to INF.
+        if (!matchX[i]) {  
             dist[i] = 0;
             Q.push(i);
         }
         else dist[i] = INF;
     dist[0] = INF;  // 0 is nil
-    // Thus we would always start from free vertices traverse then alternating path and if in end from Y there is no match i.e. its a free vertice, we found an augmenting path.
-    // Side Notes: If we popped an already matched vertex from queue then it wont go to its matching edges neighbor as its matchY is popped vertex itself and hence it wont have distance set to INF.
     while (!Q.empty()) {
         int i = Q.front(); Q.pop();
         REP(k, adj[i].size()) {
@@ -1226,7 +1323,7 @@ void dfs_konig(int i) {
         int j = adj[i][k];
         if (matchY[j] && matchY[j] != INF) {
             int x = matchY[j];
-            matchY[j] = INF;  // as we have undirected edge, we dont want to traverse that same edge again, so its just a way of noting that.
+            matchY[j] = INF;  
             if (Free[x]) dfs_konig(x);
         }
     }
@@ -1237,10 +1334,10 @@ void solve() {
         if (!matchX[i])
             dfs_konig(i);  // finding Z.
     FOR (i, 1, n)
-        if (matchX[i] && Free[i])  // i.e. in L but not in Z.
+        if (matchX[i] && Free[i])  
             printf(" r%d", i);
     FOR (j, 1, m)
-        if (matchY[j] == INF)  // i.e. we traversed this edge i.e. its in R intersection Z.
+        if (matchY[j] == INF)  
             printf(" c%d", j);
     putchar('\n');
 }
@@ -1251,20 +1348,6 @@ void initialize() {
         Free[i] = true;
     }
     memset(matchY, 0, (m + 1) * sizeof(int));
-}
-int ar[5];
-char buff[20];
-void read_line() {
-    gets(buff);
-    int len = strlen(buff), i = 0, m = 0;
-    while (i < len)
-        if (buff[i] != ' ') {
-            ar[m] = 0;
-            while (i < len && buff[i] != ' ')
-                ar[m] = ar[m] * 10 + buff[i++] - 48;
-            m++;
-        }
-        else i++;
 }
 main() {
     int k, u, v;
@@ -1310,7 +1393,7 @@ for (list<int>::iterator it = cyc.begin(); it != cyc.end(); it++)
 \subsubsection{No. of paths}
 \begin{itemize}
     \item No. of paths of length L, from a to b is stored in $M^L[a][b]$. $m_{i, j} = 1$ if there is an edge from i to j. This would work even in case of multiple edges if some pair of vertices (i, j) is connected with m edges then we can record this in the adjacency matrix by setting M[i][j] = m. Also this would work if the graph contains loops 
-    \item No. of shortest paths of fixed length: We are given a directed weighted graph G, G[i][j] = weight of an edge (i, j) and is equal to infinity if there is no edge for each pair of vertices (i, j) we have to find the length of the shortest path between i and j that consists of exactly k edges. $$L_{k + 1}[i][j] = min_{p = 1, \dots, n}(L_k[i][p] + G[p][j])$$
+    \item Length of the shortest path containing exactly k edges: We are given a directed weighted graph G, G[i][j] = weight of an edge (i, j) and is equal to infinity if there is no edge for each pair of vertices (i, j) we have to find the length of the shortest path between i and j that consists of exactly k edges. $$L_{k + 1}[i][j] = min_{p = 1, \dots, n}(L_k[i][p] + G[p][j])$$
 \end{itemize}
 \subsection{SCC}
 \subsubsection{Tarjan}
@@ -1597,9 +1680,9 @@ ll go(int a, int b){
 \end{minted}
 \section{Some Basic}
 \begin{minted}{cpp}
-#pragma GCC optimize("Ofast")  // tells the compiler to optimize the code for speed to make it as fast as possible (and not look for space)
-#pragma GCC optimize ("unroll-loops")  // normally if we have a loop there is a "++i" instruction somewhere. We normally dont care because code inside the loop requires much more time but in this case there is only one instruction inside the loop so we want the compiler to optimize this.
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")  // tell the compiler that our cpu has simd instructions and allow him to vectorize our code
+#pragma GCC optimize("Ofast")  
+#pragma GCC optimize ("unroll-loops")  
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")  
 \end{minted}
 \begin{minted}{cpp}
 // generating lexicographic next combination better than k while loops
@@ -1958,7 +2041,38 @@ for (int m=0; m<(1<<n); ++m)
  ... s and m ...
 \end{minted}
 \subsection{MOS Algorithm}
-Just read \href{https://blog.anudeep2011.com/mos-algorithm/}{this}. \href{https://codeforces.com/contest/86/problem/D}{Powerful Array}, \href{https://codeforces.com/contest/86/submission/39212866}{Sol}
+\begin{minted}{cpp}
+    bool cmp(node &x, node &y) {
+    if(x.L/BLOCK != y.L/BLOCK) {
+        // different blocks, so sort by block.
+        return x.L/BLOCK < y.L/BLOCK;
+    }
+    // same block, so sort by R value
+    return x.R < y.R;
+}
+    sort(q, q + t, cmp);
+    int currentL = 0, currentR = 0;
+    for(int i=0; i<t; i++) {
+        int L = q[i].L, R = q[i].R;
+        while(currentL < L) {
+            remove(currentL);
+            currentL++;
+        }
+        while(currentL > L) {
+            add(currentL-1);
+            currentL--;
+        }
+        while(currentR <= R) {
+            add(currentR);
+            currentR++;
+        }
+        while(currentR > R+1) {
+            remove(currentR-1);
+            currentR--;
+        }
+        ans[q[i].i] = sum;
+    }
+\end{minted}
 \section{Data Structures}
 \subsection{Segment Tree}
 \begin{minted}{cpp}

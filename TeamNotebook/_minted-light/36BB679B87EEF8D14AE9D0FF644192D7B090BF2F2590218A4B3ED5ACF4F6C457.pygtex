@@ -1,6 +1,8 @@
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{c+cm}{/* Variation}
-\PYG{c+cm}{A slight variation to this problem is how many disconnected components would result as a direct consequence of removing a vertex u */}
+\PYG{c+cm}{A slight variation to this problem is how many}
+\PYG{c+cm}{ disconnected components would result as a direct}
+\PYG{c+cm}{ consequence of removing a vertex u */}
 \PYG{k+kt}{void} \PYG{n+nf}{ArticulationPoint}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{)}
 \PYG{p}{\PYGZob{}}
     \PYG{n}{dfs\PYGZus{}num}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfs\PYGZus{}low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfs\PYGZus{}num\PYGZus{}counter}\PYG{o}{++}\PYG{p}{;}

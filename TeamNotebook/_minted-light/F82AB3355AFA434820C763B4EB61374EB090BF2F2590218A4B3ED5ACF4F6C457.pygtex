@@ -2,9 +2,8 @@
 \PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
 \PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
 \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{N} \PYG{o}{=} \PYG{l+m+mi}{20}\PYG{p}{;}
-\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n+nf}{GCD}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{p}{(}\PYG{n}{b} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{?} \PYG{n+nl}{a} \PYG{p}{:} \PYG{n}{GCD}\PYG{p}{(}\PYG{n}{b}\PYG{p}{,} \PYG{n}{a} \PYG{o}{\PYGZpc{}} \PYG{n}{b}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
-\PYG{k+kr}{inline} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n+nf}{LCM}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{a} \PYG{o}{/} \PYG{n}{GCD}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{)} \PYG{o}{*} \PYG{n}{b}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
-\PYG{k+kr}{inline} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n+nf}{normalize}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{x}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{mod}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{n}{x} \PYG{o}{\PYGZpc{}=} \PYG{n}{mod}\PYG{p}{;} \PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{x} \PYG{o}{+=} \PYG{n}{mod}\PYG{p}{;} \PYG{k}{return} \PYG{n}{x}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{k+kr}{inline} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n+nf}{normalize}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{x}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{mod}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{x} \PYG{o}{\PYGZpc{}=} \PYG{n}{mod}\PYG{p}{;} \PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{x} \PYG{o}{+=} \PYG{n}{mod}\PYG{p}{;} \PYG{k}{return} \PYG{n}{x}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
 \PYG{k}{struct} \PYG{n}{GCD\PYGZus{}type} \PYG{p}{\PYGZob{}} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{d}\PYG{p}{;} \PYG{p}{\PYGZcb{};}
 \PYG{n}{GCD\PYGZus{}type} \PYG{n+nf}{ex\PYGZus{}GCD}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{b}\PYG{p}{)}
 \PYG{p}{\PYGZob{}}
@@ -20,7 +19,8 @@
     \PYG{n}{ios\PYGZus{}base}\PYG{o}{::}\PYG{n}{sync\PYGZus{}with\PYGZus{}stdio}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{);}
     \PYG{n}{cin}\PYG{p}{.}\PYG{n}{tie}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{);}
     \PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{t}\PYG{p}{;}
-    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{t}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{n}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{normalize}\PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{n}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{t}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{cin} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{n}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{normalize}\PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{n}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);\PYGZcb{}}
     \PYG{n}{ans} \PYG{o}{=} \PYG{n}{a}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{];}
     \PYG{n}{lcm} \PYG{o}{=} \PYG{n}{n}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{];}
     \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{t}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
@@ -29,8 +29,11 @@
         \PYG{k+kt}{int} \PYG{n}{x1} \PYG{o}{=} \PYG{n}{pom}\PYG{p}{.}\PYG{n}{x}\PYG{p}{;}
         \PYG{k+kt}{int} \PYG{n}{d} \PYG{o}{=} \PYG{n}{pom}\PYG{p}{.}\PYG{n}{d}\PYG{p}{;}
         \PYG{k}{if}\PYG{p}{((}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{ans}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{d} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{return} \PYG{n}{cerr} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}No solutions\PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{;}
-        \PYG{n}{ans} \PYG{o}{=} \PYG{n}{normalize}\PYG{p}{(}\PYG{n}{ans} \PYG{o}{+} \PYG{n}{x1} \PYG{o}{*} \PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{ans}\PYG{p}{)} \PYG{o}{/} \PYG{n}{d} \PYG{o}{\PYGZpc{}} \PYG{p}{(}\PYG{n}{n}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{/} \PYG{n}{d}\PYG{p}{)} \PYG{o}{*} \PYG{n}{lcm}\PYG{p}{,} \PYG{n}{lcm} \PYG{o}{*} \PYG{n}{n}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{/} \PYG{n}{d}\PYG{p}{);}
-        \PYG{n}{lcm} \PYG{o}{=} \PYG{n}{LCM}\PYG{p}{(}\PYG{n}{lcm}\PYG{p}{,} \PYG{n}{n}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);} \PYG{c+c1}{// you can save time by replacing above lcm * n[i] /d by lcm = lcm * n[i] / d}
+        \PYG{n}{ans} \PYG{o}{=} \PYG{n}{normalize}\PYG{p}{(}\PYG{n}{ans} \PYG{o}{+} \PYG{n}{x1} \PYG{o}{*} \PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{ans}\PYG{p}{)} \PYG{o}{/} \PYG{n}{d} \PYG{o}{\PYGZpc{}} \PYG{p}{(}\PYG{n}{n}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{/} \PYG{n}{d}\PYG{p}{)} \PYG{o}{*}
+        \PYG{n}{lcm}\PYG{p}{,} \PYG{n}{lcm} \PYG{o}{*} \PYG{n}{n}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{/} \PYG{n}{d}\PYG{p}{);}
+        \PYG{n}{lcm} \PYG{o}{=} \PYG{n}{LCM}\PYG{p}{(}\PYG{n}{lcm}\PYG{p}{,} \PYG{n}{n}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+\PYG{c+c1}{// you can save time by replacing above lcm * n[i] /d by}
+\PYG{c+c1}{//lcm = lcm * n[i] / d}
     \PYG{p}{\PYGZcb{}}
     \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{ans} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{} \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{lcm} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{endl}\PYG{p}{;}
 

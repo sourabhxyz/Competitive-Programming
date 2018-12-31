@@ -8,14 +8,12 @@
 \PYG{k+kt}{bool} \PYG{n+nf}{bfs}\PYG{p}{()} \PYG{p}{\PYGZob{}}
     \PYG{n}{queue}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{Q}\PYG{p}{;}
     \PYG{n}{FOR} \PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{n}\PYG{p}{)}
-        \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{matchX}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}  \PYG{c+c1}{// only free vertices are pushed in queue and have their distance set to 0. Thus already matched vertices in X will have their distance set to INF.}
+        \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{matchX}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}
             \PYG{n}{dist}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
             \PYG{n}{Q}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
         \PYG{p}{\PYGZcb{}}
         \PYG{k}{else} \PYG{n}{dist}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;}
     \PYG{n}{dist}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;}  \PYG{c+c1}{// 0 is nil}
-    \PYG{c+c1}{// Thus we would always start from free vertices traverse then alternating path and if in end from Y there is no match i.e. its a free vertice, we found an augmenting path.}
-    \PYG{c+c1}{// Side Notes: If we popped an already matched vertex from queue then it wont go to its matching edges neighbor as its matchY is popped vertex itself and hence it wont have distance set to INF.}
     \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{Q}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
         \PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{Q}\PYG{p}{.}\PYG{n}{front}\PYG{p}{();} \PYG{n}{Q}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
         \PYG{n}{REP}\PYG{p}{(}\PYG{n}{k}\PYG{p}{,} \PYG{n}{adj}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{size}\PYG{p}{())} \PYG{p}{\PYGZob{}}
@@ -55,7 +53,7 @@
         \PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{n}{adj}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{k}\PYG{p}{];}
         \PYG{k}{if} \PYG{p}{(}\PYG{n}{matchY}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{matchY}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{INF}\PYG{p}{)} \PYG{p}{\PYGZob{}}
             \PYG{k+kt}{int} \PYG{n}{x} \PYG{o}{=} \PYG{n}{matchY}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
-            \PYG{n}{matchY}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;}  \PYG{c+c1}{// as we have undirected edge, we dont want to traverse that same edge again, so its just a way of noting that.}
+            \PYG{n}{matchY}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;}
             \PYG{k}{if} \PYG{p}{(}\PYG{n}{Free}\PYG{p}{[}\PYG{n}{x}\PYG{p}{])} \PYG{n}{dfs\PYGZus{}konig}\PYG{p}{(}\PYG{n}{x}\PYG{p}{);}
         \PYG{p}{\PYGZcb{}}
     \PYG{p}{\PYGZcb{}}
@@ -66,10 +64,10 @@
         \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{matchX}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
             \PYG{n}{dfs\PYGZus{}konig}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}  \PYG{c+c1}{// finding Z.}
     \PYG{n}{FOR} \PYG{p}{(}\PYG{n}{i}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{n}\PYG{p}{)}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{matchX}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Free}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}  \PYG{c+c1}{// i.e. in L but not in Z.}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{matchX}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Free}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
             \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} r\PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{n}{i}\PYG{p}{);}
     \PYG{n}{FOR} \PYG{p}{(}\PYG{n}{j}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{m}\PYG{p}{)}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{matchY}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{==} \PYG{n}{INF}\PYG{p}{)}  \PYG{c+c1}{// i.e. we traversed this edge i.e. its in R intersection Z.}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{matchY}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{==} \PYG{n}{INF}\PYG{p}{)}
             \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} c\PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{n}{j}\PYG{p}{);}
     \PYG{n}{putchar}\PYG{p}{(}\PYG{l+s+sc}{\PYGZsq{}\PYGZbs{}n\PYGZsq{}}\PYG{p}{);}
 \PYG{p}{\PYGZcb{}}
@@ -80,20 +78,6 @@
         \PYG{n}{Free}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
     \PYG{n}{memset}\PYG{p}{(}\PYG{n}{matchY}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{p}{(}\PYG{n}{m} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{*} \PYG{k}{sizeof}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{));}
-\PYG{p}{\PYGZcb{}}
-\PYG{k+kt}{int} \PYG{n}{ar}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{];}
-\PYG{k+kt}{char} \PYG{n}{buff}\PYG{p}{[}\PYG{l+m+mi}{20}\PYG{p}{];}
-\PYG{k+kt}{void} \PYG{n+nf}{read\PYGZus{}line}\PYG{p}{()} \PYG{p}{\PYGZob{}}
-    \PYG{n}{gets}\PYG{p}{(}\PYG{n}{buff}\PYG{p}{);}
-    \PYG{k+kt}{int} \PYG{n}{len} \PYG{o}{=} \PYG{n}{strlen}\PYG{p}{(}\PYG{n}{buff}\PYG{p}{),} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{m} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
-    \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{len}\PYG{p}{)}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{buff}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{!=} \PYG{l+s+sc}{\PYGZsq{} \PYGZsq{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-            \PYG{n}{ar}\PYG{p}{[}\PYG{n}{m}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
-            \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{len} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{buff}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{!=} \PYG{l+s+sc}{\PYGZsq{} \PYGZsq{}}\PYG{p}{)}
-                \PYG{n}{ar}\PYG{p}{[}\PYG{n}{m}\PYG{p}{]} \PYG{o}{=} \PYG{n}{ar}\PYG{p}{[}\PYG{n}{m}\PYG{p}{]} \PYG{o}{*} \PYG{l+m+mi}{10} \PYG{o}{+} \PYG{n}{buff}\PYG{p}{[}\PYG{n}{i}\PYG{o}{++}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{48}\PYG{p}{;}
-            \PYG{n}{m}\PYG{o}{++}\PYG{p}{;}
-        \PYG{p}{\PYGZcb{}}
-        \PYG{k}{else} \PYG{n}{i}\PYG{o}{++}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \PYG{n}{main}\PYG{p}{()} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{k}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{;}
