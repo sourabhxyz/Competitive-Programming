@@ -63,7 +63,7 @@ T angle(v3 v1, v3 v2) {
 T orient(v3 &p, v3 &q, v3 &r, v3 &s) {
     return (q - p) * (r - p) | (s - p);
 }
-// Lets say we have a plane P and a vec n (normal) perpendicular to it. If we replace PS by vec n we get 2D orient (p', q', r') on P, where p', q', r' are projections of p, q, r on P. 2D orient is just normal cross product of pq and pr.
+// Lets say we have a plane P and a vec n (normal) perpendicular to it. If we replace PS by vec n we get 2D orient (p', q', r') on P, where p', q', r' are projections of p, q, r on P. 2D orient is just normal cross product of pq and pr. This 'n' should be a unit vector.
 T orientByNormal(v3 p, v3 q, v3 r, v3 n) {return (q-p)*(r-p)|n;}
 // eqn of plane is ax + by + cz = d where a, b, c determines the orientation of the plane and d determines its position relative to origin.
 // eqn of plane is written as vec n . (x, y, z) = d.
@@ -121,6 +121,7 @@ struct coords {
         dx = unit(q-p);
         dz = unit(dx*(r-p));
         dy = dz*dx;
+        // we haven't made sure that norm is 1...
     }
 // From four points P,Q,R,S:
 // take directions PQ, PR, PS as is
@@ -143,7 +144,6 @@ struct line3d {
     }
 // From two points P, Q
     line3d(v3 p, v3 q) : d(q-p), o(p) {}
-// Will be defined later:
     // - these work with T = int
 // distance of a point from line, is simply |unit(d) x op|
     double sqDist(v3 p) {
@@ -362,7 +362,7 @@ bool onSphSegment(v3 a, v3 b, v3 p) {
 struct directionSet : vector<v3> {
     using vector::vector; // import constructors
     void insert(v3 p) {
-        for (v3 q : *this) if (p*q == zero) return;
+        for (v3 q : *this) if (p*q == zero) return;  // not considering duplicates
         push_back(p);
     }
 };

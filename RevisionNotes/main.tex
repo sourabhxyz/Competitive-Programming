@@ -4218,7 +4218,7 @@ For the start value $i = 0$ the answer is obvious: $d[0][0] = 1$, and $d[0][j] =
 
 Now let us generate the index for a given sequence.
 
-First let there be only one type of brackets. We will us the counter $\text{depth}$ which tells us how nested we currently are, and iterate over the characters of the sequence. If the current character $s[i]$ is equal to $($, then we increment $\text{depth}$. If the current character $s[i]$ is equal to $)$, then we must add $d[2n-i-1][\text{depth}+1]$ to the answer, taking all possible endings starting with a $($ into account (which are lexicographically smaller sequences), and then decrement $\text{depth}$.
+First let there be only one type of brackets. We will us the counter $\text{depth}$ which tells us how nested we currently are, and iterate over the characters of the sequence. If the current character $s[i]$ is equal to $($, then we increment $\text{depth}$. If the current character $s[i]$ is equal to $)$, then we must add $d[2n-i-1][\text{depth}+1]$ to the answer, taking all possible endings starting with a $($ into account (which are lexicographically smaller sequences) (Note: no. of bracket sequences of length $2n - i - 1$ which have $dep + 1$ closing brackets is same as no. of sequences of length $2n - i - 1$ having $dep + 1$ opening bracekts), and then decrement $\text{depth}$.
 
 New let there be $k$ different bracket types.
 
@@ -4957,6 +4957,7 @@ int main () {
 \subsection{Important Problems}
 \textit{Review: cf 631D}
 \begin{itemize}
+    \item \href{https://github.com/sourabh2311/Timus/blob/master/2059_Not_common_palindromes.cpp}{Just to see how to handle multi strings occurence in eertree}
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10739.cpp}{UVA 10739 Sol}, \href {https://uva.onlinejudge.org/external/107/10739.pdf}{UVA 10739 Prob}: String to palindrome, just see the minimum edit distance between this string and its reverse but need to divide by 2 later as both strings are it itself.	
 	\item \href {https://codeforces.com/contest/245/problem/H}{Queries for the number of palindromic substrings within given range}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/245H%20-%20Queries%20for%20Number%20of%20Palindromes.cpp}{\textbf {See this soln to see power of hashing.}}: 
     \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{palsub} 	
@@ -4988,7 +4989,17 @@ int main () {
     \item COM of $\triangle = (\vec{r_1} + \vec{r_2} + \vec{r_3}) / 3$ but this is not the case for general polygon.
     \item For a general convex polygon, we may triangulate it, find that triangles area and COM and then combine to get COM of original figure.
     \item Similarly in case of 3D, COM of tetrahadron $= \sum_{i = 1}^{4}r_i/4$ and a general 3d object can be again divided into tetrahedrons.
-    \item For general polygon we can do $\vec{r_c} = (\sum_{i}\vec{r_{z,p_i, p_{i + 1}}} * S_{z, p_i, p_{i + 1}}) / \sum_i S_{z, p_i, p_{i + 1}}$ where S term denotes triangles area with sign. 
+    \item For general polygon (need not be convex) we can do $\vec{r_c} = (\sum_{i}\vec{r_{z,p_i, p_{i + 1}}} * S_{z, p_i, p_{i + 1}}) / \sum_i S_{z, p_i, p_{i + 1}}$ where S term denotes triangles area with sign. Note: $z$ is some arbitrary fixed point.
+    \item Note: Center of mass is also called as centroid. And for arbitrary polygon (not neccessarily convex) we have:-
+    \item $C_x = 1/(6*A)*\sum_{i = 0}^{n - 1}(x_i + x_{i + 1}) * (x_i * y_{i + 1} - x_{i + 1} * y_i)$
+    \\$C_y = 1/(6*A)*\sum_{i = 0}^{n - 1}(y_i + y_{i + 1}) * (x_i * y_{i + 1} - x_{i + 1} * y_i)$
+    \\\textbf{Here: }$(x_n, y_n) = (x_0, y_0)$. And dont given absolute value to A.
+    \item \[A = 1/2\begin{bmatrix}
+    x_0 & y_0\\
+    x_1 & y_1\\
+    \vdots & \vdots\\
+    x_n & y_n
+    \end{bmatrix} = 1/2 * ((x_0 * y_1 + x_1 * y_2 + \dots + x_{n - 2} * y_{n - 1}) - (x_1*y_0 \dots)\]
     \item \textbf{Some properties of triangles}
     \begin{itemize}
         \item $s = p/2$
@@ -5004,7 +5015,7 @@ int main () {
         \item Triangle angle bisector property: $|AB|/|AC| = |BD|/|DC|$ where AD is the angle bisector of angle BAC. 
         \item Given sides of triangle, sort them, then see 3 consecutive sides, if the area is positive (using herons formula), they form a valid triangle, mx = max (mx, area).
     \end{itemize}
-    \item Kite is a quadrilateral which has two pair of sides of same length which are adjacent to each other. The area of kits is $diagonal_1*diagonal_2/2$. Diagonals of kite are perpendicular.
+    \item Kite is a quadrilateral which has two pair of sides of same length which are adjacent to each other. The area of kite is $diagonal_1*diagonal_2/2$. Diagonals of kite are perpendicular.
     \item Rhombus is a special parallelogram where every side has equal length. It is also a special case of kits where every side has equal length.    
     \item Convex Polygon: All interior angles should be less than 180 deg. Polygon which is not Convex is Concave
     \item Concave polygon has critical point (point from which entire polygon is not visible).
@@ -5026,20 +5037,10 @@ ll getb (vector<point> &poly) {
 }
     \end{minted}
     \item To check whether a point is on or inside a convex polygon that area method is best.
-    \item Centroid of a polygon, $C_x = 1/(6*A)*\sum_{i = 0}^{n - 1}(x_i + x_{i + 1}) * (x_i * y_{i + 1} - x_{i + 1} * y_i)$
-    \\$C_y = 1/(6*A)*\sum_{i = 0}^{n - 1}(y_i + y_{i + 1}) * (x_i * y_{i + 1} - x_{i + 1} * y_i)$
-    \\\textbf{Here: }$(x_n, y_n) = (x_0, y_0)$. And dont given absolute value to A.
-    \item \[A = 1/2\begin{bmatrix}
-    x_0 & y_0\\
-    x_1 & y_1\\
-    \vdots & \vdots\\
-    x_n & y_n
-    \end{bmatrix} = 1/2 * ((x_0 * y_1 + x_1 * y_2 + \dots + x_{n - 2} * y_{n - 1}) - (x_1*y_0 \dots)\]
     \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{p1} 
     \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{p2}
     \item \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/areaOfUnionOfTriangles.cpp}{Area of union of triangles}
     \item \href{http://e-maxx.ru/algo/circle_tangents}{Finding common tangents to two circles}
-    \item \href{https://uva.onlinejudge.org/external/101/10173.pdf}{Minimum Bounding Rectangle}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10173.cpp}{Sol}: basically use atan2 and rotate wrt that point.
     \item Given a set of points, to determine whether a point lies inside a triangle formed by any 3 points, it is enough to check whether the given point lies inside the convex hull of given data points.
 \end{itemize}
 \subsection{Fast application of a set of geometric operations to a set of points}
@@ -5151,10 +5152,10 @@ double dvac(int low, int high) {
 \subsection{2D geo lib}
 \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/2dgeoLib.cpp}{2D geo lib}
 \\Circle line intersection, same as sphere line intersection.\\
-\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{circleline}
+\includegraphics[width=0.1\textwidth,height=0.1\textheight,keepaspectratio]{circleline}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{circlecircle}
 \subsection{3D geo lib}
-\href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/3dgeoLib.cpp}{3D Geo Lib}
+\href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/3dgeolib.cpp}{3D Geo Lib}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{facearea}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sph}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{segsegcir}
@@ -5166,4 +5167,5 @@ double dvac(int low, int high) {
 \subsection{Important Problems}
 \begin{itemize}
     \item Sometimes it makes sense to gridize the region, like in \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1333.cpp}{Timus 1333}
+    \item \href{https://uva.onlinejudge.org/external/101/10173.pdf}{Minimum Bounding Rectangle}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10173.cpp}{Sol}: basically use atan2 and rotate wrt that point.
 \end{itemize}
