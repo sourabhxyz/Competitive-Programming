@@ -1,0 +1,157 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// O(n\PYGZca{}2)}
+\PYG{k+kt}{int} \PYG{n+nf}{LIS} \PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{n}{vi} \PYG{n}{L} \PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{sequence}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{sequence}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+                \PYG{n}{L}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{max} \PYG{p}{(}\PYG{n}{L}\PYG{p}{[}\PYG{n}{j}\PYG{p}{],} \PYG{n}{L}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{o}{*}\PYG{n}{max\PYGZus{}element}\PYG{p}{(}\PYG{n}{L}\PYG{p}{.}\PYG{n}{begin} \PYG{p}{(),} \PYG{n}{L}\PYG{p}{.}\PYG{n}{end} \PYG{p}{());}
+\PYG{p}{\PYGZcb{}}
+\PYG{n}{vi} \PYG{n+nf}{getLIS} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{ans}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{vi} \PYG{n}{lis}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{mx} \PYG{o}{=} \PYG{n}{inf}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{sequence}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{mx} \PYG{n}{and} \PYG{n}{L}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{ans}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{lis}\PYG{p}{.}\PYG{n}{pb} \PYG{p}{(}\PYG{n}{sequence}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+            \PYG{n}{mx} \PYG{o}{=} \PYG{n}{sequence}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+            \PYG{n}{ans}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{reverse} \PYG{p}{(}\PYG{n}{lis}\PYG{p}{.}\PYG{n}{begin} \PYG{p}{(),} \PYG{n}{lis}\PYG{p}{.}\PYG{n}{end} \PYG{p}{());}
+    \PYG{k}{return} \PYG{n}{lis}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{//\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+c1}{// O(nlogk) \PYGZhy{} k is the length of LIS.}
+\PYG{k+kt}{int} \PYG{n+nf}{LIS} \PYG{p}{(}\PYG{n}{vi} \PYG{o}{\PYGZam{}}\PYG{n}{seq}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{vi} \PYG{n}{L}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{n}{vi} \PYG{n}{I}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{seq}\PYG{p}{.}\PYG{n}{size} \PYG{p}{();} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{pos} \PYG{o}{=} \PYG{n}{lower\PYGZus{}bound} \PYG{p}{(}\PYG{n}{I}\PYG{p}{.}\PYG{n}{begin} \PYG{p}{(),} \PYG{n}{I}\PYG{p}{.}\PYG{n}{end} \PYG{p}{(),} \PYG{n}{seq}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{o}{\PYGZhy{}} \PYG{n}{I}\PYG{p}{.}\PYG{n}{begin} \PYG{p}{();}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{pos} \PYG{o}{==} \PYG{n}{I}\PYG{p}{.}\PYG{n}{size} \PYG{p}{())} \PYG{p}{\PYGZob{}}
+            \PYG{n}{I}\PYG{p}{.}\PYG{n}{pb} \PYG{p}{(}\PYG{n}{seq}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+        \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+            \PYG{n}{I}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{]} \PYG{o}{=} \PYG{n}{num}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{L}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{pos} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{n}{ans} \PYG{o}{=} \PYG{n}{max} \PYG{p}{(}\PYG{n}{ans}\PYG{p}{,} \PYG{n}{L}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{ans}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{c+c1}{// LIS with segment trees, O(n log n)}
+\PYG{c+c1}{// function to compare two pairs}
+\PYG{k+kt}{int} \PYG{n+nf}{compare}\PYG{p}{(}\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{p1}\PYG{p}{,} \PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{p2}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+     \PYG{c+cm}{/* For same values, element with the higher}
+\PYG{c+cm}{        index appear earlier in the sorted array.}
+\PYG{c+cm}{        This is for strictly increasing subsequence.}
+\PYG{c+cm}{        For increasing subsequence, the lower index}
+\PYG{c+cm}{         appears earlier in the sorted array. */}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{p1}\PYG{p}{.}\PYG{n}{first} \PYG{o}{==} \PYG{n}{p2}\PYG{p}{.}\PYG{n}{first}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{p1}\PYG{p}{.}\PYG{n}{second} \PYG{o}{\PYGZgt{}} \PYG{n}{p2}\PYG{p}{.}\PYG{n}{second}\PYG{p}{;}
+
+    \PYG{c+c1}{// Sorting the array according to their values.}
+    \PYG{k}{return} \PYG{n}{p1}\PYG{p}{.}\PYG{n}{first} \PYG{o}{\PYGZlt{}} \PYG{n}{p2}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Building the entire Segment tree, the root of which}
+\PYG{c+c1}{// contains the length of the LIS}
+\PYG{k+kt}{void} \PYG{n+nf}{buildTree}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{*} \PYG{n}{tree}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{pos}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{low}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{high}\PYG{p}{,}
+                                 \PYG{k+kt}{int} \PYG{n}{index}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{value}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// index is the original index of current element}
+    \PYG{c+c1}{// If the index is not present in the given range,}
+    \PYG{c+c1}{// then simply return}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{index} \PYG{o}{\PYGZlt{}} \PYG{n}{low} \PYG{o}{||} \PYG{n}{index} \PYG{o}{\PYGZgt{}} \PYG{n}{high}\PYG{p}{)}
+        \PYG{k}{return}\PYG{p}{;}
+
+    \PYG{c+c1}{// If low == high then the current position should}
+    \PYG{c+c1}{// be updated to the value}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{low} \PYG{o}{==} \PYG{n}{high}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{tree}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{]} \PYG{o}{=} \PYG{n}{value}\PYG{p}{;}
+        \PYG{k}{return}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kt}{int} \PYG{n}{mid} \PYG{o}{=} \PYG{p}{(}\PYG{n}{high} \PYG{o}{+} \PYG{n}{low}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{;}
+
+    \PYG{c+c1}{// Recursively call the function on the}
+    \PYG{c+c1}{// child nodes}
+    \PYG{n}{buildTree}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{,} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{pos} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{low}\PYG{p}{,} \PYG{n}{mid}\PYG{p}{,} \PYG{n}{index}\PYG{p}{,} \PYG{n}{value}\PYG{p}{);}
+    \PYG{n}{buildTree}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{,} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{pos} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{mid} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{high}\PYG{p}{,} \PYG{n}{index}\PYG{p}{,} \PYG{n}{value}\PYG{p}{);}
+
+    \PYG{c+c1}{// Assign the current position the max of the 2 child}
+    \PYG{c+c1}{// nodes}
+    \PYG{n}{tree}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{]} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{[}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{pos} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{tree}\PYG{p}{[}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{pos} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{p}{]);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Function to query the Segment tree and return the}
+\PYG{c+c1}{// value for a given range}
+\PYG{k+kt}{int} \PYG{n+nf}{findMax}\PYG{p}{(}\PYG{k+kt}{int}\PYG{o}{*} \PYG{n}{tree}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{pos}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{low}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{high}\PYG{p}{,}
+                               \PYG{k+kt}{int} \PYG{n}{start}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{end}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// Query: Same as the query function of Segment tree}
+    \PYG{c+c1}{// If the current range is totally inside the query}
+    \PYG{c+c1}{// range, return the value of current position}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{low} \PYG{o}{\PYGZgt{}=} \PYG{n}{start} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{high} \PYG{o}{\PYGZlt{}=} \PYG{n}{end}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{tree}\PYG{p}{[}\PYG{n}{pos}\PYG{p}{];}
+
+    \PYG{c+c1}{// If it is out of bound, return the minimum which}
+    \PYG{c+c1}{// would be 0 in this case}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{start} \PYG{o}{\PYGZgt{}} \PYG{n}{high} \PYG{o}{||} \PYG{n}{end} \PYG{o}{\PYGZlt{}} \PYG{n}{low}\PYG{p}{)}
+        \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+    \PYG{c+c1}{// Partial overlap}
+    \PYG{k+kt}{int} \PYG{n}{mid} \PYG{o}{=} \PYG{p}{(}\PYG{n}{high} \PYG{o}{+} \PYG{n}{low}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{;}
+
+    \PYG{c+c1}{// Call findMax on child nodes recursively and}
+    \PYG{c+c1}{// return the maximum of the two}
+    \PYG{k}{return} \PYG{n}{max}\PYG{p}{(}\PYG{n}{findMax}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{,} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{pos} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{low}\PYG{p}{,} \PYG{n}{mid}\PYG{p}{,}
+                                        \PYG{n}{start}\PYG{p}{,} \PYG{n}{end}\PYG{p}{),}
+               \PYG{n}{findMax}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{,} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{pos} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{mid} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,}
+                                \PYG{n}{high}\PYG{p}{,} \PYG{n}{start}\PYG{p}{,} \PYG{n}{end}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{findLIS}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// The array of pairs stores the integers and}
+    \PYG{c+c1}{// indices in p[i]}
+    \PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{p}\PYG{p}{[}\PYG{n}{n}\PYG{p}{];}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{first} \PYG{o}{=} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+        \PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{second} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// Sorting the array in increasing order}
+    \PYG{c+c1}{// of the elements}
+    \PYG{n}{sort}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,} \PYG{n}{p} \PYG{o}{+} \PYG{n}{n}\PYG{p}{,} \PYG{n}{compare}\PYG{p}{);}
+
+    \PYG{c+c1}{// Calculating the length of the segment\PYGZhy{}tree}
+    \PYG{k+kt}{int} \PYG{n}{len} \PYG{o}{=} \PYG{n}{pow}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)(}\PYG{n}{ceil}\PYG{p}{(}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)))} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{tree}\PYG{p}{[}\PYG{n}{len}\PYG{p}{];}
+
+    \PYG{c+c1}{// Initializing the tree with zeroes}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{));}
+
+    \PYG{c+c1}{// Building the segment\PYGZhy{}tree, the root node of}
+    \PYG{c+c1}{// which contains the length of LIS for the n}
+    \PYG{c+c1}{// elements}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{buildTree}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{second}\PYG{p}{,}
+     \PYG{n}{findMax}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{second}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k}{return} \PYG{n}{tree}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{];}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Driver code}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[]} \PYG{o}{=} \PYG{p}{\PYGZob{}} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{22}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{33}\PYG{p}{,} \PYG{l+m+mi}{21}\PYG{p}{,} \PYG{l+m+mi}{50}\PYG{p}{,} \PYG{l+m+mi}{41}\PYG{p}{,} \PYG{l+m+mi}{60} \PYG{p}{\PYGZcb{};}
+    \PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)} \PYG{o}{/} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);}
+    \PYG{n}{cout} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+s}{\PYGZdq{}Length of the LIS: \PYGZdq{}} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{findLIS}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
+    \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

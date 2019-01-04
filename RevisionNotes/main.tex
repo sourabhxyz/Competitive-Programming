@@ -76,8 +76,6 @@ The \pagestyle command changes the style from the current page on throughout the
 % Automatically break long lines in minted environments and \mint commands, and wrap longer lines in \mintinline.
 % the number of tabs is equivalent to
 % The symbol used at the beginning (left) of continuation lines when breaklines=true. To have no symbol, simply set breaksymbolleft to an empty string
-\setminted{breaklines=true, tabsize=2, breaksymbolleft=}
-\usemintedstyle{perldoc} % takes an optional argument to specify the style for a particular language, and works anywhere in the document
 \begin {comment}
 You can change the values of the variables defining the page layout with two commands. With this one you can set a new value for an existing length variable:
 
@@ -94,6 +92,8 @@ with this other one, you can add a value to the existing one:
 
 \end{comment}
 \DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+\setminted{breaklines=true, tabsize=2, breaksymbolleft=}
+\usemintedstyle{perldoc} % takes an optional argument to specify the style for a particular language, and works anywhere in the document
 \begin{document}
 \title{\swastik {scale = 0.2} {}Short Revision Notes{} \swastik {scale = 0.2}}
 \author{Sourabh Aggarwal (\href {https://codeforces.com/profile/sourabh23}{sourabh23})}
@@ -2729,7 +2729,7 @@ for (int i = 0; i < (1 << n); i++) {
     \item $\leq 10^8 \Rightarrow 2$ sec.
     \item Remember that just like we could have solved \href{https://uva.onlinejudge.org/external/7/714.pdf}{this} using binary search (other than simple DP), we can actually solve many problems which ask to find optimal value using binary search.
     \item Outputing a double or even int my have an exponential form so it is better to do $<<$ fixed $<<$ s...(0).
-    \item Range of double is $10^{15}$
+    \item Range of double is $10^{309}$
     \item Range of int64 is $9 * 10^{18}$
     \item Inbuilt swap can be used to basically swap anything.
     \item $ceil(m/a) = (m + a - 1) / m$
@@ -3402,7 +3402,7 @@ Clearly we could have done this in $O(n^2)$ but I'll describe $O(n \log n)$ soln
 \\Now the problem reduces to finding longest subarray with sum $\geq 0$ as then average would be $\geq 0$.
     \item Replace $a_i$ by the partial sums $S_i = \sum_{j = 1}^i a_j$\\
 Now we are looking for a pair $0 \leq l \leq r \leq N$ s.t. $S_r - S_{l - 1} \geq 0$ and $r - (l - 1) \geq k$.
-    \item Mark the positions of mimimas of $S_i$ from left to right in array A and position for maximums $S_i$ from right to left in array B of an array containing S.
+    \item Mark the positions of minimas of $S_i$ from left to right in array A and position for maximums $S_i$ from right to left in array B of an array containing S.
     \item Do 2 pointers technique now.
 \end{enumerate}
 \begin{minted}{cpp}
@@ -3663,9 +3663,11 @@ int LIS () {
 }
 vi getLIS (int ans) {
     vi lis;
+    int mx = inf;
     for (int i = n - 1; i >= 0; i--) {
-        if (L[i] == ans) {
+        if (sequence[i] < mx and L[i] == ans) {
             lis.pb (sequence[i]);
+            mx = sequence[i];
             ans--;
         }
     }
@@ -5163,9 +5165,9 @@ double dvac(int low, int high) {
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{segsegcir3}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{orientedangle}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{spherearea}
-\end{document}
 \subsection{Important Problems}
 \begin{itemize}
     \item Sometimes it makes sense to gridize the region, like in \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1333.cpp}{Timus 1333}
     \item \href{https://uva.onlinejudge.org/external/101/10173.pdf}{Minimum Bounding Rectangle}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10173.cpp}{Sol}: basically use atan2 and rotate wrt that point.
 \end{itemize}
+\end{document}
