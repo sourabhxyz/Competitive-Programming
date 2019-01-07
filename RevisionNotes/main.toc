@@ -7,13 +7,13 @@
 \contentsline {subsection}{\numberline {1.4}Modulo}{2}{subsection.1.4}
 \contentsline {subsection}{\numberline {1.5}Prob and Comb}{2}{subsection.1.5}
 \contentsline {subsection}{\numberline {1.6}Placing Bishops on a Chessboard}{2}{subsection.1.6}
-\contentsline {subsubsection}{\numberline {1.6.1}Algorithm}{2}{subsubsection.1.6.1}
+\contentsline {subsubsection}{\numberline {1.6.1}Algorithm}{3}{subsubsection.1.6.1}
 \contentsline {subsubsection}{\numberline {1.6.2}Implementation}{3}{subsubsection.1.6.2}
 \contentsline {subsection}{\numberline {1.7}Euler's Totient Function}{3}{subsection.1.7}
 \contentsline {subsection}{\numberline {1.8}Catalan}{3}{subsection.1.8}
 \contentsline {subsection}{\numberline {1.9}Floyd Cycle Finding}{3}{subsection.1.9}
 \contentsline {subsection}{\numberline {1.10}Base Conversion}{3}{subsection.1.10}
-\contentsline {subsection}{\numberline {1.11}Extended Euclid}{3}{subsection.1.11}
+\contentsline {subsection}{\numberline {1.11}Extended Euclid}{4}{subsection.1.11}
 \contentsline {subsection}{\numberline {1.12}Linear Congruence Equation}{4}{subsection.1.12}
 \contentsline {subsubsection}{\numberline {1.12.1}Solution by finding the inverse element}{4}{subsubsection.1.12.1}
 \contentsline {subsubsection}{\numberline {1.12.2}Solution with the Advanced Euclidean Algorithm}{4}{subsubsection.1.12.2}
@@ -27,7 +27,7 @@
 \contentsline {subsection}{\numberline {1.19}Finding Power Of Factorial Divisor}{6}{subsection.1.19}
 \contentsline {subsubsection}{\numberline {1.19.1}Prime $k$}{6}{subsubsection.1.19.1}
 \contentsline {subsubsection}{\numberline {1.19.2}Composite $k$}{6}{subsubsection.1.19.2}
-\contentsline {subsection}{\numberline {1.20}GCD, LCM}{6}{subsection.1.20}
+\contentsline {subsection}{\numberline {1.20}GCD, LCM}{7}{subsection.1.20}
 \contentsline {subsection}{\numberline {1.21}Some properties of Fibonacci numbers}{7}{subsection.1.21}
 \contentsline {subsection}{\numberline {1.22}Wilson Theorem}{7}{subsection.1.22}
 \contentsline {subsection}{\numberline {1.23}Factorial modulo $p$ in $O(p \qopname \relax o{log}n)$}{7}{subsection.1.23}
@@ -38,7 +38,7 @@
 \contentsline {subsubsection}{\numberline {1.25.1}Finding Gray Code}{8}{subsubsection.1.25.1}
 \contentsline {subsubsection}{\numberline {1.25.2}Finding inverse gray code}{8}{subsubsection.1.25.2}
 \contentsline {subsection}{\numberline {1.26}Discrete Logarithm}{8}{subsection.1.26}
-\contentsline {subsubsection}{\numberline {1.26.1}Algorithm}{8}{subsubsection.1.26.1}
+\contentsline {subsubsection}{\numberline {1.26.1}Algorithm}{9}{subsubsection.1.26.1}
 \contentsline {subsubsection}{\numberline {1.26.2}Complexity}{9}{subsubsection.1.26.2}
 \contentsline {subsubsection}{\numberline {1.26.3}Implementation}{9}{subsubsection.1.26.3}
 \contentsline {subsubsection}{\numberline {1.26.4}Improved implementation}{9}{subsubsection.1.26.4}
@@ -48,9 +48,9 @@
 \contentsline {subsubsection}{\numberline {1.28.2}Existence}{10}{subsubsection.1.28.2}
 \contentsline {subsubsection}{\numberline {1.28.3}Relation with the Euler function}{10}{subsubsection.1.28.3}
 \contentsline {subsubsection}{\numberline {1.28.4}Algorithm for finding a primitive root}{10}{subsubsection.1.28.4}
-\contentsline {subsubsection}{\numberline {1.28.5}Implementation}{10}{subsubsection.1.28.5}
-\contentsline {subsection}{\numberline {1.29}Discrete Root}{10}{subsection.1.29}
-\contentsline {subsubsection}{\numberline {1.29.1}The algorithm}{10}{subsubsection.1.29.1}
+\contentsline {subsubsection}{\numberline {1.28.5}Implementation}{11}{subsubsection.1.28.5}
+\contentsline {subsection}{\numberline {1.29}Discrete Root}{11}{subsection.1.29}
+\contentsline {subsubsection}{\numberline {1.29.1}The algorithm}{11}{subsubsection.1.29.1}
 \contentsline {subsubsection}{\numberline {1.29.2}Implementation}{11}{subsubsection.1.29.2}
 \contentsline {subsection}{\numberline {1.30}Fermats last theorem}{11}{subsection.1.30}
 \contentsline {subsection}{\numberline {1.31}Josephus Problem}{11}{subsection.1.31}
@@ -59,20 +59,20 @@
 \contentsline {subsection}{\numberline {1.32}Root Solving}{11}{subsection.1.32}
 \contentsline {subsection}{\numberline {1.33}Integration}{12}{subsection.1.33}
 \contentsline {subsubsection}{\numberline {1.33.1}Simpson rule}{12}{subsubsection.1.33.1}
-\contentsline {subsection}{\numberline {1.34}Continued Fractions}{12}{subsection.1.34}
-\contentsline {subsection}{\numberline {1.35}Pells eqn}{12}{subsection.1.35}
-\contentsline {subsection}{\numberline {1.36}Side Notes}{12}{subsection.1.36}
+\contentsline {subsection}{\numberline {1.34}Continued Fractions}{13}{subsection.1.34}
+\contentsline {subsection}{\numberline {1.35}Pells eqn}{13}{subsection.1.35}
+\contentsline {subsection}{\numberline {1.36}Side Notes}{13}{subsection.1.36}
 \contentsline {subsection}{\numberline {1.37}Important Problems}{13}{subsection.1.37}
-\contentsline {section}{\numberline {2}Graphs}{13}{section.2}
-\contentsline {subsection}{\numberline {2.1}Basic}{13}{subsection.2.1}
+\contentsline {section}{\numberline {2}Graphs}{14}{section.2}
+\contentsline {subsection}{\numberline {2.1}Basic}{14}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Articulation Points and Bridges (undirected graph)}{14}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Tree}{15}{subsection.2.3}
-\contentsline {subsubsection}{\numberline {2.3.1}LCA}{15}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.1}LCA}{16}{subsubsection.2.3.1}
 \contentsline {subsubsection}{\numberline {2.3.2}Important Problems}{16}{subsubsection.2.3.2}
 \contentsline {subsubsection}{\numberline {2.3.3}MVC on Tree}{16}{subsubsection.2.3.3}
 \contentsline {subsubsection}{\numberline {2.3.4}MWIS on Tree}{16}{subsubsection.2.3.4}
 \contentsline {subsection}{\numberline {2.4}Terminology}{16}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Konigs Theorem}{16}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.5}Konigs Theorem}{17}{subsection.2.5}
 \contentsline {subsection}{\numberline {2.6}Bipartite Matching}{17}{subsection.2.6}
 \contentsline {subsubsection}{\numberline {2.6.1}Hopcroft Karp}{17}{subsubsection.2.6.1}
 \contentsline {subsubsection}{\numberline {2.6.2}Using max flow algo}{18}{subsubsection.2.6.2}
@@ -80,7 +80,7 @@
 \contentsline {subsubsection}{\numberline {2.7.1}No. of paths}{18}{subsubsection.2.7.1}
 \contentsline {subsection}{\numberline {2.8}SCC}{18}{subsection.2.8}
 \contentsline {subsubsection}{\numberline {2.8.1}Tarjan}{18}{subsubsection.2.8.1}
-\contentsline {subsubsection}{\numberline {2.8.2}Kosaraju}{18}{subsubsection.2.8.2}
+\contentsline {subsubsection}{\numberline {2.8.2}Kosaraju}{19}{subsubsection.2.8.2}
 \contentsline {subsection}{\numberline {2.9}SAT}{19}{subsection.2.9}
 \contentsline {subsubsection}{\numberline {2.9.1}1 SAT}{19}{subsubsection.2.9.1}
 \contentsline {subsubsection}{\numberline {2.9.2}2 SAT}{19}{subsubsection.2.9.2}
@@ -90,7 +90,7 @@
 \contentsline {subsubsection}{\numberline {2.10.3}Counting Paths in DAG}{19}{subsubsection.2.10.3}
 \contentsline {subsubsection}{\numberline {2.10.4}Min Path cover on DAG}{19}{subsubsection.2.10.4}
 \contentsline {subsection}{\numberline {2.11}APSP Floyd Warshalls}{19}{subsection.2.11}
-\contentsline {subsection}{\numberline {2.12}MST (Kruskal)}{19}{subsection.2.12}
+\contentsline {subsection}{\numberline {2.12}MST (Kruskal)}{20}{subsection.2.12}
 \contentsline {subsection}{\numberline {2.13}SSSP}{20}{subsection.2.13}
 \contentsline {subsubsection}{\numberline {2.13.1}Dijkstra}{20}{subsubsection.2.13.1}
 \contentsline {subsubsection}{\numberline {2.13.2}Bellman ford}{20}{subsubsection.2.13.2}
@@ -100,7 +100,7 @@
 \contentsline {subsection}{\numberline {2.16}Kirchhoff's matrix tree theorem}{21}{subsection.2.16}
 \contentsline {subsection}{\numberline {2.17}Counting Labeled graphs}{21}{subsection.2.17}
 \contentsline {subsubsection}{\numberline {2.17.1}Labeled graphs}{21}{subsubsection.2.17.1}
-\contentsline {subsubsection}{\numberline {2.17.2}Connected labeled graphs}{21}{subsubsection.2.17.2}
+\contentsline {subsubsection}{\numberline {2.17.2}Connected labeled graphs}{22}{subsubsection.2.17.2}
 \contentsline {subsubsection}{\numberline {2.17.3}Labeled graphs with $k$ connected components}{22}{subsubsection.2.17.3}
 \contentsline {subsection}{\numberline {2.18}Heavy Light Decomposition}{22}{subsection.2.18}
 \contentsline {subsection}{\numberline {2.19}More Problems}{22}{subsection.2.19}

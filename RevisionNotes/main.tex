@@ -156,17 +156,30 @@ Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/maste
 
 The number of ways a set of n elements can be partitioned into nonempty subsets is called a Bell number and is denoted $B_n$. 
 
-$B_n=\sum_{k=0}^nS(n,k)$  where $S(n,k)$ is a Stirling number of the second kind
+$B_n=\sum_{k=0}^nS(n,k)$  where $S(n,k)$ is a Stirling number of the second kind (Note: Stirling partition number is the number of ways to partition a set of n objects into k non-empty subsets and hence the formula naturally follows).
+
 The Bell numbers can also be generated using the sum and recurrence relation
-$B_n=\sum_{k=0}^{n-1}B_k \binom{n - 1}{k}$ thus we usually compute bell numbers in $O(n^2)$
-\\For burnside just see \href{https://codeforces.com/blog/entry/62401}{this} and \href{http://poj.org/problem?id=1286}{burnside on circle prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/BURNSIDE/2.CPP}{sol}
-\\Similarly answer for \href{http://gcpc.nwerc.eu/problemset_2017.pdf}{this}, is \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{brnsq}
+$B_n=\sum_{k=0}^{n-1}B_k \binom{n - 1}{k}$ thus we usually compute bell numbers in $O(n^2)$ by either of the recurrence, here is the code using the first recurrence:
+\begin{minted}{cpp}
+void pre() {
+  b[0][0] = 1;
+  for (int i = 0; i < maxn - 1; ++i) {
+    for (int j = 0; j <= i; ++j) {
+      udd(bsum[i], b[i][j]);
+      udd(b[i + 1][j], mul(b[i][j], j));
+      udd(b[i + 1][j + 1], b[i][j]);
+    }
+  }
+}
+\end{minted}
+For burnside just see \href{https://codeforces.com/blog/entry/62401}{this} and \href{http://poj.org/problem?id=1286}{burnside on circle prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/BURNSIDE/2.CPP}{sol}
+\\Similarly answer for \href{http://gcpc.nwerc.eu/problemset_2017.pdf}{this}, is \\\includegraphics[width=0.3\textwidth,height=0.3\textheight,keepaspectratio]{brnsq}
 \\as those sides can be represented as a point on a circle.
 \\Stirling no. of second kind obey the recurrence $$\stirling{n + 1}{k} = k * \stirling{n}{k} + \stirling{n}{k - 1} \forall n, k > 0$$ where $\stirling{0}{0} = 1$, $\stirling{n}{0} = \stirling{0}{n} = 0$
-\\$\frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^n$
+\\$\stirling{n}{k} = \frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^n$
 \subsubsection{Inclusion Exclusion Principle}
 $$\left|\bigcup_{i=1}^n A_i \right| = \sum_{\emptyset \neq J\subseteq \{1,2,\ldots ,n\}} (-1)^{|J|-1}{\Biggl |}\bigcap_{j\in J}A_{j}{\Biggr |}$$
-$$|\bigcap_{i = 1}^n A_{i}^c| = total - |\bigcap_{i = 1}^n A_i|$$
+$$|\bigcap_{i = 1}^n A_{i}^c| = total - |\bigcup_{i = 1}^n A_i|$$
 \subsection{Modulo}
 $(a + b) mod m = (a mod m + b mod m) mod m$\\
 $.........................-...............$\\
