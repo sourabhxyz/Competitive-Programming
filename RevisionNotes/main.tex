@@ -132,10 +132,33 @@ Positions $x$ for which $g(x)$ is 0 are P postions and all others are N position
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sgth}
 \textbf{Thus}, if a position is a \textbf{N} position, we can cleverly see which position should we go to (what move of a component game to take) such that we reach \textbf {P} position.
 \subsection{Mobius}
-Just read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob0}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob1}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob2}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob3}
+\\\includegraphics[width=0.1\textwidth,height=0.1\textheight,keepaspectratio]{mob4}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob5}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob6}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob7}
+\\$S_{\phi}(n) = id(n)$
+$\mu \circ id = \phi (n)$
+\begin{minted}{cpp}
+for (int i = 1; i <= N; i++) { 
+    for (int j = i; j <= N; j += i) {
+        f[j] += h[i] * mu[j/i];
+    } 
+}
+\end{minted}
+Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
 \\\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is $\mu \circ e = \mu$. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(d)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
 \subsection{Bell, Burnside, etc}
-Just read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}
+Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}
+
+The number of ways a set of n elements can be partitioned into nonempty subsets is called a Bell number and is denoted $B_n$. 
+
+$B_n=\sum_{k=0}^nS(n,k)$  where $S(n,k)$ is a Stirling number of the second kind
+The Bell numbers can also be generated using the sum and recurrence relation
+$B_n=\sum_{k=0}^{n-1}B_k \binom{n - 1}{k}$ thus we usually compute bell numbers in $O(n^2)$
 \\For burnside just see \href{https://codeforces.com/blog/entry/62401}{this} and \href{http://poj.org/problem?id=1286}{burnside on circle prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/BURNSIDE/2.CPP}{sol}
 \\Similarly answer for \href{http://gcpc.nwerc.eu/problemset_2017.pdf}{this}, is \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{brnsq}
 \\as those sides can be represented as a point on a circle.
@@ -1900,6 +1923,7 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 \end{itemize}
 \subsubsection{Important Problems}
 \begin{itemize}
+    \item \href{https://codeforces.com/contest/1099/problem/F}{Eating cookies on tree}, \href{https://codeforces.com/blog/entry/64296?#comment-482494}{Sol}
     \item Say path length is defined as the sum of edge weights along that path. And diameter is length of the longest simple path. Given sum of edge weights 'm' we need to assign weights to edges so that diameter is minimum. Sol: Consider the center of the tree like before, now the length of all paths from this tree should be minimum, which is only possible if we assign length to be the same. \href{https://codeforces.com/contest/1086/submission/47400574}{code}
     \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabh2311/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
 	\item \href {https://gist.github.com/sourabh2311/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the number of hops to travel between flights.\\
