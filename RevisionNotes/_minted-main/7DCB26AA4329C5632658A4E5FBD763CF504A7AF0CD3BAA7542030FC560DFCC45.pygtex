@@ -16,7 +16,7 @@
    \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
         \PYG{n}{ans} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
         \PYG{k}{for} \PYG{p}{(}\PYG{k}{auto} \PYG{o}{\PYGZam{}}\PYG{n+nl}{to} \PYG{p}{:} \PYG{n}{glist}\PYG{p}{[}\PYG{n}{at}\PYG{p}{])} \PYG{p}{\PYGZob{}}
-            \PYG{n}{ans} \PYG{o}{+=} \PYG{n}{max} \PYG{p}{(}\PYG{n}{mwic}\PYG{p}{(}\PYG{n}{to}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{at}\PYG{p}{),} \PYG{n}{mwic}\PYG{p}{(}\PYG{n}{to}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{at}\PYG{p}{));}
+            \PYG{n}{ans} \PYG{o}{+=} \PYG{n}{max} \PYG{p}{(}\PYG{n}{mwis}\PYG{p}{(}\PYG{n}{to}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{at}\PYG{p}{),} \PYG{n}{mwis}\PYG{p}{(}\PYG{n}{to}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{at}\PYG{p}{));}
         \PYG{p}{\PYGZcb{}}
    \PYG{p}{\PYGZcb{}}
    \PYG{k}{return} \PYG{n}{memo}\PYG{p}{[}\PYG{n}{at}\PYG{p}{][}\PYG{n}{flag}\PYG{p}{]} \PYG{o}{=} \PYG{n}{ans}\PYG{p}{;}

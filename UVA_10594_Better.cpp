@@ -16,6 +16,7 @@ struct link{
     long long int cost;
     long long int flow;
     link() {
+        cap = 0;
         flow = 0;
     }
     link(int cp, int ct) {
@@ -25,7 +26,8 @@ struct link{
     }
 };
 vector<vector<ii> > glist;
-link mat[105][105][2];
+vector<vector<vector<link> > > mat;
+//link mat[105][105][2];
 void augment(int at, long long int minedge)
 {
     if(at == 0) {
@@ -43,18 +45,28 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-     freopen("ina.txt", "r", stdin);
-     freopen("outa.txt", "w", stdout);
+//    freopen("ina.txt", "r", stdin);
+//    freopen("outa.txt", "w", stdout);
     while(cin >> n >> m)
     {
         glist.clear();
+        mat.clear ();
+        mat.assign (n + 1, vector<vector<link > > (n + 1, vector<link> (2)));
         glist.resize(n + 1);
+        glist[0].push_back(ii(1, 0));
+        glist[1].push_back (ii (0, 0));
+        glist[0].push_back (ii (1, 1));
+        glist[1].push_back (ii (0, 1));
+        vector<tuple<int, int, int> > edgelist;
         for(int i = 0; i < m; i++)
         {
             int u, v, w;
             cin >> u >> v >> w;
+            edgelist.push_back(tie (u, v, w));
             glist[u].push_back (ii (v, 0));
+            glist[v].push_back (ii (u, 0));
             glist[v].push_back (ii (u, 1));
+            glist[u].push_back (ii (v, 1));
             mat[u][v][0].cost = w;
             mat[v][u][0].cost = -w;
             mat[v][u][1].cost = w;
@@ -63,16 +75,14 @@ int main()
         cin >> totransfer >> fixedcap;
         mat[0][1][0] = link(totransfer, 0);
         mat[1][0][0] = link (0, 0);
-        for(int i = 1; i <= n; i++)
-        {
-            for(int j = 0; j < glist[i].size(); j++)
-            {
-                auto to = glist[i][j];
-                mat[i][to.first][to.second].cap = fixedcap;
-                mat[to.first][i][to.second].cap = 0;
-            }
+        mat[1][0][1] = link (totransfer, 0);
+        mat[0][1][1] = link (0, 0);
+        for (auto &tup : edgelist) {
+            int u, v, w;
+            tie (u, v, w) = tup;
+            mat[u][v][0].cap = fixedcap;
+            mat[v][u][1].cap = fixedcap;
         }
-        glist[0].push_back(ii(1, 0));
         long long int mf = 0, mincost = 0;
         while(true) {
             vector<long long int> dist(n + 1, INF);
@@ -84,11 +94,6 @@ int main()
                 {
                     for(auto to : glist[u])
                     {
-                        if (mat[to.first][u][to.second].flow > 0 and dist[to.first] + mat[to.first][u][to.second].cost < dist[u]) {
-                            dist[u] = dist[to.first] + mat[to.first][u][to.second].cost;
-                            p[u].first = to.first;
-                            p[u].second = to.second;
-                        }
                         if (mat[u][to.first][to.second].cap - mat[u][to.first][to.second].flow > 0 and dist[u] + mat[u][to.first][to.second].cost < dist[to.first]) {
                             dist[to.first] = dist[u] + mat[u][to.first][to.second].cost;
                             p[to.first].first = u;

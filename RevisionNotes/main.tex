@@ -1727,7 +1727,7 @@ int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 int floodfill (int r, int c, char c1, char c2) {
     if (r < 0 || r >= R || c < 0 || c >= C) return 0;
     if (grid[r][c] != c1) return 0;
-    int ans = 0;
+    int ans = 1;
     grid[r][c] = c2;
     for (int d = 0; d < 8; d++) {
         ans += floodfill (r + dr[d], c + dc[d], c1, c2);
@@ -1737,12 +1737,12 @@ int floodfill (int r, int c, char c1, char c2) {
     \end{minted}
     \item We can find the number of connected components by simply doing dfs (offline), and online using UFDS.
     \item Highest average is possible only by taking largest edge weight/s. 
-    \item We can use BFS for finding the shortest path in a graph with weights 0 or 1. This required just a little modificatio to normal BFS, if the current edge is of 0 weight and distance to the vertex is shorter than the current found distance, then add this vertex not to the back but to the front of the queue. (we can use dequeue which supports front, back, push\_{}back, push\_{}front, pop\_{}back, pop\_{}front) in O(1).
+    \item We can use BFS for finding the shortest path in a graph with weights 0 or 1. This required just a little modification to normal BFS, if the current edge is of 0 weight and distance to the vertex is shorter than the current found distance, then add this vertex not to the back but to the front of the queue. (we can use dequeue which supports front, back, push\_{}back, push\_{}front, pop\_{}back, pop\_{}front) in O(1).
     \item Find the shortest path of even length from a source vertex s to a target vertex t in an unweighted graph. For this, we must construct an auxiliary graph, whose vertices are the state (v, c) where v is the current node, c = 0, 1 denots the current parity. Any edge (u, v) of the original graph in this new graph will turn into two edges ((u, 0), (v, 1)) and ((u, 1), (v, 0)). After that we run a BFS to find the shortest path from (s, 0) to (t, 0).
     \item Find all the vertices on any shortest path between a given pair of vertices (a, b). To accomplish that, run 2 BFS: one from a and one from b. Let da[] be the array containing shortest distances obtained from first BFS (from a) and db[] be the array containing shortest distances obtained from the second BFS (from b). Now for every vertex it is easy to check whether it lies on any shortest path between a and b: the criterion is the condition da[v] + db[v] = da[b].
     \item Similarly edge (u, v) lies on shortest path if da[u] + 1 + db[v] = da[b].
     \item Finding shortest cycle in a directed unweighted graph. For each vertex $v_i$: do a BFS from it and if we try to go from the current vertex to an already visited vertex then it means that we have found a cycle and should stop BFS.
-    \\Take minimum of all such cycles (one for each $v_i$ to get the shortest length cycle.
+    \\Take minimum of all such cycles (one for each $v_i$) to get the shortest length cycle.
     \item Using DFS, we can also tell whether vertex i is an ancestor of j by using either that subtree method or by checking if $entry[i] < entry[j]$ and $exit[i] > exit[j]$
 \end{itemize}
 \subsection{Articulation Points and Bridges (undirected graph)}
@@ -1824,7 +1824,7 @@ Instead of keeping track of whether or not a node is an articulation point using
 
 To achieve this, we’ll first assume that each node in our graph G is not an articulation vertex. In other words, the removal of any node u in G will result in there being only one connected component (G will remain one entity and not be disconnected).
 
-We’ll then use the same algorithm we’ve used before, however, this around around, whenever we find that u is an articulation vertex relative to one of its children, we’ll increment articulation_vertex[u].
+We’ll then use the same algorithm we’ve used before, however, this time around, whenever we find that u is an articulation vertex relative to one of its children, we’ll increment articulation_vertex[u].
 
 So, if we have a vertex u with say, 3 child components with no back-edges, the removal of u will result in G being cut into four connected components.
 */
@@ -1916,7 +1916,7 @@ It is \textbf {impossible} to construct binary tree with just Preorder traversal
 It is \textbf {impossible} to construct binary tree with just Inorder traversal.\\
 It is \textbf {impossible} to construct binary tree with just Postorder traversal.
 \subsubsection{LCA}
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
     \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. Note that LCA of two nodes u, v is the node w that is ancestor of both u and v and that has the greatest depth in the tree.\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{lca}
     \item Tarjan's offline LCA. for each query (a, b) you should do q[a].pb(b) and q[b].pb(a).
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{tar}
@@ -1927,7 +1927,7 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
     \item Say path length is defined as the sum of edge weights along that path. And diameter is length of the longest simple path. Given sum of edge weights 'm' we need to assign weights to edges so that diameter is minimum. Sol: Consider the center of the tree like before, now the length of all paths from this tree should be minimum, which is only possible if we assign length to be the same. \href{https://codeforces.com/contest/1086/submission/47400574}{code}
     \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabh2311/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
 	\item \href {https://gist.github.com/sourabh2311/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the number of hops to travel between flights.\\
-	Problem Sol: Just link the center of diameters. Brute force which edge to remove. 
+	Problem Sol: Just link the center of diameters. Brute force which edge to remove on the longest path. 
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_112.cpp}{UVA 112 Sol}, \href {https://uva.onlinejudge.org/external/1/112.pdf}{UVA 112 Prob}: Just see how I processed the input.	
 	\item \href {https://gist.github.com/sourabh2311/6b761c14bef4e5887e6b03b809bc4983}{UVA 10029 Sol}, \href {https://uva.onlinejudge.org/external/100/10029.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
 	\item \href {https://gist.github.com/sourabh2311/d73572fab5cf6d390f509d29abf4cd60}{UVA 536 Sol}, \href {https://uva.onlinejudge.org/external/5/536.pdf}{UVA 536 Prob}: Construct binary tree with preorder and inorder	
@@ -1979,7 +1979,7 @@ int mwis(int at, int flag, int parent) { //You can start this from any node, i.e
    } else {
         ans = 0;
         for (auto &to : glist[at]) {
-            ans += max (mwic(to, 1, at), mwic(to, 0, at));
+            ans += max (mwis(to, 1, at), mwis(to, 0, at));
         }
    }
    return memo[at][flag] = ans;
@@ -1989,7 +1989,7 @@ int mwis(int at, int flag, int parent) { //You can start this from any node, i.e
 \begin{itemize}
     \item A \textbf{vertex cover} is a subset of vertices S, such that for each edge (u, v) in graph, either u or v (or both) are in S.
     \item An \textbf{independent set} is a subset of vertices S, such that no two vertices u, v in S are adjacent in graph.
-    \item A subset of vertices is a vertex cover iff the complement of the set is an independent set. I.e. $MinVC + MaxIS = V$.
+    \item A subset of vertices is a vertex cover iff the complement of the set is an independent set, i.e. $MinVC + MaxIS = V$.
     \item It is easy to see why it is the case, firstly for vertices in the complement of MinVC, they can't have any edge between them as then our MinVC isnt VC. Also if we add to this IS any more vertex then it wont be an IS. Suppost it is not the maximum then there occurs an MIS with size more than this, clearly its complement is VC which would have size smaller than our MinVC which leads to contradiction. 
     \item Complement of VC is an IS and vice versa (easy to see)
     \item Given an undirected graph G = (V, E) and weighting function defined on the vertex set, the minimum weighted vertex cover problem is to find a vertex set S ⊆ V whose total weight is minimum subject to every edge of G has at least one end point in S. 
@@ -2005,7 +2005,7 @@ int mwis(int at, int flag, int parent) { //You can start this from any node, i.e
 Size of Min VC in a bipartite graph is equal to the size of Max Matching in that graph.
 \\Kőnig's theorem can be proven in a way that provides additional useful information beyond just its truth: the proof provides a way of constructing a minimum vertex cover from a maximum matching.
 \\\textbf{Proof: } Let $G = (V, E)$ be a bipartite graph, and let the vertex set $V$ V be partitioned into left set $L$ and right set $R$. Suppose that $M$ is a maximum matching for $G$.
-\\let $U$ be the set of unmatched vertices in $L$ (possibly empty), and let $Z$ be the set of vertices that are either in $U$ or are connected to $U$ by alternating paths. Let $K = ( L \setminus Z ) \cup ( R \cap Z )$. 
+\\Let $U$ be the set of unmatched vertices in $L$ (possibly empty), and let $Z$ be the set of vertices that are either in $U$ or are connected to $U$ by alternating paths. Let $K = ( L \setminus Z ) \cup ( R \cap Z )$. 
 \\Every edge $e$ in $E$ either belongs to an alternating path (and has a right endpoint in $K$), or it has a left endpoint in $K$. For, if $e$ is matched but not in an alternating path, then its left endpoint cannot be in an alternating path (for such a path would have had to have included $e$) and thus belongs to $L \setminus Z$. Alternatively, if $e$ is unmatched but not in an alternating path, then its left endpoint cannot be in an alternating path, for such a path could be extended by adding $e$ to it. Thus, $K$ forms a vertex cover.\\
 Additionally, every vertex in $K$ is an endpoint of a matched edge. For, every vertex in $L \setminus Z$ is matched because $Z$ is a superset of $U$. And every vertex in $R \cap Z$ must also be matched, for if there existed an alternating path to an unmatched vertex then changing the matching by removing the matched edges from this path and adding the unmatched edges in their place would increase the size of the matching. However, no matched edge can have both of its endpoints in $K$. Thus, $K$ is a vertex cover of cardinality equal to $M$, and must be a minimum vertex cover.
 \\Small diagram to understand proof well.
@@ -2051,7 +2051,7 @@ $K = \{2, 5\}$
 \subsubsection{Hopcroft Karp}
 \begin{enumerate}
     \item \textbf{Free node or vertex: }Given a matching M, a node that is not a part of matching is called a free node. Initially all vertices are free.
-    \item \textbf{Matching and not matching edges: }Given a matching M, edges that are part of matching are called matching edges and edges that are not part of M (or connect free nodes) are called non matching edges.
+    \item \textbf{Matching and not matching edges: }Given a matching M, edges that are part of matching are called matching edges and edges that are not part of M are called non matching edges.
     \item \textbf{Alternating Paths: }Given a matching M, an alternating path is a path in which edges belong alternatively to the matching and not matching.
     \item \textbf{Augmenting path: }Given a matching M, an augmenting path is an alternating path that starts from and ends on free vertices.
     \item The Hopcroft karp algorithm is based on below concept:
@@ -2189,13 +2189,13 @@ main() {
     \end{minted}
 \end{enumerate}
 \subsubsection{Using max flow algo}
-Our MM problem can be reduced to max flow problem by assigning a dummy source vertex s connected to all vertices in set 1 and all vertices in set 2 are connected to dummy sink vertex t. The edges are directed (s to u, u to v, v to t) where u belongs to set 1 and v belongs to set 2). By setting capacities of all edges in this flow graph to 1, we satisfy the criteria of matching. Thus, this max flow will be equal to the max. no. of matchings on the original graph.
+Our MM problem can be reduced to max flow problem by assigning a dummy source vertex s connected to all vertices in set 1 and all vertices in set 2 are connected to dummy sink vertex t. The edges are directed (s to u, u to v, v to t) where u belongs to set 1 and v belongs to set 2. By setting capacities of all edges in this flow graph to 1, we satisfy the criteria of matching. Thus, this max flow will be equal to the max. no. of matchings on the original graph.
 
 \subsection{Paths}
 \begin{itemize}
     \item An \textbf{euler path} is defined as a path in a graph which visits each edge of the graph exactly once. Similarly and \textbf{euler tour/cycle }is an euler path which starts \& ends on the same vertex. A graph which has either an euler path or an euler tour is called \textbf{eulerian}.
-    \item For $undirected graph$ euler tour exist $iff$ all vertices have even deg.
-    \item For $undirected graph$ euler path exists $iff$ all except 2 vertices have even deg. This euler path will start from one of the odd deg vertices and end in the other.
+    \item For \textit{undirected graph} euler tour exist \textit{iff} all vertices have even deg.
+    \item For \textit{undirected graph} euler path exists \textit{iff} all except 2 vertices have even deg. This euler path will start from one of the odd deg vertices and end in the other.
     \item For $directed graph$, euler tour exists $iff$ every vertex has equal indeg \& outdeg.
     \item For $directed graph$, euler path exists $iff$ at most one vertex has $(outdeg) - (indeg) = 1$, atmost one vertex has $(indeg) - (outdeg) = 1$, every other vertex has $indeg = outdeg$.
 \end{itemize}
@@ -2324,7 +2324,7 @@ $f = x_1 \wedge x_2 \wedge \dots \wedge x_n$ is satisfiable iff there isnt both 
 $f = (x_1 \vee y_1) \wedge \dots \wedge (x_n \vee y_n)$ is satisfiable iff both $x_i \& \bar{x_i}$ are not in same SCC as one them has to be true and in SCC one value is true all others must be true. For each $(x_i \vee y_i)$ add 2 edges $\bar{x_i} \rightarrow y_i$ and $\bar{y_i} \rightarrow x_i$. 
 \\After seeing whether the soln exists or not, soln can be constructed with the help of Kosaraju's algo, let comp[v] denote the index of strongly connected component to which the vertex v belongs. Then, if $comp[x] < comp[\bar{x}]$ we assign x with false and true otherwise.
 \subsection{DAG}
-topological sort or topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge uv from vertex u to vertex v, u comes before v in the ordering.
+Topological sort or topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge uv from vertex u to vertex v, u comes before v in the ordering.
 \\A topological ordering is possible if and only if the graph has no directed cycles, that is, if it is a directed acyclic graph (DAG). Any DAG has at least one topological ordering.
 \begin{minted}{cpp}
 void dfs (int from) {
@@ -2353,7 +2353,7 @@ find toposort. Set numPaths[firstElement] = 1. Then we process the remaining ver
 This is described as a problem of finding the min. no. of paths to cover each vertex on DAG. The start of each path can be arbitrary, we are just interested in min. no. of paths.
 \\Construct a bipartite graph $G' = (V_{out} \cup V_{in}, E')$ from G where $V_{out/in} = \{v \in V: v \text{ has poitive out/in degree}\}$
 \\$E' = \{(u, v) \in (V_{out}, V_{in}) : (u, v) \in E\}$
-\\G' is a bipartite graph, do max. matching on it. Say answer obtained is m that means ans is $|V| - m$ as initially |V| vertices can be convered with |V| paths of length of length 0 (the vertices themselves). One matching b/w vertex a and b using edge (a, b) says that we can use one less path as edge (a, b) in E' can cover path $a \in V_{out} \& b\in V_{in}$
+\\G' is a bipartite graph, do max. matching on it. Say answer obtained is m that means ans is $|V| - m$ as initially $\vert V \vert$ vertices can be convered with $\vert V \vert$ paths of length of length 0 (the vertices themselves). One matching b/w vertex a and b using edge (a, b) says that we can use one less path as edge (a, b) in E' can cover path $a \in V_{out} \& b\in V_{in}$
 \subsection{APSP Floyd Warshalls}
 \begin{minted}{cpp}
 for (int k = 0; k < V; k++) {
@@ -2384,7 +2384,7 @@ else adjmat[i][j] = 0;
 \end{minted}
 \begin{itemize}
     \item If diagonal (initially 0) becomes negative $\Rightarrow$ negative cycle
-    \item This algo will still work correctly for all pair of i and j for which there doesn't exist a pth starting at i, visiting a negative cycle and end at j.
+    \item This algo will still work correctly for all pair of i and j for which there doesn't exist a path starting at i, visiting a negative cycle and end at j.
     \item i.e. Shortest path between 2 vertices i, j does not exist (due to presence of negative cycle) iff there exist a vertex t that is reachable from i and also from j and for which $d[t][t] < 0$.
     \item If diagonal (initially inf) becomes finite $\Rightarrow$ cycle
     \item The smallest non negative adjmat[i][i] for all i is the cheapest cycle
@@ -2471,7 +2471,7 @@ int dijkstra (int s, int e) {
 \begin{itemize}
     \item \href{https://uva.onlinejudge.org/external/116/11635.pdf}{Hotel Booking Problem}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_11635.cpp}{sol}
     \item \href{https://uva.onlinejudge.org/external/113/11367.pdf}{Fuel Tank problem}, \href{https://gist.github.com/sourabh2311/8bfef5f916820d71a8770fc4c7adc598}{sol}
-    \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/47482331}{Sol}: pr denotes from what grammer it is derived. Also number of functions on n variables $= 2^{2^n}$.
+    \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/48057301}{Sol}: pr denotes from what grammer it is derived. Also number of functions on n variables $= 2^{2^n}$.
 \end{itemize}
 \subsubsection{Bellman ford}
 \begin{minted}{cpp} 
@@ -2494,43 +2494,7 @@ for (int i = 0; i < V - 1 and modified; i++) {
         }
     }
 }
-// to check for negative cycle
-void solve()
-{
-    vector<int> d(n);
-    vector<int> p(n, -1);
-    int x;
-    for (int i = 0; i < n; ++i) {
-        x = -1;
-        for (Edge e : edges) {
-            if (d[e.a] + e.cost < d[e.b]) {
-                d[e.b] = d[e.a] + e.cost;
-                p[e.b] = e.a;
-                x = e.b;
-            }
-        }
-    }
 
-    if (x == -1) {
-        cout << "No negative cycle found.";
-    } else {
-        for (int i = 0; i < n; ++i)
-            x = p[x];
-
-        vector<int> cycle;
-        for (int v = x;; v = p[v]) {
-            cycle.push_back(v);
-            if (v == x && cycle.size() > 1)
-                break;
-        }
-        reverse(cycle.begin(), cycle.end());
-
-        cout << "Negative cycle: ";
-        for (int v : cycle)
-            cout << v << ' ';
-        cout << endl;
-    }
-}
 // To check for negative cycle, run this one more time
 int x = -1;
 for (int u = 0; u < V; u++) {
@@ -2592,9 +2556,9 @@ void augment(int v, int minEdge) { // traverse BFS spanning tree from s->t
         mf += f; // we can still send a flow, increase the max flow!
     }
 \end{minted}
-\begin{itemize}
+\begin{itemize}[leftmargin=*]
     \item Reason why we need to consider back flow: so that if by back flow we reach destination then that means we could have done it in straight way. 
-    \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{bflow} 
+    \\\includegraphics[width=0.2\textwidth,height=0.2\textheight,keepaspectratio]{bflow} 
     \item VIMP Note: if you are traversing through all 'v' like in the code above then its fine but otherwise if you do glist[u].pb(v) you \textbf{must} also do glist[v].pb (u) but only set res[u][v].
     \item Lets define an s-t cut C = (s-component, t-component) as a partition of V s.t. source s belongs to s-component and sink t belongs to t-component. Lets also define a cut-set to be set $\{(u, v) \in E | u \in s-comp, v \in t-comp\}$ such that if all edges in cut-set of C are removed, max flow from s to t is 0. (i.e. s and t are disconnected). The cost of an s-t cut C is defined by the sum of capacities of edges in cut-set of C. The min cut problem (min cut) is to minimize the amount of capacity of an s-t cut. Sol: After running max flow algo, do bfs/dfs from s, all vertices reachable from s using positive weighted edges in the residual graph belong to s-comp. and remaining belong to t-comp. and mf = min cut value. This is max-flow min-cut theorem.
     \item Multisource/multisink: Create a supersource ss and super sing st. Connect ss with all s with infinite capacity and also connect all t with st with infinte capacity, then run edmonds karps as per normal.
@@ -2659,7 +2623,7 @@ Here, we additionally impose the restriction that the graph has to be connected.
 
 Let's denote the required number of connected graphs with $n$ vertices as $C_n$.
 
-We will first discuss how many disconnected graphs exists. Then the number of connected graphs will be $G_n$ minus the number of disconnected graphs. Even more, we will count the number of disconnected, rooted graphs.A rooted graph is a graph, where we emphasize one vertex by labeling it as root. Obviously we have $n$ possibilities to root a graph with $n$ labeled vertices, therefore we will need to divide the number of disconnected rooted graphs by $n$ at the end to get the number of disconnected graphs.
+We will first discuss how many disconnected graphs exists. Then the number of connected graphs will be $G_n$ minus the number of disconnected graphs. Even more, we will count the number of disconnected, rooted graphs. A rooted graph is a graph, where we emphasize one vertex by labeling it as root. Obviously we have $n$ possibilities to root a graph with $n$ labeled vertices, therefore we will need to divide the number of disconnected rooted graphs by $n$ at the end to get the number of disconnected graphs.
 
 The root vertex will appear in a connected component of size $1, \dots n-1$. There are $k \binom{n}{k} C_k G_{n-k}$ graphs such that the root vertex is in a connected component with $k$ vertices (there are $\binom{n}{k}$ ways to choose $k$ vertices for the component, these are connected in one of $C_k$ ways, the root vertex can be any of the $k$ vertices, and the remainder $n-k$ vertices can be connected/disconnected in any way, which gives a factor of $G_{n-k}$). Therefore the number of disconnected graphs with $n$ vertices is: $$\frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}$$ And finally the number of connected graphs is: $$C_n = G_n - \frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}$$
 \subsubsection{Labeled graphs with $k$ connected components}

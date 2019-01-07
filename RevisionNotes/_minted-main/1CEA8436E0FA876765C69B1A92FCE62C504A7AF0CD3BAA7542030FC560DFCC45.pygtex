@@ -74,7 +74,7 @@
 
 \PYG{c+cm}{To achieve this, we’ll first assume that each node in our graph G is not an articulation vertex. In other words, the removal of any node u in G will result in there being only one connected component (G will remain one entity and not be disconnected).}
 
-\PYG{c+cm}{We’ll then use the same algorithm we’ve used before, however, this around around, whenever we find that u is an articulation vertex relative to one of its children, we’ll increment articulation\PYGZus{}vertex[u].}
+\PYG{c+cm}{We’ll then use the same algorithm we’ve used before, however, this time around, whenever we find that u is an articulation vertex relative to one of its children, we’ll increment articulation\PYGZus{}vertex[u].}
 
 \PYG{c+cm}{So, if we have a vertex u with say, 3 child components with no back\PYGZhy{}edges, the removal of u will result in G being cut into four connected components.}
 \PYG{c+cm}{*/}
