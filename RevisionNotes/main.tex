@@ -321,7 +321,7 @@ $Cat(n) = \binom{2n}{n} / (n + 1)$
     \item No. of different ways in which n + 1 factors can be completely parenthesized. Like for \{a, b, c, d\}, one parenthing will be ((ab)c)d.
     \item the number of monotonic paths of length 2n through an n-by-n grid that do not rise above the main diagonal
     \item n pair of people on circle can do non cross hand shakes. i.e. no of ways to connect the 2n points on a circle to form n disjoint chords
-    \item no. of permutations of length n that an be stack sorted
+    \item no. of permutations of length n that can be stack sorted
     \item no. of non crossing partitions of a set of n elements
 \end{enumerate}
 \textbf{Note: }Its better to use bigint for catalan computations. Also no. of binary trees with n labelled nodes $= cat[n] * fact[n]$
@@ -800,7 +800,7 @@ $$\min_ {i=1 \ldots m} \dfrac{a_i}{p_i}$$
     The inverse is also true: if $F_m$ is multiple of $F_n$, then $m$ is multiple of $n$.
     \item GCD identity: $GCD(F_m, F_n) = F_{GCD(m, n)}$
     \item Every positive integer can be expressed uniquely as a sum of fibonacci numbers such that no two numbers are equal or consecutive fibonacci numbers. This can be done greedily by taking the highest fibonacci no. at each point.
-    \item Fibonacci nos are periodic under modulo. The period of the fibonacci sequence modula a positive integer j is the smallest positive integer m such that such that $F_m \equiv 0 (mod j) \& F_{m + 1} \equiv 1 (mod j)$
+    \item Fibonacci nos are periodic under modulo. The period of the fibonacci sequence modula a positive integer j is the smallest positive integer m such that such that $F_m \equiv 0 (\mod j) \& F_{m + 1} \equiv 1 (\mod j)$
     \item \[\begin{bmatrix}
     1 & 1\\
     1 & 0
@@ -1144,7 +1144,7 @@ Note:
     $$(a-b) \mod N \leftrightarrow ((a_1 - b_1) \mod n_1, \dots, (a_k - b_k) \mod n_k)$$
     $$(a*b) \mod N \leftrightarrow ((a_1 * b_1) \mod n_1, \dots, (a_k * b_k) \mod n_k)$$
 \end{itemize}
-Corollary if $n_1, n_2, \dots, n_k$ are pairwise coprime and $n = n_1*n_2*\dots * n_k$, then for all integers x and a, $x \equiv a (\mod n_i)$ fot $i = 1, 2, \dots, k$ iff $x \equiv a (mod n)$
+Corollary if $n_1, n_2, \dots, n_k$ are pairwise coprime and $n = n_1*n_2*\dots * n_k$, then for all integers x and a, $x \equiv a (\mod n_i)$ for $i = 1, 2, \dots, k$ iff $x \equiv a (mod n)$
 \\Now if moduli $n_i's$ are not neccessarily pairwise coprime. Let $d_{i, j} = gcd(n_i, n_j)$ for $i \neq j$. Then the above system has a simultaneous soln iff $d_{i, j}$ divides $a_i - a_j$ for all $i \neq j$. Further such a soln is unique module $lcm(n_1, n_2, \dots, n_k)$.
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{crt}
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{crt2}
@@ -1217,7 +1217,7 @@ Furthermore, the number of primitive roots modulo $n$, if there are any, is equa
 \subsubsection{Algorithm for finding a primitive root}
 From previous section, we know that if the smallest number $k$ for which $g^k \equiv 1 \pmod n$ is $\phi (n)$, then $g$ is a primitive root. Since for any number $a$ relative prime to $n$, we know from Euler's theorem that $a ^ { \phi (n) } \equiv 1 \pmod n$, then to check if $g$ is primitive root, it is enough to check that for all $d$ less than $\phi (n)$, $g^d \not \equiv 1 \pmod n$. However, this algorithm is still too slow. $O(g * \phi (n))$
 
-From Lagrange's theorem, we know that the index of any number modulo $n$ must be a divisor of $\phi (n)$. Thus, it is sufficient to verify for all proper divisor $d , | , \phi (n)$ that $g^d \not \equiv 1 \pmod n$. This is already a much faster algorithm, but we can still do better.
+From Lagrange's theorem, we know that the index of any number modulo $n$ must be a divisor of $\phi (n)$. Thus, it is sufficient to verify for all proper divisor $d \vert \phi (n)$ that $g^d \not \equiv 1 \pmod n$. This is already a much faster algorithm, but we can still do better.
 
 Factorize $\phi (n) = p_1 ^ {a_1} ... p_s ^ {a_s}$. We prove that in the previous algorithm, it is sufficient to consider only the values of $d$ which has the form $\frac { \phi (n) } {p_j}$. Indeed, let $d$ be any proper divisor of $\phi (n)$. Then, obviously, there exists such $j$ that $d , | , \frac { \phi (n) } {p_j}$, i.e. $d . k = \frac { \phi (n) } {p_j}$. However, if $g^d \equiv 1 \pmod n$, we would get:
 
@@ -1319,7 +1319,7 @@ This is the final formula for all solutions of discrete root problem.
 		printf ("%d ", ans[i]);
 \end{minted}
 \subsection{Fermats last theorem}
-No 3 positive integerss a, b, c satisfying the eqn $a^n + b^n = c^n$ for any integer value of n greater than 2.
+No 3 positive integers a, b, c satisfying the eqn $a^n + b^n = c^n$ for any integer value of n greater than 2.
 \subsection{Josephus Problem}
 Given natural no. n and k, we write natural nos 1 to n along the circle. Then delete the kth no, (i..e no. k initially) and then from this position next kth no. is deleted and so on.
 \\The process stops when there is only one no. remaining, problem asks us to find this no.
@@ -1329,12 +1329,12 @@ f(n) & = & 1, 1, 3, 1, 3, 5
 \end{eqnarray}
 Thm: if $n = 2^m + l$ where $0 \leq l < 2^m$ then $f(n) = 2l + 1$.
 \subsubsection{For general $k \geq 1$}
-We should note that after the kth person is killed we are left with a circle of n - 1 and we start the next count with the person whose no in the original problem was $(k \mod n) + 1$. The position of the survivior in the remaining circle would be $f(n - 1, k)$ if we start counting at 1; shifting this to account for the fact that we are starting at $(k \mod n) + 1$ yilds the recurrence $f(n, k) =  ((f(n - 1, k) + k - 1) \mod n) + 1$ with $f(1, k) = 1$ which takes the simpler form $g(n, k) = (g(n - 1, k) + k) \mod n$ with $g(1, k) = 0$. This approach has running time O(n).
+We should note that after the kth person is killed we are left with a circle of n - 1 and we start the next count with the person whose no. in the original problem was $(k \mod n) + 1$. The position of the survivior in the remaining circle would be $f(n - 1, k)$ if we start counting at 1; shifting this to account for the fact that we are starting at $(k \mod n) + 1$ yields the recurrence $f(n, k) =  ((f(n - 1, k) + k - 1) \mod n) + 1$ with $f(1, k) = 1$ which takes the simpler form $g(n, k) = (g(n - 1, k) + k) \mod n$ with $g(1, k) = 0$. This approach has running time O(n).
 \\But for small k and large n, there is another approach. The second apprach also uses dp but has running time O(klogn) and is based on cosidering killing kth, 2kth, ..., $(\lfloor n/k \rfloor * k)$th person as one step, then changing the numbering.
 \begin{eqnarray}
-g(n, k) &=& 0 \text{ if n = 1 (because of 0 indexing)}\\
-        &=& (g(n - 1, k) + k) \mod n \text{ if $1 < n < k$}\\
-        &=& \lfloor k * ((g(n_m, k) - n \mod k) \mod n_m) / (k - 1) \rfloor \text{ where $n_m = n - \lfloor n/k \rfloor$ if $k \leq n$}
+g(n, k) = 0 \text{ if n = 1 (because of 0 indexing)}\\
+        = (g(n - 1, k) + k) \mod n \text{ if $1 < n < k$}\\
+        = \lfloor k * ((g(n_m, k) - n \mod k) \mod n_m) / (k - 1) \rfloor\\ \text{ where $n_m = n - \lfloor n/k \rfloor$ if $k \leq n$}
 \end{eqnarray}
 \subsection{Root Solving}
 \begin{minted}{cpp}
@@ -1519,10 +1519,11 @@ int main() {
 \end{minted}
 \subsection{Integration}
 \subsubsection{Simpson rule}
-$$x_i = a + i h, ~~ i = 0 \ldots 2n,$$ $$h = \frac {b-a} {2n}.$$
-$$\int_a ^ b f (x) dx \approx \left(f (x_0) + 4 f (x_1) + 2 f (x_2) + 4f(x_3) + 2 f(x_4) + \ldots + 4 f(x_{2N-1}) + f(x_{2N}) \right)\frac {h} {3} $$
+$x_i = a + i h, ~~ i = 0 \ldots 2n$, $h = \frac {b-a} {2n}.$
+
+$\int_a ^ b f (x) dx \approx (f (x_0) + 4 f (x_1) + 2 f (x_2) + 4f(x_3) + 2 f(x_4)\\ + \ldots + 4 f(x_{2N-1}) + f(x_{2N}) )\frac {h} {3}$
 \begin{minted}{cpp}
-    const int N = 1000 * 1000; // number of steps (already multiplied by 2)
+const int N = 1000 * 1000; // number of steps (already multiplied by 2)
 
 double simpson_integration(double a, double b){
     double h = (b - a) / N;
@@ -1550,7 +1551,7 @@ double simpson_integration(double a, double b){
         \item (a + 1, b + 1)
         \item If (a, b) exist and (b, c) exist then (a, c) exist.
     \end{enumerate}
-    Every (x, y) pair s.t. $x < y$ can be transformed to (1, 1 + k x d) where k is any positive integer and d is maximal odd divisor of y - x. We want to generate $(1, a_1), (1, a_2), \dots, (1, a_n)$. So $d | gcd(a_1 - 1, a_2 - 1, \dots, a_n - 1)$. No. of pairs (x, y) which have d as their maximal odd divisors: these are cards with y - x = d, 2d, 4d, 8d, etc. as odd into odd is odd thus we can't multiply with any odd number as it will give bigger odd divisor. Don't forget that numbers x, y must no exceed m. Total no. of cards with some fixed difference t = y - x is exactly m - t. $1 \leq x < y \leq m$\\
+    Every (x, y) pair s.t. $x < y$ can be transformed to (1, 1 + k x d) where k is any positive integer and d is maximal odd divisor of y - x. We want to generate $(1, a_1), (1, a_2), \dots, (1, a_n)$. So $d | gcd(a_1 - 1, a_2 - 1, \dots, a_n - 1)$. No. of pairs (x, y) which have d as their maximal odd divisors: these are cards with y - x = d, 2d, 4d, 8d, etc. as odd into odd is odd thus we can't multiply with any odd number as it will give bigger odd divisor. Don't forget that numbers x, y must not exceed m. Total no. of cards with some fixed difference t = y - x is exactly m - t. $1 \leq x < y \leq m$\\
     $1 - x \leq 0 < t \leq m - x$\\
     $1 \leq x \leq m - t$\\
     $m - t \geq 1$\\
@@ -1634,7 +1635,7 @@ ll compute (ll a, ll &b, ll &m) {
     \item \href {https://uva.onlinejudge.org/external/100/10061.pdf}{How many zeros and how many digits?} Sol: then iterate through factors of base and get their powers in n!, take min. of all such powers divided by power of prime factor in that base. And for how many digits part, use that log formula.
     \item Is $n!$ divisible by m? Sol: Use prime factors
     \item Given n, maximize (find x) $n - p*x$ where $p*x \leq n < (p + 1)*x$ which somehow happens with $p = 1$
-    \item \textbf{Prob: }Lenghts from 1 to n, max. no. of triangles?
+    \item \textbf{Prob: }Lengths from 1 to n, max. no. of triangles?
             \\\textbf{Sol: }\begin{minted}{cpp}
 void precal () {
     F[3] = P[3] = 0;
