@@ -4971,9 +4971,9 @@ int main () {
 \end{itemize}
 \section{Geometry}
 \begin{itemize}
-    \item for given 3 points of a valid parallelogram, there are 3 possible locations for the 4th point.
+    \item for given 3 points of a valid parallelogram, there are 3 possible locations for the 4th point. (Note: Diagonals of the parallelogram bisect each other)
     \item we have a hexagon with integral sides and all interior angles equal to 120 deg. we draw lines parallel to the side of the hexagon, such that we get equilateral triangles of side 1 unit, how many equilateral triangles did we got? Sol: \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{triangle} 
-    \item An inscribed angle is an angle formed by 2 chords in a circle which have a common endpoint. This common endpoint form the vertex o the inscribed angle. The other 2 endpoints define what we call an intercepted arc.
+    \item An inscribed angle is an angle formed by 2 chords in a circle which have a common endpoint. This common endpoint form the vertex of the inscribed angle. The other 2 endpoints define what we call an intercepted arc.
     \item Measure of intercepted arc of a unit circle is $2/\pi$ that of inscribed angle.
     \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{basiccircle} 
     \item Circles will certainly not touch or intersect iff the dist. between their center is greater than the sum of their radii.
@@ -5003,7 +5003,8 @@ int main () {
     x_1 & y_1\\
     \vdots & \vdots\\
     x_n & y_n
-    \end{bmatrix} = 1/2 * ((x_0 * y_1 + x_1 * y_2 + \dots + x_{n - 2} * y_{n - 1}) - (x_1*y_0 \dots)\]
+    \end{bmatrix} = 1/2 * ((x_0 * y_1 + x_1 * y_2 + \dots + x_{n - 2} * y_{n - 1})\\
+     - (x_1*y_0 \dots)\]
     \item \textbf{Some properties of triangles}
     \begin{itemize}
         \item $s = p/2$
@@ -5020,7 +5021,7 @@ int main () {
         \item Given sides of triangle, sort them, then see 3 consecutive sides, if the area is positive (using herons formula), they form a valid triangle, mx = max (mx, area).
     \end{itemize}
     \item Kite is a quadrilateral which has two pair of sides of same length which are adjacent to each other. The area of kite is $diagonal_1*diagonal_2/2$. Diagonals of kite are perpendicular.
-    \item Rhombus is a special parallelogram where every side has equal length. It is also a special case of kits where every side has equal length.    
+    \item Rhombus is a special parallelogram where every side has equal length. It is also a special case of kite where every side has equal length.    
     \item Convex Polygon: All interior angles should be less than 180 deg. Polygon which is not Convex is Concave
     \item Concave polygon has critical point (point from which entire polygon is not visible).
     \item \textbf{Pick's Theorem}. $A=i+\frac{b}{2}-1$, where: $P$ is a simple polygon whose vertices are grid points, $A$ is area of $P$, $i$ is \# of grid points in the interior of $P$, and $b$ is \# of grid points on the boundary of $P$. \\
