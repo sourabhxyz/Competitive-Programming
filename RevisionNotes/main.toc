@@ -158,4 +158,5 @@
 \contentsline {subsection}{\numberline {7.3}Closest Pair Problem}{41}{subsection.7.3}
 \contentsline {subsection}{\numberline {7.4}2D geo lib}{41}{subsection.7.4}
 \contentsline {subsection}{\numberline {7.5}3D geo lib}{41}{subsection.7.5}
-\contentsline {subsection}{\numberline {7.6}Important Problems}{42}{subsection.7.6}
+\contentsline {subsection}{\numberline {7.6}Line Sweep}{42}{subsection.7.6}
+\contentsline {subsection}{\numberline {7.7}Important Problems}{42}{subsection.7.7}

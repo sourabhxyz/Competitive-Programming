@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.7)  13 JAN 2019 07:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.7)  13 JAN 2019 09:36
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1183,12 +1183,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write8
 \openout8 = `main.toc'.
 
-<sumgraph.PNG, id=833, 893.13675pt x 320.397pt>
+<sumgraph.PNG, id=838, 893.13675pt x 320.397pt>
 File: sumgraph.PNG Graphic file (type png)
 <use sumgraph.PNG>
 Package pdftex.def Info: sumgraph.PNG  used on input line 131.
 (pdftex.def)             Requested size: 275.9837pt x 99.00426pt.
-<sgth.PNG, id=835, 885.90974pt x 72.27pt>
+<sgth.PNG, id=840, 885.90974pt x 72.27pt>
 File: sgth.PNG Graphic file (type png)
 <use sgth.PNG>
 Package pdftex.def Info: sgth.PNG  used on input line 132.
@@ -1203,42 +1203,42 @@ Overfull \hbox (4.98932pt too wide) in paragraph at lines 127--134
 []
  []
 
-<mob0.PNG, id=836, 685.3605pt x 100.57574pt>
+<mob0.PNG, id=841, 685.3605pt x 100.57574pt>
 File: mob0.PNG Graphic file (type png)
 <use mob0.PNG>
 Package pdftex.def Info: mob0.PNG  used on input line 135.
 (pdftex.def)             Requested size: 275.99036pt x 40.5012pt.
-<mob1.PNG, id=837, 1049.72176pt x 329.43076pt>
+<mob1.PNG, id=842, 1049.72176pt x 329.43076pt>
 File: mob1.PNG Graphic file (type png)
 <use mob1.PNG>
 Package pdftex.def Info: mob1.PNG  used on input line 136.
 (pdftex.def)             Requested size: 275.98055pt x 86.61006pt.
-<mob2.PNG, id=838, 1051.5285pt x 442.65375pt>
+<mob2.PNG, id=843, 1051.5285pt x 442.65375pt>
 File: mob2.PNG Graphic file (type png)
 <use mob2.PNG>
 Package pdftex.def Info: mob2.PNG  used on input line 137.
 (pdftex.def)             Requested size: 275.99025pt x 116.18146pt.
-<mob3.PNG, id=839, 1052.13075pt x 125.268pt>
+<mob3.PNG, id=844, 1052.13075pt x 125.268pt>
 File: mob3.PNG Graphic file (type png)
 <use mob3.PNG>
 Package pdftex.def Info: mob3.PNG  used on input line 138.
 (pdftex.def)             Requested size: 275.98778pt x 32.85944pt.
-<mob4.PNG, id=840, 218.0145pt x 46.9755pt>
+<mob4.PNG, id=845, 218.0145pt x 46.9755pt>
 File: mob4.PNG Graphic file (type png)
 <use mob4.PNG>
 Package pdftex.def Info: mob4.PNG  used on input line 139.
 (pdftex.def)             Requested size: 55.20207pt x 11.89436pt.
-<mob5.PNG, id=841, 811.23074pt x 85.5195pt>
+<mob5.PNG, id=846, 811.23074pt x 85.5195pt>
 File: mob5.PNG Graphic file (type png)
 <use mob5.PNG>
 Package pdftex.def Info: mob5.PNG  used on input line 140.
 (pdftex.def)             Requested size: 275.9881pt x 29.0945pt.
-<mob6.PNG, id=842, 1058.7555pt x 258.9675pt>
+<mob6.PNG, id=847, 1058.7555pt x 258.9675pt>
 File: mob6.PNG Graphic file (type png)
 <use mob6.PNG>
 Package pdftex.def Info: mob6.PNG  used on input line 141.
 (pdftex.def)             Requested size: 275.98077pt x 67.50381pt.
-<mob7.PNG, id=843, 672.71326pt x 414.95026pt>
+<mob7.PNG, id=848, 672.71326pt x 414.95026pt>
 File: mob7.PNG Graphic file (type png)
 <use mob7.PNG>
 Package pdftex.def Info: mob7.PNG  used on input line 142.
@@ -1291,7 +1291,7 @@ Underfull \hbox (badness 1253) in paragraph at lines 152--154
 \openout3 = `main.pyg'.
 
 (./_minted-main/CFF3A54A34AB2113321E5782D23D0947504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<brnsq.PNG, id=880, 638.98724pt x 274.626pt>
+<brnsq.PNG, id=885, 638.98724pt x 274.626pt>
 File: brnsq.PNG Graphic file (type png)
 <use brnsq.PNG>
 Package pdftex.def Info: brnsq.PNG  used on input line 176.
@@ -1453,17 +1453,17 @@ Overfull \hbox (58.51868pt too wide) in alignment at lines 839--839
 \openout3 = `main.pyg'.
 
  (./_minted-main/7D79CF8A496BFE69F29586941BE30A02504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<crt.PNG, id=950, 751.00575pt x 438.438pt>
+<crt.PNG, id=955, 751.00575pt x 438.438pt>
 File: crt.PNG Graphic file (type png)
 <use crt.PNG>
 Package pdftex.def Info: crt.PNG  used on input line 1149.
 (pdftex.def)             Requested size: 275.98843pt x 161.12234pt.
-<crt2.PNG, id=951, 746.18774pt x 440.847pt>
+<crt2.PNG, id=956, 746.18774pt x 440.847pt>
 File: crt2.PNG Graphic file (type png)
 <use crt2.PNG>
 Package pdftex.def Info: crt2.PNG  used on input line 1150.
 (pdftex.def)             Requested size: 275.99405pt x 163.05702pt.
-<crt3.PNG, id=952, 749.199pt x 117.43875pt>
+<crt3.PNG, id=957, 749.199pt x 117.43875pt>
 File: crt3.PNG Graphic file (type png)
 <use crt3.PNG>
 Package pdftex.def Info: crt3.PNG  used on input line 1151.
@@ -1509,7 +1509,7 @@ Overfull \hbox (4.99586pt too wide) in paragraph at lines 1147--1
 Underfull \vbox (badness 1776) has occurred while \output is active []
 
  [9])
-<rem.PNG, id=964, 927.465pt x 570.63188pt>
+<rem.PNG, id=969, 927.465pt x 570.63188pt>
 File: rem.PNG Graphic file (type png)
 <use rem.PNG>
 Package pdftex.def Info: rem.PNG  used on input line 1192.
@@ -1546,7 +1546,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 \openout3 = `main.pyg'.
 
  (./_minted-main/E8B97EF1BA69A85DCC6EEC98A90A311E504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<confr.PNG, id=981, 587.19376pt x 478.78876pt>
+<confr.PNG, id=986, 587.19376pt x 478.78876pt>
 File: confr.PNG Graphic file (type png)
 <use confr.PNG>
 Package pdftex.def Info: confr.PNG  used on input line 1540.
@@ -1609,7 +1609,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 \openout3 = `main.pyg'.
 
  (./_minted-main/0422392ED8F12F88E77BC4AB4EE5114F504A7AF0CD3BAA7542030FC560DFCC45.pygtex [15])
-<lca.PNG, id=1038, 785.334pt x 411.939pt>
+<lca.PNG, id=1043, 785.334pt x 411.939pt>
 File: lca.PNG Graphic file (type png)
 <use lca.PNG>
 Package pdftex.def Info: lca.PNG  used on input line 1934.
@@ -1619,7 +1619,7 @@ Overfull \hbox (13.5059pt too wide) in paragraph at lines 1934--1935
 [] 
  []
 
-<tar.PNG, id=1039, 652.23676pt x 502.87875pt>
+<tar.PNG, id=1044, 652.23676pt x 502.87875pt>
 File: tar.PNG Graphic file (type png)
 <use tar.PNG>
 Package pdftex.def Info: tar.PNG  used on input line 1936.
@@ -1682,7 +1682,7 @@ Package hyperref Warning: Suppressing link with empty target on input line 2542.
 \openout3 = `main.pyg'.
 
 (./_minted-main/3CB36DBD533FC653984B04146B6159ED504A7AF0CD3BAA7542030FC560DFCC45.pygtex [20])
-<bflow.PNG, id=1107, 234.27525pt x 242.1045pt>
+<bflow.PNG, id=1112, 234.27525pt x 242.1045pt>
 File: bflow.PNG Graphic file (type png)
 <use bflow.PNG>
 Package pdftex.def Info: bflow.PNG  used on input line 2575.
@@ -1934,7 +1934,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [38])
-<palsub.PNG, id=1307, 759.43726pt x 386.04225pt>
+<palsub.PNG, id=1312, 759.43726pt x 386.04225pt>
 File: palsub.PNG Graphic file (type png)
 <use palsub.PNG>
 Package pdftex.def Info: palsub.PNG  used on input line 4967.
@@ -1944,7 +1944,7 @@ Overfull \hbox (22.00151pt too wide) in paragraph at lines 4966--4969
 [] 
  []
 
-<triangle.PNG, id=1313, 751.00575pt x 458.31226pt>
+<triangle.PNG, id=1318, 751.00575pt x 458.31226pt>
 File: triangle.PNG Graphic file (type png)
 <use triangle.PNG>
 Package pdftex.def Info: triangle.PNG  used on input line 4975.
@@ -1977,7 +1977,7 @@ Overfull \hbox (21.99702pt too wide) in paragraph at lines 4975--4976
 
 Underfull \vbox (badness 1308) has occurred while \output is active []
 
-<basiccircle.png, id=1314, 457.71pt x 482.55281pt>
+<basiccircle.png, id=1319, 457.71pt x 482.55281pt>
 File: basiccircle.png Graphic file (type png)
 <use basiccircle.png>
 Package pdftex.def Info: basiccircle.png  used on input line 4978.
@@ -2002,7 +2002,7 @@ Overfull \hbox (19.47458pt too wide) detected at line 5007
 \openout3 = `main.pyg'.
 
 (./_minted-main/1E45E049D292D94549D88DAE86F30CB6504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<p1.PNG, id=1324, 917.829pt x 228.25275pt>
+<p1.PNG, id=1329, 917.829pt x 228.25275pt>
 File: p1.PNG Graphic file (type png)
 <use p1.PNG>
 Package pdftex.def Info: p1.PNG  used on input line 5045.
@@ -2012,7 +2012,7 @@ Overfull \hbox (22.00363pt too wide) in paragraph at lines 5045--5046
 [][] 
  []
 
-<p2.PNG, id=1325, 916.6245pt x 238.491pt>
+<p2.PNG, id=1330, 916.6245pt x 238.491pt>
 File: p2.PNG Graphic file (type png)
 <use p2.PNG>
 Package pdftex.def Info: p2.PNG  used on input line 5046.
@@ -2024,16 +2024,16 @@ Overfull \hbox (22.00508pt too wide) in paragraph at lines 5046--5047
 
 \openout3 = `main.pyg'.
 
-(./_minted-main/2A376B87B415882711AFB01874A7E0A1504A7AF0CD3BAA7542030FC560DFCC45.pygtex [40 <./p1.PNG> <./p2.PNG>])
+(./_minted-main/F8EFA36789D58E1B5110AC2339CA40DA504A7AF0CD3BAA7542030FC560DFCC45.pygtex [40 <./p1.PNG> <./p2.PNG>])
 \openout3 = `main.pyg'.
 
- (./_minted-main/C46A809E22A2BA11EFDBC4387F260E39504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<circleline.PNG, id=1336, 208.3785pt x 266.1945pt>
+ (./_minted-main/01F2FDB4D61E76AD5DE28FAA09908C17504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+<circleline.PNG, id=1341, 208.3785pt x 266.1945pt>
 File: circleline.PNG Graphic file (type png)
 <use circleline.PNG>
 Package pdftex.def Info: circleline.PNG  used on input line 5160.
 (pdftex.def)             Requested size: 55.20096pt x 70.51683pt.
-<circlecircle.PNG, id=1337, 587.796pt x 572.1375pt>
+<circlecircle.PNG, id=1342, 587.796pt x 572.1375pt>
 File: circlecircle.PNG Graphic file (type png)
 <use circlecircle.PNG>
 Package pdftex.def Info: circlecircle.PNG  used on input line 5161.
@@ -2046,37 +2046,37 @@ Overfull \hbox (5.00343pt too wide) in paragraph at lines 5158--5162
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<facearea.PNG, id=1339, 508.90125pt x 486.618pt>
+<facearea.PNG, id=1344, 508.90125pt x 486.618pt>
 File: facearea.PNG Graphic file (type png)
 <use facearea.PNG>
 Package pdftex.def Info: facearea.PNG  used on input line 5164.
 (pdftex.def)             Requested size: 275.99843pt x 263.91328pt.
-<sph.PNG, id=1340, 728.12025pt x 381.22424pt>
+<sph.PNG, id=1345, 728.12025pt x 381.22424pt>
 File: sph.PNG Graphic file (type png)
 <use sph.PNG>
 Package pdftex.def Info: sph.PNG  used on input line 5165.
 (pdftex.def)             Requested size: 275.99974pt x 144.50606pt.
-<segsegcir.PNG, id=1341, 590.80725pt x 648.021pt>
+<segsegcir.PNG, id=1346, 590.80725pt x 648.021pt>
 File: segsegcir.PNG Graphic file (type png)
 <use segsegcir.PNG>
 Package pdftex.def Info: segsegcir.PNG  used on input line 5166.
 (pdftex.def)             Requested size: 276.00266pt x 302.73074pt.
-<segsegcir2.PNG, id=1342, 611.886pt x 628.14674pt>
+<segsegcir2.PNG, id=1347, 611.886pt x 628.14674pt>
 File: segsegcir2.PNG Graphic file (type png)
 <use segsegcir2.PNG>
 Package pdftex.def Info: segsegcir2.PNG  used on input line 5167.
 (pdftex.def)             Requested size: 275.99037pt x 283.32477pt.
-<segsegcir3.PNG, id=1343, 588.39825pt x 615.4995pt>
+<segsegcir3.PNG, id=1348, 588.39825pt x 615.4995pt>
 File: segsegcir3.PNG Graphic file (type png)
 <use segsegcir3.PNG>
 Package pdftex.def Info: segsegcir3.PNG  used on input line 5168.
 (pdftex.def)             Requested size: 275.99954pt x 288.7119pt.
-<orientedangle.PNG, id=1344, 722.7pt x 396.2805pt>
+<orientedangle.PNG, id=1349, 722.7pt x 396.2805pt>
 File: orientedangle.PNG Graphic file (type png)
 <use orientedangle.PNG>
 Package pdftex.def Info: orientedangle.PNG  used on input line 5169.
 (pdftex.def)             Requested size: 275.98523pt x 151.3319pt.
-<spherearea.PNG, id=1345, 720.89325pt x 377.61075pt>
+<spherearea.PNG, id=1350, 720.89325pt x 377.61075pt>
 File: spherearea.PNG Graphic file (type png)
 <use spherearea.PNG>
 Package pdftex.def Info: spherearea.PNG  used on input line 5170.
@@ -2122,32 +2122,36 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [41 <./circleline.PNG> <./circlecircle.PNG> <./facearea.PNG> <./sph.PNG>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- 
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 5172.
+
+
 AED: lastpage setting LastPage
 [42 <./segsegcir.PNG> <./segsegcir2.PNG> <./segsegcir3.PNG> <./orientedangle.PNG> <./spherearea.PNG>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5176.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5176.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5178.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5178.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5176.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5176.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5178.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5178.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4C7F18D6C895F83A4A525DA2EC304A3A;11750.
+(rerunfilecheck)             Checksum: 8C955E27C3F56CC3C03723BC0B9838DF;11811.
 runsystem(rm main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 24619 strings out of 492982
- 499690 string characters out of 6134897
- 659672 words of memory out of 5000000
- 26990 multiletter control sequences out of 15000+600000
+ 24621 strings out of 492982
+ 499720 string characters out of 6134897
+ 660673 words of memory out of 5000000
+ 26991 multiletter control sequences out of 15000+600000
  15899 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,13n,78p,3090b,878s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanumgtm22.pfb></usr/share/texlive/texmf-dist/fonts/type1/uhc/umj/umj01.pfb>
-Output written on main.pdf (43 pages, 3136163 bytes).
+Output written on main.pdf (43 pages, 3136723 bytes).
 PDF statistics:
- 1500 PDF objects out of 1728 (max. 8388607)
- 1356 compressed objects within 14 object streams
- 298 named destinations out of 1000 (max. 500000)
- 1466 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1506 PDF objects out of 1728 (max. 8388607)
+ 1362 compressed objects within 14 object streams
+ 299 named destinations out of 1000 (max. 500000)
+ 1474 words of extra memory for PDF output out of 10000 (max. 10000000)
 

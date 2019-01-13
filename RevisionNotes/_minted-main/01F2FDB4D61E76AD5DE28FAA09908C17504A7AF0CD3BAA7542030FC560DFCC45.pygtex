@@ -2,7 +2,7 @@
 \PYG{c+c1}{// First sort the points by their x coordinates. Do whatever if there is tie.}
 \PYG{c+c1}{// I have to write the correct implementation following the idea mentioned in cormen and use it to solve codejams prob.}
 \PYG{c+c1}{// Commented section shows how to solve the problem:}
-\PYG{c+c1}{// Find out the maximum size such that if you draw such size quared around each point (that point will be at the center of the square) and no two squared will intersct each other (cna touch but not intersect). To make the problem simple the sides of the square will be parallel to X and Y axis.}
+\PYG{c+c1}{// Find out the maximum size such that if you draw such size squared around each point (that point will be at the center of the square) and no two squared will intersct each other (can touch but not intersect). To make the problem simple the sides of the square will be parallel to X and Y axis.}
 \PYG{k+kt}{double} \PYG{n+nf}{dvac}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{low}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{high}\PYG{p}{)} \PYG{p}{\PYGZob{}}
    \PYG{k}{if}\PYG{p}{(}\PYG{n}{low} \PYG{o}{\PYGZlt{}} \PYG{n}{high}\PYG{p}{)} \PYG{p}{\PYGZob{}}
        \PYG{k}{if}\PYG{p}{(}\PYG{n}{low} \PYG{o}{==} \PYG{n}{high} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
