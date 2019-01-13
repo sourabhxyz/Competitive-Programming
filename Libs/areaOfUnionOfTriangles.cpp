@@ -120,5 +120,4 @@ int main() {
 
 	cout.precision (8);
 	cout << fixed << res;
-
 }
