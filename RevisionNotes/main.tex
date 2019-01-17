@@ -1937,6 +1937,7 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 \end{itemize}
 \subsubsection{Important Problems}
 \begin{itemize}
+    \item \href{https://codeforces.com/contest/1100/problem/E}{That reversing edges problem}, \href{https://codeforces.com/contest/1100/submission/48343664}{sol}
     \item \href{https://codeforces.com/contest/1099/problem/F}{Eating cookies on tree}, \href{https://codeforces.com/blog/entry/64296?#comment-482494}{Sol}
     \item Say path length is defined as the sum of edge weights along that path. And diameter is length of the longest simple path. Given sum of edge weights 'm' we need to assign weights to edges so that diameter is minimum. Sol: Consider the center of the tree like before, now the length of all paths from this tree should be minimum, which is only possible if we assign length to be the same. \href{https://codeforces.com/contest/1086/submission/47400574}{code}
     \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabh2311/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
@@ -5169,7 +5170,7 @@ double dvac(int low, int high) {
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{orientedangle}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{spherearea}
 \subsection{Line Sweep}
-See \href{https://www.topcoder.com/community/competitive-programming/tutorials/line-sweep-algorithms/}{this} and \href{}{this}.
+See \href{https://www.topcoder.com/community/competitive-programming/tutorials/line-sweep-algorithms/}{this} and \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/RevisionNotes/linesweep.pdf}{this}.
 \subsection{Important Problems}
 \begin{itemize}
     \item Sometimes it makes sense to gridize the region, like in \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1333.cpp}{Timus 1333}
