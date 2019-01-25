@@ -1660,6 +1660,7 @@ else ans = ((n - 7) * (m - 7) + 1) / 2
 \section{Graphs}
 \subsection{Basic}
 \begin{itemize}
+    \item \textbf{HandShaking lemma: }Every finite undirected graph has an even number of vertices with odd degree. handshaking lemma), $\sum _{v\in V}\deg v=2|E|$    
     \item The shortest path b/w vertices i and j after edge (u, v) is added is equal to $min(d_{i, j}, d_{i, u} + w_{u, v} + d_{v, j}, d_{i, v} + w_{v, u} + d_{u, j})$
     \item In BFS, in case of multiple sources, enqueue them all in queue and set dist[v] = 0. Some trick works in case of dijkstra.
     \item Also in case we are given both source and destination then we can terminate our while loop by checking whether the element we pop from queue is the destination or not. Same trick would work with weighted graph provided we have no -ve edges (dijkstra)
@@ -1937,7 +1938,6 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 \end{itemize}
 \subsubsection{Important Problems}
 \begin{itemize}
-    \item \href{https://codeforces.com/contest/1100/problem/E}{That reversing edges problem}, \href{https://codeforces.com/contest/1100/submission/48343664}{sol}
     \item \href{https://codeforces.com/contest/1099/problem/F}{Eating cookies on tree}, \href{https://codeforces.com/blog/entry/64296?#comment-482494}{Sol}
     \item Say path length is defined as the sum of edge weights along that path. And diameter is length of the longest simple path. Given sum of edge weights 'm' we need to assign weights to edges so that diameter is minimum. Sol: Consider the center of the tree like before, now the length of all paths from this tree should be minimum, which is only possible if we assign length to be the same. \href{https://codeforces.com/contest/1086/submission/47400574}{code}
     \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabh2311/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
@@ -2369,6 +2369,10 @@ This is described as a problem of finding the min. no. of paths to cover each ve
 \\Construct a bipartite graph $G' = (V_{out} \cup V_{in}, E')$ from G where $V_{out/in} = \{v \in V: v \text{ has poitive out/in degree}\}$
 \\$E' = \{(u, v) \in (V_{out}, V_{in}) : (u, v) \in E\}$
 \\G' is a bipartite graph, do max. matching on it. Say answer obtained is m that means ans is $|V| - m$ as initially $\vert V \vert$ vertices can be convered with $\vert V \vert$ paths of length of length 0 (the vertices themselves). One matching b/w vertex a and b using edge (a, b) says that we can use one less path as edge (a, b) in E' can cover path $a \in V_{out} \& b\in V_{in}$
+\subsubsection{Important Problems}
+\begin{itemize}
+    \item \href{https://codeforces.com/contest/1100/problem/E}{That reversing edges problem}, \href{https://codeforces.com/contest/1100/submission/48343664}{sol}
+\end{itemize}
 \subsection{APSP Floyd Warshalls}
 \begin{minted}{cpp}
 for (int k = 0; k < V; k++) {
@@ -4520,7 +4524,7 @@ Number of transitions $\leq 3n - 4$.
 using namespace std;
 
 typedef pair<int, int> ii;
-typedef long long int int;
+typedef long long int ll;
 //Learning in depth about suffix automaton.
 struct state {
     int len, link;
@@ -4844,121 +4848,8 @@ int main() {
     for (v = size; v >= 1; v--) occ[link[v]] += occ[v];
     sufCount[v] = 1 + sufCount[link[v]];
 */
-struct estatse {
-    int len, quicklink, link, serieslink, diff;
-    map<int, int> next;
-    estatse () { }
-};
-struct eertree {
-    int palsuf, siz;
-    vector<estatse> tree;
-    // 0 is imaginary node, 1 is epsilon node
-    eertree (int n) {
-        siz = 2;
-        tree.resize (2 + n);
-        tree[0].len = -1;
-        tree[0].link = 0;
-        tree[0].quicklink = 0;
-        tree[0].serieslink = 0;
-        tree[0].diff = 0;
-        tree[1].len = 0;
-        tree[1].link = 0;
-        tree[1].quicklink = 0;
-        tree[1].serieslink = 0;
-        tree[1].diff = 0;
-        palsuf = 1;
-    }
-    int add (int i, string &s) {
-        int cur = palsuf;
-        while (true) {
-            int curlen = tree[cur].len;
-            int linklen = tree[tree[cur].link].len;
-            if (i - 1 - curlen >= 0 and s[i - 1 - curlen] == s[i]) break;
-            if (i - 1 - curlen >= 0 and s[i - 1 - curlen] != s[i] and s[i - 1 - linklen] != s[i]) {
-                cur = tree[cur].quicklink;
-            } else {
-                cur = tree[cur].link;
-            }
-        }
-        if (tree[cur].next.count (s[i])) {
-            palsuf = tree[cur].next[s[i]];
-            return 0;
-        }
-        siz++;
-        palsuf = siz - 1;
-        estatse nw;
-        tree[cur].next[s[i]] = siz - 1;
-        nw.len = tree[cur].len + 2;
-        if (nw.len == 1) {
-            nw.link = 1;
-        } else {
-            cur = tree[cur].link;
-            while (true) {
-                int curlen = tree[cur].len;
-                int linklen = tree[tree[cur].link].len;
-                if (i - 1 - curlen >= 0 and s[i - 1 - curlen] == s[i]) {
-                    break;
-                }
-                if (i - 1 - curlen >= 0 and s[i - 1 - curlen] != s[i] and s[i - 1 - linklen] != s[i]) {
-                    cur = tree[cur].quicklink;
-                } else {
-                    cur = tree[cur].link;
-                }
-            }
-            nw.link = tree[cur].next[s[i]];
-        }
-        int u = nw.link;
-        int ud = tree[nw.link].link;
-        if (s[i - tree[u].len] == s[i - tree[ud].len]) {
-            nw.quicklink = tree[u].quicklink;
-        } else {
-            nw.quicklink = ud;
-        }
-        nw.diff = nw.len - tree[nw.link].len;
-        if (nw.diff == tree[nw.link].diff) {
-            nw.serieslink = tree[nw.link].serieslink;
-        } else {
-            nw.serieslink = nw.link;
-        }
-        tree[siz - 1] = nw;
-//        tree.push_back (nw);
-        return 1;
-    }
-};
-int anso[maxn], anse[maxn], dpo[maxn], dpe[maxn], palsuf[maxn];
-ii getMin (int &v, eertree &t, int n) {
-    dpo[v] = anso[n - (t.tree[t.tree[v].serieslink].len + t.tree[v].diff)];
-    dpe[v] = anse[n - (t.tree[t.tree[v].serieslink].len + t.tree[v].diff)];
-    if (t.tree[v].diff == t.tree[t.tree[v].link].diff) {
-        dpo[v] = min (dpo[v], dpo[t.tree[v].link]);
-        dpe[v] = min (dpe[v], dpe[t.tree[v].link]);
-    }
-    return ii (dpo[v] + 1, dpe[v] + 1);
-}
-int main () {
-    string s;
-    cin >> s;
-    eertree t1 (s.size ());
-    anso[0] = inf;
-    anse[0] = 0;
-    dpe[0] = dpe[1] = dpo[0] = dpo[1] = 0;
-    for (int i = 0; i < s.size (); i++) {
-        t1.add (i, s);
-        palsuf[i + 1] = t1.palsuf;
-        anso[i + 1] = inf;
-        anse[i + 1] = inf;
-        for (int v = t1.palsuf; t1.tree[v].len > 0; v = t1.tree[v].serieslink) {
-            auto temp = getMin (v, t1, i + 1);
-            anso[i + 1] = min (anso[i + 1], temp.second);
-            anse[i + 1] = min (anse[i + 1], temp.first);
-        }
-        anso[i + 1] != inf ? cout << anso[i + 1] : cout << "-1";
-        cout << " ";
-        anse[i + 1] != inf ? cout << anse[i + 1] : cout << "-2";
-        cout << "\n";
-    }
-}
 \end{minted}
+Just see this \href{https://github.com/sourabh2311/Timus/blob/master/1954_Five_Palindromes.cpp}{soln}
 \subsection{Important Problems}
 \textit{Review: cf 631D}
 \begin{itemize}

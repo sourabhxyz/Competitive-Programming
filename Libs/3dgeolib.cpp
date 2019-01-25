@@ -169,7 +169,7 @@ double dist(line3d l1, line3d l2) {
         return l1.dist(l2.o);
 // i.e. lines are either intersecting or are skew.
 // Define n = d1 x d2, i.e. n is direction which is perpendicular to both lines
-// Distance C1C2 = |C1C2.n|/|n|. Now dot product doesn't change when one of the vectors move perpendicular to other => dis = |O1C2.n|/|n| = |O1O2.n|/|n|.
+// Distance C1C2 = |C1C2.n|/|n| = |C1C2| (just mentioning). Now dot product doesn't change when one of the vectors move perpendicular to other => dis = |O1C2.n|/|n| = |O1O2.n|/|n|.
     return abs((l2.o-l1.o)|n)/abs(n);
 }
 // Now to find C1, C2, consider plane P which contains l2 and has normal = d2 x n, thus this planes intersection with l1 gives us C1. which we can find as before
@@ -294,7 +294,7 @@ double volume(vector<vector<v3>> fs) {
     double vol6 = 0.0;
     for (vector<v3> f : fs)
         vol6 += (vectorArea2(f)|f[0]);
-    // divide by 6 because in the end we were required to divide by 2 aswell.
+    // divide by 6 because in the end we were required to divide by 2 aswell because we are calculating vectorArea2.
     return abs(vol6) / 6.0;
 }
 // Spherical geometry

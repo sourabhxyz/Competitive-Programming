@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/*}
+\PYG{c+cm}{    for (v = size; v \PYGZgt{}= 1; v\PYGZhy{}\PYGZhy{}) occ[v] = occAsMax[v];}
+\PYG{c+cm}{    for (v = size; v \PYGZgt{}= 1; v\PYGZhy{}\PYGZhy{}) occ[link[v]] += occ[v];}
+\PYG{c+cm}{    sufCount[v] = 1 + sufCount[link[v]];}
+\PYG{c+cm}{*/}
+\end{Verbatim}

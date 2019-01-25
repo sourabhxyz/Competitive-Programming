@@ -4,7 +4,7 @@
 \PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
 
 \PYG{k}{typedef} \PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{ii}\PYG{p}{;}
-\PYG{k}{typedef} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{k+kt}{int} \PYG{k+kt}{int}\PYG{p}{;}
+\PYG{k}{typedef} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{k+kt}{int} \PYG{n}{ll}\PYG{p}{;}
 \PYG{c+c1}{//Learning in depth about suffix automaton.}
 \PYG{k}{struct} \PYG{n}{state} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{len}\PYG{p}{,} \PYG{n}{link}\PYG{p}{;}

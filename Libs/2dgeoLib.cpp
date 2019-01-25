@@ -24,6 +24,12 @@ struct vec {
     vec operator * (const double &mul) const {
         return vec(x * mul, y * mul);
     }
+    double operator | (const vec &other) {  // dot product
+        return (x * other.x + y * other.y);
+    }
+    double operator * (const vec &other) { // cross product
+        return x * other.y - y * other.x;
+    }
     bool operator < (const vec &other) const {
         if(abs(x - other.x) > eps) return x < other.x;
         return y < other.y;
@@ -108,6 +114,17 @@ double orientedAngle(vec a, vec b, vec c) {  // not getting angle between vector
         return angle(b-a, c-a);
     else  // i.e. B is on left of AC.
         return 2*pi - angle(b-a, c-a);
+}
+// to check whether the pt o is on segment a, b
+bool onSegment (vec &a, vec &b, vec &o) {
+    vec oa = a - o;
+    vec ob = b - o;
+    double crs = oa * ob;
+    double dt = oa | ob;
+    if (abs(crs) < eps and dt < eps) {
+        return true;
+    }
+    return false;
 }
 /* Point library ends */
 /* ------------------------------------------------------------------
@@ -521,6 +538,30 @@ bool inPolygon(vec pt, const vector<vec> &P) { // Works for both convex and conc
             sum += angle(P[i], pt, P[i+1]); // left turn/ccw
         else sum -= angle(P[i], pt, P[i+1]); } // right turn/cw
     return fabs(fabs(sum) - 2*pi) < eps; }
+int windingNumber (vec &pt, const vector<vec> &pol) {
+    // winding number will tell how many times is the point inside the polygon
+    int n = pol.size () - 1;
+    bool ok = false;
+    for (int i = 0, j = 1; i < n; ++i, j++) {
+        vec oa = pol[i] - pt;
+        vec ob = pol[j] - pt;
+        double crs = oa * ob;
+        double dt = oa | ob;
+        if (abs(crs) < eps and dt < eps) {  // checking on segment;
+            ok = true;
+            break;
+        }
+        bool below = pol[i].y < pt.y;
+        if (below != (pol[j].y < pt.y)) {
+            if (below == (crs > 0)) windingNumber += below ? 1 : -1;
+        }
+    }
+    if (ok) {
+        cout << "EDGE\n";
+        return 0;
+    }
+    return windingNumber;
+}
 bool inPolygonOrOn(vec pt, const vector<vec> &P) { // Works for both convex and concave
 // polygon. Also accepts if the point lies on boundary
     if (inPolygon(pt, P)) return true;

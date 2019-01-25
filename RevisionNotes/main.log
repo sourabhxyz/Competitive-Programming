@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.7)  14 JAN 2019 13:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.7)  25 JAN 2019 08:21
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1183,12 +1183,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write8
 \openout8 = `main.toc'.
 
-<sumgraph.PNG, id=838, 893.13675pt x 320.397pt>
+<sumgraph.PNG, id=843, 893.13675pt x 320.397pt>
 File: sumgraph.PNG Graphic file (type png)
 <use sumgraph.PNG>
 Package pdftex.def Info: sumgraph.PNG  used on input line 131.
 (pdftex.def)             Requested size: 275.9837pt x 99.00426pt.
-<sgth.PNG, id=840, 885.90974pt x 72.27pt>
+<sgth.PNG, id=845, 885.90974pt x 72.27pt>
 File: sgth.PNG Graphic file (type png)
 <use sgth.PNG>
 Package pdftex.def Info: sgth.PNG  used on input line 132.
@@ -1203,42 +1203,42 @@ Overfull \hbox (4.98932pt too wide) in paragraph at lines 127--134
 []
  []
 
-<mob0.PNG, id=841, 685.3605pt x 100.57574pt>
+<mob0.PNG, id=846, 685.3605pt x 100.57574pt>
 File: mob0.PNG Graphic file (type png)
 <use mob0.PNG>
 Package pdftex.def Info: mob0.PNG  used on input line 135.
 (pdftex.def)             Requested size: 275.99036pt x 40.5012pt.
-<mob1.PNG, id=842, 1049.72176pt x 329.43076pt>
+<mob1.PNG, id=847, 1049.72176pt x 329.43076pt>
 File: mob1.PNG Graphic file (type png)
 <use mob1.PNG>
 Package pdftex.def Info: mob1.PNG  used on input line 136.
 (pdftex.def)             Requested size: 275.98055pt x 86.61006pt.
-<mob2.PNG, id=843, 1051.5285pt x 442.65375pt>
+<mob2.PNG, id=848, 1051.5285pt x 442.65375pt>
 File: mob2.PNG Graphic file (type png)
 <use mob2.PNG>
 Package pdftex.def Info: mob2.PNG  used on input line 137.
 (pdftex.def)             Requested size: 275.99025pt x 116.18146pt.
-<mob3.PNG, id=844, 1052.13075pt x 125.268pt>
+<mob3.PNG, id=849, 1052.13075pt x 125.268pt>
 File: mob3.PNG Graphic file (type png)
 <use mob3.PNG>
 Package pdftex.def Info: mob3.PNG  used on input line 138.
 (pdftex.def)             Requested size: 275.98778pt x 32.85944pt.
-<mob4.PNG, id=845, 218.0145pt x 46.9755pt>
+<mob4.PNG, id=850, 218.0145pt x 46.9755pt>
 File: mob4.PNG Graphic file (type png)
 <use mob4.PNG>
 Package pdftex.def Info: mob4.PNG  used on input line 139.
 (pdftex.def)             Requested size: 55.20207pt x 11.89436pt.
-<mob5.PNG, id=846, 811.23074pt x 85.5195pt>
+<mob5.PNG, id=851, 811.23074pt x 85.5195pt>
 File: mob5.PNG Graphic file (type png)
 <use mob5.PNG>
 Package pdftex.def Info: mob5.PNG  used on input line 140.
 (pdftex.def)             Requested size: 275.9881pt x 29.0945pt.
-<mob6.PNG, id=847, 1058.7555pt x 258.9675pt>
+<mob6.PNG, id=852, 1058.7555pt x 258.9675pt>
 File: mob6.PNG Graphic file (type png)
 <use mob6.PNG>
 Package pdftex.def Info: mob6.PNG  used on input line 141.
 (pdftex.def)             Requested size: 275.98077pt x 67.50381pt.
-<mob7.PNG, id=848, 672.71326pt x 414.95026pt>
+<mob7.PNG, id=853, 672.71326pt x 414.95026pt>
 File: mob7.PNG Graphic file (type png)
 <use mob7.PNG>
 Package pdftex.def Info: mob7.PNG  used on input line 142.
@@ -1291,7 +1291,7 @@ Underfull \hbox (badness 1253) in paragraph at lines 152--154
 \openout3 = `main.pyg'.
 
 (./_minted-main/CFF3A54A34AB2113321E5782D23D0947504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<brnsq.PNG, id=885, 638.98724pt x 274.626pt>
+<brnsq.PNG, id=890, 638.98724pt x 274.626pt>
 File: brnsq.PNG Graphic file (type png)
 <use brnsq.PNG>
 Package pdftex.def Info: brnsq.PNG  used on input line 176.
@@ -1453,17 +1453,17 @@ Overfull \hbox (58.51868pt too wide) in alignment at lines 839--839
 \openout3 = `main.pyg'.
 
  (./_minted-main/7D79CF8A496BFE69F29586941BE30A02504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<crt.PNG, id=955, 751.00575pt x 438.438pt>
+<crt.PNG, id=960, 751.00575pt x 438.438pt>
 File: crt.PNG Graphic file (type png)
 <use crt.PNG>
 Package pdftex.def Info: crt.PNG  used on input line 1149.
 (pdftex.def)             Requested size: 275.98843pt x 161.12234pt.
-<crt2.PNG, id=956, 746.18774pt x 440.847pt>
+<crt2.PNG, id=961, 746.18774pt x 440.847pt>
 File: crt2.PNG Graphic file (type png)
 <use crt2.PNG>
 Package pdftex.def Info: crt2.PNG  used on input line 1150.
 (pdftex.def)             Requested size: 275.99405pt x 163.05702pt.
-<crt3.PNG, id=957, 749.199pt x 117.43875pt>
+<crt3.PNG, id=962, 749.199pt x 117.43875pt>
 File: crt3.PNG Graphic file (type png)
 <use crt3.PNG>
 Package pdftex.def Info: crt3.PNG  used on input line 1151.
@@ -1509,7 +1509,7 @@ Overfull \hbox (4.99586pt too wide) in paragraph at lines 1147--1
 Underfull \vbox (badness 1776) has occurred while \output is active []
 
  [9])
-<rem.PNG, id=969, 927.465pt x 570.63188pt>
+<rem.PNG, id=974, 927.465pt x 570.63188pt>
 File: rem.PNG Graphic file (type png)
 <use rem.PNG>
 Package pdftex.def Info: rem.PNG  used on input line 1192.
@@ -1546,7 +1546,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 \openout3 = `main.pyg'.
 
  (./_minted-main/E8B97EF1BA69A85DCC6EEC98A90A311E504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<confr.PNG, id=986, 587.19376pt x 478.78876pt>
+<confr.PNG, id=991, 587.19376pt x 478.78876pt>
 File: confr.PNG Graphic file (type png)
 <use confr.PNG>
 Package pdftex.def Info: confr.PNG  used on input line 1540.
@@ -1586,7 +1586,12 @@ Underfull \hbox (badness 1038) in paragraph at lines 1618--1619
 (./_minted-main/95D85EC6F9A0397DBDA2EECC635DE801504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
- (./_minted-main/22E1E110E0A7CD71CCB5E4C097DA7094504A7AF0CD3BAA7542030FC560DFCC45.pygtex) [13 <./confr.PNG>]
+ (./_minted-main/22E1E110E0A7CD71CCB5E4C097DA7094504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+Underfull \hbox (badness 1067) in paragraph at lines 1663--1664
+[]\OT1/cmr/bx/n/8 HandShaking lemma: \OT1/cmr/m/n/8 Ev-ery fi-nite undi-rected graph has an
+ []
+
+[13 <./confr.PNG>]
 \openout3 = `main.pyg'.
 
  (./_minted-main/134C86A458DB2F0A0A1993925162CA76504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
@@ -1596,7 +1601,7 @@ Underfull \hbox (badness 1038) in paragraph at lines 1618--1619
 \openout3 = `main.pyg'.
 
  (./_minted-main/97DAB2CBA24205D5A83A494E504513CA504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-Underfull \hbox (badness 2426) in paragraph at lines 1762--1762
+Underfull \hbox (badness 2426) in paragraph at lines 1763--1763
 |[]\OT1/cmr/bx/n/10 Articulation Points and Bridges (undi-rected
  []
 
@@ -1609,23 +1614,23 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 \openout3 = `main.pyg'.
 
  (./_minted-main/0422392ED8F12F88E77BC4AB4EE5114F504A7AF0CD3BAA7542030FC560DFCC45.pygtex [15])
-<lca.PNG, id=1043, 785.334pt x 411.939pt>
+<lca.PNG, id=1048, 785.334pt x 411.939pt>
 File: lca.PNG Graphic file (type png)
 <use lca.PNG>
-Package pdftex.def Info: lca.PNG  used on input line 1934.
+Package pdftex.def Info: lca.PNG  used on input line 1935.
 (pdftex.def)             Requested size: 275.99744pt x 144.77165pt.
 
-Overfull \hbox (13.5059pt too wide) in paragraph at lines 1934--1935
+Overfull \hbox (13.5059pt too wide) in paragraph at lines 1935--1936
 [] 
  []
 
-<tar.PNG, id=1044, 652.23676pt x 502.87875pt>
+<tar.PNG, id=1049, 652.23676pt x 502.87875pt>
 File: tar.PNG Graphic file (type png)
 <use tar.PNG>
-Package pdftex.def Info: tar.PNG  used on input line 1936.
+Package pdftex.def Info: tar.PNG  used on input line 1937.
 (pdftex.def)             Requested size: 275.9977pt x 212.796pt.
 
-Overfull \hbox (13.50616pt too wide) in paragraph at lines 1935--1937
+Overfull \hbox (13.50616pt too wide) in paragraph at lines 1936--1938
 [] 
  []
 
@@ -1662,10 +1667,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  (./_minted-main/7AFD6AC4522A8BBE0813AB023DD8D4F0504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
- (./_minted-main/A5C3FFF3A31C3E555A288A78CA26C941504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+ (./_minted-main/A5C3FFF3A31C3E555A288A78CA26C941504A7AF0CD3BAA7542030FC560DFCC45.pygtex) [19]
 \openout3 = `main.pyg'.
 
- (./_minted-main/F516036C88D82E5F97E7884AC12FBF5A504A7AF0CD3BAA7542030FC560DFCC45.pygtex [19])
+ (./_minted-main/F516036C88D82E5F97E7884AC12FBF5A504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
  (./_minted-main/081F8EA13B9E957DC5C144D34B4D4E12504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
@@ -1676,27 +1681,27 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  (./_minted-main/3F5B7DD4B563EC58DA75A670A1BFFF3C504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 
-Package hyperref Warning: Suppressing link with empty target on input line 2543.
+Package hyperref Warning: Suppressing link with empty target on input line 2547.
 
 \openout3 = `main.pyg'.
 
 (./_minted-main/3CB36DBD533FC653984B04146B6159ED504A7AF0CD3BAA7542030FC560DFCC45.pygtex [20])
-<bflow.PNG, id=1114, 234.27525pt x 242.1045pt>
+<bflow.PNG, id=1119, 234.27525pt x 242.1045pt>
 File: bflow.PNG Graphic file (type png)
 <use bflow.PNG>
-Package pdftex.def Info: bflow.PNG  used on input line 2576.
+Package pdftex.def Info: bflow.PNG  used on input line 2580.
 (pdftex.def)             Requested size: 110.39536pt x 114.08467pt.
  [21 <./bflow.PNG>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2644.
+(hyperref)                removing `math shift' on input line 2648.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2644.
+(hyperref)                removing `math shift' on input line 2648.
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 2662.
+Package hyperref Warning: Suppressing link with empty target on input line 2666.
 
 \openout3 = `main.pyg'.
 
@@ -1708,7 +1713,7 @@ Overfull \hbox (22.26256pt too wide) in paragraph at lines 4--4
 )
 \openout3 = `main.pyg'.
 
- (./_minted-main/CE73839F72B4BEBDD501352B50486A78504A7AF0CD3BAA7542030FC560DFCC45.pygtex) [22]
+ (./_minted-main/CE73839F72B4BEBDD501352B50486A78504A7AF0CD3BAA7542030FC560DFCC45.pygtex [22])
 \openout3 = `main.pyg'.
 
  (./_minted-main/FD97E717DB418A475453EA524F14416D504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
@@ -1728,7 +1733,7 @@ Overfull \hbox (22.26256pt too wide) in paragraph at lines 4--4
 
  (./_minted-main/A08A46C72D55237D1DCF69246FDEBACB504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 
-Package hyperref Warning: Suppressing link with empty target on input line 2797.
+Package hyperref Warning: Suppressing link with empty target on input line 2801.
 
 \openout3 = `main.pyg'.
 
@@ -1744,11 +1749,11 @@ Package hyperref Warning: Suppressing link with empty target on input line 2797.
  (./_minted-main/FBB759EF6DD3EFF92CDE4E50FEC99455504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
- (./_minted-main/D69BDA8B44CC73EF1F0E235BB53EDD13504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+ (./_minted-main/D69BDA8B44CC73EF1F0E235BB53EDD13504A7AF0CD3BAA7542030FC560DFCC45.pygtex [23])
 \openout3 = `main.pyg'.
 
- (./_minted-main/075054AA433295791C57B4B6D11C17C7504A7AF0CD3BAA7542030FC560DFCC45.pygtex [23]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ (./_minted-main/075054AA433295791C57B4B6D11C17C7504A7AF0CD3BAA7542030FC560DFCC45.pygtex
+Underfull \vbox (badness 3601) has occurred while \output is active []
 
 )
 \openout3 = `main.pyg'.
@@ -1756,16 +1761,16 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  (./_minted-main/507B1EBA935B8E1B16069298EC03E437504A7AF0CD3BAA7542030FC560DFCC45.pygtex [24])
 \openout3 = `main.pyg'.
 
- (./_minted-main/371DA16907DB986F5A07311A9287794E504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+ (./_minted-main/371DA16907DB986F5A07311A9287794E504A7AF0CD3BAA7542030FC560DFCC45.pygtex
+Underfull \vbox (badness 3601) has occurred while \output is active []
+
+)
 \openout3 = `main.pyg'.
 
  (./_minted-main/892D49297AAD0F4DB9166B7DF4016325504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
- (./_minted-main/2B84F8E9F4AD785387641352FC96CAD5504A7AF0CD3BAA7542030FC560DFCC45.pygtex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [25])
+ (./_minted-main/2B84F8E9F4AD785387641352FC96CAD5504A7AF0CD3BAA7542030FC560DFCC45.pygtex [25])
 \openout3 = `main.pyg'.
 
  (./_minted-main/BB47DB326B9A2F4AC4A0830979092F9D504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
@@ -1800,7 +1805,7 @@ Missing character: There is no 	 in font uwmj20!
 Missing character: There is no 	 in font uwmj20!
 Missing character: There is no 	 in font uwmj20!
 
-Underfull \hbox (badness 10000) in paragraph at lines 3811--3815
+Underfull \hbox (badness 10000) in paragraph at lines 3815--3819
 
  []
 
@@ -1826,7 +1831,7 @@ Missing character: There is no 	 in font uwmj20!
 \openout3 = `main.pyg'.
 
  (./_minted-main/4E70EAD528FE698C9A72EF2145EF1D7B504A7AF0CD3BAA7542030FC560DFCC45.pygtex [30])
-Overfull \hbox (23.85991pt too wide) in alignment at lines 3913--3915
+Overfull \hbox (23.85991pt too wide) in alignment at lines 3917--3919
  [][][] []
  []
 
@@ -1838,15 +1843,15 @@ Overfull \hbox (23.85991pt too wide) in alignment at lines 3913--3915
  (./_minted-main/68E38051AD4A35FD58C2A181E04026CA504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 3977.
+(hyperref)                removing `math shift' on input line 3981.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 3977.
+(hyperref)                removing `superscript' on input line 3981.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 3977.
+(hyperref)                removing `math shift' on input line 3981.
 
 \openout3 = `main.pyg'.
 
@@ -1862,10 +1867,10 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
  (./_minted-main/54F9B18A2B6BFA70F0E4B5A959154A0E504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
- (./_minted-main/C4B0F0980E9978BE24FCF2D08E199969504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+ (./_minted-main/C4B0F0980E9978BE24FCF2D08E199969504A7AF0CD3BAA7542030FC560DFCC45.pygtex) [33]
 \openout3 = `main.pyg'.
 
- (./_minted-main/B57B97518BCC2C0C2EB8FBDFA194B812504A7AF0CD3BAA7542030FC560DFCC45.pygtex [33])
+ (./_minted-main/B57B97518BCC2C0C2EB8FBDFA194B812504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
  (./_minted-main/4DB5049FA1EBB4C0008D6452EE9FEAE2504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
@@ -1881,12 +1886,12 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 \openout3 = `main.pyg'.
 
  (./_minted-main/B5B046D9215E9B2B521CDB12AD216D0F504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-Underfull \hbox (badness 1424) in paragraph at lines 4359--4360
+Underfull \hbox (badness 1424) in paragraph at lines 4363--4364
 \OT1/cmr/m/n/8 all of them are palin-dromes in $\OML/cmm/m/it/8 O\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 n[]\OT1/cmr/m/n/8 )$ or in $\OML/cmm/m/it/8 O\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 n[]\OT1/cmr/m/n/8 )$ by us-ing dp
  []
 
 
-Underfull \hbox (badness 1009) in paragraph at lines 4359--4360
+Underfull \hbox (badness 1009) in paragraph at lines 4363--4364
 \OT1/cmr/m/n/8 ($\OML/cmm/m/it/8 dp\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 startpos\OT1/cmr/m/n/8 ][\OML/cmm/m/it/8 endpos\OT1/cmr/m/n/8 ] = (\OML/cmm/m/it/8 s\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 startpos\OT1/cmr/m/n/8 ] == \OML/cmm/m/it/8 s\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 endpos\OT1/cmr/m/n/8 ]&&\OML/cmm/m/it/8 dp\OT1/cmr/m/n/8 [\OML/cmm/m/it/8 startpos \OT1/cmr/m/n/8 +
  []
 
@@ -1900,7 +1905,7 @@ Underfull \hbox (badness 1009) in paragraph at lines 4359--4360
 
  (./_minted-main/9C82A3CEB051934C1662C33AA35BDC1E504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 4437.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 4441.
 
 \openout3 = `main.pyg'.
 
@@ -1910,10 +1915,10 @@ LaTeX Warning: Command \textellipsis invalid in math mode on input line 4437.
  (./_minted-main/3525FFBC42238146410284D55056FE21504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
- (./_minted-main/B166F42D22D9D4883E6A3F8A46910826504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+ (./_minted-main/B166F42D22D9D4883E6A3F8A46910826504A7AF0CD3BAA7542030FC560DFCC45.pygtex) [35]
 \openout3 = `main.pyg'.
 
- (./_minted-main/5E72046CFAABA452838B543BABD4CEC4504A7AF0CD3BAA7542030FC560DFCC45.pygtex [35]
+ (./_minted-main/7F7FF643F56FDF9E45B7E6532CE1F23A504A7AF0CD3BAA7542030FC560DFCC45.pygtex
 LaTeX Font Info:    Try loading font information for LUC+nanumgt on input line 53.
  (/usr/share/texlive/texmf-dist/tex/latex/nanumtype1/lucnanumgt.fd
 File: lucnanumgt.fd 2013/02/12 v0.1 Nanum Gothic font definitions
@@ -1926,75 +1931,73 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [37])
-\openout3 = `main.pyg'.
-
- (./_minted-main/E65B55A24741E0FB34591B18B61C619E504A7AF0CD3BAA7542030FC560DFCC45.pygtex
+ [37]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [38])
-<palsub.PNG, id=1314, 759.43726pt x 386.04225pt>
+)
+\openout3 = `main.pyg'.
+
+ (./_minted-main/53ECB46CEA4DE7DC0CA639CE8AEE279E504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+<palsub.PNG, id=1315, 759.43726pt x 386.04225pt>
 File: palsub.PNG Graphic file (type png)
 <use palsub.PNG>
-Package pdftex.def Info: palsub.PNG  used on input line 4968.
+Package pdftex.def Info: palsub.PNG  used on input line 4859.
 (pdftex.def)             Requested size: 275.99292pt x 140.29457pt.
 
-Overfull \hbox (22.00151pt too wide) in paragraph at lines 4967--4970
+Overfull \hbox (22.00151pt too wide) in paragraph at lines 4858--4861
 [] 
  []
 
-<triangle.PNG, id=1320, 751.00575pt x 458.31226pt>
+<triangle.PNG, id=1321, 751.00575pt x 458.31226pt>
 File: triangle.PNG Graphic file (type png)
 <use triangle.PNG>
-Package pdftex.def Info: triangle.PNG  used on input line 4976.
+Package pdftex.def Info: triangle.PNG  used on input line 4867.
 (pdftex.def)             Requested size: 275.98843pt x 168.42598pt.
 
-Underfull \hbox (badness 2359) in paragraph at lines 4976--4977
+Underfull \hbox (badness 2359) in paragraph at lines 4867--4868
 []\OT1/cmr/m/n/8 we have a hexagon with in-te-gral sides and all in-te-rior an-
  []
 
 
-Underfull \hbox (badness 3039) in paragraph at lines 4976--4977
+Underfull \hbox (badness 3039) in paragraph at lines 4867--4868
 \OT1/cmr/m/n/8 gles equal to 120 deg. we draw lines par-al-lel to the side
  []
 
 
-Underfull \hbox (badness 4859) in paragraph at lines 4976--4977
+Underfull \hbox (badness 4859) in paragraph at lines 4867--4868
 \OT1/cmr/m/n/8 of the hexagon, such that we get equi-lat-eral tri-an-gles of
  []
 
 
-Underfull \hbox (badness 1248) in paragraph at lines 4976--4977
+Underfull \hbox (badness 1248) in paragraph at lines 4867--4868
 \OT1/cmr/m/n/8 side 1 unit, how many equi-lat-eral tri-an-gles did we got? Sol:
  []
 
 
-Overfull \hbox (21.99702pt too wide) in paragraph at lines 4976--4977
+Overfull \hbox (21.99702pt too wide) in paragraph at lines 4867--4868
 [] 
  []
 
-
-Underfull \vbox (badness 1308) has occurred while \output is active []
-
-<basiccircle.png, id=1321, 457.71pt x 482.55281pt>
+<basiccircle.png, id=1322, 457.71pt x 482.55281pt>
 File: basiccircle.png Graphic file (type png)
 <use basiccircle.png>
-Package pdftex.def Info: basiccircle.png  used on input line 4979.
+Package pdftex.def Info: basiccircle.png  used on input line 4870.
 (pdftex.def)             Requested size: 276.00398pt x 290.98445pt.
 
-Overfull \hbox (22.01257pt too wide) in paragraph at lines 4979--4980
+Overfull \hbox (22.01257pt too wide) in paragraph at lines 4870--4871
 [][] 
  []
 
+[38 <./palsub.PNG> <./triangle.PNG>]
 \openout3 = `main.pyg'.
 
-(./_minted-main/29A394E57E872033DDFECDFC639BCE60504A7AF0CD3BAA7542030FC560DFCC45.pygtex) [39 <./palsub.PNG> <./triangle.PNG> <./basiccircle.png>]
-Underfull \hbox (badness 1394) in paragraph at lines 4997--4998
+ (./_minted-main/29A394E57E872033DDFECDFC639BCE60504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
+Underfull \hbox (badness 1394) in paragraph at lines 4888--4889
 []\OT1/cmr/m/n/8 For gen-eral poly-gon (need not be con-vex) we can do $[] =
  []
 
 
-Overfull \hbox (19.47458pt too wide) detected at line 5008
+Overfull \hbox (19.47458pt too wide) detected at line 4899
 \OML/cmm/m/it/8 A \OT1/cmr/m/n/8 = 1\OML/cmm/m/it/8 =\OT1/cmr/m/n/8 2 [] = 1\OML/cmm/m/it/8 =\OT1/cmr/m/n/8 2 \OMS/cmsy/m/n/8 ^^C \OT1/cmr/m/n/8 ((\OML/cmm/m/it/8 x[] \OMS/cmsy/m/n/8 ^^C \OML/cmm/m/it/8 y[] \OT1/cmr/m/n/8 + \OML/cmm/m/it/8 x[] \OMS/cmsy/m/n/8 ^^C \OML/cmm/m/it/8 y[] \OT1/cmr/m/n/8 + [] + \OML/cmm/m/it/8 x[] \OMS/cmsy/m/n/8 ^^C \OML/cmm/m/it/8 y[]\OT1/cmr/m/n/8 )[]  \OMS/cmsy/m/n/8 ^^@ \OT1/cmr/m/n/8 (\OML/cmm/m/it/8 x[] \OMS/cmsy/m/n/8 ^^C \OML/cmm/m/it/8 y[] [] \OT1/cmr/m/n/8 )
  []
 
@@ -2004,149 +2007,152 @@ Overfull \hbox (19.47458pt too wide) detected at line 5008
 <p1.PNG, id=1331, 917.829pt x 228.25275pt>
 File: p1.PNG Graphic file (type png)
 <use p1.PNG>
-Package pdftex.def Info: p1.PNG  used on input line 5046.
+Package pdftex.def Info: p1.PNG  used on input line 4937.
 (pdftex.def)             Requested size: 275.99504pt x 68.63655pt.
 
-Overfull \hbox (22.00363pt too wide) in paragraph at lines 5046--5047
+Overfull \hbox (22.00363pt too wide) in paragraph at lines 4937--4938
 [][] 
  []
 
 <p2.PNG, id=1332, 916.6245pt x 238.491pt>
 File: p2.PNG Graphic file (type png)
 <use p2.PNG>
-Package pdftex.def Info: p2.PNG  used on input line 5047.
+Package pdftex.def Info: p2.PNG  used on input line 4938.
 (pdftex.def)             Requested size: 275.99649pt x 71.80986pt.
 
-Overfull \hbox (22.00508pt too wide) in paragraph at lines 5047--5048
+Overfull \hbox (22.00508pt too wide) in paragraph at lines 4938--4939
 [][] 
  []
 
+[39 <./basiccircle.png> <./p1.PNG> <./p2.PNG>]
 \openout3 = `main.pyg'.
 
-(./_minted-main/F8EFA36789D58E1B5110AC2339CA40DA504A7AF0CD3BAA7542030FC560DFCC45.pygtex [40 <./p1.PNG> <./p2.PNG>])
+ (./_minted-main/F8EFA36789D58E1B5110AC2339CA40DA504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
 \openout3 = `main.pyg'.
 
  (./_minted-main/01F2FDB4D61E76AD5DE28FAA09908C17504A7AF0CD3BAA7542030FC560DFCC45.pygtex)
-<circleline.PNG, id=1343, 208.3785pt x 266.1945pt>
+<circleline.PNG, id=1344, 208.3785pt x 266.1945pt>
 File: circleline.PNG Graphic file (type png)
 <use circleline.PNG>
-Package pdftex.def Info: circleline.PNG  used on input line 5161.
+Package pdftex.def Info: circleline.PNG  used on input line 5052.
 (pdftex.def)             Requested size: 55.20096pt x 70.51683pt.
-<circlecircle.PNG, id=1344, 587.796pt x 572.1375pt>
+<circlecircle.PNG, id=1345, 587.796pt x 572.1375pt>
 File: circlecircle.PNG Graphic file (type png)
 <use circlecircle.PNG>
-Package pdftex.def Info: circlecircle.PNG  used on input line 5162.
+Package pdftex.def Info: circlecircle.PNG  used on input line 5053.
 (pdftex.def)             Requested size: 275.99509pt x 268.64275pt.
 
-Overfull \hbox (5.00343pt too wide) in paragraph at lines 5159--5163
+Overfull \hbox (5.00343pt too wide) in paragraph at lines 5050--5054
 [] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-<facearea.PNG, id=1346, 508.90125pt x 486.618pt>
+<facearea.PNG, id=1347, 508.90125pt x 486.618pt>
 File: facearea.PNG Graphic file (type png)
 <use facearea.PNG>
-Package pdftex.def Info: facearea.PNG  used on input line 5165.
+Package pdftex.def Info: facearea.PNG  used on input line 5056.
 (pdftex.def)             Requested size: 275.99843pt x 263.91328pt.
-<sph.PNG, id=1347, 728.12025pt x 381.22424pt>
+<sph.PNG, id=1348, 728.12025pt x 381.22424pt>
 File: sph.PNG Graphic file (type png)
 <use sph.PNG>
-Package pdftex.def Info: sph.PNG  used on input line 5166.
+Package pdftex.def Info: sph.PNG  used on input line 5057.
 (pdftex.def)             Requested size: 275.99974pt x 144.50606pt.
-<segsegcir.PNG, id=1348, 590.80725pt x 648.021pt>
+<segsegcir.PNG, id=1349, 590.80725pt x 648.021pt>
 File: segsegcir.PNG Graphic file (type png)
 <use segsegcir.PNG>
-Package pdftex.def Info: segsegcir.PNG  used on input line 5167.
+Package pdftex.def Info: segsegcir.PNG  used on input line 5058.
 (pdftex.def)             Requested size: 276.00266pt x 302.73074pt.
-<segsegcir2.PNG, id=1349, 611.886pt x 628.14674pt>
+<segsegcir2.PNG, id=1350, 611.886pt x 628.14674pt>
 File: segsegcir2.PNG Graphic file (type png)
 <use segsegcir2.PNG>
-Package pdftex.def Info: segsegcir2.PNG  used on input line 5168.
+Package pdftex.def Info: segsegcir2.PNG  used on input line 5059.
 (pdftex.def)             Requested size: 275.99037pt x 283.32477pt.
-<segsegcir3.PNG, id=1350, 588.39825pt x 615.4995pt>
+<segsegcir3.PNG, id=1351, 588.39825pt x 615.4995pt>
 File: segsegcir3.PNG Graphic file (type png)
 <use segsegcir3.PNG>
-Package pdftex.def Info: segsegcir3.PNG  used on input line 5169.
+Package pdftex.def Info: segsegcir3.PNG  used on input line 5060.
 (pdftex.def)             Requested size: 275.99954pt x 288.7119pt.
-<orientedangle.PNG, id=1351, 722.7pt x 396.2805pt>
+<orientedangle.PNG, id=1352, 722.7pt x 396.2805pt>
 File: orientedangle.PNG Graphic file (type png)
 <use orientedangle.PNG>
-Package pdftex.def Info: orientedangle.PNG  used on input line 5170.
+Package pdftex.def Info: orientedangle.PNG  used on input line 5061.
 (pdftex.def)             Requested size: 275.98523pt x 151.3319pt.
-<spherearea.PNG, id=1352, 720.89325pt x 377.61075pt>
+<spherearea.PNG, id=1353, 720.89325pt x 377.61075pt>
 File: spherearea.PNG Graphic file (type png)
 <use spherearea.PNG>
-Package pdftex.def Info: spherearea.PNG  used on input line 5171.
+Package pdftex.def Info: spherearea.PNG  used on input line 5062.
 (pdftex.def)             Requested size: 275.98827pt x 144.56528pt.
 
-Overfull \hbox (5.00677pt too wide) in paragraph at lines 5164--5172
+Overfull \hbox (5.00677pt too wide) in paragraph at lines 5055--5063
 [] 
  []
 
 
-Overfull \hbox (5.00809pt too wide) in paragraph at lines 5164--5172
+Overfull \hbox (5.00809pt too wide) in paragraph at lines 5055--5063
 [] 
  []
 
 
-Overfull \hbox (5.011pt too wide) in paragraph at lines 5164--5172
+Overfull \hbox (5.011pt too wide) in paragraph at lines 5055--5063
 [] 
  []
 
 
-Overfull \hbox (4.99872pt too wide) in paragraph at lines 5164--5172
+Overfull \hbox (4.99872pt too wide) in paragraph at lines 5055--5063
 [] 
  []
 
 
-Overfull \hbox (5.00789pt too wide) in paragraph at lines 5164--5172
+Overfull \hbox (5.00789pt too wide) in paragraph at lines 5055--5063
 [] 
  []
 
 
-Overfull \hbox (4.99358pt too wide) in paragraph at lines 5164--5172
+Overfull \hbox (4.99358pt too wide) in paragraph at lines 5055--5063
 [] 
  []
 
 
-Overfull \hbox (4.99661pt too wide) in paragraph at lines 5164--5172
+Overfull \hbox (4.99661pt too wide) in paragraph at lines 5055--5063
 [] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [41 <./circleline.PNG> <./circlecircle.PNG> <./facearea.PNG> <./sph.PNG>]
+ [40 <./circleline.PNG> <./circlecircle.PNG>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [41 <./facearea.PNG> <./sph.PNG> <./segsegcir.PNG> <./segsegcir2.PNG> <./segsegcir3.PNG> <./orientedangle.PNG>] 
 AED: lastpage setting LastPage
-[42 <./segsegcir.PNG> <./segsegcir2.PNG> <./segsegcir3.PNG> <./orientedangle.PNG> <./spherearea.PNG>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5179.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5179.
+[42
+
+ <./spherearea.PNG>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5070.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5070.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5179.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5179.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5070.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5070.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8C955E27C3F56CC3C03723BC0B9838DF;11811.
+(rerunfilecheck)             Checksum: 72ED5AEC51E896F23EC887320AA2D7A2;11892.
 runsystem(rm main.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 24621 strings out of 492982
- 499720 string characters out of 6134897
- 660673 words of memory out of 5000000
- 26991 multiletter control sequences out of 15000+600000
+ 24623 strings out of 492982
+ 499762 string characters out of 6134897
+ 661316 words of memory out of 5000000
+ 26992 multiletter control sequences out of 15000+600000
  15899 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,13n,78p,3090b,878s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/nanumtype1/nanumgtm22.pfb></usr/share/texlive/texmf-dist/fonts/type1/uhc/umj/umj01.pfb>
-Output written on main.pdf (43 pages, 3137056 bytes).
+Output written on main.pdf (43 pages, 3136332 bytes).
 PDF statistics:
- 1509 PDF objects out of 1728 (max. 8388607)
- 1365 compressed objects within 14 object streams
- 299 named destinations out of 1000 (max. 500000)
- 1474 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1515 PDF objects out of 1728 (max. 8388607)
+ 1371 compressed objects within 14 object streams
+ 300 named destinations out of 1000 (max. 500000)
+ 1482 words of extra memory for PDF output out of 10000 (max. 10000000)
 

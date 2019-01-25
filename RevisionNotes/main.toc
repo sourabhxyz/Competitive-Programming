@@ -89,6 +89,7 @@
 \contentsline {subsubsection}{\numberline {2.10.2}SSLP}{19}{subsubsection.2.10.2}
 \contentsline {subsubsection}{\numberline {2.10.3}Counting Paths in DAG}{19}{subsubsection.2.10.3}
 \contentsline {subsubsection}{\numberline {2.10.4}Min Path cover on DAG}{19}{subsubsection.2.10.4}
+\contentsline {subsubsection}{\numberline {2.10.5}Important Problems}{19}{subsubsection.2.10.5}
 \contentsline {subsection}{\numberline {2.11}APSP Floyd Warshalls}{19}{subsection.2.11}
 \contentsline {subsection}{\numberline {2.12}MST (Kruskal)}{20}{subsection.2.12}
 \contentsline {subsection}{\numberline {2.13}SSSP}{20}{subsection.2.13}
@@ -98,8 +99,8 @@
 \contentsline {subsubsection}{\numberline {2.14.1}Edmond karps}{20}{subsubsection.2.14.1}
 \contentsline {subsection}{\numberline {2.15}Minimum Cost Flow}{21}{subsection.2.15}
 \contentsline {subsection}{\numberline {2.16}Kirchhoff's matrix tree theorem}{21}{subsection.2.16}
-\contentsline {subsection}{\numberline {2.17}Counting Labeled graphs}{21}{subsection.2.17}
-\contentsline {subsubsection}{\numberline {2.17.1}Labeled graphs}{21}{subsubsection.2.17.1}
+\contentsline {subsection}{\numberline {2.17}Counting Labeled graphs}{22}{subsection.2.17}
+\contentsline {subsubsection}{\numberline {2.17.1}Labeled graphs}{22}{subsubsection.2.17.1}
 \contentsline {subsubsection}{\numberline {2.17.2}Connected labeled graphs}{22}{subsubsection.2.17.2}
 \contentsline {subsubsection}{\numberline {2.17.3}Labeled graphs with $k$ connected components}{22}{subsubsection.2.17.3}
 \contentsline {subsection}{\numberline {2.18}Heavy Light Decomposition}{22}{subsection.2.18}
@@ -124,9 +125,9 @@
 \contentsline {subsection}{\numberline {3.13}Ternary Search}{31}{subsection.3.13}
 \contentsline {subsection}{\numberline {3.14}Submask Enumeration}{31}{subsection.3.14}
 \contentsline {subsubsection}{\numberline {3.14.1}Iterating through all masks with their submasks. Complexity $O(3^n)$}{31}{subsubsection.3.14.1}
-\contentsline {subsection}{\numberline {3.15}MOS Algorithm}{31}{subsection.3.15}
-\contentsline {subsection}{\numberline {3.16}MOS Algorithm with updates}{31}{subsection.3.16}
-\contentsline {subsection}{\numberline {3.17}Important Problems}{31}{subsection.3.17}
+\contentsline {subsection}{\numberline {3.15}MOS Algorithm}{32}{subsection.3.15}
+\contentsline {subsection}{\numberline {3.16}MOS Algorithm with updates}{32}{subsection.3.16}
+\contentsline {subsection}{\numberline {3.17}Important Problems}{32}{subsection.3.17}
 \contentsline {section}{\numberline {4}Data Structures}{32}{section.4}
 \contentsline {subsection}{\numberline {4.1}Segment Tree}{32}{subsection.4.1}
 \contentsline {section}{\numberline {5}DP}{32}{section.5}
@@ -149,14 +150,14 @@
 \contentsline {subsubsection}{\numberline {6.4.2}KMP}{35}{subsubsection.6.4.2}
 \contentsline {subsubsection}{\numberline {6.4.3}Counting number of occurrences of each prefix}{35}{subsubsection.6.4.3}
 \contentsline {subsection}{\numberline {6.5}Notes}{35}{subsection.6.5}
-\contentsline {subsection}{\numberline {6.6}SAM}{35}{subsection.6.6}
+\contentsline {subsection}{\numberline {6.6}SAM}{36}{subsection.6.6}
 \contentsline {subsection}{\numberline {6.7}EertreE}{38}{subsection.6.7}
-\contentsline {subsection}{\numberline {6.8}Important Problems}{39}{subsection.6.8}
-\contentsline {section}{\numberline {7}Geometry}{39}{section.7}
-\contentsline {subsection}{\numberline {7.1}Fast application of a set of geometric operations to a set of points}{40}{subsection.7.1}
+\contentsline {subsection}{\numberline {6.8}Important Problems}{38}{subsection.6.8}
+\contentsline {section}{\numberline {7}Geometry}{38}{section.7}
+\contentsline {subsection}{\numberline {7.1}Fast application of a set of geometric operations to a set of points}{39}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Klee's Algo}{40}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Closest Pair Problem}{41}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}2D geo lib}{41}{subsection.7.4}
-\contentsline {subsection}{\numberline {7.5}3D geo lib}{41}{subsection.7.5}
+\contentsline {subsection}{\numberline {7.3}Closest Pair Problem}{40}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}2D geo lib}{40}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}3D geo lib}{40}{subsection.7.5}
 \contentsline {subsection}{\numberline {7.6}Line Sweep}{42}{subsection.7.6}
 \contentsline {subsection}{\numberline {7.7}Important Problems}{42}{subsection.7.7}
