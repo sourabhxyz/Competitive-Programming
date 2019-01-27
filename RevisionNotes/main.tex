@@ -4120,7 +4120,7 @@ void solve() {
    }
    res = dp[V];
 }
-/*Minimum no. of coins/bills given to fullfill an amount >= x when each coin/bill can be used only once. This could have been easily done using bitset like that addition on segment question*/
+/*Minimum no. of coins/bills given to fullfill an amount >= x when each coin/bill can be used only once. We could have seen the possibility of an amount using bitset but not the actual no. of coins. */
 void solve() {
    int dp [10000 + 10];
    for ( int i = 0; i < 10010; i++ )
@@ -4636,7 +4636,7 @@ void constructSA(string ss) {
 int getcorrstate(string &tosearch) {
     int at = 0;
     for (int i = 0; i < tosearch.size(); i++) {
-        if (!st[at].count (tosearch[i])) return -1;
+        if (!st[at].next.count (tosearch[i])) return -1;
         at = st[at].next[tosearch[i]];
     }
     return at;
@@ -5067,4 +5067,7 @@ See \href{https://www.topcoder.com/community/competitive-programming/tutorials/l
     \item Sometimes it makes sense to gridize the region, like in \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1333.cpp}{Timus 1333}
     \item \href{https://uva.onlinejudge.org/external/101/10173.pdf}{Minimum Bounding Rectangle}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10173.cpp}{Sol}: basically use atan2 and rotate wrt that point.
 \end{itemize}
+\section{To Read}
+\href{https://codeforces.com/blog/entry/64829}{one}
+\href{https://codeforces.com/blog/entry/64783}{two}
 \end{document}

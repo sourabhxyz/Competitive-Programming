@@ -47,7 +47,7 @@
    \PYG{p}{\PYGZcb{}}
    \PYG{n}{res} \PYG{o}{=} \PYG{n}{dp}\PYG{p}{[}\PYG{n}{V}\PYG{p}{];}
 \PYG{p}{\PYGZcb{}}
-\PYG{c+cm}{/*Minimum no. of coins/bills given to fullfill an amount \PYGZgt{}= x when each coin/bill can be used only once. This could have been easily done using bitset like that addition on segment question*/}
+\PYG{c+cm}{/*Minimum no. of coins/bills given to fullfill an amount \PYGZgt{}= x when each coin/bill can be used only once. We could have seen the possibility of an amount using bitset but not the actual no. of coins. */}
 \PYG{k+kt}{void} \PYG{n+nf}{solve}\PYG{p}{()} \PYG{p}{\PYGZob{}}
    \PYG{k+kt}{int} \PYG{n}{dp} \PYG{p}{[}\PYG{l+m+mi}{10000} \PYG{o}{+} \PYG{l+m+mi}{10}\PYG{p}{];}
    \PYG{k}{for} \PYG{p}{(} \PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{10010}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++} \PYG{p}{)}
