@@ -1,3 +1,17 @@
+/*
+Description
+
+Beads of red, blue or green colors are connected together into a circular necklace of n beads ( n < 24 ). 
+If the repetitions that are produced by rotation around the center of the circular necklace or reflection to the 
+axis of symmetry are all neglected, how many different forms of the necklace are there?
+
+Input
+
+The input has several lines, and each line contains the input data n. 
+-1 denotes the end of the input file. 
+
+*/
+
 /* n rotational axis and n axis of symmetry 
    for rotation: rotation by 0 cells, by 1 cell, by 2 cells, etc, by (n-1) cells
    Now let's apply the lemma, and find the number of stripes that are fixed by the rotation by K cells. If a stripe becomes itself after rotating by K cells, then its 1st cell must have the same color as its (1+K modulo n)-th cell, which is in turn the same as its (1+2K modulo n)-th cell, etc, until we get back to the 1st cell when m*K modulo n=0. One may notice that this will happen when m=n/gcd(K,n), thus these must have same color. and we independent choice for n/(n/gcd(K, n)) = gcd(K, n).
