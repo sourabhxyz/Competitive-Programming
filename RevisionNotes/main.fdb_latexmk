@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1553261519 "/home/sourabh/Documents/Github/Competitive-Programming/RevisionNotes/main.tex" "main.pdf" "main" 1553316331
+["pdflatex"] 1553344938 "/home/sourabh/Documents/Github/Competitive-Programming/RevisionNotes/main.tex" "main.pdf" "main" 1553344943
   "/dev/null" 1553315978 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/etc/texmf/web2c/texmf.cnf" 1546805806 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/sourabh/Documents/Github/Competitive-Programming/RevisionNotes/main.tex" 1553316329 260835 13ddefdc1413cef0dfda01666450b283 ""
+  "/home/sourabh/Documents/Github/Competitive-Programming/RevisionNotes/main.tex" 1553344938 260836 fa21a8f8f5728903433d975f300afa95 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1480098698 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1480098698 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -361,10 +361,10 @@
   "facearea.PNG" 1546871452 80005 2dd5f6b29684d1d73851945d2371d49f ""
   "lca.PNG" 1546871452 146903 b7380407f610db31be5ce3cafd3f9d94 ""
   "main.aex" 0 -1 0 ""
-  "main.aux" 1553316329 27387 9c756aa0e04ee421eda2a688bec9e5a1 ""
-  "main.out" 1553261525 11936 072f1e8441b578c98874a4da04131fe9 ""
-  "main.tex" 1553316329 260835 13ddefdc1413cef0dfda01666450b283 ""
-  "main.toc" 1553316329 14574 1b1e48652aa365f19fa43b5eb79d95a2 ""
+  "main.aux" 1553344943 27387 9c756aa0e04ee421eda2a688bec9e5a1 ""
+  "main.out" 1553344943 11936 072f1e8441b578c98874a4da04131fe9 ""
+  "main.tex" 1553344938 260836 fa21a8f8f5728903433d975f300afa95 ""
+  "main.toc" 1553344943 14574 1b1e48652aa365f19fa43b5eb79d95a2 ""
   "main.w18" 0 -1 0 ""
   "mob0.PNG" 1545796421 26061 c6d48e987319afcf3986a220c300eed7 ""
   "mob1.PNG" 1545795590 156186 3fdf56dcf6ca1ae5e263109d0c5a560e ""
@@ -390,9 +390,9 @@
   "tar.PNG" 1546871452 141559 00cd9aed06e1327cafb27814658a673c ""
   "triangle.PNG" 1546871452 111973 5f36bfd97d37daa0408db7514845bec5 ""
   (generated)
-  "main.log"
   "main.pdf"
-  "main.toc"
   "main.aux"
-  "main.out"
   "main.pyg"
+  "main.log"
+  "main.toc"
+  "main.out"
