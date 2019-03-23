@@ -95,7 +95,7 @@ with this other one, you can add a value to the existing one:
 \setminted{breaklines=true, tabsize=2, breaksymbolleft=}
 \usemintedstyle{perldoc} % takes an optional argument to specify the style for a particular language, and works anywhere in the document
 \begin{document}
-\title{\swastik {scale = 0.2} {}Short Revision Notes{} \swastik {scale = 0.2}}
+\title{\swastik{scale = 0.2} {}Short Revision Notes{} \swastik{scale = 0.2}}
 \author{Sourabh Aggarwal (\href {https://codeforces.com/profile/sourabh23}{sourabh23})}
 \date{Compiled on \today}
 \maketitle
@@ -141,7 +141,11 @@ Positions $x$ for which $g(x)$ is 0 are P postions and all others are N position
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob6}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob7}
 \\$S_{\phi}(n) = id(n)$
+
+
 $\mu \circ id = \phi (n)$
+
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mobnew}
 \begin{minted}{cpp}
 for (int i = 1; i <= N; i++) { 
     for (int j = i; j <= N; j += i) {
@@ -150,7 +154,8 @@ for (int i = 1; i <= N; i++) {
 }
 \end{minted}
 Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
-\\\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is $\mu \circ e = \mu$. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(d)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
+\\\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is $\mu \circ e = \mu$. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(j)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
+\newpage
 \subsection{Bell, Burnside, etc}
 Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}
 
@@ -160,6 +165,8 @@ $B_n=\sum_{k=0}^nS(n,k)$  where $S(n,k)$ is a Stirling number of the second kind
 
 The Bell numbers can also be generated using the sum and recurrence relation
 $B_n=\sum_{k=0}^{n-1}B_k \binom{n - 1}{k}$ thus we usually compute bell numbers in $O(n^2)$ by either of the recurrence, here is the code using the first recurrence:
+\\Stirling no. of second kind obey the recurrence $$\stirling{n + 1}{k} = k * \stirling{n}{k} + \stirling{n}{k - 1} \forall n, k > 0$$ where $\stirling{0}{0} = 1$, $\stirling{n}{0} = \stirling{0}{n} = 0$
+\\$\stirling{n}{k} = \frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^n$
 \begin{minted}{cpp}
 void pre() {
   b[0][0] = 1;
@@ -175,8 +182,7 @@ void pre() {
 For burnside just see \href{https://codeforces.com/blog/entry/62401}{this} and \href{http://poj.org/problem?id=1286}{burnside on circle prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/BURNSIDE/2.CPP}{sol}
 \\Similarly answer for \href{http://gcpc.nwerc.eu/problemset_2017.pdf}{this}, is \\\includegraphics[width=0.3\textwidth,height=0.3\textheight,keepaspectratio]{brnsq}
 \\as those sides can be represented as a point on a circle.
-\\Stirling no. of second kind obey the recurrence $$\stirling{n + 1}{k} = k * \stirling{n}{k} + \stirling{n}{k - 1} \forall n, k > 0$$ where $\stirling{0}{0} = 1$, $\stirling{n}{0} = \stirling{0}{n} = 0$
-\\$\stirling{n}{k} = \frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^n$
+
 \subsubsection{Inclusion Exclusion Principle}
 $$\left|\bigcup_{i=1}^n A_i \right| = \sum_{\emptyset \neq J\subseteq \{1,2,\ldots ,n\}} (-1)^{|J|-1}{\Biggl |}\bigcap_{j\in J}A_{j}{\Biggr |}$$
 $$|\bigcap_{i = 1}^n A_{i}^c| = total - |\bigcup_{i = 1}^n A_i|$$
@@ -297,7 +303,7 @@ int bishop_placements(int N, int K)
 \subsection{Euler's Totient Function}
 Also known as phi-function $\phi (n)$, counts the number of integers between 1 and $n$ inclusive, which are coprime to $n$.
 \\If $p$ is prime $\phi (p) = p - 1.$
-\\If $p$ is a prime number and $k \ge 1$, then there are exactly $p^k / p$ numbers between $1$ and $p^k$ that are divisible by $p$. Which gives us:$\phi(p^k) = p^k - p^{k-1}.$
+\\If $p$ is a prime number and $k \ge 1$, then there are exactly $p^k / p$ numbers between $1$ and $p^k$ that are divisible by $p$. Which gives us: $\phi(p^k) = p^k - p^{k-1}.$
 \\If $a$ and $b$ are relatively prime, then: $\phi(a b) = \phi(a) \cdot \phi(b).$ This relation is not trivial to see. It follows from the Chinese remainder theorem.
 \\In general, for not coprime $a$ and $b$, the equation $$\phi(ab) = \phi(a) \cdot \phi(b) \cdot \dfrac{d}{\phi(d)}$$ with $d = \gcd(a, b)$ holds.\\
 $ \phi (n) = \phi ({p_1}^{a_1}) \cdot \phi ({p_2}^{a_2}) \cdots \phi ({p_k}^{a_k})$\\
@@ -314,7 +320,7 @@ $Cat(n) = \binom{2n}{n} / (n + 1)$
 \\$Cat(m) = (2m*(2m - 1)/(m*(m + 1))) * Cat(m - 1)$
 \\$Cat(n) = $\begin{enumerate}
     \item the number of ways a convex polygon with n+2 sides can be cut into n triangles
-    \item the number of ways to use n rectangles to tile a stairstep shape (1, 2, ..., n−1, n).
+    \item the number of ways to use n rectangles to tile a stairstep shape (1, 2, ..., $n-1, n$).
     \item No. of expressions containing n pairs of parentheses which are correctly matched.
     \item the number of planar binary trees with n+1 leaves
     \item No. of distinct binary trees with n vertices
@@ -777,7 +783,7 @@ $$\min_ {i=1 \ldots m} \dfrac{a_i}{p_i}$$
     \item For a series of numbers if you want next no. to have gcd 1 with all previous no. then $GCD(a_j, LCM(a_1, a_2, \dots, a_{j - 1})) = 1$.
     \item if $p|N \& p|M$ then $p|gcd(N, M)$ as $N = pk, M = pl \rightarrow$ N, M have p common so gcd will also have p.
     \item $N|P \& M|P \rightarrow lcm(N, M)|P$.
-    \item $N = gcd(N, m) \Leftrightarrow N|M$
+    \item $N = gcd(N, M) \Leftrightarrow N|M$
     \item $M = lcm(N, M) \Leftrightarrow N|M$
     \item $gcd(P*N, P*M) = P*gcd(N, M)$
     \item $lcm(P*N, P*M) = P*lcm(N, M)$
@@ -812,6 +818,7 @@ $$\min_ {i=1 \ldots m} \dfrac{a_i}{p_i}$$
     \end{bmatrix}
     \]
     \textit{Thus higher fibs can be computed in $O(\log{p})$}
+    \item \textbf{IMP NOTE:} To calculate $A^{-p}$ where $A$ is a matrix. Compute $A^{-1}$ the normal way just that take mod in between also when dividing by $|A|$ proceed normally (i.e. multiply by mod inverse of $|A|$. Also $A^{-p} = (A^{-1})^{p}$. 
     \item $$F_n = \frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n}{\sqrt{5}}$$
     \item You can immediately notice that the second term's absolute value is always less than $1$, and it also decreases very rapidly (exponentially). Hence the value of the first term alone is "almost" $F_n$. This can be written strictly as:
     $$F_n = \left[\frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n}{\sqrt{5}}\right]$$
@@ -987,7 +994,7 @@ We will move from the most significant bits to the least significant ones (the l
 
 The easiest way to write it in code is:
 \begin{minted}{cpp}
-    int rev_g (int g) {
+int rev_g (int g) {
   int n = 0;
   for (; g; g >>= 1)
     n ^= g;
@@ -1309,14 +1316,14 @@ $x = g^{y_0 + i \frac {\phi (n)}{gcd(k, \phi (n))}} \pmod n \forall i \in Z$.
 This is the final formula for all solutions of discrete root problem.
 \subsubsection{Implementation}
 \begin{minted}{cpp}
-    int delta = phi / gcd (k, phi);
-	vector<int> ans;
-	for (int cur=any_ans % delta; cur < phi; cur += delta)
-		ans.push_back (powmod (g, cur, n));
-	sort (ans.begin(), ans.end());
-	printf ("%d\n", ans.size());
-	for (size_t i=0; i<ans.size(); ++i)
-		printf ("%d ", ans[i]);
+int delta = phi / gcd (k, phi);
+vector<int> ans;
+for (int cur=any_ans % delta; cur < phi; cur += delta)
+    ans.push_back (powmod (g, cur, n));
+sort (ans.begin(), ans.end());
+printf ("%d\n", ans.size());
+for (size_t i=0; i<ans.size(); ++i)
+    printf ("%d ", ans[i]);
 \end{minted}
 \subsection{Fermats last theorem}
 No 3 positive integers a, b, c satisfying the eqn $a^n + b^n = c^n$ for any integer value of n greater than 2.
@@ -1662,7 +1669,7 @@ else ans = ((n - 7) * (m - 7) + 1) / 2
 \begin{itemize}
     \item \textbf{HandShaking lemma: }Every finite undirected graph has an even number of vertices with odd degree. handshaking lemma), $\sum _{v\in V}\deg v=2|E|$    
     \item The shortest path b/w vertices i and j after edge (u, v) is added is equal to $min(d_{i, j}, d_{i, u} + w_{u, v} + d_{v, j}, d_{i, v} + w_{v, u} + d_{u, j})$
-    \item In BFS, in case of multiple sources, enqueue them all in queue and set dist[v] = 0. Some trick works in case of dijkstra.
+    \item In BFS, in case of multiple sources, enqueue them all in queue and set dist[v] = 0. Same trick works in case of dijkstra.
     \item Also in case we are given both source and destination then we can terminate our while loop by checking whether the element we pop from queue is the destination or not. Same trick would work with weighted graph provided we have no -ve edges (dijkstra)
     \item Adjacency matrix equal to its transpose that implies undirected graph.
     \item To check whether the graph is bipartite, we can do bfs and color vertices 0/1.
@@ -1941,7 +1948,7 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
     \item \href{https://codeforces.com/contest/1099/problem/F}{Eating cookies on tree}, \href{https://codeforces.com/blog/entry/64296?#comment-482494}{Sol}
     \item Say path length is defined as the sum of edge weights along that path. And diameter is length of the longest simple path. Given sum of edge weights 'm' we need to assign weights to edges so that diameter is minimum. Sol: Consider the center of the tree like before, now the length of all paths from this tree should be minimum, which is only possible if we assign length to be the same. \href{https://codeforces.com/contest/1086/submission/47400574}{code}
     \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabh2311/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
-	\item \href {https://gist.github.com/sourabh2311/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the number of hops to travel between flights.\\
+	\item \href {https://gist.github.com/sourabh2311/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the diameter of the tree.\\
 	Problem Sol: Just link the center of diameters. Brute force which edge to remove on the longest path. 
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_112.cpp}{UVA 112 Sol}, \href {https://uva.onlinejudge.org/external/1/112.pdf}{UVA 112 Prob}: Just see how I processed the input.	
 	\item \href {https://gist.github.com/sourabh2311/6b761c14bef4e5887e6b03b809bc4983}{UVA 10029 Sol}, \href {https://uva.onlinejudge.org/external/100/10029.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
@@ -2013,7 +2020,7 @@ int mwis(int at, int flag, int parent) { //You can start this from any node, i.e
     \item A matching is a subset of edges such that each vertex is adjacent to at most one edge in the subset. Clearly Matching edges can be atmost $|V|/2$ as each edge joins two vertices and now no other matched edge can touch them.
     \item Note: This MVC, MIS, MM, is defined for undirected, unweighted graph.
     \item Once we have maximum matching. Clearly since these matching edges are aswell edges of the graph and minimum vertex cover should have vertices that are adjacent to these edges. But since matching edges have no vertex in common, size of minimum vertex cover is atleast the size of maximum matching.
-    \item Maximum matchings can be found in polynomial time for any graph, while minimum vertex cover is NP complete. Thus, finding maximum independent sets is another NP-complete problem.
+    \item Maximum matchings can be found in polynomial time for any graph, while minimum vertex cover is NP complete. Thus, finding maximum independent sets is another NP-complete problem. See \href{https://github.com/sourabh2311/Timus/blob/master/1099_Work_Scheduling.cpp}{soln} to \href{http://acm.timus.ru/problem.aspx?space=1&num=1099}{this} problem for maximum matching.
     \item The equivalence between matching and covering articulated in Kőnig's theorem allows minimum vertex covers and maximum independent sets to be computed in polynomial time for bipartite graphs, despite the NP-completeness of these problems for more general graph families.
 \end{itemize}
 \subsection{Konigs Theorem}
@@ -4461,7 +4468,7 @@ vector<int> prefix_function(string &s) {  // O(n)
 Given a text t and a string s, we want to find and display the positions of all occurrences of the string s in the text t.
 \\For convenience we denote with n the length of the string s and with m the length of the text t.\\
 We generate the string s+\#+t, where \# is a separator that doesn't appear in s and t. Let us calculate the prefix function for this string. Now think about the meaning of the values of the prefix function, except for the first n+1 entries (which belong to the string s and the separator). By definition the value π[i] shows the longest length of a substring ending in position i that coincides with the prefix. But in our case this is nothing more than the largest block that coincides with s and ends at position i. This length cannot be bigger than n due to the separator. But if equality π[i]=n is achieved, then it means that the string s appears completely in at this position, i.e. it ends at position i. Just do not forget that the positions are indexed in the string s+\#+t.\\
-Thus if at some position i we have π[i]=n, then at the position $i − (n + 1) − n + 1 = i − 2n$ in the string t the string s appears.\\
+Thus if at some position i we have π[i]=n, then at the position $i - (n + 1) - n + 1 = i - 2n$ in the string t the string s appears.\\
 As already mentioned in the description of the prefix function computation, if we know that the prefix values never exceed a certain value, then we do not need to store the entire string and the entire function, but only its beginning. In our case this means that we only need to store the string s+\# and the values of the prefix function for it. We can read one character at a time of the string t and calculate the current value of the prefix function.
 \begin{minted}{cpp}
 void kmp() {
@@ -4515,7 +4522,7 @@ Lemma 3: Consider an endpos-equivalence class. Sort all the substrings in this c
 Consider some state $v \neq t_0$ in the automaton. As we know, the state v corresponds to the class of strings with the same endpos values. And if we denote by w the longest of these strings, then all the other strings are suffixes of w. \textbf{suffix link} \textit{link(v)} leads to the state that corresponds to the longest suffix of w that is another endpos-equivalent class.\\
 Lemma 4: Suffix links form a tree with the root $t_0$.\\
 Lemma 5: If we build a endpos tree from all the existing sets (according to the principle “the set-parent contains as subsets of all its children”), then it will coincide in structure with the tree of suffix references. \textbf{Note: }$endpos(t_0) = \{-1, 0, \dots, length(s)-1\}$\\
-Note: For each state v one or multiple substrings match. We denote by longest(v) the longest such string, and through len(v) its length. We denote by shortest(v) the shortest such substring, and its length with minlen(v). Then all the strings corresponding to this state are different suffixes of the string longest(v) and have all possible lengths in the interval [minlength(v);len(v)]. For each state $v \neq t_0$ a suffix link is defined as a link, that leads to a state that corresponds to the suffix of the string longest(v) of length $minlen(v) − 1$. minlen(v) = len(link(v))+1 \\
+Note: For each state v one or multiple substrings match. We denote by longest(v) the longest such string, and through len(v) its length. We denote by shortest(v) the shortest such substring, and its length with minlen(v). Then all the strings corresponding to this state are different suffixes of the string longest(v) and have all possible lengths in the interval [minlength(v);len(v)]. For each state $v \neq t_0$ a suffix link is defined as a link, that leads to a state that corresponds to the suffix of the string longest(v) of length $minlen(v) - 1$. minlen(v) = len(link(v))+1 \\
 Number of states in suffix automaton of the string s of length n doesn't exceed $2n - 1$ (for n $\geq$ 2)\\
 Number of transitions $\leq 3n - 4$.
 \begin{minted}{cpp}

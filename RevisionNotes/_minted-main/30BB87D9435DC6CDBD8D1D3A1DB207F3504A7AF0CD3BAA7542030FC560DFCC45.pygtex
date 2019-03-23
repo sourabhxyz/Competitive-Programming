@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{delta} \PYG{o}{=} \PYG{n}{phi} \PYG{o}{/} \PYG{n}{gcd} \PYG{p}{(}\PYG{n}{k}\PYG{p}{,} \PYG{n}{phi}\PYG{p}{);}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{ans}\PYG{p}{;}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{cur}\PYG{o}{=}\PYG{n}{any\PYGZus{}ans} \PYG{o}{\PYGZpc{}} \PYG{n}{delta}\PYG{p}{;} \PYG{n}{cur} \PYG{o}{\PYGZlt{}} \PYG{n}{phi}\PYG{p}{;} \PYG{n}{cur} \PYG{o}{+=} \PYG{n}{delta}\PYG{p}{)}
+    \PYG{n}{ans}\PYG{p}{.}\PYG{n}{push\PYGZus{}back} \PYG{p}{(}\PYG{n}{powmod} \PYG{p}{(}\PYG{n}{g}\PYG{p}{,} \PYG{n}{cur}\PYG{p}{,} \PYG{n}{n}\PYG{p}{));}
+\PYG{n}{sort} \PYG{p}{(}\PYG{n}{ans}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{ans}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+\PYG{n}{printf} \PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{ans}\PYG{p}{.}\PYG{n}{size}\PYG{p}{());}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{size\PYGZus{}t} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{ans}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+    \PYG{n}{printf} \PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d \PYGZdq{}}\PYG{p}{,} \PYG{n}{ans}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+\end{Verbatim}
