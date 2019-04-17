@@ -35,6 +35,7 @@ int main() {
     int zero_id = 0;
     for (int i=0; i<n; ++i) {
         cin >> p[i].x >> p[i].y;
+        // Getting the point with lowest x coordinate and in case of tie, the one with lower y ordinate
         if (p[i].x < p[zero_id].x || p[i].x == p[zero_id].x && p[i].y < p[zero_id].y)
             zero_id = i;
     }
