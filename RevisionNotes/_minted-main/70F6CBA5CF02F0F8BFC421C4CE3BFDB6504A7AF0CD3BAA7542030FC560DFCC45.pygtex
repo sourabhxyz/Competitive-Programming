@@ -1,5 +1,6 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{c+cm}{/* Basic Segment Tree */}
+\PYG{c+cm}{/* Basic Segment Tree, illustrated using string hashing */}
+
 \PYG{k}{struct} \PYG{n}{segmentTree} \PYG{p}{\PYGZob{}}
     \PYG{k}{struct} \PYG{n}{seg} \PYG{p}{\PYGZob{}}
         \PYG{k+kt}{int} \PYG{n}{val}\PYG{p}{;}

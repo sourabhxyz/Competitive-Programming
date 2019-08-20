@@ -127,7 +127,10 @@ Games like chess or checkers are partizan type.
 \textbf{Note: } Every Position is either a P or N. For games using misere play all is same except that step 1 is replaced by the condition that all terminal positions are \textbf{N} postions. \\
 Directed graph G = ($X, F$), where $X$ is positions (vertices) and $F$ is a function that gives for each $x \in X$ a subset of $X$, i.e. \textit {followers of $x$}. If $F (x)$ is empty, $x$ is called a terminal position.\\
 $g(x) = min \{ n \geq 0 : n \neq g (y)$ for $y \in F (x)\}$\\
-Positions $x$ for which $g(x)$ is 0 are P postions and all others are N positions. \textbf{Note:} $g(x)$ is 0 if $x$ is a terminal position\\
+Positions $x$ for which $g(x)$ is 0 are P postions and all others are N positions. \textbf{Note:} $g(x)$ is 0 if $x$ is a terminal position
+
+Thus this definition is in tune with the definition of $P$ and $N$ positions defined above.
+
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sumgraph}
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sgth}
 \textbf{Thus}, if a position is a \textbf{N} position, we can cleverly see which position should we go to (what move of a component game to take) such that we reach \textbf {P} position.
@@ -4013,18 +4016,10 @@ For now survive with HLD.
 \end{itemize}
 \section{Data Structures}
 \subsection{Segment Tree}
-\begin{itemize}
-    \item Construction of segment tree is O(n) (by masters theorem) and height of segment tree is O(logn). Also time complexity of each query is O(logn).
-    \item \href{https://uva.onlinejudge.org/external/112/11235.pdf}{freq}, \href{https://gist.github.com/sourabh2311/adf33f80e4b1e95bdb7d7a0e28ae23e6}{sol}
-    \item \href{https://uva.onlinejudge.org/external/112/11297.pdf}{simple update}, \href{https://gist.github.com/sourabh2311/1376c934be55a72ca3f7c6f7481125ca}{sol}
-    \item \href{https://uva.onlinejudge.org/external/114/11402.pdf}{lazy range update}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_11402.cpp}{sol}
-    \item In similar way segment tree can be used to answer queries regarding gcd/lcm.
-    \item \href{https://codeforces.com/problemset/problem/380/C}{Sereja and brackets}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/380C%20-%20Seraja%20And%20Brackets.cpp}{sol}
-    \item \href{https://codeforces.com/problemset/problem/981/E}{Addition on Segments}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/Problem%20-%20E%20Addition%20On%20Segments_sol_tourist.cpp}{sol}
-    \item \href {https://codeforces.com/contest/916/problem/D}{Jamie and to do list}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/D.cpp}{Sol}: Just basic application of Persistent segment tree. When updating some element, at most O(logn) nodes in the segment tree get changed: the nodes along the path from root to the updated leaf. For each timepoint, instead of creating a copy of the entire segment tree, copy only nodes on the path to be updated and update them. Therefore total storage is O(n + t\*logn).
-\end{itemize}
+
 \begin{minted}{cpp}
-/* Basic Segment Tree */
+/* Basic Segment Tree, illustrated using string hashing */
+
 struct segmentTree {
     struct seg {
         int val;
@@ -4071,6 +4066,16 @@ struct segmentTree {
     }
 };
 \end{minted}
+\begin{itemize}
+    \item Construction of segment tree is O(n) (by masters theorem) and height of segment tree is O(logn). Also time complexity of each query is O(logn).
+    \item \href{https://uva.onlinejudge.org/external/112/11235.pdf}{freq}, \href{https://gist.github.com/sourabh2311/adf33f80e4b1e95bdb7d7a0e28ae23e6}{sol}
+    \item \href{https://uva.onlinejudge.org/external/112/11297.pdf}{simple update}, \href{https://gist.github.com/sourabh2311/1376c934be55a72ca3f7c6f7481125ca}{sol}
+    \item \href{https://uva.onlinejudge.org/external/114/11402.pdf}{lazy range update}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_11402.cpp}{sol}
+    \item In similar way segment tree can be used to answer queries regarding gcd/lcm.
+    \item \href{https://codeforces.com/problemset/problem/380/C}{Sereja and brackets}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/380C%20-%20Seraja%20And%20Brackets.cpp}{sol}
+    \item \href{https://codeforces.com/problemset/problem/981/E}{Addition on Segments}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/Problem%20-%20E%20Addition%20On%20Segments_sol_tourist.cpp}{sol}
+    \item \href {https://codeforces.com/contest/916/problem/D}{Jamie and to do list}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/D.cpp}{Sol}: Just basic application of Persistent segment tree. When updating some element, at most O(logn) nodes in the segment tree get changed: the nodes along the path from root to the updated leaf. For each timepoint, instead of creating a copy of the entire segment tree, copy only nodes on the path to be updated and update them. Therefore total storage is O(n + t\*logn).
+\end{itemize}
 \section{DP}
 Following are the two main properties of a problem that suggests that the given problem can be solved using Dynamic programming.
 \begin{enumerate}
