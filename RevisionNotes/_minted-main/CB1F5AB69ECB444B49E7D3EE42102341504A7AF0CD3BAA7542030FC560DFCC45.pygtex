@@ -182,10 +182,6 @@
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// Returns how many times P enters in T (occurences can overlap)}
-\PYG{c+cm}{/* for each state v of the machine calculate a number \PYGZsq{}cnt[v]\PYGZsq{} which is equal to the}
-\PYG{c+cm}{ * size of the set endpos(v). In fact, all the strings corresponding to the same state}
-\PYG{c+cm}{ * enter the T same number of times which is equal to the number of positions in the set}
-\PYG{c+cm}{ * endpos. */}
 \PYG{k+kt}{int} \PYG{n+nf}{numoccur}\PYG{p}{(}\PYG{n}{string} \PYG{o}{\PYGZam{}}\PYG{n}{tosearch}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{at} \PYG{o}{=} \PYG{n}{getcorrstate} \PYG{p}{(}\PYG{n}{tosearch}\PYG{p}{);}
     \PYG{k}{return} \PYG{n}{at} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{?} \PYG{l+m+mi}{0} \PYG{o}{:} \PYG{n}{st}\PYG{p}{[}\PYG{n}{at}\PYG{p}{].}\PYG{n}{cnt}\PYG{p}{;}

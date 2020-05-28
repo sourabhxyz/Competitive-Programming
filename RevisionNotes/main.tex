@@ -4523,7 +4523,7 @@ We will call two substrings t1 and t2 endpos-equivalent, if their ending sets co
 It turns out, that in a suffix machine endpos-equivalent substrings correspond to the same state. In other words the number of states in a suffix automaton is equal to the number of equivalence classes among all substrings, plus the initial state.\\
 Lemma 1: Two non-empty substrings u and w (with length(u) ≤ length(w)) are endpos-equivalent, if and only if the string u occurs in s only in the form of a suffix of w. (Proof is obvious)\\
 Lemma 2: Consider two non-empty substrings u and w (with length(u) ≤ length(w)). Then their sets endpos either don't intersect at all, or endpos(w) is a subset of endpos(u). And it depends on if u is a suffix of w or not. (Proof is obvious)\\
-Lemma 3: Consider an endpos-equivalence class. Sort all the substrings in this class by non-increasing length. Then in the resulting sequence each substring will be one shorter than the previous one, and at the same time will be a suffix of the previous one. In other words the substrings in the same equivalence class are actually each others suffixes, and take all possible lengths in a certain interval [x;y].\\
+Lemma 3: Consider an endpos-equivalence class. Sort all the substrings in this class by decreasing length. Then in the resulting sequence each substring will be one shorter than the previous one, and at the same time will be a suffix of the previous one. In other words the substrings in the same equivalence class are actually each others suffixes, and take all possible lengths in a certain interval [x;y].\\
 Consider some state $v \neq t_0$ in the automaton. As we know, the state v corresponds to the class of strings with the same endpos values. And if we denote by w the longest of these strings, then all the other strings are suffixes of w. \textbf{suffix link} \textit{link(v)} leads to the state that corresponds to the longest suffix of w that is another endpos-equivalent class.\\
 Lemma 4: Suffix links form a tree with the root $t_0$.\\
 Lemma 5: If we build a endpos tree from all the existing sets (according to the principle “the set-parent contains as subsets of all its children”), then it will coincide in structure with the tree of suffix references. \textbf{Note: }$endpos(t_0) = \{-1, 0, \dots, length(s)-1\}$\\
@@ -4714,10 +4714,6 @@ bool issuffix(string &tosearch) {
 }
 
 // Returns how many times P enters in T (occurences can overlap)
-/* for each state v of the machine calculate a number 'cnt[v]' which is equal to the
- * size of the set endpos(v). In fact, all the strings corresponding to the same state
- * enter the T same number of times which is equal to the number of positions in the set
- * endpos. */
 int numoccur(string &tosearch) {
     int at = getcorrstate (tosearch);
     return at == -1 ? 0 : st[at].cnt;
