@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kt}{int} \PYG{n}{pos1} \PYG{o}{=} \PYG{n}{line}\PYG{p}{.}\PYG{n}{find} \PYG{p}{(}\PYG{l+s}{\PYGZdq{}U=\PYGZdq{}}\PYG{p}{);}
-\PYG{k}{if} \PYG{p}{(}\PYG{n}{pos1} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{c+c1}{// process \PYGZcb{}}
-\PYG{n}{line}\PYG{p}{.}\PYG{n}{replace} \PYG{p}{(}\PYG{n}{pos}\PYG{p}{,} \PYG{n}{len}\PYG{p}{,} \PYG{n}{newString}\PYG{p}{);} \PYG{c+c1}{// pos = line.find (f), len = f.size ()}
-\end{Verbatim}
