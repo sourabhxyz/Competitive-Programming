@@ -1,21 +1,16 @@
 % Light!
 \documentclass[8pt, a4paper, oneside, twocolumn]{extarticle}
+\setlength{\columnseprule}{0.4pt}
 \usepackage{verbatim}  % for multiline comments
 \begin{comment}
-The options oneside and twoside affect the width of the side margins.  With oneside , which is the default for article, report, and letter, the margins on both  sides  of  every  page  are  equally  wide.   With twoside, Latex distinguishes between an inner and outer  margin.   The  outer  margin  is  substantially wider  and  switches  between  left  and  right.   Even pages have their outer margin on the left, odd pages on the right.  Most books follow this structure and so it should not come as a surprise that the book class default is twoside.
-The standard Latex classes (article, report etc) support ten, eleven and twelve point text. These are the commonest sizes used in publishing.
-However, for certain applications there may be a need for other sizes.
-The extsizes classes (extarticle, extreport, extbook, extletter, and
-extproc) provide support for sizes eight, nine, ten, eleven, twelve,
-fourteen, seventeen and twenty points.	
-Also as we want whole document to have two columns, we gave it as an optimal parameter however if we want a particular page to have two columns, the command \twocolumn starts a new page having two columns. Accordingly, \onecolumn starts a new page with a single column assuming you are in a two column environment as described above. Both commans do not take any arguments. 
-The is a way to define the distance between the two columns, use
+* The options oneside and twoside affect the width of the side margins. With oneside, which is the default for article, report, and letter, the margins on both sides of every page are equally wide. With twoside, Latex distinguishes between an inner and outer margin. The outer margin is substantially wider and switches between left and right. Even pages have their outer margin on the left, odd pages on the right. Most books follow this structure and so it should not come as a surprise that the book class default is twoside.
+* The standard Latex classes (article, report etc) support ten, eleven and twelve point text. These are the commonest sizes used in publishing. However, for certain applications there may be a need for other sizes. The extsizes classes (extarticle, extreport, extbook, extletter, and extproc) provide support for sizes eight, nine, ten, eleven, twelve, fourteen, seventeen and twenty points.	
+* Also as we want whole document to have two columns, we gave it as a parameter however if we want a particular page to have two columns, the command \twocolumn starts a new page having two columns. Accordingly, \onecolumn starts a new page with a single column assuming you are in a two column environment as described above. Both commans do not take any arguments. 
+* The is a way to define the distance between the two columns, use
 \setlength{\columnsep}{distance}
-
-If you need a line to separate the columns, the following command will do the job:
-\setlength{\columnseprule}{thickness}
+* If you need a line to separate the columns, the following command will do the job: \setlength{\columnseprule}{thickness}
 \end{comment}
-\usepackage{graphicx}
+\usepackage{graphicx} % The package builds upon the graphics package, providing a key-value interface for optional arguments to the \includegraphics command. This interface provides facilities that go far beyond what the graphics package offers on its own.
 \usepackage[export]{adjustbox}
 \usepackage[compact]{titlesec}  % documentation: http://mirror.iopb.res.in/tex-archive/macros/latex/contrib/titlesec/titlesec.pdf  
 \usepackage{kotex}
@@ -57,7 +52,6 @@ The pack­age pro­vides ex­ten­sive fa­cil­i­ties, both for con­struct­i
 \titlespacing*{\subsubsection}
 {0pt}{0px plus 1px minus 0px}{0px plus 3px minus 3px}
 
-\setlength{\columnseprule}{0.4pt}
 \pagenumbering{arabic}
 \begin{comment}
 The  page  headers  and  footers  in  Latex are  defined  by  the 	\pagestyle and \pagenumbering commands. \pagestyle defines the general contents of the headers and footers (e.g.  where the page  number  will  be  printed),  while \pagenumbering defines  the  format  of  the  page  number. Latexhas four standard pagestyles:
@@ -91,12 +85,13 @@ with this other one, you can add a value to the existing one:
 \partopsep = vertical space added above and below the list, but only if the list starts a new paragraph.
 
 \end{comment}
+\setlength{\parindent}{0in} % first line of para has left indent, so setting that to zero.
 \DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
 \setminted{breaklines=true, tabsize=2, breaksymbolleft=}
 \usemintedstyle{perldoc} % takes an optional argument to specify the style for a particular language, and works anywhere in the document
 \begin{document}
 \title{\swastik{scale = 0.2} {}Short Revision Notes{} \swastik{scale = 0.2}}
-\author{Sourabh Aggarwal (\href {https://codeforces.com/profile/sourabh23}{sourabh23})}
+\author{Sourabh Aggarwal (\href{https://codeforces.com/profile/sourabh23}{sourabh23})}
 \date{Compiled on \today}
 \maketitle
 \pagenumbering{roman}
@@ -108,47 +103,68 @@ with this other one, you can add a value to the existing one:
 
 \section{Maths}
 \subsection{Game Theory}
-Games like chess or checkers are partizan type.
 \subsubsection{What is a Combinatorial Game?}
 \begin{enumerate}
 \item There are 2 players.
-\item There is a set of possible positions of Game
-\item If both players have same options of moving from each position, the game is called impartial; otherwise partizan
+\item There is a set of possible positions of Game.
+\item If both players have same options of moving from each position, the game is called impartial; otherwise partizan. More elaborately: an impartial game is a game in which the allowable moves depend only on the position and not on which of the two players is currently moving, and where the payoffs are symmetric. In other words, the only difference between player 1 and player 2 is that say player 1 goes first. Games like chess or checkers are partizan type as each player can only place / move pieces of their own color. \href{https://en.wikipedia.org/wiki/Chomp}{Chomp} is an example of impartial game.
 \item The players move alternating.
-\item The game ends when a postion is reached from which no moves are possible for the player whose turn it is to move. Under \textbf {normal play rule}, the last player to move wins. Under \textbf {misere play rule} the last player to move loses.
+\item The game ends when a position is reached from which no moves are possible for the player whose turn it is to move. Under \textbf {normal play rule}, the last player to move wins. Under \textbf {misere play rule} the last player to move loses.
 \item The game ends in a finite number of moves no matter how it is played.
 \end{enumerate}
 \textbf{P} - Previous Player, \textbf{N} - Next Player
 \begin{enumerate}
 \item Label every terminal position as P - postion
 \item Position which can move to a P position is N position
-\item Position whose all moves are to N positoin is P position.
+\item Position whose all moves are to N position is P position.
 \end{enumerate}
-\textbf{Note: } Every Position is either a P or N. For games using misere play all is same except that step 1 is replaced by the condition that all terminal positions are \textbf{N} postions. \\
-Directed graph G = ($X, F$), where $X$ is positions (vertices) and $F$ is a function that gives for each $x \in X$ a subset of $X$, i.e. \textit {followers of $x$}. If $F (x)$ is empty, $x$ is called a terminal position.\\
-$g(x) = min \{ n \geq 0 : n \neq g (y)$ for $y \in F (x)\}$\\
+
+\textbf{Note: } Every Position is either a P or N. For games using misere play all is same except that step 1 is replaced by the condition that all terminal positions are \textbf{N} postions.
+
+Directed graph G = ($X, F$), where $X$ is positions (vertices) and $F$ is a function that gives for each $x \in X$ a subset of $X$, i.e. \textit {followers of $x$}. If $F (x)$ is empty, $x$ is called a terminal position.
+
+$g(x) = \min \{ n \geq 0 : n \neq g (y)$ for $y \in F (x)\}$
+
 Positions $x$ for which $g(x)$ is 0 are P postions and all others are N positions. \textbf{Note:} $g(x)$ is 0 if $x$ is a terminal position
 
 Thus this definition is in tune with the definition of $P$ and $N$ positions defined above.
 
-\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sumgraph}
-\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sgth}
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/sumgraph}
+
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/sgth}
+
+Above theorem 2 seems to make sense if you think about a position say $(x_a, x_b)$ for which $g_1(x_a) = g_2(x_b) = 1$ then both of these are $N$ position and according to the rule, this in combined graph is a $P$ position. So all moves from this position are to $N$ position. Possible moves are $F_1 (x_a) \times \{x_b\} \cup \{x_a\} \times F_2(x_b)$. So in terms of original graph next move is like $(P, N)$ or $(N, P)$. For sake of simplicity if we only see $(P, N)$ then next move is to $(P, P)$ where if we assume the game ends (it need not be as such but I think induction will follow), so $(P, P)$ is a $P$ position and thus $(P, N)$ is a $N$ position and thus $(N, N)$ is a $P$ position.
+
 \textbf{Thus}, if a position is a \textbf{N} position, we can cleverly see which position should we go to (what move of a component game to take) such that we reach \textbf {P} position.
 \subsection{Mobius}
-\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob0}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob1}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob2}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob3}
-\\\includegraphics[width=0.1\textwidth,height=0.1\textheight,keepaspectratio]{mob4}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob5}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob6}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mob7}
-\\$S_{\phi}(n) = id(n)$
+The \textbf{square numbers} (\textbf{perfect squares}, or just \textbf{squares}), are integers for which the square root is an integer. Obviously each prime in the prime factorization of a square number appears an even number of times.
 
+\textbf{Squarefree} numbers are numbers not divisible by a square greater than 1. Alternately, they are numbers with all exponents in its prime factorization less than 2. Note that although 1 is a square, it is also squarefree.
+
+Following is the definition of mobius function.
+
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob0}
+
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob1}
+
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob2}
+
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob3}
+
+\includegraphics[width=0.1\textwidth,height=0.1\textheight,keepaspectratio]{assets/mob4}
+
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob5}
+
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob6}
+
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob7}
+
+$S_{\phi}(n) = id(n)$
 
 $\mu \circ id = \phi (n)$
 
-\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{mobnew}
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mobnew}
+
 \begin{minted}{cpp}
 for (int i = 1; i <= N; i++) { 
     for (int j = i; j <= N; j += i) {
@@ -156,9 +172,10 @@ for (int i = 1; i <= N; i++) {
     } 
 }
 \end{minted}
+
 Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
-\\\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is $\mu \circ e = \mu$. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(j)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
-\newpage
+
+\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is $\mu \circ e = \mu$. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(j)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
 \subsection{Bell, Burnside, etc}
 Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}
 
@@ -183,7 +200,7 @@ void pre() {
 }
 \end{minted}
 For burnside just see \href{https://codeforces.com/blog/entry/62401}{this} and \href{http://poj.org/problem?id=1286}{burnside on circle prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/BURNSIDE/2.CPP}{sol}
-\\Similarly answer for \href{http://gcpc.nwerc.eu/problemset_2017.pdf}{this}, is \\\includegraphics[width=0.3\textwidth,height=0.3\textheight,keepaspectratio]{brnsq}
+\\Similarly answer for \href{http://gcpc.nwerc.eu/problemset_2017.pdf}{this}, is \\\includegraphics[width=0.3\textwidth,height=0.3\textheight,keepaspectratio]{assets/brnsq}
 \\as those sides can be represented as a point on a circle.
 
 \subsubsection{Inclusion Exclusion Principle}
@@ -1156,9 +1173,9 @@ Note:
 \end{itemize}
 Corollary if $n_1, n_2, \dots, n_k$ are pairwise coprime and $n = n_1*n_2*\dots * n_k$, then for all integers x and a, $x \equiv a (\mod n_i)$ for $i = 1, 2, \dots, k$ iff $x \equiv a (mod n)$
 \\Now if moduli $n_i's$ are not neccessarily pairwise coprime. Let $d_{i, j} = gcd(n_i, n_j)$ for $i \neq j$. Then the above system has a simultaneous soln iff $d_{i, j}$ divides $a_i - a_j$ for all $i \neq j$. Further such a soln is unique module $lcm(n_1, n_2, \dots, n_k)$.
-\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{crt}
-\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{crt2}
-\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{crt3}
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/crt}
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/crt2}
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/crt3}
 \begin{minted}{cpp}
 #include<bits/stdc++.h>
 using namespace std;
@@ -1199,7 +1216,7 @@ int main()
 }
 \end{minted}
 \href{https://codeforces.com/problemset/problem/687/B}{\textbf{Remainders Game}}\\
-\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{rem}
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/rem}
 \subsection{Primitive Root}
 \subsubsection{Definition}
 
@@ -1547,7 +1564,7 @@ double simpson_integration(double a, double b){
 }
 \end{minted}
 \subsection{Continued Fractions}
-\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{confr}
+\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/confr}
 \\\href{https://uva.onlinejudge.org/external/8/834.pdf}{UVA 834}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_834.cpp}{Sol}
 \subsection{Pells eqn}
 
@@ -1942,9 +1959,9 @@ It is \textbf {impossible} to construct binary tree with just Inorder traversal.
 It is \textbf {impossible} to construct binary tree with just Postorder traversal.
 \subsubsection{LCA}
 \begin{itemize}[leftmargin=*]
-    \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. Note that LCA of two nodes u, v is the node w that is ancestor of both u and v and that has the greatest depth in the tree.\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{lca}
+    \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. Note that LCA of two nodes u, v is the node w that is ancestor of both u and v and that has the greatest depth in the tree.\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/lca}
     \item Tarjan's offline LCA. for each query (a, b) you should do q[a].pb(b) and q[b].pb(a).
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{tar}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/tar}
 \end{itemize}
 \subsubsection{Important Problems}
 \begin{itemize}
@@ -2587,7 +2604,7 @@ void augment(int v, int minEdge) { // traverse BFS spanning tree from s->t
 \end{minted}
 \begin{itemize}[leftmargin=*]
     \item Reason why we need to consider back flow: so that if by back flow we reach destination then that means we could have done it in straight way. 
-    \\\includegraphics[width=0.2\textwidth,height=0.2\textheight,keepaspectratio]{bflow} 
+    \\\includegraphics[width=0.2\textwidth,height=0.2\textheight,keepaspectratio]{assets/bflow} 
     \item VIMP Note: if you are traversing through all 'v' like in the code above then its fine but otherwise if you do glist[u].pb(v) you \textbf{must} also do glist[v].pb (u) but only set res[u][v].
     \item Lets define an s-t cut C = (s-component, t-component) as a partition of V s.t. source s belongs to s-component and sink t belongs to t-component. Lets also define a cut-set to be set $\{(u, v) \in E | u \in s-comp, v \in t-comp\}$ such that if all edges in cut-set of C are removed, max flow from s to t is 0. (i.e. s and t are disconnected). The cost of an s-t cut C is defined by the sum of capacities of edges in cut-set of C. The min cut problem (min cut) is to minimize the amount of capacity of an s-t cut. Sol: After running max flow algo, do bfs/dfs from s, all vertices reachable from s using positive weighted edges in the residual graph belong to s-comp. and remaining belong to t-comp. and mf = min cut value. This is max-flow min-cut theorem.
     \item Multisource/multisink: Create a supersource ss and super sink st. Connect ss with all s with infinite capacity and also connect all t with st with infinte capacity, then run edmonds karps as per normal.
@@ -4864,7 +4881,7 @@ Just see this \href{https://github.com/sourabh2311/Timus/blob/master/1954_Five_P
     \item \href{https://github.com/sourabh2311/Timus/blob/master/2059_Not_common_palindromes.cpp}{Just to see how to handle multi strings occurence in eertree}
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10739.cpp}{UVA 10739 Sol}, \href {https://uva.onlinejudge.org/external/107/10739.pdf}{UVA 10739 Prob}: String to palindrome, just see the minimum edit distance between this string and its reverse but need to divide by 2 later as both strings are it itself.	
 	\item \href {https://codeforces.com/contest/245/problem/H}{Queries for the number of palindromic substrings within given range}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/245H%20-%20Queries%20for%20Number%20of%20Palindromes.cpp}{\textbf {See this soln to see power of hashing.}}: 
-    \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{palsub} 	
+    \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/palsub} 	
     \\\href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/514C%20-%20Watto%20And%20Mechanism.cpp}{One more problem to see how to use hashing.}
     \item \href{http://acm.timus.ru/problem.aspx?space=1&num=1989}{Timus 1989 Subpalindromes}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1989.cpp}{Sol}
 	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - simple}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - complicated but more powerful}: Problem is to find the longest substring shared by more than half of given strings.	
@@ -4872,10 +4889,10 @@ Just see this \href{https://github.com/sourabh2311/Timus/blob/master/1954_Five_P
 \section{Geometry}
 \begin{itemize}
     \item for given 3 points of a valid parallelogram, there are 3 possible locations for the 4th point. (Note: Diagonals of the parallelogram bisect each other)
-    \item we have a hexagon with integral sides and all interior angles equal to 120 deg. we draw lines parallel to the side of the hexagon, such that we get equilateral triangles of side 1 unit, how many equilateral triangles did we got? Sol: \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{triangle} 
+    \item we have a hexagon with integral sides and all interior angles equal to 120 deg. we draw lines parallel to the side of the hexagon, such that we get equilateral triangles of side 1 unit, how many equilateral triangles did we got? Sol: \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/triangle} 
     \item An inscribed angle is an angle formed by 2 chords in a circle which have a common endpoint. This common endpoint form the vertex of the inscribed angle. The other 2 endpoints define what we call an intercepted arc.
     \item Measure of intercepted arc of a unit circle is $2/\pi$ that of inscribed angle.
-    \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{basiccircle} 
+    \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/basiccircle} 
     \item Circles will certainly not touch or intersect iff the dist. between their center is greater than the sum of their radii.
     \item A circle 'a' contains a circle 'b' iff the distance between their centers is less than the absolute value of their radii difference.
     \item let the bottom left/top right corner point be denoted as a/c resp. Then rectangles intersect iff $max(a1.x, a2.x) < min(c1.x, c2.x)$ and $max(a1.y, a2.y) < min(c1.y, c2.y)$.
@@ -4942,8 +4959,8 @@ ll getb (vector<point> &poly) {
 }
     \end{minted}
     \item To check whether a point is on or inside a convex polygon that area method is best.
-    \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{p1} 
-    \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{p2}
+    \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/p1} 
+    \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/p2}
     \item \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/areaOfUnionOfTriangles.cpp}{Area of union of triangles}
     \item \href{http://e-maxx.ru/algo/circle_tangents}{Finding common tangents to two circles}
     \item Given a set of points, to determine whether a point lies inside a triangle formed by any 3 points, it is enough to check whether the given point lies inside the convex hull of given data points.
@@ -5057,17 +5074,17 @@ double dvac(int low, int high) {
 \subsection{2D geo lib}
 \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/2dgeoLib.cpp}{2D geo lib}
 \\Circle line intersection, same as sphere line intersection.\\
-\includegraphics[width=0.1\textwidth,height=0.1\textheight,keepaspectratio]{circleline}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{circlecircle}
+\includegraphics[width=0.1\textwidth,height=0.1\textheight,keepaspectratio]{assets/circleline}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/circlecircle}
 \subsection{3D geo lib}
 \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/3dgeolib.cpp}{3D Geo Lib}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{facearea}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sph}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{segsegcir}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{segsegcir2}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{segsegcir3}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{orientedangle}
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{spherearea}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/facearea}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/sph}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/segsegcir}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/segsegcir2}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/segsegcir3}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/orientedangle}
+\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/spherearea}
 \subsection{Line Sweep}
 See \href{https://www.topcoder.com/community/competitive-programming/tutorials/line-sweep-algorithms/}{this} and \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/RevisionNotes/linesweep.pdf}{this}.
 \subsection{Important Problems}
