@@ -137,6 +137,9 @@ Above theorem 2 seems to make sense if you think about a position say $(x_a, x_b
 
 \textbf{Thus}, if a position is a \textbf{N} position, we can cleverly see which position should we go to (what move of a component game to take) such that we reach \textbf {P} position.
 \subsection{Mobius}
+
+I made these notes with the help of following references: \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
+
 The \textbf{square numbers} (\textbf{perfect squares}, or just \textbf{squares}), are integers for which the square root is an integer. Obviously each prime in the prime factorization of a square number appears an even number of times.
 
 \textbf{Squarefree} numbers are numbers not divisible by a square greater than 1. Alternately, they are numbers with all exponents in its prime factorization less than 2. Note that although 1 is a square, it is also squarefree.
@@ -145,25 +148,45 @@ Following is the definition of mobius function.
 
 \includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob0}
 
+An arithmetic function is a function whose domain is the natural numbers (positive integers) and whose codomain is the complex numbers. 
+
+Sum function (for an arithmetic function) is implicitly defined in images below.
+
 \includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob1}
+
 
 \includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob2}
 
-\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob3}
+
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/sumismul}
+
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mobSum}
+
+\includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/dirProd}
+
+Note that the above image has a mistake as $f(d_2)$ is actually $g(d_2)$. Or better way to write is $(f \circ g)(n) = \sum_{d\mid n} f(d)g(n/d)$
 
 \includegraphics[width=0.1\textwidth,height=0.1\textheight,keepaspectratio]{assets/mob4}
 
+As $I\circ f = \sum_{d \mid n} f(d)$.
+
+Also $e\circ f = \sum_{d\mid n}\delta_{(1, n/d)}f(d) = f(n) = f$ 
+
 \includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob5}
+
+It's proof is not that straightforward and involves combinatorial reasoning.
 
 \includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob6}
 
 \includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob7}
 
-$S_{\phi}(n) = id(n)$
+Note: Step 4 above assumes something which is explained in next images.
 
-$\mu \circ id = \phi (n)$
+Mentioning without proof: $S_{\phi}(n) = id(n) = n$. With this we can prove $\mu \circ id = \phi (n)$ as LHS is $\mu \circ (I \circ \phi) = e \circ \phi = \phi$.
 
 \includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mobnew}
+
+In general, if we know $h$ and $\mu$ we can find $f$, via sieve like so:
 
 \begin{minted}{cpp}
 for (int i = 1; i <= N; i++) { 
@@ -173,10 +196,10 @@ for (int i = 1; i <= N; i++) {
 }
 \end{minted}
 
-Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
+\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is $\mu \circ e = \mu$. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(d)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $d$. Denoting $d$ by $j$, obviously $f(j) = (\lfloor i/j \rfloor)^n$. We found that answer for a particular $i$ is $\sum_{j=1}^{i}\mu(j)f(j)$. But how do we calculate it for every $i$ from 1 to $k$? Suppose we have $\sum_{j = 1}^{i - 1}\mu(j)*f(j)$, now to find $\sum_{j = 1}^{i}\mu(j)*f'(j)$ (note that meaning of $f(j)$ is different in both the expressions), see my solution as the way becomes clearer after observing it. It's just that we need to identify those $j$, for which $\lfloor (i - 1)/j \rfloor \ne \lfloor i/j \rfloor$ which happens precisely when $j \mid i$.
 
-\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is $\mu \circ e = \mu$. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(j)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
 \subsection{Bell, Burnside, etc}
+
 Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}
 
 The number of ways a set of n elements can be partitioned into nonempty subsets is called a Bell number and is denoted $B_n$. 
