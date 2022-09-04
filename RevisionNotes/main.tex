@@ -10,12 +10,14 @@
 \setlength{\columnsep}{distance}
 * If you need a line to separate the columns, the following command will do the job: \setlength{\columnseprule}{thickness}
 \end{comment}
+\usepackage{svg} % to include svg graphics, one needs to have ``ImageMagick'' and ``Inkscape'' 
 \usepackage{graphicx} % The package builds upon the graphics package, providing a key-value interface for optional arguments to the \includegraphics command. This interface provides facilities that go far beyond what the graphics package offers on its own.
 \usepackage[export]{adjustbox}
 \usepackage[compact]{titlesec}  % documentation: http://mirror.iopb.res.in/tex-archive/macros/latex/contrib/titlesec/titlesec.pdf  
 \usepackage{kotex}
 \usepackage[left=0.8cm, right=0.8cm, top=2cm, bottom=0.3cm, a4paper]{geometry}
-\usepackage{amsmath}
+\usepackage{amsmath} % among other use cases that might have been an original reason to import this package, we also have: https://tex.stackexchange.com/a/676 to define custom operators. Though I haven't yet defined any custom operator (delete this "thou..." part once have defined).
+\DeclareMathOperator{\dist}{dist}
 \usepackage{ulem}
 \usepackage{amssymb}
 \usepackage{minted}  % syntax highlighting
@@ -26,7 +28,9 @@
 The pack­age pro­vides ex­ten­sive fa­cil­i­ties, both for con­struct­ing head­ers and foot­ers, and for con­trol­ling their use (for ex­am­ple, at times when LaTeX would au­to­mat­i­cally change the head­ing style in use).
 \end{comment}
 \usepackage{lastpage}  % just so that we can use \pageref {LastPage}
-\usepackage{color, hyperref}
+\usepackage{color}
+\usepackage[colorlinks = true]{hyperref}
+% https://tex.stackexchange.com/q/61015 to see more trickery regarding colors.
 % The lines in the table of contents become links to the corresponding pages in the document by simply adding in the preamble of the document the line
 \begin{comment}
 \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
@@ -100,7 +104,10 @@ with this other one, you can add a value to the existing one:
 \thispagestyle{fancy}  % else it was not giving fancy header to the first page
 \pagenumbering{arabic}
 \noindent\textcolor{red}{\textbf{Think twice code once!}}
-
+\section{Very Basic}
+\begin{enumerate}
+    \item See \href{https://stackoverflow.com/a/31165481/11183512}{this} to understand about `sync\_with\_stdio(false)' and `cin.tie(nullptr)'.
+\end{enumerate}
 \section{Maths}
 \subsection{Game Theory}
 \subsubsection{What is a Combinatorial Game?}
@@ -119,7 +126,7 @@ with this other one, you can add a value to the existing one:
 \item Position whose all moves are to N position is P position.
 \end{enumerate}
 
-\textbf{Note: } Every Position is either a P or N. For games using misere play all is same except that step 1 is replaced by the condition that all terminal positions are \textbf{N} postions.
+\textbf{Note: } Notice that every Position is either a P or N. For games using misere play all is same except that step 1 is replaced by the condition that all terminal positions are \textbf{N} postions.
 
 Directed graph G = ($X, F$), where $X$ is positions (vertices) and $F$ is a function that gives for each $x \in X$ a subset of $X$, i.e. \textit {followers of $x$}. If $F (x)$ is empty, $x$ is called a terminal position.
 
@@ -133,12 +140,12 @@ Thus this definition is in tune with the definition of $P$ and $N$ positions def
 
 \includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/sgth}
 
-Above theorem 2 seems to make sense if you think about a position say $(x_a, x_b)$ for which $g_1(x_a) = g_2(x_b) = 1$ then both of these are $N$ position and according to the rule, this in combined graph is a $P$ position. So all moves from this position are to $N$ position. Possible moves are $F_1 (x_a) \times \{x_b\} \cup \{x_a\} \times F_2(x_b)$. So in terms of original graph next move is like $(P, N)$ or $(N, P)$. For sake of simplicity if we only see $(P, N)$ then next move is to $(P, P)$ where if we assume the game ends (it need not be as such but I think induction will follow), so $(P, P)$ is a $P$ position and thus $(P, N)$ is a $N$ position and thus $(N, N)$ is a $P$ position.
+Above theorem 2 seems to make sense if you think about simple cases, say, a position $(x_a, x_b)$ for which $g_1(x_a) = g_2(x_b) = 1$ (in general, these $g_i(x_j)$ could be $>1$) then both of these are $N$ position and according to the rule, this in combined graph is a $P$ position. So all moves from this position are to $N$ position. Possible moves are $F_1 (x_a) \times \{x_b\} \cup \{x_a\} \times F_2(x_b)$. So in terms of original graph next move is like $(P, N)$ or $(N, P)$. For sake of simplicity if we only see $(P, N)$ then next move is to $(P, P)$ where if we assume the game ends (it need not be as such but I think induction will follow), so $(P, P)$ is a $P$ position and thus $(P, N)$ is a $N$ position and thus $(N, N)$ is a $P$ position.
 
 \textbf{Thus}, if a position is a \textbf{N} position, we can cleverly see which position should we go to (what move of a component game to take) such that we reach \textbf {P} position.
 \subsection{Mobius}
 
-I made these notes with the help of following references: \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
+I made these notes with the help of following references: \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
 
 The \textbf{square numbers} (\textbf{perfect squares}, or just \textbf{squares}), are integers for which the square root is an integer. Obviously each prime in the prime factorization of a square number appears an even number of times.
 
@@ -148,7 +155,7 @@ Following is the definition of mobius function.
 
 \includegraphics[width=0.47\textwidth,height=0.47\textheight,keepaspectratio]{assets/mob0}
 
-An arithmetic function is a function whose domain is the natural numbers (positive integers) and whose codomain is the complex numbers. 
+An \textit{arithmetic function} is a function whose domain is the natural numbers (positive integers) and whose codomain is the complex numbers. 
 
 Sum function (for an arithmetic function) is implicitly defined in images below.
 
@@ -196,33 +203,36 @@ for (int i = 1; i <= N; i++) {
 }
 \end{minted}
 
-\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is $\mu \circ e = \mu$. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(d)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $d$. Denoting $d$ by $j$, obviously $f(j) = (\lfloor i/j \rfloor)^n$. We found that answer for a particular $i$ is $\sum_{j=1}^{i}\mu(j)f(j)$. But how do we calculate it for every $i$ from 1 to $k$? Suppose we have $\sum_{j = 1}^{i - 1}\mu(j)*f(j)$, now to find $\sum_{j = 1}^{i}\mu(j)*f'(j)$ (note that meaning of $f(j)$ is different in both the expressions), see my solution as the way becomes clearer after observing it. It's just that we need to identify those $j$, for which $\lfloor (i - 1)/j \rfloor \ne \lfloor i/j \rfloor$ which happens precisely when $j \mid i$.
+\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus, '$f$' corresponding to it is $\mu$ as $\mu \circ e = \mu$. And thus we get $\sum_{d = 1}^{i}\mu(d)*cnt2(d)$ where $cnt2(d)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $d$. Denoting $d$ by $j$, obviously $cnt2(j) = (\lfloor i/j \rfloor)^n$. Lets denote $cnt2(j)$ by $b(j)$. We found that answer for a particular $i$ is $\sum_{j=1}^{i}\mu(j)f(j)$. But how do we calculate it for every $i$ from 1 to $k$? Suppose we have $\sum_{j = 1}^{i - 1}\mu(j)*b(j)$, now to find $\sum_{j = 1}^{i}\mu(j)*b'(j)$ (note that meaning of $b(j)$ is different in both the expressions), see my code as the following becomes clearer after observing it. It's just that we need to identify those $j$, for which $\lfloor (i - 1)/j \rfloor \ne \lfloor i/j \rfloor$ which happens precisely when $j \mid i$.
 
 \subsection{Bell, Burnside, etc}
 
-Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}
+Reference for this section: \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}.
 
-The number of ways a set of n elements can be partitioned into nonempty subsets is called a Bell number and is denoted $B_n$. 
+The number of ways a set of $n$ elements can be partitioned into nonempty subsets is called a \textit{Bell number} and is denoted $B_n$. 
 
-$B_n=\sum_{k=0}^nS(n,k)$  where $S(n,k)$ is a Stirling number of the second kind (Note: Stirling partition number is the number of ways to partition a set of n objects into k non-empty subsets and hence the formula naturally follows).
+$B_n=\sum_{k=0}^nS(n,k)$  where $S(n,k)$ is a Stirling number of the second kind (Note: Stirling partition number is the number of ways to partition a set of $n$ objects into $k$ non-empty subsets and hence the formula naturally follows).
 
 The Bell numbers can also be generated using the sum and recurrence relation
 $B_n=\sum_{k=0}^{n-1}B_k \binom{n - 1}{k}$ thus we usually compute bell numbers in $O(n^2)$ by either of the recurrence, here is the code using the first recurrence:
-\\Stirling no. of second kind obey the recurrence $$\stirling{n + 1}{k} = k * \stirling{n}{k} + \stirling{n}{k - 1} \forall n, k > 0$$ where $\stirling{0}{0} = 1$, $\stirling{n}{0} = \stirling{0}{n} = 0$
-\\$\stirling{n}{k} = \frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^n$
+
+But first note that Stirling no. of second kind obey the recurrence $$\stirling{n + 1}{k} = k * \stirling{n}{k} + \stirling{n}{k - 1} \forall n, k > 0$$ where $\stirling{0}{0} = 1$, $\stirling{n}{0} = \stirling{0}{n} = 0$
+
+$\stirling{n}{k} = \frac{1}{k!}\sum_{j=0}^{k}(-1)^{k-j}\binom{k}{j}j^n$
+
 \begin{minted}{cpp}
 void pre() {
-  b[0][0] = 1;
+  s[0][0] = 1;
   for (int i = 0; i < maxn - 1; ++i) {
     for (int j = 0; j <= i; ++j) {
-      udd(bsum[i], b[i][j]);
-      udd(b[i + 1][j], mul(b[i][j], j));
-      udd(b[i + 1][j + 1], b[i][j]);
+      udd(b[i], s[i][j]);
+      udd(s[i + 1][j], mul(s[i][j], j));
+      udd(s[i + 1][j + 1], s[i][j]);
     }
   }
 }
 \end{minted}
-For burnside just see \href{https://codeforces.com/blog/entry/62401}{this} and \href{http://poj.org/problem?id=1286}{burnside on circle prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/BURNSIDE/2.CPP}{sol}
+For burnside just see \href{https://codeforces.com/blog/entry/62401}{this} [ignore the 'Practice' section in end] and \href{http://poj.org/problem?id=1286}{burnside on circle prob}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/IMP%20QUES/BURNSIDE/2.CPP}{sol}
 \\Similarly answer for \href{http://gcpc.nwerc.eu/problemset_2017.pdf}{this}, is \\\includegraphics[width=0.3\textwidth,height=0.3\textheight,keepaspectratio]{assets/brnsq}
 \\as those sides can be represented as a point on a circle.
 
@@ -273,16 +283,15 @@ inline T inv(T a) {
 \end{minted}
 \subsection{Prob and Comb}
 \begin{itemize}
+    \item First go through my highlighting in this pdf to understand basics of probability.
     \item $E[X] = \sum E(X|A_i)P(A_i)$
-    \item \href {https://codeforces.com/contest/908/problem/D}{k, $p_a$, $p_b$ prob}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Good%20Bye%202017/D.cpp}{Sol}, if $n + m \geq k \rightarrow p_b(i + j) + p_a*p_b*(i + j + 1) + p_a^2*p_b*(i + j + 2)\dots = (i + j) + \frac{p_a}{p_b}$ Also
+    \item \href{https://codeforces.com/contest/908/problem/D}{k, $p_a$, $p_b$ prob}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/Good%20Bye%202017/D.cpp}{Sol}, Let $n$ denote the number of $a$'s in a sequence and $m$ denote the number of `$ab$' subsequences in it. We then observe that $dp[n][m] = p_a * dp[n + 1][m] + p_b * dp[n][n + m]$. And for termination case, observe that if $n + m \geq k \rightarrow p_b(n + m) + p_a*p_b*(n + m + 1) + p_a^2*p_b*(n + m + 2)\dots = p_b * (n + m) * 1 / (1 - p_a) + p_a * p_b * (1 + 2 p_a + 3p_a^2 + \cdots) = (n + m) + \frac{p_a}{p_b}$ as for the Arithmetic-Geometric progression, $1+ 2p_a + 3p_a^2 + \cdots$, let it be denoted by $S$, then $p_aS = p_a + 2p_a^2 + 3p_a^3 + \cdots$ that implies $S(1 - p_a) = 1 + p_a + p_a^2 + \cdots = 1 / (1 - p_a) = 1 / p_b$ that implies $S = 1 / (p_b)^2 \Rightarrow p_a p_b S = p_a / p_b$. Note that our recurrence would be stuck if $n = m = 0$, so observe
     \begin{eqnarray}
     dp[0][0] & = & p_a * dp[1][0] + p_b * dp[0][0]\\
              & = & p_a * dp[1][0] / (1 - p_b)\\
              & = & dp[1][0]
     \end{eqnarray}
-    \item \textbf{Dearrangement of n objects}
-    \\ $n! * \sum_{k = 0}^n (-1)^k / {k!} =\text{ } !n$
-    \\ $!n = (n - 1) * [!(n - 1) + !(n - 2)] \text{ for n }\geq 2$
+    \item \textbf{Derangement of n objects}: A derangement is a permutation $\sigma$ of $n$ elements with no fixed point; that is, $\sigma(i) \ne i \forall i \in \{1, 2, ..., n\}$. It is equal to $n! * \sum_{k = 0}^n (-1)^k / {k!} = !n$ and we have $!n = (n - 1) * [!(n - 1) + !(n - 2)] \text{ for n }\geq 2$
     \item \textbf{Gambler ruin's problem: }Probability that first player (p for each step) wins. $(1 - (q/p)^{n_1})/(1 - (q/p)^{n_1 + n_2})$. $n_1 = \lceil ev_1/d \rceil$, $n_2 = \lceil ev_2/d \rceil$. In case $p = q = 1/2$, formula is $n_1/(n_1 + n_2)$.
     \item \href{}{UVA 10491}, $ans = (N_{cows} / (N_{cows} + N_{cars})) * (N_{cars} / (N_{cows} + N_{cars} - N_{shows} - 1)) + (N_{cars} / (N_{cows} + N_{cars})) * ((N_{cars} - 1) / (N_{cows} + N_{cars} - N_{shows} - 1))$
     \item $\binom{n}{r} = \binom{n - 1}{r - 1} + \binom{n - 1}{r}$
@@ -444,7 +453,7 @@ void extendedEuclid(int a, int b) {
    y = y1;
 }
 \end{minted}
-\href{https://codeforces.com/problemsets/acmsguru/problem/99999/106}{SGU 106 Equation}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Extended%20Euclid/106-The%20Equation.cpp}{Sol}
+\href{https://codeforces.com/problemsets/acmsguru/problem/99999/106}{SGU 106 Equation}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/IMP%20QUES/Extended%20Euclid/106-The%20Equation.cpp}{Sol}
 \\Prob: To find the soln with minimum value of $x + y$ and obviously there has to be range of x, y. Sol: Now $x + y = x_0 + y_0 + n * (b/d - a/d)$. If $a < b$, select smallest possible value of n. If $a > b$ select the largest. And if $a = b$, all solutions have same sum of $x + y$
 \subsection{Linear Congruence Equation}
 This equation is of the form:
@@ -1045,7 +1054,7 @@ int rev_g (int g) {
 }
 \end{minted}
 
-\href{https://codeforces.com/problemsets/acmsguru/problem/99999/249}{SGU 249 Matrix}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Gray%20Code/SGU249-Matrix.cpp}{Sol}
+\href{https://codeforces.com/problemsets/acmsguru/problem/99999/249}{SGU 249 Matrix}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/IMP%20QUES/Gray%20Code/SGU249-Matrix.cpp}{Sol}
 \subsection{Discrete Logarithm}
 
 The discrete logarithm is an integer $x$ solving the equation
@@ -1588,7 +1597,7 @@ double simpson_integration(double a, double b){
 \end{minted}
 \subsection{Continued Fractions}
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/confr}
-\\\href{https://uva.onlinejudge.org/external/8/834.pdf}{UVA 834}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_834.cpp}{Sol}
+\\\href{https://uva.onlinejudge.org/external/8/834.pdf}{UVA 834}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_834.cpp}{Sol}
 \subsection{Pells eqn}
 
 \subsection{Side Notes}
@@ -1680,8 +1689,8 @@ ll compute (ll a, ll &b, ll &m) {
 	\item \href {https://uva.onlinejudge.org/external/113/11310.pdf}{UVA 11310 Prob}: $dp[n] = dp[n - 1] + 4 * dp[n - 2] + 2 * dp[n - 3]$
 	\item \href {https://uva.onlinejudge.org/external/112/11204.pdf}{UVA 11204 Prob}: Tricky problem, it just asks \textit{How many possible arrangements maximizing the assignment of the \textbf{first priority}.} Thus only first priority instrument matters, so if 2 want A, 4 want B, 3 want C, then ans is $2 * 4 * 3$.
     \item \href {https://uva.onlinejudge.org/external/107/10790.pdf}{UVA 10790 Prob}: If there is an intersection that means we have a quadrilateral, hence answer is the number of quadrilaterals $ = \binom{a}{2} * \binom{b}{2}$.
-    \item \href {https://uva.onlinejudge.org/external/5/568.pdf}{last non zero digit of fact(n)}, \href {https://gist.github.com/sourabh2311/3e7d2c8c905cce7f04eb86400d4aac35}{Sol}. If you know multiplicatioin limit, take mod with ($10^{\text{no. of digits}}$)
-    \item \href {https://uva.onlinejudge.org/external/5/542.pdf}{France 98}, \href {https://gist.github.com/sourabh2311/94629bd0303d3c4f918bda3bdaf8e711}{Sol}.
+    \item \href {https://uva.onlinejudge.org/external/5/568.pdf}{last non zero digit of fact(n)}, \href {https://gist.github.com/sourabhxyz/3e7d2c8c905cce7f04eb86400d4aac35}{Sol}. If you know multiplicatioin limit, take mod with ($10^{\text{no. of digits}}$)
+    \item \href {https://uva.onlinejudge.org/external/5/542.pdf}{France 98}, \href {https://gist.github.com/sourabhxyz/94629bd0303d3c4f918bda3bdaf8e711}{Sol}.
     \item \href {https://uva.onlinejudge.org/external/100/10061.pdf}{How many zeros and how many digits?} Sol: then iterate through factors of base and get their powers in n!, take min. of all such powers divided by power of prime factor in that base. And for how many digits part, use that log formula.
     \item Is $n!$ divisible by m? Sol: Use prime factors
     \item Given n, maximize (find x) $n - p*x$ where $p*x \leq n < (p + 1)*x$ which somehow happens with $p = 1$
@@ -1710,16 +1719,26 @@ else ans = ((n - 7) * (m - 7) + 1) / 2
 \section{Graphs}
 \subsection{Basic}
 \begin{itemize}
-    \item \textbf{HandShaking lemma: }Every finite undirected graph has an even number of vertices with odd degree. handshaking lemma), $\sum _{v\in V}\deg v=2|E|$    
-    \item The shortest path b/w vertices i and j after edge (u, v) is added is equal to $min(d_{i, j}, d_{i, u} + w_{u, v} + d_{v, j}, d_{i, v} + w_{v, u} + d_{u, j})$
-    \item In BFS, in case of multiple sources, enqueue them all in queue and set dist[v] = 0. Same trick works in case of dijkstra.
+    \item \textbf{HandShaking lemma:} Every finite undirected graph has an even number of vertices with odd degree. Follows from: $\sum _{v\in V}\deg v=2|E|$.    
+    \item The shortest path b/w vertices $i$ and $j$ after edge $(u, v)$ is added is equal to $\min(d_{i, j}, d_{i, u} + w_{u, v} + d_{v, j}, d_{i, v} + w_{v, u} + d_{u, j})$
+    \item In BFS, in case of multiple sources, enqueue them all in queue and set $\dist[v] = 0$. Same trick works in case of dijkstra.
     \item Also in case we are given both source and destination then we can terminate our while loop by checking whether the element we pop from queue is the destination or not. Same trick would work with weighted graph provided we have no -ve edges (dijkstra)
     \item Adjacency matrix equal to its transpose that implies undirected graph.
     \item To check whether the graph is bipartite, we can do bfs and color vertices 0/1.
-    \item Graph Check
+    \item Graph Check (For Directed graph): Running DFS on a connected component of a graph will form a DFS spanning tree (or spanning forest if the graph has more than one component and DFS is run on each component). With one
+    more vertex state: `explored' (started but not yet completed) on top of `unvisited' and `visited' (i.e. also completed), we can use this DFS spanning tree (or forest) to classify graph edges into four types:
+    \begin{itemize}
+        \item 1. Tree edges: those traversed by DFS, i.e. from vertex with `explored' to vertex with `unvisited'.
+        \item 2. Back edges: part of cycle, i.e. from vertex with `explored' to vertex with `explored' too. Note that usually we do not count bi-directional edges as having 'cycle' (We need to remember `dfs\_parent' to distinguish this, see the code below).
+        \item 3. Forward/Cross edges from vertex with 'explored' to vertex with `visited'.
+        These two type of edges are not typically used in programming contest problem.
+    \end{itemize}
+    
     \begin{minted}{cpp}
 void graphcheck (int u) {
     dfs_num[u] = explored;
+    start[u] = counter;
+    counter++;
     for (auto &v : adjlist[u]) {
         if (dfs_num[v] == unvisited) {  // tree edge
             dfs_parent[v] = u;
@@ -1728,31 +1747,36 @@ void graphcheck (int u) {
             if (v == dfs_parent[u]) cout << "two ways\n"
             else cout << "back edge\n"
         } else {  // dfs_num[v] == visited
-            // forward/cross edge
-            // [u [v v] u] this is tree/forward
+            // either its a forward edge or cross edge. If v_s > u_s then forward else cross.
+            // in general:
+            // Tree/forward edge if [u [v v] u], i.e.: start[u] < start[v] & end[v] < end[u] 
+            // cross if: [v v] [u u], i.e., v_s < v_e < u_s < u_e.
             // [v [u u] v] back
-            // [v v] [u u] cross
         }
-
     }
+    dfs_num[u] = visited;
+    end[u] = counter;
+    counter++;
 }
     \end{minted}
-    \item Getting any cycle
+    \includesvg[width=0.4\textwidth,height=0.4\textheight,keepaspectratio]{assets/Wiki_Tree_edges.svg} \textit{By Stimpy at English Wikipedia - Image created by Stimpy 20:01, 17 December 2006 (UTC), Public Domain, https://commons.wikimedia.org/w/index.php?curid=26561681}
+    \item Using DFS, we can also tell whether vertex i is an ancestor of j by using either that subtree method or by checking if $start[i] < start[j]$ and $end[i] > end[j]$
+    \item Getting any cycle (DG)
 \begin{minted}{cpp}
-bool dfs(int v) {
-    color[v] = 1;
-    for (int u : adj[v]) {
-        if (color[u] == 0) {
-            parent[u] = v;
-            if (dfs(u))
+bool dfs(int u) {
+    color[u] = 1;
+    for (int v : adj[u]) {
+        if (color[v] == 0) {
+            parent[v] = u;
+            if (dfs(v))
                 return true;
-        } else if (color[u] == 1) {
-            cycle_end = v;
-            cycle_start = u;
+        } else if (color[v] == 1) {
+            cycle_end = u;
+            cycle_start = v;
             return true;
         }
     }
-    color[v] = 2;
+    color[u] = 2;
     return false;
 }
 
@@ -1783,7 +1807,9 @@ void find_cycle() {
     }
 }
     \end{minted}
-    \item Floodfill
+    \item For an \textbf{undirected} graph, the fact that one single call of \mintinline{cpp}{dfs(u)} (or \mintinline{cpp}{bfs(u)}) will only visit vertices that are actually connected to $u$ can be utilized to find (and to count the number of) connected components in an undirected graph (see further below for a similar problem on directed graph). We can simply use the following code to restart DFS (or BFS) from one of the remaining unvisited vertices to find the next connected component. This process is repeated until all vertices have been visited.
+    \item Floodfill: DFS (or BFS) can be used for other purposes than just finding (and counting the number of) connected components. Here, we show how a simple tweak of dfs(u) (or bfs(u)) can be used to label (or in this case ‘color’) and count the size of each component. This variant is more famously
+    known as ‘flood fill’ and usually performed on implicit graph (usually a 2D grid).
     \begin{minted}{cpp}
 int R, C;
 string grid[100];
@@ -1793,14 +1819,14 @@ int floodfill (int r, int c, char c1, char c2) {
     if (r < 0 || r >= R || c < 0 || c >= C) return 0;
     if (grid[r][c] != c1) return 0;
     int ans = 1;
-    grid[r][c] = c2;
-    for (int d = 0; d < 8; d++) {
+    grid[r][c] = c2; // can increment count for a size here.
+    for (int d = 0; d < 8; d++) { // i.e., neighbours
         ans += floodfill (r + dr[d], c + dc[d], c1, c2);
     }
     return ans;
 }
     \end{minted}
-    \item We can find the number of connected components by simply doing dfs (offline), and online using UFDS.
+    \item We can find the number of connected components (of an undirected graph) by simply doing dfs (offline), and online using UFDS.
     \item Highest average is possible only by taking largest edge weight/s. 
     \item We can use BFS for finding the shortest path in a graph with weights 0 or 1. This required just a little modification to normal BFS, if the current edge is of 0 weight and distance to the vertex is shorter than the current found distance, then add this vertex not to the back but to the front of the queue. (we can use dequeue which supports front, back, push\_{}back, push\_{}front, pop\_{}back, pop\_{}front) in O(1).
     \item Find the shortest path of even length from a source vertex s to a target vertex t in an unweighted graph. For this, we must construct an auxiliary graph, whose vertices are the state (v, c) where v is the current node, c = 0, 1 denotes the current parity. Any edge (u, v) of the original graph in this new graph will turn into two edges ((u, 0), (v, 1)) and ((u, 1), (v, 0)). After that we run a BFS to find the shortest path from (s, 0) to (t, 0).
@@ -1808,7 +1834,6 @@ int floodfill (int r, int c, char c1, char c2) {
     \item Similarly edge (u, v) lies on shortest path if da[u] + 1 + db[v] = da[b].
     \item Finding shortest cycle in a directed unweighted graph. For each vertex $v_i$: do a BFS from it and if we try to go from the current vertex to an already visited vertex then it means that we have found a cycle and should stop BFS.
     \\Take minimum of all such cycles (one for each $v_i$) to get the shortest length cycle.
-    \item Using DFS, we can also tell whether vertex i is an ancestor of j by using either that subtree method or by checking if $entry[i] < entry[j]$ and $exit[i] > exit[j]$
 \end{itemize}
 \subsection{Articulation Points and Bridges (undirected graph)}
 \begin{itemize}
@@ -1843,7 +1868,7 @@ void ArticulationPoint(int u)
             if(dfs_low[v] >= dfs_num[u])
                 articulation_vertex[u] = true;
             // To detect bridges
-            if (dfs_low[v.first] > dfs_num[u])
+            if (dfs_low[v] > dfs_num[u])
                 printf(" Edge (%d, %d) is a bridge\n", u, v.first);
             
             // update dfs_low[u] if dfs_low[v] is lower
@@ -1919,7 +1944,7 @@ void ArticulationPoint(int u)
             // we increment articulation_vertex here
             if(dfs_low[v] >= dfs_num[u])
                 articulation_vertex[u]++;
-            if (dfs_low[v.first] > dfs_num[u])
+            if (dfs_low[v] > dfs_num[u])
                 printf(" Edge (%d, %d) is a bridge\n", u, v.first);
                 
             dfs_low[u] = min(dfs_low[u], dfs_low[v]);
@@ -1952,7 +1977,7 @@ int main()
         }
 }
     \end{minted}
-    \item \href{https://gist.github.com/sourabh2311/01c2bdf3f7389c2b84d40db5cce506f9}{Two way to one way UVA 610}
+    \item \href{https://gist.github.com/sourabhxyz/01c2bdf3f7389c2b84d40db5cce506f9}{Two way to one way UVA 610}
 \end{itemize}
 \subsection{Tree}
 Undirected, acyclic, connected, $|V| - 1$ edges.\\
@@ -1977,12 +2002,20 @@ void postorder (v) {
 	visit (v);
 }
 \end{minted}
+\includesvg[width=0.35\textwidth,height=0.35\textheight,keepaspectratio]{assets/Sorted_binary_tree_ALL_RGB.svg} 
+
+Pre-order (node visited at position red \textcolor{red}{●}): F, B, A, D, C, E, G, I, H;
+
+In-order (node visited at position green \textcolor{green}{●}): A, B, C, D, E, F, G, H, I;
+
+Post-order (node visited at position blue \textcolor{blue}{●}): A, C, E, D, B, H, I, G, F.
+
 It is \textbf {impossible} to construct binary tree with just Preorder traversal.\\ 
 It is \textbf {impossible} to construct binary tree with just Inorder traversal.\\
 It is \textbf {impossible} to construct binary tree with just Postorder traversal.
 \subsubsection{LCA}
 \begin{itemize}[leftmargin=*]
-    \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. Note that LCA of two nodes u, v is the node w that is ancestor of both u and v and that has the greatest depth in the tree.\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/lca}
+    \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. Note that LCA of two nodes u, v is the node w that is ancestor of both u and v and that has the greatest depth in the tree.\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/lca}
     \item Tarjan's offline LCA. for each query (a, b) you should do q[a].pb(b) and q[b].pb(a).
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/tar}
 \end{itemize}
@@ -1990,15 +2023,15 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 \begin{itemize}
     \item \href{https://codeforces.com/contest/1099/problem/F}{Eating cookies on tree}, \href{https://codeforces.com/blog/entry/64296?#comment-482494}{Sol}
     \item Say path length is defined as the sum of edge weights along that path. And diameter is length of the longest simple path. Given sum of edge weights 'm' we need to assign weights to edges so that diameter is minimum. Sol: Consider the center of the tree like before, now the length of all paths from this tree should be minimum, which is only possible if we assign length to be the same. \href{https://codeforces.com/contest/1086/submission/47400574}{code}
-    \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabh2311/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
-	\item \href {https://gist.github.com/sourabh2311/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the diameter of the tree.\\
+    \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabhxyz/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
+	\item \href {https://gist.github.com/sourabhxyz/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the diameter of the tree.\\
 	Problem Sol: Just link the center of diameters. Brute force which edge to remove on the longest path. 
-	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_112.cpp}{UVA 112 Sol}, \href {https://uva.onlinejudge.org/external/1/112.pdf}{UVA 112 Prob}: Just see how I processed the input.	
-	\item \href {https://gist.github.com/sourabh2311/6b761c14bef4e5887e6b03b809bc4983}{UVA 10029 Sol}, \href {https://uva.onlinejudge.org/external/100/10029.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
-	\item \href {https://gist.github.com/sourabh2311/d73572fab5cf6d390f509d29abf4cd60}{UVA 536 Sol}, \href {https://uva.onlinejudge.org/external/5/536.pdf}{UVA 536 Prob}: Construct binary tree with preorder and inorder	
-	\item \href {https://gist.github.com/sourabh2311/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10459 Prob}: Centers of diameters are best where as corners are worst.	
+	\item \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_112.cpp}{UVA 112 Sol}, \href {https://uva.onlinejudge.org/external/1/112.pdf}{UVA 112 Prob}: Just see how I processed the input.	
+	\item \href {https://gist.github.com/sourabhxyz/6b761c14bef4e5887e6b03b809bc4983}{UVA 10029 Sol}, \href {https://uva.onlinejudge.org/external/100/10029.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
+	\item \href {https://gist.github.com/sourabhxyz/d73572fab5cf6d390f509d29abf4cd60}{UVA 536 Sol}, \href {https://uva.onlinejudge.org/external/5/536.pdf}{UVA 536 Prob}: Construct binary tree with preorder and inorder	
+	\item \href {https://gist.github.com/sourabhxyz/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10459 Prob}: Centers of diameters are best where as corners are worst.	
     \item \href{https://codeforces.com/contest/911/problem/F}{Tree Destruction}, \href{https://codeforces.com/contest/911/submission/34122817}{Sol}:
-    \item \href{https://codeforces.com/contest/1092/problem/F}{Tree with maximum cost}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/527%20Div3/F.cpp}{sol}
+    \item \href{https://codeforces.com/contest/1092/problem/F}{Tree with maximum cost}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/527%20Div3/F.cpp}{sol}
 \end{itemize}
 \subsubsection{MVC on Tree}
 \begin{minted}{cpp}
@@ -2063,7 +2096,7 @@ int mwis(int at, int flag, int parent) { //You can start this from any node, i.e
     \item A matching is a subset of edges such that each vertex is adjacent to at most one edge in the subset. Clearly Matching edges can be atmost $|V|/2$ as each edge joins two vertices and now no other matched edge can touch them.
     \item Note: This MVC, MIS, MM, is defined for undirected, unweighted graph.
     \item Once we have maximum matching. Clearly since these matching edges are aswell edges of the graph and minimum vertex cover should have vertices that are adjacent to these edges. But since matching edges have no vertex in common, size of minimum vertex cover is atleast the size of maximum matching.
-    \item Maximum matchings can be found in polynomial time for any graph, while minimum vertex cover is NP complete. Thus, finding maximum independent sets is another NP-complete problem. See \href{https://github.com/sourabh2311/Timus/blob/master/1099_Work_Scheduling.cpp}{soln} to \href{http://acm.timus.ru/problem.aspx?space=1&num=1099}{this} problem for maximum matching.
+    \item Maximum matchings can be found in polynomial time for any graph, while minimum vertex cover is NP complete. Thus, finding maximum independent sets is another NP-complete problem. See \href{https://github.com/sourabhxyz/Timus/blob/master/1099_Work_Scheduling.cpp}{soln} to \href{http://acm.timus.ru/problem.aspx?space=1&num=1099}{this} problem for maximum matching.
     \item The equivalence between matching and covering articulated in Kőnig's theorem allows minimum vertex covers and maximum independent sets to be computed in polynomial time for bipartite graphs, despite the NP-completeness of these problems for more general graph families.
 \end{itemize}
 \subsection{Konigs Theorem}
@@ -2538,8 +2571,8 @@ int dijkstra (int s, int e) {
 }
 \end{minted}
 \begin{itemize}
-    \item \href{https://uva.onlinejudge.org/external/116/11635.pdf}{Hotel Booking Problem}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_11635.cpp}{sol}
-    \item \href{https://uva.onlinejudge.org/external/113/11367.pdf}{Fuel Tank problem}, \href{https://gist.github.com/sourabh2311/8bfef5f916820d71a8770fc4c7adc598}{sol}
+    \item \href{https://uva.onlinejudge.org/external/116/11635.pdf}{Hotel Booking Problem}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_11635.cpp}{sol}
+    \item \href{https://uva.onlinejudge.org/external/113/11367.pdf}{Fuel Tank problem}, \href{https://gist.github.com/sourabhxyz/8bfef5f916820d71a8770fc4c7adc598}{sol}
     \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/48057301}{Sol}: pr denotes from what grammer it is derived. Also number of functions on n variables $= 2^{2^n}$.
 \end{itemize}
 \subsubsection{Bellman ford}
@@ -2595,7 +2628,7 @@ if (x != -1) {  // negative cycle
 \end{minted}
 \begin{itemize}
     \item \href{}{Hopeless/winnable UVA 10557}: Basically check for positive cycle and see if it is connected from that.
-    \item \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Summer%202017/UVA_11280.cpp}{Stop problem UVA 11280}.
+    \item \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Summer%202017/UVA_11280.cpp}{Stop problem UVA 11280}.
 \end{itemize}
 \subsection{Max Flow}
 \subsubsection{Edmond karps}
@@ -2634,7 +2667,7 @@ void augment(int v, int minEdge) { // traverse BFS spanning tree from s->t
     \item Vertex capacities: Network flow variant where capacities are not just defined along the edges but also on the vertices. Split each v to vin and vout, reassigning its incomint/outgoing edges to vin/vout resp. and finally putting the original vertex v's weight as the weight of edge vin -$>$ vout. Note that this will double the number of vertices
     \item Max Independent paths: two paths are said to be independent if they do not share any vertex apart from s and t. Soln: construct a flow network N = (V, E) from G with vertex capacitites, where N is the carbon copy of G except that the capacity of each v in V is 1 (i.e. each vertex can only be used once) and the capacity of each edge e in V is also 1. Then run edmonds karps algo as per normal.
     \item Max edge disjoint paths: finding the maximum number of edge disjoint paths rom s to t is simlar to finding max independent paths. The only difference is that this time we do not have any vertex capacity (i.e. 2 edge disjoint paths can still share the same vertex)
-    \item \href{https://uva.onlinejudge.org/external/5/563.pdf}{Crimewave}, \href{https://gist.github.com/sourabh2311/d9125c7f5149f80b267514b66ec65d3b}{sol} 
+    \item \href{https://uva.onlinejudge.org/external/5/563.pdf}{Crimewave}, \href{https://gist.github.com/sourabhxyz/d9125c7f5149f80b267514b66ec65d3b}{sol} 
     \item \textbf{MWIS on a bipartite graph}
     \\Problem is equivalent to finding the minimum weight vertex cover in the graph. The latter can be solved using maximum flow techniques:
     \\Introduce a super-source S and a super-sink T. connect the nodes on the left side of the bipartite graph to S, via edges that have their weight as capacity. Do the same thing for the right side and sink T. Assign infinite capacity to the edges of the original graph.
@@ -2673,7 +2706,7 @@ An undirected edge $(i, j)$ is actually the same as two oriented edges $(i, j)$ 
 How do we deal with multiple edges? First the flow for each of the multiple edges must be kept separately. Secondly, when searching for the shortest path, it is necessary to take into account that it is important which of the multiple edges is used in the path. Thus instead of the usual ancestor array we additionally must store the edge number from which we came from along with the ancestor. Thirdly, as the flow increases along a certain edge, it is necessary to reduce the flow along the back edge. Since we have multiple edges, we have to store the edge number for the reversed edge for each edge.
 
 There are no other obstructions with undirected graphs or multigraphs.
-\\Sample Prob: \href{https://uva.onlinejudge.org/external/105/10594.pdf}{UVA 10594}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10594_Better.cpp}{sol}
+\\Sample Prob: \href{https://uva.onlinejudge.org/external/105/10594.pdf}{UVA 10594}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_10594_Better.cpp}{sol}
 \subsection{Kirchhoff's matrix tree theorem}
 Problem: You are given a connected undirected graph (with possible multiple edges) represented using an adjacency matrix. Find the number of different spanning trees of this graph.
 \\Let $A$ be the adjacency matrix of the graph: $A_{u,v}$ is the number of edges between $u$ and $v$. Let $D$ be the degree matrix of the graph: a diagonal matrix with $D_{u,u}$ being the degree of vertex $u$ (including multiple edges and loops - edges which connect vertex $u$ with itself).
@@ -2710,12 +2743,12 @@ We will divide the tree into vertex-disjoint chains ( Meaning no two chains has 
 \\What happens if you go to each node, find the special child and special edge and mark all special edges with green color and other edges are still black? Well, what happens is HLD. What would the graph look like then? Colorful yes. Not just colorful. Green edges actually forms vertex disjoint chains and black edges will be the connectors between chains. Let us explore one chain, start at root, move to the special child of root (there is only one special child, so easy pick), then to its special child and so on until you reach a leaf node, what you just traveled is a chain which starts at root node. Let us assume that root node has m child nodes. Note that all m-1 normal child nodes are starting nodes of some other chains.
 \\When you move from a node to any of its normal child, the sub-tree size is at most half the sub-tree size of current node.
 \\Changing a chain means we are moving for a node to a normal child, so each time we change chain we are at least halving the sub-tree size. For a tree with size N, we can halve it at most log N times.
-\\\href{http://acm.timus.ru/problem.aspx?space=1&num=1553}{Timus 1553}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1553.cpp}{Sol}
+\\\href{http://acm.timus.ru/problem.aspx?space=1&num=1553}{Timus 1553}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/timus/1553.cpp}{Sol}
 \subsection{More Problems}
 \begin{itemize}
     \item \href{}{UVA 928}: just bfs with dp
-    \item \href{https://uva.onlinejudge.org/external/102/10246.pdf}{That worst feast problem UVA 10246}, \href{https://gist.github.com/sourabh2311/e55a0e3f7453e4514f1251b1ae6f0827}{sol}
-    \item \href{https://gist.github.com/sourabh2311/a9f9b7584631b8859692df0f4af0843d}{Atcoder}
+    \item \href{https://uva.onlinejudge.org/external/102/10246.pdf}{That worst feast problem UVA 10246}, \href{https://gist.github.com/sourabhxyz/e55a0e3f7453e4514f1251b1ae6f0827}{sol}
+    \item \href{https://gist.github.com/sourabhxyz/a9f9b7584631b8859692df0f4af0843d}{Atcoder}
     \item \href{https://codeforces.com/problemset/problem/986/C}{986C AND graph}, \href{https://codeforces.com/blog/entry/59758}{Sol}
 \end{itemize}
 \section{Some Basic}
@@ -2816,8 +2849,8 @@ bool next_combination(vector<int>& a, int n) {
     return false;
 }
 \end{minted}
-    \item \href{https://uva.onlinejudge.org/external/4/410.pdf}{UVA 410 Load Balancing}, \href{https://gist.github.com/sourabh2311/5405601b47b1bd9c8fa769c82b280328}{sol}
-    \item \href{https://uva.onlinejudge.org/external/104/10440.pdf}{ferry loading}, \href{https://gist.github.com/sourabh2311/4af5bc294ab613057de828b308da587a}{sol}, just know that best time is last cars arrival + t/2, so just achieve it.
+    \item \href{https://uva.onlinejudge.org/external/4/410.pdf}{UVA 410 Load Balancing}, \href{https://gist.github.com/sourabhxyz/5405601b47b1bd9c8fa769c82b280328}{sol}
+    \item \href{https://uva.onlinejudge.org/external/104/10440.pdf}{ferry loading}, \href{https://gist.github.com/sourabhxyz/4af5bc294ab613057de828b308da587a}{sol}, just know that best time is last cars arrival + t/2, so just achieve it.
     \begin{minted}{cpp}
     One can write i = (m % n == 0 ? n - 1 : m % n - 1) as
     i = (m + n - 1) % n.
@@ -3170,10 +3203,10 @@ struct UFDS {
     }
 };
     \end{minted}
-    \item \href {https://uva.onlinejudge.org/external/101/10158.pdf}{UVA 10158 Prob}, \href {https://gist.github.com/sourabh2311/3a2daf2a9f77104a94d1db9af8b40b1a}{UVA 10158 Sol}
-    \item \href {https://codeforces.com/contest/915/problem/F}{Imbalance of a tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/F.cpp}{Sol}, summation(max - min) is same as summation(max) - summation(min).
+    \item \href {https://uva.onlinejudge.org/external/101/10158.pdf}{UVA 10158 Prob}, \href {https://gist.github.com/sourabhxyz/3a2daf2a9f77104a94d1db9af8b40b1a}{UVA 10158 Sol}
+    \item \href {https://codeforces.com/contest/915/problem/F}{Imbalance of a tree}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/ER36/F.cpp}{Sol}, summation(max - min) is same as summation(max) - summation(min).
     \item \href {https://codeforces.com/contest/913/problem/C}{Party Lemonade}, \href {https://codeforces.com/contest/913/submission/34067096}{Sol}
-    \item \href {https://codeforces.com/contest/916/problem/B}{Jamie and binary sequence}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/B.cpp}{Sol}.
+    \item \href {https://codeforces.com/contest/916/problem/B}{Jamie and binary sequence}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/457D2/B.cpp}{Sol}.
     \item \href {https://codeforces.com/contest/912/problem/E}{Prime gift}, \href {https://codeforces.com/contest/912/submission/33976448}{Sol}. awesome 2 pointers problem.
     \item \href {https://codeforces.com/contest/912/problem/D}{Fishes}, \href {https://codeforces.com/blog/entry/56920}{Sol}. 
     \item \textbf{Max 1D Range Sum (kadane)}
@@ -3864,7 +3897,7 @@ int main()
 \end{minted}
 LIS of reverse sequence gives LDS starting from pos after reversing L.\\
 LIS of reverse negative sequence gives LIS stating from pos after reversing L.\\
-\\\href{https://codeforces.com/problemset/problem/486/E}{LIS of sequence}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/LIS%20Using%20Segment%20Trees/Problem/sol2_ifsmirnov.cpp}{Sol}: Conecpt:
+\\\href{https://codeforces.com/problemset/problem/486/E}{LIS of sequence}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Reference%20Notes/LIS%20Using%20Segment%20Trees/Problem/sol2_ifsmirnov.cpp}{Sol}: Conecpt:
 Let F1i be the length of LIS ending exactly at ai of sequence \{a1, a2, ..., ai\}.
 
 Let F2i be the length of LIS beginning exactly at ai of sequence \{ai, ai + 1, ..., an\}
@@ -3879,7 +3912,7 @@ Case1: if a[i] equal a[j] and thus ai is not needed in lis of a[j] and vice vers
 \\Hence proved. 
 \\Thus the answer for i is 2 (and for j it is 2 too, of course). It can also be shown that if F1i is unique among all F1 then the answer for i is 3.
 \\Say y = smallest no. of non inc. subsequences covering this seq. then y = length of LIS.
-\\Proof: see \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/LIS%20Using%20Segment%20Trees/LongestIncreasingSubsequence.pdf}{this}
+\\Proof: see \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Reference%20Notes/LIS%20Using%20Segment%20Trees/LongestIncreasingSubsequence.pdf}{this}
 \subsection{LIS of consecutive integers}
 \begin{minted}{cpp}
 void solve (vi &arr) {
@@ -3992,7 +4025,7 @@ The Livshits-Kladov theorem establishes, that the permutation method is only app
 \end{itemize}
 Time complexity $O(n \log n)$
 \subsection{Scheduling jobs on two machine}
-Just see relevant part of \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Scheduling%20jobs%20on%20two%20machines/P402.pdf}{that} pdf.
+Just see relevant part of \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Reference%20Notes/Scheduling%20jobs%20on%20two%20machines/P402.pdf}{that} pdf.
 \subsection{Ternary Search}
 \begin{minted}{cpp}
 // finding maximum in case of double, similarly we can do for minimum
@@ -4108,13 +4141,13 @@ struct segmentTree {
 \end{minted}
 \begin{itemize}
     \item Construction of segment tree is O(n) (by masters theorem) and height of segment tree is O(logn). Also time complexity of each query is O(logn).
-    \item \href{https://uva.onlinejudge.org/external/112/11235.pdf}{freq}, \href{https://gist.github.com/sourabh2311/adf33f80e4b1e95bdb7d7a0e28ae23e6}{sol}
-    \item \href{https://uva.onlinejudge.org/external/112/11297.pdf}{simple update}, \href{https://gist.github.com/sourabh2311/1376c934be55a72ca3f7c6f7481125ca}{sol}
-    \item \href{https://uva.onlinejudge.org/external/114/11402.pdf}{lazy range update}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_11402.cpp}{sol}
+    \item \href{https://uva.onlinejudge.org/external/112/11235.pdf}{freq}, \href{https://gist.github.com/sourabhxyz/adf33f80e4b1e95bdb7d7a0e28ae23e6}{sol}
+    \item \href{https://uva.onlinejudge.org/external/112/11297.pdf}{simple update}, \href{https://gist.github.com/sourabhxyz/1376c934be55a72ca3f7c6f7481125ca}{sol}
+    \item \href{https://uva.onlinejudge.org/external/114/11402.pdf}{lazy range update}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_11402.cpp}{sol}
     \item In similar way segment tree can be used to answer queries regarding gcd/lcm.
-    \item \href{https://codeforces.com/problemset/problem/380/C}{Sereja and brackets}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/380C%20-%20Seraja%20And%20Brackets.cpp}{sol}
-    \item \href{https://codeforces.com/problemset/problem/981/E}{Addition on Segments}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/Problem%20-%20E%20Addition%20On%20Segments_sol_tourist.cpp}{sol}
-    \item \href {https://codeforces.com/contest/916/problem/D}{Jamie and to do list}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/D.cpp}{Sol}: Just basic application of Persistent segment tree. When updating some element, at most O(logn) nodes in the segment tree get changed: the nodes along the path from root to the updated leaf. For each timepoint, instead of creating a copy of the entire segment tree, copy only nodes on the path to be updated and update them. Therefore total storage is O(n + t\*logn).
+    \item \href{https://codeforces.com/problemset/problem/380/C}{Sereja and brackets}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/380C%20-%20Seraja%20And%20Brackets.cpp}{sol}
+    \item \href{https://codeforces.com/problemset/problem/981/E}{Addition on Segments}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/Problem%20-%20E%20Addition%20On%20Segments_sol_tourist.cpp}{sol}
+    \item \href {https://codeforces.com/contest/916/problem/D}{Jamie and to do list}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/457D2/D.cpp}{Sol}: Just basic application of Persistent segment tree. When updating some element, at most O(logn) nodes in the segment tree get changed: the nodes along the path from root to the updated leaf. For each timepoint, instead of creating a copy of the entire segment tree, copy only nodes on the path to be updated and update them. Therefore total storage is O(n + t\*logn).
 \end{itemize}
 \section{DP}
 Following are the two main properties of a problem that suggests that the given problem can be solved using Dynamic programming.
@@ -4383,12 +4416,12 @@ Here is an implementation using two types of brackets: round and square:
 \end{minted}
 \subsection{Important Problems}
 \begin{itemize}
-    \item \href{https://gist.github.com/sourabh2311/b0f96d91095c812b6100874667724a17}{dividing coins sol}
-    \item \href{https://uva.onlinejudge.org/external/104/10496.pdf}{TSP}, \href{https://gist.github.com/sourabh2311/52e95aab8f9ff43c17a6143ea80d7108}{Sol}
-    \item \href{https://uva.onlinejudge.org/external/103/10364.pdf}{Square}, \href{https://gist.github.com/sourabh2311/b043d57f0aea7d66edadb747d1c9a9d2}{Sol}
-    \item \href{https://uva.onlinejudge.org/external/106/10651.pdf}{Pebble Solitare}, \href{https://gist.github.com/sourabh2311/03ee5ac77c042b2ee5d3188b745b2c0b}{sol}
-    \item \href{https://uva.onlinejudge.org/external/109/10911.pdf}{Forming Quiz Teams}, \href{https://gist.github.com/sourabh2311/4985382867071c0518c9dd8b8fd727e9}{sol}
-    \item \href{https://uva.onlinejudge.org/external/113/11307.pdf}{Simple tree coloring}, \href{https://gist.github.com/sourabh2311/fc1112b44a455310f601967768e1d212}{sol}
+    \item \href{https://gist.github.com/sourabhxyz/b0f96d91095c812b6100874667724a17}{dividing coins sol}
+    \item \href{https://uva.onlinejudge.org/external/104/10496.pdf}{TSP}, \href{https://gist.github.com/sourabhxyz/52e95aab8f9ff43c17a6143ea80d7108}{Sol}
+    \item \href{https://uva.onlinejudge.org/external/103/10364.pdf}{Square}, \href{https://gist.github.com/sourabhxyz/b043d57f0aea7d66edadb747d1c9a9d2}{Sol}
+    \item \href{https://uva.onlinejudge.org/external/106/10651.pdf}{Pebble Solitare}, \href{https://gist.github.com/sourabhxyz/03ee5ac77c042b2ee5d3188b745b2c0b}{sol}
+    \item \href{https://uva.onlinejudge.org/external/109/10911.pdf}{Forming Quiz Teams}, \href{https://gist.github.com/sourabhxyz/4985382867071c0518c9dd8b8fd727e9}{sol}
+    \item \href{https://uva.onlinejudge.org/external/113/11307.pdf}{Simple tree coloring}, \href{https://gist.github.com/sourabhxyz/fc1112b44a455310f601967768e1d212}{sol}
 \end{itemize}
 \section{Strings}
 To map keyboard etc, it is better to create 2 strings then loop through and map.\\
@@ -4897,17 +4930,17 @@ int main() {
     sufCount[v] = 1 + sufCount[link[v]];
 */
 \end{minted}
-Just see this \href{https://github.com/sourabh2311/Timus/blob/master/1954_Five_Palindromes.cpp}{soln}
+Just see this \href{https://github.com/sourabhxyz/Timus/blob/master/1954_Five_Palindromes.cpp}{soln}
 \subsection{Important Problems}
 \textit{Review: cf 631D}
 \begin{itemize}
-    \item \href{https://github.com/sourabh2311/Timus/blob/master/2059_Not_common_palindromes.cpp}{Just to see how to handle multi strings occurence in eertree}
-	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10739.cpp}{UVA 10739 Sol}, \href {https://uva.onlinejudge.org/external/107/10739.pdf}{UVA 10739 Prob}: String to palindrome, just see the minimum edit distance between this string and its reverse but need to divide by 2 later as both strings are it itself.	
-	\item \href {https://codeforces.com/contest/245/problem/H}{Queries for the number of palindromic substrings within given range}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/245H%20-%20Queries%20for%20Number%20of%20Palindromes.cpp}{\textbf {See this soln to see power of hashing.}}: 
+    \item \href{https://github.com/sourabhxyz/Timus/blob/master/2059_Not_common_palindromes.cpp}{Just to see how to handle multi strings occurence in eertree}
+	\item \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_10739.cpp}{UVA 10739 Sol}, \href {https://uva.onlinejudge.org/external/107/10739.pdf}{UVA 10739 Prob}: String to palindrome, just see the minimum edit distance between this string and its reverse but need to divide by 2 later as both strings are it itself.	
+	\item \href {https://codeforces.com/contest/245/problem/H}{Queries for the number of palindromic substrings within given range}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/245H%20-%20Queries%20for%20Number%20of%20Palindromes.cpp}{\textbf {See this soln to see power of hashing.}}: 
     \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/palsub} 	
-    \\\href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/514C%20-%20Watto%20And%20Mechanism.cpp}{One more problem to see how to use hashing.}
-    \item \href{http://acm.timus.ru/problem.aspx?space=1&num=1989}{Timus 1989 Subpalindromes}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1989.cpp}{Sol}
-	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - simple}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - complicated but more powerful}: Problem is to find the longest substring shared by more than half of given strings.	
+    \\\href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/514C%20-%20Watto%20And%20Mechanism.cpp}{One more problem to see how to use hashing.}
+    \item \href{http://acm.timus.ru/problem.aspx?space=1&num=1989}{Timus 1989 Subpalindromes}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/timus/1989.cpp}{Sol}
+	\item \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - simple}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - complicated but more powerful}: Problem is to find the longest substring shared by more than half of given strings.	
 \end{itemize}
 \section{Geometry}
 \begin{itemize}
@@ -4984,7 +5017,7 @@ ll getb (vector<point> &poly) {
     \item To check whether a point is on or inside a convex polygon that area method is best.
     \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/p1} 
     \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/p2}
-    \item \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/areaOfUnionOfTriangles.cpp}{Area of union of triangles}
+    \item \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Libs/areaOfUnionOfTriangles.cpp}{Area of union of triangles}
     \item \href{http://e-maxx.ru/algo/circle_tangents}{Finding common tangents to two circles}
     \item Given a set of points, to determine whether a point lies inside a triangle formed by any 3 points, it is enough to check whether the given point lies inside the convex hull of given data points.
 \end{itemize}
@@ -5095,12 +5128,12 @@ double dvac(int low, int high) {
 
 \end{minted}
 \subsection{2D geo lib}
-\href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/2dgeoLib.cpp}{2D geo lib}
+\href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Libs/2dgeoLib.cpp}{2D geo lib}
 \\Circle line intersection, same as sphere line intersection.\\
 \includegraphics[width=0.1\textwidth,height=0.1\textheight,keepaspectratio]{assets/circleline}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/circlecircle}
 \subsection{3D geo lib}
-\href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/3dgeolib.cpp}{3D Geo Lib}
+\href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Libs/3dgeolib.cpp}{3D Geo Lib}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/facearea}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/sph}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/segsegcir}
@@ -5109,11 +5142,11 @@ double dvac(int low, int high) {
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/orientedangle}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{assets/spherearea}
 \subsection{Line Sweep}
-See \href{https://www.topcoder.com/community/competitive-programming/tutorials/line-sweep-algorithms/}{this} and \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/RevisionNotes/linesweep.pdf}{this}.
+See \href{https://www.topcoder.com/community/competitive-programming/tutorials/line-sweep-algorithms/}{this} and \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/RevisionNotes/linesweep.pdf}{this}.
 \subsection{Important Problems}
 \begin{itemize}
-    \item Sometimes it makes sense to gridize the region, like in \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1333.cpp}{Timus 1333}
-    \item \href{https://uva.onlinejudge.org/external/101/10173.pdf}{Minimum Bounding Rectangle}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10173.cpp}{Sol}: basically use atan2 and rotate wrt that point.
+    \item Sometimes it makes sense to gridize the region, like in \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/timus/1333.cpp}{Timus 1333}
+    \item \href{https://uva.onlinejudge.org/external/101/10173.pdf}{Minimum Bounding Rectangle}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_10173.cpp}{Sol}: basically use atan2 and rotate wrt that point.
 \end{itemize}
 \section{To Read}
 \href{https://codeforces.com/blog/entry/64829}{one}
