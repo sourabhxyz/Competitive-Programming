@@ -1,29 +1,48 @@
 % Light!
 \documentclass[8pt, a4paper, oneside, twocolumn]{extarticle}
-\usepackage{verbatim}  % for multiline comments
-\begin{comment}
-The options oneside and twoside affect the width of the side margins.  With oneside , which is the default for article, report, and letter, the margins on both  sides  of  every  page  are  equally  wide.   With twoside, Latex distinguishes between an inner and outer  margin.   The  outer  margin  is  substantially wider  and  switches  between  left  and  right.   Even pages have their outer margin on the left, odd pages on the right.  Most books follow this structure and so it should not come as a surprise that the book class default is twoside.
-The standard Latex classes (article, report etc) support ten, eleven and twelve point text. These are the commonest sizes used in publishing.
-However, for certain applications there may be a need for other sizes.
-The extsizes classes (extarticle, extreport, extbook, extletter, and
-extproc) provide support for sizes eight, nine, ten, eleven, twelve,
-fourteen, seventeen and twenty points.	
-Also as we want whole document to have two columns, we gave it as an optimal parameter however if we want a particular page to have two columns, the command \twocolumn starts a new page having two columns. Accordingly, \onecolumn starts a new page with a single column assuming you are in a two column environment as described above. Both commans do not take any arguments. 
-The is a way to define the distance between the two columns, use
-\setlength{\columnsep}{distance}
 
-If you need a line to separate the columns, the following command will do the job:
-\setlength{\columnseprule}{thickness}
+\usepackage{verbatim}  % for multiline comments
+
+\begin{comment}
+  
+The options `oneside' and `twoside' affect the width of the side margins. With `oneside', which is the default for `article', `report', and `letter', the margins on both sides of every page are equally wide. With `twoside', Latex distinguishes between an inner and outer margin. The outer margin is substantially wider and switches between left and right. Even pages have their outer margin on the left, odd pages on the right. Most books follow this structure and so it should not come as a surprise that the `book' class default is `twoside'.
+
+The standard Latex classes (`article', `report' etc) support ten, eleven and twelve point text. These are the commonest sizes used in publishing. However, for certain applications there may be a need for other sizes. The `extsizes' classes (`extarticle', `extreport', `extbook', `extletter', and `extproc') provide support for sizes eight, nine, ten, eleven, twelve, fourteen, seventeen and twenty points. 
+
+Also as we want whole document to have two columns, we gave it as an optimal parameter however if we want a particular page to have two columns, the command `\twocolumn' starts a new page having two columns. Accordingly, `\onecolumn' starts a new page with a single column assuming you are in a two column environment as described above. Both commans do not take any arguments. 
+ 
+The is a way to define the distance between the two columns, use `\setlength{\columnsep}{distance}'
+
+If you need a line to separate the columns, the following command will do the job: `\setlength{\columnseprule}{thickness}'
+
 \end{comment}
+
+\setlength{\columnseprule}{0.4pt}
+
+\frenchspacing  % Else it was inserting double space after full stop.
+
+\usepackage{minted}
+\setminted{breaklines=true, tabsize=2, breaksymbolleft=}
+
+\begin{comment}
+
+From minted documentation (http://tug.ctan.org/macros/latex/contrib/minted/minted.pdf), we have:
+
+About `breaklines': Automatically break long lines in minted environments and \mint commands, and wrap longer lines in \mintinline. By default, automatic breaks occur at space characters. Use breakanywhere to enable breaking anywhere; use breakbytoken, breakbytokenanywhere, breakbefore, and breakafter for more fine-tuned breaking.
+
+About `breaksymbolleft': The symbol used at the beginning (left) of continuation lines when breaklines=true. To have no symbol, simply set breaksymbolleft to an empty string (“=,” or “={}”).
+
+About `tabsize': The number of spaces a tab is equivalent to. If obeytabs is not active, tabs will be converted into this number of spaces. If obeytabs is active, tab stops will be set this number of space characters apart.
+
+\end{comment}
+
 \usepackage{graphicx}
 \usepackage[export]{adjustbox}
 \usepackage[compact]{titlesec}  % documentation: http://mirror.iopb.res.in/tex-archive/macros/latex/contrib/titlesec/titlesec.pdf  
-\usepackage{kotex}
 \usepackage[left=0.8cm, right=0.8cm, top=2cm, bottom=0.3cm, a4paper]{geometry}
 \usepackage{amsmath}
 \usepackage{ulem}
 \usepackage{amssymb}
-\usepackage{minted}  % syntax highlighting
 \usepackage{enumitem}
 \setlist{nolistsep}
 \usepackage{fancyhdr} % documentation: http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
@@ -57,7 +76,6 @@ The pack­age pro­vides ex­ten­sive fa­cil­i­ties, both for con­struct­i
 \titlespacing*{\subsubsection}
 {0pt}{0px plus 1px minus 0px}{0px plus 3px minus 3px}
 
-\setlength{\columnseprule}{0.4pt}
 \pagenumbering{arabic}
 \begin{comment}
 The  page  headers  and  footers  in  Latex are  defined  by  the 	\pagestyle and \pagenumbering commands. \pagestyle defines the general contents of the headers and footers (e.g.  where the page  number  will  be  printed),  while \pagenumbering defines  the  format  of  the  page  number. Latexhas four standard pagestyles:
@@ -92,8 +110,6 @@ with this other one, you can add a value to the existing one:
 
 \end{comment}
 \DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
-\setminted{breaklines=true, tabsize=2, breaksymbolleft=}
-\usemintedstyle{perldoc} % takes an optional argument to specify the style for a particular language, and works anywhere in the document
 \begin{document}
 \title{\swastik{scale = 0.2} {}Short Revision Notes{} \swastik{scale = 0.2}}
 \author{Sourabh Aggarwal (\href {https://codeforces.com/profile/sourabh23}{sourabh23})}
@@ -156,11 +172,11 @@ for (int i = 1; i <= N; i++) {
     } 
 }
 \end{minted}
-Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
-\\\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is $\mu \circ e = \mu$. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(j)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
+Can read \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Reference%20Notes/Multiplicative.pdf}{this} and \href{https://www.quora.com/profile/Surya-Kiran/Posts/A-Dance-with-Mobius-Function}{this}.
+\\\href{https://codeforces.com/contest/915/problem/G}{Prob}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/ER36/G.cpp}{Sol: }$\sum_{g = 1}^{i}h(g)*cnt[g]$ where $cnt[g] = $ no. of arrays with $gcd(a_1, a_2, a_3, ..., a_n) = g$ and where each $a_k \leq i$. Now $h(g) = $ Dirichlet identity function. Thus it is $\mu \circ e = \mu$. Ans thus we get $\sum_{d = 1}^{i}\mu(d)*f(d)$ where $f(j)$ is the number of arrays with elements in range $[1, i]$ such that $gcd(a_1, \dots, a_n)$ is divisible by $j$. Obviously $f(j) = (\lfloor i/j \rfloor)^n$.
 \newpage
 \subsection{Bell, Burnside, etc}
-Can read \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}
+Can read \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Reference%20Notes/cgt.pdf}{this}
 
 The number of ways a set of n elements can be partitioned into nonempty subsets is called a Bell number and is denoted $B_n$. 
 
@@ -182,7 +198,7 @@ void pre() {
   }
 }
 \end{minted}
-For burnside just see \href{https://codeforces.com/blog/entry/62401}{this} and \href{http://poj.org/problem?id=1286}{burnside on circle prob}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/BURNSIDE/2.CPP}{sol}
+For burnside just see \href{https://codeforces.com/blog/entry/62401}{this} and \href{http://poj.org/problem?id=1286}{burnside on circle prob}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/IMP%20QUES/BURNSIDE/2.CPP}{sol}
 \\Similarly answer for \href{http://gcpc.nwerc.eu/problemset_2017.pdf}{this}, is \\\includegraphics[width=0.3\textwidth,height=0.3\textheight,keepaspectratio]{brnsq}
 \\as those sides can be represented as a point on a circle.
 
@@ -234,7 +250,7 @@ inline T inv(T a) {
 \subsection{Prob and Comb}
 \begin{itemize}
     \item $E[X] = \sum E(X|A_i)P(A_i)$
-    \item \href {https://codeforces.com/contest/908/problem/D}{k, $p_a$, $p_b$ prob}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Good%20Bye%202017/D.cpp}{Sol}, if $n + m \geq k \rightarrow p_b(i + j) + p_a*p_b*(i + j + 1) + p_a^2*p_b*(i + j + 2)\dots = (i + j) + \frac{p_a}{p_b}$ Also
+    \item \href {https://codeforces.com/contest/908/problem/D}{k, $p_a$, $p_b$ prob}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/Good%20Bye%202017/D.cpp}{Sol}, if $n + m \geq k \rightarrow p_b(i + j) + p_a*p_b*(i + j + 1) + p_a^2*p_b*(i + j + 2)\dots = (i + j) + \frac{p_a}{p_b}$ Also
     \begin{eqnarray}
     dp[0][0] & = & p_a * dp[1][0] + p_b * dp[0][0]\\
              & = & p_a * dp[1][0] / (1 - p_b)\\
@@ -404,7 +420,7 @@ void extendedEuclid(int a, int b) {
    y = y1;
 }
 \end{minted}
-\href{https://codeforces.com/problemsets/acmsguru/problem/99999/106}{SGU 106 Equation}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Extended%20Euclid/106-The%20Equation.cpp}{Sol}
+\href{https://codeforces.com/problemsets/acmsguru/problem/99999/106}{SGU 106 Equation}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/IMP%20QUES/Extended%20Euclid/106-The%20Equation.cpp}{Sol}
 \\Prob: To find the soln with minimum value of $x + y$ and obviously there has to be range of x, y. Sol: Now $x + y = x_0 + y_0 + n * (b/d - a/d)$. If $a < b$, select smallest possible value of n. If $a > b$ select the largest. And if $a = b$, all solutions have same sum of $x + y$
 \subsection{Linear Congruence Equation}
 This equation is of the form:
@@ -1005,7 +1021,7 @@ int rev_g (int g) {
 }
 \end{minted}
 
-\href{https://codeforces.com/problemsets/acmsguru/problem/99999/249}{SGU 249 Matrix}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Gray%20Code/SGU249-Matrix.cpp}{Sol}
+\href{https://codeforces.com/problemsets/acmsguru/problem/99999/249}{SGU 249 Matrix}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/IMP%20QUES/Gray%20Code/SGU249-Matrix.cpp}{Sol}
 \subsection{Discrete Logarithm}
 
 The discrete logarithm is an integer $x$ solving the equation
@@ -1548,7 +1564,7 @@ double simpson_integration(double a, double b){
 \end{minted}
 \subsection{Continued Fractions}
 \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{confr}
-\\\href{https://uva.onlinejudge.org/external/8/834.pdf}{UVA 834}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_834.cpp}{Sol}
+\\\href{https://uva.onlinejudge.org/external/8/834.pdf}{UVA 834}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_834.cpp}{Sol}
 \subsection{Pells eqn}
 
 \subsection{Side Notes}
@@ -1640,8 +1656,8 @@ ll compute (ll a, ll &b, ll &m) {
 	\item \href {https://uva.onlinejudge.org/external/113/11310.pdf}{UVA 11310 Prob}: $dp[n] = dp[n - 1] + 4 * dp[n - 2] + 2 * dp[n - 3]$
 	\item \href {https://uva.onlinejudge.org/external/112/11204.pdf}{UVA 11204 Prob}: Tricky problem, it just asks \textit{How many possible arrangements maximizing the assignment of the \textbf{first priority}.} Thus only first priority instrument matters, so if 2 want A, 4 want B, 3 want C, then ans is $2 * 4 * 3$.
     \item \href {https://uva.onlinejudge.org/external/107/10790.pdf}{UVA 10790 Prob}: If there is an intersection that means we have a quadrilateral, hence answer is the number of quadrilaterals $ = \binom{a}{2} * \binom{b}{2}$.
-    \item \href {https://uva.onlinejudge.org/external/5/568.pdf}{last non zero digit of fact(n)}, \href {https://gist.github.com/sourabh2311/3e7d2c8c905cce7f04eb86400d4aac35}{Sol}. If you know multiplicatioin limit, take mod with ($10^{\text{no. of digits}}$)
-    \item \href {https://uva.onlinejudge.org/external/5/542.pdf}{France 98}, \href {https://gist.github.com/sourabh2311/94629bd0303d3c4f918bda3bdaf8e711}{Sol}.
+    \item \href {https://uva.onlinejudge.org/external/5/568.pdf}{last non zero digit of fact(n)}, \href {https://gist.github.com/sourabhxyz/3e7d2c8c905cce7f04eb86400d4aac35}{Sol}. If you know multiplicatioin limit, take mod with ($10^{\text{no. of digits}}$)
+    \item \href {https://uva.onlinejudge.org/external/5/542.pdf}{France 98}, \href {https://gist.github.com/sourabhxyz/94629bd0303d3c4f918bda3bdaf8e711}{Sol}.
     \item \href {https://uva.onlinejudge.org/external/100/10061.pdf}{How many zeros and how many digits?} Sol: then iterate through factors of base and get their powers in n!, take min. of all such powers divided by power of prime factor in that base. And for how many digits part, use that log formula.
     \item Is $n!$ divisible by m? Sol: Use prime factors
     \item Given n, maximize (find x) $n - p*x$ where $p*x \leq n < (p + 1)*x$ which somehow happens with $p = 1$
@@ -1667,252 +1683,341 @@ else ans = ((n - 7) * (m - 7) + 1) / 2
     \end{minted}
     \item for 2 nos (a, b) output 2 nos (c, d) such that a = gcd(c, d) \& b = lcm(c, d) and c is minimum. Sol: basically soln exist if $b \bmod a = 0$ and soln is c = a, d = b.
 \end{itemize}
+
 \section{Graphs}
-\subsection{Basic}
+
 \begin{itemize}
-    \item \textbf{HandShaking lemma: }Every finite undirected graph has an even number of vertices with odd degree. handshaking lemma), $\sum _{v\in V}\deg v=2|E|$    
-    \item The shortest path b/w vertices i and j after edge (u, v) is added is equal to $min(d_{i, j}, d_{i, u} + w_{u, v} + d_{v, j}, d_{i, v} + w_{v, u} + d_{u, j})$
-    \item In BFS, in case of multiple sources, enqueue them all in queue and set dist[v] = 0. Same trick works in case of dijkstra.
-    \item Also in case we are given both source and destination then we can terminate our while loop by checking whether the element we pop from queue is the destination or not. Same trick would work with weighted graph provided we have no -ve edges (dijkstra)
-    \item Adjacency matrix equal to its transpose that implies undirected graph.
-    \item To check whether the graph is bipartite, we can do bfs and color vertices 0/1.
-    \item Graph Check
-    \begin{minted}{cpp}
-void graphcheck (int u) {
+  \item \textbf{HandShaking lemma:} Every finite undirected graph has an \textit{even} number of vertices with odd degree. Follows from: $\sum _{v\in V}\deg v=2|E|$    
+  \item Adjacency matrix equal to its transpose that implies undirected graph.
+  \item The shortest path b/w vertices $i$ and $j$ after edge $(u, v)$ is added is equal to $\min(d_{i, j}, d_{i, u} + w_{u, v} + d_{v, j}, d_{i, v} + w_{v, u} + d_{u, j})$
+  \item Highest average is possible only by taking largest edge weight/s. 
+\end{itemize}
+
+\subsection{Traversal}
+
+\subsubsection{BFS}
+
+\begin{itemize}
+  \item BFS traversal. Can also be used for SSSP (single source shortest path) for an unweighted graph, distance once set would necessarily be minimum.
+
+  \begin{minted}{cpp}
+  // O(V + E)
+  vector<int> dist(MAX_V, INF); dist[s] = 0;
+  queue<int> q; q.push(s);
+
+  while (!q.empty()) {
+    int u = q.front(); q.pop();  // queue operations are constant.
+    for (auto &v : adjList[u]) {
+      if (dist[v] == INF) {
+          dist[v] = dist[u] + 1;
+          q.push(v);  // constant
+      }
+    }
+  }
+  \end{minted}
+
+  \item Find \textbf{all} the vertices on \textit{any} shortest path between a given pair of vertices $(a, b)$. To accomplish that, run 2 BFS: one from $a$ and one from $b$. Let \mintinline{c}{da[]} be the array containing shortest distances obtained from first BFS (from $a$) and \mintinline{c}{db[]} be the array containing shortest distances obtained from the second BFS (from $b$). Now for every vertex it is easy to check whether it lies on any shortest path between $a$ and $b$: the criterion is the condition \mintinline{c}{da[v] + db[v] = da[b]}.
+  \item Similarly edge $(u, v)$ lies on shortest path if \mintinline{c}{da[u] + 1 + db[v] = da[b]}.
+
+  \item We can think of a DP algorithm for SSSP (for weighted graphs): $d_s [j] = \min_{i \in n(j)} (d_s[i] + w(i, j))$, time complexity $O(V + E)$. But the issue with this is that DP works only for DAG. Dijkstra should be used o/w.
+
+  \item Dijkstra: 
+  \begin{minted}{cpp}
+  // Subpaths of shortest paths from `u' to `v' are shortest paths.
+  // This implementation would work even if the graph has negative edge provided there is no negative cycle. A negative cycle is one in which the overall sum of the cycle becomes negative.
+  // O(E * log(V))
+  struct node {
+    int cost, vertex;
+    node () {}
+    node (int n, int c) {
+      vertex = n; cost = c;
+    }
+    bool operator < (const node &node) const {
+      return cost > node.cost;  // as priority queue is max heap
+    }
+  }
+  int dijkstra (int s, int e) {
+    memset (dist, inf, sizeof (dist));
+    dist[s] = 0;
+    priority_queue<node> pq;
+    pq.push (node (s, 0));
+    int from, to, wt, cost;
+    while (!pq.empty ()) {
+      from = pq.top ().vertex;
+      cost = pq.top ().cost;
+      pq.pop ();
+      if (from == e) return dist[e];  // delete this line in case of negative edges.
+      if (cost == dist[from]) {  // lazily deleting
+        for (int i = 0; i < adjlist[from].size (); i++) {
+          to = adjlist[from][i].first;
+          wt = adjlist[from][i].second;
+          if (dist[to] > dist[from] + wt) {
+            dist[to] = dist[from] + wt;
+            p[to] = from;  // setting parent
+            pq.push (node (to, dist[to]));  // Roughly: log the number of elements.
+          }
+        }
+      }
+    }
+  }
+  \end{minted}
+  
+  In BFS, in case of multiple sources, enqueue them all in queue and set \mintinline{cpp}{dist[v] = 0}. Same trick works in case of Dijkstra.
+
+  Also in case we are given both source and destination then we can terminate our while loop by checking whether the element we pop from queue is the destination or not. Same trick would work with weighted graph provided we have no -ve edges (Dijkstra).
+
+  Some problems on Dijkstra:
+  \begin{itemize}
+    \item \href{https://uva.onlinejudge.org/external/116/11635.pdf}{Hotel Booking Problem}, \href{../UVA_11635_My.cpp}{Sol}. Someone else's solution: \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_11635.cpp}{Sol}.
+    \item \href{https://uva.onlinejudge.org/external/113/11367.pdf}{Fuel Tank problem}, \href{https://gist.github.com/sourabhxyz/8bfef5f916820d71a8770fc4c7adc598}{Sol}
+    \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/48057301}{Sol}: \mintinline{c}{pr} denotes from what grammer it is derived. Also number of functions on \mintinline{c}{n} variables $= 2 ^{2 ^ n}$.
+  \end{itemize}
+
+  \item To check whether the graph is bipartite (A \textit{bipartite} graph is a graph whose vertices can be divided into two disjoint and independent set (i.e., no two vertices are adjacent)), we can do BFS and color vertices 0/1.
+  
+  \item We can use BFS for finding the shortest path in a graph with weights 0 or 1. This requires just a little modification to normal BFS, if the current edge is of 0 weight and distance to the vertex is shorter than the current found distance, then add this vertex not to the back but to the front of the queue. (we can use \mintinline{c}{dequeue} which supports \mintinline{c}{front}, \mintinline{c}{back}, \mintinline{c}{push_back}, \mintinline{c}{push_front}, \mintinline{c}{pop_back}, \mintinline{c}{pop_front}) in $O(1)$.
+
+  \item Find the shortest path of even length from a source vertex $s$ to a target vertex $t$ in an unweighted graph. For this, we must construct an auxiliary graph, whose vertices are the state $(v, c)$ where $v$ is the current node, $c = 0, 1$ denotes the current parity. Any edge $(u, v)$ of the original graph in this new graph will turn into two edges $((u, 0), (v, 1))$ and $((u, 1), (v, 0))$. After that we run a BFS to find the shortest path from $(s, 0)$ to $(t, 0)$.
+
+  \item Finding shortest cycle in a directed unweighted graph. For each vertex $v_i$: do a BFS from it and if we try to go from the current vertex to an already visited vertex then it means that we have found a cycle and should stop BFS (we have found a shortest cycle containing $v_i$). Take minimum of all such cycles (one for each $v_i$) to get the shortest length cycle.
+\end{itemize}
+
+\subsubsection{DFS}
+
+\begin{itemize}
+  \item Graph Check
+
+  \begin{minted}{cpp}
+  void graphcheck (int u) {
     dfs_num[u] = explored;
     for (auto &v : adjlist[u]) {
-        if (dfs_num[v] == unvisited) {  // tree edge
-            dfs_parent[v] = u;
-            graphcheck (v);
-        } else if (dfs_num[v] == explored) {  // back edge hence not DAG.
-            if (v == dfs_parent[u]) cout << "two ways\n"
-            else cout << "back edge\n"
-        } else {  // dfs_num[v] == visited
-            // forward/cross edge
-            // [u [v v] u] this is tree/forward
-            // [v [u u] v] back
-            // [v v] [u u] cross
-        }
-
+      if (dfs_num[v] == unvisited) {  // tree edge
+          dfs_parent[v] = u;
+          graphcheck (v);
+      } else if (dfs_num[v] == explored) {  // back edge hence not DAG.
+          if (v == dfs_parent[u]) cout << "two ways\n"
+          else cout << "back edge\n"
+      } else {  // dfs_num[v] == visited
+          // so its forward/cross edge
+          // [u [v v] u] this is tree/forward
+          // [v [u u] v] back
+          // [v v] [u u] cross
+      }
     }
-}
-    \end{minted}
-    \item Getting any cycle
-\begin{minted}{cpp}
-bool dfs(int v) {
-    color[v] = 1;
-    for (int u : adj[v]) {
-        if (color[u] == 0) {
-            parent[u] = v;
-            if (dfs(u))
-                return true;
-        } else if (color[u] == 1) {
-            cycle_end = v;
-            cycle_start = u;
+    dfs_num[u] = visited;
+  }
+  \end{minted}
+  \item Getting any cycle
+  
+  \begin{minted}{cpp}
+  bool dfs(int u) {
+    color[u] = 1;
+    for (int v : adj[u]) {
+      if (color[v] == 0) {
+        parent[v] = u;
+        if (dfs(v))
             return true;
-        }
+      } else if (color[v] == 1) {
+        cycle_end = u;
+        cycle_start = v;
+        return true;
+      }
     }
-    color[v] = 2;
+    color[u] = 2;
     return false;
-}
+  }
 
-void find_cycle() {
+  void find_cycle() {
     color.assign(n, 0);
     parent.assign(n, -1);
     cycle_start = -1;
 
-    for (int v = 0; v < n; v++) {
-        if (dfs(v))
-            break;
+    for (int i = 0; i < n; i++) {
+      if (dfs(i))
+        break;
     }
 
     if (cycle_start == -1) {
-        cout << "Acyclic" << endl;
+      cout << "Acyclic" << endl;
     } else {
-        vector<int> cycle;
-        cycle.push_back(cycle_start);
-        for (int v = cycle_end; v != cycle_start; v = parent[v])
-            cycle.push_back(v);
-        cycle.push_back(cycle_start);
-        reverse(cycle.begin(), cycle.end());
+      vector<int> cycle;
+      cycle.push_back(cycle_start);
+      for (int v = cycle_end; v != cycle_start; v = parent[v])
+        cycle.push_back(v);
+      cycle.push_back(cycle_start);
+      reverse(cycle.begin(), cycle.end());
 
-        cout << "Cycle found: ";
-        for (int v : cycle)
-            cout << v << " ";
-        cout << endl;
+      cout << "Cycle found: ";
+      for (int v : cycle)
+        cout << v << " ";
+      cout << endl;
     }
-}
-    \end{minted}
-    \item Floodfill
-    \begin{minted}{cpp}
-int R, C;
-string grid[100];
-int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
-int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
-int floodfill (int r, int c, char c1, char c2) {
+  }
+  \end{minted}
+
+  \item Floodfill
+
+  \begin{minted}{cpp}
+  int R, C;
+  string grid[100];
+  int dr[] = {1, 1, 0, -1, -1, -1, 0, 1};
+  int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
+  int floodfill (int r, int c, char c1, char c2) {
     if (r < 0 || r >= R || c < 0 || c >= C) return 0;
     if (grid[r][c] != c1) return 0;
     int ans = 1;
     grid[r][c] = c2;
     for (int d = 0; d < 8; d++) {
-        ans += floodfill (r + dr[d], c + dc[d], c1, c2);
+      ans += floodfill (r + dr[d], c + dc[d], c1, c2);
     }
     return ans;
-}
-    \end{minted}
-    \item We can find the number of connected components by simply doing dfs (offline), and online using UFDS.
-    \item Highest average is possible only by taking largest edge weight/s. 
-    \item We can use BFS for finding the shortest path in a graph with weights 0 or 1. This required just a little modification to normal BFS, if the current edge is of 0 weight and distance to the vertex is shorter than the current found distance, then add this vertex not to the back but to the front of the queue. (we can use dequeue which supports front, back, push\_{}back, push\_{}front, pop\_{}back, pop\_{}front) in O(1).
-    \item Find the shortest path of even length from a source vertex s to a target vertex t in an unweighted graph. For this, we must construct an auxiliary graph, whose vertices are the state (v, c) where v is the current node, c = 0, 1 denotes the current parity. Any edge (u, v) of the original graph in this new graph will turn into two edges ((u, 0), (v, 1)) and ((u, 1), (v, 0)). After that we run a BFS to find the shortest path from (s, 0) to (t, 0).
-    \item Find all the vertices on any shortest path between a given pair of vertices (a, b). To accomplish that, run 2 BFS: one from a and one from b. Let da[] be the array containing shortest distances obtained from first BFS (from a) and db[] be the array containing shortest distances obtained from the second BFS (from b). Now for every vertex it is easy to check whether it lies on any shortest path between a and b: the criterion is the condition da[v] + db[v] = da[b].
-    \item Similarly edge (u, v) lies on shortest path if da[u] + 1 + db[v] = da[b].
-    \item Finding shortest cycle in a directed unweighted graph. For each vertex $v_i$: do a BFS from it and if we try to go from the current vertex to an already visited vertex then it means that we have found a cycle and should stop BFS.
-    \\Take minimum of all such cycles (one for each $v_i$) to get the shortest length cycle.
-    \item Using DFS, we can also tell whether vertex i is an ancestor of j by using either that subtree method or by checking if $entry[i] < entry[j]$ and $exit[i] > exit[j]$
+  }
+  \end{minted}
+
+  \item We can find the number of connected components by simply doing DFS (offline), and online using UFDS.
+  \item Using DFS, we can also tell whether vertex $i$ is an ancestor of $j$ by using either that subtree method or by checking if \mintinline{c}{entry[i] < entry[j]} and \mintinline{c}{exit[i] > exit[j]}.
 \end{itemize}
+
 \subsection{Articulation Points and Bridges (undirected graph)}
 \begin{itemize}
-    \item An articulation point is defined as a vertex in a graph G whose removal (all edges incident to this vertex are also removed) disconnects G. A graph without any articulatioin point is called "Biconnected" Similarly, a "Bridge" is defined as an edge in a graph G whose removal disconnects G.
-    \begin{minted}{cpp}
-// dfs_low[u] will store the lowest iteration count vertex u can reach from u’s current DFS Tree (i.e u can only reach vertices of lower iteration count only if a back-edge exists in one of its children)
-vector<int> dfs_num;
-vector<int> dfs_low;
-vector<int> dfs_parent;
-vector<bool> articulation_vertex;
-int dfs_root, root_children;
+  \item An articulation point is defined as a vertex in a graph $G$ whose removal (all edges incident to this vertex are also removed) disconnects $G$. A graph without any articulatioin point is called "Biconnected" Similarly, a "Bridge" is defined as an edge in a graph $G$ whose removal disconnects $G$.
+  \begin{minted}{cpp}
+  // dfs_low[u] will store the lowest iteration count vertex u can reach from u’s current DFS Tree (i.e u can only reach vertices of lower iteration count only if a back-edge exists in one of its children)
+  vector<int> dfs_num;
+  vector<int> dfs_low;
+  vector<int> dfs_parent;
+  vector<bool> articulation_vertex;
+  int dfs_root, root_children;
 
-void ArticulationPoint(int u)
-{
+  void ArticulationPoint(int u) {
     // Initially, dfs_num = dfs_low
     dfs_num[u] = dfs_low[u] = dfs_num_counter++;
-    for(int i = 0; i < adj_list[u].size(); i++)
-    {
-        int v = adj_list[u][i];
+    for(int i = 0; i < adj_list[u].size(); i++) {
+      int v = adj_list[u][i];
+      
+      // v was not previously visited, i.e a normal tree edge
+      if (dfs_num[v] == -1) {
+        dfs_parent[v] = u;
         
-        // v was not previously visited, i.e a normal tree edge
-        if(dfs_num[v] == -1)
-        {
-            dfs_parent[v] = u;
-            
-            // special case if u is root
-            if(u == dfs_root) root_children++;
+        // special case if u is root
+        if (u == dfs_root) root_children++;
 
-            ArticulationPoint(v);
-            
-            // To detect articulation points
-            if(dfs_low[v] >= dfs_num[u])
-                articulation_vertex[u] = true;
-            // To detect bridges
-            if (dfs_low[v.first] > dfs_num[u])
-                printf(" Edge (%d, %d) is a bridge\n", u, v.first);
-            
-            // update dfs_low[u] if dfs_low[v] is lower
-            // i.e a back-edge exists in one of u's children
-            dfs_low[u] = min(dfs_low[u], dfs_low[v]);
-        }
-        // if v was previously visited, and v is not the parent of u
-        // then a back-edge certainly exists, not a direct cycle
-        // update dfs_low[u] to store dfs_num of ancestor is lower than
-        // current dfs_low
-        else if(v != dfs_parent[u])
-            dfs_low[u] = min(dfs_low[u], dfs_num[v]);
-    }
-}
-
-// Example main usage
-int main() 
-{
-    dfs_num_counter = 0;
-    dfs_num.clear(); dfs_num.resize(N, -1);
-    dfs_low.clear(); dfs_low.resize(N, 0);
-    dfs_parent.clear(); dfs_parent.resize(N, 0);
-    articulation_vertex.clear(); articulation_vertex.resize(N, false);
-
-    for(int i = 0; i < N; i++)
-        if (dfs_num[i] == -1)
-        {
-            dfs_root = i; root_children = 0;
-            ArticulationPoint(i);
-            
-            // special case for root
-            articulation_vertex[dfs_root] = (root_children > 1);
-        }
-}
-/* Variation
-
-A slight variation to this problem is how many disconnected components would result as a direct consequence of removing a vertex u
-
-Another variation is to find the articulation vertex whose removal would cause a greater amount of components to be disconnected.
-General Idea of Variation
-
-Instead of keeping track of whether or not a node is an articulation point using vector<bool> articulation_vertex, we’ll use a vector<int> articulation_vertex to keep track of how many components will be connected after the removal of vertex u.
-
-To achieve this, we’ll first assume that each node in our graph G is not an articulation vertex. In other words, the removal of any node u in G will result in there being only one connected component (G will remain one entity and not be disconnected).
-
-We’ll then use the same algorithm we’ve used before, however, this time around, whenever we find that u is an articulation vertex relative to one of its children, we’ll increment articulation_vertex[u].
-
-So, if we have a vertex u with say, 3 child components with no back-edges, the removal of u will result in G being cut into four connected components.
-*/
-vector<int> dfs_num;
-vector<int> dfs_low;
-vector<int> dfs_parent;
-int dfs_root, root_children;
-
-
-// vector<int> instead of vector<bool>
-vector<int> articulation_vertex;
-
-void ArticulationPoint(int u)
-{
-    dfs_num[u] = dfs_low[u] = dfs_num_counter++;
-    for(int i = 0; i < adj_list[u].size(); i++)
-    {
-        int v = adj_list[u][i];
+        ArticulationPoint(v);
         
-        if(dfs_num[v] == -1)
-        {
-            dfs_parent[v] = u;
-            if(u == dfs_root) root_children++;
-
-            ArticulationPoint(v);
-            
-            // we increment articulation_vertex here
-            if(dfs_low[v] >= dfs_num[u])
-                articulation_vertex[u]++;
-            if (dfs_low[v.first] > dfs_num[u])
-                printf(" Edge (%d, %d) is a bridge\n", u, v.first);
-                
-            dfs_low[u] = min(dfs_low[u], dfs_low[v]);
-        }
-        else if(v != dfs_parent[u])
-            dfs_low[u] = min(dfs_low[u], dfs_num[v]);
+        // To detect articulation points
+        if (dfs_low[v] >= dfs_num[u])
+            articulation_vertex[u] = true;
+        // To detect bridges
+        if (dfs_low[v.first] > dfs_num[u])
+            printf(" Edge (%d, %d) is a bridge\n", u, v.first);
+        
+        // update dfs_low[u] if dfs_low[v] is lower
+        // i.e a back-edge exists in one of u's children
+        dfs_low[u] = min(dfs_low[u], dfs_low[v]);
+      }
+      // if v was previously visited, and v is not the parent of u
+      // then a back-edge certainly exists, not a direct cycle
+      // update dfs_low[u] to store dfs_num of ancestor is lower than
+      // current dfs_low
+      else if (v != dfs_parent[u])
+        dfs_low[u] = min(dfs_low[u], dfs_num[v]);
     }
-}
+  }
 
-int main() 
-{
-    dfs_num_counter = 0;
-    dfs_num.clear(); dfs_num.resize(N, -1);
-    dfs_low.clear(); dfs_low.resize(N, 0);
-    dfs_parent.clear(); dfs_parent.resize(N, 0);
-    
-    // articulation_vertex initialized to 1 here
-    articulation_vertex.clear(); articulation_vertex.resize(N, 1);
+  // Example main usage
+  int main() 
+  {
+      dfs_num_counter = 0;
+      dfs_num.clear(); dfs_num.resize(N, -1);
+      dfs_low.clear(); dfs_low.resize(N, 0);
+      dfs_parent.clear(); dfs_parent.resize(N, 0);
+      articulation_vertex.clear(); articulation_vertex.resize(N, false);
 
-    for(int i = 0; i < N; i++)
-        if (dfs_num[i] == -1)
-        {
-            dfs_root = i; root_children = 0;
-            ArticulationPoint(i);
-            
-            // special case for root
-            // number of connected components after the removal of root
-            // is equal to how many children root has
-            articulation_vertex[dfs_root] = root_children;
-        }
-}
-    \end{minted}
-    \item \href{https://gist.github.com/sourabh2311/01c2bdf3f7389c2b84d40db5cce506f9}{Two way to one way UVA 610}
+      for(int i = 0; i < N; i++)
+          if (dfs_num[i] == -1)
+          {
+              dfs_root = i; root_children = 0;
+              ArticulationPoint(i);
+              
+              // special case for root
+              articulation_vertex[dfs_root] = (root_children > 1);
+          }
+  }
+  /* Variation
+
+  A slight variation to this problem is how many disconnected components would result as a direct consequence of removing a vertex u
+
+  Another variation is to find the articulation vertex whose removal would cause a greater amount of components to be disconnected.
+  General Idea of Variation
+
+  Instead of keeping track of whether or not a node is an articulation point using vector<bool> articulation_vertex, we’ll use a vector<int> articulation_vertex to keep track of how many components will be connected after the removal of vertex u.
+
+  To achieve this, we’ll first assume that each node in our graph G is not an articulation vertex. In other words, the removal of any node u in G will result in there being only one connected component (G will remain one entity and not be disconnected).
+
+  We’ll then use the same algorithm we’ve used before, however, this time around, whenever we find that u is an articulation vertex relative to one of its children, we’ll increment articulation_vertex[u].
+
+  So, if we have a vertex u with say, 3 child components with no back-edges, the removal of u will result in G being cut into four connected components.
+  */
+  vector<int> dfs_num;
+  vector<int> dfs_low;
+  vector<int> dfs_parent;
+  int dfs_root, root_children;
+
+
+  // vector<int> instead of vector<bool>
+  vector<int> articulation_vertex;
+
+  void ArticulationPoint(int u)
+  {
+      dfs_num[u] = dfs_low[u] = dfs_num_counter++;
+      for(int i = 0; i < adj_list[u].size(); i++)
+      {
+          int v = adj_list[u][i];
+          
+          if(dfs_num[v] == -1)
+          {
+              dfs_parent[v] = u;
+              if(u == dfs_root) root_children++;
+
+              ArticulationPoint(v);
+              
+              // we increment articulation_vertex here
+              if(dfs_low[v] >= dfs_num[u])
+                  articulation_vertex[u]++;
+              if (dfs_low[v.first] > dfs_num[u])
+                  printf(" Edge (%d, %d) is a bridge\n", u, v.first);
+                  
+              dfs_low[u] = min(dfs_low[u], dfs_low[v]);
+          }
+          else if(v != dfs_parent[u])
+              dfs_low[u] = min(dfs_low[u], dfs_num[v]);
+      }
+  }
+
+  int main() 
+  {
+      dfs_num_counter = 0;
+      dfs_num.clear(); dfs_num.resize(N, -1);
+      dfs_low.clear(); dfs_low.resize(N, 0);
+      dfs_parent.clear(); dfs_parent.resize(N, 0);
+      
+      // articulation_vertex initialized to 1 here
+      articulation_vertex.clear(); articulation_vertex.resize(N, 1);
+
+      for(int i = 0; i < N; i++)
+          if (dfs_num[i] == -1)
+          {
+              dfs_root = i; root_children = 0;
+              ArticulationPoint(i);
+              
+              // special case for root
+              // number of connected components after the removal of root
+              // is equal to how many children root has
+              articulation_vertex[dfs_root] = root_children;
+          }
+  }
+  \end{minted}
+    \item \href{https://gist.github.com/sourabhxyz/01c2bdf3f7389c2b84d40db5cce506f9}{Two way to one way UVA 610}
 \end{itemize}
 \subsection{Tree}
 Undirected, acyclic, connected, $|V| - 1$ edges.\\
@@ -1942,7 +2047,7 @@ It is \textbf {impossible} to construct binary tree with just Inorder traversal.
 It is \textbf {impossible} to construct binary tree with just Postorder traversal.
 \subsubsection{LCA}
 \begin{itemize}[leftmargin=*]
-    \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. Note that LCA of two nodes u, v is the node w that is ancestor of both u and v and that has the greatest depth in the tree.\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{lca}
+    \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. Note that LCA of two nodes u, v is the node w that is ancestor of both u and v and that has the greatest depth in the tree.\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{lca}
     \item Tarjan's offline LCA. for each query (a, b) you should do q[a].pb(b) and q[b].pb(a).
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{tar}
 \end{itemize}
@@ -1950,15 +2055,15 @@ It is \textbf {impossible} to construct binary tree with just Postorder traversa
 \begin{itemize}
     \item \href{https://codeforces.com/contest/1099/problem/F}{Eating cookies on tree}, \href{https://codeforces.com/blog/entry/64296?#comment-482494}{Sol}
     \item Say path length is defined as the sum of edge weights along that path. And diameter is length of the longest simple path. Given sum of edge weights 'm' we need to assign weights to edges so that diameter is minimum. Sol: Consider the center of the tree like before, now the length of all paths from this tree should be minimum, which is only possible if we assign length to be the same. \href{https://codeforces.com/contest/1086/submission/47400574}{code}
-    \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabh2311/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
-	\item \href {https://gist.github.com/sourabh2311/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the diameter of the tree.\\
+    \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabhxyz/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
+	\item \href {https://gist.github.com/sourabhxyz/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the diameter of the tree.\\
 	Problem Sol: Just link the center of diameters. Brute force which edge to remove on the longest path. 
-	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_112.cpp}{UVA 112 Sol}, \href {https://uva.onlinejudge.org/external/1/112.pdf}{UVA 112 Prob}: Just see how I processed the input.	
-	\item \href {https://gist.github.com/sourabh2311/6b761c14bef4e5887e6b03b809bc4983}{UVA 10029 Sol}, \href {https://uva.onlinejudge.org/external/100/10029.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
-	\item \href {https://gist.github.com/sourabh2311/d73572fab5cf6d390f509d29abf4cd60}{UVA 536 Sol}, \href {https://uva.onlinejudge.org/external/5/536.pdf}{UVA 536 Prob}: Construct binary tree with preorder and inorder	
-	\item \href {https://gist.github.com/sourabh2311/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10459 Prob}: Centers of diameters are best where as corners are worst.	
+	\item \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_112.cpp}{UVA 112 Sol}, \href {https://uva.onlinejudge.org/external/1/112.pdf}{UVA 112 Prob}: Just see how I processed the input.	
+	\item \href {https://gist.github.com/sourabhxyz/6b761c14bef4e5887e6b03b809bc4983}{UVA 10029 Sol}, \href {https://uva.onlinejudge.org/external/100/10029.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
+	\item \href {https://gist.github.com/sourabhxyz/d73572fab5cf6d390f509d29abf4cd60}{UVA 536 Sol}, \href {https://uva.onlinejudge.org/external/5/536.pdf}{UVA 536 Prob}: Construct binary tree with preorder and inorder	
+	\item \href {https://gist.github.com/sourabhxyz/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10459 Prob}: Centers of diameters are best where as corners are worst.	
     \item \href{https://codeforces.com/contest/911/problem/F}{Tree Destruction}, \href{https://codeforces.com/contest/911/submission/34122817}{Sol}:
-    \item \href{https://codeforces.com/contest/1092/problem/F}{Tree with maximum cost}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/527%20Div3/F.cpp}{sol}
+    \item \href{https://codeforces.com/contest/1092/problem/F}{Tree with maximum cost}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/527%20Div3/F.cpp}{sol}
 \end{itemize}
 \subsubsection{MVC on Tree}
 \begin{minted}{cpp}
@@ -2017,13 +2122,13 @@ int mwis(int at, int flag, int parent) { //You can start this from any node, i.e
     \item A subset of vertices is a vertex cover iff the complement of the set is an independent set, i.e. $MinVC + MaxIS = V$.
     \item It is easy to see why it is the case, firstly for vertices in the complement of MinVC, they can't have any edge between them as then our MinVC isnt VC. Also if we add to this IS any more vertex then it wont be an IS. Suppost it is not the maximum then there occurs an MIS with size more than this, clearly its complement is VC which would have size smaller than our MinVC which leads to contradiction. 
     \item Complement of VC is an IS and vice versa (easy to see)
-    \item Given an undirected graph G = (V, E) and weighting function defined on the vertex set, the minimum weighted vertex cover problem is to find a vertex set S ⊆ V whose total weight is minimum subject to every edge of G has at least one end point in S. 
+    \item Given an undirected graph G = (V, E) and weighting function defined on the vertex set, the minimum weighted vertex cover problem is to find a vertex set $S \subseteq V$ whose total weight is minimum subject to every edge of G has at least one end point in S. 
     \item In the maximum-weight independent set problem, the input is an undirected graph with weights on its vertices and the output is an independent set with maximum total weight.
     \item Again it happens to be the case that size of MWVC + MWIS = Total weight = V.
     \item A matching is a subset of edges such that each vertex is adjacent to at most one edge in the subset. Clearly Matching edges can be atmost $|V|/2$ as each edge joins two vertices and now no other matched edge can touch them.
     \item Note: This MVC, MIS, MM, is defined for undirected, unweighted graph.
     \item Once we have maximum matching. Clearly since these matching edges are aswell edges of the graph and minimum vertex cover should have vertices that are adjacent to these edges. But since matching edges have no vertex in common, size of minimum vertex cover is atleast the size of maximum matching.
-    \item Maximum matchings can be found in polynomial time for any graph, while minimum vertex cover is NP complete. Thus, finding maximum independent sets is another NP-complete problem. See \href{https://github.com/sourabh2311/Timus/blob/master/1099_Work_Scheduling.cpp}{soln} to \href{http://acm.timus.ru/problem.aspx?space=1&num=1099}{this} problem for maximum matching.
+    \item Maximum matchings can be found in polynomial time for any graph, while minimum vertex cover is NP complete. Thus, finding maximum independent sets is another NP-complete problem. See \href{https://github.com/sourabhxyz/Timus/blob/master/1099_Work_Scheduling.cpp}{soln} to \href{http://acm.timus.ru/problem.aspx?space=1&num=1099}{this} problem for maximum matching.
     \item The equivalence between matching and covering articulated in Kőnig's theorem allows minimum vertex covers and maximum independent sets to be computed in polynomial time for bipartite graphs, despite the NP-completeness of these problems for more general graph families.
 \end{itemize}
 \subsection{Konigs Theorem}
@@ -2457,51 +2562,7 @@ cout << mstCost;
     \item MST does not change if wee add a const. weight in all edges of the graph
 \end{itemize}
 \subsection{SSSP}
-\subsubsection{Dijkstra}
-\begin{minted}{cpp}
-// Subpaths of shortest paths from u to v are shortest paths
-// This implementation would work even if the graph has negative edge provided there is no negative cycle
-// O(ElogV)
-struct node {
-    int cost, vertex;
-    node () {}
-    node (int n, int c) {
-        vertex = n; cost = c;
-    }
-    bool operator < (const node &node) const {
-        return cost > node.cost;  // as priority queue is max heap
-    }
-}
-int dijkstra (int s, int e) {
-    memset (dist, inf, sizeof (dist));
-    dist[s] = 0;
-    priority_queue<node> pq;
-    pq.push (node (s, 0));
-    int from, to, wt, cost;
-    while (!pq.empty ()) {
-        from = pq.top ().vertex;
-        cost = pq.top ().cost;
-        pq.pop ();
-        if (from == e) return dist[e];
-        if (cost == dist[from]) {  // lazily deleting
-            for (int i = 0; i < adjlist[from].size (); i++) {
-                to = adjlist[form][i].first;
-                wt = adjlist[from][i].second;
-                if (dist[to] > dist[from] + wt) {
-                    dist[to] = dist[from] + wt;
-                    p[to] = from;
-                    pq.push (node (to, dist[to]));
-                }
-            }
-        }
-    }
-}
-\end{minted}
-\begin{itemize}
-    \item \href{https://uva.onlinejudge.org/external/116/11635.pdf}{Hotel Booking Problem}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_11635.cpp}{sol}
-    \item \href{https://uva.onlinejudge.org/external/113/11367.pdf}{Fuel Tank problem}, \href{https://gist.github.com/sourabh2311/8bfef5f916820d71a8770fc4c7adc598}{sol}
-    \item \href {https://codeforces.com/contest/913/problem/E}{Logical Expression}, \href {https://codeforces.com/contest/913/submission/48057301}{Sol}: pr denotes from what grammer it is derived. Also number of functions on n variables $= 2^{2^n}$.
-\end{itemize}
+
 \subsubsection{Bellman ford}
 \begin{minted}{cpp} 
 // For negative edge weights provided we have no negative cycles.
@@ -2555,7 +2616,7 @@ if (x != -1) {  // negative cycle
 \end{minted}
 \begin{itemize}
     \item \href{}{Hopeless/winnable UVA 10557}: Basically check for positive cycle and see if it is connected from that.
-    \item \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Summer%202017/UVA_11280.cpp}{Stop problem UVA 11280}.
+    \item \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Summer%202017/UVA_11280.cpp}{Stop problem UVA 11280}.
 \end{itemize}
 \subsection{Max Flow}
 \subsubsection{Edmond karps}
@@ -2594,7 +2655,7 @@ void augment(int v, int minEdge) { // traverse BFS spanning tree from s->t
     \item Vertex capacities: Network flow variant where capacities are not just defined along the edges but also on the vertices. Split each v to vin and vout, reassigning its incomint/outgoing edges to vin/vout resp. and finally putting the original vertex v's weight as the weight of edge vin -$>$ vout. Note that this will double the number of vertices
     \item Max Independent paths: two paths are said to be independent if they do not share any vertex apart from s and t. Soln: construct a flow network N = (V, E) from G with vertex capacitites, where N is the carbon copy of G except that the capacity of each v in V is 1 (i.e. each vertex can only be used once) and the capacity of each edge e in V is also 1. Then run edmonds karps algo as per normal.
     \item Max edge disjoint paths: finding the maximum number of edge disjoint paths rom s to t is simlar to finding max independent paths. The only difference is that this time we do not have any vertex capacity (i.e. 2 edge disjoint paths can still share the same vertex)
-    \item \href{https://uva.onlinejudge.org/external/5/563.pdf}{Crimewave}, \href{https://gist.github.com/sourabh2311/d9125c7f5149f80b267514b66ec65d3b}{sol} 
+    \item \href{https://uva.onlinejudge.org/external/5/563.pdf}{Crimewave}, \href{https://gist.github.com/sourabhxyz/d9125c7f5149f80b267514b66ec65d3b}{sol} 
     \item \textbf{MWIS on a bipartite graph}
     \\Problem is equivalent to finding the minimum weight vertex cover in the graph. The latter can be solved using maximum flow techniques:
     \\Introduce a super-source S and a super-sink T. connect the nodes on the left side of the bipartite graph to S, via edges that have their weight as capacity. Do the same thing for the right side and sink T. Assign infinite capacity to the edges of the original graph.
@@ -2633,7 +2694,7 @@ An undirected edge $(i, j)$ is actually the same as two oriented edges $(i, j)$ 
 How do we deal with multiple edges? First the flow for each of the multiple edges must be kept separately. Secondly, when searching for the shortest path, it is necessary to take into account that it is important which of the multiple edges is used in the path. Thus instead of the usual ancestor array we additionally must store the edge number from which we came from along with the ancestor. Thirdly, as the flow increases along a certain edge, it is necessary to reduce the flow along the back edge. Since we have multiple edges, we have to store the edge number for the reversed edge for each edge.
 
 There are no other obstructions with undirected graphs or multigraphs.
-\\Sample Prob: \href{https://uva.onlinejudge.org/external/105/10594.pdf}{UVA 10594}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10594_Better.cpp}{sol}
+\\Sample Prob: \href{https://uva.onlinejudge.org/external/105/10594.pdf}{UVA 10594}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_10594_Better.cpp}{sol}
 \subsection{Kirchhoff's matrix tree theorem}
 Problem: You are given a connected undirected graph (with possible multiple edges) represented using an adjacency matrix. Find the number of different spanning trees of this graph.
 \\Let $A$ be the adjacency matrix of the graph: $A_{u,v}$ is the number of edges between $u$ and $v$. Let $D$ be the degree matrix of the graph: a diagonal matrix with $D_{u,u}$ being the degree of vertex $u$ (including multiple edges and loops - edges which connect vertex $u$ with itself).
@@ -2670,12 +2731,12 @@ We will divide the tree into vertex-disjoint chains ( Meaning no two chains has 
 \\What happens if you go to each node, find the special child and special edge and mark all special edges with green color and other edges are still black? Well, what happens is HLD. What would the graph look like then? Colorful yes. Not just colorful. Green edges actually forms vertex disjoint chains and black edges will be the connectors between chains. Let us explore one chain, start at root, move to the special child of root (there is only one special child, so easy pick), then to its special child and so on until you reach a leaf node, what you just traveled is a chain which starts at root node. Let us assume that root node has m child nodes. Note that all m-1 normal child nodes are starting nodes of some other chains.
 \\When you move from a node to any of its normal child, the sub-tree size is at most half the sub-tree size of current node.
 \\Changing a chain means we are moving for a node to a normal child, so each time we change chain we are at least halving the sub-tree size. For a tree with size N, we can halve it at most log N times.
-\\\href{http://acm.timus.ru/problem.aspx?space=1&num=1553}{Timus 1553}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1553.cpp}{Sol}
+\\\href{http://acm.timus.ru/problem.aspx?space=1&num=1553}{Timus 1553}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/timus/1553.cpp}{Sol}
 \subsection{More Problems}
 \begin{itemize}
     \item \href{}{UVA 928}: just bfs with dp
-    \item \href{https://uva.onlinejudge.org/external/102/10246.pdf}{That worst feast problem UVA 10246}, \href{https://gist.github.com/sourabh2311/e55a0e3f7453e4514f1251b1ae6f0827}{sol}
-    \item \href{https://gist.github.com/sourabh2311/a9f9b7584631b8859692df0f4af0843d}{Atcoder}
+    \item \href{https://uva.onlinejudge.org/external/102/10246.pdf}{That worst feast problem UVA 10246}, \href{https://gist.github.com/sourabhxyz/e55a0e3f7453e4514f1251b1ae6f0827}{sol}
+    \item \href{https://gist.github.com/sourabhxyz/a9f9b7584631b8859692df0f4af0843d}{Atcoder}
     \item \href{https://codeforces.com/problemset/problem/986/C}{986C AND graph}, \href{https://codeforces.com/blog/entry/59758}{Sol}
 \end{itemize}
 \section{Some Basic}
@@ -2776,8 +2837,8 @@ bool next_combination(vector<int>& a, int n) {
     return false;
 }
 \end{minted}
-    \item \href{https://uva.onlinejudge.org/external/4/410.pdf}{UVA 410 Load Balancing}, \href{https://gist.github.com/sourabh2311/5405601b47b1bd9c8fa769c82b280328}{sol}
-    \item \href{https://uva.onlinejudge.org/external/104/10440.pdf}{ferry loading}, \href{https://gist.github.com/sourabh2311/4af5bc294ab613057de828b308da587a}{sol}, just know that best time is last cars arrival + t/2, so just achieve it.
+    \item \href{https://uva.onlinejudge.org/external/4/410.pdf}{UVA 410 Load Balancing}, \href{https://gist.github.com/sourabhxyz/5405601b47b1bd9c8fa769c82b280328}{sol}
+    \item \href{https://uva.onlinejudge.org/external/104/10440.pdf}{ferry loading}, \href{https://gist.github.com/sourabhxyz/4af5bc294ab613057de828b308da587a}{sol}, just know that best time is last cars arrival + t/2, so just achieve it.
     \begin{minted}{cpp}
     One can write i = (m % n == 0 ? n - 1 : m % n - 1) as
     i = (m + n - 1) % n.
@@ -3130,10 +3191,10 @@ struct UFDS {
     }
 };
     \end{minted}
-    \item \href {https://uva.onlinejudge.org/external/101/10158.pdf}{UVA 10158 Prob}, \href {https://gist.github.com/sourabh2311/3a2daf2a9f77104a94d1db9af8b40b1a}{UVA 10158 Sol}
-    \item \href {https://codeforces.com/contest/915/problem/F}{Imbalance of a tree}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/ER36/F.cpp}{Sol}, summation(max - min) is same as summation(max) - summation(min).
+    \item \href {https://uva.onlinejudge.org/external/101/10158.pdf}{UVA 10158 Prob}, \href {https://gist.github.com/sourabhxyz/3a2daf2a9f77104a94d1db9af8b40b1a}{UVA 10158 Sol}
+    \item \href {https://codeforces.com/contest/915/problem/F}{Imbalance of a tree}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/ER36/F.cpp}{Sol}, summation(max - min) is same as summation(max) - summation(min).
     \item \href {https://codeforces.com/contest/913/problem/C}{Party Lemonade}, \href {https://codeforces.com/contest/913/submission/34067096}{Sol}
-    \item \href {https://codeforces.com/contest/916/problem/B}{Jamie and binary sequence}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/B.cpp}{Sol}.
+    \item \href {https://codeforces.com/contest/916/problem/B}{Jamie and binary sequence}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/457D2/B.cpp}{Sol}.
     \item \href {https://codeforces.com/contest/912/problem/E}{Prime gift}, \href {https://codeforces.com/contest/912/submission/33976448}{Sol}. awesome 2 pointers problem.
     \item \href {https://codeforces.com/contest/912/problem/D}{Fishes}, \href {https://codeforces.com/blog/entry/56920}{Sol}. 
     \item \textbf{Max 1D Range Sum (kadane)}
@@ -3824,14 +3885,14 @@ int main()
 \end{minted}
 LIS of reverse sequence gives LDS starting from pos after reversing L.\\
 LIS of reverse negative sequence gives LIS stating from pos after reversing L.\\
-\\\href{https://codeforces.com/problemset/problem/486/E}{LIS of sequence}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/LIS%20Using%20Segment%20Trees/Problem/sol2_ifsmirnov.cpp}{Sol}: Conecpt:
-Let F1i be the length of LIS ending exactly at ai of sequence \{a1, a2, ..., ai\}.
+\\\href{https://codeforces.com/problemset/problem/486/E}{LIS of sequence}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Reference%20Notes/LIS%20Using%20Segment%20Trees/Problem/sol2_ifsmirnov.cpp}{Sol}: Conecpt:
+Let F1i be the length of LIS ending exactly at ai of sequence \{a1, a2, ..., ai\}.
 
-Let F2i be the length of LIS beginning exactly at ai of sequence \{ai, ai + 1, ..., an\}
+Let F2i be the length of LIS beginning exactly at ai of sequence \{ai, ai + 1, ..., an\}
 
-First, calculate F1i and F2i for all i. Obviously, if F1i + F2i - 1 ≠ l than answer for i is 1, otherwise it is 2 or 3.
+First, calculate F1i and F2i for all i. Obviously, if $F1i + F2i - 1 \neq l$ than answer for i is 1, otherwise it is 2 or 3.
 
-Then, assume there are two elements i and j with answer different from 1 such that F1i = F1j. You can prove that in this case ai or aj does not belong to every LIS.
+Then, assume there are two elements i and j with answer different from 1 such that F1i = F1j. You can prove that in this case ai or aj does not belong to every LIS.
 \\Proof: 
 Case1: if a[i] equal a[j] and thus ai is not needed in lis of a[j] and vice versa.
 \\Case2: if $a[i] > a[j]$ and thus a[j]'s lis will not contain a[i] and vice versa
@@ -3839,7 +3900,7 @@ Case1: if a[i] equal a[j] and thus ai is not needed in lis of a[j] and vice vers
 \\Hence proved. 
 \\Thus the answer for i is 2 (and for j it is 2 too, of course). It can also be shown that if F1i is unique among all F1 then the answer for i is 3.
 \\Say y = smallest no. of non inc. subsequences covering this seq. then y = length of LIS.
-\\Proof: see \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/LIS%20Using%20Segment%20Trees/LongestIncreasingSubsequence.pdf}{this}
+\\Proof: see \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Reference%20Notes/LIS%20Using%20Segment%20Trees/LongestIncreasingSubsequence.pdf}{this}
 \subsection{LIS of consecutive integers}
 \begin{minted}{cpp}
 void solve (vi &arr) {
@@ -3952,7 +4013,7 @@ The Livshits-Kladov theorem establishes, that the permutation method is only app
 \end{itemize}
 Time complexity $O(n \log n)$
 \subsection{Scheduling jobs on two machine}
-Just see relevant part of \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Reference%20Notes/Scheduling%20jobs%20on%20two%20machines/P402.pdf}{that} pdf.
+Just see relevant part of \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Reference%20Notes/Scheduling%20jobs%20on%20two%20machines/P402.pdf}{that} pdf.
 \subsection{Ternary Search}
 \begin{minted}{cpp}
 // finding maximum in case of double, similarly we can do for minimum
@@ -4068,13 +4129,13 @@ struct segmentTree {
 \end{minted}
 \begin{itemize}
     \item Construction of segment tree is O(n) (by masters theorem) and height of segment tree is O(logn). Also time complexity of each query is O(logn).
-    \item \href{https://uva.onlinejudge.org/external/112/11235.pdf}{freq}, \href{https://gist.github.com/sourabh2311/adf33f80e4b1e95bdb7d7a0e28ae23e6}{sol}
-    \item \href{https://uva.onlinejudge.org/external/112/11297.pdf}{simple update}, \href{https://gist.github.com/sourabh2311/1376c934be55a72ca3f7c6f7481125ca}{sol}
-    \item \href{https://uva.onlinejudge.org/external/114/11402.pdf}{lazy range update}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_11402.cpp}{sol}
+    \item \href{https://uva.onlinejudge.org/external/112/11235.pdf}{freq}, \href{https://gist.github.com/sourabhxyz/adf33f80e4b1e95bdb7d7a0e28ae23e6}{sol}
+    \item \href{https://uva.onlinejudge.org/external/112/11297.pdf}{simple update}, \href{https://gist.github.com/sourabhxyz/1376c934be55a72ca3f7c6f7481125ca}{sol}
+    \item \href{https://uva.onlinejudge.org/external/114/11402.pdf}{lazy range update}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_11402.cpp}{sol}
     \item In similar way segment tree can be used to answer queries regarding gcd/lcm.
-    \item \href{https://codeforces.com/problemset/problem/380/C}{Sereja and brackets}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/380C%20-%20Seraja%20And%20Brackets.cpp}{sol}
-    \item \href{https://codeforces.com/problemset/problem/981/E}{Addition on Segments}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/Problem%20-%20E%20Addition%20On%20Segments_sol_tourist.cpp}{sol}
-    \item \href {https://codeforces.com/contest/916/problem/D}{Jamie and to do list}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/CF/457D2/D.cpp}{Sol}: Just basic application of Persistent segment tree. When updating some element, at most O(logn) nodes in the segment tree get changed: the nodes along the path from root to the updated leaf. For each timepoint, instead of creating a copy of the entire segment tree, copy only nodes on the path to be updated and update them. Therefore total storage is O(n + t\*logn).
+    \item \href{https://codeforces.com/problemset/problem/380/C}{Sereja and brackets}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/380C%20-%20Seraja%20And%20Brackets.cpp}{sol}
+    \item \href{https://codeforces.com/problemset/problem/981/E}{Addition on Segments}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/Problem%20-%20E%20Addition%20On%20Segments_sol_tourist.cpp}{sol}
+    \item \href {https://codeforces.com/contest/916/problem/D}{Jamie and to do list}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/457D2/D.cpp}{Sol}: Just basic application of Persistent segment tree. When updating some element, at most O(logn) nodes in the segment tree get changed: the nodes along the path from root to the updated leaf. For each timepoint, instead of creating a copy of the entire segment tree, copy only nodes on the path to be updated and update them. Therefore total storage is O(n + t\*logn).
 \end{itemize}
 \section{DP}
 Following are the two main properties of a problem that suggests that the given problem can be solved using Dynamic programming.
@@ -4343,12 +4404,12 @@ Here is an implementation using two types of brackets: round and square:
 \end{minted}
 \subsection{Important Problems}
 \begin{itemize}
-    \item \href{https://gist.github.com/sourabh2311/b0f96d91095c812b6100874667724a17}{dividing coins sol}
-    \item \href{https://uva.onlinejudge.org/external/104/10496.pdf}{TSP}, \href{https://gist.github.com/sourabh2311/52e95aab8f9ff43c17a6143ea80d7108}{Sol}
-    \item \href{https://uva.onlinejudge.org/external/103/10364.pdf}{Square}, \href{https://gist.github.com/sourabh2311/b043d57f0aea7d66edadb747d1c9a9d2}{Sol}
-    \item \href{https://uva.onlinejudge.org/external/106/10651.pdf}{Pebble Solitare}, \href{https://gist.github.com/sourabh2311/03ee5ac77c042b2ee5d3188b745b2c0b}{sol}
-    \item \href{https://uva.onlinejudge.org/external/109/10911.pdf}{Forming Quiz Teams}, \href{https://gist.github.com/sourabh2311/4985382867071c0518c9dd8b8fd727e9}{sol}
-    \item \href{https://uva.onlinejudge.org/external/113/11307.pdf}{Simple tree coloring}, \href{https://gist.github.com/sourabh2311/fc1112b44a455310f601967768e1d212}{sol}
+    \item \href{https://gist.github.com/sourabhxyz/b0f96d91095c812b6100874667724a17}{dividing coins sol}
+    \item \href{https://uva.onlinejudge.org/external/104/10496.pdf}{TSP}, \href{https://gist.github.com/sourabhxyz/52e95aab8f9ff43c17a6143ea80d7108}{Sol}
+    \item \href{https://uva.onlinejudge.org/external/103/10364.pdf}{Square}, \href{https://gist.github.com/sourabhxyz/b043d57f0aea7d66edadb747d1c9a9d2}{Sol}
+    \item \href{https://uva.onlinejudge.org/external/106/10651.pdf}{Pebble Solitare}, \href{https://gist.github.com/sourabhxyz/03ee5ac77c042b2ee5d3188b745b2c0b}{sol}
+    \item \href{https://uva.onlinejudge.org/external/109/10911.pdf}{Forming Quiz Teams}, \href{https://gist.github.com/sourabhxyz/4985382867071c0518c9dd8b8fd727e9}{sol}
+    \item \href{https://uva.onlinejudge.org/external/113/11307.pdf}{Simple tree coloring}, \href{https://gist.github.com/sourabhxyz/fc1112b44a455310f601967768e1d212}{sol}
 \end{itemize}
 \section{Strings}
 To map keyboard etc, it is better to create 2 strings then loop through and map.\\
@@ -4472,8 +4533,8 @@ vector<int> prefix_function(string &s) {  // O(n)
 \subsubsection{KMP}
 Given a text t and a string s, we want to find and display the positions of all occurrences of the string s in the text t.
 \\For convenience we denote with n the length of the string s and with m the length of the text t.\\
-We generate the string s+\#+t, where \# is a separator that doesn't appear in s and t. Let us calculate the prefix function for this string. Now think about the meaning of the values of the prefix function, except for the first n+1 entries (which belong to the string s and the separator). By definition the value π[i] shows the longest length of a substring ending in position i that coincides with the prefix. But in our case this is nothing more than the largest block that coincides with s and ends at position i. This length cannot be bigger than n due to the separator. But if equality π[i]=n is achieved, then it means that the string s appears completely in at this position, i.e. it ends at position i. Just do not forget that the positions are indexed in the string s+\#+t.\\
-Thus if at some position i we have π[i]=n, then at the position $i - (n + 1) - n + 1 = i - 2n$ in the string t the string s appears.\\
+We generate the string s+\#+t, where \# is a separator that doesn't appear in s and t. Let us calculate the prefix function for this string. Now think about the meaning of the values of the prefix function, except for the first n+1 entries (which belong to the string s and the separator). By definition the value $\pi[i]$ shows the longest length of a substring ending in position i that coincides with the prefix. But in our case this is nothing more than the largest block that coincides with s and ends at position i. This length cannot be bigger than n due to the separator. But if equality $\pi[i]=n$ is achieved, then it means that the string s appears completely in at this position, i.e. it ends at position i. Just do not forget that the positions are indexed in the string s+\#+t.\\
+Thus if at some position i we have $\pi[i]=n$, then at the position $i - (n + 1) - n + 1 = i - 2n$ in the string t the string s appears.\\
 As already mentioned in the description of the prefix function computation, if we know that the prefix values never exceed a certain value, then we do not need to store the entire string and the entire function, but only its beginning. In our case this means that we only need to store the string s+\# and the values of the prefix function for it. We can read one character at a time of the string t and calculate the current value of the prefix function.
 \begin{minted}{cpp}
 void kmp() {
@@ -4521,8 +4582,8 @@ A suffix automaton for a given string s is a minimal DFA that accepts all the su
 Consider any non-empty substring t of the string s. We will denote with endpos(t) the set of all positions in the string s, in which the occurrences of t end. For instance, we have endpos("bc")= \{2,4\} for the string "abcbc".\\
 We will call two substrings t1 and t2 endpos-equivalent, if their ending sets coincide i.e. endpos(t1) = endpos(t2). Thus all non-empty substrings of the string s can be decomposed into several equivalence classes according to their sets endpos.\\
 It turns out, that in a suffix machine endpos-equivalent substrings correspond to the same state. In other words the number of states in a suffix automaton is equal to the number of equivalence classes among all substrings, plus the initial state.\\
-Lemma 1: Two non-empty substrings u and w (with length(u) ≤ length(w)) are endpos-equivalent, if and only if the string u occurs in s only in the form of a suffix of w. (Proof is obvious)\\
-Lemma 2: Consider two non-empty substrings u and w (with length(u) ≤ length(w)). Then their sets endpos either don't intersect at all, or endpos(w) is a subset of endpos(u). And it depends on if u is a suffix of w or not. (Proof is obvious)\\
+Lemma 1: Two non-empty substrings $u$ and $w$ (with $length(u) \le length(w)$) are endpos-equivalent, if and only if the string u occurs in s only in the form of a suffix of w. (Proof is obvious)\\
+Lemma 2: Consider two non-empty substrings $u$ and $w$ (with $length(u) \le length(w)$). Then their sets endpos either don't intersect at all, or endpos(w) is a subset of endpos(u). And it depends on if u is a suffix of w or not. (Proof is obvious)\\
 Lemma 3: Consider an endpos-equivalence class. Sort all the substrings in this class by decreasing length. Then in the resulting sequence each substring will be one shorter than the previous one, and at the same time will be a suffix of the previous one. In other words the substrings in the same equivalence class are actually each others suffixes, and take all possible lengths in a certain interval [x;y].\\
 Consider some state $v \neq t_0$ in the automaton. As we know, the state v corresponds to the class of strings with the same endpos values. And if we denote by w the longest of these strings, then all the other strings are suffixes of w. \textbf{suffix link} \textit{link(v)} leads to the state that corresponds to the longest suffix of w that is another endpos-equivalent class.\\
 Lemma 4: Suffix links form a tree with the root $t_0$.\\
@@ -4582,7 +4643,7 @@ void sa_extend (char c) {
         st[p].next[c] = cur;
     if (p == -1) // In case we came to the root, every non-empty suffix of string sc is accepted by state cur hence we can make link(cur) = t0 and finish our work on this step.
         st[cur].link = 0;
-    else {  // Otherwise we found such state p, which already has transition by character c. It means that all suffixes of length ≤ len(p) + 1 are already accepted by some state in automaton hence we don’t need to add transitions to state cur anymore. But we also have to calculate suffix link for state cur.
+    else {  // Otherwise we found such state p, which already has transition by character c. It means that all suffixes of length <= len(p) + 1 are already accepted by some state in automaton hence we don’t need to add transitions to state cur anymore. But we also have to calculate suffix link for state cur.
         int q = st[p].next[c];
         if (st[p].len + 1 == st[q].len)  // The largest string accepted by this state will be suffix of sc of length len(p) + 1. It is accepted by state q at the moment, in which there is transition by character c from state p. But state q can also accept strings of bigger length. So, if len(q) = len(p) + 1, then q is the suffix link we are looking for. We make link(cur) = q and finish algorithm.
             st[cur].link = q;
@@ -4857,17 +4918,17 @@ int main() {
     sufCount[v] = 1 + sufCount[link[v]];
 */
 \end{minted}
-Just see this \href{https://github.com/sourabh2311/Timus/blob/master/1954_Five_Palindromes.cpp}{soln}
+Just see this \href{https://github.com/sourabhxyz/Timus/blob/master/1954_Five_Palindromes.cpp}{soln}
 \subsection{Important Problems}
 \textit{Review: cf 631D}
 \begin{itemize}
-    \item \href{https://github.com/sourabh2311/Timus/blob/master/2059_Not_common_palindromes.cpp}{Just to see how to handle multi strings occurence in eertree}
-	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10739.cpp}{UVA 10739 Sol}, \href {https://uva.onlinejudge.org/external/107/10739.pdf}{UVA 10739 Prob}: String to palindrome, just see the minimum edit distance between this string and its reverse but need to divide by 2 later as both strings are it itself.	
-	\item \href {https://codeforces.com/contest/245/problem/H}{Queries for the number of palindromic substrings within given range}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/245H%20-%20Queries%20for%20Number%20of%20Palindromes.cpp}{\textbf {See this soln to see power of hashing.}}: 
+    \item \href{https://github.com/sourabhxyz/Timus/blob/master/2059_Not_common_palindromes.cpp}{Just to see how to handle multi strings occurence in eertree}
+	\item \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_10739.cpp}{UVA 10739 Sol}, \href {https://uva.onlinejudge.org/external/107/10739.pdf}{UVA 10739 Prob}: String to palindrome, just see the minimum edit distance between this string and its reverse but need to divide by 2 later as both strings are it itself.	
+	\item \href {https://codeforces.com/contest/245/problem/H}{Queries for the number of palindromic substrings within given range}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/245H%20-%20Queries%20for%20Number%20of%20Palindromes.cpp}{\textbf {See this soln to see power of hashing.}}: 
     \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{palsub} 	
-    \\\href {https://github.com/sourabh2311/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/514C%20-%20Watto%20And%20Mechanism.cpp}{One more problem to see how to use hashing.}
-    \item \href{http://acm.timus.ru/problem.aspx?space=1&num=1989}{Timus 1989 Subpalindromes}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1989.cpp}{Sol}
-	\item \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - simple}, \href {https://github.com/sourabh2311/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - complicated but more powerful}: Problem is to find the longest substring shared by more than half of given strings.	
+    \\\href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/IMP%20QUES/Suffix%20String%20Structure/Hash/514C%20-%20Watto%20And%20Mechanism.cpp}{One more problem to see how to use hashing.}
+    \item \href{http://acm.timus.ru/problem.aspx?space=1&num=1989}{Timus 1989 Subpalindromes}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/timus/1989.cpp}{Sol}
+	\item \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - simple}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/HimanshuSA11107.cpp}{UVA 11107 Sol - complicated but more powerful}: Problem is to find the longest substring shared by more than half of given strings.	
 \end{itemize}
 \section{Geometry}
 \begin{itemize}
@@ -4944,7 +5005,7 @@ ll getb (vector<point> &poly) {
     \item To check whether a point is on or inside a convex polygon that area method is best.
     \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{p1} 
     \item \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{p2}
-    \item \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/areaOfUnionOfTriangles.cpp}{Area of union of triangles}
+    \item \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Libs/areaOfUnionOfTriangles.cpp}{Area of union of triangles}
     \item \href{http://e-maxx.ru/algo/circle_tangents}{Finding common tangents to two circles}
     \item Given a set of points, to determine whether a point lies inside a triangle formed by any 3 points, it is enough to check whether the given point lies inside the convex hull of given data points.
 \end{itemize}
@@ -5055,12 +5116,12 @@ double dvac(int low, int high) {
 
 \end{minted}
 \subsection{2D geo lib}
-\href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/2dgeoLib.cpp}{2D geo lib}
+\href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Libs/2dgeoLib.cpp}{2D geo lib}
 \\Circle line intersection, same as sphere line intersection.\\
 \includegraphics[width=0.1\textwidth,height=0.1\textheight,keepaspectratio]{circleline}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{circlecircle}
 \subsection{3D geo lib}
-\href{https://github.com/sourabh2311/Competitive-Programming/blob/master/Libs/3dgeolib.cpp}{3D Geo Lib}
+\href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/Libs/3dgeolib.cpp}{3D Geo Lib}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{facearea}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{sph}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{segsegcir}
@@ -5069,11 +5130,11 @@ double dvac(int low, int high) {
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{orientedangle}
 \\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{spherearea}
 \subsection{Line Sweep}
-See \href{https://www.topcoder.com/community/competitive-programming/tutorials/line-sweep-algorithms/}{this} and \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/RevisionNotes/linesweep.pdf}{this}.
+See \href{https://www.topcoder.com/community/competitive-programming/tutorials/line-sweep-algorithms/}{this} and \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/RevisionNotes/linesweep.pdf}{this}.
 \subsection{Important Problems}
 \begin{itemize}
-    \item Sometimes it makes sense to gridize the region, like in \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/timus/1333.cpp}{Timus 1333}
-    \item \href{https://uva.onlinejudge.org/external/101/10173.pdf}{Minimum Bounding Rectangle}, \href{https://github.com/sourabh2311/Competitive-Programming/blob/master/UVA_10173.cpp}{Sol}: basically use atan2 and rotate wrt that point.
+    \item Sometimes it makes sense to gridize the region, like in \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/timus/1333.cpp}{Timus 1333}
+    \item \href{https://uva.onlinejudge.org/external/101/10173.pdf}{Minimum Bounding Rectangle}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_10173.cpp}{Sol}: basically use atan2 and rotate wrt that point.
 \end{itemize}
 \section{To Read}
 \href{https://codeforces.com/blog/entry/64829}{one}

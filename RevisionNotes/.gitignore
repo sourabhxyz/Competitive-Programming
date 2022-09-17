@@ -1,0 +1,10 @@
+*.pygtex
+*.pdf
+.*
+!/.gitignore
+_*
+*.out
+*.log
+*.fls
+*.gz
+*.toc
