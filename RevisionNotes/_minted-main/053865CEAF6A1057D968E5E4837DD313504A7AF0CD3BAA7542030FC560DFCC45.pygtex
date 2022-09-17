@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{transform} \PYG{p}{(}\PYG{n}{word}\PYG{p}{.}\PYG{n}{begin} \PYG{p}{(),} \PYG{n}{word}\PYG{p}{.}\PYG{n}{end} \PYG{p}{(),} \PYG{n}{word}\PYG{p}{.}\PYG{n}{begin} \PYG{p}{(),} \PYG{o}{::}\PYG{n}{tolower}\PYG{p}{);}
-\end{Verbatim}
