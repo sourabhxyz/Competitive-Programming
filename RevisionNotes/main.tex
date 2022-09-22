@@ -21,7 +21,7 @@ If you need a line to separate the columns, the following command will do the jo
 
 \frenchspacing  % Else it was inserting double space after full stop.
 
-\usepackage{minted}
+\usepackage{minted}  % To insert code blocks
 \setminted{breaklines=true, tabsize=2, breaksymbolleft=}
 
 \begin{comment}
@@ -45,7 +45,7 @@ About `tabsize': The number of spaces a tab is equivalent to. If obeytabs is not
 \usepackage{amssymb}
 \usepackage{enumitem}
 \setlist{nolistsep}
-\usepackage{fancyhdr} % documentation: http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+\usepackage{fancyhdr}  % documentation: http://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \begin{comment}
 The pack­age pro­vides ex­ten­sive fa­cil­i­ties, both for con­struct­ing head­ers and foot­ers, and for con­trol­ling their use (for ex­am­ple, at times when LaTeX would au­to­mat­i­cally change the head­ing style in use).
 \end{comment}
@@ -1684,6 +1684,78 @@ else ans = ((n - 7) * (m - 7) + 1) / 2
     \item for 2 nos (a, b) output 2 nos (c, d) such that a = gcd(c, d) \& b = lcm(c, d) and c is minimum. Sol: basically soln exist if $b \bmod a = 0$ and soln is c = a, d = b.
 \end{itemize}
 
+
+\section{Segment Tree}
+
+\begin{minted}{cpp}
+/* Basic Segment Tree, illustrated using string hashing */
+
+struct segmentTree {
+    struct seg {
+        int val;
+        seg () { val = 0; }
+    };
+    vector<seg> st;
+    segmentTree () {
+    }
+    segmentTree (int n) {
+        st.resize (4 * n);
+    }
+    int left(int at) { return at << 1; }
+    int right(int at) {return at << 1 | 1; }
+    void build (int at, int start, int end) {
+        if (start == end) {
+            st[at].val = s[start] - 'a' + 1;
+        } else {
+            int mid = (start + end) >> 1;
+            build (left (at), start, mid);
+            build (right (at), mid + 1, end);
+            st[at].val = add<int> (st[left(at)].val, mul<int> (st[right (at)].val, pow1[mid - start + 1]));
+        }
+    }
+    void update(int at, int start, int end, int l, int r, char c) {
+        // r needs to be >= start and l needs to be <= end
+        if(r < start || end < l || start > end) return;
+        if(start == end) {
+            st[at].val = c - 'a' + 1;
+            return;
+        }
+        int mid = (start + end) >> 1;
+        update(left(at), start, mid, l, r, c);
+        update(right(at), mid + 1, end, l, r, c);
+        st[at].val = add<int> (st[left(at)].val, mul<int> (st[right (at)].val, pow1[mid - start + 1]));
+    }
+    pair<int, ii> query(int at, int start, int end, int l, int r) {
+        if (l <= start and end <= r) return make_pair (st[at].val, ii (start, end));
+        int mid = (start + end) >> 1;
+        if (r <= mid) return query (left (at), start, mid, l, r);
+        else if (l > mid) return query (right (at), mid + 1, end, l, r);
+        auto lf = query(left(at), start, mid, l, r);
+        auto ri = query(right(at), mid + 1, end, l, r);
+        int ret = add<int> (lf.first, mul<int> (ri.first, pow1[lf.second.second - lf.second.first + 1]));
+        return make_pair(ret, ii(lf.second.first, ri.second.second));
+    }
+};
+\end{minted}
+
+\begin{itemize}
+    \item Construction of segment tree is $O(n)$ (by masters theorem) and height of segment tree is $O(\log n)$. Also time complexity of each query is $O(\log n)$.
+
+    \item \href{https://uva.onlinejudge.org/external/112/11235.pdf}{Frequent values}, \href{https://gist.github.com/sourabhxyz/adf33f80e4b1e95bdb7d7a0e28ae23e6}{Sol}. Note that we might think that it's better to create a segment tree (along with its query function) such that whatever range we give, it'll give correct answer and we thus needn't have those 3 cases like we have in that solution. But the thing is that such a combine function will involve a lots of if-else's and suppose we have a range \mintinline{c}{[2, 2, 2, 3, 5, 6, 8, 8, 8]} then which one should we consider? We would have to consider both and thus it will make our data structure cumbersome
+
+    \item \href{https://uva.onlinejudge.org/external/112/11297.pdf}{Census: Simple update, can delete this problem}, \href{https://gist.github.com/sourabhxyz/1376c934be55a72ca3f7c6f7481125ca}{Sol}
+
+    \item \href{https://uva.onlinejudge.org/external/114/11402.pdf}{Ahoy, Pirates! Simple problem, illustrating lazy range update}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_11402.cpp}{Sol}
+
+    \item In similar way segment tree can be used to answer queries regarding gcd/lcm.
+
+    \item \href{https://codeforces.com/problemset/problem/380/C}{Sereja and brackets}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/380C%20-%20Seraja%20And%20Brackets.cpp}{Sol}
+
+    \item \href{https://codeforces.com/problemset/problem/981/E}{Addition on Segments}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/Problem%20-%20E%20Addition%20On%20Segments_sol_tourist.cpp}{Sol}
+          
+    \item \href {https://codeforces.com/contest/916/problem/D}{Jamie and to do list}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/457D2/D.cpp}{Sol}: Just basic application of Persistent segment tree. When updating some element, at most $O(\log n)$ nodes in the segment tree gets changed: the nodes along the path from root to the updated leaf. For each timepoint, instead of creating a copy of the entire segment tree, copy only nodes on the path to be updated and update them. Therefore total storage is $O(n + t \times \log n)$.
+\end{itemize}
+
 \section{Graphs}
 
 \begin{itemize}
@@ -1881,8 +1953,10 @@ else ans = ((n - 7) * (m - 7) + 1) / 2
 \subsection{Articulation Points and Bridges (undirected graph)}
 \begin{itemize}
   \item An articulation point is defined as a vertex in a graph $G$ whose removal (all edges incident to this vertex are also removed) disconnects $G$. A graph without any articulatioin point is called "Biconnected" Similarly, a "Bridge" is defined as an edge in a graph $G$ whose removal disconnects $G$.
+  \item A naive algorithm will be to first find out number of connected components (either BFS or DFS) and then for each vertex, count the number of components after removing it, if number increases that means our vertex is an articulation point.
+  \item Optimal: Concept is simple, in a connected component, performing DFS will give a DFS spanning tree. Now in that spanning tree, for any vertex, we see what is the highest parent it can reach (by the properties of DFS, for any vertex `v', its neighbours will either be its children or parent), thus if we remove that vertex, all the children are linked with the highest parent and we need the highest parent so that all the previous parents can know that they aren't that useful.
   \begin{minted}{cpp}
-  // dfs_low[u] will store the lowest iteration count vertex u can reach from u’s current DFS Tree (i.e u can only reach vertices of lower iteration count only if a back-edge exists in one of its children)
+  // `dfs_low[u]' stores the lowest `dfs_num` reachable from DFS spanning sub tree of `u'. `dfs_low(u)' can only be made smaller if there is a cycle (one back edge exists).
   vector<int> dfs_num;
   vector<int> dfs_low;
   vector<int> dfs_parent;
@@ -1900,25 +1974,24 @@ else ans = ((n - 7) * (m - 7) + 1) / 2
         dfs_parent[v] = u;
         
         // special case if u is root
-        if (u == dfs_root) root_children++;
+        if (u == dfs_root) root_children++;  // this `root_children' updation has to be here because neighbours of `root' need not be its children.
 
         ArticulationPoint(v);
         
         // To detect articulation points
-        if (dfs_low[v] >= dfs_num[u])
+        if (dfs_num[u] <= dfs_low[v])  // In case they are equal, that means, highest parent was `u' itself, thus `u' is needed for any path from root to `v'. "From root" but what if `u' itself is root? This is the reason why checking for root is a bit special.
             articulation_vertex[u] = true;
+        
         // To detect bridges
-        if (dfs_low[v.first] > dfs_num[u])
+        if (dfs_num[u] < dfs_low[v])  // equality would mean that back edge exists and hence this edge is not a bridge.
             printf(" Edge (%d, %d) is a bridge\n", u, v.first);
         
         // update dfs_low[u] if dfs_low[v] is lower
         // i.e a back-edge exists in one of u's children
         dfs_low[u] = min(dfs_low[u], dfs_low[v]);
       }
-      // if v was previously visited, and v is not the parent of u
-      // then a back-edge certainly exists, not a direct cycle
-      // update dfs_low[u] to store dfs_num of ancestor is lower than
-      // current dfs_low
+
+      // if v was previously visited, and v is not the parent of u then a back-edge certainly exists (cross edge is not possible in an undericted graph)
       else if (v != dfs_parent[u])
         dfs_low[u] = min(dfs_low[u], dfs_num[v]);
     }
@@ -1945,9 +2018,10 @@ else ans = ((n - 7) * (m - 7) + 1) / 2
   }
   /* Variation
 
-  A slight variation to this problem is how many disconnected components would result as a direct consequence of removing a vertex u
+  A slight variation to this problem is how many disconnected components would result as a direct consequence of removing a vertex `u'
 
   Another variation is to find the articulation vertex whose removal would cause a greater amount of components to be disconnected.
+
   General Idea of Variation
 
   Instead of keeping track of whether or not a node is an articulation point using vector<bool> articulation_vertex, we’ll use a vector<int> articulation_vertex to keep track of how many components will be connected after the removal of vertex u.
@@ -2017,14 +2091,21 @@ else ans = ((n - 7) * (m - 7) + 1) / 2
           }
   }
   \end{minted}
-    \item \href{https://gist.github.com/sourabhxyz/01c2bdf3f7389c2b84d40db5cce506f9}{Two way to one way UVA 610}
+    \item \href{https://onlinejudge.org/external/6/610.pdf}{Prob}, \href{https://gist.github.com/sourabhxyz/01c2bdf3f7389c2b84d40db5cce506f9}{Sol (only bridges need to be two-way)}
 \end{itemize}
+
 \subsection{Tree}
-Undirected, acyclic, connected, $|V| - 1$ edges.\\
-All edges are bridges, and internal vertices (degree $> 1$) are articulation points.\\
-It is as well a bipartite graph.\\
-\textbf{SSSP}: Simply take the sum of edge weights of that unique path. $O(|V|)$\\
+
+Undirected, acyclic, connected, $|V| - 1$ edges.
+
+All edges are bridges, and internal vertices (degree $> 1$) are articulation points.
+
+It is as well a bipartite graph.
+
+\textbf{SSSP}: Simply take the sum of edge weights of that unique path. $O(|V|)$
+
 \textbf{APSP}: Simply do SSSP from all vertices. $O(|V^2|)$
+
 \begin{minted}{cpp}
 void preorder (v) {
 	visit (v);
@@ -2042,28 +2123,40 @@ void postorder (v) {
 	visit (v);
 }
 \end{minted}
-It is \textbf {impossible} to construct binary tree with just Preorder traversal.\\ 
-It is \textbf {impossible} to construct binary tree with just Inorder traversal.\\
-It is \textbf {impossible} to construct binary tree with just Postorder traversal.
+
+It is \textbf{impossible} to construct binary tree with just Preorder traversal.
+
+It is \textbf{impossible} to construct binary tree with just Inorder traversal.
+
+It is \textbf{impossible} to construct binary tree with just Postorder traversal.
+
 \subsubsection{LCA}
-\begin{itemize}[leftmargin=*]
-    \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. Note that LCA of two nodes u, v is the node w that is ancestor of both u and v and that has the greatest depth in the tree.\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{lca}
-    \item Tarjan's offline LCA. for each query (a, b) you should do q[a].pb(b) and q[b].pb(a).
-\\\includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{tar}
+
+\begin{itemize}
+    \item \href {https://codeforces.com/contest/916/problem/E}{Jammie and Tree}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/457D2/E.cpp}{Sol}: One stop soln to understand LCA. Note that LCA of two nodes $u$, $v$ is the node $w$ that is ancestor of both $u$ and $v$ and that has the greatest depth in the tree.
+    
+    $2^j = 2^{j - 1} + 2^{j - 1}$, thus \mintinline{c}{ancs[i][j] = ancs[ancs[i][j - 1]][j - 1]}
+    
+    \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{lca}
+
+    \item Tarjan's offline LCA. for each query $(a, b)$ you should do \mintinline{c}{q[a].push_back(b)} and \mintinline{c}{q[b].push_back(a)}. Is only slightly more optimal: https://www.geeksforgeeks.org/tarjans-off-line-lowest-common-ancestors-algorithm/
+
+    \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{tar}
+
 \end{itemize}
 \subsubsection{Important Problems}
 \begin{itemize}
     \item \href{https://codeforces.com/contest/1099/problem/F}{Eating cookies on tree}, \href{https://codeforces.com/blog/entry/64296?#comment-482494}{Sol}
-    \item Say path length is defined as the sum of edge weights along that path. And diameter is length of the longest simple path. Given sum of edge weights 'm' we need to assign weights to edges so that diameter is minimum. Sol: Consider the center of the tree like before, now the length of all paths from this tree should be minimum, which is only possible if we assign length to be the same. \href{https://codeforces.com/contest/1086/submission/47400574}{code}
-    \item Diameter after merging tree T1 (center = v1, dia = d1) with T2 (center = v2, dia = d2) is $max (d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)$ this is written for c style. In case of odd diameter, v1 could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabhxyz/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
-	\item \href {https://gist.github.com/sourabhxyz/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and add so as to minimise the diameter of the tree.\\
-	Problem Sol: Just link the center of diameters. Brute force which edge to remove on the longest path. 
+    \item Say \textit{path length} is defined as the sum of edge weights along that path. And \textit{diameter} is length of the longest simple path. Given the sum of all edge weights `s' we need to assign weights to edges so that diameter is minimum. Sol: Think about it, diameter would be minimum, when all paths from the center would be of same length as if some path is having higher edge weight, we can take some fraction of it and give to remaining. So if all paths have same length from center, path length is $2 * s / l$ where $l$ denote the number of leaves. And a simple assignment to accomplish this is to give edge weight of $s / l$ to each edge adjacent to leaf and $0$ to other edges. Formal proof \href{https://codeforces.com/blog/entry/64078}{here} (for problem: 1086B).
+    \item Diameter after merging tree $T_1$ (center = $v_1$, diameter = $d_1$) with $T_2$ (center = $v_2$, diameter = $d_2$) is \mintinline{c}{max(d1, d2, (d1 + 1)/2 + (d2 + 1)/2 + 1)}. In case of odd diameter, $v_1$ could be any of the two centers. \href{https://codeforces.com/contest/1092/problem/E}{Minimal Diameter Forest}, \href{https://gist.github.com/sourabhxyz/39abbe4cf84fcfce62051f1ae0fe4638}{sol}. Just know that pivot should be the one having highest diameter.
+	\item \href {https://gist.github.com/sourabhxyz/6cff69fef833097556696bd6f31f3f1d}{UVA 11695 Sol}: Problem Desc: Find which edge to remove and then add at suitable place so as to minimise the diameter of the tree. 
+    
+    Problem Sol: Just link the center of diameters. Brute force which edge to remove on the longest path. 
 	\item \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_112.cpp}{UVA 112 Sol}, \href {https://uva.onlinejudge.org/external/1/112.pdf}{UVA 112 Prob}: Just see how I processed the input.	
-	\item \href {https://gist.github.com/sourabhxyz/6b761c14bef4e5887e6b03b809bc4983}{UVA 10029 Sol}, \href {https://uva.onlinejudge.org/external/100/10029.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
 	\item \href {https://gist.github.com/sourabhxyz/d73572fab5cf6d390f509d29abf4cd60}{UVA 536 Sol}, \href {https://uva.onlinejudge.org/external/5/536.pdf}{UVA 536 Prob}: Construct binary tree with preorder and inorder	
 	\item \href {https://gist.github.com/sourabhxyz/25edb7a7067948832ade9192bd2635ce}{UVA 10459 Sol}, \href {https://uva.onlinejudge.org/external/104/10459.pdf}{UVA 10459 Prob}: Centers of diameters are best where as corners are worst.	
-    \item \href{https://codeforces.com/contest/911/problem/F}{Tree Destruction}, \href{https://codeforces.com/contest/911/submission/34122817}{Sol}:
-    \item \href{https://codeforces.com/contest/1092/problem/F}{Tree with maximum cost}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/527%20Div3/F.cpp}{sol}
+    \item (Left) \href{https://codeforces.com/contest/911/problem/F}{Tree Destruction}, \href{https://codeforces.com/contest/911/submission/34122817}{Sol}:
+    \item (Left) \href{https://codeforces.com/contest/1092/problem/F}{Tree with maximum cost}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/527%20Div3/F.cpp}{sol}
 \end{itemize}
 \subsubsection{MVC on Tree}
 \begin{minted}{cpp}
@@ -2088,7 +2181,7 @@ int mvc(int at, int flag, int parent) { //You can start this from any node, i.e.
        }
    }
    return memo[at][flag] = ans;
-}  // Similar code can be written to find MWIS.
+}
 \end{minted}
 \subsubsection{MWIS on Tree}
 \begin{minted}{cpp}
@@ -2117,14 +2210,12 @@ int mwis(int at, int flag, int parent) { //You can start this from any node, i.e
 \end{minted}
 \subsection{Terminology}
 \begin{itemize}
-    \item A \textbf{vertex cover} is a subset of vertices S, such that for each edge (u, v) in graph, either u or v (or both) are in S.
-    \item An \textbf{independent set} is a subset of vertices S, such that no two vertices u, v in S are adjacent in graph.
-    \item A subset of vertices is a vertex cover iff the complement of the set is an independent set, i.e. $MinVC + MaxIS = V$.
+    \item A \textbf{vertex cover} is a subset of vertices $S$, such that for each edge $(u, v)$ in graph, either $u$ or $v$ (or both) are in $S$.
+    \item An \textbf{independent set} is a subset of vertices $S$, such that no two vertices $u$, $v$ in $S$ are adjacent in graph.
+    \item A subset of vertices is a vertex cover iff the complement of the set is an independent set, we therefore have: $\text{MinVC} + \text{MaxIS} = V$.
     \item It is easy to see why it is the case, firstly for vertices in the complement of MinVC, they can't have any edge between them as then our MinVC isnt VC. Also if we add to this IS any more vertex then it wont be an IS. Suppost it is not the maximum then there occurs an MIS with size more than this, clearly its complement is VC which would have size smaller than our MinVC which leads to contradiction. 
-    \item Complement of VC is an IS and vice versa (easy to see)
-    \item Given an undirected graph G = (V, E) and weighting function defined on the vertex set, the minimum weighted vertex cover problem is to find a vertex set $S \subseteq V$ whose total weight is minimum subject to every edge of G has at least one end point in S. 
-    \item In the maximum-weight independent set problem, the input is an undirected graph with weights on its vertices and the output is an independent set with maximum total weight.
-    \item Again it happens to be the case that size of MWVC + MWIS = Total weight = V.
+    \item Given an undirected graph $G = (V, E)$ and weighting function defined on the vertex set, the minimum weighted vertex cover problem is to find a vertex set $S \subseteq V$ whose total weight is minimum subject to every edge of $G$ has at least one end point in $S$. 
+    \item Again it happens to be the case that size of $\text{MWVC} + \text{MWIS} = \text{Total weight} = V$.
     \item A matching is a subset of edges such that each vertex is adjacent to at most one edge in the subset. Clearly Matching edges can be atmost $|V|/2$ as each edge joins two vertices and now no other matched edge can touch them.
     \item Note: This MVC, MIS, MM, is defined for undirected, unweighted graph.
     \item Once we have maximum matching. Clearly since these matching edges are aswell edges of the graph and minimum vertex cover should have vertices that are adjacent to these edges. But since matching edges have no vertex in common, size of minimum vertex cover is atleast the size of maximum matching.
@@ -2454,6 +2545,11 @@ $f = x_1 \wedge x_2 \wedge \dots \wedge x_n$ is satisfiable iff there isnt both 
 $f = (x_1 \vee y_1) \wedge \dots \wedge (x_n \vee y_n)$ is satisfiable iff both $x_i \& \bar{x_i}$ are not in same SCC as one them has to be true and in SCC one value is true all others must be true. For each $(x_i \vee y_i)$ add 2 edges $\bar{x_i} \rightarrow y_i$ and $\bar{y_i} \rightarrow x_i$. 
 \\After seeing whether the soln exists or not, soln can be constructed with the help of Kosaraju's algo, let comp[v] denote the index of strongly connected component to which the vertex v belongs. Then, if $comp[x] < comp[\bar{x}]$ we assign x with false and true otherwise.
 \subsection{DAG}
+\subsubsection{DP}
+\begin{itemize}
+	\item \href {https://gist.github.com/sourabhxyz/6b761c14bef4e5887e6b03b809bc4983}{UVA 10029 Sol}, \href {https://uva.onlinejudge.org/external/100/10029.pdf}{UVA 10029 Prob}: Edit steps, (lexicographic sequence of words)	
+\end{itemize}
+\subsubsection{Other}
 Topological sort or topological ordering of a directed graph is a linear ordering of its vertices such that for every directed edge uv from vertex u to vertex v, u comes before v in the ordering.
 \\A topological ordering is possible if and only if the graph has no directed cycles, that is, if it is a directed acyclic graph (DAG). Any DAG has at least one topological ordering.
 \begin{minted}{cpp}
@@ -4074,68 +4170,6 @@ For now survive with HLD.
 \begin{itemize}
     \item \href{https://codeforces.com/contest/981/problem/D}{BookShelves}, \href{https://codeforces.com/contest/981/submission/38660572}{Sol}
     \item \href{https://codeforces.com/contest/1092}{See problem D1, D2}, \href{https://codeforces.com/blog/entry/63961}{sol}
-\end{itemize}
-\section{Data Structures}
-\subsection{Segment Tree}
-
-\begin{minted}{cpp}
-/* Basic Segment Tree, illustrated using string hashing */
-
-struct segmentTree {
-    struct seg {
-        int val;
-        seg () { val = 0; }
-    };
-    vector<seg> st;
-    segmentTree () {
-    }
-    segmentTree (int n) {
-        st.resize (4 * n);
-    }
-    int left(int at) { return at << 1; }
-    int right(int at) {return at << 1 | 1; }
-    void build (int at, int start, int end) {
-        if (start == end) {
-            st[at].val = s[start] - 'a' + 1;
-        } else {
-            int mid = (start + end) >> 1;
-            build (left (at), start, mid);
-            build (right (at), mid + 1, end);
-            st[at].val = add<int> (st[left(at)].val, mul<int> (st[right (at)].val, pow1[mid - start + 1]));
-        }
-    }
-    void update(int at, int start, int end, int l, int r, char c) {
-        if(r < start || end < l || start > end) return;
-        if(start == end) {
-            st[at].val = c - 'a' + 1;
-            return;
-        }
-        int mid = (start + end) >> 1;
-        update(left(at), start, mid, l, r, c);
-        update(right(at), mid + 1, end, l, r, c);
-        st[at].val = add<int> (st[left(at)].val, mul<int> (st[right (at)].val, pow1[mid - start + 1]));
-    }
-    pair<int, ii> query(int at, int start, int end, int l, int r) {
-        if (start >= l and end <= r) return make_pair (st[at].val, ii (start, end));
-        int mid = (start + end) >> 1;
-        if (r <= mid) return query (left (at), start, mid, l, r);
-        else if (l > mid) return query (right (at), mid + 1, end, l, r);
-        auto lf = query(left(at), start, mid, l, r);
-        auto ri = query(right(at), mid + 1, end, l, r);
-        int ret = add<int> (lf.first, mul<int> (ri.first, pow1[lf.second.second - lf.second.first + 1]));
-        return make_pair(ret, ii(lf.second.first, ri.second.second));
-    }
-};
-\end{minted}
-\begin{itemize}
-    \item Construction of segment tree is O(n) (by masters theorem) and height of segment tree is O(logn). Also time complexity of each query is O(logn).
-    \item \href{https://uva.onlinejudge.org/external/112/11235.pdf}{freq}, \href{https://gist.github.com/sourabhxyz/adf33f80e4b1e95bdb7d7a0e28ae23e6}{sol}
-    \item \href{https://uva.onlinejudge.org/external/112/11297.pdf}{simple update}, \href{https://gist.github.com/sourabhxyz/1376c934be55a72ca3f7c6f7481125ca}{sol}
-    \item \href{https://uva.onlinejudge.org/external/114/11402.pdf}{lazy range update}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/UVA_11402.cpp}{sol}
-    \item In similar way segment tree can be used to answer queries regarding gcd/lcm.
-    \item \href{https://codeforces.com/problemset/problem/380/C}{Sereja and brackets}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/380C%20-%20Seraja%20And%20Brackets.cpp}{sol}
-    \item \href{https://codeforces.com/problemset/problem/981/E}{Addition on Segments}, \href{https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/Data%20Structures/Segment%20Tree/Problem%20-%20E%20Addition%20On%20Segments_sol_tourist.cpp}{sol}
-    \item \href {https://codeforces.com/contest/916/problem/D}{Jamie and to do list}, \href {https://github.com/sourabhxyz/Competitive-Programming/blob/master/CF/457D2/D.cpp}{Sol}: Just basic application of Persistent segment tree. When updating some element, at most O(logn) nodes in the segment tree get changed: the nodes along the path from root to the updated leaf. For each timepoint, instead of creating a copy of the entire segment tree, copy only nodes on the path to be updated and update them. Therefore total storage is O(n + t\*logn).
 \end{itemize}
 \section{DP}
 Following are the two main properties of a problem that suggests that the given problem can be solved using Dynamic programming.
